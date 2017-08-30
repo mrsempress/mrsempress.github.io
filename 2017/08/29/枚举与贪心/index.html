@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://empress.top/img/1.1.png">
 <meta property="og:image" content="http://empress.top/img/1.2.png">
 <meta property="og:image" content="http://empress.top/img/1.3.png">
-<meta property="og:updated_time" content="2017-08-30T02:44:47.000Z">
+<meta property="og:updated_time" content="2017-08-30T13:02:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础算法">
 <meta name="twitter:description" content="This is my blog.算法里面最基础的莫过于枚举、贪心、二分、搜索、分治、排序、模拟。在这里，我简单记述一下其核心思想和自己的一些理解，并附上相关练习题（若此题做过，会附上AC代码，此博客会不断更新）">
@@ -412,7 +412,9 @@
 <p>再给上一题，这个枚举则是关于几何方面的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在一个给定的矩形中有一些障碍点，找出内部不包含障碍点的、轮廓与整个矩形平行或重合的最大子矩形。</div></pre></td></tr></table></figure></p>
 <p>解法一：枚举上下左右四个边界，判断中间有没有点<br>解法二：枚举左右边界，对处在边界内的点排序，每两个相邻的点和左右边界组成一个矩形。<br>解法三：悬线法。若是障碍点，不可延伸。若不是障碍点，则长度+1，直至到障碍点或到边界点。<br>其实相当于枚举边长。然后从左边悬线开始往右扫，若右悬线小于，则break，换下一根悬线。<br>（这题目前只有思路，还没有实现代码）</p>
 <h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，他所做出的是在某种意义上的局部最优解。<br>上题吧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">恰逢 H 国国庆，国王邀请 n 位大臣来玩一个有奖游戏。首先，他让每个大臣在左、右手上面分别写下一个整数，国王自己也在左、右手上各写一个整数。然后，让这 n 位大臣排成一排，国王站在队伍的最前面。排好队后，所有的大臣都会获得国王奖赏的若干金币，每位大臣获得的金币数分别是：排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数，然后向下取整得到的结果。 </div><div class="line">国王不希望某一个大臣获得特别多的奖赏，所以他想请你帮他重新安排一下队伍的顺序，使得获得奖赏最多的大臣，所获奖赏尽可能的少。注意，国王的位置始终在队伍的最前面。</div></pre></td></tr></table></figure></p>
-<p>假设在队伍中有A,B两人，他们的先后顺序对其他人是没有影响。<br>设他们之前最多的奖赏为π，<br>假设A在前面，那么结果应为max(π/rA,π*lA</p>
+<p>假设在队伍中有A,B两人，他们的先后顺序对其他人是没有影响。<br>设他们之前最多的奖赏为π，<br>若A在前面，则max(π/rA,π<em>lA/rB)<br>若A在后面，则max(π/rB,π</em>lB/rA)<br>假设A前，ans值更小，那么有max(π/rA,π<em>lA/rB)&lt;max(π/rB,π</em>lB/rA)<br>易知：  π/rA&lt;π<em>lB/rA;       π</em>lA/rB&gt;π/rB;<br>所以只需π<em>lA/rB &lt; π</em>lB/rA<br>即：rAlA&lt;rBlB<br>则将每一个人的l与r相乘，将其排序即可<br>这道题可能有人会觉得不怎么像，其实在分析问题的时候我们就用到了贪心的思想。<br>再来一题，来感受一下贪心吧！</p>
+<h3 id="一些位运算"><a href="#一些位运算" class="headerlink" title="一些位运算"></a>一些位运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">给定4个小于等于10^18的数a,b,c,d，又有a&lt;=x&lt;=b，c&lt;=y&lt;=d，求x xor y的最大值</div></pre></td></tr></table></figure>
+<p>其中xor为异或的意思，在大数计算时，我们常常会用到位运算。<br>1.根据题意我们就可以知道，我们需要用位运算；<br>2.求最大值，根据贪心的思想，我们应从高位开始<br>3.我们来分析一下在第i位可能的情况：<br>  （1）两者均可取0 1，则定可以取到<code>……1000……和……0111……</code>，他们异或后结果为<code>……1111……</code><br>  （2）两者唯一，那只能这么取<br>  （3）若 x只能取1，而y可取1或0，那么y必取0，之后的上界变为<code>……01111……</code><br>      若 x只能取0，而y可取1或0，那么y必取1，之后的下界变为<code>……11111……</code><br>注意：1.&lt;&lt;左移 &gt;&gt;右移，他们的优先级较低，一般需要用括号<br>     2.<code>（long long）1</code>可写成<code>1LL</code>，且需观察一下评判机的系统，若为windows，则应为%I64d；若为linux，则应为%lld。<br>     3.1e18约等于2^63<br>     4.double输入为%lf，而输出是%f，不是%lf了<br>     5.很多大佬会在scanf(“ %s”)中打上括号<br>其他：在codeblocks中ctrl+D复制一行（本人将会弃用codeblocks，其快捷键不会将特殊说明，但这个快捷键真的很好用）</p>
 <p>转载请注明出处，谢谢。</p>
 <blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote>
@@ -497,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/Codeforces-Round-430-div-2/" rel="prev" title="Codeforces Round">
-                Codeforces Round <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/30/Codeforces-Round-430-div-2/" rel="prev" title="Codeforces 430(div.2)">
+                Codeforces 430(div.2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -579,7 +581,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -590,7 +592,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -601,7 +603,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -682,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举"><span class="nav-number">1.</span> <span class="nav-text">枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#补充尺取法："><span class="nav-number">1.1.</span> <span class="nav-text">补充尺取法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心"><span class="nav-number">2.</span> <span class="nav-text">贪心</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举"><span class="nav-number">1.</span> <span class="nav-text">枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#补充尺取法："><span class="nav-number">1.1.</span> <span class="nav-text">补充尺取法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心"><span class="nav-number">2.</span> <span class="nav-text">贪心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些位运算"><span class="nav-number">2.1.</span> <span class="nav-text">一些位运算</span></a></li></ol></li></ol></div>
             
 
           </div>
