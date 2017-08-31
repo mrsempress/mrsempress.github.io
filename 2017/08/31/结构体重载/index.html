@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="struct,class," />
 
 
 
@@ -95,16 +95,18 @@
 
 
 
-<meta name="description" content="Hope be better and better, wish be happy and happy!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mrs_empress">
-<meta property="og:url" content="http://empress.top/tags/map/index.html">
+<meta name="description" content="This is my blog.本文将会介绍struct，class的特性。另外在自定义类中，要做加减乘除，比较，赋值等运算时，若每次都打上完整的代码，会很麻烦，于是我们常常会使用运算符重载的方法。">
+<meta name="keywords" content="struct,class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="结构体重载">
+<meta property="og:url" content="http://empress.top/2017/08/31/结构体重载/index.html">
 <meta property="og:site_name" content="Mrs_empress">
-<meta property="og:description" content="Hope be better and better, wish be happy and happy!">
+<meta property="og:description" content="This is my blog.本文将会介绍struct，class的特性。另外在自定义类中，要做加减乘除，比较，赋值等运算时，若每次都打上完整的代码，会很麻烦，于是我们常常会使用运算符重载的方法。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-31T08:33:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mrs_empress">
-<meta name="twitter:description" content="Hope be better and better, wish be happy and happy!">
+<meta name="twitter:title" content="结构体重载">
+<meta name="twitter:description" content="This is my blog.本文将会介绍struct，class的特性。另外在自定义类中，要做加减乘除，比较，赋值等运算时，若每次都打上完整的代码，会很麻烦，于是我们常常会使用运算符重载的方法。">
 
 
 
@@ -134,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://empress.top/tags/map/"/>
+  <link rel="canonical" href="http://empress.top/2017/08/31/结构体重载/"/>
 
 
 
 
 
-  <title>Tag: map | Mrs_empress</title>
+  <title>结构体重载 | Mrs_empress</title>
   
 
 
@@ -169,7 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,54 +275,223 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>map<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2017/08/31/结构体重载/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/08/30/容器/" itemprop="url">
-              
-                <span itemprop="name">容器</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">结构体重载</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-30T11:20:29+08:00"
-              content="2017-08-30" >
-          08-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-31T16:26:23+08:00">
+                2017-08-31
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语法/" itemprop="url" rel="index">
+                    <span itemprop="name">语法</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语法/自定义类/" itemprop="url" rel="index">
+                    <span itemprop="name">自定义类</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/31/结构体重载/" class="leancloud_visitors" data-flag-title="结构体重载">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>本文将会介绍struct，class的特性。另外在自定义类中，要做加减乘除，比较，赋值等运算时，若每次都打上完整的代码，会很麻烦，于是我们常常会使用运算符重载的方法。<br><a id="more"></a></p>
+<h2 id="转载请注明出处，谢谢。"><a href="#转载请注明出处，谢谢。" class="headerlink" title="转载请注明出处，谢谢。"></a>转载请注明出处，谢谢。</h2><h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><h3 id="比较函数直接在结构体内"><a href="#比较函数直接在结构体内" class="headerlink" title="比较函数直接在结构体内"></a>比较函数直接在结构体内</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">struct ty&#123;</div><div class="line">    string name;</div><div class="line">    int age;</div><div class="line">    bool operator &lt;(const ty &amp;a)const&#123;</div><div class="line">        <span class="built_in">return</span> a.age&lt;age;  //将age从大到小排列</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><h2 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h2><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=527605&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/struct/" rel="tag"># struct</a>
+          
+            <a href="/tags/class/" rel="tag"># class</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/30/POJ-1753/" rel="next" title="POJ 1753">
+                <i class="fa fa-chevron-left"></i> POJ 1753
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -328,6 +499,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -348,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -460,6 +644,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#转载请注明出处，谢谢。"><span class="nav-number">1.</span> <span class="nav-text">转载请注明出处，谢谢。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#struct"><span class="nav-number">2.</span> <span class="nav-text">struct</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比较函数直接在结构体内"><span class="nav-number">2.1.</span> <span class="nav-text">比较函数直接在结构体内</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class"><span class="nav-number">3.</span> <span class="nav-text">class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两者区别"><span class="nav-number">4.</span> <span class="nav-text">两者区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -592,6 +792,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
 
   
 
