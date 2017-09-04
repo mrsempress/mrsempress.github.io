@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="枚举,贪心,二分,搜索,分治,排序,模拟," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog.算法里面最基础的莫过于枚举、贪心、二分、搜索、分治、排序、模拟。在这里，我简单记述一下其核心思想和自己的一些理解，并附上相关练习题（若此题做过，会附上AC代码，此博客会不断更新）">
+<meta name="keywords" content="枚举,贪心,二分,搜索,分治,排序,模拟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础算法">
+<meta property="og:url" content="http://empress.top/2017/08/29/枚举与贪心/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog.算法里面最基础的莫过于枚举、贪心、二分、搜索、分治、排序、模拟。在这里，我简单记述一下其核心思想和自己的一些理解，并附上相关练习题（若此题做过，会附上AC代码，此博客会不断更新）">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/img/1.1.png">
+<meta property="og:image" content="http://empress.top/img/1.2.png">
+<meta property="og:image" content="http://empress.top/img/1.3.png">
+<meta property="og:updated_time" content="2017-08-30T13:02:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础算法">
+<meta name="twitter:description" content="This is my blog.算法里面最基础的莫过于枚举、贪心、二分、搜索、分治、排序、模拟。在这里，我简单记述一下其核心思想和自己的一些理解，并附上相关练习题（若此题做过，会附上AC代码，此博客会不断更新）">
+<meta name="twitter:image" content="http://empress.top/img/1.1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2017/08/29/枚举与贪心/"/>
+
+
+
+
+
+  <title>基础算法 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2017/08/29/枚举与贪心/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基础算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-29T10:34:29+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/基础算法/" itemprop="url" rel="index">
+                    <span itemprop="name">基础算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/29/枚举与贪心/" class="leancloud_visitors" data-flag-title="基础算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>算法里面最基础的莫过于枚举、贪心、二分、搜索、分治、排序、模拟。<br>在这里，我简单记述一下其核心思想和自己的一些理解，并附上相关练习题（若此题做过，会附上AC代码，此博客会不断更新）<br><a id="more"></a></p>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>枚举：顾名思义就是把每个可能去试一遍，但是怎么枚举能使每一个可能都包含到？怎么枚举能不重复？怎么枚举可以满足题目规定的时间？所以这里我会附上优化和剪枝的内容。<br>上例子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">例一：在一个N*N(N&lt;=100)矩阵中求一个最大的正方形使得该正方形的四个顶点都是有字符“<span class="comment">#”构成。 </span></div><div class="line"><span class="comment">#*#***</span></div><div class="line">******</div><div class="line"><span class="comment">#*#*#*</span></div><div class="line">******</div><div class="line"><span class="comment">#*****</span></div><div class="line">***<span class="comment">#**</span></div></pre></td></tr></table></figure></p>
+<p>思路一：枚举所有的正方形，看四个顶点是否都是“#”<br>思路二：枚举所有“#”，是否可以构成正方形<br>上述两个思路是否有优劣之分？<br>那我们再来想想，如何确定一个正方形，是否需要四个点呢？<br>很显然，确定一个正方形只需要对角线上两个点即可，也就是说我们可以通过两个点，算出另外两个点的位置。<br>那么我们可以通过枚举两个点，用一个判断函数，找另外两个点是否符合要求。<br>怎么是符合要求呢？首先算出的两个点必须是整数，再者两个位置必须是“#”。<br>怎么计算那两个点呢？我们来看一下示意图：<br><img src="/img/1.1.png" alt="正方形计算示意图"><br>注意，因为有除法，有精度的问题，在实际应用中应除以2.0，而在后面确定整数时，因为有精度误差，所以不能直接和整数比，而应该相减后的差值在误差范围内。<br>这样的时间复杂度为O(n^2),还可以优化吗？<br>答案是肯定的，目前想到的优化有：<br>1.枚举时，第一个点从左上开始，那么第二个点枚举的时候从右下开始。因为题目中所需要找的是最大的正方形。<br>2.设置一个全局变量ans，如果比ans大的时候，更新，否则跳出循环（因为再接下去找的点肯定比目前的tmp还小，所以不用考虑了，即剪枝。）<br>附上核心代码：<br><img src="/img/1.2.png" alt="枚举"><br><img src="/img/1.3.png" alt="判断函数"></p>
+<h3 id="补充尺取法："><a href="#补充尺取法：" class="headerlink" title="补充尺取法："></a>补充尺取法：</h3><p>我们用例子来说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">小明喜欢收集卡片，他要去商店购买新到的卡片。</div><div class="line">商店出售的卡片有N张，是连续的，小明只能购买连续的一段，这一串卡片共有M种，每种卡片都有一个价格，小明拿的钱数为V，他想知道如何用花最少的钱来集齐所有种类的卡片。</div><div class="line">N&lt;=1000000 ，M&lt;=2000 ，Ti&lt;=2000 ,  V&lt;=10^9</div><div class="line">输入:第1行 三个正整数 N，M，V，</div><div class="line">    第2行共M个正整数，第i个数Ti表示第i种卡片的价格，</div><div class="line">    第3行 N个正整数，表示第i个卡片是哪一类。</div><div class="line">输出:小明还剩多少钱</div><div class="line">样例输入</div><div class="line">5 2 20</div><div class="line">10 5</div><div class="line">1 1 2 2 1</div><div class="line">样例输出</div><div class="line">15</div></pre></td></tr></table></figure></p>
+<p>所谓尺取法，也称双指针法，但在实际应用中，我们不用指针，而是使用两个变量，来代替指针。<br>比如此题，因为题目要求连续一段，于是我们可以用尺取法来做。<br>我们设置变量l,r。l表示开始点，r代表结束点，r-l代表选取的长度。<br>我们可以设置一个cnt数组来记录在l-r范围内每张牌子的个数，t数组表示牌子的价钱，如果左边的牌子在这段范围内有的话，可以将做指针往右移动，直至左指针的牌子在整段内只有一个，当所有的种类tot==m时，就说明这是一种可行的取法，更新ans值即可。<br>附上代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">int l=r=1;</div><div class="line">int tot=0;</div><div class="line">int sum=0;</div><div class="line">int ans=0x7f7f7f7f7f   //系统中的max值</div><div class="line"><span class="keyword">for</span>(;r&lt;=n;r++)&#123;</div><div class="line">    <span class="keyword">if</span>(cnt[a[i]]==0)tot++;    //a数组记录牌子的特性</div><div class="line">    cnt[a[i]]++;</div><div class="line">    sum+=t[a[i]];</div><div class="line">    <span class="keyword">while</span>(cnt[a[l]]&gt;1)&#123;</div><div class="line">        sum-=t[a[l]];</div><div class="line">        cnt[a[l]]--;</div><div class="line">        l++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(tot==m)ans=min(ans,sum);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再给上一题，这个枚举则是关于几何方面的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在一个给定的矩形中有一些障碍点，找出内部不包含障碍点的、轮廓与整个矩形平行或重合的最大子矩形。</div></pre></td></tr></table></figure></p>
+<p>解法一：枚举上下左右四个边界，判断中间有没有点<br>解法二：枚举左右边界，对处在边界内的点排序，每两个相邻的点和左右边界组成一个矩形。<br>解法三：悬线法。若是障碍点，不可延伸。若不是障碍点，则长度+1，直至到障碍点或到边界点。<br>其实相当于枚举边长。然后从左边悬线开始往右扫，若右悬线小于，则break，换下一根悬线。<br>（这题目前只有思路，还没有实现代码）</p>
+<h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，他所做出的是在某种意义上的局部最优解。<br>上题吧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">恰逢 H 国国庆，国王邀请 n 位大臣来玩一个有奖游戏。首先，他让每个大臣在左、右手上面分别写下一个整数，国王自己也在左、右手上各写一个整数。然后，让这 n 位大臣排成一排，国王站在队伍的最前面。排好队后，所有的大臣都会获得国王奖赏的若干金币，每位大臣获得的金币数分别是：排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数，然后向下取整得到的结果。 </div><div class="line">国王不希望某一个大臣获得特别多的奖赏，所以他想请你帮他重新安排一下队伍的顺序，使得获得奖赏最多的大臣，所获奖赏尽可能的少。注意，国王的位置始终在队伍的最前面。</div></pre></td></tr></table></figure></p>
+<p>假设在队伍中有A,B两人，他们的先后顺序对其他人是没有影响。<br>设他们之前最多的奖赏为π，<br>若A在前面，则max(π/rA,π<em>lA/rB)<br>若A在后面，则max(π/rB,π</em>lB/rA)<br>假设A前，ans值更小，那么有max(π/rA,π<em>lA/rB)&lt;max(π/rB,π</em>lB/rA)<br>易知：  π/rA&lt;π<em>lB/rA;       π</em>lA/rB&gt;π/rB;<br>所以只需π<em>lA/rB &lt; π</em>lB/rA<br>即：rAlA&lt;rBlB<br>则将每一个人的l与r相乘，将其排序即可<br>这道题可能有人会觉得不怎么像，其实在分析问题的时候我们就用到了贪心的思想。<br>再来一题，来感受一下贪心吧！</p>
+<h3 id="一些位运算"><a href="#一些位运算" class="headerlink" title="一些位运算"></a>一些位运算</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">给定4个小于等于10^18的数a,b,c,d，又有a&lt;=x&lt;=b，c&lt;=y&lt;=d，求x xor y的最大值</div></pre></td></tr></table></figure>
+<p>其中xor为异或的意思，在大数计算时，我们常常会用到位运算。<br>1.根据题意我们就可以知道，我们需要用位运算；<br>2.求最大值，根据贪心的思想，我们应从高位开始<br>3.我们来分析一下在第i位可能的情况：<br>  （1）两者均可取0 1，则定可以取到<code>……1000……和……0111……</code>，他们异或后结果为<code>……1111……</code><br>  （2）两者唯一，那只能这么取<br>  （3）若 x只能取1，而y可取1或0，那么y必取0，之后的上界变为<code>……01111……</code><br>      若 x只能取0，而y可取1或0，那么y必取1，之后的下界变为<code>……11111……</code><br>注意：1.&lt;&lt;左移 &gt;&gt;右移，他们的优先级较低，一般需要用括号<br>     2.<code>（long long）1</code>可写成<code>1LL</code>，且需观察一下评判机的系统，若为windows，则应为%I64d；若为linux，则应为%lld。<br>     3.1e18约等于2^63<br>     4.double输入为%lf，而输出是%f，不是%lf了<br>     5.很多大佬会在scanf(“ %s”)中打上括号<br>其他：在codeblocks中ctrl+D复制一行（本人将会弃用codeblocks，其快捷键不会将特殊说明，但这个快捷键真的很好用）</p>
+<p>转载请注明出处，谢谢。</p>
+<blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=31445554&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/枚举/" rel="tag"># 枚举</a>
+          
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/二分/" rel="tag"># 二分</a>
+          
+            <a href="/tags/搜索/" rel="tag"># 搜索</a>
+          
+            <a href="/tags/分治/" rel="tag"># 分治</a>
+          
+            <a href="/tags/排序/" rel="tag"># 排序</a>
+          
+            <a href="/tags/模拟/" rel="tag"># 模拟</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/25/搭建博客/" rel="next" title="如何搭建博客">
+                <i class="fa fa-chevron-left"></i> 如何搭建博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/Codeforces-Round-430-div-2/" rel="prev" title="Codeforces 430(div.2)">
+                Codeforces 430(div.2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://baidu.com/" title="Search" target="_blank">Search</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codeforces.com" title="Cf" target="_blank">Cf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hdu.edu.cn" title="hdu" target="_blank">hdu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举"><span class="nav-number">1.</span> <span class="nav-text">枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#补充尺取法："><span class="nav-number">1.1.</span> <span class="nav-text">补充尺取法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心"><span class="nav-number">2.</span> <span class="nav-text">贪心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些位运算"><span class="nav-number">2.1.</span> <span class="nav-text">一些位运算</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
