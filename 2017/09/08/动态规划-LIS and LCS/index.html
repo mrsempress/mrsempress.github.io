@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dp,LIS,LCS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog.动态规划问题中，有一类便是求最长上升子序列和最大公共子序列的问题。如何求长度，如何输出序列，如何优化呢！在阅读之中，我将其总结如下。">
+<meta name="keywords" content="dp,LIS,LCS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划--LIS and LCS">
+<meta property="og:url" content="http://empress.top/2017/09/08/动态规划-LIS and LCS/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog.动态规划问题中，有一类便是求最长上升子序列和最大公共子序列的问题。如何求长度，如何输出序列，如何优化呢！在阅读之中，我将其总结如下。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/2017/09/08/动态规划-LIS%20and%20LCS/media/LCS1.png">
+<meta property="og:updated_time" content="2017-09-10T15:37:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划--LIS and LCS">
+<meta name="twitter:description" content="This is my blog.动态规划问题中，有一类便是求最长上升子序列和最大公共子序列的问题。如何求长度，如何输出序列，如何优化呢！在阅读之中，我将其总结如下。">
+<meta name="twitter:image" content="http://empress.top/2017/09/08/动态规划-LIS%20and%20LCS/media/LCS1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2017/09/08/动态规划-LIS and LCS/"/>
+
+
+
+
+
+  <title>动态规划--LIS and LCS | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2017/09/08/动态规划-LIS and LCS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动态规划--LIS and LCS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T10:47:23+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/动态规划/线状dp/" itemprop="url" rel="index">
+                    <span itemprop="name">线状dp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/08/动态规划-LIS and LCS/" class="leancloud_visitors" data-flag-title="动态规划--LIS and LCS">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>动态规划问题中，有一类便是求最长上升子序列和最大公共子序列的问题。如何求长度，如何输出序列，如何优化呢！在阅读之中，我将其总结如下。<br><a id="more"></a></p>
+<h2 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h2><h3 id="子序列-or-子串"><a href="#子序列-or-子串" class="headerlink" title="子序列 or 子串"></a>子序列 or 子串</h3><p>首先我们需要明白子序列和子串的区别。<br>子串是指连续的一段，而子序列是可以不连续的，但是相对前后的位置是不能改变的。<br>那接下来我们就开始吧！</p>
+<h3 id="dp算法"><a href="#dp算法" class="headerlink" title="dp算法"></a>dp算法</h3><p>对于a[t]，设max初值为0，在a[1]、a[2]……a[t-1]中找比a[t]小的，不断更新max值，使a[t]=max+1;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line">const int maxn=1e5+5;</div><div class="line">int dp[maxn],a[maxn];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">	int n,ans;</div><div class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</div><div class="line">		ans=0;</div><div class="line">		<span class="keyword">for</span>(int i=0;i&lt;n;i++)&#123;</div><div class="line">			dp[i]=1;</div><div class="line">			scanf(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">			<span class="keyword">for</span>(int j=0;j&lt;i;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(a[j]&lt;a[i])dp[i]=max(dp[j]+1,dp[i]);</div><div class="line">			ans=max(ans,dp[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="二分-贪心"><a href="#二分-贪心" class="headerlink" title="二分+贪心"></a>二分+贪心</h3><p>上代码咯！<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include&lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include&lt;cstring&gt;</span></div><div class="line">using namespace std;</div><div class="line">const int MAXN=1e5+5;</div><div class="line">int arr[MAXN],ans[MAXN],len;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int T,p;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        scanf(<span class="string">"%d"</span>,&amp;p);</div><div class="line">        <span class="keyword">for</span>(int i=0; i&lt;p; ++i)</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;arr[i]);</div><div class="line">        </div><div class="line">        ans[0] = arr[0];</div><div class="line">        len=0;</div><div class="line">        <span class="keyword">for</span>(int i=1; i&lt;p; ++i)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[i]&gt;ans[len])</div><div class="line">                ans[++len]=arr[i];</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                long long pos;</div><div class="line">                pos=lower_bound(ans,ans+len,arr[i])-ans;</div><div class="line"> //pos这里用了STL，我们可以自己写一个二分</div><div class="line">                ans[pos] = arr[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,len+1);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div><div class="line">／*</div><div class="line">二分代码</div><div class="line">int binary_search(int x)&#123;</div><div class="line">    int left=1,right=n;</div><div class="line">    <span class="keyword">while</span>(left&lt;=right)&#123;</div><div class="line">        int mid=(left+right)/2;</div><div class="line">        <span class="keyword">if</span>(Lis[mid]&lt;x)left=mid+1;</div><div class="line">        <span class="keyword">else</span> right=mid-1;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> left;</div><div class="line">&#125;</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<h3 id="vector（输出序列）"><a href="#vector（输出序列）" class="headerlink" title="vector（输出序列）"></a>vector（输出序列）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;vector&gt;</span></div><div class="line">using namespace std;</div><div class="line">const int maxn =1e5+5;</div><div class="line">vector&lt;int&gt; q;</div><div class="line">int solve(int* a, int n)&#123;</div><div class="line">    int res = 0;</div><div class="line">    int* dp = new int[n];	</div><div class="line">    int p[maxn];</div><div class="line">    int k = -1;	//保存最大上升子序列的最后位置</div><div class="line">    <span class="keyword">for</span> (int i = 0; i &lt; n; i++)</div><div class="line">    &#123;</div><div class="line">        dp[i] = 1;</div><div class="line">        p[i] = -1;</div><div class="line">        <span class="keyword">for</span> (int j = 0; j &lt; i; j++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (a[j] &lt; a[i] &amp;&amp; dp[j] + 1 &gt; dp[i])</div><div class="line">            &#123;</div><div class="line">                dp[i] = dp[j] + 1;</div><div class="line">                p[i] = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (dp[i] &gt; res)</div><div class="line">        &#123;</div><div class="line">            res = dp[i];</div><div class="line">            k = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (k != -1)	//保存结果序列</div><div class="line">    &#123;</div><div class="line">        q.push_back(a[k]);</div><div class="line">        k = p[k];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int a[maxn];</div><div class="line">    int len;</div><div class="line">    <span class="keyword">while</span>(cin&gt;&gt;len)&#123;</div><div class="line">        q.clear();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;len;i++)</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">        cout &lt;&lt; <span class="string">"len: "</span> &lt;&lt; solve(a, len) ;</div><div class="line">        <span class="keyword">for</span> (int i = seq.size(); i &gt; 1; i--)&#123;</div><div class="line">            cout &lt;&lt;q[i-1] &lt;&lt; <span class="string">" -&gt; "</span>;</div><div class="line">        &#125;</div><div class="line">        cout &lt;&lt; q[0] &lt;&lt; endl;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><h3 id="dp算法-1"><a href="#dp算法-1" class="headerlink" title="dp算法"></a>dp算法</h3><p><img src="media/LCS1.png" alt="LCS1"><br>设c[i,j]为从i到j范围内最长公共子序列的问题。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include&lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include&lt;cstring&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">const int MAXN=1010;</div><div class="line">int dp[MAXN][MAXN];</div><div class="line">char a[MAXN],b[MAXN];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">	<span class="keyword">while</span>(~scanf(<span class="string">"%s%s"</span>,a+1,b+1))&#123;</div><div class="line">    	memset(dp,0,sizeof(dp));</div><div class="line">    	int i,j;</div><div class="line">    	<span class="keyword">for</span>(i=1;a[i];i++)&#123;</div><div class="line">        <span class="keyword">for</span>(j=1;b[j];j++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i]==b[j])dp[i][j]=dp[i-1][j-1]+1;</div><div class="line">            <span class="keyword">else</span> dp[i][j]=MAX(dp[i][j-1],dp[i-1][j]);</div><div class="line">        &#125;</div><div class="line">    	&#125;</div><div class="line">    	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dp[i-1][j-1]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="输出最长公共子序列"><a href="#输出最长公共子序列" class="headerlink" title="输出最长公共子序列"></a>输出最长公共子序列</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstring&gt;</span></div><div class="line"><span class="comment">#include &lt;string&gt;</span></div><div class="line">using namespace std;</div><div class="line">const int M=100;</div><div class="line">const int N=100;</div><div class="line">int B[M][N],C[M][N];</div><div class="line">void LCS(string x,string y)&#123;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=x.length()-1;i++)    C[i][0]=0;</div><div class="line">    <span class="keyword">for</span>(int j=0;j&lt;=y.length()-1;j++)    C[0][j]=0;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=x.length()-1;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(int j=1;j&lt;=y.length()-1;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(x[i]==y[j])&#123;</div><div class="line">                C[i][j]=C[i-1][j-1]+1;</div><div class="line">                B[i][j]=0;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(C[i-1][j]&gt;C[i][j-1])&#123;</div><div class="line">                C[i][j]=C[i-1][j];</div><div class="line">                B[i][j]=1;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(C[i-1][j]&lt;C[i][j-1])&#123;</div><div class="line">                C[i][j]=C[i][j-1];</div><div class="line">                B[i][j]=2;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                C[i][j]=C[i][j-1];</div><div class="line">                B[i][j]=3;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Print(string x,int i,int j)&#123;</div><div class="line">    <span class="keyword">if</span>(!i||!j)    <span class="built_in">return</span>;</div><div class="line">    <span class="keyword">if</span>(!B[i][j])&#123;</div><div class="line">        Print(x,i-1,j-1);</div><div class="line">        cout&lt;&lt;x[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(B[i][j]==1)</div><div class="line">        Print(x,i-1,j);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(B[i][j]==2)</div><div class="line">        Print(x,i,j-1);</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        cout&lt;&lt;<span class="string">'('</span>;</div><div class="line">        Print(x,i-1,j);</div><div class="line">        cout&lt;&lt;<span class="string">'+'</span>;</div><div class="line">        Print(x,i,j-1);</div><div class="line">        cout&lt;&lt;<span class="string">')'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    string x,y;</div><div class="line">    cin&gt;&gt;x;cin&gt;&gt;y;</div><div class="line">    x=<span class="string">' '</span>+x;y=<span class="string">' '</span>+y;</div><div class="line">    LCS(x,y);</div><div class="line">    cout&lt;&lt;endl;</div><div class="line">    Print(x,x.length(),y.length());</div><div class="line">    cout&lt;&lt;endl;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 如果发现更优代码，欢迎留言。保存为模版，方便使用吧！</p>
+<p>转载请注明出处，谢谢。</p>
+<blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=407679465&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dp/" rel="tag"># dp</a>
+          
+            <a href="/tags/LIS/" rel="tag"># LIS</a>
+          
+            <a href="/tags/LCS/" rel="tag"># LCS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/05/usaco2-1-1/" rel="next" title="usaco 2.1.1 castle">
+                <i class="fa fa-chevron-left"></i> usaco 2.1.1 castle
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/08/动态规划-背包/" rel="prev" title="动态规划--背包">
+                动态规划--背包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://baidu.com/" title="Search" target="_blank">Search</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codeforces.com" title="Cf" target="_blank">Cf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hdu.edu.cn" title="hdu" target="_blank">hdu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LIS"><span class="nav-number">1.</span> <span class="nav-text">LIS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子序列-or-子串"><span class="nav-number">1.1.</span> <span class="nav-text">子序列 or 子串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dp算法"><span class="nav-number">1.2.</span> <span class="nav-text">dp算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二分-贪心"><span class="nav-number">1.3.</span> <span class="nav-text">二分+贪心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vector（输出序列）"><span class="nav-number">1.4.</span> <span class="nav-text">vector（输出序列）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LCS"><span class="nav-number">2.</span> <span class="nav-text">LCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dp算法-1"><span class="nav-number">2.1.</span> <span class="nav-text">dp算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出最长公共子序列"><span class="nav-number">2.2.</span> <span class="nav-text">输出最长公共子序列</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
