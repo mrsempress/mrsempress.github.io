@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ICPC," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog.本场网络赛是我的第一场网络赛，也是和队友第一次的配合，由于某些原因明明没有到场，本蒟篛连代码都搓不出来了，意外地蒙对了规律。此次网络赛在2017-09-09开始，补题龟速中，直到更文时，仍未补完，但会继续学习，争取补完。（未完待续）">
+<meta name="keywords" content="ICPC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017 ACM-ICPC Asia Regional Urumqi Online">
+<meta property="og:url" content="http://empress.top/2017/09/22/2017ACM-ICPC网络赛1/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog.本场网络赛是我的第一场网络赛，也是和队友第一次的配合，由于某些原因明明没有到场，本蒟篛连代码都搓不出来了，意外地蒙对了规律。此次网络赛在2017-09-09开始，补题龟速中，直到更文时，仍未补完，但会继续学习，争取补完。（未完待续）">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-22T03:25:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2017 ACM-ICPC Asia Regional Urumqi Online">
+<meta name="twitter:description" content="This is my blog.本场网络赛是我的第一场网络赛，也是和队友第一次的配合，由于某些原因明明没有到场，本蒟篛连代码都搓不出来了，意外地蒙对了规律。此次网络赛在2017-09-09开始，补题龟速中，直到更文时，仍未补完，但会继续学习，争取补完。（未完待续）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2017/09/22/2017ACM-ICPC网络赛1/"/>
+
+
+
+
+
+  <title>2017 ACM-ICPC Asia Regional Urumqi Online | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2017/09/22/2017ACM-ICPC网络赛1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2017 ACM-ICPC Asia Regional Urumqi Online</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-22T09:49:21+08:00">
+                2017-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/ICPC/" itemprop="url" rel="index">
+                    <span itemprop="name">ICPC</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/ICPC/2017/" itemprop="url" rel="index">
+                    <span itemprop="name">2017</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/22/2017ACM-ICPC网络赛1/" class="leancloud_visitors" data-flag-title="2017 ACM-ICPC Asia Regional Urumqi Online">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>本场网络赛是我的第一场网络赛，也是和队友第一次的配合，由于某些原因明明没有到场，本蒟篛连代码都搓不出来了，意外地蒙对了规律。此次网络赛在2017-09-09开始，补题龟速中，直到更文时，仍未补完，但会继续学习，争取补完。<br>（未完待续）<br><a id="more"></a></p>
+<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<h1 id="A-Banana"><a href="#A-Banana" class="headerlink" title="A. Banana"></a>A. <a href="https://nanti.jisuanke.com/t/16950" target="_blank" rel="external">Banana</a></h1><p>（不会截长图，那就点链接吧！）<br>水题。切。<br>给两个vector，分别表示monkey和banana，如此便可匹配。答案放入set中，避免重复。</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;vector&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;set&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line">vector&lt;int&gt;monkey[55];</div><div class="line">vector&lt;int&gt;banana[55];</div><div class="line"><span class="built_in">set</span>&lt;int&gt;ans;</div><div class="line">vector&lt;int&gt;::iterator it;</div><div class="line">vector&lt;int&gt;::iterator it2;</div><div class="line"><span class="built_in">set</span>&lt;int&gt;::iterator it3;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=55;i++)&#123;</div><div class="line">            monkey[i].clear();</div><div class="line">            banana[i].clear();</div><div class="line">        &#125;</div><div class="line">        int N,M;</div><div class="line">        scanf(<span class="string">"%d %d"</span>,&amp;N,&amp;M);</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=N;i++)&#123;</div><div class="line">            int x,y;</div><div class="line">            scanf(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</div><div class="line">            monkey[x].push_back(y);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=M;i++)&#123;</div><div class="line">            int x,y;</div><div class="line">            scanf(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</div><div class="line">            banana[x].push_back(y);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=N;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(monkey[i].size()&gt;0)&#123;</div><div class="line">                ans.clear();</div><div class="line">                <span class="keyword">for</span>(it=monkey[i].begin();it!=monkey[i].end();it++)&#123;</div><div class="line">                    <span class="keyword">for</span>(it2=banana[*it].begin();it2!=banana[*it].end();it2++)&#123;</div><div class="line">                        ans.insert(*it2);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">for</span>(it3=ans.begin();it3!=ans.end();it3++)</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,i,*it3);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="B-Out-out-control-cars"><a href="#B-Out-out-control-cars" class="headerlink" title="B. Out-out-control cars"></a>B. <a href="https://www.jisuanke.com/contest/870" target="_blank" rel="external">Out-out-control cars</a></h1><p>一道几何题，判断两个在运动的三角形是否会相交。可以将一个相对静止，然后判断是否相交。</p>
+<h1 id="C-Coconut"><a href="#C-Coconut" class="headerlink" title="C. Coconut"></a>C. <a href="https://nanti.jisuanke.com/t/16952" target="_blank" rel="external">Coconut</a></h1><p>水题。切。<br>模拟一遍，就可以。</p>
+<h2 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include&lt;cstdio&gt;</span></div><div class="line">using namespace std;</div><div class="line">int c[1005];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        int n,b,sum=0,i,flag=0;</div><div class="line">        scanf(<span class="string">"%d %d"</span>,&amp;n,&amp;b);</div><div class="line">        <span class="keyword">for</span>(i=1;i&lt;=n;i++)</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;c[i]);</div><div class="line">        <span class="keyword">for</span>(i=1;i&lt;=n-1;i++)&#123;</div><div class="line">            int d;</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;d);</div><div class="line">            <span class="keyword">if</span>(!flag)&#123;</div><div class="line">                sum+=c[i];</div><div class="line">                sum-=b*d;</div><div class="line">                <span class="keyword">if</span>(sum&lt;0)&#123;</div><div class="line">                    flag=1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(!flag)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h2><p>犯了个错误，<code>sum&lt;0</code>后，我加了个break，本想剪短时间，却忘记多组数据，如果不把数据读完，会造成遗留数据作为下一组数据内容，估计也只有我会犯这个错误吧！</p>
+<h1 id="D-Hack-Portals"><a href="#D-Hack-Portals" class="headerlink" title="D. Hack Portals"></a>D. <a href="https://nanti.jisuanke.com/t/16953" target="_blank" rel="external">Hack Portals</a></h1><p>题目还未曾看！惊悚！</p>
+<h1 id="E-Half-consecutive-Numbers"><a href="#E-Half-consecutive-Numbers" class="headerlink" title="E. Half-consecutive Numbers"></a>E. <a href="https://nanti.jisuanke.com/t/16954" target="_blank" rel="external">Half-consecutive Numbers</a></h1><p>已知三角平方数满足\(\frac{r<em>(r+1)}{2}=k^2\quad(\forall k\in\mathbb N)\) ，给出一个数，找出一个数r，满足r&gt;=N，且\(t_r\)为完全平方数，输出r。<br>现场的时候，找到的规律是：<br>当是第奇数个时，\((\frac{a[n-1]</em>a[n-2]+2}{a[n-3]})^2<em>2-1\);<br>当是第偶数个时,\((\frac{a[n-1]</em>a[n-2]+2}{a[n-3]})^2-1\)。<br>其中，a[1]=1,a[2]=3,a[3]=5;然后套了一个大数模版，居然过了，这个神奇的规律，到现在，我也不知道理论是什么。这就不贴我的代码了。<br>最近看了许多大神的思路，觉得甚是厉害。产生的数其实很少，所以我们可以先产生数，而产生数有两种思路。</p>
+<h2 id="打表思路一"><a href="#打表思路一" class="headerlink" title="打表思路一"></a>打表思路一</h2><p>\(\frac{r*(r+1)}{2}=k^2\quad(\forall k\in\mathbb N)\)<br>除了1以外,\(r!=\frac{r+1}{2}\)且\(r+1!=\frac{r}{2}\),<br>如果r是奇数,那么\(\frac{r+1}{2}\)和r是完全平方数；<br>所以\(\frac{r+1}{2}=\frac{i^2+1}{2}\)是完全平方数，且\(r=i^2\),<br>如果r是偶数,那么\(\frac{r}{2}\)和\(r+1\)是完全平方数；<br>所以\(\frac{r+1-1}{2}=\frac{i^2-1}{2}\)是完全平方数，且\(r=i^2-1\),</p>
+<h2 id="打表思路二"><a href="#打表思路二" class="headerlink" title="打表思路二"></a>打表思路二</h2><table>
+<thead>
+<tr>
+<th>1</th>
+<th>8</th>
+<th>49</th>
+<th>288</th>
+<th>1681</th>
+<th>9800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\((1*1)^2\)</td>
+<td>\((2*3)^2\)</td>
+<td>\((5*7)^2\)</td>
+<td>\((12*17)^2\)</td>
+<td>\((29*41)^2\)</td>
+<td>\((70*99)^2\)</td>
+</tr>
+</tbody>
+</table>
+<p>我们会发现第一个数字是前面的第一个和第二个数字之和，而第二个数字是第一个数字的平方的两倍加减一，当为第偶数个时，减一；当为第奇数个时减一。我们现在找到了我们的了我们的k了，于是乎，我们即可以求出r了。</p>
+<h2 id="打表思路三"><a href="#打表思路三" class="headerlink" title="打表思路三"></a>打表思路三</h2><p>转自一个<a href="https://wiki-three-investigators.icpc-camp.org/2017%20ACM-ICPC%20Asia%20Regional%20Urumqi%20Online" target="_blank" rel="external">dalao的博客</a><br>其实我没有看懂，但是我知道他的递推式好厉害啊！<br>\(r_1=0,r<em>2=1,r</em>{n+2}=6*r_{n+1}-r_n+2\)<br>数学的感觉很重要呐！！！</p>
+<p>经过测试，我觉得第二个更快，也可能是第一个思路更正常吧！（我只测了一和二，dalao的那个不知道是怎么推出来的，看他的解释看不懂啊！！欢迎来给我讲解呢！</p>
+<h2 id="AC代码-2"><a href="#AC代码-2" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cmath&gt;</span></div><div class="line"><span class="comment">#define ll long long</span></div><div class="line">using namespace std;</div><div class="line">ll a[25]=&#123;1,8,</div><div class="line">    49,</div><div class="line">    288,</div><div class="line">    1681,</div><div class="line">    9800,</div><div class="line">    57121,</div><div class="line">    332928,</div><div class="line">    1940449,</div><div class="line">    11309768,</div><div class="line">    65918161,</div><div class="line">    384199200,</div><div class="line">    2239277041,</div><div class="line">    13051463048,</div><div class="line">    76069501249,</div><div class="line">    443365544448,</div><div class="line">    2584123765441,</div><div class="line">    15061377048200,</div><div class="line">    87784138523761,</div><div class="line">    511643454094368,</div><div class="line">    2982076586042449&#125;;</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">//    ll x=1,y=1;</div><div class="line">//    int flag=1;</div><div class="line">//    <span class="keyword">for</span>(ll i=1;i&lt;=20;i++)&#123;</div><div class="line">//        ll xx=x+y;</div><div class="line">//        y=sqrt(xx*xx*2+flag);</div><div class="line">//        x=xx;</div><div class="line">//         <span class="keyword">if</span>(i%2)</div><div class="line">//         cout&lt;&lt;xx*xx*2&lt;&lt;endl;</div><div class="line">//        <span class="keyword">else</span>  cout&lt;&lt;xx*xx*2-1&lt;&lt;endl;</div><div class="line">//        cout&lt;&lt;(ll)(x*y*sqrt(2.0))&lt;&lt;endl;</div><div class="line">//        flag*=-1;</div><div class="line">//    &#125;</div><div class="line">//</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    int cas=1;</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        long long n;</div><div class="line">        scanf(<span class="string">"%lld"</span>,&amp;n);</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;=21;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i]&gt;=n)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"Case #%d: %lld\n"</span>,cas++,a[i]);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="小记-1"><a href="#小记-1" class="headerlink" title="小记"></a>小记</h2><p>判断是否是完全平方时，用sqrt函数后，需要将其强制转换成int类型后，再平方。</p>
+<h1 id="F-Islands"><a href="#F-Islands" class="headerlink" title="F. Islands"></a>F. <a href="https://nanti.jisuanke.com/t/16955" target="_blank" rel="external">Islands</a></h1><p>有N个岛，M条路，问你需要新建多少条路，才可以使每两个岛都可以互相通路。即求构成一个强连通图最少需要增加的边。Tarjan算法求出强联通分量之后缩点成一个DAG图。然后，求出a为入度为0的点的数量和b为出度为0的点的数量，取最大值就是答案了。</p>
+<h2 id="AC代码-3"><a href="#AC代码-3" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cstring&gt;</span></div><div class="line"><span class="comment">#include &lt;vector&gt;</span></div><div class="line"><span class="comment">#include &lt;stack&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">const int maxn=1e4+10;</div><div class="line">int n,m;</div><div class="line">int _in,_out;</div><div class="line">int flag[maxn];</div><div class="line">vector&lt;int&gt;edge[maxn];</div><div class="line">stack&lt;int&gt;s;</div><div class="line">int dfn[maxn],low[maxn];</div><div class="line">int num,cnt;</div><div class="line">int <span class="keyword">in</span>[maxn],out[maxn];</div><div class="line"></div><div class="line">void dfs(int u)&#123;</div><div class="line">    dfn[u]=low[u]=++num;</div><div class="line">    s.push(u);</div><div class="line">    <span class="keyword">for</span>(int i=(edge[u].size()-1);i&gt;=0;i--)&#123;</div><div class="line">        int v=edge[u][i];</div><div class="line">        <span class="keyword">if</span>(!dfn[v])&#123;</div><div class="line">            dfs(v);</div><div class="line">            <span class="keyword">if</span>(low[v]&lt;low[u])</div><div class="line">                low[u]=low[v];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!flag[v]&amp;&amp;dfn[v]&lt;low[u])&#123;</div><div class="line">            low[u]=dfn[v];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(low[u]==dfn[u])&#123;</div><div class="line">        cnt++;//连通图的个数</div><div class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">            int v=s.top();</div><div class="line">            s.pop();</div><div class="line">            flag[v]=cnt;</div><div class="line">            <span class="keyword">if</span>(v==u) <span class="built_in">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void <span class="function"><span class="title">Tarjan</span></span>()&#123;</div><div class="line">    memset(flag,0,sizeof(flag));</div><div class="line">    memset(dfn,0,sizeof(dfn));</div><div class="line">    memset(low,0,sizeof(low));</div><div class="line">    memset(<span class="keyword">in</span>,0,sizeof(<span class="keyword">in</span>));</div><div class="line">    memset(out,0,sizeof(out));</div><div class="line">    num=0;cnt=0;_in=0;_out=0;</div><div class="line">    </div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!dfn[i]) dfs(i);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void <span class="function"><span class="title">add_edge</span></span>()&#123;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(int j=(edge[i].size()-1);j&gt;=0;j--)&#123;</div><div class="line">            <span class="keyword">if</span>(flag[i]!=flag[edge[i][j]])</div><div class="line">               ++out[flag[i]],++<span class="keyword">in</span>[flag[edge[i][j]]];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=cnt;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!<span class="keyword">in</span>[i]) _in++;</div><div class="line">        <span class="keyword">if</span>(!out[i]) _out++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        scanf(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)</div><div class="line">            edge[i].clear();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)&#123;</div><div class="line">            int u,v;</div><div class="line">            scanf(<span class="string">"%d %d"</span>,&amp;u,&amp;v);</div><div class="line">            edge[u].push_back(v);</div><div class="line">        &#125;</div><div class="line">        Tarjan();</div><div class="line">        <span class="keyword">if</span>(cnt==1)puts(<span class="string">"0"</span>);</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            add_edge();</div><div class="line">            int ans=max(_in,_out);</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="G-Query-on-a-string"><a href="#G-Query-on-a-string" class="headerlink" title="G. Query on a string"></a>G. <a href="https://nanti.jisuanke.com/t/16956" target="_blank" rel="external">Query on a string</a></h1><p>给你两个字符串，A和B，有两种操作：一种是询问在A的l到r区间内，出现多少次B；第二种是把A中的第x个字母更改为指定字母。<br>数据范围很小，暴力+树状数组维护即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;string&gt;</span></div><div class="line"><span class="comment">#include &lt;cstring&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line">const int maxn1=1e5+10;</div><div class="line">const int maxn2=15;</div><div class="line">char s[maxn1],t[maxn2];</div><div class="line">int tree[maxn1],flags[maxn1];</div><div class="line">int lens;</div><div class="line">int lowbit(int x)&#123;</div><div class="line">    <span class="built_in">return</span> x&amp;(-x);</div><div class="line">&#125;</div><div class="line">void change(int x,int p)&#123;</div><div class="line">    <span class="keyword">while</span>(x&lt;=lens)&#123;</div><div class="line">        tree[x]+=p;</div><div class="line">        x+=lowbit(x);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line">int sum(int k)&#123;</div><div class="line">    int sum=0;</div><div class="line">    <span class="keyword">while</span>(k&gt;0)&#123;</div><div class="line">        sum+=tree[k];</div><div class="line">        k-=lowbit(k);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> sum;</div><div class="line">&#125;</div><div class="line">int find(int l,int r)&#123;</div><div class="line">    <span class="built_in">return</span> sum(r)-sum(l-1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        memset(flags,0,sizeof(flags));</div><div class="line">        memset(tree,0,sizeof(tree));</div><div class="line">        int n;</div><div class="line">        scanf(<span class="string">"%d"</span>,&amp;n);</div><div class="line">        scanf(<span class="string">"%s"</span>,s+1);</div><div class="line">        scanf(<span class="string">"%s"</span>,t+1);</div><div class="line">        lens=strlen(s+1);</div><div class="line">        int lent=strlen(t+1);</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=lens-lent+1;i++)&#123;</div><div class="line">            bool flag=<span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span>(int j=1;j&lt;=lent;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(s[i+j-1]!=t[j])&#123;</div><div class="line">                    flag=<span class="literal">false</span>;</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(flag)&#123;</div><div class="line">                flags[i+lent-1]++;</div><div class="line">                change(i+lent-1,1);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">            char c;</div><div class="line">            scanf(<span class="string">" %c"</span>,&amp;c);</div><div class="line">            <span class="keyword">if</span>(c==<span class="string">'Q'</span>)&#123;</div><div class="line">                int l,r;</div><div class="line">                scanf(<span class="string">"%d %d"</span>,&amp;l,&amp;r);</div><div class="line">                int ans=max(0,find(l+lent-1,r));</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                int x;</div><div class="line">                scanf(<span class="string">"%d %c"</span>,&amp;x,&amp;c);</div><div class="line">                s[x]=c;</div><div class="line">                <span class="keyword">for</span>(int i=max(1,x-lent+1);i&lt;=x;i++)&#123;</div><div class="line">                    bool flag=<span class="literal">true</span>;</div><div class="line">                    <span class="keyword">for</span>(int j=1;j&lt;=lent;j++)&#123;</div><div class="line">                        <span class="keyword">if</span>(s[i+j-1]!=t[j])&#123;</div><div class="line">                            flag=<span class="literal">false</span>;</div><div class="line">                            <span class="built_in">break</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span>(flag&amp;&amp;!flags[i+lent-1])&#123;</div><div class="line">                        flags[i+lent-1]++;</div><div class="line">                        change(i+lent-1,1);</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span>(!flag&amp;&amp;flags[i+lent-1])&#123;</div><div class="line">                        flags[i+lent-1]--;</div><div class="line">                        change(i+lent-1,-1);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="H-Skiing"><a href="#H-Skiing" class="headerlink" title="H. Skiing"></a>H. <a href="https://nanti.jisuanke.com/t/16957" target="_blank" rel="external">Skiing</a></h1><p>有占据点，有些占据点之间有路，有些没有，需从一个占据点到另一个占据点，且每次只能从高处向低处滑，问最长能滑多少。</p>
+<h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>拓扑排序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cstring&gt;</span></div><div class="line"><span class="comment">#include &lt;vector&gt;</span></div><div class="line">using namespace std;</div><div class="line">struct ty&#123;</div><div class="line">    int v;</div><div class="line">    int l;</div><div class="line">    <span class="function"><span class="title">ty</span></span>()&#123;&#125;</div><div class="line">    ty(int x,int y):v(x),l(y)&#123;&#125;</div><div class="line">&#125;;</div><div class="line">const int maxn=10005;</div><div class="line">int q[maxn];</div><div class="line">int a[maxn];</div><div class="line">int f[maxn];</div><div class="line">int ans,n,m,l,r;</div><div class="line">vector&lt;ty&gt;path[maxn];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        memset(f, 0, sizeof(f));</div><div class="line">        memset(q, 0, sizeof(q));</div><div class="line">        memset(a, 0, sizeof(a));</div><div class="line">        ans=0;l=r=0;</div><div class="line">        scanf(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)</div><div class="line">            path[i].clear();</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=m;i++)&#123;</div><div class="line">            int x,y,z;</div><div class="line">            scanf(<span class="string">"%d %d %d"</span>,&amp;x,&amp;y,&amp;z);</div><div class="line">            path[x].push_back(ty(y,z));</div><div class="line">            a[y]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i]==0)</div><div class="line">                q[++r]=i;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l!=r)&#123;</div><div class="line">            l++;</div><div class="line">            int u=q[l];</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;path[u].size();i++)&#123;</div><div class="line">                int v=path[u][i].v;</div><div class="line">                int l=path[u][i].l;</div><div class="line">                f[v]=max(f[v],f[u]+l);</div><div class="line">                ans=max(f[v],ans);</div><div class="line">                a[v]--;</div><div class="line">                <span class="keyword">if</span>(!a[v])</div><div class="line">                    q[++r]=v;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>SPFA<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdlib&gt;</span></div><div class="line"><span class="comment">#include &lt;cstring&gt;</span></div><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line"><span class="comment">#include &lt;queue&gt;</span></div><div class="line">using namespace std;</div><div class="line">typedef long long ll;</div><div class="line"></div><div class="line">struct node&#123;</div><div class="line">    int to,val,next;</div><div class="line">&#125;e[100010];</div><div class="line"></div><div class="line">int n,m,x,y,val,cnt ;</div><div class="line">int IN[10010],head[10010] ;</div><div class="line">ll dis[10010];</div><div class="line"></div><div class="line">queue &lt;int&gt; Q ;</div><div class="line"></div><div class="line">void add(int x,int y,int v)&#123;</div><div class="line">    e[cnt] = (node)&#123; y,v,head[x] &#125; ;</div><div class="line">    head[x] = cnt++;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void SPFA(int s)&#123;</div><div class="line">    int u,v;</div><div class="line">    Q.push(s);</div><div class="line">    <span class="keyword">while</span>(!Q.empty())&#123;</div><div class="line">        u=Q.front() ;</div><div class="line">        Q.pop() ;</div><div class="line">        <span class="keyword">for</span>(int i=head[u];~i;i=e[i].next)&#123;</div><div class="line">            v=e[i].to;</div><div class="line">            <span class="keyword">if</span>(dis[v]&lt;dis[u]+e[i].val)&#123;</div><div class="line">                dis[v]=dis[u]+e[i].val;</div><div class="line">                Q.push(v);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        memset(IN,0,sizeof(IN));</div><div class="line">        memset(head,-1,sizeof(head));</div><div class="line">        memset(dis,0,sizeof(dis));</div><div class="line">        cnt=0;</div><div class="line">        scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m) ;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=m;i++)&#123;</div><div class="line">            scanf(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;val);</div><div class="line">            add(x,y,val);</div><div class="line">            IN[y]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(n==1)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</div><div class="line">            <span class="built_in">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(IN[i]==0)</div><div class="line">                SPFA(i);</div><div class="line">        &#125;</div><div class="line">        ll ans=0;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">            ans=max(ans,dis[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0 ;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="小记-2"><a href="#小记-2" class="headerlink" title="小记"></a>小记</h2><p>其实觉得两种很像么，第一种手动写队列，第二种用了STL，但从原理和思路来说还是有点不同的。</p>
+<h1 id="I-Colored-Graph"><a href="#I-Colored-Graph" class="headerlink" title="I. Colored Graph"></a>I. <a href="https://nanti.jisuanke.com/t/16958" target="_blank" rel="external">Colored Graph</a></h1><p>题目还未曾看！惊悚！</p>
+<h1 id="J-Out-Journey-of-Dalian-Ends"><a href="#J-Out-Journey-of-Dalian-Ends" class="headerlink" title="J. Out Journey of Dalian Ends"></a>J. <a href="https://nanti.jisuanke.com/t/16959" target="_blank" rel="external">Out Journey of Dalian Ends</a></h1><p>你需从大连到上海再到西安，但是高铁的路线只有给出可以使用，输出最短的长度，若不能完成，则输出-1。题解中说这是最小费用最大流的问题。以中间点为新起点，所求即分别到达原起点和原终点的两条点不相交的最短路径之和，使用费用流解决。所以最近在看EK问题，还在学习中，期待下次完善此博文。</p>
+<p><code>**注**
+真的觉得自己菜死，怎么现场写不出代码来呢！需要锻炼锻炼，包括胆量，还有实力啦！希望我不是拖后腿的那个。今天晚上是选拔CCPC的比赛，其实看前几次网络赛，我总觉得我们队会被淘汰，但这样是不对的，好紧张啊。尽力吧！然后周末两天还是满满的网络赛，不知道我什么时候可以补完题目，希望加油啦！
+然后ll开了个深度学习的讲座，机器学习看起来很高深呢！打算去听听，若有所获，我应该会写一点点东西吧！
+总之想学的很多，没学的很多。
+然后感觉最近状态不好，心不在焉，课业有些落下了，得补一补了。
+然后希望能在一点前睡觉啊，貌似会猝死的。
+然后最近好像忘记了一个人，因为一个人。哎，烦！学习学习去。
+最后新收藏了一个歌单，甜甜的歌，哇！</code></p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=471403975&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ICPC/" rel="tag"># ICPC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/13/高精度运算/" rel="next" title="高精度运算">
+                <i class="fa fa-chevron-left"></i> 高精度运算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://baidu.com/" title="Search" target="_blank">Search</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codeforces.com" title="Cf" target="_blank">Cf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hdu.edu.cn" title="hdu" target="_blank">hdu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Banana"><span class="nav-number">1.</span> <span class="nav-text">A. Banana</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">1.1.</span> <span class="nav-text">AC代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B-Out-out-control-cars"><span class="nav-number">2.</span> <span class="nav-text">B. Out-out-control cars</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Coconut"><span class="nav-number">3.</span> <span class="nav-text">C. Coconut</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码-1"><span class="nav-number">3.1.</span> <span class="nav-text">AC代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小记"><span class="nav-number">3.2.</span> <span class="nav-text">小记</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#D-Hack-Portals"><span class="nav-number">4.</span> <span class="nav-text">D. Hack Portals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E-Half-consecutive-Numbers"><span class="nav-number">5.</span> <span class="nav-text">E. Half-consecutive Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打表思路一"><span class="nav-number">5.1.</span> <span class="nav-text">打表思路一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打表思路二"><span class="nav-number">5.2.</span> <span class="nav-text">打表思路二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打表思路三"><span class="nav-number">5.3.</span> <span class="nav-text">打表思路三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码-2"><span class="nav-number">5.4.</span> <span class="nav-text">AC代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小记-1"><span class="nav-number">5.5.</span> <span class="nav-text">小记</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F-Islands"><span class="nav-number">6.</span> <span class="nav-text">F. Islands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码-3"><span class="nav-number">6.1.</span> <span class="nav-text">AC代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#G-Query-on-a-string"><span class="nav-number">7.</span> <span class="nav-text">G. Query on a string</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#H-Skiing"><span class="nav-number">8.</span> <span class="nav-text">H. Skiing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路一"><span class="nav-number">8.1.</span> <span class="nav-text">思路一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路二"><span class="nav-number">8.2.</span> <span class="nav-text">思路二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小记-2"><span class="nav-number">8.3.</span> <span class="nav-text">小记</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-Colored-Graph"><span class="nav-number">9.</span> <span class="nav-text">I. Colored Graph</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#J-Out-Journey-of-Dalian-Ends"><span class="nav-number">10.</span> <span class="nav-text">J. Out Journey of Dalian Ends</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
