@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog.（未完待续）此篇为基础数论，贴上模版，难以理解的附上数学推导公式。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-10T15:24:06.000Z">
+<meta property="og:updated_time" content="2017-10-07T11:00:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础数论">
 <meta name="twitter:description" content="This is my blog.（未完待续）此篇为基础数论，贴上模版，难以理解的附上数学推导公式。">
@@ -403,12 +403,11 @@
         <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>（未完待续）<br>此篇为基础数论，贴上模版，难以理解的附上数学推导公式。<br><a id="more"></a></p>
 <h2 id="gcd-最大公约数"><a href="#gcd-最大公约数" class="headerlink" title="gcd 最大公约数"></a>gcd 最大公约数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int gcd(int a,int b)&#123;</div><div class="line">    <span class="built_in">return</span> b==0?a:gcd(b, a%b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="lcm-最小公倍数"><a href="#lcm-最小公倍数" class="headerlink" title="lcm 最小公倍数"></a>lcm 最小公倍数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int lcm(int a,int b)&#123;</div><div class="line">    <span class="built_in">return</span> a/gcd(a,b)*b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>看到一篇不错的<a href="http://www.cnblogs.com/luyingfeng/p/3710634.html" target="_blank" rel="external">博客</a>，讲解了一些欧拉函数的性质。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">int eular(int x)</div><div class="line">&#123;</div><div class="line">    int  res = x;</div><div class="line">    <span class="keyword">for</span> (int i =2; i *i&lt;=x; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (x % i ==0)</div><div class="line">        &#123;</div><div class="line">            res = res / i * (i -1);</div><div class="line">            <span class="keyword">while</span> (x % i ==0)</div><div class="line">                x /= i; // 保证i一定是素数</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (x &gt; 1)</div><div class="line">        res = res / x * (x -1);</div><div class="line">    <span class="built_in">return</span> res ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>转载请注明出处，谢谢。</p>
 <blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2069470&auto=1&height=66"></iframe>
-
-<!-- UY BEGIN -->
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=31445554&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
 <p><div id="uyan_frame"></div></p>
 <p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
 
@@ -571,7 +570,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -582,7 +581,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -674,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcd-最大公约数"><span class="nav-number">1.</span> <span class="nav-text">gcd 最大公约数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lcm-最小公倍数"><span class="nav-number">2.</span> <span class="nav-text">lcm 最小公倍数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcd-最大公约数"><span class="nav-number">1.</span> <span class="nav-text">gcd 最大公约数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lcm-最小公倍数"><span class="nav-number">2.</span> <span class="nav-text">lcm 最小公倍数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉函数"><span class="nav-number">3.</span> <span class="nav-text">欧拉函数</span></a></li></ol></div>
             
 
           </div>

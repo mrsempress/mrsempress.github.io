@@ -104,7 +104,7 @@
 <meta property="og:description" content="This is my blog.    应该网络赛已结束就写点什么的，现在都忘记的差不多了。明明照旧没来，两人一队真的有点忙。庆幸的是比昨天的那场好太多了，这次AC了四题，我和博博都很兴奋。尤其最后一题，是结束之前交的。由于“随机大法”的存在，我们吃完饭后，才发现又AC一题了。我还兴奋的有两件事，一件就是原来还可以随机大法这么干啊！第二件则是，我居然做出了AC率低的题目，难道是因为都去随机了吗？总">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://empress.top/img/icpc22.png">
-<meta property="og:updated_time" content="2017-09-29T10:21:30.000Z">
+<meta property="og:updated_time" content="2017-10-07T09:44:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017 ACM-ICPC Asia Regional Shenyang Online">
 <meta name="twitter:description" content="This is my blog.    应该网络赛已结束就写点什么的，现在都忘记的差不多了。明明照旧没来，两人一队真的有点忙。庆幸的是比昨天的那场好太多了，这次AC了四题，我和博博都很兴奋。尤其最后一题，是结束之前交的。由于“随机大法”的存在，我们吃完饭后，才发现又AC一题了。我还兴奋的有两件事，一件就是原来还可以随机大法这么干啊！第二件则是，我居然做出了AC率低的题目，难道是因为都去随机了吗？总">
@@ -447,7 +447,7 @@
 <h1 id="I"><a href="#I" class="headerlink" title="I."></a>I.</h1><h1 id="J"><a href="#J" class="headerlink" title="J."></a>J.</h1><h1 id="K"><a href="#K" class="headerlink" title="K."></a>K.</h1><h1 id="L-card-card-card"><a href="#L-card-card-card" class="headerlink" title="L.card card card"></a>L.<a href="http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1012&amp;cid=780" target="_blank" rel="external">card card card</a></h1><p>不知道为什么这题没什么人做啊！题目中的“MJF also guarantees that the sum of all “penalty value” is exactly equal to the number of all cards.“是关键，所以直接暴力，找到第一个sum不小于0的就可以了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line">using namespace std;</div><div class="line">int a[1000005];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    int n;</div><div class="line">    <span class="keyword">while</span>(scanf(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</div><div class="line">            int x;</div><div class="line">            scanf(<span class="string">"%d"</span>,&amp;x);</div><div class="line">            a[i]-=x;</div><div class="line">        &#125;</div><div class="line">        int ans=0;int sum=0;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;n;i++)&#123;</div><div class="line">            sum+=a[i];</div><div class="line">            <span class="keyword">if</span>(sum&lt;0)&#123;</div><div class="line">                ans=i;</div><div class="line">                sum=0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=35447762&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=471403975&auto=1&height=66"></iframe>
 
 <!-- UY BEGIN -->
 <p><div id="uyan_frame"></div></p>
@@ -598,7 +598,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -609,7 +609,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
