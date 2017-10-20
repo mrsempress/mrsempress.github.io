@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="MATLAB," />
 
 
 
@@ -101,17 +101,18 @@
 
 
 
-<meta name="description" content="Hope be better and better, wish be happy and happy!">
+<meta name="description" content="This is my blog.MATLAB其实与C还是挺像的，感觉就是在读英文，但有些地方可能更方便一些吧！然而因为这些方便，有些蹩脚呢！所以说明，没怎么好好学习呢！看了一遍一遍，发现不动手，就是很容易忘记（我的记忆力，估计是被黑夜吃了吧）所以决定记笔记，相比于笔头的，我更喜欢敲下来（是因为更快吗？也可能是培养手感吧）（未完待续）">
+<meta name="keywords" content="MATLAB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MATLAB 基础知识">
 <meta property="og:url" content="http://empress.top/2017/10/20/MATLAB-基础知识/index.html">
 <meta property="og:site_name" content="Mrs_empress">
-<meta property="og:description" content="Hope be better and better, wish be happy and happy!">
+<meta property="og:description" content="This is my blog.MATLAB其实与C还是挺像的，感觉就是在读英文，但有些地方可能更方便一些吧！然而因为这些方便，有些蹩脚呢！所以说明，没怎么好好学习呢！看了一遍一遍，发现不动手，就是很容易忘记（我的记忆力，估计是被黑夜吃了吧）所以决定记笔记，相比于笔头的，我更喜欢敲下来（是因为更快吗？也可能是培养手感吧）（未完待续）">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-20T09:41:49.000Z">
+<meta property="og:updated_time" content="2017-10-20T10:38:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB 基础知识">
-<meta name="twitter:description" content="Hope be better and better, wish be happy and happy!">
+<meta name="twitter:description" content="This is my blog.MATLAB其实与C还是挺像的，感觉就是在读英文，但有些地方可能更方便一些吧！然而因为这些方便，有些蹩脚呢！所以说明，没怎么好好学习呢！看了一遍一遍，发现不动手，就是很容易忘记（我的记忆力，估计是被黑夜吃了吧）所以决定记笔记，相比于笔头的，我更喜欢敲下来（是因为更快吗？也可能是培养手感吧）（未完待续）">
 
 
 
@@ -334,6 +335,50 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/MATLAB/矩阵/" itemprop="url" rel="index">
+                    <span itemprop="name">矩阵</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -372,7 +417,26 @@
       
 
       
-        
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>MATLAB其实与C还是挺像的，感觉就是在读英文，但有些地方可能更方便一些吧！<br>然而因为这些方便，有些蹩脚呢！<br>所以说明，没怎么好好学习呢！<br>看了一遍一遍，发现不动手，就是很容易忘记（我的记忆力，估计是被黑夜吃了吧）<br>所以决定记笔记，相比于笔头的，我更喜欢敲下来（是因为更快吗？也可能是培养手感吧）<br>（未完待续）<br><a id="more"></a><br>还是先写点基础的基础吧！</p>
+<h1 id="计算基础"><a href="#计算基础" class="headerlink" title="计算基础"></a>计算基础</h1><h2 id="默认常量"><a href="#默认常量" class="headerlink" title="默认常量"></a>默认常量</h2><p>pi、eps、INF(inf)、i(j）、NaN(nan)、nargin、narout、realmax、realmin、ANS（ans）</p>
+<h2 id="显示格式"><a href="#显示格式" class="headerlink" title="显示格式"></a>显示格式</h2><p>format short、format long、format short e、format long e、format bank、format hex</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>(u)int(8、16、32)、real(single,double)、字符串(‘’)、复数型(imag、real、abs、angle）、单元数组、结构体；<br><strong>注</strong>：c(1,:)  c的第一行        c(:,2)   c的第二列        </p>
+<h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><h3 id="冒号创建一维数组"><a href="#冒号创建一维数组" class="headerlink" title="冒号创建一维数组"></a>冒号创建一维数组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; A=1:5 %默认步长为1,可以小于0</div><div class="line">A=1 2 3 4 5</div><div class="line">&gt;&gt; B=2.6:2:11.2</div><div class="line">B=2.6 4.6 6.6 8.6 10.6</div></pre></td></tr></table></figure>
+<h3 id="linspace创建一维数组"><a href="#linspace创建一维数组" class="headerlink" title="linspace创建一维数组"></a>linspace创建一维数组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;A=linespace(a,b,n)   %从a开始到b为止，创建n个数，构成等差数列，n&lt;2返回b的值，n默认100</div></pre></td></tr></table></figure>
+<h3 id="logspace创建一维数组"><a href="#logspace创建一维数组" class="headerlink" title="logspace创建一维数组"></a>logspace创建一维数组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;A=logpace(a,b,n)   %从10^a开始到10^b为止，创建n个数，构成等差数列，并返回n个以10为底的幂构成的行向量，n&lt;默认50</div></pre></td></tr></table></figure>
+<h3 id="特殊矩阵（之后补性质）"><a href="#特殊矩阵（之后补性质）" class="headerlink" title="特殊矩阵（之后补性质）"></a>特殊矩阵（之后补性质）</h3><p>ones<br>eye（注意没有s，且ones是全1，而eye是单位矩阵，别搞混了）<br>zeros<br>magic（每一行每一列元素之和都相等）<br>rand（均匀分布）<br>randn（正态分布）<br>hilb（其元素A（i,j）=1/(i+j-1)）<br>vander（其元素A（i,j）=(αi)^(j-1)，且矩阵具有最大的秩min(m, n)）<br>hankel（每一条副对角线上的元素都相等的方阵）<br>handamard（由+1和-1元素构成的正交方阵）</p>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;A=(:,2)=[] %删除第二列</div></pre></td></tr></table></figure>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><h3 id="元素修改"><a href="#元素修改" class="headerlink" title="元素修改"></a>元素修改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;X=diag(v,k) </div><div class="line">%k=0主对角线，k&lt;0主对角线以下，将v的元素放在X的第k对角线上，若k为小数，自动把小数部分抹去</div><div class="line">&gt;&gt;v=diag(X,k)  %v列向量</div><div class="line">&gt;&gt;L=tril(X，k) %第k对角线下部分，其余用0补齐，默认为0</div><div class="line">&gt;&gt;U=triu(X,k)  %第k对角线上部分</div></pre></td></tr></table></figure>
+<h3 id="结构修改"><a href="#结构修改" class="headerlink" title="结构修改"></a>结构修改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;reshape(B,m,n,p) %B重置数组，m、n、p行、列、页数</div><div class="line">&gt;&gt;rot90(A,K)  %将A逆时针旋转90˚的k倍，k默认为1</div><div class="line">&gt;&gt;fliplr(A)   %将A左右翻转</div><div class="line">&gt;&gt;flipud(A)   %将A上下翻转</div></pre></td></tr></table></figure>
+<h3 id="数据修改"><a href="#数据修改" class="headerlink" title="数据修改"></a>数据修改</h3><p>floor<br>ceil<br>round（四舍五入）<br>fix（离0近的方向取整）</p>
+<h2 id="下标的引用"><a href="#下标的引用" class="headerlink" title="下标的引用"></a>下标的引用</h2><p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=422428548&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
       
     </div>
     
@@ -411,6 +475,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+        </div>
+      
 
       
       
@@ -429,6 +499,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/20/MATLAB-画图/" rel="prev" title="MATLAB 画图">
+                MATLAB 画图 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -480,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -499,7 +582,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -510,7 +593,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -521,7 +604,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -592,6 +675,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算基础"><span class="nav-number">1.</span> <span class="nav-text">计算基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认常量"><span class="nav-number">1.1.</span> <span class="nav-text">默认常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示格式"><span class="nav-number">1.2.</span> <span class="nav-text">显示格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.3.</span> <span class="nav-text">数据类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵"><span class="nav-number">2.</span> <span class="nav-text">矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">2.1.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒号创建一维数组"><span class="nav-number">2.1.1.</span> <span class="nav-text">冒号创建一维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linspace创建一维数组"><span class="nav-number">2.1.2.</span> <span class="nav-text">linspace创建一维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logspace创建一维数组"><span class="nav-number">2.1.3.</span> <span class="nav-text">logspace创建一维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊矩阵（之后补性质）"><span class="nav-number">2.1.4.</span> <span class="nav-text">特殊矩阵（之后补性质）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">2.2.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改"><span class="nav-number">2.3.</span> <span class="nav-text">修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素修改"><span class="nav-number">2.3.1.</span> <span class="nav-text">元素修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构修改"><span class="nav-number">2.3.2.</span> <span class="nav-text">结构修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据修改"><span class="nav-number">2.3.3.</span> <span class="nav-text">数据修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下标的引用"><span class="nav-number">2.4.</span> <span class="nav-text">下标的引用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
