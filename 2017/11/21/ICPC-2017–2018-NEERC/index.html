@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ACM,ICPC,2017," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog.又恢复正常了……第一个礼拜开始练习……经过CCPC杭州站的打击大家都比之前更加努力，更加坚定了既然做了，就要做到做好，何况我们的目标不小，还是需要加油的经过这些时段的练习，感觉是有进步的，但是体现的不明显革命尚未成功，同志仍需努力啊！！！（未完待续）">
+<meta name="keywords" content="ACM,ICPC,2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017–2018 ACM-ICPC Northern Subregional Contest St Petersburg">
+<meta property="og:url" content="http://empress.top/2017/11/21/ICPC-2017–2018-NEERC/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog.又恢复正常了……第一个礼拜开始练习……经过CCPC杭州站的打击大家都比之前更加努力，更加坚定了既然做了，就要做到做好，何况我们的目标不小，还是需要加油的经过这些时段的练习，感觉是有进步的，但是体现的不明显革命尚未成功，同志仍需努力啊！！！（未完待续）">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-11-21T01:15:39.589Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2017–2018 ACM-ICPC Northern Subregional Contest St Petersburg">
+<meta name="twitter:description" content="This is my blog.又恢复正常了……第一个礼拜开始练习……经过CCPC杭州站的打击大家都比之前更加努力，更加坚定了既然做了，就要做到做好，何况我们的目标不小，还是需要加油的经过这些时段的练习，感觉是有进步的，但是体现的不明显革命尚未成功，同志仍需努力啊！！！（未完待续）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2017/11/21/ICPC-2017–2018-NEERC/"/>
+
+
+
+
+
+  <title>2017–2018 ACM-ICPC Northern Subregional Contest St Petersburg | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2017/11/21/ICPC-2017–2018-NEERC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2017–2018 ACM-ICPC Northern Subregional Contest St Petersburg</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T08:28:02+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/11/21/ICPC-2017–2018-NEERC/" class="leancloud_visitors" data-flag-title="2017–2018 ACM-ICPC Northern Subregional Contest St Petersburg">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>又恢复正常了……<br>第一个礼拜开始练习……<br>经过CCPC杭州站的打击<br>大家都比之前更加努力，更加坚定了<br>既然做了，就要做到做好，<br>何况我们的目标不小，还是需要加油的<br>经过这些时段的练习，感觉是有进步的，但是体现的不明显<br>革命尚未成功，同志仍需努力啊！！！<br>（未完待续）<br><a id="more"></a><br>题目在Codeforces上可以下载到，就暂且不叙述了</p>
+<h2 id="A-Auxiliary-Project"><a href="#A-Auxiliary-Project" class="headerlink" title="A.Auxiliary Project"></a>A.Auxiliary Project</h2><p>水题，分析一下每个数字，找出最优解，分类讨论即可……文件输入输出居然写错了，真神奇！！！</p>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line">using namespace std;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    freopen(<span class="string">"auxiliary.in"</span>,<span class="string">"r"</span>,stdin);</div><div class="line">    freopen(<span class="string">"auxiliary.out"</span>,<span class="string">"w"</span>,stdout);</div><div class="line"></div><div class="line">    int n;</div><div class="line">    cin&gt;&gt;n;</div><div class="line">    <span class="keyword">if</span>(n%3==0)&#123;</div><div class="line">        cout&lt;&lt;7*(n/3)&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n%3==1)&#123;</div><div class="line">        cout&lt;&lt;7*(n/3-1)+4&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        cout&lt;&lt;7*(n/3)+1&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="B-Boolean-Satisfiability"><a href="#B-Boolean-Satisfiability" class="headerlink" title="B.Boolean Satisfiability"></a>B.Boolean Satisfiability</h2><p>其实看到这种题目，第一反应就是不看了。这个描述，太绕了……补题的时候，发现其实还……只有两个符号<code>|</code>和<code>~</code>，所以，对于一个表达式来说，如果同一个变量既有正又有取反符号，则每个变量都可以既取真又取假，则有<code>2^n</code>个；而如果没有的话，则去掉全为假的一种情况即可。</p>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;string&gt;</span></div><div class="line">using namespace std;</div><div class="line">const int maxn=100;//65-122</div><div class="line">bool True[maxn],False[maxn];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    freopen(<span class="string">"boolean.in"</span>,<span class="string">"r"</span>,stdin);</div><div class="line">    freopen(<span class="string">"boolean.out"</span>,<span class="string">"w"</span>,stdout);</div><div class="line">    string s;</div><div class="line">    cin&gt;&gt;s;</div><div class="line">    int len=s.length();</div><div class="line">    <span class="keyword">for</span>(int i=0;i&lt;len;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'|'</span>) <span class="built_in">continue</span>;</div><div class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'~'</span>)&#123;</div><div class="line">            i++;</div><div class="line">            False[s[i]-<span class="string">'A'</span>]=1;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            True[s[i]-<span class="string">'A'</span>]=1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    bool flag=0;int sum=0;</div><div class="line">    <span class="keyword">for</span>(int i=0;i&lt;maxn;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(False[i]==1&amp;&amp;True[i]==1) flag=1;</div><div class="line">        <span class="keyword">if</span>(False[i]==1||True[i]==1) sum++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(1LL&lt;&lt;sum));</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(1LL&lt;&lt;sum)-1);</div><div class="line"></div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="C-Consonant-Fencity"><a href="#C-Consonant-Fencity" class="headerlink" title="C.Consonant Fencity"></a>C.Consonant Fencity</h2><p>今天补完，有点感觉…… </p>
+<h2 id="D-Dividing-Marbles"><a href="#D-Dividing-Marbles" class="headerlink" title="D.Dividing Marbles"></a>D.Dividing Marbles</h2><p>自己觉得能分一半的分一半，不能分一半的分成三等分，否则，就分成1和剩下的。WA了……到时候再想想，争取今天补完</p>
+<h2 id="E-Equal-Numbers"><a href="#E-Equal-Numbers" class="headerlink" title="E.Equal Numbers"></a>E.Equal Numbers</h2><p>当时漏想了，互为因子的情况；然后就……<br>博博昨天说了一种思路，感觉挺对的……<br>估计得明天实现了……</p>
+<h2 id="F-Fygon-2-0"><a href="#F-Fygon-2-0" class="headerlink" title="F.Fygon 2.0"></a>F.Fygon 2.0</h2><p>又是这种表达式，表示还没看题</p>
+<h2 id="G-Grand-Test"><a href="#G-Grand-Test" class="headerlink" title="G.Grand Test"></a>G.Grand Test</h2><h2 id="H-Hidden-Supervisors"><a href="#H-Hidden-Supervisors" class="headerlink" title="H. Hidden Supervisors"></a>H. Hidden Supervisors</h2><h2 id="I-Intelligence-in-Perpendicularia"><a href="#I-Intelligence-in-Perpendicularia" class="headerlink" title="I.Intelligence in Perpendicularia"></a>I.Intelligence in Perpendicularia</h2><p>总周长减去在外部的周长即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cmath&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line">typedef long long ll;</div><div class="line">const int maxn=1100;</div><div class="line">int a[maxn],b[maxn];</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    freopen(<span class="string">"intel.in"</span>,<span class="string">"r"</span>,stdin);</div><div class="line">    freopen(<span class="string">"intel.out"</span>,<span class="string">"w"</span>,stdout);</div><div class="line">    int n;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    scanf(<span class="string">"%d%d"</span>,&amp;a[0],&amp;b[0]);</div><div class="line">    ll C=0;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;n;i++)&#123;</div><div class="line">        scanf(<span class="string">"%d%d"</span>,&amp;a[i],&amp;b[i]);</div><div class="line">        C+=abs(a[i]-a[i-1])+abs(b[i]-b[i-1]);</div><div class="line">    &#125;</div><div class="line">    C+=abs(a[n-1]-a[0])+abs(b[n-1]-b[0]);</div><div class="line"></div><div class="line">    sort(a,a+n);</div><div class="line">    sort(b,b+n);</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,C-2*(a[n-1]-a[0]+b[n-1]-b[0]));</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="J-Joker"><a href="#J-Joker" class="headerlink" title="J.Joker"></a>J.Joker</h2><h2 id="K-Kotlin-Island"><a href="#K-Kotlin-Island" class="headerlink" title="K.Kotlin Island"></a>K.Kotlin Island</h2><p>在规定的规模下，用<code>.</code>和<code>#</code>将区域分为指定的块数。<br>求出最大可分出的块数，去掉不可能解；因为h，w都挺小的，所以我得到的每行每列的最大可分块数也很小，双重循环，看是否能合成。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line">using namespace std;</div><div class="line">int mmap[110][110];</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    freopen(<span class="string">"kotlin.in"</span>,<span class="string">"r"</span>,stdin);</div><div class="line">    freopen(<span class="string">"kotlin.out"</span>,<span class="string">"w"</span>,stdout);</div><div class="line">    int h,w,n;</div><div class="line">    scanf(<span class="string">"%d%d%d"</span>,&amp;h,&amp;w,&amp;n);</div><div class="line">    int r,c;//max</div><div class="line">    r=(h+1)/2;</div><div class="line">    c=(w+1)/2;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(n==1)&#123;</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;h;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;w;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"."</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(r*c&lt;n)&#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>);</div><div class="line">        <span class="built_in">return</span> 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=r;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(int j=1;j&lt;=c;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(i*j==n)&#123;</div><div class="line">                //cout&lt;&lt;i&lt;&lt;<span class="string">" "</span>&lt;&lt;j&lt;&lt;endl;</div><div class="line">                <span class="keyword">for</span>(int k=1;k&lt;i;k++)&#123;</div><div class="line">                    <span class="keyword">for</span>(int t=1;t&lt;=w;t++)&#123;</div><div class="line">                        mmap[k*2][t]=<span class="string">'#'</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">for</span>(int k=1;k&lt;j;k++)&#123;</div><div class="line">                    <span class="keyword">for</span>(int t=1;t&lt;=h;t++)&#123;</div><div class="line">                        mmap[t][k*2]=<span class="string">'#'</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">for</span>(int k=1;k&lt;=h;k++)&#123;</div><div class="line">                    <span class="keyword">for</span>(int t=1;t&lt;=w;t++)&#123;</div><div class="line">                        <span class="keyword">if</span>(mmap[k][t]==<span class="string">'#'</span>) <span class="built_in">printf</span>(<span class="string">"#"</span>);</div><div class="line">                        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"."</span>);</div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">return</span> 0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>);</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="L-Little-Difference"><a href="#L-Little-Difference" class="headerlink" title="L.Little Difference"></a>L.Little Difference</h2><p>首先去掉可以用2的次方，因为一定可以用无穷多个1和2的乘积来表示。<br>接着最小的因数为2，所以可以枚举总次数。然后二分因数。<br><strong>注</strong>数据很大，所以能用除法就不要用乘法，同时注意除法时的去小数部分的情况。所以尽量除数为较小的数。</p>
+<h2 id="AC代码-2"><a href="#AC代码-2" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line">using namespace std;</div><div class="line">typedef long long ll;</div><div class="line">const int maxn=1e6+10;</div><div class="line">struct ty&#123;</div><div class="line">    ll a,b,x;//a big <span class="built_in">times</span>;b small <span class="built_in">times</span>;x big number</div><div class="line">&#125;ans[maxn];</div><div class="line">ll n;</div><div class="line">int judge(ll mid,int a,int b)&#123;</div><div class="line">    ll tmp=1;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=a;i++)&#123;</div><div class="line">        tmp*=mid;</div><div class="line">        <span class="keyword">if</span>((n/tmp)&lt;mid&amp;&amp;i&lt;a) <span class="built_in">return</span> 1;//too big</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ll temp=1;</div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;=b;i++)&#123;</div><div class="line">        temp*=(mid-1);</div><div class="line">        <span class="keyword">if</span>((n/temp)&lt;(mid-1)&amp;&amp;i&lt;b) <span class="built_in">return</span> 1;</div><div class="line">    &#125;</div><div class="line">	  //the followings are wrong</div><div class="line">    //<span class="keyword">if</span>(tmp*temp&lt;n)</div><div class="line">    //<span class="keyword">if</span>(temp&lt;n/tmp)</div><div class="line">    <span class="keyword">if</span>(tmp&lt;n/temp)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">return</span> -1;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(n%temp==0&amp;&amp;tmp==n/temp) <span class="built_in">return</span> 0;//find!!!</div><div class="line">    <span class="built_in">return</span> 1;//too big</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">    freopen(<span class="string">"little.in"</span>,<span class="string">"r"</span>,stdin);</div><div class="line">    freopen(<span class="string">"little.out"</span>,<span class="string">"w"</span>,stdout);</div><div class="line">    scanf(<span class="string">"%lld"</span>,&amp;n);</div><div class="line">    ll tmp=n;</div><div class="line">    <span class="keyword">while</span>(tmp%2==0)tmp/=2;</div><div class="line">    <span class="keyword">if</span>(tmp==1)&#123;</div><div class="line">       <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</div><div class="line">       <span class="built_in">return</span> 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ll cnt=0;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(int i=1;i&lt;64;i++)&#123;//2^64&gt;1e18 <span class="built_in">times</span></div><div class="line">        <span class="keyword">for</span>(int j=1;j&lt;=i;j++)&#123;</div><div class="line">            </div><div class="line">            ll l=2,r=1e18;//number</div><div class="line">            <span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">                ll mid=(l+r)&gt;&gt;1;//bigger number</div><div class="line">                int flag=judge(mid, j, i-j);//i total <span class="built_in">times</span>,j small <span class="built_in">times</span></div><div class="line">                <span class="keyword">if</span>(flag==-1)&#123;</div><div class="line">                    l=mid+1;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(flag==1)&#123;</div><div class="line">                    r=mid-1;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span>&#123;</div><div class="line">                    ans[cnt].a=j;</div><div class="line">                    ans[cnt].b=i-j;</div><div class="line">                    ans[cnt++].x=mid;</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,cnt);</div><div class="line">    <span class="keyword">for</span>(ll i=0;i&lt;cnt;i++)&#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans[i].a+ans[i].b);</div><div class="line">        <span class="keyword">for</span>(int j=0;j&lt;ans[i].a;j++)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"% lld"</span>,ans[i].x);</div><div class="line">        <span class="keyword">for</span>(int j=0;j&lt;ans[i].b;j++)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">" %lld"</span>,ans[i].x-1);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=471403975&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag"># ACM</a>
+          
+            <a href="/tags/ICPC/" rel="tag"># ICPC</a>
+          
+            <a href="/tags/2017/" rel="tag"># 2017</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/20/随想小记-2017-11-20/" rel="next" title="随想小记--2017/11/20">
+                <i class="fa fa-chevron-left"></i> 随想小记--2017/11/20
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bdznh.github.io" title="BDZNH" target="_blank">BDZNH</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/wang9897/" title="Wang9897" target="_blank">Wang9897</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Auxiliary-Project"><span class="nav-number">1.</span> <span class="nav-text">A.Auxiliary Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AC代码"><span class="nav-number">1.1.</span> <span class="nav-text">AC代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Boolean-Satisfiability"><span class="nav-number">2.</span> <span class="nav-text">B.Boolean Satisfiability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AC代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">AC代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Consonant-Fencity"><span class="nav-number">3.</span> <span class="nav-text">C.Consonant Fencity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Dividing-Marbles"><span class="nav-number">4.</span> <span class="nav-text">D.Dividing Marbles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Equal-Numbers"><span class="nav-number">5.</span> <span class="nav-text">E.Equal Numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Fygon-2-0"><span class="nav-number">6.</span> <span class="nav-text">F.Fygon 2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Grand-Test"><span class="nav-number">7.</span> <span class="nav-text">G.Grand Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Hidden-Supervisors"><span class="nav-number">8.</span> <span class="nav-text">H. Hidden Supervisors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Intelligence-in-Perpendicularia"><span class="nav-number">9.</span> <span class="nav-text">I.Intelligence in Perpendicularia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-Joker"><span class="nav-number">10.</span> <span class="nav-text">J.Joker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Kotlin-Island"><span class="nav-number">11.</span> <span class="nav-text">K.Kotlin Island</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Little-Difference"><span class="nav-number">12.</span> <span class="nav-text">L.Little Difference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码-2"><span class="nav-number">13.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
