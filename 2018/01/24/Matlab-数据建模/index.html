@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MATLAB," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog.这一部分貌似和概率论与数理统计很有关系唔～八大分布还记得…怎么最近看的感觉我都认识但是怎么看解析还是费劲呢？！！">
+<meta name="keywords" content="MATLAB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab-数据建模">
+<meta property="og:url" content="http://empress.top/2018/01/24/Matlab-数据建模/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog.这一部分貌似和概率论与数理统计很有关系唔～八大分布还记得…怎么最近看的感觉我都认识但是怎么看解析还是费劲呢？！！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167845931841.jpg">
+<meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167846072306.jpg">
+<meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167846363241.jpg">
+<meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167846492071.jpg">
+<meta property="og:updated_time" content="2018-01-24T15:19:14.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matlab-数据建模">
+<meta name="twitter:description" content="This is my blog.这一部分貌似和概率论与数理统计很有关系唔～八大分布还记得…怎么最近看的感觉我都认识但是怎么看解析还是费劲呢？！！">
+<meta name="twitter:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167845931841.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/01/24/Matlab-数据建模/"/>
+
+
+
+
+
+  <title>Matlab-数据建模 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/01/24/Matlab-数据建模/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Matlab-数据建模</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-24T16:15:03+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/MATLAB/数据处理/" itemprop="url" rel="index">
+                    <span itemprop="name">数据处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/24/Matlab-数据建模/" class="leancloud_visitors" data-flag-title="Matlab-数据建模">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>这一部分貌似和<code>概率论与数理统计</code>很有关系<br>唔～八大分布还记得…<br>怎么最近看的感觉我都认识<br>但是怎么看解析还是费劲呢？！！<br><a id="more"></a></p>
+<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<h1 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h1><h2 id="云模型"><a href="#云模型" class="headerlink" title="云模型"></a>云模型</h2><h3 id="云数字特征"><a href="#云数字特征" class="headerlink" title="云数字特征"></a>云数字特征</h3><ol>
+<li>期望：\(E_x\)</li>
+<li>熵：  \(E_n\)不确定度</li>
+<li>超熵： \(H_e\) 即熵的熵</li>
+</ol>
+<h3 id="触发机制与逆向触发机制"><a href="#触发机制与逆向触发机制" class="headerlink" title="触发机制与逆向触发机制"></a>触发机制与逆向触发机制</h3><p>触发机制：</p>
+<ol>
+<li>生成以<code>En</code>为期望，以\({H_e}^2\)为方差的正态随机数\(E_n’\)</li>
+<li>生成以<code>Ex</code>为期望，以\({E_n’}^2\)为方差的正态随机数\(x\)</li>
+<li>计算确定度\(u = e^{-\frac{(x-E_x)^2}{2{E_n’}^2}}\)</li>
+<li>重复1 2 3，产生足够多的云滴</li>
+</ol>
+<p>而通常我们是通过云滴来得到期望值的。<br>逆向触发机制如下：</p>
+<ol>
+<li>计算样本均值\(\overline{x}\)和方差\(S^2\)</li>
+<li>\(E_x = \overline{x}\)</li>
+<li>\(E<em>n = \sqrt{\frac{\pi}{2}}*\frac{1}{n}\sum</em>{1}^n\left|x-E_x\right|\)</li>
+<li>\(H_e = \sqrt{S^2-{E_n}^2}\)</li>
+</ol>
+<h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><p>could_transform.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> [x,y,Ex,En,He] = could_transform(y_spor,n)</div><div class="line">%x±íÊ¾ÔÆµÎ£¬y±íÊ¾Á¥Êô¶È£¬ÕâÀïÎÒÃÇ²ÉÓÃÖÓÐÎÁ¥Êô¶È£¬ÒâÒåÊÇ¶ÈÁ¿ÇãÏòµÄÎÈ¶¨³Ì¶È</div><div class="line"> </div><div class="line">Ex = mean(y_spor);</div><div class="line">En = mean(abs(y_spor - Ex)) .* sqrt(pi ./ 2);</div><div class="line">He = sqrt(var(y_spor) - En.^2);</div><div class="line"> </div><div class="line"><span class="keyword">for</span> q = 1:n</div><div class="line">    Enn = randn(1).* He + En;</div><div class="line">    x(q) = randn(1).* Enn + Ex;</div><div class="line">    y(q) = exp(-(x(q) - Ex) .^ 2 ./ (2 .* Enn .^2));</div><div class="line">end</div><div class="line">x;</div><div class="line">y;</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>test.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">N = 1500;</div><div class="line">Y = [9.5 10.3 10.1 8.1</div><div class="line">    10.3 9.7 10.4 10.1</div><div class="line">    10.6 8.6 9.2 10.0]<span class="string">';</span></div><div class="line"><span class="string">for i = 1:size(Y,1)</span></div><div class="line"><span class="string">    subplot(size(Y,1)/2,2,i)    </span></div><div class="line"><span class="string">    [x,y,Ex,En,He] = could_transform(Y(i,:),N);</span></div><div class="line"><span class="string">    plot(x,y,'</span>r.<span class="string">'); </span></div><div class="line"><span class="string">    axis([8,12,0,1];</span></div><div class="line"><span class="string">end</span></div></pre></td></tr></table></figure></p>
+<h2 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h2><h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>\(ln\frac{\pi}{1-\pi} = \beta_0+\beta_1x_1+\cdot\cdot\cdot+\beta_kx_k\)<br>在<code>Matlab</code>中我们使用<code>regress</code>函数<br>感觉像是<code>0-1分布</code>，我瞎说的，别理我</p>
+<h3 id="Matlab-1"><a href="#Matlab-1" class="headerlink" title="Matlab"></a>Matlab</h3><p>已知：<br>\(p\)表示评价结果        \(q\)表示某概率<br>\(P = 0,q\leq0.5\)<br>\(P = 1,q&gt;0.5\)<br>为了方便做回归运算，取区间的中值作为\(q\)的值，即<br>\(P = 0,q=0.25\)<br>\(P = 1,q=0.75\)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">X0 = []; %回归数据</div><div class="line">XE = []; %验证与预测数据</div><div class="line">Y0 = []; %回归数据P值</div><div class="line"> </div><div class="line">% 数据转化和参数回归</div><div class="line">n = size(Y0,1);</div><div class="line"><span class="keyword">for</span> i = 1:n</div><div class="line">    <span class="keyword">if</span> Y0(i) == 0</div><div class="line">        Y1(i,1) = 0.25;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        Y1(i,1) = 0.75;</div><div class="line">    end</div><div class="line">end</div><div class="line"> </div><div class="line">X1 = ones(size(X0,1),1); %构建常数项系数</div><div class="line">X = [X1,X0];</div><div class="line">Y = <span class="built_in">log</span>(Y1 ./ (1 - Y1));</div><div class="line">b = regress(Y,X);</div><div class="line"> </div><div class="line">%模型的验证</div><div class="line"><span class="keyword">for</span> i = 1:size(XE,1)</div><div class="line">    q0 = exp(b(1) + b(2) * XE(i,1) + b(3) * XE(i,2) + b(4) * XE(i,3))/(1+...</div><div class="line">    exp(b(1) + b(2) * XE(i,1) + b(3) * XE(i,2) + b(4) * XE(i,3)));</div><div class="line">    <span class="keyword">if</span> q0 &lt;= 0.5</div><div class="line">        P(i) = 0;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        P(i) = 1;</div><div class="line">    end</div><div class="line">end</div><div class="line"> </div><div class="line">disp([<span class="string">'回归系数'</span>num2str(b<span class="string">')]);</span></div><div class="line"><span class="string">disp(['</span>评价结果<span class="string">'num2str(P)]);</span></div></pre></td></tr></table></figure>
+<h2 id="主成分分析-PCA"><a href="#主成分分析-PCA" class="headerlink" title="主成分分析(PCA)"></a>主成分分析(PCA)</h2><p>对指标体系进行降维处理</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>对原始数据进行标准化处理<br>\(x<em>{ij}^\ast=\frac{x</em>{ij}-\overline{x_j}}{\sqrt{Var(x_j)}}\)    \(i=1,2,\cdot\cdot\cdot,n;j=1,2,\cdot\cdot\cdot,p)\)<br>其中，\(\overline{x<em>j}=\frac{1}{n}\sum</em>{i=1}^nx_{ij}\)<br>\(Var(x<em>j)=\frac{1}{n-1}\sum</em>{i=1}^n(x_{ij}-\overline{x_j})^2        (j=1,2,\cdot\cdot\cdot,p)\)</li>
+<li>计算样本相关系数矩阵   <code>corrcoef()</code><br>\(r_{ij}=cov(x_i,x_j)\)</li>
+<li>计算相关系数矩阵\(R\)的特征值   <code>eig()</code></li>
+<li>计算贡献率，选择主成分<br>\(贡献率=\frac{\lambda<em>i}{\sum</em>{i=1}^p\lambda_i}\)</li>
+<li>计算主成分得分<br>\(F<em>{ij}=\sum</em>{i=1}^pa<em>{jk}x</em>{ik} ,i=1,2,\cdot\cdot\cdot,n;j=1,2,\cdot\cdot\cdot,p\)</li>
+<li>依据主成分得分数据，进一步对问题进行后续的分析和建模</li>
+</ol>
+<h3 id="Matlab-2"><a href="#Matlab-2" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">%数据导入</div><div class="line">A = [];</div><div class="line"></div><div class="line">%	标准化处理</div><div class="line">a = size(A,1);</div><div class="line">b = size(A,2);</div><div class="line"><span class="keyword">for</span> i = 1:b</div><div class="line">	SA(:,i) = (A(:,i) - mean(A(:,i))) / std(A(:,i));</div><div class="line">end</div><div class="line"></div><div class="line">%计算相关系数矩阵</div><div class="line">CM = corrcoef(SA);</div><div class="line">[V,D] = eig(CM);</div><div class="line"></div><div class="line"><span class="keyword">for</span> i = 1:b</div><div class="line">	DS(i,2) = DS(i,1) / sum(DS:,1));%贡献率</div><div class="line">	DS(i,3) = sum(DS(1:i,1)) / sum(DS(:,1));%累积贡献率</div><div class="line">end</div><div class="line"></div><div class="line">%选择主成分</div><div class="line">T = 0.9; %主成分信息保留率</div><div class="line"><span class="keyword">for</span> k = 1:b</div><div class="line">	<span class="keyword">if</span> DS(k,3) &gt;= T</div><div class="line">		Com_num = K;</div><div class="line">		<span class="built_in">break</span>;</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">%提取主成分对应的特征向量</div><div class="line"><span class="keyword">for</span> j = 1:Com_num</div><div class="line">	PV(:,j) = V(:,b + 1 - j);</div><div class="line">end</div><div class="line"></div><div class="line">%计算主成分得分</div><div class="line">new_score = SA * PV;</div><div class="line"><span class="keyword">for</span> i = 1:a</div><div class="line">	total_score(i,1) = sum(new_score(i,:));</div><div class="line">	total_score(i,2) = i;</div><div class="line">end</div><div class="line">result_report = [new_score,total_score];</div><div class="line">result_report = sortrows(result_report,-4);%将总分按降序排序</div></pre></td></tr></table></figure>
+<h2 id="支持向量机-SVM"><a href="#支持向量机-SVM" class="headerlink" title="支持向量机(SVM)"></a>支持向量机(SVM)</h2><h3 id="一个小故事"><a href="#一个小故事" class="headerlink" title="一个小故事"></a><a href="https://www.zhihu.com/question/21094489" target="_blank" rel="external">一个小故事</a></h3><p>也可以看看<a href="https://www.youtube.com/watch?v=3liCbRZPrZA" target="_blank" rel="external">视频</a><br><img src="media/15167845931841.jpg" alt=""><br><img src="media/15167846072306.jpg" alt=""><br><img src="media/15167846363241.jpg" alt=""><br><img src="media/15167846492071.jpg" alt=""></p>
+<h3 id="Matlab-3"><a href="#Matlab-3" class="headerlink" title="Matlab"></a>Matlab</h3><p>看不懂书上的代码，从<a href="http://blog.csdn.net/lwwangfang/article/details/52351715" target="_blank" rel="external">网上</a>扒了一个<br>线性的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">function</span> [ classification ] = SVM_L( train,<span class="built_in">test</span> )</div><div class="line">%  进行SVM线性可分的二分类处理</div><div class="line">%  1、首先需要一组训练数据train，并且已知训练数据的类别属性，在这里，属性只有两类，并用1，2来表示。</div><div class="line">%  2、通过svmtrain（只能处理2分类问题）函数，来进行分类器的训练</div><div class="line">%  3、通过svmclassify函数，根据训练后获得的模型svm_struct，来对测试数据<span class="built_in">test</span>进行分类</div><div class="line">train=[0 0;2 4;3 3;3 4;4 2;4 4;4 3;5 3;6 2;7 1;2 9;3 8;4 6;4 7;5 6;5 8;6 6;7 4;8 4;10 10];                                              %训练数据点</div><div class="line">group=[1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2]<span class="string">'; %训练数据已知分类情况</span></div><div class="line"><span class="string">                                                                            %与train顺序对应</span></div><div class="line"><span class="string">test=[3 2;4 8;6 5;7 6;2 5;5 2];                                                    %测试数据</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">%训练分类模型</span></div><div class="line"><span class="string">svmModel = svmtrain(train,group,'</span>kernel_function<span class="string">','</span>linear<span class="string">','</span>showplot<span class="string">',true);</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">%分类测试</span></div><div class="line"><span class="string">classification=svmclassify(svmModel,test,'</span>Showplot<span class="string">',true);</span></div><div class="line"><span class="string">end</span></div></pre></td></tr></table></figure></p>
+<p>非线性的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> [ classfication ] = SVM_NL( train,tast )</div><div class="line">%SVM对线性不可分的数据进行处理</div><div class="line">%在选择核函数时，尝试用linear以外的rbf,quadratic,polynomial等，观察获得的分类情况</div><div class="line">%训练数据</div><div class="line">train=[5 5;6 4;5 6;5 4;4 5;8 5;8 8;4 5;5 7;7 8;1 2;1 4;4 2;5 1.5;7 3;10 4;4 9;2 8;8 9;8 10]; </div><div class="line">%训练数据分类情况                                                                                      </div><div class="line">group=[1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2];                          </div><div class="line">%测试数据</div><div class="line"><span class="built_in">test</span>=[6 6;5.5 5.5;7 6;12 14;7 11;2 2;9 9;8 2;2 6;5 10;4 7;7 4];                 </div><div class="line"></div><div class="line">%训练分类模型</div><div class="line">svmModel = svmtrain(train,group,<span class="string">'kernel_function'</span>,<span class="string">'rbf'</span>,<span class="string">'showplot'</span>,<span class="literal">true</span>);</div><div class="line">%分类</div><div class="line">classification=svmclassify(svmModel,<span class="built_in">test</span>,<span class="string">'Showplot'</span>,<span class="literal">true</span>);</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>有情景的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> [ classfication ] = SVM2_2( train,<span class="built_in">test</span> )</div><div class="line">%使用matlab自带的关于花的数据进行二分类实验（150*4），其中，每一行代表一朵花，</div><div class="line">%共有150行（朵)，每一朵包含4个属性值（特征），即4列。且每1-50，51-100，101-150行的数据为同一类，分别为setosa青风藤类，versicolor云芝类，virginica锦葵类</div><div class="line">%实验中为了使用svmtrain（只处理二分类问题）因此，将数据分为两类，51-100为一类，1-50和101-150共为一类</div><div class="line">%实验先选用2个特征值，再选用全部四个特征值来进行训练模型，最后比较特征数不同的情况下分类精度的情况。</div><div class="line"></div><div class="line">load fisheriris   %下载数据包含:meas（150*4花特征数据）</div><div class="line">%和species（150*1 花的类属性数据）</div><div class="line">meas=meas(:,1:2);  %选取出数据前100行，前2列</div><div class="line">train=[(meas(51:90,:));(meas(101:140,:))];%选取数据中每类对应的前40个作为训练数据</div><div class="line"><span class="built_in">test</span>=[(meas(91:100,:));(meas(141:150,:))];%选取数据中每类对应的后10个作为测试数据</div><div class="line">group=[(species(51:90));(species(101:140))];%选取类别标识前40个数据作为训练数据</div><div class="line"></div><div class="line">%使用训练数据，进行SVM模型训练</div><div class="line">svmModel = svmtrain(train,group,<span class="string">'kernel_function'</span>,<span class="string">'rbf'</span>,<span class="string">'showplot'</span>,<span class="literal">true</span>);</div><div class="line">%使用测试数据，测试分类效果</div><div class="line">classfication = svmclassify(svmModel,<span class="built_in">test</span>,<span class="string">'showplot'</span>,<span class="literal">true</span>);</div><div class="line"></div><div class="line">%正确的分类情况为groupTest，实验测试获得的分类情况为classfication</div><div class="line">groupTest=[(species(91:100));(species(141:150))]; </div><div class="line">%计算分类精度</div><div class="line">count=0;</div><div class="line"><span class="keyword">for</span> i=(1:20)</div><div class="line">   <span class="keyword">if</span> strcmp(classfication(i),groupTest(i))</div><div class="line">      count=count+1;</div><div class="line">   end</div><div class="line">end</div><div class="line">fprintf(<span class="string">'分类精度为：%f\n'</span> ,count/20);</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<h2 id="K-均值（k-Means）"><a href="#K-均值（k-Means）" class="headerlink" title="K-均值（k-Means）"></a>K-均值（k-Means）</h2><p>划分聚类的方法，就是变成k个堆</p>
+<h3 id="Matlab-4"><a href="#Matlab-4" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">%	这里假定每个样本具有两个特征，共有20个样本</div><div class="line">x = [0 0;1 0;0 1;1 1;2 1;1 2];%我懒得打完了QAQ</div><div class="line">z = zeros(2,2);</div><div class="line">z1 = zeros(2,2);</div><div class="line">z = x(1:2,1:2);</div><div class="line"></div><div class="line">%寻找聚类中心</div><div class="line"><span class="keyword">while</span> 1</div><div class="line">	count = zeros(2,1);</div><div class="line">	allsum = zeros(2,2);</div><div class="line">	<span class="keyword">for</span> i = 1:20 % 对每一个样本i，计算到2个聚类中心的距离</div><div class="line">		temp1 = sqrt((z(1,1) - x(i,1)) .^2 + (z(1,2) - x(i,2)) .^2);</div><div class="line">		temp2 = sqrt((z(2,1) - x(i,1)) .^2 + (z(2,2) - x(i,2)) .^2);</div><div class="line">		<span class="keyword">if</span>(temp1&lt;temp2)</div><div class="line">			count(1) = count(1) + 1;</div><div class="line">			allsum(1,1) = allsum(1,1) + x(i,1);</div><div class="line">			allsum(1,2) = allsum(1,2) + x(i,2);</div><div class="line">		<span class="keyword">else</span></div><div class="line">			count(2) = count(2) + 1;</div><div class="line">			allsum(2,1) = allsum(2,1) + x(i,1);</div><div class="line">			allsum(2,2) = allsum(2,2) + x(i,2);</div><div class="line">		end</div><div class="line">	end</div><div class="line">	z1(1,1) = allsum(1,1)/count(1);</div><div class="line">	z1(1,2) = allsum(1,2)/count(1);</div><div class="line">	z1(2,1) = allsum(2,1)/count(2);</div><div class="line">	z1(2,2) = allsum(2,2)/count(2);</div><div class="line">	<span class="keyword">if</span>(z == z1)</div><div class="line">		<span class="built_in">break</span>;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		z = z1;</div><div class="line">	end</div><div class="line">end</div><div class="line">% 结果显示</div><div class="line">disp(z1);%输出聚类中心</div><div class="line">plot(x(:,1),x(:,2),<span class="string">'b*'</span>);</div><div class="line">hold on</div><div class="line">plot(z1(:,1),z1(:,2),<span class="string">'ro'</span>);</div><div class="line">title(<span class="string">'K均值法分类图'</span>);</div><div class="line">xlabel(<span class="string">'特征x1'</span>);</div><div class="line">ylabel(<span class="string">'特征x2'</span>);</div></pre></td></tr></table></figure>
+<h2 id="朴素贝叶斯判别模型"><a href="#朴素贝叶斯判别模型" class="headerlink" title="朴素贝叶斯判别模型"></a>朴素贝叶斯判别模型</h2><p>求后验概率时用到了<code>Bayes</code>公式</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>求解先验概率</li>
+<li>计算条件概率</li>
+<li>计算后验概率</li>
+</ol>
+<h3 id="Matlab-5"><a href="#Matlab-5" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">%导入数据</div><div class="line">training_sample = [];</div><div class="line">class = [];</div><div class="line"><span class="built_in">test</span> = [];</div><div class="line">test_class = [];</div><div class="line">%执行程序，注意不可有一元素完全相同的，这样就不能分类了，可以把这一列（行）删除</div><div class="line">ObjBayes = NaiveBayes.fit(training_sample,class);</div><div class="line">pred = ObjBayes.predict(<span class="built_in">test</span>);</div><div class="line">strcmpi(pred,test_class);</div><div class="line">%计算分类准确率</div><div class="line">A = sum(strcmpi(pred,test_class));</div><div class="line">B = length(strcmpi(pred,test_class));</div><div class="line">acc_tate = A/B</div><div class="line">%分类错误的编号</div><div class="line">find(strcmpi(pred,test_class) == 0)</div></pre></td></tr></table></figure>
+<h2 id="应用和小废话"><a href="#应用和小废话" class="headerlink" title="应用和小废话"></a>应用和小废话</h2><p>2012CUMCM A题<br>大数据的处理。。。<br>感觉这题很注重模型的使用，挑对了，不就对了吗？<br>感觉和美赛不一样<br>博博说A题有很多物理知识<br>我们应该不会选的<br>我是不是白白浪费了一天<br>唔～不开心<br>明天继续下一个专题喽</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>最近想让自己静下来<br>看《瓦尔登湖》<br>做瑜伽<br>但是貌似书看的杂杂乱乱的<br>🧘‍♀️都没做完就去折腾💻了<br>唔～这样很不好的呀<br>说好的，<br>期末完以后要多动动，不能再总是坐着的<br>下雪了，而且操场还远，<br>计划泡汤<br>说好的，要翻译文章，<br>书不能借，现在手头只有《瓦尔登湖》是英文版的<br>这中文看的都累<br>唔～打算回家买书<br>顺便买📓，嘻嘻嘻<br>话说，学校怎么只有吉品轩开了呢<br>真心不好吃<br>腊八腊八，冻掉下巴？！！<br>之前倒是没听过<br>不过正好下雪了<br>算吃了腊八粥吧～<br>冷的…还不好吃</p>
+<p>继续加油喽，<br>修身齐家治国平天下</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=422428548&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/23/Matlab-拟合与插值/" rel="next" title="Matlab-拟合与插值">
+                <i class="fa fa-chevron-left"></i> Matlab-拟合与插值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据建模"><span class="nav-number">1.</span> <span class="nav-text">数据建模</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#云模型"><span class="nav-number">1.1.</span> <span class="nav-text">云模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#云数字特征"><span class="nav-number">1.1.1.</span> <span class="nav-text">云数字特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触发机制与逆向触发机制"><span class="nav-number">1.1.2.</span> <span class="nav-text">触发机制与逆向触发机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab"><span class="nav-number">1.1.3.</span> <span class="nav-text">Matlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic回归"><span class="nav-number">1.2.</span> <span class="nav-text">Logistic回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Matlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分分析-PCA"><span class="nav-number">1.3.</span> <span class="nav-text">主成分分析(PCA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">1.3.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">Matlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机-SVM"><span class="nav-number">1.4.</span> <span class="nav-text">支持向量机(SVM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个小故事"><span class="nav-number">1.4.1.</span> <span class="nav-text">一个小故事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">Matlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-均值（k-Means）"><span class="nav-number">1.5.</span> <span class="nav-text">K-均值（k-Means）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">Matlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#朴素贝叶斯判别模型"><span class="nav-number">1.6.</span> <span class="nav-text">朴素贝叶斯判别模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab-5"><span class="nav-number">1.6.2.</span> <span class="nav-text">Matlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用和小废话"><span class="nav-number">1.7.</span> <span class="nav-text">应用和小废话</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">2.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
