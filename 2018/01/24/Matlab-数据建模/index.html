@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167846072306.jpg">
 <meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167846363241.jpg">
 <meta property="og:image" content="http://empress.top/2018/01/24/Matlab-数据建模/media/15167846492071.jpg">
-<meta property="og:updated_time" content="2018-01-24T15:30:56.820Z">
+<meta property="og:updated_time" content="2018-01-24T15:38:59.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab-数据建模">
 <meta name="twitter:description" content="This is my blog.这一部分貌似和概率论与数理统计很有关系唔～八大分布还记得…怎么最近看的感觉我都认识但是怎么看解析还是费劲呢？！！">
@@ -443,7 +443,7 @@
 <li>\(E<em>n = \sqrt{\frac{\pi}{2}}*\frac{1}{n}\sum</em>{1}^n\left|x-E_x\right|\)</li>
 <li>\(H_e = \sqrt{S^2-{E_n}^2}\)</li>
 </ol>
-<h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><p>could_transform.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> [x,y,Ex,En,He] = could_transform(y_spor,n)</div><div class="line">%x±íÊ¾ÔÆµÎ£¬y±íÊ¾Á¥Êô¶È£¬ÕâÀïÎÒÃÇ²ÉÓÃÖÓÐÎÁ¥Êô¶È£¬ÒâÒåÊÇ¶ÈÁ¿ÇãÏòµÄÎÈ¶¨³Ì¶È</div><div class="line"> </div><div class="line">Ex = mean(y_spor);</div><div class="line">En = mean(abs(y_spor - Ex)) .* sqrt(pi ./ 2);</div><div class="line">He = sqrt(var(y_spor) - En.^2);</div><div class="line"> </div><div class="line"><span class="keyword">for</span> q = 1:n</div><div class="line">    Enn = randn(1).* He + En;</div><div class="line">    x(q) = randn(1).* Enn + Ex;</div><div class="line">    y(q) = exp(-(x(q) - Ex) .^ 2 ./ (2 .* Enn .^2));</div><div class="line">end</div><div class="line">x;</div><div class="line">y;</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><p>could_transform.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> [x,y,Ex,En,He] = could_transform(y_spor,n)</div><div class="line"> </div><div class="line">Ex = mean(y_spor);</div><div class="line">En = mean(abs(y_spor - Ex)) .* sqrt(pi ./ 2);</div><div class="line">He = sqrt(var(y_spor) - En.^2);</div><div class="line"> </div><div class="line"><span class="keyword">for</span> q = 1:n</div><div class="line">    Enn = randn(1).* He + En;</div><div class="line">    x(q) = randn(1).* Enn + Ex;</div><div class="line">    y(q) = exp(-(x(q) - Ex) .^ 2 ./ (2 .* Enn .^2));</div><div class="line">end</div><div class="line">x;</div><div class="line">y;</div><div class="line">end</div></pre></td></tr></table></figure></p>
 <p>test.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">N = 1500;</div><div class="line">Y = [9.5 10.3 10.1 8.1</div><div class="line">    10.3 9.7 10.4 10.1</div><div class="line">    10.6 8.6 9.2 10.0]<span class="string">';</span></div><div class="line"><span class="string">for i = 1:size(Y,1)</span></div><div class="line"><span class="string">    subplot(size(Y,1)/2,2,i)    </span></div><div class="line"><span class="string">    [x,y,Ex,En,He] = could_transform(Y(i,:),N);</span></div><div class="line"><span class="string">    plot(x,y,'</span>r.<span class="string">'); </span></div><div class="line"><span class="string">    axis([8,12,0,1];</span></div><div class="line"><span class="string">end</span></div></pre></td></tr></table></figure></p>
 <h2 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h2><h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>\(ln\frac{\pi}{1-\pi} = \beta_0+\beta_1x_1+\cdot\cdot\cdot+\beta_kx_k\)<br>在<code>Matlab</code>中我们使用<code>regress</code>函数<br>感觉像是<code>0-1分布</code>，我瞎说的，别理我</p>
 <h3 id="Matlab-1"><a href="#Matlab-1" class="headerlink" title="Matlab"></a>Matlab</h3><p>已知：<br>\(p\)表示评价结果        \(q\)表示某概率<br>\(P = 0,q\leq0.5\)<br>\(P = 1,q&gt;0.5\)<br>为了方便做回归运算，取区间的中值作为\(q\)的值，即<br>\(P = 0,q=0.25\)<br>\(P = 1,q=0.75\)</p>
@@ -544,6 +544,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/01/25/Matlab-灰色预测/" rel="prev" title="Matlab-灰色预测">
+                Matlab-灰色预测 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -622,7 +626,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -633,7 +637,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
