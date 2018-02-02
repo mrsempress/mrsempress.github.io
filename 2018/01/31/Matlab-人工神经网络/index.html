@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog.拓扑结构，唔～之前盯了三天的东东不好玩～完了 说话和小飞流一样了">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-31T12:35:44.098Z">
+<meta property="og:updated_time" content="2018-02-02T15:52:35.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab-人工神经网络">
 <meta name="twitter:description" content="This is my blog.拓扑结构，唔～之前盯了三天的东东不好玩～完了 说话和小飞流一样了">
@@ -418,18 +418,43 @@
 
       
         <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>拓扑结构，唔～之前盯了三天的东东<br>不好玩～<br>完了 说话和小飞流一样了<br><a id="more"></a></p>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
+<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>唔～还是有工具箱，不买不买！！！<br>🙈我我我 应该不会碰到的<br>哎，应该有许多人不需要matlab就会了吧<br>果然我还是一颗小白菜🧙🏻‍♀️</p>
 <h2 id="基本理论"><a href="#基本理论" class="headerlink" title="基本理论"></a>基本理论</h2><p>两种网络：</p>
 <ol>
 <li>前向反馈网络（BP）</li>
 <li>径向基（RBF）<h3 id="常用激励函数"><a href="#常用激励函数" class="headerlink" title="常用激励函数"></a>常用激励函数</h3></li>
-<li>阈值型（一般只用在简单分类的MP模型）<br>\(f(x)=:0,x&lt;0;1,0\leq x\)</li>
-<li>线性型（一般只用在输入神经元和输出神经元）<br>\(f(x)=x\)</li>
-<li>S型（常用于隐含层神经元）<br>\(f(x)=\frac{1}{1+e^{-x}}或者f(x)=\frac{1-e^{-x}}{1+e^{-x}}\)<br>可以加常数\(c\)</li>
+<li>阈值型（一般只用在简单分类的MP模型）<br>$f(x)=:0,x&lt;0;1,0\leq x$</li>
+<li>线性型（一般只用在输入神经元和输出神经元）<br>$f(x)=x$</li>
+<li>S型（常用于隐含层神经元）<br>$f(x)=\frac{1}{1+e^{-x}}或者f(x)=\frac{1-e^{-x}}{1+e^{-x}}$<br>可以加常数$c$</li>
 </ol>
 <h2 id="BP"><a href="#BP" class="headerlink" title="BP"></a>BP</h2><p>“负梯度下降”<br>输入层、中间层（隐含层）、输出层 </p>
-<h2 id="RBF"><a href="#RBF" class="headerlink" title="RBF"></a>RBF</h2><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+<h3 id="透视神经网络的学习步骤"><a href="#透视神经网络的学习步骤" class="headerlink" title="透视神经网络的学习步骤"></a>透视神经网络的学习步骤</h3><p>已炼钢厂的炼钢数据为例。</p>
+<ol>
+<li>准备训练网络的样本<br>首先，“开始温度”的影响因素作为输入样本（需要归一化）</li>
+<li>确定网络的初始参数<br>最大训练次数、中间层神经元数量<code>（中间层神经元数量=输入层神经元数量-1）</code>、网络学习速率、训练的目标误差、是否添加动量因子(防止陷入局部极小值）</li>
+<li>初始化网络权值和阈值<br><strong>注</strong> 输入样本按照每一个行作为一个输入的维度，所以你的矩阵可能需要转置<br>有多少个神经元该层就有多少个阈值</li>
+<li>计算第一层神经元的输入和输出</li>
+<li>计算第二层神经元的输入<br>$ I<em>2 = w</em>{ij} <em> X + B_{ij} </em> ones $</li>
+<li>计算第二层神经元的输出<br>采用一种激励函数</li>
+<li>计算第三层神经元的输入和输出<br>输入和第二层一样$I<em>3 = w</em>{jk} <em> O<em>2 + B</em>{jk} </em> ones $<br>通常第三层神经元也为线性函数，所以有\(O_3 = I_3\)</li>
+<li>计算能量函数E<br>计算E的目的是：若网络输出与实际输出样本之间的误差的平方和达到预定误差就可以停止训练网络了。<br>$E = \sum{(Y - O_3)^2}$</li>
+<li>计算第二层与第三层之间权值和阈值调整量<br>核心：$\delta w<em>{ij} = -\eta \frac{dE}{dw</em>{ij}}=-\eta<em>(Y-O_3)</em>O<em>2$<br>$\delta B</em>{jk} = \frac{dE}{dB_{jk}}=-\eta<em>(Y-O_3)</em>ones$</li>
+<li>计算第一层与第二层之间权值和阈值调整量<br>将你选的激励函数求导<br>$\delta w<em>{ij} = -\eta \frac{dE}{dw</em>{ij}}=-\eta<em>w_{ij}</em>(Y-O<em>3)<em>f’(x)</em>X$<br>$\delta B</em>{ij} = -\eta<em>\frac{dE}{dB_{ij}}=-\eta</em>w_{jk}<em>(Y-O_3)</em>f’(x)*ones$</li>
+<li>计算调整后的权值和阈值<br>把t时刻各层权值和阈值加上各自的调整值<br>$w<em>{jk}(t+1) = \delta w</em>{jk}+w<em>{jk}(t)$<br>$B</em>{jk}(t+1) = \delta B<em>{jk}+B</em>{jk}(t)$<br>$w<em>{ij}(t+1) = \delta w</em>{ij}+w<em>{ij}(t)$<br>$B</em>{ij}(t+1) = \delta B<em>{ij}+B</em>{ij}(t)$</li>
+<li>网络输出值还原<br>因为输入值进行过归一化<h2 id="RBF"><a href="#RBF" class="headerlink" title="RBF"></a>RBF</h2><h3 id="三种学习方式："><a href="#三种学习方式：" class="headerlink" title="三种学习方式："></a>三种学习方式：</h3></li>
+<li>聚类方法</li>
+<li>梯度训练方法</li>
+<li>正交最小二乘法<h3 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a>求解过程</h3></li>
+<li>原始数据输入</li>
+<li>数据归一化</li>
+<li>网络训练</li>
+<li>对原始数据进行仿真</li>
+<li>将仿真结果与已知样本进行对比</li>
+<li>对新数据进行仿真</li>
+</ol>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>CUMCM 2006 B</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>发现我之前写数学公式的时候，记忆的明明是<code>\\(...\\)</code>，然而今天再一看是<code>$...$</code>，居然和<code>Latex</code>一样哎！试试看，之前的不匹配可不可以了。不知道那个又是从哪里看到的呢！哎，记忆都混乱了。<br>打算之后看看<code>Latex</code>的美化，不知道为什么我的<code>\emph</code>，没有作用，哎，就很奇怪。<br>发现很多小软件由于是别的语言写的，基本不用学，之间上网一搜，都是没几页的东西。不过，最终都不是属于我的……所以我最近感觉都没有学习一样……<br>论文的很多东西，也没怎么模拟，感觉自己大概了解了，就没去实战，一问就倒了；还是尧神，一个一个去试了；我懒呀（逃<br>为什么很多仿真软件都是国外的，还都是windows的呢？！开了虚拟机，但是激活码过期了，上不了网，真的是….</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
 <p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=422428548&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
 <p><div id="uyan_frame"></div></p>
@@ -498,8 +523,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/01/Matlab-层次分析法/" rel="prev" title="Matlab-层次分析法">
-                Matlab-层次分析法 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/03/Matlab-层次分析法/" rel="prev" title="Matlab-模型评估">
+                Matlab-模型评估 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +605,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -679,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本理论"><span class="nav-number">1.</span> <span class="nav-text">基本理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用激励函数"><span class="nav-number">1.1.</span> <span class="nav-text">常用激励函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BP"><span class="nav-number">2.</span> <span class="nav-text">BP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RBF"><span class="nav-number">3.</span> <span class="nav-text">RBF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本理论"><span class="nav-number">1.</span> <span class="nav-text">基本理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用激励函数"><span class="nav-number">1.1.</span> <span class="nav-text">常用激励函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BP"><span class="nav-number">2.</span> <span class="nav-text">BP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#透视神经网络的学习步骤"><span class="nav-number">2.1.</span> <span class="nav-text">透视神经网络的学习步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RBF"><span class="nav-number">3.</span> <span class="nav-text">RBF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种学习方式："><span class="nav-number">3.1.</span> <span class="nav-text">三种学习方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求解过程"><span class="nav-number">3.2.</span> <span class="nav-text">求解过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
