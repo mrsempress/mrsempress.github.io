@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog.这年头，听到机器学习的次数增多了现在才知道这也算啊看到了遗传的知识觉得很亲切对于公式乱码，图片加载不出来的问题，之后会陆续解决的很奇怪的是我这里预览是对的呢！！！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-02T16:32:39.429Z">
+<meta property="og:updated_time" content="2018-02-02T16:51:30.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab-遗传算法">
 <meta name="twitter:description" content="This is my blog.这年头，听到机器学习的次数增多了现在才知道这也算啊看到了遗传的知识觉得很亲切对于公式乱码，图片加载不出来的问题，之后会陆续解决的很奇怪的是我这里预览是对的呢！！！">
@@ -421,13 +421,13 @@
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>编码<br>某一参数取值范围为$(L,U)$，使用长度为k的二进制编码表示该参数<br>$\delta=\frac{U-L}{2^k-1}$</li>
-<li>解码<br>$x=L+(\sum_{(i=1)}^kb<em>i2^{i-1})\frac{U-L}{2^k-1}$<br>其中，$\sum</em>{(i=1)}^kb_i2^{i-1}$就是一般的二进制转十进制的方法</li>
+<li>编码<br>某一参数取值范围为\((L,U)\)，使用长度为k的二进制编码表示该参数<br>\(\delta=\frac{U-L}{2^k-1}\)</li>
+<li>解码<br>\(x=L+(\sum_{(i=1)}^kb<em>i2^{i-1})\frac{U-L}{2^k-1}\)<br>其中，\(\sum</em>{(i=1)}^kb_i2^{i-1}\)就是一般的二进制转十进制的方法</li>
 <li>交配<br>染色体部分交换，这里是指编码同长度的部分交换</li>
 <li>突变<br>基因码小几率翻转，即<code>0-1</code>互换</li>
 <li>倒位<br>一个染色体某区段正常排列顺序发生180度的颠倒</li>
 <li>个体适应度评估<br>个体适应度大的个体更容易被遗传到下一代</li>
-<li>复制<br>若设种群中个体总数为<code>N</code>，个体适应度为<code>f_i</code>，则个体<code>i</code>被选中的几率<br>$P_i=\frac{f<em>i}{\sum</em>{(k=1)}^Nf_k}$</li>
+<li>复制<br>若设种群中个体总数为<code>N</code>，个体适应度为<code>f_i</code>，则个体<code>i</code>被选中的几率<br>\(P_i=\frac{f<em>i}{\sum</em>{(k=1)}^Nf_k}\)</li>
 </ol>
 <h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ol>
 <li>协同进化<br>生物之间还存在协作、寄生的关系</li>
@@ -522,7 +522,7 @@
 <li><p>归一化数据（按占比来重新规划数据）<br>归一化后某数据如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">A = [0.317</div><div class="line">    0.461</div><div class="line">    0.649</div><div class="line">    1.000</div><div class="line">    0.256</div><div class="line">    0.156</div><div class="line">    0.576</div><div class="line">    0.077</div><div class="line">    0.000</div><div class="line">    0.271];</div><div class="line">B = [0.600</div><div class="line">    0.100</div><div class="line">    0.000</div><div class="line">    0.000</div><div class="line">    0.100</div><div class="line">    1.000</div><div class="line">    0.099</div><div class="line">    0.999</div><div class="line">    0.800</div><div class="line">    0.400];</div><div class="line">C = [0.489</div><div class="line">    1.000</div><div class="line">    0.000</div><div class="line">    0.529</div><div class="line">    0.460</div><div class="line">    0.632</div><div class="line">    0.305</div><div class="line">    0.529</div><div class="line">    0.138</div><div class="line">    0.408];</div><div class="line">D = [0.060</div><div class="line">    0.141</div><div class="line">    0.467</div><div class="line">    1.000</div><div class="line">    0.085</div><div class="line">    0.060</div><div class="line">    0.430</div><div class="line">    0.029</div><div class="line">    0.000</div><div class="line">    0.140];</div></pre></td></tr></table></figure>
 </li>
-<li><p>组建模型<br>MAX $COR(\alpha,\beta,\lambda)=\frac{\sum_{i=1}^{10}[(E_i-\overline{E})(D<em>i-\overline{D})]}{\sqrt{\sum</em>{i=1}^{10}[(E<em>i-\overline{E})^2}\sqrt{\sum</em>{i=1}^{10}[(D_i-\overline{D})^2}}$<br>s.t.<br>$E=\alpha A_i+\beta B_i+\lambda C_i$<br>$\alpha+\beta+\lambda=1$<br>$0\leq\alpha\leq1$<br>$0\leq\beta\leq1$<br>$0\leq\lambda\leq1$<br>求出目标函数如下</p>
+<li><p>组建模型<br>MAX \(COR(\alpha,\beta,\lambda)=\frac{\sum_{i=1}^{10}[(E_i-\overline{E})(D<em>i-\overline{D})]}{\sqrt{\sum</em>{i=1}^{10}[(E<em>i-\overline{E})^2}\sqrt{\sum</em>{i=1}^{10}[(D_i-\overline{D})^2}}\)<br>s.t.<br>\(E=\alpha A_i+\beta B_i+\lambda C_i\)<br>\(\alpha+\beta+\lambda=1\)<br>\(0\leq\alpha\leq1\)<br>\(0\leq\beta\leq1\)<br>\(0\leq\lambda\leq1\)<br>求出目标函数如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">syms a b c</div><div class="line">E = a .* A + b .* B + c .* C;</div><div class="line">COR_UP = sum((E -mean(E)) .* (D - mean(D)));</div><div class="line">COR_DOWN = sqrt(sum((E - mean(E)) .* (E - mean(E)))) .* sqrt(sum((D - mean(D)) .* (D - mean(D))));</div><div class="line">COR = simplify(COR_UP ./ COR_DOWN)</div><div class="line">%貌似simple已经被淘汰了，应该是一样的意思</div><div class="line">%看起来和书上的输出结果不一样，也许数据敲错了</div></pre></td></tr></table></figure>
 </li>
 </ol>

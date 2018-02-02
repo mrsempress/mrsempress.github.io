@@ -110,7 +110,7 @@
 <meta property="og:description" content="This is my blog.本场网络赛是我的第一场网络赛，也是和队友第一次的配合，由于某些原因明明没有到场，本蒟篛连代码都搓不出来了，意外地蒙对了规律。此次网络赛在2017-09-09开始，补题龟速中，直到更文时，仍未补完，但会继续学习，争取补完。目前要停更了，高级算法不适合我了，还有得加快速度，国庆节加油啊，尽量补题。（未完待续）">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://empress.top/img/icpc21.png">
-<meta property="og:updated_time" content="2018-02-02T16:31:41.047Z">
+<meta property="og:updated_time" content="2018-02-02T16:41:37.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017 ACM-ICPC Asia Regional Urumqi Online">
 <meta name="twitter:description" content="This is my blog.本场网络赛是我的第一场网络赛，也是和队友第一次的配合，由于某些原因明明没有到场，本蒟篛连代码都搓不出来了，意外地蒙对了规律。此次网络赛在2017-09-09开始，补题龟速中，直到更文时，仍未补完，但会继续学习，争取补完。目前要停更了，高级算法不适合我了，还有得加快速度，国庆节加油啊，尽量补题。（未完待续）">
@@ -430,7 +430,7 @@
 <h2 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h2><p>犯了个错误，<code>sum&lt;0</code>后，我加了个break，本想剪短时间，却忘记多组数据，如果不把数据读完，会造成遗留数据作为下一组数据内容，估计也只有我会犯这个错误吧！</p>
 <h1 id="D-Hack-Portals"><a href="#D-Hack-Portals" class="headerlink" title="D. Hack Portals"></a>D. <a href="https://nanti.jisuanke.com/t/16953" target="_blank" rel="external">Hack Portals</a></h1><p>题目还未曾看！惊悚！</p>
 <h1 id="E-Half-consecutive-Numbers"><a href="#E-Half-consecutive-Numbers" class="headerlink" title="E. Half-consecutive Numbers"></a>E. <a href="https://nanti.jisuanke.com/t/16954" target="_blank" rel="external">Half-consecutive Numbers</a></h1><p><img src="/img/icpc21.png" alt="屏幕快照 2017-09-28 下午5.20.27"></p>
-<h2 id="打表思路一"><a href="#打表思路一" class="headerlink" title="打表思路一"></a>打表思路一</h2><p>$\frac{r*(r+1)}{2}=k^2\quad(\forall k\in\mathbb N)$<br>除了1以外,$r!=\frac{r+1}{2}$且$r+1!=\frac{r}{2}$,<br>如果r是奇数,那么$\frac{r+1}{2}$和r是完全平方数；<br>所以$\frac{r+1}{2}=\frac{i^2+1}{2}$是完全平方数，且$r=i^2$,<br>如果r是偶数,那么$\frac{r}{2}$和$r+1$是完全平方数；<br>所以$\frac{r+1-1}{2}=\frac{i^2-1}{2}$是完全平方数，且$r=i^2-1$,</p>
+<h2 id="打表思路一"><a href="#打表思路一" class="headerlink" title="打表思路一"></a>打表思路一</h2><p>\(\frac{r*(r+1)}{2}=k^2\quad(\forall k\in\mathbb N)\)<br>除了1以外,\(r!=\frac{r+1}{2}\(且\(r+1!=\frac{r}{2}\),<br>如果r是奇数,那么\(\frac{r+1}{2}\)和r是完全平方数；<br>所以\(\frac{r+1}{2}=\frac{i^2+1}{2}\)是完全平方数，且\(r=i^2\),<br>如果r是偶数,那么\(\frac{r}{2}\)和\(r+1\)是完全平方数；<br>所以\(\frac{r+1-1}{2}=\frac{i^2-1}{2}\)是完全平方数，且\(r=i^2-1\),</p>
 <h2 id="打表思路二"><a href="#打表思路二" class="headerlink" title="打表思路二"></a>打表思路二</h2><table>
 <thead>
 <tr>
@@ -444,17 +444,17 @@
 </thead>
 <tbody>
 <tr>
-<td>$(1*1)^2$</td>
-<td>$(2*3)^2$</td>
-<td>$(5*7)^2$</td>
-<td>$(12*17)^2$</td>
-<td>$(29*41)^2$</td>
-<td>$(70*99)^2$</td>
+<td>\((1*1)^2\)</td>
+<td>\((2*3)^2\)</td>
+<td>\((5*7)^2\)</td>
+<td>\((12*17)^2\)</td>
+<td>\((29*41)^2\)</td>
+<td>\((70*99)^2\)</td>
 </tr>
 </tbody>
 </table>
 <p>我们会发现第一个数字是前面的第一个和第二个数字之和，而第二个数字是第一个数字的平方的两倍加减一，当为第偶数个时，减一；当为第奇数个时减一。我们现在找到了我们的了我们的k了，于是乎，我们即可以求出r了。</p>
-<h2 id="打表思路三"><a href="#打表思路三" class="headerlink" title="打表思路三"></a>打表思路三</h2><p>转自一个<a href="https://wiki-three-investigators.icpc-camp.org/2017%20ACM-ICPC%20Asia%20Regional%20Urumqi%20Online" target="_blank" rel="external">dalao的博客</a><br>其实我没有看懂，但是我知道他的递推式好厉害啊！<br>$r_1=0,r<em>2=1,r</em>{n+2}=6*r_{n+1}-r_n+2$<br>数学的感觉很重要呐！！！</p>
+<h2 id="打表思路三"><a href="#打表思路三" class="headerlink" title="打表思路三"></a>打表思路三</h2><p>转自一个<a href="https://wiki-three-investigators.icpc-camp.org/2017%20ACM-ICPC%20Asia%20Regional%20Urumqi%20Online" target="_blank" rel="external">dalao的博客</a><br>其实我没有看懂，但是我知道他的递推式好厉害啊！<br>\(r_1=0,r<em>2=1,r</em>{n+2}=6*r_{n+1}-r_n+2\)<br>数学的感觉很重要呐！！！</p>
 <p>经过测试，我觉得第二个更快，也可能是第一个思路更正常吧！（我只测了一和二，dalao的那个不知道是怎么推出来的，看他的解释看不懂啊！！欢迎来给我讲解呢！</p>
 <h2 id="AC代码-3"><a href="#AC代码-3" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cmath&gt;</span></div><div class="line"><span class="comment">#define ll long long</span></div><div class="line">using namespace std;</div><div class="line">ll a[25]=&#123;1,8,</div><div class="line">    49,</div><div class="line">    288,</div><div class="line">    1681,</div><div class="line">    9800,</div><div class="line">    57121,</div><div class="line">    332928,</div><div class="line">    1940449,</div><div class="line">    11309768,</div><div class="line">    65918161,</div><div class="line">    384199200,</div><div class="line">    2239277041,</div><div class="line">    13051463048,</div><div class="line">    76069501249,</div><div class="line">    443365544448,</div><div class="line">    2584123765441,</div><div class="line">    15061377048200,</div><div class="line">    87784138523761,</div><div class="line">    511643454094368,</div><div class="line">    2982076586042449&#125;;</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">//    ll x=1,y=1;</div><div class="line">//    int flag=1;</div><div class="line">//    <span class="keyword">for</span>(ll i=1;i&lt;=20;i++)&#123;</div><div class="line">//        ll xx=x+y;</div><div class="line">//        y=sqrt(xx*xx*2+flag);</div><div class="line">//        x=xx;</div><div class="line">//         <span class="keyword">if</span>(i%2)</div><div class="line">//         cout&lt;&lt;xx*xx*2&lt;&lt;endl;</div><div class="line">//        <span class="keyword">else</span>  cout&lt;&lt;xx*xx*2-1&lt;&lt;endl;</div><div class="line">//        cout&lt;&lt;(ll)(x*y*sqrt(2.0))&lt;&lt;endl;</div><div class="line">//        flag*=-1;</div><div class="line">//    &#125;</div><div class="line">//</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    int cas=1;</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        long long n;</div><div class="line">        scanf(<span class="string">"%lld"</span>,&amp;n);</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;=21;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i]&gt;=n)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"Case #%d: %lld\n"</span>,cas++,a[i]);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="小记-1"><a href="#小记-1" class="headerlink" title="小记"></a>小记</h2><p>判断是否是完全平方时，用sqrt函数后，需要将其强制转换成int类型后，再平方。</p>
