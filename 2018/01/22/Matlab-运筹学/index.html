@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://empress.top/2018/01/22/Matlab-运筹学/media/15167084031928.jpg">
 <meta property="og:image" content="http://empress.top/2018/01/22/Matlab-运筹学/media/15166366081487.jpg">
 <meta property="og:image" content="http://empress.top/2018/01/22/Matlab-运筹学/media/15166709758544.jpg">
-<meta property="og:updated_time" content="2018-01-24T13:20:25.204Z">
+<meta property="og:updated_time" content="2018-02-02T16:32:29.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab--运筹学">
 <meta name="twitter:description" content="This is my blog.好久没学知识了，都是复习的锅感觉blog太弱了，看到别人的都是满满的知识我还都看不懂今天终于学了点点点点说：你这叫搬运工，方便自己查么">
@@ -536,7 +536,7 @@
 <p>test.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x0 = [-1,1];</div><div class="line">x = fminunc(<span class="string">'fun1'</span>,x0);</div><div class="line">y = fun1(x)</div></pre></td></tr></table></figure></p>
 <p><strong>小废话</strong>上面那个例子不知道题目了，明明昨天写的么，可能是Matlab官方手册上的吧！下面给出另一个例子，不写题目，自行体会啦！<br>fun2.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> g = fun2(x);</div><div class="line">M = 50000;</div><div class="line">f = x(1)^2 + x(2)^2 + 8;</div><div class="line">g = f - M * min(x(1),0) - M * min(x(2),0) - M * min(x(1)^2-x(2),0)+M * abs(-x(1)-x(2)^2+2);</div></pre></td></tr></table></figure></p>
 <p>test.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x,y] = fminunc(<span class="string">'test'</span>,rand(2,1))</div><div class="line">% rand(m,n)产生m行n列的位于(0,1)区间的随机数</div></pre></td></tr></table></figure></p>
-<p><strong>小废话</strong> 唔，好吧！我觉得我自己过几天也看不懂了。<br>解决的问题：（形式）<br>min f(x)<br>s.t.<br>\(g_i(x) &lt;= 0, i=1,2,…,r\)<br>\(h_i(x) &gt;= 0, i=1,2,…,s\)<br>\(k_i(x) = 0,  i=1,2,…,t\)<br>M是一个充分大的数，自己决定的，但是要大于0 然后构造函数<br>\(P(x,M) = f(x) + M1 <em> max(G(x),0) + M2 </em> min(H(x),0) + M3 * ||K(x)||\)<br>其中\(M_1，M_2，M_3\)是适当的行向量。</p>
+<p><strong>小废话</strong> 唔，好吧！我觉得我自己过几天也看不懂了。<br>解决的问题：（形式）<br>min f(x)<br>s.t.<br>$g_i(x) &lt;= 0, i=1,2,…,r$<br>$h_i(x) &gt;= 0, i=1,2,…,s$<br>$k_i(x) = 0,  i=1,2,…,t$<br>M是一个充分大的数，自己决定的，但是要大于0 然后构造函数<br>$P(x,M) = f(x) + M1 <em> max(G(x),0) + M2 </em> min(H(x),0) + M3 * ||K(x)||$<br>其中$M_1，M_2，M_3$是适当的行向量。</p>
 <ol>
 <li>linprog<br><img src="media/15166365298694.jpg" alt=""><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">c = [-2;-3;5];</div><div class="line">a = [-2,5,-1;1,3,1];</div><div class="line">b = [-10;12];</div><div class="line">Aeq = [1,1,1];</div><div class="line">beq = [7];</div><div class="line">VlB = zeros(3,1)</div><div class="line">VUB = [];</div><div class="line">x = linprog(c,a,b,Aeq,beq,VlB,VUB)</div></pre></td></tr></table></figure>
 </li>

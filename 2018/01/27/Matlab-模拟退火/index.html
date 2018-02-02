@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog.第一次数模的时候就是做了模拟退火的算法那时候受高人指点就知道要用此算法单纯敲完就很开心出来的图形震惊自己现在看看这明显是误差大的图呀！！！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-28T15:48:13.059Z">
+<meta property="og:updated_time" content="2018-02-02T16:28:20.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab-模拟退火">
 <meta name="twitter:description" content="This is my blog.第一次数模的时候就是做了模拟退火的算法那时候受高人指点就知道要用此算法单纯敲完就很开心出来的图形震惊自己现在看看这明显是误差大的图呀！！！">
@@ -421,16 +421,16 @@
 <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>模拟退火（SA）是三大非经典算法之一，与优化问题相结合。可以避免陷入局部最优的情况。</p>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>由于流程图不可显示，看来也不是支持所有语言么</p>
 <ol>
-<li>令\(T=T_0\)，即开始退火的初始温度，随机生成一个初始解\(x_0\)，并计算相应的目标函数值\(E(x_0)\)</li>
-<li>令\(T\)等于冷却进度表中的下一个值\(T_i\)</li>
-<li>根据当前解\(x_i\)进行扰动，产生一个新解\(x_j\)，并计算相应的目标函数值\(E(x_j)\)，得到\(\delta E=E(x_j)-E(x_i)\)</li>
-<li>若\(\delta E&lt;0\)，则接受新解；否则，以\(e^{-\frac{\delta  E}{T_i}}\)接受，\(T_i\)为当前温度</li>
-<li>重复\(L_k\)次扰动和接受，即重复3，4</li>
-<li>判断\(T\)是否已达到\(T_f\)。若是，则终止算法；否则，转到2</li>
+<li>令$T=T_0$，即开始退火的初始温度，随机生成一个初始解$x_0$，并计算相应的目标函数值$E(x_0)$</li>
+<li>令$T$等于冷却进度表中的下一个值$T_i$$</li>
+<li>根据当前解$x_i$进行扰动，产生一个新解$x_j$，并计算相应的目标函数值$E(x_j)$，得到$\delta E=E(x_j)-E(x_i)$</li>
+<li>若$\delta E&lt;0$，则接受新解；否则，以$e^{-\frac{\delta  E}{T_i}}$接受，$T_i$为当前温度</li>
+<li>重复$L_k$次扰动和接受，即重复3，4</li>
+<li>判断$T$是否已达到$T_f$。若是，则终止算法；否则，转到2</li>
 </ol>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="TSP（旅行商问题）"><a href="#TSP（旅行商问题）" class="headerlink" title="TSP（旅行商问题）"></a><a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem" target="_blank" rel="external">TSP（旅行商问题）</a></h3><p><strong>注</strong> <a href="http://mrsempress.top/2018/01/26/Matlab-遗传算法/#more" target="_blank" rel="external">遗传算法</a>也可以<a href="http://www.cclycs.com/y21604.html" target="_blank" rel="external">解</a><br>也可用贪心的算法解，貌似模拟退火的准确度较高，且花费时间较少</p>
-<h4 id="新解产生"><a href="#新解产生" class="headerlink" title="新解产生"></a>新解产生</h4><p>1）二变换法：任选序号\(u,v （设u&lt;v&lt;n）\)，交换访问顺序。<br>2）三变换法：任选序号\(u,v,w （设u\leq v&lt;w）\)，将\(u\)和\(v\)之间的路径插到\(w\)之后</p>
-<h4 id="Maekov链长度"><a href="#Maekov链长度" class="headerlink" title="Maekov链长度"></a>Maekov链长度</h4><p>一般来说，可简单令\(L_k=100n\)</p>
+<h4 id="新解产生"><a href="#新解产生" class="headerlink" title="新解产生"></a>新解产生</h4><p>1）二变换法：任选序号$u,v （设u&lt;v&lt;n）$，交换访问顺序。<br>2）三变换法：任选序号$u,v,w （设u\leq v&lt;w）$，将$u$和$v$之间的路径插到$w$之后</p>
+<h4 id="Maekov链长度"><a href="#Maekov链长度" class="headerlink" title="Maekov链长度"></a>Maekov链长度</h4><p>一般来说，可简单令$L_k=100n$</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><a href="http://blog.csdn.net/ouzuosong/article/details/52390182?locationNum=1" target="_blank" rel="external">代码</a></h4><h3 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h3><p>代码类似</p>
 <h2 id="ASA工具箱"><a href="#ASA工具箱" class="headerlink" title="ASA工具箱"></a>ASA工具箱</h2><p>貌似最近的都有工具箱么。。。<br>可惜没找到可用的工具箱。。。<br>有一个怪怪的<br>之后再看看吧</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>今天雪还是没有停的趋势<br>泡了茶<br>教室的人也越来越少了<br>我也只有下午出门了<br>怕是都窝在被窝里吧<br>只可惜没有网 没有灯<br>终归不舒服<br>发现最近上传的很多细节都没有处理好<br>昨天的流程图不行<br>看来以后还得慢慢研究<br>至于内容 本来blog也只是我一时兴起<br>既是作为一个日记<br>也是作为一个笔记吧<br>若真要好好做的话<br>那些原创的东西又有些难<br>倒是为难我了<br>暂且这样吧<br>也许之后会改变想法<br>那再归类整理一下 之后重头再来<br>倒也未尝不可</p>
