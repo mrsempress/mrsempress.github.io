@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="blog," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 从开发文档上扒下来的，加上一下常用的顺便试验一下，哪些可以在github上显示呢之后会更新一些可能会用到的之后有空的时候，会加上数学公式、希腊字母、字体等毕竟是程序媛么🙈（未完待续）">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公式与美化">
+<meta property="og:url" content="http://empress.top/2018/02/05/media/公式与美化/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 从开发文档上扒下来的，加上一下常用的顺便试验一下，哪些可以在github上显示呢之后会更新一些可能会用到的之后有空的时候，会加上数学公式、希腊字母、字体等毕竟是程序媛么🙈（未完待续）">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
+<meta property="og:updated_time" content="2018-02-05T15:04:51.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公式与美化">
+<meta name="twitter:description" content="This is my blog. 从开发文档上扒下来的，加上一下常用的顺便试验一下，哪些可以在github上显示呢之后会更新一些可能会用到的之后有空的时候，会加上数学公式、希腊字母、字体等毕竟是程序媛么🙈（未完待续）">
+<meta name="twitter:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/02/05/media/公式与美化/"/>
+
+
+
+
+
+  <title>公式与美化 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/02/05/media/公式与美化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">公式与美化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T09:54:39+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/other/" itemprop="url" rel="index">
+                    <span itemprop="name">other</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/05/media/公式与美化/" class="leancloud_visitors" data-flag-title="公式与美化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>从开发文档上扒下来的，加上一下常用的<br>顺便试验一下，哪些可以在github上显示呢<br>之后会更新一些可能会用到的<br>之后有空的时候，会加上数学公式、希腊字母、字体等<br>毕竟是程序媛么🙈<br>（未完待续）<br><a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 第一级标题 `&lt;h1&gt;` </div><div class="line">## 第二级标题 `&lt;h2&gt;` </div><div class="line">###### 第六级标题 `&lt;h6&gt;`</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<h1 id="第一级标题-lt-h1-gt"><a href="#第一级标题-lt-h1-gt" class="headerlink" title="第一级标题 &lt;h1&gt;"></a>第一级标题 <code>&lt;h1&gt;</code></h1><h2 id="第二级标题-lt-h2-gt"><a href="#第二级标题-lt-h2-gt" class="headerlink" title="第二级标题 &lt;h2&gt;"></a>第二级标题 <code>&lt;h2&gt;</code></h2><h6 id="第六级标题-lt-h6-gt"><a href="#第六级标题-lt-h6-gt" class="headerlink" title="第六级标题 &lt;h6&gt;"></a>第六级标题 <code>&lt;h6&gt;</code></h6><h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这些文字会生成</div><div class="line">*这些文字会生成`&lt;em&gt;`*</div><div class="line">**这些文字会生成`&lt;strong&gt;`**</div></pre></td></tr></table></figure>
+<p>效果如下：<br>这些文字会生成<br><em>这些文字会生成<code>&lt;em&gt;</code></em></p>
+<p><strong>这些文字会生成<code>&lt;strong&gt;</code></strong></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* 项目一 无序列表 `* + 空格键`</div><div class="line">* 项目二</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ul>
+<li>项目一 无序列表 <code>* + 空格键</code></li>
+<li>项目二</li>
+</ul>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 项目一 有序列表 `数字 + . + 空格键`</div><div class="line">2. 项目二 </div><div class="line">3. 项目三</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ol>
+<li>项目一 有序列表 <code>数字 + . + 空格键</code></li>
+<li>项目二 </li>
+<li>项目三</li>
+</ol>
+<h3 id="任务列表（Task-lists）"><a href="#任务列表（Task-lists）" class="headerlink" title="任务列表（Task lists）"></a>任务列表（Task lists）</h3><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- [ ] 任务一 未做任务 </div><div class="line">- [x] 任务二 已做任务</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 任务一 未做任务 </li>
+<li style="list-style: none"><input type="checkbox" checked> 任务二 已做任务 </li>
+</ul>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![GitHub set up](http://zh.mweb.im/asset/img/set-up-git.gif)</div><div class="line">格式: ![Alt Text](url)</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="http://zh.mweb.im/asset/img/set-up-git.gif" alt="GitHub set up"></p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">email &lt;example@example.com&gt;</div><div class="line">[GitHub](http://github.com)</div><div class="line">自动生成连接  &lt;http://www.github.com/&gt;</div></pre></td></tr></table></figure>
+<p><code>Control + Shift + L</code> 可插入Markdown语法。<br>如果是 MWeb 的文档库中的文档，拖放或<code>CMD + Option + I</code> 导入非图片时，会生成连接。<br>效果如下：</p>
+<p>Email 连接： <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#101;&#120;&#97;&#x6d;&#112;&#108;&#101;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#101;&#120;&#97;&#x6d;&#112;&#108;&#101;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
+<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">某某说:</div><div class="line">&gt; 第一行引用</div><div class="line">&gt; 第二行费用文字</div></pre></td></tr></table></figure>
+<p><code>CMD + Shift + B</code> 可插入Markdown语法。<br>效果如下：</p>
+<p>某某说:</p>
+<blockquote>
+<p>第一行引用<br>第二行费用文字</p>
+</blockquote>
+<h2 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">像这样即可： `code`</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p>像这样即可：<code>code</code></p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">第一格表头 | 第二格表头</div><div class="line">--------- | -------------</div><div class="line">内容单元格 第一列第一格 | 内容单元格第二列第一格</div><div class="line">内容单元格 第一列第二格 多加文字 | 内容单元格第二列第二格</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>第一格表头</th>
+<th>第二格表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内容单元格 第一列第一格</td>
+<td>内容单元格第二列第一格</td>
+</tr>
+<tr>
+<td>内容单元格 第一列第二格 多加文字</td>
+<td>内容单元格第二列第二格</td>
+</tr>
+</tbody>
+</table>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>Markdown 语法：</p>
+<p>加删除线： <code>~~删除这些~~</code></p>
+<p>效果如下：</p>
+<p>加删除线： <del>删除这些</del></p>
+<h2 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h2><p>以下三种方式都可以生成分隔线：</p>
+<pre><code>***
+
+*****
+
+- - -
+</code></pre><p>效果如下：</p>
+<hr>
+<hr>
+<hr>
+<h2 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h2><p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">先得加一句话：&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;</div><div class="line">实验一些：</div><div class="line">行内公式：</div><div class="line">\\(	x = \frac&#123;-b \pm \sqrt&#123;b^2 - 4ac&#125;&#125;&#123;2a&#125; \\)</div><div class="line">块内公式：</div><div class="line">$$ x + 2 = y $$</div></pre></td></tr></table></figure>
+<p>效果如下：（在github.io上看不到，但如果自己买了，那就可以见了，原因在于，我用的是MathJax）</p>
+<p>行内公式：<br>\(    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)<br>块内公式：<br>$$ x + 2 = y $$</p>
+<h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\\(x^2 + x^{10} = 1 \\)</code></td>
+<td>\(x^2 + x^{10} = 1 \)</td>
+</tr>
+<tr>
+<td><code>\\(x_2 \\)</code></td>
+<td>\(x_2 \)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="分数与根号"><a href="#分数与根号" class="headerlink" title="分数与根号"></a>分数与根号</h3><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\\( \frac 12 \\)</code></td>
+<td>\( \frac 12 \)</td>
+</tr>
+<tr>
+<td><code>\\( \frac {10}{3} \\)</code></td>
+<td>\( \frac {10}{3} \)</td>
+</tr>
+<tr>
+<td><code>\\( \sqrt{x} \\)</code></td>
+<td>\( \sqrt{x} \)</td>
+</tr>
+<tr>
+<td><code>\\( \sqrt[3]{x} \\)</code></td>
+<td>\( \sqrt[3]{x} \)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="左右括号"><a href="#左右括号" class="headerlink" title="左右括号"></a>左右括号</h3><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\\( \left( x \right) \\)</code></td>
+<td>\( \left( x \right) \)</td>
+</tr>
+<tr>
+<td><code>\\( \left[ x \right] \\)</code></td>
+<td>\( \left[ x \right] \)</td>
+</tr>
+<tr>
+<td>`\( \left</td>
+<td>x \right</td>
+<td>\)`</td>
+<td>\( \left</td>
+<td>x \right</td>
+<td>\)</td>
+</tr>
+<tr>
+<td><code>\\( \left\langle x \right\rangle \\)</code></td>
+<td>\( \left\langle x \right\rangle \)</td>
+</tr>
+<tr>
+<td><code>\\( \left\lceil x \right\rceil \\)</code></td>
+<td>\( \left\lceil x \right\rceil \)</td>
+</tr>
+<tr>
+<td><code>\\( \left\lfloor x \right\rfloor \\)</code></td>
+<td>\( \left\lfloor x \right\rfloor \)</td>
+</tr>
+</tbody>
+</table>
+<p>若一边为空则用<code>.</code>代替</p>
+<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h3><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Show</th>
+<th>Code</th>
+<th>Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\\(\dot x \\)</code></td>
+<td>\(\dot x \)</td>
+<td><code>\\(\cdot x \\)</code></td>
+<td>\(\cdot x \)</td>
+</tr>
+<tr>
+<td><code>\\(\vec{a} \\)</code></td>
+<td>\(\vec{a} \)</td>
+<td><code>\\(a\quad b \\)</code></td>
+<td>\(a\quad b \)</td>
+</tr>
+<tr>
+<td><code>\\(a\qquad b \\)</code></td>
+<td>\(a\qquad b \)</td>
+<td><code>\\(\pm \\)</code></td>
+<td>\(\pm \)</td>
+</tr>
+<tr>
+<td><code>\\(\times \\)</code></td>
+<td>\(\times \)</td>
+<td><code>\\(\div \\)</code></td>
+<td>\(\div \)</td>
+</tr>
+<tr>
+<td><code>\\(\mid \\)</code></td>
+<td>\(\mid \)</td>
+<td><code>\\(\ast \\)</code></td>
+<td>\(\ast \)</td>
+</tr>
+<tr>
+<td><code>\\(\circ \\)</code></td>
+<td>\(\circ \)</td>
+<td><code>\\(x^\circ \\)</code></td>
+<td>\(x^\circ \)</td>
+</tr>
+<tr>
+<td><code>\\(\bigodot \\)</code></td>
+<td>\(\bigodot \)</td>
+<td><code>\\(\bigotimes \\)</code></td>
+<td>\(\bigotimes \)</td>
+</tr>
+<tr>
+<td><code>\\(\bigoplus \\)</code></td>
+<td>\(\bigoplus \)</td>
+<td><code>\\(\neq \\)</code></td>
+<td>\(\neq \)  </td>
+</tr>
+<tr>
+<td><code>\\(\leq \\)</code></td>
+<td>\(\leq \)</td>
+<td><code>\\(\geq \\)</code></td>
+<td>\(\geq \)</td>
+</tr>
+<tr>
+<td><code>\\(\approx \\)</code></td>
+<td>\(\approx \)</td>
+<td><code>\\(\equiv \\)</code></td>
+<td>\(\equiv \)</td>
+</tr>
+<tr>
+<td><code>\\(\sum \\)</code></td>
+<td>\(\sum \)</td>
+<td><code>\\(\prod \\)</code></td>
+<td>\(\prod \)</td>
+</tr>
+<tr>
+<td><code>\\(\emptyset \\)</code></td>
+<td>\(\emptyset \)</td>
+<td><code>\\(\in \\)</code></td>
+<td>\(\in \)</td>
+</tr>
+<tr>
+<td><code>\\(\notin \\)</code></td>
+<td>\(\notin \)</td>
+<td><code>\\(\subset \\)</code></td>
+<td>\(\subset \)</td>
+</tr>
+<tr>
+<td><code>\\(\supset \\)</code></td>
+<td>\(\supset \)</td>
+<td><code>\\(\subseteq \\)</code></td>
+<td>\(\subseteq \)                                 </td>
+</tr>
+<tr>
+<td><code>\\(\supseteq \\)</code></td>
+<td>\(\supseteq \)</td>
+<td><code>\\(\not\subset\\)</code></td>
+<td>\(\not\subset\)</td>
+</tr>
+<tr>
+<td><code>\\(\bigcup \\)</code></td>
+<td>\(\bigcup \)</td>
+<td><code>\\(\bigvee \\)</code></td>
+<td>\(\bigvee \)</td>
+</tr>
+<tr>
+<td><code>\\(\bigsqcup \\)</code></td>
+<td>\(\bigsqcup \)</td>
+<td><code>\\(\bot \\)</code></td>
+<td>\(\bot \)</td>
+</tr>
+<tr>
+<td><code>\\(\angle \\)</code></td>
+<td>\(\angle \)</td>
+<td><code>\\(\prime \\)</code></td>
+<td>\(\prime \)</td>
+</tr>
+<tr>
+<td><code>\\(\int \\)</code></td>
+<td>\(\int \)</td>
+<td><code>\\(\int_1^n \\)</code></td>
+<td>\(\int_1^n \)</td>
+</tr>
+<tr>
+<td><code>\\(\iint \\)</code></td>
+<td>\(\iint \)</td>
+<td><code>\\(\oint \\)</code></td>
+<td>\(\oint \)</td>
+</tr>
+<tr>
+<td><code>\\(\infty \\)</code></td>
+<td>\(\infty \)</td>
+<td><code>\\(\nabla \\)</code></td>
+<td>\(\nabla \)</td>
+</tr>
+<tr>
+<td><code>\\(\because \\)</code></td>
+<td>\(\because \)</td>
+<td><code>\\(\therefore \\)</code></td>
+<td>\(\therefore \)</td>
+</tr>
+<tr>
+<td><code>\\(\forall \\)</code></td>
+<td>\(\forall \)</td>
+<td><code>\\(\exists \\)</code></td>
+<td>\(\exists \)</td>
+</tr>
+<tr>
+<td><code>\\(\not= \\)</code></td>
+<td>\(\not= \)</td>
+<td><code>\\(\not&gt; \\)</code></td>
+<td>\(\not&gt; \)</td>
+</tr>
+<tr>
+<td><code>\\(\hat{x} \\)</code></td>
+<td>\(\hat{x} \)</td>
+<td><code>\\(\check{x} \\)</code></td>
+<td>\(\check{x} \)</td>
+</tr>
+<tr>
+<td><code>\\(\breve{x} \\)</code></td>
+<td>\(\breve{x} \)</td>
+<td><code>\\(\overline{x} \\)</code></td>
+<td>\(\overline{x}\)</td>
+</tr>
+<tr>
+<td><code>\\(\underline{x} \\)</code></td>
+<td>\(\underline{x} \)</td>
+<td><code>\\(\uparrow \\)</code></td>
+<td>\(\uparrow\)</td>
+</tr>
+<tr>
+<td><code>\\(\downarrow \\)</code></td>
+<td>\(\downarrow \)</td>
+<td><code>\\(\Uparrow \\)</code></td>
+<td>\(\Uparrow \)</td>
+</tr>
+<tr>
+<td><code>\\(\Downarrow \\)</code></td>
+<td>\(\Downarrow \)</td>
+<td><code>\\(\rightarrow\\)</code></td>
+<td>\(\rightarrow\)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Show</th>
+<th>Code</th>
+<th>Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\\(\alpha\\)</code></td>
+<td>\(\alpha\)</td>
+<td><code>\\(\beta\\)</code></td>
+<td>\(\beta\)</td>
+</tr>
+<tr>
+<td><code>\\(\gamma\\)</code></td>
+<td>\(\gamma\)</td>
+<td><code>\\(\delta\\)</code></td>
+<td>\(\delta\)</td>
+</tr>
+<tr>
+<td><code>\\(\epsilon\\)</code></td>
+<td>\(\epsilon\)</td>
+<td><code>\\(\zeta\\)</code></td>
+<td>\(\zeta\)</td>
+</tr>
+<tr>
+<td><code>\\(\eta\\)</code></td>
+<td>\(\eta\)</td>
+<td><code>\\(\theta\\)</code></td>
+<td>\(\theta\)</td>
+</tr>
+<tr>
+<td><code>\\(\iota\\)</code></td>
+<td>\(\iota\)</td>
+<td><code>\\(\kappa\\)</code></td>
+<td>\(\kappa\)</td>
+</tr>
+<tr>
+<td><code>\\(\lambda\\)</code></td>
+<td>\(\lambda\)</td>
+<td><code>\\(\mu\\)</code></td>
+<td>\(\mu\)</td>
+</tr>
+<tr>
+<td><code>\\(\nu\\)</code></td>
+<td>\(\nu\)</td>
+<td><code>\\(\xi\\)</code></td>
+<td>\(\xi\)</td>
+</tr>
+<tr>
+<td><code>\\(\omicron\\)</code></td>
+<td>\(\omicron\)</td>
+<td><code>\\(\pi\\)</code></td>
+<td>\(\pi\)</td>
+</tr>
+<tr>
+<td><code>\\(\sigma\\)</code></td>
+<td>\(\sigma\)</td>
+<td><code>\\(\tau\\)</code></td>
+<td>\(\tau\)</td>
+</tr>
+<tr>
+<td><code>\\(\phi\\)</code></td>
+<td>\(\phi\)</td>
+<td><code>\\(\psi\\)</code></td>
+<td>\(\psi\)</td>
+</tr>
+<tr>
+<td><code>\\(\omega\\)</code></td>
+<td>\(\omega\)</td>
+<td><code>\\(\varepsilon\\)</code></td>
+<td>\(\varepsilon\)</td>
+</tr>
+<tr>
+<td><code>\\(\vartheta\\)</code></td>
+<td>\(\vartheta\)</td>
+<td><code>\\(\varphi\\)</code></td>
+<td>\(\varphi\)</td>
+</tr>
+</tbody>
+</table>
+<p><del>## 脚注（Footnote）</del></p>
+<p>Markdown 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是一个脚注：[^sample_footnote]</div></pre></td></tr></table></figure>
+<p><del>效果如下：</del></p>
+<p><del>这是一个脚注：[^sample_footnote]</del></p>
+<p><del>[^sample_footnote]: 这里是脚注信息</del></p>
+<p><del>## 注释和阅读更多</del></p>
+<pre><code>&lt;!-- comment --&gt;
+&lt;!-- more --&gt;
+</code></pre><p><del>Actions-&gt;Insert Read More Comment <em>或者</em> <code>Command + .</code></del><br><del><strong>注</strong> 阅读更多的功能只用在生成网站或博客时，插入时注意要后空一行。</del></p>
+<p><del>## TOC</del></p>
+<p><del>Markdown 语法：</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[TOC]</div></pre></td></tr></table></figure>
+<p><del>效果如下：</del></p>
+<p><del>[TOC]</del></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ol>
+<li>Latex：<a href="http://blog.csdn.net/lanxuezaipiao/article/details/44341645#math" target="_blank" rel="external">http://blog.csdn.net/lanxuezaipiao/article/details/44341645#math</a></li>
+<li>Markdown：Markdown使用文档</li>
+<li>MathJax：不记得从哪看的了，主要是那个连接</li>
+</ol>
+<h2 id="多行或者一段代码"><a href="#多行或者一段代码" class="headerlink" title="多行或者一段代码"></a>多行或者一段代码</h2><p>Markdown 语法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">三个<span class="string">`加上js</span></div><div class="line"><span class="string">function fancyAlert(arg) &#123;</span></div><div class="line"><span class="string">    if(arg) &#123;</span></div><div class="line"><span class="string">    $.facebox(&#123;div:'#foo'&#125;)</span></div><div class="line"><span class="string">    &#125;</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">&#125;</span></div><div class="line"><span class="string">三个`</span></div></pre></td></tr></table></figure></p>
+<p><code>CMD + Shift + K</code> 可插入Markdown语法。<br>效果如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fancyAlert</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(arg) &#123;</div><div class="line">    $.facebox(&#123;<span class="attr">div</span>:<span class="string">'#foo'</span>&#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我一般用的是<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">三个<span class="string">`加上bash</span></div><div class="line"><span class="string">  function fancyAlert(arg) &#123;</span></div><div class="line"><span class="string">      if(arg) &#123;</span></div><div class="line"><span class="string">      $.facebox(&#123;div:'#foo'&#125;)</span></div><div class="line"><span class="string">      &#125;</span></div><div class="line"><span class="string">   </span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">  三个`</span></div></pre></td></tr></table></figure></p>
+<p>效果如下：    </p>
+<pre><code class="bash"><span class="keyword">function</span> fancyAlert(arg) {
+    <span class="keyword">if</span>(arg) {
+    $.facebox({div:<span class="string">'#foo'</span>})
+    }
+}
+</code></pre>
+<p>看来还是js的颜色好看点！之后该换了。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>再看看吧！<br>字体貌似都不行<br>我现在都不知道github到底支持什么语言呢</p>
+<p>转载请注明出处，谢谢。</p>
+<blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=79923&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/blog/" rel="tag"># blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/03/Matlab-层次分析法/" rel="next" title="Matlab-模型评估">
+                <i class="fa fa-chevron-left"></i> Matlab-模型评估
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/05/公式与美化/" rel="prev" title="公式与美化">
+                公式与美化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.</span> <span class="nav-text">标题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一级标题-lt-h1-gt"><span class="nav-number"></span> <span class="nav-text">第一级标题 <h1></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二级标题-lt-h2-gt"><span class="nav-number">1.</span> <span class="nav-text">第二级标题 <h2></span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#第六级标题-lt-h6-gt"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">第六级标题 <h6></span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调"><span class="nav-number">2.</span> <span class="nav-text">强调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">3.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">3.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">3.2.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务列表（Task-lists）"><span class="nav-number">3.3.</span> <span class="nav-text">任务列表（Task lists）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">4.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">5.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块引用"><span class="nav-number">6.</span> <span class="nav-text">区块引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内代码"><span class="nav-number">7.</span> <span class="nav-text">行内代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">8.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除线"><span class="nav-number">9.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分隔线"><span class="nav-number">10.</span> <span class="nav-text">分隔线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MathJax"><span class="nav-number">11.</span> <span class="nav-text">MathJax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上下标"><span class="nav-number">11.1.</span> <span class="nav-text">上下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分数与根号"><span class="nav-number">11.2.</span> <span class="nav-text">分数与根号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#左右括号"><span class="nav-number">11.3.</span> <span class="nav-text">左右括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号"><span class="nav-number">11.4.</span> <span class="nav-text">符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希腊字母"><span class="nav-number">11.5.</span> <span class="nav-text">希腊字母</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">12.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行或者一段代码"><span class="nav-number">13.</span> <span class="nav-text">多行或者一段代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">14.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

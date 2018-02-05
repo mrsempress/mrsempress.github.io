@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MATLAB," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog.两个自然启发式的算法感觉机器学习的算法像模拟，仿生学😳我瞎说的">
+<meta name="keywords" content="MATLAB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab-粒子群算法与蚁群算法">
+<meta property="og:url" content="http://empress.top/2018/01/26/Matlab-粒子群算法/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog.两个自然启发式的算法感觉机器学习的算法像模拟，仿生学😳我瞎说的">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-05T16:19:21.147Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matlab-粒子群算法与蚁群算法">
+<meta name="twitter:description" content="This is my blog.两个自然启发式的算法感觉机器学习的算法像模拟，仿生学😳我瞎说的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/01/26/Matlab-粒子群算法/"/>
+
+
+
+
+
+  <title>Matlab-粒子群算法与蚁群算法 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/01/26/Matlab-粒子群算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Matlab-粒子群算法与蚁群算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T11:27:11+08:00">
+                2018-01-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学建模/MATLAB/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/26/Matlab-粒子群算法/" class="leancloud_visitors" data-flag-title="Matlab-粒子群算法与蚁群算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>两个自然启发式的算法<br><del>感觉机器学习的算法像模拟，仿生学</del>😳<br>我瞎说的<br><a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h2 id="粒子群算法（PSO）"><a href="#粒子群算法（PSO）" class="headerlink" title="粒子群算法（PSO）"></a>粒子群算法（PSO）</h2><p>来源于鸟觅食，自己的经验以及他人的经验。每只鸟记住的最优位置是局部最优。整个鸟群的觅食中心趋向全局最优。是一种概率算法。也可以用来训练神经网络（🧝🏻‍♀️）</p>
+<h3 id="三准则"><a href="#三准则" class="headerlink" title="三准则"></a>三准则</h3><p>冲突避免、速度匹配、群体中心</p>
+<h3 id="中心算法"><a href="#中心算法" class="headerlink" title="中心算法"></a>中心算法</h3><p>p：位置    v：速度<br>式一：\(v_i^d = \omega v_i^d+c_1 r_1(p_i^d - x_i^d)+c_2 r_2(p_g^d - x_i^d \)<br>式二：\(x_i^d = x_i^d + \alpha v_i^d \)<br>其中\(\omega\)是非负数，惯性因子；加速常数\(c_1 \)和\(c_2 \)是非负常数；\(r_1 \)和\(r_2 \)是[0,1]范围内变换的随机数；\(\alpha\)是约束因子，控制速度的权重。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>初始化；粒子群（速度、位置）、惯性因子、加速常数、最大迭代次数、算法终止最小允许误差</li>
+<li>评价每个粒子的初始适应值</li>
+<li>将初始适应值作为当前局部最优值，最佳初始适应值最为全局最优值</li>
+<li>根据式一更新速度</li>
+<li>根据式二，计算，若更优，则更新</li>
+<li>重复4，5，直到达到终止条件</li>
+<li>输出</li>
+</ol>
+<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><ol>
+<li>粒子数<br>一般20～40，对于特殊100～200，粒子数越多，越容易找到全局最优解</li>
+<li>惯性因子<br>其大了，更新幅度大了，全局搜索能力增强，但容易错失局部寻优能力；<br>一般为0.6～0.7</li>
+<li>加速常数<br>一般两者都取2.0；\(c_1 = 0 \)没有自身经验；\(c_2 = 0 \)没有社会经验</li>
+<li>最大飞翔速度<br>设定为每维变化的10%～20%</li>
+</ol>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>\(max f(x) = 2.1(1-x+2x^2)e^(-\frac{x^2}{2}),x \in \left[ -5,5 \right] \)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span></span></div><div class="line"><span class="function"><span class="title">clc</span>;<span class="title">clear</span> <span class="title">all</span>;<span class="title">close</span> <span class="title">all</span>;</span></div><div class="line"><span class="function"><span class="title">tic</span>;</span></div><div class="line"><span class="function"><span class="title">E0</span> = 0.001; </span></div><div class="line"><span class="function"><span class="title">MaxNum</span> = 100;</span></div><div class="line"><span class="function"><span class="title">narvs</span> = 1; </span></div><div class="line"><span class="function"><span class="title">particlesize</span> = 30; </span></div><div class="line"><span class="function"><span class="title">c1</span> = 2; </span></div><div class="line"><span class="function"><span class="title">c2</span> = 2; </span></div><div class="line"><span class="function"><span class="title">w</span> = 0.6; </span></div><div class="line"><span class="function"><span class="title">vmax</span> = 0.8;</span></div><div class="line"><span class="function"><span class="title">x</span> = -5 + 10 * <span class="title">rand</span>(<span class="params">particlesize,narvs</span>); </span></div><div class="line"><span class="function"><span class="title">v</span> = 2 * <span class="title">rand</span>(<span class="params">particlesize,narvs</span>); </span></div><div class="line"><span class="function"><span class="title">fitness</span> = <span class="title">inline</span>(<span class="params"><span class="string">'1/(1+(2.1*(1-x+2*x.^2).*exp(-x.^2/2)))'</span>,<span class="string">'x'</span></span>);</span></div><div class="line"><span class="function"><span class="title">for</span> <span class="title">i</span> = 1:<span class="title">particlesize</span></span></div><div class="line"><span class="function">    <span class="title">for</span> <span class="title">j</span> = 1:<span class="title">narvs</span></span></div><div class="line"><span class="function">        <span class="title">f</span>(<span class="params">i</span>) = <span class="title">fitness</span>(<span class="params">x(i,j</span>));</span></div><div class="line"><span class="function">    <span class="title">end</span></span></div><div class="line"><span class="function"><span class="title">end</span></span></div><div class="line"><span class="function"> </span></div><div class="line"><span class="function"><span class="title">personalbest_x</span> = <span class="title">x</span>;</span></div><div class="line"><span class="function"><span class="title">personalbest_faval</span> = <span class="title">f</span>;</span></div><div class="line">[globalbest_faval i] = min(personalbest_faval);</div><div class="line">globalbest_x = personalbest_x(i,:);</div><div class="line">k = <span class="number">1</span>;</div><div class="line"><span class="keyword">while</span> k &lt;= MaxNum</div><div class="line">    <span class="keyword">for</span> i = <span class="number">1</span>:particlesize</div><div class="line">        <span class="keyword">for</span> j = <span class="number">1</span>:narvs</div><div class="line">            f(i) = fitness(x(i,j));</div><div class="line">        end</div><div class="line">        <span class="keyword">if</span> f(i)&lt;personalbest_faval(i)   </div><div class="line">            personalbest_faval(i) = f(i);</div><div class="line">            personalbest_x(i,:) = x(i,:);</div><div class="line">        end</div><div class="line">    end</div><div class="line">    [globalbest_faval i] = min(personalbest_faval);</div><div class="line">    globalbest_x = personalbest_x(i,:); </div><div class="line">    <span class="keyword">for</span> i = <span class="number">1</span>:particlesize</div><div class="line">        v(i,:) = w * v(i,:) + c1 * rand * (personalbest_x(i,:) - x(i,:))...</div><div class="line">            + c2 * rand * (globalbest_x - x(i,:));</div><div class="line">        <span class="keyword">for</span> j = <span class="number">1</span>:narvs </div><div class="line">            <span class="keyword">if</span> v(i,j)&gt;vmax</div><div class="line">                v(i,j) = vmax;</div><div class="line">            elseif v(i,j) &lt; -vmax;</div><div class="line">                    v(i,j) = -vmax;</div><div class="line">            end</div><div class="line">        end</div><div class="line">        x(i,:) = x(i,:) + v(i,:);</div><div class="line">    end</div><div class="line">    <span class="keyword">if</span> abs(globalbest_faval)&lt;E0,<span class="keyword">break</span>,end</div><div class="line">    k = k + <span class="number">1</span>;</div><div class="line">end</div><div class="line"> </div><div class="line">Value1 = <span class="number">1</span> / globalbest_faval - <span class="number">1</span>;</div><div class="line">Value1 = num2str(Value1);</div><div class="line">disp(strcat(<span class="string">'the maximum value'</span>,<span class="string">'='</span>,Value1));</div><div class="line">Value2 = globalbest_x;</div><div class="line">Value2 = num2str(Value2);</div><div class="line">disp(strcat(<span class="string">'the corresponding coordinate'</span>,<span class="string">'='</span>,Value2));</div><div class="line"> </div><div class="line">x = <span class="number">-5</span>:<span class="number">0.01</span>:<span class="number">5</span>;</div><div class="line">y = <span class="number">2.1</span> * (<span class="number">1</span> - x + <span class="number">2</span> * x .^ <span class="number">2</span>) .* exp(-x .^ <span class="number">2</span> / <span class="number">2</span>);</div><div class="line">plot(x,y,<span class="string">'m-'</span>,<span class="string">'linewidth'</span>,<span class="number">3</span>);</div><div class="line">hold on;</div><div class="line">plot(globalbest_x,<span class="number">1</span>/globalbest_faval<span class="number">-1</span>,<span class="string">'kp'</span>,<span class="string">'linewidth'</span>,<span class="number">4</span>);</div><div class="line">legend(<span class="string">'目标函数'</span>,<span class="string">'搜索到的最大值'</span>);xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>);</div><div class="line">grid on;</div><div class="line">toc;</div></pre></td></tr></table></figure></p>
+<h2 id="蚁群算法"><a href="#蚁群算法" class="headerlink" title="蚁群算法"></a>蚁群算法</h2><p>自然界蚂蚁寻食的最短路径</p>
+<h3 id="TSP"><a href="#TSP" class="headerlink" title="TSP"></a>TSP</h3><p>以TSP为例，流程如下：</p>
+<ol>
+<li>初始化</li>
+<li>随机放置蚂蚁</li>
+<li>对每只蚂蚁选择下个城市</li>
+<li>若还有城市可选，则3</li>
+<li>更新信息素表</li>
+<li>未达到最大迭代次数，则2</li>
+<li>输出</li>
+</ol>
+<p>步骤如下：</p>
+<ol>
+<li>数据准备</li>
+<li>计算城市距离矩阵，对角线元素因为要保证启发函数不为零，设置为一个足够小的正数，\(10^-3\)以下即可</li>
+<li>初始化参数</li>
+<li>迭代寻找最佳路径</li>
+<li>结果显示</li>
+</ol>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>Matlab算法应该算是结束了<br>若是空手敲，估计一个都不行<br>但也算是大概了解原理了<br>以后也不知道会不会用了<br>其实感觉在数模中，我也不需要特别会<br>他们研究完就直接上手了（感觉小菜一碟）<br>我打杂的～～<br>不过还是要有备无患么<br>万一来不及呢<br>多学习一点呗<br>不过寒假有一个计划是完蛋了<br>不知道怎么交差哎<br>约好的杭图 也被我的迷糊给黄了<br>下次得规划好才行呢<br>准备回家踏青啦！！！</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=422428548&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/26/Matlab-遗传算法/" rel="next" title="Matlab-遗传算法">
+                <i class="fa fa-chevron-left"></i> Matlab-遗传算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/27/Matlab-模拟退火/" rel="prev" title="Matlab-模拟退火">
+                Matlab-模拟退火 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#粒子群算法（PSO）"><span class="nav-number">1.</span> <span class="nav-text">粒子群算法（PSO）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三准则"><span class="nav-number">1.1.</span> <span class="nav-text">三准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中心算法"><span class="nav-number">1.2.</span> <span class="nav-text">中心算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">1.3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数选择"><span class="nav-number">1.4.</span> <span class="nav-text">参数选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.5.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蚁群算法"><span class="nav-number">2.</span> <span class="nav-text">蚁群算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TSP"><span class="nav-number">2.1.</span> <span class="nav-text">TSP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
