@@ -111,7 +111,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
 <meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
-<meta property="og:updated_time" content="2018-02-05T02:23:16.744Z">
+<meta property="og:updated_time" content="2018-02-05T03:11:30.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="公式与美化">
 <meta name="twitter:description" content="This is my blog. 从开发文档上扒下来的，加上一下常用的顺便试验一下，哪些可以在github上显示呢之后会更新一些，显示不正常的，用删除符号了之后有空的时候，会加上数学公式、希腊字母、字体等毕竟是程序媛么🙈（未完待续）">
@@ -443,7 +443,7 @@
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>Markdown 语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">email &lt;example@example.com&gt;</div><div class="line">[GitHub](http://github.com)</div><div class="line">自动生成连接  &lt;http://www.github.com/&gt;</div></pre></td></tr></table></figure>
 <p><code>Control + Shift + L</code> 可插入Markdown语法。<br>如果是 MWeb 的文档库中的文档，拖放或<code>CMD + Option + I</code> 导入非图片时，会生成连接。<br>效果如下：</p>
-<p>Email 连接： <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#109;">&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#109;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
+<p>Email 连接： <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#x6d;">&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
 <h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>Markdown 语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">某某说:</div><div class="line">&gt; 第一行引用</div><div class="line">&gt; 第二行费用文字</div></pre></td></tr></table></figure>
 <p><code>CMD + Shift + B</code> 可插入Markdown语法。<br>效果如下：</p>
@@ -500,9 +500,123 @@
 <hr>
 <hr>
 <h2 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h2><p>Markdown 语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">先得加一句话：&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;</div><div class="line">行内公式：</div><div class="line">\\(	x = \frac&#123;-b \pm \sqrt&#123;b^2 - 4ac&#125;&#125;&#123;2a&#125; \\)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">先得加一句话：&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;</div><div class="line">实验一些：</div><div class="line">行内公式：</div><div class="line">$ X + 2 $</div><div class="line">\\(	x = \frac&#123;-b \pm \sqrt&#123;b^2 - 4ac&#125;&#125;&#123;2a&#125; \\)</div><div class="line">\( \Gamma(n) = (n-1)!\quad\forall n\in\mathbb N\)</div><div class="line">$$ x + 2 = y $$</div></pre></td></tr></table></figure>
 <p>效果如下（<code>Preferences</code> - <code>Themes</code> - <code>Enable MathJax</code> 才会看到效果）：</p>
-<p>块级公式：<br>\(    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)</p>
+<p>行内公式：<br>\(    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)<br>( \Gamma(n) = (n-1)!\quad\forall n\in\mathbb N)<br>$$ x + 2 = y $$</p>
+<h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\\(x^<span class="number">2</span> + x^&#123;<span class="number">10</span>&#125; = <span class="number">1</span> \\)</div><div class="line">\\(x_2 + x_&#123;<span class="number">10</span>&#125; = <span class="number">1</span> \\)</div><div class="line">\\(\sideset&#123;^<span class="number">1</span>_2&#125;&#123;^<span class="number">3</span>_4&#125;\bigotimes\\)</div></pre></td></tr></table></figure>
+<p>\(x^2 + x^{10} = 1 \)<br>\(x<em>2 + x</em>{10} = 1 \)<br>\(\sideset{^1_2}{^3_4}\bigotimes\)</p>
+<h3 id="分数与根号"><a href="#分数与根号" class="headerlink" title="分数与根号"></a>分数与根号</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">\\( \frac <span class="number">12</span> \\)</div><div class="line">\\( \frac &#123;<span class="number">10</span>&#125;&#123;<span class="number">3</span>&#125; \\)</div><div class="line">\\( \sqrt&#123;x&#125; \\)</div><div class="line">\\( \sqrt[<span class="number">3</span>]&#123;x&#125; \\)</div></pre></td></tr></table></figure>
+<p>\( \frac 12 \)<br>\( \frac {10}{3} \)<br>\( \sqrt{x} \)<br>\( \sqrt[3]{x} \)</p>
+<h3 id="左右括号"><a href="#左右括号" class="headerlink" title="左右括号"></a>左右括号</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">\\( \left( x \right) \\)</div><div class="line">\\( \left[ x \right] \\)</div><div class="line">\\( \left&#123; x \right&#125; \\)</div><div class="line">\\( \left| x \right| \\)</div><div class="line">\\( \left\langle x \right\langle \\)</div><div class="line">\\( \left\lceil x \right\rceil \\)</div><div class="line">\\( \left\lfloor x \right\rfloor \\)</div></pre></td></tr></table></figure>
+<p>\( \left( x \right) \)<br>\( \left[ x \right] \)<br>\( \left{ x \right} \)<br>\( \left| x \right| \)<br>\( \left\langle x \right\langle \)<br>\( \left\lceil x \right\rceil \)<br>\( \left\lfloor x \right\rfloor \)<br>若一边为空则用<code>.</code>代替</p>
+<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\\( \dot \cdot \vec&#123;a&#125; a\;b a\quad b a\qquad b \\)</div><div class="line">\\( \pm \times \div \mid \nmid \circ x^\circ \ast \\)</div><div class="line">\\( \bigodot \bigotimes \bigoplus \\)</div><div class="line">\\( \leq \geq \neq \approx \equiv \\)</div><div class="line">\\( \sum \prod \\)</div><div class="line">\\( \emptyset \<span class="keyword">in</span> \notin \subset \supset \subseteq \supseteq \not\subset\\)</div><div class="line">\\( \bigcup \bigvee \biguplus \bigsqcup \\)</div><div class="line">\\( \bot \angle \prime \int \int_1^n \iint \oint \infty \nabla \lim_&#123;x\to <span class="number">0</span>&#125; \\)</div><div class="line">\\( \because \therefore \forall \exists \not= \not&gt; \hat&#123;x&#125; \check&#123;x&#125; \breve&#123;x&#125; \\)</div><div class="line">\\(\overline&#123;x&#125; \underline&#123;x&#125; \uparrow \downarrow \Uparrow \Downarrow \rightarrow\\)</div></pre></td></tr></table></figure>
+<p>\( \dot \cdot \vec{a} a\;b a\quad b a\qquad b \)<br>\( \pm \times \div \mid \nmid \circ x^\circ \ast \)<br>\( \bigodot \bigotimes \bigoplus \)<br>\( \leq \geq \neq \approx \equiv \)<br>\( \sum \prod \)<br>\( \emptyset \in \notin \subset \supset \subseteq \supseteq \not\subset\)<br>\( \bigcup \bigvee \biguplus \bigsqcup \)<br>\( \bot \angle \prime \int \int<em>1^n \iint \oint \infty \nabla \lim</em>{x\to 0} \)<br>\( \because \therefore \forall \exists \not= \not&gt; \hat{x} \check{x} \breve{x} \)<br>\(\overline{x} \underline{x} \uparrow \downarrow \Uparrow \Downarrow \rightarrow\)</p>
+<h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\\(\alpha\\)</code></td>
+<td>\(\alpha\)</td>
+</tr>
+<tr>
+<td><code>\\(\beta\\)</code></td>
+<td>\(\beta\)</td>
+</tr>
+<tr>
+<td><code>\\(\gamma\\)</code></td>
+<td>\(\gamma\)</td>
+</tr>
+<tr>
+<td><code>\\(\delta\\)</code></td>
+<td>\(\delta\)</td>
+</tr>
+<tr>
+<td><code>\\(\epsilon\\)</code></td>
+<td>\(\epsilon\)</td>
+</tr>
+<tr>
+<td><code>\\(\zeta\\)</code></td>
+<td>\(\zeta\)</td>
+</tr>
+<tr>
+<td><code>\\(\eta\\)</code></td>
+<td>\(\eta\)</td>
+</tr>
+<tr>
+<td><code>\\(\theta\\)</code></td>
+<td>\(\theta\)</td>
+</tr>
+<tr>
+<td><code>\\(\iota\\)</code></td>
+<td>\(\iota\)</td>
+</tr>
+<tr>
+<td><code>\\(\kappa\\)</code></td>
+<td>\(\kappa\)</td>
+</tr>
+<tr>
+<td><code>\\(\lambda\\)</code></td>
+<td>\(\lambda\)</td>
+</tr>
+<tr>
+<td><code>\\(\mu\\)</code></td>
+<td>\(\mu\)</td>
+</tr>
+<tr>
+<td><code>\\(\nu\\)</code></td>
+<td>\(\nu\)</td>
+</tr>
+<tr>
+<td><code>\\(\xi\\)</code></td>
+<td>\(\xi\)</td>
+</tr>
+<tr>
+<td><code>\\(\omicron\\)</code></td>
+<td>\(\omicron\)</td>
+</tr>
+<tr>
+<td><code>\\(\pi\\)</code></td>
+<td>\(\pi\)</td>
+</tr>
+<tr>
+<td><code>\\(\sigma\\)</code></td>
+<td>\(\sigma\)</td>
+</tr>
+<tr>
+<td><code>\\(\tau\\)</code></td>
+<td>\(\tau\)</td>
+</tr>
+<tr>
+<td><code>\\(\phi\\)</code></td>
+<td>\(\phi\)</td>
+</tr>
+<tr>
+<td><code>\\(\psi\\)</code></td>
+<td>\(\psi\)</td>
+</tr>
+<tr>
+<td><code>\\(\omega\\)</code></td>
+<td>\(\omega\)</td>
+</tr>
+<tr>
+<td><code>\\(\varepsilon\\)</code></td>
+<td>\(\varepsilon\)</td>
+</tr>
+<tr>
+<td><code>\\(\vartheta\\)</code></td>
+<td>\(\vartheta\)</td>
+</tr>
+<tr>
+<td><code>\\(\varphi\\)</code></td>
+<td>\(\varphi\)</td>
+</tr>
+</tbody>
+</table>
 <p><del>## 脚注（Footnote）</del></p>
 <p>Markdown 语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是一个脚注：[^sample_footnote]</div></pre></td></tr></table></figure>
@@ -518,6 +632,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[TOC]</div></pre></td></tr></table></figure>
 <p><del>效果如下：</del></p>
 <p><del>[TOC]</del></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ol>
+<li>Latex：<a href="http://blog.csdn.net/lanxuezaipiao/article/details/44341645#math" target="_blank" rel="external">http://blog.csdn.net/lanxuezaipiao/article/details/44341645#math</a></li>
+<li>Markdown：Markdown使用文档</li>
+<li>MathJax：不记得从哪看的了，主要是那个连接</li>
+</ol>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>再看看吧！<br>字体貌似都不行<br>我现在都不知道github到底支持什么语言呢</p>
+<p>转载请注明出处，谢谢。</p>
+<blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=79923&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
 
       
     </div>
@@ -759,7 +887,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本文约定"><span class="nav-number">1.</span> <span class="nav-text">本文约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一级标题-lt-h1-gt"><span class="nav-number"></span> <span class="nav-text">第一级标题 <h1></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二级标题-lt-h2-gt"><span class="nav-number">1.</span> <span class="nav-text">第二级标题 <h2></span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#第六级标题-lt-h6-gt"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">第六级标题 <h6></span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调"><span class="nav-number">2.</span> <span class="nav-text">强调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">3.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">3.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">3.2.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务列表（Task-lists）"><span class="nav-number">3.3.</span> <span class="nav-text">任务列表（Task lists）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">4.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">5.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块引用"><span class="nav-number">6.</span> <span class="nav-text">区块引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内代码"><span class="nav-number">7.</span> <span class="nav-text">行内代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行或者一段代码"><span class="nav-number">8.</span> <span class="nav-text">多行或者一段代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">9.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除线"><span class="nav-number">10.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分隔线"><span class="nav-number">11.</span> <span class="nav-text">分隔线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MathJax"><span class="nav-number">12.</span> <span class="nav-text">MathJax</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本文约定"><span class="nav-number">1.</span> <span class="nav-text">本文约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一级标题-lt-h1-gt"><span class="nav-number"></span> <span class="nav-text">第一级标题 <h1></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二级标题-lt-h2-gt"><span class="nav-number">1.</span> <span class="nav-text">第二级标题 <h2></span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#第六级标题-lt-h6-gt"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">第六级标题 <h6></span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调"><span class="nav-number">2.</span> <span class="nav-text">强调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">3.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">3.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">3.2.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务列表（Task-lists）"><span class="nav-number">3.3.</span> <span class="nav-text">任务列表（Task lists）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">4.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">5.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块引用"><span class="nav-number">6.</span> <span class="nav-text">区块引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内代码"><span class="nav-number">7.</span> <span class="nav-text">行内代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行或者一段代码"><span class="nav-number">8.</span> <span class="nav-text">多行或者一段代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">9.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除线"><span class="nav-number">10.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分隔线"><span class="nav-number">11.</span> <span class="nav-text">分隔线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MathJax"><span class="nav-number">12.</span> <span class="nav-text">MathJax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上下标"><span class="nav-number">12.1.</span> <span class="nav-text">上下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分数与根号"><span class="nav-number">12.2.</span> <span class="nav-text">分数与根号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#左右括号"><span class="nav-number">12.3.</span> <span class="nav-text">左右括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号"><span class="nav-number">12.4.</span> <span class="nav-text">符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希腊字母"><span class="nav-number">12.5.</span> <span class="nav-text">希腊字母</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">13.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">14.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
