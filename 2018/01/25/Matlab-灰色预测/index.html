@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://empress.top/2018/01/25/Matlab-灰色预测/media/15168490149860.jpg">
 <meta property="og:image" content="http://empress.top/2018/01/25/Matlab-灰色预测/media/15168873161657.jpg">
 <meta property="og:image" content="http://empress.top/2018/01/25/Matlab-灰色预测/media/15168873296259.jpg">
-<meta property="og:updated_time" content="2018-02-02T16:50:38.634Z">
+<meta property="og:updated_time" content="2018-02-09T06:01:50.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab-灰色预测">
 <meta name="twitter:description" content="This is my blog.灰色预测貌似是数模中的很重要的一部分然后 我知道就一个模版之后嗯，敲了一遍，大概就是之后改数据就行突然觉得编程很水主要还是靠思路取胜的果然我还是适合打酱油不过，干这事估计我的英语阅读能提高吧！哎，为什么我一个女孩子英语可以那么弱啊唔，不开心">
@@ -197,7 +197,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">Your bright sun</p>
       
   </div>
 
@@ -302,7 +302,7 @@
     <link itemprop="mainEntityOfPage" href="http://empress.top/2018/01/25/Matlab-灰色预测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mrs_empress">
+      <meta itemprop="name" content="Mrs_empress">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -369,17 +369,6 @@
 
                 
                 
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学建模/MATLAB/预测/" itemprop="url" rel="index">
-                    <span itemprop="name">预测</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -424,17 +413,20 @@
         <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>灰色预测貌似是数模中的很重要的一部分<br>然后 我知道就一个模版之后<br>嗯，敲了一遍，大概就是之后改数据就行<br>突然觉得编程很水<br>主要还是靠思路取胜的<br>果然我还是适合打酱油<br>不过，干这事估计我的英语阅读能提高吧！<br>哎，为什么我一个女孩子<br>英语可以那么弱啊<br>唔，不开心</p>
 <a id="more"></a>
 <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>灰色不是黑也不是白。。。</p>
-<h2 id="基本理论"><a href="#基本理论" class="headerlink" title="基本理论"></a>基本理论</h2><p>灰色关联度的本质是依据曲线态势相近程度来分辨数列的相关度。<br>灰色模型是基于常微分理论的，其记号为\(GM(M,N)\(。其中，<code>N</code>表示变量的个数，<code>M</code>表示常微分方程的阶数。</p>
+<h2 id="基本理论"><a href="#基本理论" class="headerlink" title="基本理论"></a>基本理论</h2><p>灰色关联度的本质是依据曲线态势相近程度来分辨数列的相关度。<br>灰色模型是基于常微分理论的，其记号为\(GM(M,N)\)。其中，<code>N</code>表示变量的个数，<code>M</code>表示常微分方程的阶数。</p>
 <h2 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h2><p>灰色模型只适用于连续、平滑的事件趋势中。且只有符合一阶线性常微分方程的数列或矩阵才能用灰色模型来预测，否则会有很大的误差。</p>
 <h2 id="经典灰色模型-GM-1-1"><a href="#经典灰色模型-GM-1-1" class="headerlink" title="经典灰色模型 GM(1,1)"></a>经典灰色模型 GM(1,1)</h2><h3 id="求解步骤"><a href="#求解步骤" class="headerlink" title="求解步骤"></a>求解步骤</h3><ol>
 <li>数据的累加（AGO）<br>不仅可以降噪，还可以加强数据规律的显露<br>\(x^{(1)}(k)=\sum_{i=1}^kx^{(0)}(i),k=1,2,3,\cdot\cdot\cdot,n\)</li>
 <li>求出数列\(x^{(1)}\)的导数<br>\(\left. \frac{dC}{dt} \right| _k=x^{(1)}(k)- x^{(1)}(k-1)=x^{(0)}(k)=d(k)\)</li>
-<li>定义数列\(x^{(1)}(k)    \)的紧邻均值（背景值）<br>\(z^{(1)}(k)=\frac{x^{(1)}(k)+x^{(1)}(k-1)}{2},k=2,3,4\cdot\cdot\cdot\0<br>称新数列\(z^{(1)}=(z^{(1)}(2),z^{(1)}(3),z^{(1)}(4),\cdot\cdot\cdot,z^{(1)}(n)）\(为\(x^{(1)}\)的紧邻均值数列。</li>
-<li>定义\(GM(1,1)\0灰微分方程<br>\(x^{(0)}(k)+az^{(0)}(k)=b\)<br><code>a</code>称为“发展系数”，<code>b</code>称为“灰作用量”。<br>令\(Y=(x^{(1)}(2),x^{(1)}(3),x^{(1)}(4),\cdot\cdot\cdot ,x^{(1)}(n))^T,u=(a,b)^T,B=\)<img src="media/15168490149860.jpg" alt=""><br>即可表示为\(Y=Bu\)<br>\(\breve{u}=(\breve{a},\breve{b})^T=(B^TB)^{-1}B^TY\)<br>这里所得到的\(\breve{u}\)是近似值</li>
+<li>定义数列\(x^{(1)}(k)    \)的紧邻均值（背景值）<br>\(z^{(1)}(k)=\frac{x^{(1)}(k)+x^{(1)}(k-1)}{2},k=2,3,4\cdot\cdot\cdot\)<br>称新数列\(z^{(1)}=(z^{(1)}(2),z^{(1)}(3),z^{(1)}(4),\cdot\cdot\cdot,z^{(1)}(n)）\)为\(x^{(1)}\)的紧邻均值数列。</li>
+<li>定义\(GM(1,1)\)灰微分方程<br>\(x^{(0)}(k)+az^{(0)}(k)=b\)<br><code>a</code>称为“发展系数”，<code>b</code>称为“灰作用量”。<br>令\(Y=(x^{(1)}(2),x^{(1)}(3),x^{(1)}(4),\cdot\cdot\cdot ,x^{(1)}(n))^T,u=(a,b)^T,B=\)<img src="media/15168490149860.jpg" alt=""></li>
+</ol>
+<p>即可表示为\(Y=Bu\)<br>\(\breve{u}=(\breve{a},\breve{b})^T=(B^TB)^{-1}B^TY\)<br>这里所得到的\(\breve{u}\)是近似值</p>
+<ol>
 <li>白化GM(1,1)模型<br>离散到连续的过程<br>白化模型<br>\(\frac{dx^{(1)}}{dk}+ax^{(1)}=b\)</li>
 <li>求解模型<br>将<code>5</code>中的数据变形可得<br>连续函数表达式    \(X=(x^{(0)}(1)-\frac ba)e^{-ak},k=0,1,2,3,\cdot\cdot\cdot\)<br>具体数学表达式    \(\breve{x}^{(1)}(k+1)=x^{(0)}(1)-\frac ba)e^{-ak}+\frac ba\)<br>将数据累减(IAGO)从而还原为<br>\(\breve{x}^{(0)}(k+1)=\breve{x}^{(1)}(k+1)-\breve{x}^{(1)}(k),k=1,2,3,\cdot\cdot\cdot,n\)</li>
 <li>模型检验<br>1）相对残差Q检验（越小越好）<br>\(\varepsilon<em>k=x^{(k)}-\breve{x}^{(k)}\)<br>\(Q=\frac 1n\sum</em>{k=1}^n\frac {\varepsilon_k}{x^{(0)}(k)}\)<br>2)方差比C检验（越小越好）<br>\(\varepsilon^{(0)}=(\varepsilon_1,\varepsilon_2,\varepsilon_3,\cdot\cdot\cdot,\varepsilon<em>n)\)<br>\(\overline{x}=\frac 1n\sum</em>{k=1}^nx^{(0)}(k)\)<br>\(\overline{\varepsilon}=\frac 1n\sum<em>{k=1}^n\varepsilon^{(0)}(k)\)<br>\(S1^2=\frac 1n\sum</em>{(k=1)}^n(x^{(0)}(k)-\overline{x})\)<br>\(S2^2=\frac 1n\sum_{(k=1)}^n(\varepsilon^{(0)}(k)-\overline{\varepsilon})\)<br>3)小误差概率p的检验（置信水平取0.5时）（p越大越好）<br>\(p=P(\left|\varepsilon_k-\overline{\varepsilon} \right| &lt;0.6745S1)\)</li>
-<li>模型的预测<br>通过计算数列的“级比”来判断是都可用GM(1,1)来预测<br>\(\lambda(k)=\frac {x^{(0)}(k-1)}{x^{(0)}(k)},k=2,3,4,\cdot\cdot\cdot\)<br>如果\(\lambda(k)\(能够落入到\(e^{-\frac{2}{n+1}},e^{\frac{2}{n+1}}\)区间内，则可用GM(1,1)来预测。</li>
+<li>模型的预测<br>通过计算数列的“级比”来判断是都可用GM(1,1)来预测<br>\(\lambda(k)=\frac {x^{(0)}(k-1)}{x^{(0)}(k)},k=2,3,4,\cdot\cdot\cdot\)<br>如果\(\lambda(k)\)能够落入到\(\left[e^{-\frac{2}{n+1}},e^{\frac{2}{n+1}}\right]\)区间内，则可用GM(1,1)来预测。</li>
 </ol>
 <h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">x0 = [92.810 97.660 98.800 99.281 99.537 99.537 99.817 100.00];</div><div class="line">n = length(x0);</div><div class="line"></div><div class="line">% 做级比判断看是否适合用GM(1,1)建模</div><div class="line">lamda = x0(1:n-1) ./ x0(2:n);</div><div class="line">range = minmax(lamda);% minmax 用于获取数组中每一行的最小值和最大值</div><div class="line"><span class="keyword">if</span> range(1,1) &lt; exp(-e/(n+2))) | range(1,2) &gt; exp(2/(n+2))</div><div class="line">    error(<span class="string">'级比没有落入灰色模型的范围内'</span>);</div><div class="line"><span class="keyword">else</span></div><div class="line">    disp(<span class="string">'          '</span>);</div><div class="line">    disp(<span class="string">'0'</span>);</div><div class="line">end</div><div class="line">% 做AGO累加处理</div><div class="line">x1 = cumsum(x0);% cumsum 求各行的累加值</div><div class="line"><span class="keyword">for</span> i =2:n</div><div class="line">	 % 计算紧邻均值</div><div class="line">    z(i) = 0.5 * (x1(i) + x1(i-1));</div><div class="line">end</div><div class="line">B = [-z(2:n)<span class="string">',ones(n-1,1)];</span></div><div class="line"><span class="string">Y = x0(2:n)'</span>;</div><div class="line">u = B\Y;% 注意是右除</div><div class="line">% 在Matlab中，用大写的D表示导数，dsolve函数用来求解符号常微分方程</div><div class="line">x = dslove(<span class="string">'Dx + a * x = b'</span>,<span class="string">'x(0) = x0'</span>);</div><div class="line">% subs函数的作用是替换元素，这里是把常量a,b,x0换成具体u(1),u(2),x1(1)数值</div><div class="line">x = subs(x,&#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'x0'</span>&#125;,&#123;u(1),u(2),x1(1)&#125;);</div><div class="line">forecast1 = subs(x,<span class="string">'t'</span>,[0:n-1]);</div><div class="line">digits(6);</div><div class="line">% R = vpa(A, d) 用d个位数代替当前设置的位数。</div><div class="line">% vpa是在运算时就控制了精度，但是digits是对结果控制精度</div><div class="line">y = vpa(x);</div><div class="line">% 累减</div><div class="line">% diff用于对符号表达式进行求导</div><div class="line">% diff用于对向量时，是计算原向量相邻元素的差</div><div class="line">exchange = diff(forecast1);</div><div class="line">% 输出灰色预测的值</div><div class="line">forcast = [x0(1),exchange]</div><div class="line">% 计算残差</div><div class="line">epsilon = x0 - forecast;</div><div class="line">% 计算相对误差</div><div class="line">delta = abs(epsilon ./ x0);</div><div class="line"></div><div class="line">% 相对误差Q的检验</div><div class="line">Q = mean(delta)</div><div class="line">% 方差比C的检验</div><div class="line">C = std(epsilon,1)/std(x0,1)</div><div class="line">% 小误差概率p的检验</div><div class="line">S1 = std(x0,1);</div><div class="line">S1_new = S1 * 0.6745;</div><div class="line">temp_P = find(abs(epsilon - mean(epsilon)) &lt; S1_new);</div><div class="line">P = length(temp_P)/n</div><div class="line">% 绘制两数列差异折线图</div><div class="line">plot(1:n,x0,<span class="string">'ro'</span>,<span class="string">'markersize'</span>,11);</div><div class="line">hold on</div><div class="line">plot(1:n,forecast,<span class="string">'k-'</span>,<span class="string">'linewidth'</span>,2.5);</div><div class="line">grid on;</div><div class="line">axis tight;</div><div class="line">xlabel(<span class="string">'x'</span>);</div><div class="line">ylabel(<span class="string">'y'</span>);</div><div class="line">title(<span class="string">'****'</span>);</div><div class="line">legend(<span class="string">'原始数列'</span>,<span class="string">'模型数列'</span>);</div></pre></td></tr></table></figure>
 <p>也可以直接用<code>6</code>中的具体数学公式：\(\breve{x}^{(1)}(k+1)=x^{(0)}(1)-\frac ba)e^{-ak}+\frac ba\)来编写程序；</p>
@@ -479,7 +471,7 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechat.jpg" alt="mrs_empress WeChat Pay"/>
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
@@ -592,9 +584,9 @@
           
             <img class="site-author-image" itemprop="image"
               src="/images/avatar.jpg"
-              alt="mrs_empress" />
+              alt="Mrs_empress" />
           
-            <p class="site-author-name" itemprop="name">mrs_empress</p>
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
             <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
         </div>
 
@@ -605,7 +597,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -616,7 +608,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -627,7 +619,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -731,7 +723,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">mrs_empress</span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
 
   
 </div>
