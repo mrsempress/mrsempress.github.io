@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-17T09:40:03.300Z">
+<meta property="og:updated_time" content="2018-05-17T15:24:03.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软考--数据库系统工程师">
 <meta name="twitter:description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
@@ -412,7 +412,8 @@
 <a id="more"></a>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<h2 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h2><h3 id="处理机"><a href="#处理机" class="headerlink" title="处理机"></a>处理机</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><ul>
+<h2 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h2><h3 id="处理机"><a href="#处理机" class="headerlink" title="处理机"></a>处理机</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>便于实现系统的积木化构造，同时可以减少信息传输线的数量</p>
+<ul>
 <li>数据总线</li>
 <li>地址总线</li>
 <li>控制总线</li>
@@ -445,7 +446,7 @@
 <li><p>指令寄存器 IR</p>
 </li>
 <li><p>指令计数器 PC</p>
-<p>确定下一条指令的地址</p>
+<p>确定下一条指令的地址，跟踪指令地址</p>
 </li>
 <li><p>地址寄存器AR</p>
 <p>保存当前CPU访问内存单元的地址</p>
@@ -455,6 +456,9 @@
 </ul>
 <p>执行一条指令：</p>
 <p>内存<code>-&gt;</code>数据寄存器<code>-&gt;</code>指令寄存器<code>-&gt;</code>指令译码器</p>
+<p>访问速度：</p>
+<p>通用寄存器 &gt; Cache &gt; 内存 &gt; 硬盘</p>
+<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><p>最近未被访问<code>&gt;</code>最近未被修改</p>
 <h3 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h3><p>视频：A/D转换</p>
 <ul>
 <li><p>JPEG</p>
@@ -472,15 +476,43 @@
 <li><p>MPEG</p>
 <p>运动图像压缩算法国际标准</p>
 <ul>
-<li>MPEG-1</li>
-<li>MPEG-2</li>
-<li>MPEG-7</li>
-<li>MPEG-21</li>
+<li>MPEG-1    VCD</li>
+<li>MPEG-2 DVD</li>
+<li>MPEG-7 接口标准</li>
+<li>MPEG-21 多媒体应用框架</li>
+</ul>
+</li>
+<li><p>CIF</p>
+<ul>
+<li><p>标准化图像格式 352*288像素</p>
+<p>​</p>
+</li>
 </ul>
 </li>
 </ul>
-<h3 id="吞吐率"><a href="#吞吐率" class="headerlink" title="吞吐率"></a>吞吐率</h3><ul>
+<h4 id="感觉媒体"><a href="#感觉媒体" class="headerlink" title="感觉媒体"></a>感觉媒体</h4><p>声音、图像等直接作用于人的感觉器官</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li><p>表现媒体</p>
+<p>信息输入、输出：键盘、鼠标、显示器</p>
+</li>
+<li><p>表示媒体</p>
+<p>数据交换的编码</p>
+</li>
+<li><p>传输媒体</p>
+<p>传输物理介质：电缆</p>
+</li>
+<li><p>存储媒体</p>
+<p>存储物理介质：硬盘</p>
+</li>
+</ul>
+<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><p>采用异步控制会增加控制电路的复杂性，也不会提高性能</p>
+<h4 id="加速比"><a href="#加速比" class="headerlink" title="加速比"></a>加速比</h4><ul>
+<li>等功能的非流水线执行时间与流水线执行时间之比</li>
+<li>与吞吐率成正比</li>
+</ul>
+<h4 id="吞吐率"><a href="#吞吐率" class="headerlink" title="吞吐率"></a>吞吐率</h4><ul>
 <li>单位时间内执行的指令数</li>
+<li>最大吞吐率取决于流水线中最慢的一段</li>
 </ul>
 <h3 id="病毒"><a href="#病毒" class="headerlink" title="病毒"></a>病毒</h3><h4 id="文件型"><a href="#文件型" class="headerlink" title="文件型"></a>文件型</h4><p>可执行<code>exe</code> <code>com</code></p>
 <h4 id="引导型"><a href="#引导型" class="headerlink" title="引导型"></a>引导型</h4><p>软盘、硬盘</p>
@@ -535,9 +567,100 @@
 </tr>
 </tbody>
 </table>
-<h2 id="程序语言"><a href="#程序语言" class="headerlink" title="程序语言"></a>程序语言</h2><h3 id="解释语言"><a href="#解释语言" class="headerlink" title="解释语言"></a>解释语言</h3><h4 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h4><ul>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><ol>
+<li>中断响应是指从发出中断请求到开始进入中断处理程序</li>
+</ol>
+<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><ol>
+<li><p>物理安全</p>
+<p>机房安全</p>
+</li>
+<li><p>网络安全</p>
+<p>入侵检测</p>
+</li>
+<li><p>系统安全</p>
+<p>漏洞补丁管理</p>
+</li>
+<li><p>应用安全</p>
+<p>数据库安全</p>
+</li>
+</ol>
+<h3 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h3><h4 id="基本要素"><a href="#基本要素" class="headerlink" title="基本要素"></a>基本要素</h4><p>方法、工具、过程</p>
+<h4 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h4><ul>
+<li>概要设计<ul>
+<li>软件体系结构的设计</li>
+<li>数据设计</li>
+<li>接口设计</li>
+</ul>
+</li>
+<li>详细设计<ul>
+<li>结构设计</li>
+<li>算法设计</li>
+</ul>
+</li>
+<li>结构化设计<ul>
+<li>函数、过程</li>
+</ul>
+</li>
+<li>面向对象设计<ul>
+<li>类、对象、构件</li>
+</ul>
+</li>
+</ul>
+<h5 id="耦合"><a href="#耦合" class="headerlink" title="耦合"></a>耦合</h5><ul>
+<li>数据耦合<ul>
+<li>数据参数来交换输入、输出信息</li>
+</ul>
+</li>
+<li>标记耦合<ul>
+<li>数据结构本身传递</li>
+</ul>
+</li>
+<li>公共耦合<ul>
+<li>访问同一个公共数据环境</li>
+</ul>
+</li>
+<li>内容耦合<ul>
+<li>直接访问</li>
+</ul>
+</li>
+</ul>
+<h4 id="软件过程"><a href="#软件过程" class="headerlink" title="软件过程"></a>软件过程</h4><ul>
+<li>瀑布模型<ul>
+<li>需求不明确</li>
+</ul>
+</li>
+<li>原型模型<ul>
+<li>需求缺乏准确认识</li>
+</ul>
+</li>
+<li>增量开发模型<ul>
+<li>逐步理解需求</li>
+</ul>
+</li>
+<li>螺旋模型<ul>
+<li>有风险分析</li>
+<li>适用于大型的软件</li>
+</ul>
+</li>
+</ul>
+<h3 id="码"><a href="#码" class="headerlink" title="码"></a>码</h3><p>补码：简化计算机运算部件的设计</p>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><ul>
+<li><p>熵编码法（一致性编码法）</p>
+<p>无损耗压缩数据</p>
+<ul>
+<li>哈夫曼编码法</li>
+</ul>
+</li>
+<li><p>​</p>
+</li>
+</ul>
+<h2 id="程序语言"><a href="#程序语言" class="headerlink" title="程序语言"></a>程序语言</h2><h3 id="基本成分"><a href="#基本成分" class="headerlink" title="基本成分"></a>基本成分</h3><p>数据、运算、控制、传输</p>
+<h3 id="解释语言"><a href="#解释语言" class="headerlink" title="解释语言"></a>解释语言</h3><h4 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h4><ul>
 <li>C、C++、C#、Java</li>
 </ul>
+<h5 id="存储空间"><a href="#存储空间" class="headerlink" title="存储空间"></a>存储空间</h5><p>全局变量：静态存储区</p>
+<p>局部变量：栈区</p>
+<p>malloc：堆区</p>
 <h4 id="动态语言（运行时改变结构）"><a href="#动态语言（运行时改变结构）" class="headerlink" title="动态语言（运行时改变结构）"></a>动态语言（运行时改变结构）</h4><h5 id="脚本语言（不产生独立保存的目标程序）"><a href="#脚本语言（不产生独立保存的目标程序）" class="headerlink" title="脚本语言（不产生独立保存的目标程序）"></a>脚本语言（不产生独立保存的目标程序）</h5><ul>
 <li>PHP、Javascript、Python、SQL</li>
 </ul>
@@ -548,10 +671,30 @@
 <p><code>&lt;tr&gt;</code>:行</p>
 <p><code>&lt;col&gt;</code>:列</p>
 <p><code>td</code>:单元格</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:test@test.com"</span>&gt;</span>test@test.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><p>第一行必须是文档说明</p>
 <p>必须包含根元素</p>
 <p>标记不可以交叉锁套</p>
-<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="掩码"><a href="#掩码" class="headerlink" title="掩码"></a>掩码</h3><ul>
+<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><p><strong>注</strong>：我就写写，不想背，看感觉选吧……</p>
+<h3 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h3><p>贝叶斯信念网络</p>
+<h3 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h3><ul>
+<li>K-means <ul>
+<li>基于对象</li>
+<li>输入聚类个数</li>
+</ul>
+</li>
+<li>DBSCAN<ul>
+<li>基于密度</li>
+<li>确定阈值</li>
+</ul>
+</li>
+</ul>
+<p>若数据分布密度大，两者均不适用</p>
+<ul>
+<li>EM</li>
+</ul>
+<h3 id="关联规则挖掘算法"><a href="#关联规则挖掘算法" class="headerlink" title="关联规则挖掘算法"></a>关联规则挖掘算法</h3><p>Apriori</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="掩码"><a href="#掩码" class="headerlink" title="掩码"></a>掩码</h3><ul>
 <li>A类</li>
 </ul>
 <p><code>255.0.0.0</code></p>
@@ -565,28 +708,56 @@
 <p><code>255.255.255.0</code></p>
 <ul>
 <li><p>广播类</p>
+<ul>
+<li>主机位全1</li>
+</ul>
 </li>
 <li><p>网络类</p>
+<ul>
+<li>主机位全0</li>
+</ul>
 </li>
 <li><p>计算题</p>
 <ul>
 <li><p>计算子网</p>
-<p>化简成二进制，减去所属类1的个数，得到<code>x</code> ，则划分成$2^x$个子网</p>
+<p>化简成二进制，减去所属类1的个数，得到<code>x</code> ，则划分成\(2^x\)个子网</p>
 </li>
-<li><p>计算</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="2PC协议"><a href="#2PC协议" class="headerlink" title="2PC协议"></a>2PC协议</h3><ul>
-<li><p>协调者<code>-&gt;</code>所有参与者发送<code>prepare</code></p>
-</li>
-<li><p>参与者<code>-&gt;</code>协调器发送<code>ready</code>或<code>abort</code></p>
-</li>
-<li><p>接受所有的<code>ready</code>后，<code>-&gt;</code> 参与者发送<code>commit</code>，否则发送<code>rollback</code></p>
-<p>​</p>
+<li><p>计算可用主机地址</p>
+<p>主机分配有32位，给的地址<code>/</code>后的数字是地址所占的位数，相减得到留给主机的地址码，减去2就是可用主机地址的个数<code>x</code>。化成二进制的时候，留下<code>x</code>可<code>1</code> 可<code>0</code>，即可求的最小地址和最大地址。</p>
 </li>
 </ul>
+</li>
+</ul>
+<h3 id="POP3"><a href="#POP3" class="headerlink" title="POP3"></a>POP3</h3><p>默认端口为110</p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><h4 id="2PC协议"><a href="#2PC协议" class="headerlink" title="2PC协议"></a>2PC协议</h4><ul>
+<li>协调者<code>-&gt;</code>所有参与者发送<code>prepare</code></li>
+<li>参与者<code>-&gt;</code>协调器发送<code>ready</code>或<code>abort</code></li>
+<li>接受所有的<code>ready</code>后，<code>-&gt;</code> 参与者发送<code>commit</code>，否则发送<code>rollback</code></li>
+</ul>
+<h4 id="DHCP协议"><a href="#DHCP协议" class="headerlink" title="DHCP协议"></a>DHCP协议</h4><p>自动分配IP地址</p>
+<h4 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h4><p>文件传输，使用传输层协议为TCP</p>
+<h4 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h4><p>终端设备与<strong>远程</strong>站点之间建立安全连接的协议</p>
+<p>建立在<strong>应用层</strong>和<strong>传输层</strong>基础上的安全协议</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><p>每秒传输的数据总量</p>
+<p>时钟频率*每个时钟周期传送的字节</p>
+<h3 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h3><ul>
+<li>内部可相互通信</li>
+<li>抵御网络风暴的影响</li>
+<li>允许逻辑地划分网段</li>
+</ul>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol :// hostname[:port] / path / filename</div></pre></td></tr></table></figure>
+<ul>
+<li><p>protocol</p>
+<p>传输协议：HTTP/HTTPS/FTP</p>
+</li>
+<li><p>hostname</p>
+<p>服务域名或者IP地址</p>
+</li>
+<li><p>port</p>
+<p>端口：80（http）</p>
+</li>
+</ul>
+<h3 id="安全级别"><a href="#安全级别" class="headerlink" title="安全级别"></a>安全级别</h3><p>Internet<code>&lt;</code>Intranet<code>&lt;</code>受信任站点<code>&lt;</code>受限站点</p>
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><h4 id="实体完整性约束"><a href="#实体完整性约束" class="headerlink" title="实体完整性约束"></a>实体完整性约束</h4><p>关键字不重复，且不是空值</p>
 <h4 id="参照完整性约束"><a href="#参照完整性约束" class="headerlink" title="参照完整性约束"></a>参照完整性约束</h4><p>主关键字与外部关键字</p>
 <h4 id="用户自定义完整性约束"><a href="#用户自定义完整性约束" class="headerlink" title="用户自定义完整性约束"></a>用户自定义完整性约束</h4><p>应用环境的要求和实际的需要</p>
@@ -610,23 +781,58 @@
 </li>
 </ul>
 <h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><ul>
-<li>丢失更新</li>
-<li>不可重复读</li>
-<li>读脏数据</li>
+<li>丢失更新 <code>READ UNCOMMITTED</code></li>
+<li>不可重复读 <code>READ COMMITED</code></li>
+<li>读脏数据 <code>REPEATEDABLE READ</code></li>
+<li>读幻影 <code>SERIALIZABLE</code></li>
 </ul>
+<h4 id="PV控制"><a href="#PV控制" class="headerlink" title="PV控制"></a>PV控制</h4><p><code>P(...)-&gt;V(...)</code></p>
 <h3 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h3><ul>
 <li>负责数据的存储</li>
+<li>负责数据库的运行和维护</li>
 <li>关系</li>
 <li>面向对象</li>
 <li>对象关系</li>
 </ul>
+<h3 id="数据仓库（DW）"><a href="#数据仓库（DW）" class="headerlink" title="数据仓库（DW）"></a>数据仓库（DW）</h3><p>历史的、大量的</p>
+<h3 id="数据挖掘（DM）"><a href="#数据挖掘（DM）" class="headerlink" title="数据挖掘（DM）"></a>数据挖掘（DM）</h3><p>大量的、有噪声的</p>
+<h4 id="OLAP"><a href="#OLAP" class="headerlink" title="OLAP"></a>OLAP</h4><p>联机分析处理</p>
+<p>从数据仓库中分析数据，为决策提供依据</p>
+<h4 id="OLTP"><a href="#OLTP" class="headerlink" title="OLTP"></a>OLTP</h4><p>联机事务处理</p>
+<p>更新事务，将数据写入数据库，面向操作人员</p>
+<h4 id="分析方法"><a href="#分析方法" class="headerlink" title="分析方法"></a>分析方法</h4><ul>
+<li>关联分析<ul>
+<li>数据间的相互关系</li>
+<li>最小置信度</li>
+<li>最小支持度</li>
+</ul>
+</li>
+<li>序列模式分析<ul>
+<li>前后（因果关系）</li>
+</ul>
+</li>
+<li>分类分析<ul>
+<li>按标记分类记录</li>
+</ul>
+</li>
+<li>聚类分析<ul>
+<li>分类分析的逆过程</li>
+</ul>
+</li>
+</ul>
 <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ul>
 <li>JDBC（JAVA）</li>
 <li>ODBC（开放式）</li>
+<li>ADO</li>
 </ul>
-<h4 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h4><ul>
-<li>多值属性（另起一个关系模式，加入主码）</li>
+<h4 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h4><p>概念设计阶段完成</p>
+<ul>
+<li>多值属性（另起一个关系模式，加入主码），形成4NF</li>
 <li>派生属性（不表示）</li>
+<li>复合属性（有了这个就是非1NF）<ul>
+<li>最常见的家庭地址</li>
+</ul>
+</li>
 <li>弱实体：以另外一个实体存在为前提</li>
 <li>特殊化：四分之三圆，缺口概念大的<ul>
 <li>d 不相交特殊化</li>
@@ -661,7 +867,7 @@
 </tr>
 <tr>
 <td>椭圆</td>
-<td>属性</td>
+<td>属性(不包括外码的)</td>
 </tr>
 <tr>
 <td>线段</td>
@@ -681,51 +887,104 @@
 </tr>
 </tbody>
 </table>
-<h3 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ul>
+<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><h3 id="码-1"><a href="#码-1" class="headerlink" title="码"></a>码</h3><ul>
+<li>全码：所有属性组是候选键</li>
+</ul>
+<h4 id="分解"><a href="#分解" class="headerlink" title="分解"></a>分解</h4><h5 id="有无损连接"><a href="#有无损连接" class="headerlink" title="有无损连接"></a>有无损连接</h5><p>通过自然联接和投影等运算仍能还原到原来的关系模式，则称这种分解为无损联接分解。 </p>
+<ol>
+<li><p>我们需要判断是否为超码：</p>
+<p>判断<code>α</code>是否为超码，通过计算<code>α+</code>（<code>α</code>在<code>F</code>下的闭包），看<code>α+</code> 是否包含了<code>R</code>中的所有属性。若是，则<code>α</code>为<code>R</code>的超码。</p>
+</li>
+</ol>
+<p>一个小练习：</p>
+<p><code>eg.</code>给定关系<code>R(A1，A2，A3，A4)</code>上的函数依赖集<code>F={A1→A2，A3→A2，A2→A3，A2→A4}</code>，R的候选关键字为<strong><em>__</em></strong>。</p>
+<p>​                    A. <code>A1</code>     B. <code>A1A3</code>      C.<code>A1A3A4</code>             D. <code>A1A2A3</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">result=A1，</div><div class="line"></div><div class="line">由于A1→A2，A1∈result，所以result=result∪A2=A1A2</div><div class="line"></div><div class="line">由于A2→A3，A2∈result，所以result=result∪A3=A1A2A3</div><div class="line"></div><div class="line">由于A2→A4，A2∈result，所以result=result∪A3=A1A2A3A4</div><div class="line"></div><div class="line">由于A3→A2，A3∈result，所以result=result∪A2=A1A2A3A4</div></pre></td></tr></table></figure>
+<p>通过计算我们看到，<code>A1+=result={A1A2A3A4}</code>，所以<code>A1</code>是<code>R</code>的超码，理所当然是<code>R</code>的候选关键字。此题选A 。</p>
+<ol>
+<li>无损分解的判断。</li>
+</ol>
+<p>如果<code>R1∩R2</code>是<code>R1</code>或<code>R2</code>的超码，则<code>R上的分解（R1，R2）</code>是无损分解。</p>
+<h5 id="是否保持函数依赖-这个还有点晕"><a href="#是否保持函数依赖-这个还有点晕" class="headerlink" title="是否保持函数依赖(这个还有点晕)"></a>是否保持函数依赖(这个还有点晕)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">对F上的每一个α→β使用下面的过程：</div><div class="line">result:=α;</div><div class="line">while(result发生变化)do</div><div class="line">    for each 分解后的Ri</div><div class="line">        t=(result∩Ri)+ ∩Ri</div><div class="line">        result=result∪t</div></pre></td></tr></table></figure>
+<p>一个大练习：</p>
+<p>设关系模式<code>R&lt;U, F&gt;</code>，其中<code>U=｛A, B, C, D, E｝</code>，<code>F＝{A→BC，C→D，BC→E，E→A｝</code>，则分解<code>ρ={R1（ABCE），R2（CD）｝</code>满足<strong>__</strong>。<br>          A．具有无损连接性、保持函数依赖                 B．不具有无损连接性、保持函数依赖<br>              C．具有无损连接性、不保持函数依赖                 D．不具有无损连接性、不保持函数依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">先做无损链接的判断。</div><div class="line">R1∩R2=&#123;C&#125;，计算C+。</div><div class="line">Result=C</div><div class="line">由于C→D，C∈result，所以result=result∪D=CD</div><div class="line">可见C是R2的超码，该分解是一个无损分解。</div><div class="line"></div><div class="line">再做保持依赖的判断。</div><div class="line">A→BC，BC→E， E→A都在R1上成立（也就是说每一个函数依赖左右两边的属性都在R1中）</div><div class="line">C→D在R2上成立，因此给分解是保持依赖的。</div><div class="line"></div><div class="line">选A。</div></pre></td></tr></table></figure>
+<p>一个超大练习：</p>
+<p>给定关系模式<code>R&lt;U, F&gt;</code>，<code>U=｛A, B, C, D, E｝</code>，<code>F＝{B→A，D→A，A→E，AC→B｝</code>，其候选关键字为<br><strong>    ，则分解<code>ρ={R1（ABCE），R2（CD）｝</code>满足__</strong>。<br>          A．ABD             B．ABE             C．ACD            D．CD</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">对于第一问，分别计算ABCD四个选项的闭包，</div><div class="line"></div><div class="line">（ABD）+ = &#123; ABDE &#125;</div><div class="line"></div><div class="line">（ABE）+ = &#123; ABE &#125;</div><div class="line"></div><div class="line">（ACD）+ = &#123; ABCDE &#125;</div><div class="line"></div><div class="line">（CD）+ = &#123; ABCDE &#125;</div><div class="line"></div><div class="line">选D。</div><div class="line"></div><div class="line"></div><div class="line">再看第二问。</div><div class="line"></div><div class="line">先做无损链接的判断。R1∩R2=&#123;C&#125;，计算C+。</div><div class="line"></div><div class="line">result=C</div><div class="line"></div><div class="line">因此C既不是R1也不是R2的超码，该分解不具有无损分解性。</div><div class="line"></div><div class="line">再做保持依赖的判断。</div><div class="line"></div><div class="line">B→A，A→E，AC→B在R1上成立，D→A在R1和R2上都不成立，因此需做进一步判断。</div><div class="line"></div><div class="line">由于B→A，A→E，AC→B都是被保持的（因为它们的元素都在R1中），因此我们要判断的是D→A是不是也被保持。</div><div class="line"></div><div class="line">对于D→A应用算法二：</div><div class="line"></div><div class="line">result=D</div><div class="line"></div><div class="line">对R1，result∩R1=ф（空集，找不到空集的符号，就用这个表示吧），t=ф，result=D</div><div class="line"></div><div class="line">再对R2，result∩R2=D，D+ =ADE ，t=D+ ∩R2=D，result=D</div><div class="line"></div><div class="line">一个循环后result未发生变化，因此最后result=D，并未包含A，所以D→A未被保持，该分解不是保持依赖的。</div></pre></td></tr></table></figure>
+<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ul>
 <li>1NF<ul>
 <li>概念上<ul>
 <li>存在可再分的分量</li>
 <li>冗余度大，插入修改删除异常</li>
 </ul>
 </li>
-<li>hcx：存在两行，有多列属性相同，而且存在属性列，不依赖候选码（主码）</li>
+<li>hcx：存在两行，有多列属性相同，而且存在属性列，不依赖候选码（若关系中的一个属性或属性组的值能够唯一地标识一个元组，且他的真子集不能唯一的标识一个元组，则称这个属性或属性组做<em>候选码</em>。），不存在多值属性</li>
 </ul>
 </li>
 <li>2NF<ul>
 <li>概念上：每一个非主属性完全依赖于码，消除了<strong>部分函数</strong>的依赖</li>
-<li>hcx：存在</li>
+<li>hcx：每一个候选码通过函数关系都不可以得到非主属性码</li>
 </ul>
 </li>
 <li>3NF<ul>
 <li>概念上：消除了<strong>传递函数</strong>的依赖</li>
-<li>hcx：</li>
+<li>hcx：只有候选码集可以决定非主属性码</li>
 </ul>
 </li>
 <li>BCNF<ul>
 <li>概念上：消除了<strong>主属性</strong>对码的部分函数依赖和传递函数依赖</li>
-<li>hcx：</li>
+<li>hcx：函数依赖关系中的左边是候选码</li>
 </ul>
 </li>
 </ul>
+<h3 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">copy from qhb:</div><div class="line"></div><div class="line">在绘制数据流图时可能出现的输入、输出错误</div><div class="line"></div><div class="line">- 只有输入没有输出</div><div class="line">- 只有输出没有输入</div><div class="line">- 输入的数据流无法通过加工产生输出流</div><div class="line">- 输入的数据流与输出的数据流名称相同</div></pre></td></tr></table></figure>
 <h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h3 id="嵌入式SQL"><a href="#嵌入式SQL" class="headerlink" title="嵌入式SQL"></a>嵌入式SQL</h3><ul>
 <li>指示变量：解决属性值为空</li>
 <li>游标：从结果集中逐一读取记录</li>
 <li>SQLCA：应用程序到数据库的通信链接的句柄</li>
 <li>动态SQL：输入不同，生成不同的执行语句</li>
 </ul>
-<h3 id="REVOKE"><a href="#REVOKE" class="headerlink" title="REVOKE"></a>REVOKE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> .... <span class="keyword">FROM</span> ... <span class="keyword">CASCADE</span>|RESTRICT</div></pre></td></tr></table></figure>
+<h3 id="授权和收回权利"><a href="#授权和收回权利" class="headerlink" title="授权和收回权利"></a>授权和收回权利</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> .... <span class="keyword">FROM</span> ... <span class="keyword">CASCADE</span>|RESTRICT</div><div class="line"><span class="keyword">REVOKE</span> <span class="keyword">UPDATE</span>(属性) <span class="keyword">ON</span> [Table_name] <span class="keyword">FROM</span> [Sb.]</div><div class="line"></div><div class="line"><span class="keyword">GRANT</span> … <span class="keyword">TO</span> …</div></pre></td></tr></table></figure>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> xx</div><div class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> PK_xx PRIMARY <span class="keyword">KEY</span>(...);</div><div class="line"></div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> xx</div><div class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> FK_xx FOREIGN <span class="keyword">KEY</span>(…) <span class="keyword">REFERENCES</span> yy(…);</div><div class="line"></div><div class="line"><span class="keyword">CHECK</span> (...)</div></pre></td></tr></table></figure>
+<h3 id="VIEW"><a href="#VIEW" class="headerlink" title="VIEW"></a>VIEW</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name (参数)</div><div class="line"><span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> (参数对应的来源)</div><div class="line"><span class="keyword">FROM</span> (some_table)</div><div class="line"><span class="keyword">WHERE</span> ...</div></pre></td></tr></table></figure>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> trigger_name <span class="keyword">AFTER</span> <span class="keyword">INSERT</span>(<span class="keyword">UPDATE</span>) <span class="keyword">ON</span> table_name</div><div class="line"><span class="keyword">REFERENCING</span> <span class="keyword">new</span> <span class="keyword">row</span> <span class="keyword">AS</span> nrow  (取得新插入的行)</div><div class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">row</span>  (遍历该表中的每一行)</div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">	...</div><div class="line">	(<span class="keyword">UPDATE</span> <span class="keyword">table</span></div><div class="line">     <span class="keyword">SET</span> ...</div><div class="line">    )</div><div class="line"><span class="keyword">END</span></div></pre></td></tr></table></figure>
 <h2 id="系统开发"><a href="#系统开发" class="headerlink" title="系统开发"></a>系统开发</h2><h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><h3 id="需求调查"><a href="#需求调查" class="headerlink" title="需求调查"></a>需求调查</h3><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>形成数据流图、数据字典</p>
-<h4 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h4><h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>根据程序的内部结构和逻辑来设计测试用例和指定的覆盖标准</p>
-<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h4 id="Gantt"><a href="#Gantt" class="headerlink" title="Gantt"></a>Gantt</h4><p>水平条状</p>
+<h4 id="数据流图（DFD）"><a href="#数据流图（DFD）" class="headerlink" title="数据流图（DFD）"></a>数据流图（DFD）</h4><p>描述对数据的处理流程</p>
+<h4 id="数据字典（DD）"><a href="#数据字典（DD）" class="headerlink" title="数据字典（DD）"></a>数据字典（DD）</h4><ul>
+<li>数据项<ul>
+<li>名称</li>
+<li>编号</li>
+<li>取值范围</li>
+<li>长度</li>
+<li>数据类型</li>
+</ul>
+</li>
+<li>数据结构</li>
+<li>数据流</li>
+<li>数据存储</li>
+<li>处理过程</li>
+</ul>
+<h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>根据程序的内部结构和逻辑来设计测试用例和指定的覆盖标准</p>
+<h3 id="进度图"><a href="#进度图" class="headerlink" title="进度图"></a>进度图</h3><h4 id="Gantt"><a href="#Gantt" class="headerlink" title="Gantt"></a>Gantt</h4><p>水平条状</p>
 <p>以日历为基础</p>
 <h4 id="PERT"><a href="#PERT" class="headerlink" title="PERT"></a>PERT</h4><p>可表明依赖关系</p>
-<h2 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h2><h3 id="事务故障"><a href="#事务故障" class="headerlink" title="事务故障"></a>事务故障</h3><h4 id="内部故障"><a href="#内部故障" class="headerlink" title="内部故障"></a>内部故障</h4><ul>
+<h2 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h2><h3 id="事务性质"><a href="#事务性质" class="headerlink" title="事务性质"></a>事务性质</h3><ul>
+<li>持久性（提交之后）<ul>
+<li>使用日志</li>
+</ul>
+</li>
+<li>一致性</li>
+<li>原子性</li>
+<li>隔离性（一个事务受另一个的干扰）</li>
+</ul>
+<h3 id="事务故障"><a href="#事务故障" class="headerlink" title="事务故障"></a>事务故障</h3><h4 id="内部故障"><a href="#内部故障" class="headerlink" title="内部故障"></a>内部故障</h4><ul>
 <li>运算溢出</li>
 <li>发生死锁</li>
 <li>违反完整性约束</li>
 </ul>
-<h3 id="2PL协议"><a href="#2PL协议" class="headerlink" title="2PL协议"></a>2PL协议</h3><p>读数据 S</p>
-<p>写数据 X</p>
+<h3 id="2PL协议"><a href="#2PL协议" class="headerlink" title="2PL协议"></a>2PL协议</h3><p>读数据 S 共享锁</p>
+<p>写数据 X 独占锁、排他锁</p>
 <p>修改数据 升级</p>
 <h2 id="标准化与知识产权"><a href="#标准化与知识产权" class="headerlink" title="标准化与知识产权"></a>标准化与知识产权</h2><h3 id="CA（认证中心）"><a href="#CA（认证中心）" class="headerlink" title="CA（认证中心）"></a>CA（认证中心）</h3><p>常识来答题</p>
 <h3 id="软件著作权"><a href="#软件著作权" class="headerlink" title="软件著作权"></a>软件著作权</h3><p>作品完成就有了……</p>
@@ -997,7 +1256,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机系统"><span class="nav-number">1.</span> <span class="nav-text">计算机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理机"><span class="nav-number">1.1.</span> <span class="nav-text">处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器"><span class="nav-number">1.1.1.</span> <span class="nav-text">处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-number">1.1.2.</span> <span class="nav-text">总线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器"><span class="nav-number">1.1.3.</span> <span class="nav-text">存储器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-number">1.2.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体"><span class="nav-number">1.3.</span> <span class="nav-text">多媒体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#吞吐率"><span class="nav-number">1.4.</span> <span class="nav-text">吞吐率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病毒"><span class="nav-number">1.5.</span> <span class="nav-text">病毒</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件型"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引导型"><span class="nav-number">1.5.2.</span> <span class="nav-text">引导型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录型"><span class="nav-number">1.5.3.</span> <span class="nav-text">目录型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏"><span class="nav-number">1.5.4.</span> <span class="nav-text">宏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠度"><span class="nav-number">1.6.</span> <span class="nav-text">可靠度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统故障"><span class="nav-number">1.7.</span> <span class="nav-text">系统故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介质（硬）故障"><span class="nav-number">1.8.</span> <span class="nav-text">介质（硬）故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-number">1.9.</span> <span class="nav-text">中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘容量"><span class="nav-number">1.10.</span> <span class="nav-text">磁盘容量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序语言"><span class="nav-number">2.</span> <span class="nav-text">程序语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释语言"><span class="nav-number">2.1.</span> <span class="nav-text">解释语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态语言"><span class="nav-number">2.1.1.</span> <span class="nav-text">静态语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态语言（运行时改变结构）"><span class="nav-number">2.1.2.</span> <span class="nav-text">动态语言（运行时改变结构）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#脚本语言（不产生独立保存的目标程序）"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">脚本语言（不产生独立保存的目标程序）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.2.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML"><span class="nav-number">2.3.</span> <span class="nav-text">XML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">3.</span> <span class="nav-text">数据结构与算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">4.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">5.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#掩码"><span class="nav-number">5.1.</span> <span class="nav-text">掩码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2PC协议"><span class="nav-number">5.2.</span> <span class="nav-text">2PC协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">6.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完整性约束"><span class="nav-number">6.1.</span> <span class="nav-text">完整性约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实体完整性约束"><span class="nav-number">6.1.1.</span> <span class="nav-text">实体完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参照完整性约束"><span class="nav-number">6.1.2.</span> <span class="nav-text">参照完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义完整性约束"><span class="nav-number">6.1.3.</span> <span class="nav-text">用户自定义完整性约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型"><span class="nav-number">6.2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#体系结构"><span class="nav-number">6.2.1.</span> <span class="nav-text">体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行结构"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">并行结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#B-S"><span class="nav-number">6.2.1.1.1.</span> <span class="nav-text">B/S</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C-S"><span class="nav-number">6.2.1.1.2.</span> <span class="nav-text">C/S</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三级模式，两级映像"><span class="nav-number">6.2.1.2.</span> <span class="nav-text">三级模式，两级映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">6.3.</span> <span class="nav-text">并发控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBMS"><span class="nav-number">6.4.</span> <span class="nav-text">DBMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">6.5.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#E-R图"><span class="nav-number">6.5.1.</span> <span class="nav-text">E-R图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据库"><span class="nav-number">6.6.</span> <span class="nav-text">关系数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#范式"><span class="nav-number">6.6.1.</span> <span class="nav-text">范式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">7.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式SQL"><span class="nav-number">7.1.</span> <span class="nav-text">嵌入式SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REVOKE"><span class="nav-number">7.2.</span> <span class="nav-text">REVOKE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统开发"><span class="nav-number">8.</span> <span class="nav-text">系统开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计"><span class="nav-number">9.</span> <span class="nav-text">数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求调查"><span class="nav-number">9.1.</span> <span class="nav-text">需求调查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">9.2.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据流图"><span class="nav-number">9.2.1.</span> <span class="nav-text">数据流图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典"><span class="nav-number">9.2.2.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白盒测试"><span class="nav-number">9.3.</span> <span class="nav-text">白盒测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图"><span class="nav-number">9.4.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gantt"><span class="nav-number">9.4.1.</span> <span class="nav-text">Gantt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PERT"><span class="nav-number">9.4.2.</span> <span class="nav-text">PERT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务管理"><span class="nav-number">10.</span> <span class="nav-text">事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务故障"><span class="nav-number">10.1.</span> <span class="nav-text">事务故障</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部故障"><span class="nav-number">10.1.1.</span> <span class="nav-text">内部故障</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2PL协议"><span class="nav-number">10.2.</span> <span class="nav-text">2PL协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准化与知识产权"><span class="nav-number">11.</span> <span class="nav-text">标准化与知识产权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CA（认证中心）"><span class="nav-number">11.1.</span> <span class="nav-text">CA（认证中心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件著作权"><span class="nav-number">11.2.</span> <span class="nav-text">软件著作权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件开发"><span class="nav-number">11.3.</span> <span class="nav-text">软件开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">12.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机系统"><span class="nav-number">1.</span> <span class="nav-text">计算机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理机"><span class="nav-number">1.1.</span> <span class="nav-text">处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器"><span class="nav-number">1.1.1.</span> <span class="nav-text">处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-number">1.1.2.</span> <span class="nav-text">总线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器"><span class="nav-number">1.1.3.</span> <span class="nav-text">存储器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-number">1.2.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存"><span class="nav-number">1.2.1.</span> <span class="nav-text">内存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体"><span class="nav-number">1.3.</span> <span class="nav-text">多媒体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#感觉媒体"><span class="nav-number">1.3.1.</span> <span class="nav-text">感觉媒体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">1.3.2.</span> <span class="nav-text">分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线"><span class="nav-number">1.4.</span> <span class="nav-text">流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加速比"><span class="nav-number">1.4.1.</span> <span class="nav-text">加速比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#吞吐率"><span class="nav-number">1.4.2.</span> <span class="nav-text">吞吐率</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病毒"><span class="nav-number">1.5.</span> <span class="nav-text">病毒</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件型"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引导型"><span class="nav-number">1.5.2.</span> <span class="nav-text">引导型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录型"><span class="nav-number">1.5.3.</span> <span class="nav-text">目录型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏"><span class="nav-number">1.5.4.</span> <span class="nav-text">宏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠度"><span class="nav-number">1.6.</span> <span class="nav-text">可靠度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统故障"><span class="nav-number">1.7.</span> <span class="nav-text">系统故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介质（硬）故障"><span class="nav-number">1.8.</span> <span class="nav-text">介质（硬）故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-number">1.9.</span> <span class="nav-text">中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘容量"><span class="nav-number">1.10.</span> <span class="nav-text">磁盘容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU"><span class="nav-number">1.11.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全"><span class="nav-number">1.12.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件工程"><span class="nav-number">1.13.</span> <span class="nav-text">软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本要素"><span class="nav-number">1.13.1.</span> <span class="nav-text">基本要素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件设计"><span class="nav-number">1.13.2.</span> <span class="nav-text">软件设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#耦合"><span class="nav-number">1.13.2.1.</span> <span class="nav-text">耦合</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件过程"><span class="nav-number">1.13.3.</span> <span class="nav-text">软件过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#码"><span class="nav-number">1.14.</span> <span class="nav-text">码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编码"><span class="nav-number">1.14.1.</span> <span class="nav-text">编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序语言"><span class="nav-number">2.</span> <span class="nav-text">程序语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本成分"><span class="nav-number">2.1.</span> <span class="nav-text">基本成分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释语言"><span class="nav-number">2.2.</span> <span class="nav-text">解释语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态语言"><span class="nav-number">2.2.1.</span> <span class="nav-text">静态语言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储空间"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">存储空间</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态语言（运行时改变结构）"><span class="nav-number">2.2.2.</span> <span class="nav-text">动态语言（运行时改变结构）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#脚本语言（不产生独立保存的目标程序）"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">脚本语言（不产生独立保存的目标程序）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.3.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML"><span class="nav-number">2.4.</span> <span class="nav-text">XML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">3.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类算法"><span class="nav-number">3.1.</span> <span class="nav-text">分类算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类算法"><span class="nav-number">3.2.</span> <span class="nav-text">聚类算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联规则挖掘算法"><span class="nav-number">3.3.</span> <span class="nav-text">关联规则挖掘算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">4.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">5.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#掩码"><span class="nav-number">5.1.</span> <span class="nav-text">掩码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POP3"><span class="nav-number">5.2.</span> <span class="nav-text">POP3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议"><span class="nav-number">5.3.</span> <span class="nav-text">协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2PC协议"><span class="nav-number">5.3.1.</span> <span class="nav-text">2PC协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP协议"><span class="nav-number">5.3.2.</span> <span class="nav-text">DHCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP协议"><span class="nav-number">5.3.3.</span> <span class="nav-text">TCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH"><span class="nav-number">5.3.4.</span> <span class="nav-text">SSH</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带宽"><span class="nav-number">5.4.</span> <span class="nav-text">带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLAN"><span class="nav-number">5.5.</span> <span class="nav-text">VLAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">5.6.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全级别"><span class="nav-number">5.7.</span> <span class="nav-text">安全级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">6.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完整性约束"><span class="nav-number">6.1.</span> <span class="nav-text">完整性约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实体完整性约束"><span class="nav-number">6.1.1.</span> <span class="nav-text">实体完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参照完整性约束"><span class="nav-number">6.1.2.</span> <span class="nav-text">参照完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义完整性约束"><span class="nav-number">6.1.3.</span> <span class="nav-text">用户自定义完整性约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型"><span class="nav-number">6.2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#体系结构"><span class="nav-number">6.2.1.</span> <span class="nav-text">体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行结构"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">并行结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#B-S"><span class="nav-number">6.2.1.1.1.</span> <span class="nav-text">B/S</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C-S"><span class="nav-number">6.2.1.1.2.</span> <span class="nav-text">C/S</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三级模式，两级映像"><span class="nav-number">6.2.1.2.</span> <span class="nav-text">三级模式，两级映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">6.3.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PV控制"><span class="nav-number">6.3.1.</span> <span class="nav-text">PV控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBMS"><span class="nav-number">6.4.</span> <span class="nav-text">DBMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据仓库（DW）"><span class="nav-number">6.5.</span> <span class="nav-text">数据仓库（DW）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据挖掘（DM）"><span class="nav-number">6.6.</span> <span class="nav-text">数据挖掘（DM）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OLAP"><span class="nav-number">6.6.1.</span> <span class="nav-text">OLAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OLTP"><span class="nav-number">6.6.2.</span> <span class="nav-text">OLTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析方法"><span class="nav-number">6.6.3.</span> <span class="nav-text">分析方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">6.7.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#E-R图"><span class="nav-number">6.7.1.</span> <span class="nav-text">E-R图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系数据库"><span class="nav-number">7.</span> <span class="nav-text">关系数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#码-1"><span class="nav-number">7.1.</span> <span class="nav-text">码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分解"><span class="nav-number">7.1.1.</span> <span class="nav-text">分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#有无损连接"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">有无损连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#是否保持函数依赖-这个还有点晕"><span class="nav-number">7.1.1.2.</span> <span class="nav-text">是否保持函数依赖(这个还有点晕)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范式"><span class="nav-number">7.1.2.</span> <span class="nav-text">范式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据流"><span class="nav-number">7.2.</span> <span class="nav-text">数据流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">8.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式SQL"><span class="nav-number">8.1.</span> <span class="nav-text">嵌入式SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权和收回权利"><span class="nav-number">8.2.</span> <span class="nav-text">授权和收回权利</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-number">8.3.</span> <span class="nav-text">约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VIEW"><span class="nav-number">8.4.</span> <span class="nav-text">VIEW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触发器"><span class="nav-number">8.5.</span> <span class="nav-text">触发器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统开发"><span class="nav-number">9.</span> <span class="nav-text">系统开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计"><span class="nav-number">10.</span> <span class="nav-text">数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求调查"><span class="nav-number">10.1.</span> <span class="nav-text">需求调查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">10.2.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据流图（DFD）"><span class="nav-number">10.2.1.</span> <span class="nav-text">数据流图（DFD）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典（DD）"><span class="nav-number">10.2.2.</span> <span class="nav-text">数据字典（DD）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白盒测试"><span class="nav-number">10.3.</span> <span class="nav-text">白盒测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进度图"><span class="nav-number">10.4.</span> <span class="nav-text">进度图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gantt"><span class="nav-number">10.4.1.</span> <span class="nav-text">Gantt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PERT"><span class="nav-number">10.4.2.</span> <span class="nav-text">PERT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务管理"><span class="nav-number">11.</span> <span class="nav-text">事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务性质"><span class="nav-number">11.1.</span> <span class="nav-text">事务性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务故障"><span class="nav-number">11.2.</span> <span class="nav-text">事务故障</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部故障"><span class="nav-number">11.2.1.</span> <span class="nav-text">内部故障</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2PL协议"><span class="nav-number">11.3.</span> <span class="nav-text">2PL协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准化与知识产权"><span class="nav-number">12.</span> <span class="nav-text">标准化与知识产权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CA（认证中心）"><span class="nav-number">12.1.</span> <span class="nav-text">CA（认证中心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件著作权"><span class="nav-number">12.2.</span> <span class="nav-text">软件著作权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件开发"><span class="nav-number">12.3.</span> <span class="nav-text">软件开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">13.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
