@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog.Git 一直以来只是当作一个存储blog的仓库，实际上它是目前世界上最先进的分布式版本控制系统（没有之一）。好的，我现在只是拿来做笔记而已的。多记了一些命令，罢了ᶘ ᵒᴥᵒᶅ">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-12T06:38:55.049Z">
+<meta property="og:updated_time" content="2018-05-17T09:14:43.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="This is my blog.Git 一直以来只是当作一个存储blog的仓库，实际上它是目前世界上最先进的分布式版本控制系统（没有之一）。好的，我现在只是拿来做笔记而已的。多记了一些命令，罢了ᶘ ᵒᴥᵒᶅ">
@@ -421,14 +421,13 @@
 <p>我们可以进入冲突文件，Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容<br>进行修改后，再提交<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add readme.txt </div><div class="line">git commit -m <span class="string">"conflict fixed"</span></div></pre></td></tr></table></figure></p>
 <p>可通过<code>git log -- graph</code>看到过程<br>最后删除不要的分支吧！<br>所以为了避免，先<code>git pull</code>吧！</p>
 <h2 id="多人工作模式"><a href="#多人工作模式" class="headerlink" title="多人工作模式"></a>多人工作模式</h2><ol>
-<li>首先，可以试图用<code>git push origin branch-name</code>推送自己的修改；</li>
-<li>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；<ul>
+<li>首先，可以试图用<code>git push origin branch-name</code>推送自己的修改；<br> .    如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；<ul>
 <li>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建</li>
-<li>使用命令<code>git branch --set-upstream branch-name origin/branch-name</code>。</li>
+<li>使用命令<code>git branch --set-upstream branch-name origin/branch-name</code>。<pre><code>如果合并有冲突，则解决冲突，并在本地提交；
+没有冲突或者解决掉冲突后，再用`git push origin branch-name`推送就能成功！
+</code></pre></li>
 </ul>
 </li>
-<li>如果合并有冲突，则解决冲突，并在本地提交；</li>
-<li>没有冲突或者解决掉冲突后，再用<code>git push origin branch-name</code>推送就能成功！</li>
 </ol>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>唔，好久没有更新，然后敲命令的时候，呆了一下（真的是一下٩(˃̶͈̀௰˂̶͈́)و<br>有点困了，睡觉觉</p>
 <p>本文参考<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰</a></p>
@@ -502,6 +501,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/17/软考-数据库系统工程师/" rel="prev" title="软考--数据库系统工程师">
+                软考--数据库系统工程师 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -581,7 +584,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -592,7 +595,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -603,7 +606,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

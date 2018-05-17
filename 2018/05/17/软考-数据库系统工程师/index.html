@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据库," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考--数据库系统工程师">
+<meta property="og:url" content="http://empress.top/2018/05/17/软考-数据库系统工程师/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-05-17T09:15:44.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软考--数据库系统工程师">
+<meta name="twitter:description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/05/17/软考-数据库系统工程师/"/>
+
+
+
+
+
+  <title>软考--数据库系统工程师 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/05/17/软考-数据库系统工程师/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软考--数据库系统工程师</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-17T17:05:04+08:00">
+                2018-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件工程/" itemprop="url" rel="index">
+                    <span itemprop="name">软件工程</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件工程/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/17/软考-数据库系统工程师/" class="leancloud_visitors" data-flag-title="软考--数据库系统工程师">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。</p>
+<p>加油吧！</p>
+<a id="more"></a>
+<h2 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h2><h3 id="处理机"><a href="#处理机" class="headerlink" title="处理机"></a>处理机</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><ul>
+<li>数据总线</li>
+<li>地址总线</li>
+<li>控制总线</li>
+</ul>
+<h4 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h4><ul>
+<li><p>虚拟存储器</p>
+</li>
+<li><p>高速缓存 Cache</p>
+<p>地址映像方式</p>
+<ul>
+<li><p>全相联映像：</p>
+<p> 块冲突概率低，空间利用率高；</p>
+</li>
+</ul>
+<p>​    目录表容量大，成本高，查表速度慢</p>
+<ul>
+<li>直接映像：硬件简单，访问速度快；</li>
+</ul>
+<p>​    块冲突概率高，空间利用率低</p>
+<ul>
+<li>级相联映像 折中</li>
+</ul>
+</li>
+<li><p>相联存储器（访问内容）</p>
+</li>
+<li><p>随机访问存储器</p>
+</li>
+</ul>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>指令寄存器 IR</p>
+</li>
+<li><p>指令计数器 PC</p>
+<p>确定下一条指令的地址</p>
+</li>
+<li><p>地址寄存器AR</p>
+<p>保存当前CPU访问内存单元的地址</p>
+</li>
+<li><p>数据寄存器DR</p>
+</li>
+</ul>
+<p>执行一条指令：</p>
+<p>内存<code>-&gt;</code>数据寄存器<code>-&gt;</code>指令寄存器<code>-&gt;</code>指令译码器</p>
+<h3 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h3><p>视频：A/D转换</p>
+<ul>
+<li><p>JPEG</p>
+</li>
+<li><p>RIFF</p>
+<ul>
+<li>文件规范音频与视频</li>
+</ul>
+</li>
+<li><p>AVI</p>
+<ul>
+<li>视频与音频交错同步</li>
+</ul>
+</li>
+<li><p>MPEG</p>
+<p>运动图像压缩算法国际标准</p>
+<ul>
+<li>MPEG-1</li>
+<li>MPEG-2</li>
+<li>MPEG-7</li>
+<li>MPEG-21</li>
+</ul>
+</li>
+</ul>
+<h3 id="吞吐率"><a href="#吞吐率" class="headerlink" title="吞吐率"></a>吞吐率</h3><ul>
+<li>单位时间内执行的指令数</li>
+</ul>
+<h3 id="病毒"><a href="#病毒" class="headerlink" title="病毒"></a>病毒</h3><h4 id="文件型"><a href="#文件型" class="headerlink" title="文件型"></a>文件型</h4><p>可执行<code>exe</code> <code>com</code></p>
+<h4 id="引导型"><a href="#引导型" class="headerlink" title="引导型"></a>引导型</h4><p>软盘、硬盘</p>
+<h4 id="目录型"><a href="#目录型" class="headerlink" title="目录型"></a>目录型</h4><p>文件地址</p>
+<h4 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h4><p>程序创建的文本文档word、数据库sql、电子表格excel等文件</p>
+<h3 id="可靠度"><a href="#可靠度" class="headerlink" title="可靠度"></a>可靠度</h3><ul>
+<li><p>串联</p>
+<p>$R=R_1R_2 \cdot\cdot \cdot R_n$</p>
+</li>
+<li><p>并联</p>
+<p>$R=1-(1-R_1)(1-R_2)\cdot\cdot\cdot(1-R_n)$</p>
+</li>
+</ul>
+<h3 id="系统故障"><a href="#系统故障" class="headerlink" title="系统故障"></a>系统故障</h3><ul>
+<li>CPU</li>
+<li>操作系统</li>
+<li>DBMS代码</li>
+<li>停电</li>
+</ul>
+<h3 id="介质（硬）故障"><a href="#介质（硬）故障" class="headerlink" title="介质（硬）故障"></a>介质（硬）故障</h3><ul>
+<li>硬盘损坏</li>
+</ul>
+<h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><ul>
+<li><p>可屏蔽中断（CPU无条件响应）</p>
+<p>打印机中断</p>
+</li>
+<li><p>不可屏蔽中断：断电，软中断</p>
+</li>
+</ul>
+<h3 id="磁盘容量"><a href="#磁盘容量" class="headerlink" title="磁盘容量"></a>磁盘容量</h3><ul>
+<li>每面磁道数=（外直径-内直径）/2*磁道密度</li>
+</ul>
+<ul>
+<li>|   位   |       b       |<br>| :—-: | :———–: |<br>|  字节  |   B（=8b）    |<br>| 千字节 | KB（=1024KB） |<br>|        |     MB……      |</li>
+</ul>
+<h2 id="程序语言"><a href="#程序语言" class="headerlink" title="程序语言"></a>程序语言</h2><h3 id="解释语言"><a href="#解释语言" class="headerlink" title="解释语言"></a>解释语言</h3><h4 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h4><ul>
+<li>C、C++、C#、Java</li>
+</ul>
+<h4 id="动态语言（运行时改变结构）"><a href="#动态语言（运行时改变结构）" class="headerlink" title="动态语言（运行时改变结构）"></a>动态语言（运行时改变结构）</h4><h5 id="脚本语言（不产生独立保存的目标程序）"><a href="#脚本语言（不产生独立保存的目标程序）" class="headerlink" title="脚本语言（不产生独立保存的目标程序）"></a>脚本语言（不产生独立保存的目标程序）</h5><ul>
+<li>PHP、Javascript、Python、SQL</li>
+</ul>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p><code>alink</code>：正击中</p>
+<p><code>vlink</code>：已使用</p>
+<p><code>background</code>：背景图片URL</p>
+<p><code>bgcolcor</code>：文档整体背景颜色</p>
+<p><code>&lt;tr&gt;</code>:行</p>
+<p><code>&lt;col&gt;</code>:列</p>
+<p><code>td</code>:单元格</p>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><p>第一行必须是文档说明</p>
+<p>必须包含根元素</p>
+<p>标记不可以交叉锁套</p>
+<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="掩码"><a href="#掩码" class="headerlink" title="掩码"></a>掩码</h3><ul>
+<li>A类</li>
+</ul>
+<p><code>255.0.0.0</code></p>
+<ul>
+<li>B类</li>
+</ul>
+<p><code>255.255.0.0</code></p>
+<ul>
+<li>C类</li>
+</ul>
+<p><code>255.255.255.0</code></p>
+<ul>
+<li><p>广播类</p>
+</li>
+<li><p>网络类</p>
+</li>
+<li><p>计算题</p>
+<ul>
+<li><p>计算子网</p>
+<p>化简成二进制，减去所属类1的个数，得到<code>x</code> ，则划分成$2^x$个子网</p>
+</li>
+<li><p>计算</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2PC协议"><a href="#2PC协议" class="headerlink" title="2PC协议"></a>2PC协议</h3><ul>
+<li><p>协调者<code>-&gt;</code>所有参与者发送<code>prepare</code></p>
+</li>
+<li><p>参与者<code>-&gt;</code>协调器发送<code>ready</code>或<code>abort</code></p>
+</li>
+<li><p>接受所有的<code>ready</code>后，<code>-&gt;</code> 参与者发送<code>commit</code>，否则发送<code>rollback</code></p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><h4 id="实体完整性约束"><a href="#实体完整性约束" class="headerlink" title="实体完整性约束"></a>实体完整性约束</h4><p>关键字不重复，且不是空值</p>
+<h4 id="参照完整性约束"><a href="#参照完整性约束" class="headerlink" title="参照完整性约束"></a>参照完整性约束</h4><p>主关键字与外部关键字</p>
+<h4 id="用户自定义完整性约束"><a href="#用户自定义完整性约束" class="headerlink" title="用户自定义完整性约束"></a>用户自定义完整性约束</h4><p>应用环境的要求和实际的需要</p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><h4 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h4><h5 id="并行结构"><a href="#并行结构" class="headerlink" title="并行结构"></a>并行结构</h5><h6 id="B-S"><a href="#B-S" class="headerlink" title="B/S"></a>B/S</h6><h6 id="C-S"><a href="#C-S" class="headerlink" title="C/S"></a>C/S</h6><ul>
+<li>客户端负责数据表示服务，高级语言编写，可以使用接口技术或者嵌入式SQL等方式访问</li>
+<li>服务器负责数据库服务</li>
+<li>前端 图形用户界面</li>
+<li>后端 存取结构、查询计算优化、并发控制、故障恢复</li>
+</ul>
+<h5 id="三级模式，两级映像"><a href="#三级模式，两级映像" class="headerlink" title="三级模式，两级映像"></a>三级模式，两级映像</h5><ul>
+<li>三级模式<ul>
+<li>物理层</li>
+<li>逻辑层</li>
+<li>视图层</li>
+</ul>
+</li>
+<li>两级映像<ul>
+<li>模式/内模式</li>
+<li>外模式/模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><ul>
+<li>丢失更新</li>
+<li>不可重复读</li>
+<li>读脏数据</li>
+</ul>
+<h3 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h3><ul>
+<li>负责数据的存储</li>
+<li>关系</li>
+<li>面向对象</li>
+<li>对象关系</li>
+</ul>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ul>
+<li>JDBC（JAVA）</li>
+<li>ODBC（开放式）</li>
+</ul>
+<h4 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h4><ul>
+<li>多值属性（另起一个关系模式，加入主码）</li>
+<li>派生属性（不表示）</li>
+<li>弱实体：以另外一个实体存在为前提</li>
+<li>特殊化：四分之三圆，缺口概念大的<ul>
+<li>d 不相交特殊化</li>
+<li>o重叠特殊化</li>
+</ul>
+</li>
+<li>标记 <code>1 *</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>构件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>矩形</td>
+<td>实体</td>
+</tr>
+<tr>
+<td>双边矩形</td>
+<td>弱实体</td>
+</tr>
+<tr>
+<td>菱形</td>
+<td>联系</td>
+</tr>
+<tr>
+<td>双边菱形</td>
+<td>（弱实体的）联系</td>
+</tr>
+<tr>
+<td>椭圆</td>
+<td>属性</td>
+</tr>
+<tr>
+<td>线段</td>
+<td>-</td>
+</tr>
+<tr>
+<td>双椭圆</td>
+<td>多值属性</td>
+</tr>
+<tr>
+<td>虚椭圆</td>
+<td>派生属性</td>
+</tr>
+<tr>
+<td>双线</td>
+<td>实体全部参与</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ul>
+<li>1NF<ul>
+<li>概念上<ul>
+<li>存在可再分的分量</li>
+<li>冗余度大，插入修改删除异常</li>
+</ul>
+</li>
+<li>hcx：存在两行，有多列属性相同</li>
+</ul>
+</li>
+<li>2NF<ul>
+<li>概念上：每一个非主属性完全依赖于码，消除了<strong>部分函数</strong>的依赖</li>
+<li>hcx：存在</li>
+</ul>
+</li>
+<li>3NF<ul>
+<li>概念上：消除了<strong>传递函数</strong>的依赖</li>
+<li>hcx：</li>
+</ul>
+</li>
+<li>BCNF<ul>
+<li>概念上：消除了<strong>主属性</strong>对码的部分函数依赖和传递函数依赖</li>
+<li>hcx：</li>
+</ul>
+</li>
+</ul>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h3 id="嵌入式SQL"><a href="#嵌入式SQL" class="headerlink" title="嵌入式SQL"></a>嵌入式SQL</h3><ul>
+<li>指示变量：解决属性值为空</li>
+<li>游标：从结果集中逐一读取记录</li>
+<li>SQLCA：应用程序到数据库的通信链接的句柄</li>
+<li>动态SQL：输入不同，生成不同的执行语句</li>
+</ul>
+<h3 id="REVOKE"><a href="#REVOKE" class="headerlink" title="REVOKE"></a>REVOKE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> .... <span class="keyword">FROM</span> ... <span class="keyword">CASCADE</span>|RESTRICT</div></pre></td></tr></table></figure>
+<h2 id="系统开发"><a href="#系统开发" class="headerlink" title="系统开发"></a>系统开发</h2><h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><h3 id="需求调查"><a href="#需求调查" class="headerlink" title="需求调查"></a>需求调查</h3><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>形成数据流图、数据字典</p>
+<h4 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h4><h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>根据程序的内部结构和逻辑来设计测试用例和指定的覆盖标准</p>
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h4 id="Gantt"><a href="#Gantt" class="headerlink" title="Gantt"></a>Gantt</h4><p>水平条状</p>
+<p>以日历为基础</p>
+<h4 id="PERT"><a href="#PERT" class="headerlink" title="PERT"></a>PERT</h4><p>可表明依赖关系</p>
+<h2 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h2><h3 id="事务故障"><a href="#事务故障" class="headerlink" title="事务故障"></a>事务故障</h3><h4 id="内部故障"><a href="#内部故障" class="headerlink" title="内部故障"></a>内部故障</h4><ul>
+<li>运算溢出</li>
+<li>发生死锁</li>
+<li>违反完整性约束</li>
+</ul>
+<h3 id="2PL协议"><a href="#2PL协议" class="headerlink" title="2PL协议"></a>2PL协议</h3><p>读数据 S</p>
+<p>写数据 X</p>
+<p>修改数据 升级</p>
+<h2 id="标准化与知识产权"><a href="#标准化与知识产权" class="headerlink" title="标准化与知识产权"></a>标准化与知识产权</h2><h3 id="CA（认证中心）"><a href="#CA（认证中心）" class="headerlink" title="CA（认证中心）"></a>CA（认证中心）</h3><p>常识来答题</p>
+<h3 id="软件著作权"><a href="#软件著作权" class="headerlink" title="软件著作权"></a>软件著作权</h3><p>作品完成就有了……</p>
+<p>给公司做的，自己只有著作权，其余权利都是公司的</p>
+<h3 id="软件开发"><a href="#软件开发" class="headerlink" title="软件开发"></a>软件开发</h3><ul>
+<li>RUP<ul>
+<li>角色Who</li>
+<li>活动How</li>
+<li>制品What</li>
+<li>工作流When</li>
+</ul>
+</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>最近貌似有点热，嗯，有点不理智</p>
+<p>这周天六级口试了，然后发现六级没准备，就很郁闷</p>
+<p>下周就是软考，嗯，我一定要把半本书看完</p>
+<p>下下周，嗯嗯嗯…… 儿童节？？？</p>
+<p>下下下周，宁夏，抱着旅游心态？？？</p>
+<p>下下下下周，六级，唔，不知道那时候自己准备了什么</p>
+<p>然后是不是就应该补功课了呀！发现好多课云里雾里的了，有些感觉跳过了几节课，是我睡着了，还是失忆了呢！</p>
+<p>最近打算埋头苦干一下，控制一下自己，不要被诱惑了🙅‍♀️</p>
+<p>好了，继续更新这篇博客，满满上传啦！</p>
+<p>git用多了，hexo快失忆了！我是有多久没更新blog了呀！！！</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=550138132&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/Work-together/" rel="next" title="Git">
+                <i class="fa fa-chevron-left"></i> Git
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机系统"><span class="nav-number">1.</span> <span class="nav-text">计算机系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理机"><span class="nav-number">1.1.</span> <span class="nav-text">处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器"><span class="nav-number">1.1.1.</span> <span class="nav-text">处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-number">1.1.2.</span> <span class="nav-text">总线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器"><span class="nav-number">1.1.3.</span> <span class="nav-text">存储器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-number">1.2.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体"><span class="nav-number">1.3.</span> <span class="nav-text">多媒体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#吞吐率"><span class="nav-number">1.4.</span> <span class="nav-text">吞吐率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病毒"><span class="nav-number">1.5.</span> <span class="nav-text">病毒</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件型"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引导型"><span class="nav-number">1.5.2.</span> <span class="nav-text">引导型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录型"><span class="nav-number">1.5.3.</span> <span class="nav-text">目录型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏"><span class="nav-number">1.5.4.</span> <span class="nav-text">宏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠度"><span class="nav-number">1.6.</span> <span class="nav-text">可靠度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统故障"><span class="nav-number">1.7.</span> <span class="nav-text">系统故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介质（硬）故障"><span class="nav-number">1.8.</span> <span class="nav-text">介质（硬）故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-number">1.9.</span> <span class="nav-text">中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘容量"><span class="nav-number">1.10.</span> <span class="nav-text">磁盘容量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序语言"><span class="nav-number">2.</span> <span class="nav-text">程序语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释语言"><span class="nav-number">2.1.</span> <span class="nav-text">解释语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态语言"><span class="nav-number">2.1.1.</span> <span class="nav-text">静态语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态语言（运行时改变结构）"><span class="nav-number">2.1.2.</span> <span class="nav-text">动态语言（运行时改变结构）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#脚本语言（不产生独立保存的目标程序）"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">脚本语言（不产生独立保存的目标程序）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.2.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML"><span class="nav-number">2.3.</span> <span class="nav-text">XML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">3.</span> <span class="nav-text">数据结构与算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">4.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">5.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#掩码"><span class="nav-number">5.1.</span> <span class="nav-text">掩码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2PC协议"><span class="nav-number">5.2.</span> <span class="nav-text">2PC协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">6.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完整性约束"><span class="nav-number">6.1.</span> <span class="nav-text">完整性约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实体完整性约束"><span class="nav-number">6.1.1.</span> <span class="nav-text">实体完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参照完整性约束"><span class="nav-number">6.1.2.</span> <span class="nav-text">参照完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义完整性约束"><span class="nav-number">6.1.3.</span> <span class="nav-text">用户自定义完整性约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型"><span class="nav-number">6.2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#体系结构"><span class="nav-number">6.2.1.</span> <span class="nav-text">体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行结构"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">并行结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#B-S"><span class="nav-number">6.2.1.1.1.</span> <span class="nav-text">B/S</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C-S"><span class="nav-number">6.2.1.1.2.</span> <span class="nav-text">C/S</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三级模式，两级映像"><span class="nav-number">6.2.1.2.</span> <span class="nav-text">三级模式，两级映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">6.3.</span> <span class="nav-text">并发控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBMS"><span class="nav-number">6.4.</span> <span class="nav-text">DBMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">6.5.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#E-R图"><span class="nav-number">6.5.1.</span> <span class="nav-text">E-R图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据库"><span class="nav-number">6.6.</span> <span class="nav-text">关系数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#范式"><span class="nav-number">6.6.1.</span> <span class="nav-text">范式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">7.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式SQL"><span class="nav-number">7.1.</span> <span class="nav-text">嵌入式SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REVOKE"><span class="nav-number">7.2.</span> <span class="nav-text">REVOKE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统开发"><span class="nav-number">8.</span> <span class="nav-text">系统开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计"><span class="nav-number">9.</span> <span class="nav-text">数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求调查"><span class="nav-number">9.1.</span> <span class="nav-text">需求调查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">9.2.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据流图"><span class="nav-number">9.2.1.</span> <span class="nav-text">数据流图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典"><span class="nav-number">9.2.2.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白盒测试"><span class="nav-number">9.3.</span> <span class="nav-text">白盒测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图"><span class="nav-number">9.4.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gantt"><span class="nav-number">9.4.1.</span> <span class="nav-text">Gantt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PERT"><span class="nav-number">9.4.2.</span> <span class="nav-text">PERT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务管理"><span class="nav-number">10.</span> <span class="nav-text">事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务故障"><span class="nav-number">10.1.</span> <span class="nav-text">事务故障</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部故障"><span class="nav-number">10.1.1.</span> <span class="nav-text">内部故障</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2PL协议"><span class="nav-number">10.2.</span> <span class="nav-text">2PL协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准化与知识产权"><span class="nav-number">11.</span> <span class="nav-text">标准化与知识产权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CA（认证中心）"><span class="nav-number">11.1.</span> <span class="nav-text">CA（认证中心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件著作权"><span class="nav-number">11.2.</span> <span class="nav-text">软件著作权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件开发"><span class="nav-number">11.3.</span> <span class="nav-text">软件开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">12.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
