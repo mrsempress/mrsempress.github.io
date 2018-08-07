@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 唔……再不整理题型，就晚了！ Good Luck！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-25T09:07:38.843Z">
+<meta property="og:updated_time" content="2018-05-25T12:52:36.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="软考--数据库系统工程师--清单">
 <meta name="twitter:description" content="This is my blog. 唔……再不整理题型，就晚了！ Good Luck！">
@@ -574,7 +574,7 @@
 <li>A、B、C类网络</li>
 <li>广播地址（主机号全1）本网地址（主机号全0）</li>
 <li>TCP/IP<ul>
-<li>FTP 两台计算机传送文件 20 21</li>
+<li>FTP 两台计算机传送文件 20（数据 下载）1025-65535（数据 上传） 21（命令</li>
 <li>TFTP 客户机与服务器传输文件</li>
 <li>HTTP 服务器传输超文本 80</li>
 <li>SMTP 电子邮件 25</li>
@@ -587,6 +587,13 @@
 </ul>
 </li>
 <li>URL</li>
+<li>ping <ul>
+<li>127.0.0.1</li>
+<li>本地IP</li>
+<li>网关地址</li>
+<li>远程网站</li>
+</ul>
+</li>
 </ul>
 <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
 <li>三级模式两级映射</li>
@@ -639,6 +646,14 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> <span class="keyword">INSERT</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> ... <span class="keyword">TO</span> ... <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span> <span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> ... <span class="keyword">FROM</span> ... <span class="keyword">CASCADE</span></div></pre></td></tr></table></figure>
 <ul>
 <li>2PL</li>
+<li>无损连接<ul>
+<li>R1^R2-&gt;R1-R2    或 R1^R2-&gt;R2-R1</li>
+</ul>
+</li>
+<li>函数依赖<ul>
+<li>F1vF2 = F</li>
+</ul>
+</li>
 </ul>
 <h3 id="系统开发和维护"><a href="#系统开发和维护" class="headerlink" title="系统开发和维护"></a>系统开发和维护</h3><ul>
 <li>瀑布模型</li>
@@ -704,11 +719,11 @@
 <p>然后画主码、外码（看题！）</p>
 <p>回答是不是的问题，先画出函数依赖关系，然后</p>
 <ol>
-<li>不属于第一范式，因为存在xxx<strong>多值属性</strong></li>
-<li>不属于第二范式，因为存在非主属性对<strong>部分函数</strong>的依赖</li>
+<li>不属于第一范式，因为存在xxx<strong>分量可再分</strong>（非主属性决定非主属性）</li>
+<li>不属于第二范式，因为存在非主属性对<strong>部分函数</strong>的依赖（主码中的一个可以决定非主属性）</li>
 <li>不属于第三范式，因为存在非主属性对<strong>传递函数</strong>的依赖</li>
 <li>不属于第四范式，因为存在<strong>多值依赖</strong>。</li>
-<li>不属于BCNF范式，因为存在<strong>主属性</strong>对部分函数和传递函数的依赖</li>
+<li>不属于BCNF范式，因为存在<strong>主属性</strong>对部分函数和传递函数的依赖（主属性之间存在传递依赖关系）</li>
 </ol>
 <p>然后就是分解关系模式</p>
 <p>（这题对于我来说丢分大！范式判断不清，函数依赖关系不清楚</p>
@@ -807,6 +822,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/08/07/2018-Multi-University-Training-hdu/" rel="prev" title="2018 Multi-University Training hdu">
+                2018 Multi-University Training hdu <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -885,7 +904,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -896,7 +915,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -907,7 +926,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
