@@ -405,7 +405,7 @@
 <p>##（原始）队列<br>所谓队列，就是FIFO，先进先出。具有pop、push、front三种基本操作。其头文件为<code>&lt;queue&gt;</code>，用<code>queue&lt;int&gt;s</code>来声明一个队列。<br>例题：UVA540</p>
 <h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><p>优先队列是一种抽象数据类型，ADT。先出队列的是队列中优先级最高的元素。具有pop、push、top三种基本操作。其头文件为<code>&lt;queue&gt;</code>,用<code>priority_queue&lt;int&gt;pq</code>来声明，在这个例子中，越小的整数优先级越低。而对于自定义类型的优先队列，可以定义一个结构体cmp，重载<code>（）</code>。<br>例如，要实现一个“个位数大的整数优先级反而小的优先队列。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct cmp&#123;</div><div class="line">		bool operator() (const int a, const int b) const&#123;</div><div class="line">				<span class="built_in">return</span> a%10&gt;b%10;</div><div class="line">		&#125;</div><div class="line">&#125;</div><div class="line">priority_queue&lt;int,vector&lt;int&gt;,cmp&gt;pq;</div></pre></td></tr></table></figure></p>
 <p><strong>注</strong> 两个<code>&gt;&gt;</code>不要写在一起，编译器可能难以理解。<br>例题：UVA136</p>
-<h2 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h2><p>双端队列，可以支持快速地在首尾两端进行插入和删除。<br>具有front、back、pop_front、pop_back、erase、push_front、push_back、insert三种基本操作。其头文件为<code>&lt;deque&gt;</code>，用<code>deque&lt;int&gt;s</code>来声明一个队列。<br>在xcode上试验了一下，结果如下：<br><img src="media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png" alt="屏幕快照 2017-09-14 下午8.35.17"></p>
+<h2 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h2><p>双端队列，可以支持快速地在首尾两端进行插入和删除。<br>具有front、back、pop_front、pop_back、erase、push_front、push_back、insert三种基本操作。其头文件为<code>&lt;deque&gt;</code>，用<code>deque&lt;int&gt;s</code>来声明一个队列。<br>在xcode上试验了一下，结果如下：<br><img src="/2017/09/13/数据结构/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png" alt="屏幕快照 2017-09-14 下午8.35.17"></p>
 <h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><hr>
 <p>链表存储中，在一般学习中我们有两种方法。一则是用数组，开辟一个next数组，记录其下一个指向的元素的下标，同时也需要规定一个结束标志；二则是用指针，但在acm竞赛中，我们很少会使用指针，主要是为了防止出错。<br>链表还可以分为单向链表、双向链表、循环链表。</p>
 <h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><hr>
@@ -576,7 +576,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

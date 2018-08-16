@@ -420,7 +420,7 @@
 <li>数据的累加（AGO）<br>不仅可以降噪，还可以加强数据规律的显露<br>\(x^{(1)}(k)=\sum_{i=1}^kx^{(0)}(i),k=1,2,3,\cdot\cdot\cdot,n\)</li>
 <li>求出数列\(x^{(1)}\)的导数<br>\(\left. \frac{dC}{dt} \right| _k=x^{(1)}(k)- x^{(1)}(k-1)=x^{(0)}(k)=d(k)\)</li>
 <li>定义数列\(x^{(1)}(k)    \)的紧邻均值（背景值）<br>\(z^{(1)}(k)=\frac{x^{(1)}(k)+x^{(1)}(k-1)}{2},k=2,3,4\cdot\cdot\cdot\)<br>称新数列\(z^{(1)}=(z^{(1)}(2),z^{(1)}(3),z^{(1)}(4),\cdot\cdot\cdot,z^{(1)}(n)）\)为\(x^{(1)}\)的紧邻均值数列。</li>
-<li>定义\(GM(1,1)\)灰微分方程<br>\(x^{(0)}(k)+az^{(0)}(k)=b\)<br><code>a</code>称为“发展系数”，<code>b</code>称为“灰作用量”。<br>令\(Y=(x^{(1)}(2),x^{(1)}(3),x^{(1)}(4),\cdot\cdot\cdot ,x^{(1)}(n))^T,u=(a,b)^T,B=\)<img src="media/15168490149860.jpg" alt=""></li>
+<li>定义\(GM(1,1)\)灰微分方程<br>\(x^{(0)}(k)+az^{(0)}(k)=b\)<br><code>a</code>称为“发展系数”，<code>b</code>称为“灰作用量”。<br>令\(Y=(x^{(1)}(2),x^{(1)}(3),x^{(1)}(4),\cdot\cdot\cdot ,x^{(1)}(n))^T,u=(a,b)^T,B=\)<img src="/2018/01/25/Matlab-灰色预测/media/15168490149860.jpg" alt=""></li>
 </ol>
 <p>即可表示为\(Y=Bu\)<br>\(\breve{u}=(\breve{a},\breve{b})^T=(B^TB)^{-1}B^TY\)<br>这里所得到的\(\breve{u}\)是近似值</p>
 <ol>
@@ -436,7 +436,7 @@
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
 <li>IAGO<br>\(x^{(0)}(k)=x^{(1)}(k)-x^{(1)}(k-1),k=2,3,4，\cdot\cdot\cdot,n\)</li>
 <li>对原始数列\(x^{(1)}\)作紧邻均值<br>\(z^{(1)}(k)=\frac{x^{(1)}(k)+x^{(1)}(k-1)}{2},k=2,3,4\cdot\cdot\cdot\)</li>
-<li><p>定义数据矩阵<br>B = <img src="media/15168873161657.jpg" alt=""><br>Y = <img src="media/15168873296259.jpg" alt=""></p>
+<li><p>定义数据矩阵<br>B = <img src="/2018/01/25/Matlab-灰色预测/media/15168873161657.jpg" alt=""><br>Y = <img src="/2018/01/25/Matlab-灰色预测/media/15168873296259.jpg" alt=""></p>
 </li>
 <li><p>计算参数<br>\(\breve{u}=(\breve{a},\breve{b})^T=(B^TB)^{-1}B^TY\)</p>
 </li>
@@ -598,7 +598,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
