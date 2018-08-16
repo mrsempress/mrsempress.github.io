@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="多校,线段树,置换群,排列组合,计算几何,LIS,LDS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta name="keywords" content="多校,线段树,置换群,排列组合,计算几何,LIS,LDS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018 Multi-University Training hdu Contest 5">
+<meta property="og:url" content="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-5/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-16T07:49:05.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018 Multi-University Training hdu Contest 5">
+<meta name="twitter:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-5/"/>
+
+
+
+
+
+  <title>2018 Multi-University Training hdu Contest 5 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018 Multi-University Training hdu Contest 5</h1>
+        
+
+        <div class="post-meta">
+	  
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T15:15:53+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/2018/" itemprop="url" rel="index">
+                    <span itemprop="name">2018</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/16/2018-Multi-University-Training-hdu-Contest-5/" class="leancloud_visitors" data-flag-title="2018 Multi-University Training hdu Contest 5">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>嚯嚯嚯！补题！</p>
+<p><a href="http://mrsempress.top/2018/08/07/2018-Multi-University-Training-hdu/#more" target="_blank" rel="external">hdu多校总链接</a></p>
+<a id="more"></a>
+<p>补题： 3题/12题</p>
+<ul>
+<li>置换群</li>
+<li>排列组合</li>
+<li>计算几何</li>
+<li>线段树</li>
+<li>LIS</li>
+<li>LDS</li>
+</ul>
+<h3 id="B-Beautiful-Now"><a href="#B-Beautiful-Now" class="headerlink" title="B. Beautiful Now"></a>B. Beautiful Now</h3><blockquote>
+<p>for each permutation of digits, the minimum number of swaps equals to n minus the number of disjoint cycles in the permutation. We can solve the problem by enumerating all the n-permutations. That is, for each permutation, we just check if it can be reached within k swaps (because swapping the same digit is permitted) and then update the answer. Time complexity is expected to be O(n!) while algorithms in time complexity O(n!n) may get TLE verdict (but who knows?). In order to achieve the excepted time complexoty, we may need to maintain some information about chains and cycles effciently during the process of searching and backtracking.</p>
+<p>考虑下标的置换，可以发现最少的交换次数等于 n 减去置换中循环的数量，所以可以枚举所有的 n 排列解决此题。 对于每个置换， 只需要检查它是否可以在 k 次交换内实现（因为可以交换相同的位置） 并更新答案。 期望时间复杂度是 O(n!)， O(n!n)的算法有可能会超时（也可能不超时）。 为了实现期望 复杂度可能需要在搜索和回溯过程中高效维护链和环的信息。</p>
+</blockquote>
+<p>看不懂题解的我，被空调吹傻的我……</p>
+<p>置换群？排列组合？</p>
+<p>一直以为是贪心呢！（想知道数据啊，感觉也可行呐！不过给的时间就可以告诉我，不是的，但苍天啊，大地啊！给个反例吧！）</p>
+<p>第二天，博博过了！</p>
+<p>嗯，大概就是通过把每种置换方法都列出来，然后通过每种置换变换为目标的串所需要的次数，如果小于k，则是可以的；对于可以的，进行值的比较更新结果！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">9</span>;</div><div class="line"><span class="keyword">char</span> buf[maxn + <span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> q[maxn+<span class="number">2</span>],num[maxn+<span class="number">2</span>],p[maxn+<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> low,upp,n,m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(num[p[<span class="number">1</span>]]==<span class="number">0</span>) <span class="keyword">return</span>; <span class="comment">//第一位数字不可以是0</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) q[i]=p[i]; <span class="comment">//q数组内保存全排列后的位置</span></div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>,s=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">        s=s*<span class="number">10</span>+num[p[i]];</div><div class="line">        <span class="keyword">if</span>(q[i]!=i)&#123; <span class="comment">//如果当前位数字更改了</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(q[j]==i)&#123;<span class="comment">//找到交换后的位置，进行交换</span></div><div class="line">                    swap(q[i],q[j]);</div><div class="line">                    k++;</div><div class="line">                    <span class="keyword">if</span>(k&gt;m) <span class="keyword">return</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(k&gt;m) <span class="keyword">return</span>;<span class="comment">//转换了超过k次</span></div><div class="line">    upp=max(upp,s);</div><div class="line">    low=min(low,s);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</div><div class="line">    <span class="keyword">while</span>(t--) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;low, &amp;m);</div><div class="line">        upp = low;</div><div class="line">        n = <span class="built_in">sprintf</span>(buf, <span class="string">"%d"</span>, low);</div><div class="line">        <span class="keyword">if</span>(n &gt; maxn) &#123; <span class="comment">//1e9，10位数字</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, low, upp);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(n<span class="number">-1</span> &lt;= m) &#123;<span class="comment">//这里刚开始没怎么想，如果写n&lt;=m则会TLE，这里看到全排列是如此多啊！！！</span></div><div class="line">            sort(buf, buf + n, greater&lt;<span class="keyword">char</span>&gt;());</div><div class="line">            <span class="built_in">sscanf</span>(buf, <span class="string">"%d"</span>, &amp;upp);</div><div class="line">            <span class="comment">//特殊处理第一位</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i)</div><div class="line">                <span class="keyword">if</span>(buf[<span class="number">0</span>] &gt; buf[i] &amp;&amp; buf[i] &gt; <span class="string">'0'</span>)</div><div class="line">                    swap(buf[<span class="number">0</span>], buf[i]);</div><div class="line">            <span class="comment">//排序</span></div><div class="line">            sort(buf + <span class="number">1</span>, buf + n);</div><div class="line">            <span class="built_in">sscanf</span>(buf, <span class="string">"%d"</span>, &amp;low);</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, low, upp);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            num[i]=buf[i<span class="number">-1</span>]-<span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) p[i]=i;  <span class="comment">//每一位数字原来保存在哪里</span></div><div class="line">        <span class="keyword">do</span>&#123;</div><div class="line">            update();</div><div class="line">        &#125;<span class="keyword">while</span>(next_permutation(p+<span class="number">1</span>,p+n+<span class="number">1</span>)) ;<span class="comment">//全排列</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,low,upp);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="E-Everything-Has-Changed"><a href="#E-Everything-Has-Changed" class="headerlink" title="E. Everything Has Changed"></a>E. Everything Has Changed</h3><blockquote>
+<p>Note that the cutting areas do not intersect and the different areas do not affect each other. Just enumerate every cutting area intersecting the disk and then count the lengths of their circumferences covered by each other.</p>
+<p>注意切割区域两两不相交， 则不同切割区域不会相互影响。 枚举每个与圆盘相交的切割区域， 计算互相被包含的圆周长度即可。</p>
+</blockquote>
+<p>画个图就ok！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">105</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> EPS = <span class="number">1e-5</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> &#123;</span></div><div class="line">    <span class="keyword">double</span> x, y;</div><div class="line">    Point(<span class="keyword">double</span> a = <span class="number">0</span>, <span class="keyword">double</span> b = <span class="number">0</span>) &#123;</div><div class="line">        x = a;</div><div class="line">        y = b;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cycle</span> &#123;</span></div><div class="line">    Point centre;</div><div class="line">    <span class="keyword">double</span> r;</div><div class="line">&#125;cycle[MAX];</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(Point a, Point b)</span> </span>&#123;</div><div class="line">    <span class="keyword">double</span> dx = a.x - b.x, dy = a.y - b.y;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(dx * dx + dy * dy);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (a - b &gt;= EPS)    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (b - a &gt;= EPS)   <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(Cycle a)</span> </span>&#123;<span class="comment">//判断是否相交</span></div><div class="line">    <span class="keyword">double</span> d = dis(a.centre, cycle[<span class="number">0</span>].centre);</div><div class="line">    <span class="keyword">if</span> (cmp(d, cycle[<span class="number">0</span>].r - a.r) &gt;= <span class="number">0</span> &amp;&amp; cmp(cycle[<span class="number">0</span>].r + a.r, d) &gt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// freopen("input.txt", "r", stdin);</span></div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        cycle[<span class="number">0</span>].centre = Point(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        <span class="keyword">int</span> m;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%lf"</span>, &amp;m, &amp;cycle[<span class="number">0</span>].r);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf"</span>, &amp;cycle[i].centre.x, &amp;cycle[i].centre.y, &amp;cycle[i].r);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">double</span> angle, d, r, R = cycle[<span class="number">0</span>].r, ans = <span class="number">2</span> * PI * R, beta;</div><div class="line">        <span class="comment">// cout &lt;&lt; ans &lt;&lt; endl;</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">            <span class="keyword">if</span> (check(cycle[i])) &#123;</div><div class="line">                <span class="comment">// cout &lt;&lt; i &lt;&lt; endl;</span></div><div class="line">                d = dis(cycle[<span class="number">0</span>].centre, cycle[i].centre);</div><div class="line">                r = cycle[i].r;</div><div class="line">                beta = <span class="built_in">acos</span>((R * R + d * d - r * r) / (<span class="number">2</span> * R * d));</div><div class="line">                angle = <span class="built_in">acos</span>((d * d + r * r - R * R) / (<span class="number">2</span> * d * r));</div><div class="line">                ans += <span class="number">2</span> * angle * r - <span class="number">2</span> * beta * R;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="G-Glad-You-Came"><a href="#G-Glad-You-Came" class="headerlink" title="G. Glad You Came"></a>G. Glad You Came</h3><blockquote>
+<p>If there are two operations covering the same interval, we can just keep the maximum one. For each operation(l,r,v),let d be 」log2(r-l+1)」, replace this operation by two operations (l,l+2^d-1,v) and (r-2^d+1,r,v). After that, the length of the interval that each operations covers is a power of 2, which means the lengths are only O(logn) types. The remaining part is just to enumerate operations in length decreasing order and split each operation into two operations of equal length until the length is one. Time complexity is O(m+nlogn) and space complexity is O(nlogn).</p>
+</blockquote>
+<p>如果有两个操作覆盖相同的间隔，我们可以保持最大值。 对于每个操作（l，r，v），令d为对log2（r-l + 1）向下取整，将该操作替换为两个操作（l，l + 2 ^ d-1，v）和（r-2 ^d+ 1，R，v）。 之后，每个操作所覆盖的间隔的长度是2的幂，这意味着长度仅为O（logn）类型。 剩下的部分只是按长度递减顺序枚举操作，并将每个操作分成两个相等长度的操作，直到长度为1。 时间复杂度为O（m + nlogn），空间复杂度为O（nlogn）。</p>
+<blockquote>
+<p>如果有两个操作覆盖相同的区间， 我们可以保留最大的那个。 对于每个操作（l，r，v）， 令 d 等于 对log2（r-l + 1）向下取整， 我们可以用两个操作（l，l + 2 ^ d-1，v）和（r-2 ^d+ 1，R，v）替换此操作。 这样做之后， 每个操作所覆盖的区间长度均为 2 的幂， 这意味着长度仅有 O（logn）种。 剩下的只不过是， 按长度递 减的顺序枚举操作，将每个操作分成两个相等长度的操作，直到区间长度为一。这样做的时间复杂度为O（m + nlogn），空间复杂度为O（nlogn）。</p>
+</blockquote>
+<p>这个，线段树有博博会就够了！emmm……我估计永远都不会线段树了！</p>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>2018.08.11晚</p>
+<p>嗝，吃多了！</p>
+<p>记录一下，若是有长度为n的序列，如果LIS的长度为L的话，那么LDS的长度为（n/L）向下取整</p>
+<p>因为我是小金鱼呀！</p>
+<p>2018.08.12 早</p>
+<p>早上不想起床了，留了一集小葡萄</p>
+<p>唔，疲劳期，倦怠期，还有好多题目没有补</p>
+<p> 中午照样在赖床，羡慕各位聚聚和舍长爸爸</p>
+<p>充满无限的活力</p>
+<p>2018.08.12 晚</p>
+<p>没有报名百度之星，好无聊啊</p>
+<p>也不能提交，继续补题啊</p>
+<p>好想穿上美美的小裙子，梳上丸子头，出门拍上美美的照片啊！</p>
+<p>于是拍了一段小短片，感觉像是一个广告，顺便，马卡龙好评！</p>
+<p>郁闷，我又胖了，一定是坐太久了！</p>
+<p>感觉我已经进入暴躁期了，喜怒无常，无所事事</p>
+<p>给博客增加了置顶的功能！</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2119781&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多校/" rel="tag"># 多校</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/置换群/" rel="tag"># 置换群</a>
+          
+            <a href="/tags/排列组合/" rel="tag"># 排列组合</a>
+          
+            <a href="/tags/计算几何/" rel="tag"># 计算几何</a>
+          
+            <a href="/tags/LIS/" rel="tag"># LIS</a>
+          
+            <a href="/tags/LDS/" rel="tag"># LDS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/2018-Multi-University-Training-hdu-Contest-4/" rel="next" title="2018 Multi-University Training hdu Contest 4">
+                <i class="fa fa-chevron-left"></i> 2018 Multi-University Training hdu Contest 4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/16/2018-Multi-University-Training-hdu-Contest-6/" rel="prev" title="2018 Multi-University Training hdu Contest 6">
+                2018 Multi-University Training hdu Contest 6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Beautiful-Now"><span class="nav-number">1.</span> <span class="nav-text">B. Beautiful Now</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Everything-Has-Changed"><span class="nav-number">2.</span> <span class="nav-text">E. Everything Has Changed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-Glad-You-Came"><span class="nav-number">3.</span> <span class="nav-text">G. Glad You Came</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碎碎念"><span class="nav-number"></span> <span class="nav-text">碎碎念</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="多校,计算几何," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta name="keywords" content="多校,计算几何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018 Multi-University Training hdu Contest 8">
+<meta property="og:url" content="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-8/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/Users/mrs_empress/blog/source/_posts/2018-hdu-8-B.png">
+<meta property="og:updated_time" content="2018-08-16T07:55:29.959Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018 Multi-University Training hdu Contest 8">
+<meta name="twitter:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta name="twitter:image" content="http://empress.top/Users/mrs_empress/blog/source/_posts/2018-hdu-8-B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-8/"/>
+
+
+
+
+
+  <title>2018 Multi-University Training hdu Contest 8 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018 Multi-University Training hdu Contest 8</h1>
+        
+
+        <div class="post-meta">
+	  
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T15:16:04+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/2018/" itemprop="url" rel="index">
+                    <span itemprop="name">2018</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/16/2018-Multi-University-Training-hdu-Contest-8/" class="leancloud_visitors" data-flag-title="2018 Multi-University Training hdu Contest 8">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>嚯嚯嚯！补题！</p>
+<p><a href="http://mrsempress.top/2018/08/07/2018-Multi-University-Training-hdu/#more" target="_blank" rel="external">hdu多校总链接</a></p>
+<a id="more"></a>
+<p>补题： 4题/12题</p>
+<ul>
+<li>计算几何</li>
+<li>构造</li>
+<li>线段树</li>
+<li>分类讨论</li>
+<li></li>
+</ul>
+<h3 id="B-Pizza-Hub"><a href="#B-Pizza-Hub" class="headerlink" title="B. Pizza Hub"></a>B. Pizza Hub</h3><p>画了一下图，分类的情况很多，每种情况需要我分别判断，同时计算这个高度的方法也是不同的</p>
+<p><img src="/Users/mrs_empress/blog/source/_posts/2018-hdu-8-B.png" alt=""></p>
+<p>不过看标程，貌似也没有那么多种分类的问题，可是代码看不懂！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> EPS = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> &#123;</span></div><div class="line">    <span class="keyword">double</span> x, y;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">in</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;x, &amp;y);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(Point a, Point b)</span> </span>&#123;</div><div class="line">    <span class="keyword">double</span> dx = a.x - b.x, dy = a.y - b.y;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(dx * dx + dy * dy);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">abs</span>(a - b) &lt;= EPS)  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (a - b &lt;= EPS)   <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">double</span> ans;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal</span><span class="params">(Point a, Point b, Point c, <span class="keyword">double</span> w)</span> </span>&#123;<span class="comment">//处理以ab为底边的情况</span></div><div class="line">    <span class="keyword">double</span> ba = dis(b, a), bc = dis(b, c), ac = dis(a, c);</div><div class="line">    <span class="comment">//如果边大于限制不可以</span></div><div class="line">    <span class="keyword">if</span>(ba&gt;w) <span class="keyword">return</span> ;</div><div class="line">    <span class="comment">//如果小于限制之后，判断两个角是否没有钝角</span></div><div class="line">    <span class="keyword">double</span> anglea=<span class="built_in">acos</span>((ba*ba+ac*ac-bc*bc)/(<span class="number">2</span>*ba*ac));</div><div class="line">    <span class="keyword">double</span> angleb=<span class="built_in">acos</span>((ba*ba+bc*bc-ac*ac)/(<span class="number">2</span>*ba*bc));</div><div class="line">    <span class="comment">//如果都是不是钝角的时候，就可以放入</span></div><div class="line">    <span class="keyword">double</span> x=<span class="built_in">cos</span>(anglea),y=<span class="built_in">cos</span>(angleb);</div><div class="line">    <span class="keyword">if</span>(x&gt;=<span class="number">0</span>&amp;&amp;y&gt;=<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans,ac*<span class="built_in">sin</span>(anglea));</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//如果存在钝角的时候，计算是否可以放入</span></div><div class="line">    <span class="keyword">if</span>(x&lt;<span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(cmp(ba-ac*x, w)&lt;=<span class="number">0</span>)&#123;</div><div class="line">            ans=min(ans, ac*<span class="built_in">sin</span>(anglea));</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">if</span>(cmp(ba-bc*y, w)&lt;=<span class="number">0</span>)&#123;</div><div class="line">            ans=min(ans, bc*<span class="built_in">sin</span>(angleb));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal2</span><span class="params">(Point a, Point b, Point c, <span class="keyword">double</span> w)</span> </span>&#123;<span class="comment">//处理ab为斜边的情况</span></div><div class="line">    <span class="keyword">double</span> ba = dis(b, a), bc = dis(b, c), ac = dis(a, c);</div><div class="line">    <span class="comment">//如果ab小于限制就不用计算了</span></div><div class="line">    <span class="keyword">if</span>(ba&lt;=w) <span class="keyword">return</span> ;</div><div class="line">    <span class="comment">//判断两个角是否都在新角的范围内</span></div><div class="line">    <span class="keyword">double</span> anglea=<span class="built_in">acos</span>((ba*ba+ac*ac-bc*bc)/(<span class="number">2</span>*ba*ac));</div><div class="line">    <span class="keyword">double</span> angleb=<span class="built_in">acos</span>((ba*ba+bc*bc-ac*ac)/(<span class="number">2</span>*ba*bc));</div><div class="line">    </div><div class="line">    <span class="keyword">double</span> newx=<span class="built_in">acos</span>(w/ba);</div><div class="line">    <span class="keyword">double</span> newy=<span class="built_in">asin</span>(w/ba);</div><div class="line">    <span class="keyword">if</span>((cmp(anglea, newx)&lt;=<span class="number">0</span>&amp;&amp;cmp(angleb, newy)&lt;=<span class="number">0</span>)||(cmp(angleb, newx)&lt;=<span class="number">0</span>&amp;&amp;cmp(anglea, newy)&lt;=<span class="number">0</span>))&#123;</div><div class="line">        ans=min(ans, ba*<span class="built_in">sin</span>(newx));</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//否则，需要翻转，计算角+新角的值小于等于直角，另一个角+新角的值小于等于180的话，则可以放入</span></div><div class="line">    <span class="comment">//放入的时候又有两种情况</span></div><div class="line">    <span class="keyword">double</span> anglex=anglea+newx;</div><div class="line">    <span class="keyword">int</span> flagx=cmp(anglex, PI/<span class="number">2</span>);</div><div class="line">    <span class="keyword">double</span> angley=angleb+newy;</div><div class="line">    <span class="keyword">int</span> flagy=cmp(angley, PI/<span class="number">2</span>);</div><div class="line">    <span class="keyword">double</span> anglexx=angleb+newx;</div><div class="line">    <span class="keyword">int</span> flagxx=cmp(anglexx, PI/<span class="number">2</span>);</div><div class="line">    <span class="keyword">double</span> angleyy=anglea+newy;</div><div class="line">    <span class="keyword">int</span> flagyy=cmp(angleyy, PI/<span class="number">2</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(!((flagx&lt;=<span class="number">0</span>&amp;&amp;cmp(angley, PI)&lt;=<span class="number">0</span>)||(flagxx&lt;=<span class="number">0</span>&amp;&amp;cmp(angleyy, PI)&lt;=<span class="number">0</span>))) <span class="keyword">return</span> ;</div><div class="line">    </div><div class="line">    <span class="comment">//存在一个角等于90</span></div><div class="line">    <span class="keyword">if</span>(flagx==<span class="number">0</span>) ans=min(ans, max(ac,ba*<span class="built_in">sin</span>(newx)));</div><div class="line">    <span class="keyword">if</span>(flagxx==<span class="number">0</span>) ans=min(ans,max(bc,ba*<span class="built_in">sin</span>(newx)));</div><div class="line">    <span class="keyword">if</span>(flagx&lt;<span class="number">0</span>&amp;&amp;flagy==<span class="number">0</span>) ans=min(ans,ba*<span class="built_in">sin</span>(newx));</div><div class="line">    <span class="keyword">if</span>(flagxx&lt;<span class="number">0</span>&amp;&amp;flagyy==<span class="number">0</span>) ans=min(ans,ba*<span class="built_in">sin</span>(newx));</div><div class="line">    </div><div class="line">    <span class="comment">//存在一个角等于180</span></div><div class="line">    <span class="keyword">if</span>(cmp(angley, PI)==<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans, ac*<span class="built_in">sin</span>(anglex));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(cmp(angleyy, PI)==<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans,bc*<span class="built_in">sin</span>(anglexx));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//两个角都小于90</span></div><div class="line">    <span class="keyword">if</span>(flagx&lt;<span class="number">0</span>&amp;&amp;flagy&lt;<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans,ba*<span class="built_in">sin</span>(newx));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(flagxx&lt;<span class="number">0</span>&amp;&amp;flagyy&lt;<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans,ba*<span class="built_in">sin</span>(newx));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//一个角大于90</span></div><div class="line">    <span class="keyword">if</span>(flagx&lt;<span class="number">0</span>&amp;&amp;flagy&gt;<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans,ac*<span class="built_in">sin</span>(anglex));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(flagxx&lt;<span class="number">0</span>&amp;&amp;flagyy&gt;<span class="number">0</span>)&#123;</div><div class="line">        ans=min(ans,bc*<span class="built_in">sin</span>(anglexx));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">    Point a, b, c;</div><div class="line">    <span class="keyword">double</span> w;</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        a.in(); b.in(); c.in(); <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;w);</div><div class="line">        ans = <span class="number">1</span>&lt;&lt;<span class="number">30</span>;</div><div class="line">  </div><div class="line">        deal(a, b, c, w);</div><div class="line">        deal(a, c, b, w);</div><div class="line">        deal(b, c, a, w);</div><div class="line"></div><div class="line">        deal2(a, b, c, w);</div><div class="line">        deal2(a, c, b, w);</div><div class="line">        deal2(b, c, a, w);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (cmp(ans, <span class="number">1</span>&lt;&lt;<span class="number">30</span>) == <span class="number">0</span>)   <span class="built_in">printf</span>(<span class="string">"impossible\n"</span>);</div><div class="line">        <span class="keyword">else</span>    <span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="D-Parentheses-Matrix"><a href="#D-Parentheses-Matrix" class="headerlink" title="D. Parentheses Matrix"></a>D. Parentheses Matrix</h3><p>首先，第一行、最后一列中最多只有一个能够匹配，第一列、最后一行也只有一个能够匹配（考虑右上角和左下角的括号选取方法），故答案不会超过 w+h−2。</p>
+<p> 当 h = 2 时，每一列可以构造一对匹配，这样答案已经到达上界。</p>
+<p> 当 h = 4 时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">((((((((</div><div class="line">))))((((</div><div class="line">(((())))</div><div class="line">))))))))</div></pre></td></tr></table></figure>
+<p>这样答案是 w+h−3。</p>
+<p>当 h ≥ 6 时，可以如下构造：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">((((((((</div><div class="line">()()()()</div><div class="line">(()()())</div><div class="line">()()()()</div><div class="line">(()()()) </div><div class="line">))))))))</div></pre></td></tr></table></figure>
+<p>答案是 w+h−4。</p>
+<p>面向数据编程的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> ans[<span class="number">222</span>][<span class="number">222</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// freopen("input.txt", "r", stdin);</span></div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="keyword">int</span> row, col;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;row, &amp;col);</div><div class="line">        <span class="keyword">if</span> (row&amp;<span class="number">1</span> &amp;&amp; col&amp;<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= row; ++i) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= col; ++j) &#123;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (row&amp;<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> cnt = col / <span class="number">2</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= row; ++i) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= cnt; ++k) <span class="built_in">printf</span>(<span class="string">"()"</span>);</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (col&amp;<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">int</span> cnt = row/<span class="number">2</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; ++i) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= col; ++j)  <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = cnt + <span class="number">1</span>; i &lt;= row; ++i) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= col; ++j)  <span class="built_in">printf</span>(<span class="string">")"</span>);</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(col==<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row;i++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"()\n"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(row==<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">")"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(col==<span class="number">4</span>)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row/<span class="number">2</span>;i++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"()()\n"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row/<span class="number">2</span>;i++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"(())\n"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(row==<span class="number">4</span>)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col/<span class="number">2</span>;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">")"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col/<span class="number">2</span>;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col/<span class="number">2</span>;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col/<span class="number">2</span>;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">")"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">")"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (col &lt;= row) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row;i++)&#123;</div><div class="line">                ans[i][<span class="number">1</span>]=<span class="string">'('</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">int</span> nowcol=<span class="number">2</span>;</div><div class="line">            <span class="keyword">while</span>(nowcol&lt;col)&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row/<span class="number">2</span>;i++)&#123;</div><div class="line">                    ans[i*<span class="number">2</span><span class="number">-1</span>][nowcol]=<span class="string">'('</span>;</div><div class="line">                    ans[i*<span class="number">2</span>][nowcol]=<span class="string">')'</span>;</div><div class="line">                &#125;</div><div class="line">                nowcol++;</div><div class="line">                ans[<span class="number">1</span>][nowcol]=<span class="string">'('</span>;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row/<span class="number">2</span><span class="number">-1</span>;i++)&#123;</div><div class="line">                    ans[i*<span class="number">2</span>][nowcol]=<span class="string">'('</span>;</div><div class="line">                    ans[i*<span class="number">2</span>+<span class="number">1</span>][nowcol]=<span class="string">')'</span>;</div><div class="line">                &#125;</div><div class="line">                ans[row][nowcol]=<span class="string">')'</span>;</div><div class="line">                nowcol++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row;i++)&#123;</div><div class="line">                ans[i][col]=<span class="string">')'</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= row; ++i) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= col; ++j) <span class="built_in">printf</span>(<span class="string">"%c"</span>, ans[i][j]);</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">            <span class="keyword">int</span> nowrow=<span class="number">2</span>;</div><div class="line">            <span class="keyword">while</span>(nowrow&lt;row)&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col/<span class="number">2</span>;j++)&#123;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"()"</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">                </div><div class="line">                <span class="built_in">printf</span>(<span class="string">"("</span>);</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col/<span class="number">2</span><span class="number">-1</span>;j++)</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"()"</span>);</div><div class="line">                <span class="built_in">printf</span>(<span class="string">")\n"</span>);</div><div class="line">                nowrow+=<span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">")"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="J-Taotao-Picks-Apples"><a href="#J-Taotao-Picks-Apples" class="headerlink" title="J. Taotao Picks Apples"></a>J. Taotao Picks Apples</h3><p>为博博的线段树鼓掌！</p>
+<p>首先，如果这个点在原串中，就是会被吃的，我们称作为关键点；</p>
+<p>预处理，dp数组表示包含这点且从这点开始到尾部的严格上升序列的长度</p>
+<ul>
+<li>修改第一个点<ul>
+<li>寻找之后大于它的第一个点pos，<code>1+dp[pos]</code></li>
+</ul>
+</li>
+<li>是关键点<ul>
+<li>如果这个数比此点的之前的最大值【这个最大值的位置为pos】还要大的时候，说明，此点不会被取；则<code>dp[1]-dp[pos]+1</code>就是此点的值；然后我们寻找在此点之后，第一个大于前面找到的最大值的位置【pos2】，则后面的长度就是<code>dp[pos2]</code>；两者相加就是结果！</li>
+<li>如果这个点【idx】的值比之前序列的最大值还要大的时候，此点必取；找到之后比此值还要大的位置【pos】，则长度为<code>dp[1]-dp[idx]+1+dp[pos]</code></li>
+</ul>
+</li>
+<li>不是关键点<ul>
+<li>如果比之前的最大值要小，说明对原序列没有影响</li>
+<li>否则的话，寻找在此之前比这点小的最大值（若均相同的时候，取下标小的）【pos】，寻找这点之后比这点大的第一个点【pos2】，则长度为<code>dp[1]-dp[pos]+1+dp[pos2]</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1e5</span> + <span class="number">5</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node1</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> l, r, max_;</div><div class="line">&#125;t[MAX&lt;&lt;<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> a[MAX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    t[i].l = l; t[i].r = r;</div><div class="line">    <span class="keyword">if</span> (l == r) &#123;</div><div class="line">        t[i].max_ = a[l];</div><div class="line">        <span class="keyword">return</span> ;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</div><div class="line">    build(i&lt;&lt;<span class="number">1</span>, l, mid);</div><div class="line">    build(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid + <span class="number">1</span>, r);</div><div class="line">    t[i].max_ = max(t[i&lt;&lt;<span class="number">1</span>].max_, t[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].max_);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query1</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val)</span> </span>&#123;<span class="comment">//find the first value that is bigger than val</span></div><div class="line">    <span class="keyword">if</span> (l &gt; r)  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (t[i].max_ &lt;= val)   <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> mid = t[i].l + t[i].r &gt;&gt; <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (t[i].l == l &amp;&amp; t[i].r == r) &#123;</div><div class="line">        <span class="keyword">if</span> (l == r) <span class="keyword">return</span> l;</div><div class="line">        <span class="keyword">if</span> (t[i&lt;&lt;<span class="number">1</span>].max_ &gt; val) <span class="keyword">return</span> query1(i&lt;&lt;<span class="number">1</span>, l, mid, val);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (t[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].max_ &gt; val)  <span class="keyword">return</span> query1(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid + <span class="number">1</span>, r, val);</div><div class="line">        <span class="keyword">else</span>    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (r &lt;= mid)   <span class="keyword">return</span> query1(i&lt;&lt;<span class="number">1</span>, l, r, val);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (l &gt; mid)   <span class="keyword">return</span> query1(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, l, r, val);</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> t = query1(i&lt;&lt;<span class="number">1</span>, l, mid, val);</div><div class="line">        <span class="keyword">if</span> (t != <span class="number">0</span>) <span class="keyword">return</span> t;</div><div class="line">        <span class="keyword">return</span> query1(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid + <span class="number">1</span>, r, val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query2</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;<span class="comment">//find the maximum value in range [l, r]</span></div><div class="line">    <span class="keyword">if</span> (l &gt; r)  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (t[i].l == l &amp;&amp; t[i].r == r)     <span class="keyword">return</span> t[i].max_;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> mid = t[i].l + t[i].r &gt;&gt; <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (r &lt;= mid)   <span class="keyword">return</span> query2(i&lt;&lt;<span class="number">1</span>, l, r);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (l &gt; mid)   <span class="keyword">return</span> query2(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, l, r);</div><div class="line">    <span class="keyword">else</span>    <span class="keyword">return</span> max(query2(i&lt;&lt;<span class="number">1</span>, l, mid), query2(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid + <span class="number">1</span>, r));</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> dp[MAX], n, q, idx, val, nex[MAX], lst;</div><div class="line"><span class="keyword">bool</span> isCritical[MAX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deal</span><span class="params">()</span> </span>&#123;</div><div class="line">    build(<span class="number">1</span>, <span class="number">1</span>, n);</div><div class="line">    dp[n] = <span class="number">1</span>;</div><div class="line">    <span class="built_in">memset</span>(isCritical, <span class="number">0</span>, <span class="keyword">sizeof</span>(isCritical));</div><div class="line">    nex[n] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">1</span>; --i) &#123;</div><div class="line">        idx = query1(<span class="number">1</span>, i + <span class="number">1</span>, n, a[i]);</div><div class="line">        dp[i] = dp[idx] + <span class="number">1</span>;</div><div class="line">        nex[i] = idx;</div><div class="line">    &#125;</div><div class="line">    idx = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (idx) &#123;</div><div class="line">        isCritical[idx] = <span class="number">1</span>;</div><div class="line">        idx = nex[idx];</div><div class="line">    &#125;</div><div class="line">    isCritical[idx] = <span class="number">1</span>;</div><div class="line">    lst = idx;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query3</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val)</span> </span>&#123;<span class="comment">//find the first value that is equal to val</span></div><div class="line">    <span class="keyword">if</span> (t[i].l == t[i].r)   <span class="keyword">return</span> l;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> mid = t[i].l + t[i].r &gt;&gt; <span class="number">1</span>, tt;</div><div class="line">    <span class="keyword">if</span> (t[i].l == l &amp;&amp; t[i].r == r) &#123;</div><div class="line">        <span class="keyword">if</span> (t[i&lt;&lt;<span class="number">1</span>].max_ == val)    <span class="keyword">return</span> query3(i&lt;&lt;<span class="number">1</span>, l, mid, val);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (t[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].max_ == val) <span class="keyword">return</span> query3(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid + <span class="number">1</span>, r, val);</div><div class="line">        <span class="keyword">else</span>    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (r &lt;= mid)   <span class="keyword">return</span> query3(i&lt;&lt;<span class="number">1</span>, l, r, val);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (l &gt; mid)   <span class="keyword">return</span> query3(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, l, r, val);</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        tt = query3(i&lt;&lt;<span class="number">1</span>, l, mid, val);</div><div class="line">        <span class="keyword">if</span> (tt != <span class="number">0</span>) <span class="keyword">return</span> tt;</div><div class="line">        <span class="keyword">return</span> query3(i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid + <span class="number">1</span>, r, val);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line"><span class="comment">//    freopen("input.txt", "r", stdin);</span></div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;q);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">        deal();</div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (q--) &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;idx, &amp;val);</div><div class="line">            <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"1\n"</span>);</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> (idx == <span class="number">1</span>) &#123;</div><div class="line"><span class="comment">//                cout &lt;&lt; query1(1, 2, n, val) &lt;&lt; endl;</span></div><div class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[query1(<span class="number">1</span>, <span class="number">2</span>, n, val)] + <span class="number">1</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span> (isCritical[idx]) &#123;</div><div class="line">                    <span class="keyword">if</span> (val &lt;= query2(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>))   <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[query1(<span class="number">1</span>, idx + <span class="number">1</span>, n, query2(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>))] + dp[<span class="number">1</span>] - dp[query3(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>, query2(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>))] + <span class="number">1</span>);</div><div class="line">                    <span class="keyword">else</span>    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[<span class="number">1</span>] - dp[idx] + <span class="number">1</span> + dp[query1(<span class="number">1</span>, idx + <span class="number">1</span>, n, val)]);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">if</span> (val &lt;= query2(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>))   <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[<span class="number">1</span>]);</div><div class="line">                    <span class="keyword">else</span>    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[query1(<span class="number">1</span>, idx + <span class="number">1</span>, n, val)] + dp[<span class="number">1</span>] - dp[query3(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>, query2(<span class="number">1</span>, <span class="number">1</span>, idx - <span class="number">1</span>))] + <span class="number">2</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>2018.08.16 下午</p>
+<p>空调房冻死！</p>
+<p>银行卡顺利被我冻结了！</p>
+<p>嚯嚯嚯！找时间出门啦！</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2119781&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多校/" rel="tag"># 多校</a>
+          
+            <a href="/tags/计算几何/" rel="tag"># 计算几何</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/2018-Multi-University-Training-hdu-Contest-7/" rel="next" title="2018 Multi-University Training hdu Contest 7">
+                <i class="fa fa-chevron-left"></i> 2018 Multi-University Training hdu Contest 7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Pizza-Hub"><span class="nav-number">1.</span> <span class="nav-text">B. Pizza Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Parentheses-Matrix"><span class="nav-number">2.</span> <span class="nav-text">D. Parentheses Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J-Taotao-Picks-Apples"><span class="nav-number">3.</span> <span class="nav-text">J. Taotao Picks Apples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碎碎念"><span class="nav-number"></span> <span class="nav-text">碎碎念</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

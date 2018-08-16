@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="多校,博弈论,逆序对,线段树,树状数组," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta name="keywords" content="多校,博弈论,逆序对,线段树,树状数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018 Multi-University Training hdu Contest 2">
+<meta property="og:url" content="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-2/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-16T07:48:34.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018 Multi-University Training hdu Contest 2">
+<meta name="twitter:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-2/"/>
+
+
+
+
+
+  <title>2018 Multi-University Training hdu Contest 2 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/08/16/2018-Multi-University-Training-hdu-Contest-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018 Multi-University Training hdu Contest 2</h1>
+        
+
+        <div class="post-meta">
+	  
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T15:14:23+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/2018/" itemprop="url" rel="index">
+                    <span itemprop="name">2018</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/16/2018-Multi-University-Training-hdu-Contest-2/" class="leancloud_visitors" data-flag-title="2018 Multi-University Training hdu Contest 2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>嚯嚯嚯！补题！</p>
+<p><a href="http://mrsempress.top/2018/08/07/2018-Multi-University-Training-hdu/#more" target="_blank" rel="external">hdu多校总链接</a></p>
+<a id="more"></a>
+<p>补题：4题/10题</p>
+<ul>
+<li>博弈论</li>
+<li>逆序对</li>
+<li>线段树</li>
+<li>树状数组</li>
+</ul>
+<h3 id="D-Game"><a href="#D-Game" class="headerlink" title="D. Game"></a>D. Game</h3><p>博弈论的题目，感觉就像是在玩游戏一样，所以一定要胜利啊！</p>
+<p>这里呢，我们要先理解题目，不过被我蒙对了（其实是我英语太弱的缘故）</p>
+<p>我们发现每个数的因子都有1，所以我们先考虑没有1的情况下，如果Alice，能赢，那么她必赢！</p>
+<p>如果不可以赢，那么第一局的时候Alice先拿掉1，于是她又将战局转化了</p>
+<p>这是第一次见到必赢局的博弈论（刷题少，不怪我！不怪我！不怪我！）</p>
+<p>代码就不贴了吧，好傻的呢！</p>
+<h3 id="E-Hack-It"><a href="#E-Hack-It" class="headerlink" title="E. Hack It"></a>E. Hack It</h3><p>看题解了，（因为过的人少</p>
+<p>可以推广到完全平方的情况，但是sqrt(n)必须是素数，暂且以16来说明！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">n=25时情况</div><div class="line"></div><div class="line">10000 10000 10000 10000 10000 每一列退0个</div><div class="line">10000 01000 00100 00010 00001 每一列退1个</div><div class="line">10000 00100 00001 01000 00010 每一列退2个</div><div class="line">10000 00010 01000 00001 00100 每一列退3个</div><div class="line">10000 00001 00010 00100 01000 每一列退4个</div><div class="line"></div><div class="line">01000 01000 01000 01000 01000 </div><div class="line">01000 00100 00010 00001 10000 </div><div class="line">01000 00010 10000 00100 00001 </div><div class="line">01000 00001 00100 10000 00010 </div><div class="line">01000 10000 00001 00010 00100</div><div class="line"></div><div class="line">00100 00100 00100 00100 00100 </div><div class="line">00100 00010 00001 10000 01000 </div><div class="line">00100 00001 01000 00010 10000 </div><div class="line">00100 10000 00010 01000 00001 </div><div class="line">00100 01000 10000 00001 00010</div><div class="line"></div><div class="line">00010 00010 00010 00010 00010 </div><div class="line">00010 00001 10000 01000 00100 </div><div class="line">00010 10000 00100 00001 01000 </div><div class="line">00010 01000 00001 00100 10000 </div><div class="line">00010 00100 01000 10000 00001</div><div class="line"></div><div class="line">00001 00001 00001 00001 00001 </div><div class="line">00001 10000 01000 00100 00010 </div><div class="line">00001 01000 00010 10000 00100 </div><div class="line">00001 00100 10000 00010 01000 </div><div class="line">00001 00010 00100 01000 10000</div><div class="line"></div><div class="line">n=16</div><div class="line">1000 1000 1000 1000</div><div class="line">1000 0100 0010 0001</div><div class="line">1000 0010 1000 我们可以看到这里就不可以了吧！</div><div class="line">其实可以马上想到，这里退的必须不可以是它的倍数，否则会回到原来的样子的！</div></pre></td></tr></table></figure>
+<p>然后我们可以知道1的个数不可以少于85000，那就索性用n的最大值好啦！省的计算了！</p>
+<p>于是sqrt(2000) 最接近的质数是47 ，然后就可以码代码了！</p>
+<p>网上都是代码，不想复制粘贴！</p>
+<h3 id="G-Navie-Operations"><a href="#G-Navie-Operations" class="headerlink" title="G. Navie Operations"></a>G. Navie Operations</h3><p>一看题目，就知道是线段树了！想要呼唤博博码代码，emmm……</p>
+<p>真是奇了怪了，再嘟囔一下我和线段树的爱恨离愁！貌似还因为线段树和某人吵过冷架！</p>
+<p>因为向下取整，对于每次更新，对区间是不一定影响的！只有当等于b的时候，才会使答案修正！修正过后，再将a赋值为零！相当于a是小数部分！</p>
+<p>但是网上的题解都是反过来想的，不明白为什么，是不好实现么！</p>
+<p>把bi放入对应节点，维护区间最小值，当最小值减到0时就再用线段维护一个答案，使得答案+1，并且重新给该节点赋值bi</p>
+<p>不管啦，思路正确就ok啦！</p>
+<p>所以，没有代码的呢！</p>
+<h3 id="J-Swaps-and-Inversions"><a href="#J-Swaps-and-Inversions" class="headerlink" title="J. Swaps and Inversions"></a>J. Swaps and Inversions</h3><p>首先这题还是题目的理解，好吧，我单词不认识，对于x的情况，是不符合原位置的数进行罚款呢？（其实应该只有我理解有误的吧！逆序对，一般都是这么说的啊！好像没有逆序数的吧！</p>
+<p>那么对于y的，每一次和相邻位置进行调换所需要的花费，其实也是逆序对。</p>
+<p>于是只需要求逆序对将其乘上<code>min(x,y)</code></p>
+<p>发现我之前的逆序对模版的离散化有点问题，郁闷！</p>
+<p>难道我没有测试么！</p>
+<p>好吧，反正现在模版优化了，很开心啦！</p>
+<p>其实我不懂树状数组的，背下来就好啦！反正可以拿板子的么！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> reflect[maxn];<span class="comment">//离散化数组</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">type</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> tree[maxn];<span class="comment">//树状数组</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> x&amp;(-x);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> value)</span></span>&#123;</div><div class="line">        <span class="keyword">while</span>(x&lt;=maxn)&#123;</div><div class="line">            tree[x]+=value;</div><div class="line">            x+=lowbit(x);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> temp=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(x&gt;<span class="number">0</span>)&#123;</div><div class="line">            temp+=tree[x];</div><div class="line">            x-=lowbit(x);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> temp;</div><div class="line">    &#125;</div><div class="line">&#125;ty;</div><div class="line"><span class="comment">//点</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> v;</div><div class="line">    <span class="keyword">int</span> order;</div><div class="line">&#125;in[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Node a,Node b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> a.v&lt;b.v;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n,x,y;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;x,&amp;y)!=EOF)&#123;</div><div class="line">        <span class="comment">//离散化</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;in[i].v);</div><div class="line">            in[i].order=i;</div><div class="line">        &#125;</div><div class="line">        sort(in+<span class="number">1</span>,in+n+<span class="number">1</span>,cmp);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> now=<span class="number">1</span>;</div><div class="line">        reflect[in[<span class="number">1</span>].order]=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(in[i].v!=in[i<span class="number">-1</span>].v)now++;</div><div class="line">            reflect[in[i].order]=now;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//利用树状数组求逆</span></div><div class="line">        <span class="built_in">memset</span>(ty.tree, <span class="number">0</span>, <span class="keyword">sizeof</span>(ty.tree));</div><div class="line">        ll ans=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            ty.updata(reflect[i], <span class="number">1</span>);</div><div class="line">            ans+=i-ty.getsum(reflect[i]);</div><div class="line">        &#125;</div><div class="line">        ans=ans*min(x,y);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>2018.08.09 晚</p>
+<p>西安的天气好可怕啊！每晚下雨就算了，能否温柔一些！</p>
+<p>这风！这雨！感觉是因为今天提前走的原因呢！</p>
+<p>刚补完cf的那套题，后面不想写了！对于选择语言的问题，踩了好多坑，果然自己会有很多细节不懂！继续补题啊！</p>
+<p>补题！补题！补题！</p>
+<p>2018.08.10 晚</p>
+<p>我凡出新歌了，但我好像觉得不怎么好听</p>
+<p>唔……我怕是真的是个假粉呢！</p>
+<p>郁闷！</p>
+<p>一只像知了那样会叫的超大的虫子被飞了进来，起因又是一个悲惨的故事：</p>
+<blockquote>
+<p>我的一盆小花花翘翘了，然后感觉像是被压死的，可是我没有压它呀！然后就可能是被闷死的，渴死的，缺少太阳死的！于是，我就想把它放出去。</p>
+</blockquote>
+<p>然后他就飞蛾扑火，一直乱叫，然后我也叫了，可是它叫的比我更恐怖！为了不被大晚上的吃掉，于是我决定，哼！大战虫子！</p>
+<p>然后我就把灯光了，拿着所有的手电筒，结果它傻了，不来咬我！还找不到它在哪里；再开灯也没看到。于是乎，东抖抖，西抖抖；东敲敲，西敲敲；啊！出现了！</p>
+<p>可是它又在灯那里乱叫；但是咋么办呢！打一下它，够不着；挥一下它，落荒而逃；</p>
+<p>看到一扇窗户，打开窗，放入壁咚灯！</p>
+<p>它还是很蠢！再次打它！窗户上！再打！出去了！</p>
+<p>呼！cx大战虫子！胜！回合N次；时长 1小时！</p>
+<p>所以我的花花回不了家了；希望明天太阳不要太大，不要刮风，下暴雨！</p>
+<p>最后，百度上说，知了只是迷路了，它只能活一两个月，珍惜吧！</p>
+<p>哎，累了！又是累累的一天！</p>
+<p>晚安！</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2119781&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多校/" rel="tag"># 多校</a>
+          
+            <a href="/tags/博弈论/" rel="tag"># 博弈论</a>
+          
+            <a href="/tags/逆序对/" rel="tag"># 逆序对</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/树状数组/" rel="tag"># 树状数组</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/2018-Multi-University-Training-hdu-Contest-1/" rel="next" title="2018 Multi-University Training hdu Contest 1">
+                <i class="fa fa-chevron-left"></i> 2018 Multi-University Training hdu Contest 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/16/2018-Multi-University-Training-hdu-Contest-3/" rel="prev" title="2018 Multi-University Training hdu Contest 3">
+                2018 Multi-University Training hdu Contest 3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Game"><span class="nav-number">1.</span> <span class="nav-text">D. Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Hack-It"><span class="nav-number">2.</span> <span class="nav-text">E. Hack It</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-Navie-Operations"><span class="nav-number">3.</span> <span class="nav-text">G. Navie Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J-Swaps-and-Inversions"><span class="nav-number">4.</span> <span class="nav-text">J. Swaps and Inversions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碎碎念"><span class="nav-number"></span> <span class="nav-text">碎碎念</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
