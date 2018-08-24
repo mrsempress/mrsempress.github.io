@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="多校,队列,dp," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta name="keywords" content="多校,队列,dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018 Multi-University Training hdu Contest 3">
+<meta property="og:url" content="http://empress.top/2018/07/31/2018-Multi-University-Training-hdu-Contest-3/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-24T13:31:46.088Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018 Multi-University Training hdu Contest 3">
+<meta name="twitter:description" content="嚯嚯嚯！补题！ hdu多校总链接">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/07/31/2018-Multi-University-Training-hdu-Contest-3/"/>
+
+
+
+
+
+  <title>2018 Multi-University Training hdu Contest 3 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/07/31/2018-Multi-University-Training-hdu-Contest-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018 Multi-University Training hdu Contest 3</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-31T15:15:46+08:00">
+                2018-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/2018/" itemprop="url" rel="index">
+                    <span itemprop="name">2018</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/31/2018-Multi-University-Training-hdu-Contest-3/" class="leancloud_visitors" data-flag-title="2018 Multi-University Training hdu Contest 3">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>嚯嚯嚯！补题！</p>
+<p><a href="http://mrsempress.top/2018/08/07/2018-Multi-University-Training-hdu/#more" target="_blank" rel="external">hdu多校总链接</a></p>
+<a id="more"></a>
+<p>补题： 5题/13题</p>
+<ul>
+<li>状压</li>
+<li>__builtin_popcount(i);</li>
+<li></li>
+</ul>
+<h3 id="A-Ascending-Rating"><a href="#A-Ascending-Rating" class="headerlink" title="A. Ascending Rating"></a>A. Ascending Rating</h3><p>若是按照顺序的话，我们会将比他大的继续放着，比他小或者等于的删除，但是这样的话，比如<code>7674821</code>的时候，对于6的时候，又要开始重新计算；所以我们开始想倒序；</p>
+<p>用单调队列维护一个严格的单调递减序列；我们将队列的内容置为下标，这样的话，我们可以知道队尾即最大值的下标<code>j</code>，这样我们就可以知道长度为<code>j-now+1</code>；于是我们可以轻易找到长度为<code>m</code>的<code>maxrating</code>和<code>count</code>的值了</p>
+<p>忘记了初始化<code>A</code>和<code>B</code>，同时注意计算<code>a[i]</code>的时候会爆<code>int</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e7</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn],qu[maxn];</div><div class="line"><span class="keyword">int</span> head,tail;</div><div class="line"><span class="keyword">int</span> n,m,k,p,q,r,mod;</div><div class="line">ll A,B;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">		A=<span class="number">0</span>;B=<span class="number">0</span>;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d%d%d%d"</span>,&amp;n,&amp;m,&amp;k,&amp;p,&amp;q,&amp;r,&amp;mod);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=k+<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">            a[i]=(<span class="number">1L</span>L*p*a[i<span class="number">-1</span>]%mod+<span class="number">1L</span>L*q*i%mod+r)%mod;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(m&gt;n)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"0 0\n"</span>);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        head=tail=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;n-m+<span class="number">1</span>;i--)&#123;</div><div class="line">            <span class="keyword">while</span>(head&gt;tail&amp;&amp;a[qu[head<span class="number">-1</span>]]&lt;=a[i]) head--;</div><div class="line">            qu[head++]=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n-m+<span class="number">1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</div><div class="line">            <span class="keyword">while</span>(head&gt;tail&amp;&amp;a[qu[head<span class="number">-1</span>]]&lt;=a[i]) head--;</div><div class="line">            qu[head++]=i;</div><div class="line">            A+=(ll)a[qu[tail]]^i;</div><div class="line">            B+=(ll)(head-tail)^i;</div><div class="line">            <span class="keyword">while</span>(tail&lt;head&amp;&amp;i+m<span class="number">-2</span>&lt;qu[tail]) tail++;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>,A,B);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="C-Dynamic-Graph-Matching"><a href="#C-Dynamic-Graph-Matching" class="headerlink" title="C. Dynamic Graph Matching"></a>C. Dynamic Graph Matching</h3><p><code>f[i][S]</code>表示前<code>i</code>次操作之后，<code>S</code>集合的点已经匹配的方案数。</p>
+<p>对于加边操作，显然$f[i][S]=f[i−1][S]+f[i−1][S−u−v]$。<code>i</code>这一维可以省略，从大到小遍历<code>S</code>，$f[S]+=f[S−u−v]$。</p>
+<p>对于删边操作，注意到加边操作的顺序不影响结果，可以假设第<code>i−1</code>次操作是加入要删除的边。将加边操作的更新倒过来，得到：从小到大遍历<code>S</code>，$f[S]−=f[S−u−v]$。</p>
+<p>看数据规模，我们可以用状态压缩；借用<code>cnt[i]=__builtin_popcount(i);</code>统计1的个数；</p>
+<p>这里脑抽了一下，计算中不用<code>-</code>而应该使用<code>|</code>，这样才可以加入新的点，否则会导致进位；</p>
+<p>比如<code>10[2]</code>和<code>11[6]</code>会导致出现<code>100[8]</code>的现象；当然我们可以通过先用<code>if(!(i&amp;x))</code>判断是否有借位，所以那个地方的代码有三种写法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=(<span class="number">1</span>&lt;&lt;<span class="number">12</span>);</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line">ll dp[maxn],cnt[maxn],ans[<span class="number">12</span>];</div><div class="line"><span class="keyword">int</span> n,m,a,b,x;</div><div class="line"><span class="keyword">char</span> op[<span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;maxn;i++) cnt[i]=__builtin_popcount(i);<span class="comment">//统计1的个数</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    init();</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(m--)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%s %d %d"</span>,op,&amp;a,&amp;b);</div><div class="line">            a--;b--;</div><div class="line">            x=((<span class="number">1</span>&lt;&lt;a)|(<span class="number">1</span>&lt;&lt;b));</div><div class="line">            <span class="keyword">if</span>(op[<span class="number">0</span>]==<span class="string">'+'</span>)&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=((<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>);i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">                    <span class="keyword">if</span>(!(i&amp;x))</div><div class="line">                    dp[i|x]=(dp[i]+dp[i|x])%mod;</div><div class="line">                    <span class="comment">//dp[i^x]=(dp[i]+dp[i^x])%mod;</span></div><div class="line">                    <span class="comment">//dp[i+x]=(dp[i]+dp[i+x])%mod;都是可以的</span></div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=((<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>);i++)&#123;</div><div class="line">                    <span class="keyword">if</span>(!(i&amp;x))</div><div class="line">                    dp[i|x]=(dp[i|x]-dp[i]+mod)%mod;</div><div class="line">                    <span class="comment">//dp[i^x]=(dp[i^x]-dp[i]+mod)%mod;</span></div><div class="line">                    <span class="comment">//dp[i+x]=(dp[i+x]-dp[i]+mod)%mod;都是可以的</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span>(ans));</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=((<span class="number">1</span>&lt;&lt;(n+<span class="number">1</span>))<span class="number">-1</span>);i++)&#123;</div><div class="line"><span class="comment">//                if(dp[i])&#123;</span></div><div class="line"><span class="comment">//                    bitset&lt;12&gt;aa(i);</span></div><div class="line"><span class="comment">//                    cout&lt;&lt;aa&lt;&lt;endl;</span></div><div class="line"><span class="comment">//                    cout&lt;&lt;dp[i]&lt;&lt;" "&lt;&lt;cnt[i]&lt;&lt;endl&lt;&lt;endl;</span></div><div class="line"><span class="comment">//                &#125;</span></div><div class="line">                ans[cnt[i]]=(ans[cnt[i]]+dp[i])%mod;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;i+=<span class="number">2</span>)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"%lld "</span>,ans[i]);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans[n]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="D-Euler-Function"><a href="#D-Euler-Function" class="headerlink" title="D. Euler Function"></a>D. Euler Function</h3><p>观察素数打表公式可知：</p>
+<p><code>euler[1]=1</code></p>
+<p>对于素数来说就是<code>euler[i]=i-1</code>，除了<code>2</code>的素数以外，<code>euler[i]</code>一定是一个偶数，所以除了<code>3</code>以外<code>euler[i]</code>一定是一个合数；【这里我们可以知道素数里只有2，3的欧拉值不是合数】</p>
+<p>对于合数来说，<code>p=q1^a1*q2^a2*……qn^an</code>，且<code>q1&lt;q2&lt;……qn</code>，则<code>euler[j]=j/q1*(q1-1)/q2*(q2-1)……=q1^(a1-1)*q2^(a2-1)*……qn^(an-1)*(q1-1)*(q2-1)</code>;</p>
+<p>所以只有当所有因子都是<code>1</code>【但是<code>qi</code>的值各不相同】，或者只含有素数一个因子，且一次方的时候【这个显然不可以，除非只含有一个3和一个2的一次方的因子的时候】；且<code>qi</code>的值不为<code>1</code>,所以<code>euler[j]=2【q1=2 a1=2】【q1=2 a1=1 q2=3 a2=1】</code>即为4,6的时候，对于其余的合数均为合数；</p>
+<p>综上所述当1 2 3 4 6为合数，其余均为质数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">105</span>;</div><div class="line"><span class="keyword">int</span> euler[maxn];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getEuler</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(euler, <span class="number">0</span>, <span class="keyword">sizeof</span>(euler));</div><div class="line">    euler[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;maxn;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!euler[i])&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;maxn;j+=i)&#123;</div><div class="line">                <span class="keyword">if</span>(!euler[j])</div><div class="line">                    euler[j]=j;</div><div class="line">                euler[j]=euler[j]/i*(i<span class="number">-1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="comment">//    getEuler();</span></div><div class="line"><span class="comment">//    for(int i=1;i&lt;maxn;i++)</span></div><div class="line"><span class="comment">//        cout&lt;&lt;euler[i]&lt;&lt;endl;</span></div><div class="line">    <span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">int</span> k;</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</div><div class="line">        <span class="keyword">if</span>(k==<span class="number">1</span>)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"5\n"</span>);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,k+<span class="number">5</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="F-Grab-Tree"><a href="#F-Grab-Tree" class="headerlink" title="F. Grab Tree"></a>F. Grab Tree</h3><p>现将每一个数都异或起来，这样对于最高位来说一定是由奇数个1异或出来的，所以只要先手拿到最高位的1就可以了；当所有数异或出来是0的时候，假设Q拿的是A，T拿的是B，则A^B一定是0，则A和B一定相同，所以平局</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line">ll sum;</div><div class="line"><span class="keyword">int</span> n,x,y;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;sum);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</div><div class="line">            sum=sum^x;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(sum==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"D\n"</span>);</div><div class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Q\n"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="G-Interstellar-Travel"><a href="#G-Interstellar-Travel" class="headerlink" title="G. Interstellar Travel"></a>G. Interstellar Travel</h3><p>坐标相同的点，选择编号最小的最优，这样字典序才会小；</p>
+<p><code>It is guaranteed that y1=yn=0</code></p>
+<h3 id="H-Monster-Hunter（未完成"><a href="#H-Monster-Hunter（未完成" class="headerlink" title="H. Monster Hunter（未完成"></a>H. Monster Hunter（未完成</h3><p>优先队列+并查集</p>
+<p>刚开始觉得，直接根据策略，选择最优的就可以，后来发现不是这样的，如下数据，就会导致我可能会先走减少血，但之后大幅加血的路</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">5</div><div class="line">10 1</div><div class="line">3 8</div><div class="line">7 3</div><div class="line">17 18</div><div class="line">4 1</div><div class="line">1 5</div><div class="line">3 4</div><div class="line">4 2</div></pre></td></tr></table></figure>
+<p>所以，从头开始分析</p>
+<h3 id="L-Visual-Cube"><a href="#L-Visual-Cube" class="headerlink" title="L. Visual Cube"></a>L. Visual Cube</h3><p>先画了横的边，之后再画侧面的边，剩余点填充<code>.</code></p>
+<p>本来想直接打印的，但是总结不好，就用无脑方式啦！</p>
+<p>打了一些漂亮的立方体，暗暗戳戳动次打次的博博，想回宿舍了【快十点半了哟</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">6 2 1</div><div class="line"></div><div class="line">....+-+-+-+-+-+-+</div><div class="line">.../././././././|</div><div class="line">..+-+-+-+-+-+-+.+</div><div class="line">./././././././|/.</div><div class="line">+-+-+-+-+-+-+.+..</div><div class="line">|.|.|.|.|.|.|/...</div><div class="line">+-+-+-+-+-+-+....</div><div class="line"></div><div class="line">6 2 4</div><div class="line">....+-+-+-+-+-+-+</div><div class="line">.../././././././|</div><div class="line">..+-+-+-+-+-+-+.+</div><div class="line">./././././././|/|</div><div class="line">+-+-+-+-+-+-+.+.+</div><div class="line">|.|.|.|.|.|.|/|/|</div><div class="line">+-+-+-+-+-+-+.+.+</div><div class="line">|.|.|.|.|.|.|/|/|</div><div class="line">+-+-+-+-+-+-+.+.+</div><div class="line">|.|.|.|.|.|.|/|/.</div><div class="line">+-+-+-+-+-+-+.+..</div><div class="line">|.|.|.|.|.|.|/...</div><div class="line">+-+-+-+-+-+-+....</div><div class="line"></div><div class="line">1 1 1</div><div class="line">..+-+</div><div class="line">././|</div><div class="line">+-+.+</div><div class="line">|.|/.</div><div class="line">+-+..</div><div class="line"></div><div class="line">6 3 1</div><div class="line">......+-+-+-+-+-+-+</div><div class="line">...../././././././|</div><div class="line">....+-+-+-+-+-+-+.+</div><div class="line">.../././././././|/.</div><div class="line">..+-+-+-+-+-+-+.+..</div><div class="line">./././././././|/...</div><div class="line">+-+-+-+-+-+-+.+....</div><div class="line">|.|.|.|.|.|.|/.....</div><div class="line">+-+-+-+-+-+-+......</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> a,b,c;</div><div class="line"><span class="keyword">char</span> G[<span class="number">105</span>][<span class="number">105</span>];</div><div class="line"><span class="keyword">int</span> row,col;</div><div class="line"><span class="keyword">int</span> dot,nex;<span class="comment">//从nex行开始右边有i-nex+1个点；从1到dot行左边有dot-i+1个点</span></div><div class="line"><span class="keyword">int</span> tmp,i,j;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        <span class="built_in">memset</span>(G,<span class="string">'.'</span>,<span class="keyword">sizeof</span>(G));</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);</div><div class="line">        dot=<span class="number">2</span>*b;col=dot+<span class="number">1</span>+<span class="number">2</span>*a;row=dot+<span class="number">1</span>+<span class="number">2</span>*c;</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=dot;i++)&#123;</div><div class="line">            j=dot-i+<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(i&amp;<span class="number">1</span>)&#123;</div><div class="line">                G[i][j++]=<span class="string">'+'</span>;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=a;k++)&#123;</div><div class="line">                    G[i][j++]=<span class="string">'-'</span>;G[i][j++]=<span class="string">'+'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                G[i][j++]=<span class="string">'/'</span>;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=a;k++)&#123;</div><div class="line">                    G[i][j++]=<span class="string">'.'</span>;G[i][j++]=<span class="string">'/'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        j=<span class="number">1</span>;G[i][j++]=<span class="string">'+'</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=a;k++)&#123;</div><div class="line">            G[i][j++]=<span class="string">'-'</span>;G[i][j++]=<span class="string">'+'</span>;</div><div class="line">        &#125;</div><div class="line">        i++;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=c;k++)&#123;</div><div class="line">            j=<span class="number">1</span>;G[i][j++]=<span class="string">'|'</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=a;x++)&#123;</div><div class="line">                G[i][j++]=<span class="string">'.'</span>;G[i][j++]=<span class="string">'|'</span>;</div><div class="line">            &#125;</div><div class="line">            i++;</div><div class="line">            j=<span class="number">1</span>;G[i][j++]=<span class="string">'+'</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=a;x++)&#123;</div><div class="line">                G[i][j++]=<span class="string">'-'</span>;G[i][j++]=<span class="string">'+'</span>;</div><div class="line">            &#125;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        j=col;i=<span class="number">2</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=b;k++)&#123;</div><div class="line">            i=k*<span class="number">2</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=c;x++)&#123;</div><div class="line">                G[i++][j]=<span class="string">'|'</span>;G[i++][j]=<span class="string">'+'</span>;</div><div class="line">            &#125;</div><div class="line">            j--;</div><div class="line">            i=k*<span class="number">2</span>+<span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=c;x++)&#123;</div><div class="line">                G[i++][j]=<span class="string">'.'</span>;G[i++][j]=<span class="string">'/'</span>;</div><div class="line">            &#125;</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=row;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=col;j++)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"%c"</span>,G[i][j]);</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>2018.08.24</p>
+<p>说好的前几场超级简单的呢！</p>
+<p>嚯嚯嚯！明天去看漫威！</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2119781&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多校/" rel="tag"># 多校</a>
+          
+            <a href="/tags/队列/" rel="tag"># 队列</a>
+          
+            <a href="/tags/dp/" rel="tag"># dp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/2018-Multi-University-Training-hdu-Contest-2/" rel="next" title="2018 Multi-University Training hdu Contest 2">
+                <i class="fa fa-chevron-left"></i> 2018 Multi-University Training hdu Contest 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/02/2018-Multi-University-Training-hdu-Contest-4/" rel="prev" title="2018 Multi-University Training hdu Contest 4">
+                2018 Multi-University Training hdu Contest 4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Ascending-Rating"><span class="nav-number">1.</span> <span class="nav-text">A. Ascending Rating</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Dynamic-Graph-Matching"><span class="nav-number">2.</span> <span class="nav-text">C. Dynamic Graph Matching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Euler-Function"><span class="nav-number">3.</span> <span class="nav-text">D. Euler Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Grab-Tree"><span class="nav-number">4.</span> <span class="nav-text">F. Grab Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-Interstellar-Travel"><span class="nav-number">5.</span> <span class="nav-text">G. Interstellar Travel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-Monster-Hunter（未完成"><span class="nav-number">6.</span> <span class="nav-text">H. Monster Hunter（未完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-Visual-Cube"><span class="nav-number">7.</span> <span class="nav-text">L. Visual Cube</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碎碎念"><span class="nav-number"></span> <span class="nav-text">碎碎念</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
