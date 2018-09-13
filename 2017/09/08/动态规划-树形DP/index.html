@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog.（未完待续）动态规划之树形dp。阅读此文前，需得知道什么是树，二叉树以及三种遍历方式。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-13T09:19:44.497Z">
+<meta property="og:updated_time" content="2018-09-07T15:39:25.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划--树形DP">
 <meta name="twitter:description" content="This is my blog.（未完待续）动态规划之树形dp。阅读此文前，需得知道什么是树，二叉树以及三种遍历方式。">
@@ -408,14 +408,66 @@
 
       
         <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>（未完待续）<br>动态规划之树形dp。阅读此文前，需得知道什么是树，<a href="http://mrsempress.top/2017/09/13/数据结构/#more" target="_blank" rel="external">二叉树</a>以及三种遍历方式。<br><a id="more"></a></p>
+<p>重新打开树形DP，起因是不会做题——【2018.09.07】</p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><p>一些目前不会的问题，希望之后可以解决</p>
+<ul>
+<li><p>给定⼀棵<code>n</code> 个点的边权树，对于树中每个节点<code>i</code>，询问其到其它所有结点的距离和。 其中<code>0 ≤ n ≤ 10^5</code></p>
+<p>如果i是根节点的话，即求节点i到所有子节点的距离之和</p>
+<p><code>dp[i]=∑(dp[j]+dist[i][j]*cnt[i]) f[j]=i</code></p>
+<p>但是如果是中间节点该怎么办咯？？？？？</p>
+</li>
+</ul>
+<p>好像有点想法了：</p>
+<p><code>dp[i]=dp[f[i]]-(dp2[i]+cnt[i]*dist[f[i]][i])+(n-cnt[i])*dist[i][f[i]]+dp2[i]</code></p>
+<p>就是【【父亲节点的所有子节的距离和-父亲节点到这颗子树的所有节点的之和 】+这两点的距离*这个点向上配对的点的个数】——向上的所有距离 + 向下的所有之和（这个易求，感觉可行呢！</p>
+<p>​    偶然发现了一道类似的题目，<code>hdu 2196</code></p>
+<p>​    大概的意思就是，寻找最大的值</p>
+<p>​    一个节点的最大值就是，到子树节点的最大值和向上的最大值的最大值</p>
+<p>​    向下到子树节点的最大值易求；而向上的则是父亲节点不经过此节点的最大值加上这两点的距离之和</p>
+<pre><code>所以对于每一个节点，我们都需要维护三个值，一个是子代的最大值；第二个是第一个答案中经过的儿子节点的编号；第三个是不经过这个儿子节点的最大值；【看到很多博客说是次大值，害我理解了好久，不算次大值吧，可以在最后子代中分叉呀！应该说是在`dp[i]`点的时候的次大值吧
+那么这个最大值的结果就可以如下表示了：
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(longest[f[i]]!=i) </div><div class="line">	ans[i]=max(longest[i],longest[f[i]]+dist[i][f[i]],dp[f[i]][<span class="number">1</span>]+dist[i][f[i]]);</div><div class="line"><span class="keyword">else</span> ans[i]=max(longest[i],second[f[i]]+dist[i][f[i]],dp[f[i]][<span class="number">1</span>]+dist[i][f[i]]);</div></pre></td></tr></table></figure>
+<ul>
+<li></li>
+</ul>
 <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>树形dp即在写转移方程时max或min中的参数不再只是两个了，而是多个。</p>
-<h2 id="题集"><a href="#题集" class="headerlink" title="题集"></a>题集</h2><p>加分二叉树</p>
-<h2 id="例题讲解"><a href="#例题讲解" class="headerlink" title="例题讲解"></a>例题讲解</h2><p>我们以<a href="https://www.vijos.org/p/1100" target="_blank" rel="external">加分二叉树</a>为例</p>
-<h3 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h3><p>设一个n个节点的二叉树tree的中序遍历为（l,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：<br>subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数<br>若某个子树为空，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br>试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；<br>（1）tree的最高加分<br>（2）tree的前序遍历</p>
-<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>第1行：一个整数n（n＜30），为节点个数。<br>第2行：n个用空格隔开的整数，为每个节点的分数（分数＜100）。</p>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>第1行：一个整数，为最高加分（结果不会超过4,000,000,000）。<br>第2行：n个用空格隔开的整数，为该树的前序遍历。</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>1.状态 f[i][j]表示从i到j这颗子树的最高分<br>2.转移 f[i][j]=Σmax(dfs(i,k-1)*dfs(k+1,j)+score<a href="i&lt;=k&lt;=j">k</a>);</p>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line">using namespace std;</div><div class="line">int n;</div><div class="line">long long score[35];</div><div class="line">long long line[35][35];</div><div class="line">int root[35][35];</div><div class="line">long long dfs(int s,int e)&#123;</div><div class="line"><span class="keyword">if</span>(line[s][e])<span class="built_in">return</span> line[s][e];</div><div class="line"><span class="keyword">if</span>(s&gt;e)&#123;</div><div class="line">line[s][e]=1;</div><div class="line"><span class="built_in">return</span> 1;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(s==e)&#123;</div><div class="line">line[s][e]=score[s];</div><div class="line">root[s][e]=s;</div><div class="line"><span class="built_in">return</span> line[s][e];</div><div class="line">&#125;</div><div class="line">long long ans=-1;</div><div class="line"><span class="keyword">for</span>(int i=s;i&lt;=e;i++)&#123;</div><div class="line">long long tmp;</div><div class="line">tmp=dfs(s,i-1)*dfs(i+1,e)+score[i];</div><div class="line"><span class="keyword">if</span>(tmp&gt;ans)&#123;</div><div class="line">ans=tmp;</div><div class="line">root[s][e]=i;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">line[s][e]=ans;</div><div class="line"><span class="built_in">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void outprint(int i,int j)&#123;</div><div class="line"><span class="keyword">if</span>(i&gt;j)<span class="built_in">return</span> ;</div><div class="line"><span class="keyword">if</span>(root[i][j]==n)&#123;</div><div class="line">cout&lt;&lt;n&lt;&lt;endl;</div><div class="line"><span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line">cout&lt;&lt;root[i][j]&lt;&lt;<span class="string">" "</span>;</div><div class="line">outprint(i,root[i][j]-1);</div><div class="line">outprint(root[i][j]+1,j);</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">cin&gt;&gt;n;</div><div class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)</div><div class="line">cin&gt;&gt;score[i];</div><div class="line">cout&lt;&lt;dfs(1,n)&lt;&lt;endl;</div><div class="line">outprint(1, n);</div><div class="line"><span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>dp建立在树上的，树【n个点，n-1条边】</p>
+<p>目前看到的树形dp的类型有如下几种：</p>
+<ul>
+<li>根据树的特点，对于节点的父亲（爷爷、儿子）有要求的dp</li>
+<li>对于节点的子树有要求的dp</li>
+<li>对于节点到每个节点有要求的dp【目前没有想明白</li>
+<li>删除边，使得每一个联通块最多 最少满足几个子节点</li>
+<li>删除点，使得每一个联通块最多 最少满足几个子节点</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>多叉树变二叉树</li>
+<li>设<code>dp[i][j]</code>表示在以<code>i</code>为根的子树中，用大小为<code>j</code>的包能取得的最大价值</li>
+<li></li>
+</ul>
+<h2 id="题集"><a href="#题集" class="headerlink" title="题集"></a>题集</h2><h3 id="没有上司的舞会"><a href="#没有上司的舞会" class="headerlink" title="没有上司的舞会"></a>没有上司的舞会</h3><p>每个人不可以和上司参加舞会，但可以和上司的上司的……参加舞会</p>
+<p>刚开始这样想，但这样的话是不对的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//以1为根节点</span></div><div class="line">fa[<span class="number">1</span>]=<span class="number">-1</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now)</span></span>&#123;<span class="comment">//每次将爷爷节点更新</span></div><div class="line">    <span class="keyword">if</span>(now==<span class="number">-1</span>) <span class="keyword">return</span> ;</div><div class="line">    <span class="keyword">if</span>(fa[now]==<span class="number">-1</span>) <span class="keyword">return</span> ;</div><div class="line">    <span class="keyword">if</span>(fa[fa[now]]==<span class="number">-1</span>) <span class="keyword">return</span> ;</div><div class="line">    dp[fa[fa[now]])=max(dp[fa[fa[now]]],dp[now]+<span class="number">1</span>);<span class="comment">//</span></div><div class="line">    dfs(fa[fa[now]]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i]=val[i];</div><div class="line">       </div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;<span class="comment">//将叶子结点赋值</span></div><div class="line">    <span class="keyword">if</span>(in[i]==<span class="number">1</span>)&#123;</div><div class="line">        dfs(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为对于兄弟是可以一起参加的，这样感觉是不行的</p>
+<p>难道把每一层都预处理（用dfs，搞出每一层的深度，然后相同深度的相加），然后一层一层搞</p>
+<p><code>dp[i]=max(dp[i],dp[i-1]);</code> <code>i代表层数</code></p>
+<p>这样我看最上面两层；其实这样也是不对的，因为对于i层，不一定所有的点都不可以取，比如他没有孩子的时候；然后我就放弃了这种想法</p>
+<p>还有一种想法就是既然影响的人只是自己的父亲，和自己的孩子，那么我们可以这样假设</p>
+<p><code>f[i]</code>表示 <code>i</code>⼈参加了舞会的时候这个⼦树的欢乐值之和 </p>
+<p><code>g[i]</code>表示 <code>i</code> ⼈没参加舞会的时候这个⼦树的欢乐值之和</p>
+<p><code>f[i] = v[i] + ∑g[j] (fa[j]= i)</code></p>
+<p><code>g[i] = max(f[j] , g[j] ) (fa[j] = i)</code></p>
+<p>这时候的问题，就是这两个相互影响，初始值的问题</p>
+<p>不过都是从孩子的影响开始的</p>
+<p>所以对于树叶节点</p>
+<p><code>f[i]=val[i]   g[i]=0</code></p>
+<p>也就是他是一层一层来进行更新的</p>
+<h3 id="加分二叉树"><a href="#加分二叉树" class="headerlink" title="加分二叉树"></a>加分二叉树</h3><p>我们以<a href="https://www.vijos.org/p/1100" target="_blank" rel="external">加分二叉树</a>为例</p>
+<h4 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h4><p>设一个n个节点的二叉树tree的中序遍历为（l,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：<br>subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数<br>若某个子树为空，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br>试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；<br>（1）tree的最高加分<br>（2）tree的前序遍历</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第1行：一个整数n（n＜30），为节点个数。<br>第2行：n个用空格隔开的整数，为每个节点的分数（分数＜100）。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>第1行：一个整数，为最高加分（结果不会超过4,000,000,000）。<br>第2行：n个用空格隔开的整数，为该树的前序遍历。</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>1.状态<code>f[i][j]</code>表示从i到j这颗子树的最高分<br>2.转移<code>f[i][j]</code>=<code>Σmax(dfs(i,k-1)*dfs(k+1,j)+score[k](i&lt;=k&lt;=j));</code></p>
+<h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line">using namespace std;</div><div class="line">int n;</div><div class="line">long long score[35];</div><div class="line">long long line[35][35];</div><div class="line">int root[35][35];</div><div class="line">long long dfs(int s,int e)&#123;</div><div class="line"><span class="keyword">if</span>(line[s][e])<span class="built_in">return</span> line[s][e];</div><div class="line"><span class="keyword">if</span>(s&gt;e)&#123;</div><div class="line">line[s][e]=1;</div><div class="line"><span class="built_in">return</span> 1;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(s==e)&#123;</div><div class="line">line[s][e]=score[s];</div><div class="line">root[s][e]=s;</div><div class="line"><span class="built_in">return</span> line[s][e];</div><div class="line">&#125;</div><div class="line">long long ans=-1;</div><div class="line"><span class="keyword">for</span>(int i=s;i&lt;=e;i++)&#123;</div><div class="line">long long tmp;</div><div class="line">tmp=dfs(s,i-1)*dfs(i+1,e)+score[i];</div><div class="line"><span class="keyword">if</span>(tmp&gt;ans)&#123;</div><div class="line">ans=tmp;</div><div class="line">root[s][e]=i;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">line[s][e]=ans;</div><div class="line"><span class="built_in">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void outprint(int i,int j)&#123;</div><div class="line"><span class="keyword">if</span>(i&gt;j)<span class="built_in">return</span> ;</div><div class="line"><span class="keyword">if</span>(root[i][j]==n)&#123;</div><div class="line">cout&lt;&lt;n&lt;&lt;endl;</div><div class="line"><span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line">cout&lt;&lt;root[i][j]&lt;&lt;<span class="string">" "</span>;</div><div class="line">outprint(i,root[i][j]-1);</div><div class="line">outprint(root[i][j]+1,j);</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">cin&gt;&gt;n;</div><div class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)</div><div class="line">cin&gt;&gt;score[i];</div><div class="line">cout&lt;&lt;dfs(1,n)&lt;&lt;endl;</div><div class="line">outprint(1, n);</div><div class="line"><span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>转载请注明出处，谢谢。</p>
 <blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote>
@@ -568,7 +620,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -667,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题集"><span class="nav-number">2.</span> <span class="nav-text">题集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题讲解"><span class="nav-number">3.</span> <span class="nav-text">例题讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述："><span class="nav-number">3.1.</span> <span class="nav-text">描述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">3.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">3.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">3.4.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AC代码"><span class="nav-number">3.5.</span> <span class="nav-text">AC代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些问题"><span class="nav-number">1.</span> <span class="nav-text">一些问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">2.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题集"><span class="nav-number">4.</span> <span class="nav-text">题集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有上司的舞会"><span class="nav-number">4.1.</span> <span class="nav-text">没有上司的舞会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加分二叉树"><span class="nav-number">4.2.</span> <span class="nav-text">加分二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#描述："><span class="nav-number">4.2.1.</span> <span class="nav-text">描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入"><span class="nav-number">4.2.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">4.2.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析"><span class="nav-number">4.2.4.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC代码"><span class="nav-number">4.2.5.</span> <span class="nav-text">AC代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
