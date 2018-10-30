@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -165,7 +165,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -179,7 +179,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -414,7 +414,8 @@
         <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>在STL中容器非常重要，有时候数组难以解决活着很麻烦时，容器的优势便显示出来了。<br><a id="more"></a></p>
 <h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><hr>
 <h2 id="头文件-lt-vector-gt"><a href="#头文件-lt-vector-gt" class="headerlink" title="头文件 &lt;vector&gt;"></a>头文件 <code>&lt;vector&gt;</code></h2><h2 id="变量声明-vector-lt-type-gt-name"><a href="#变量声明-vector-lt-type-gt-name" class="headerlink" title="变量声明 vector&lt;type&gt;name;"></a>变量声明 <code>vector&lt;type&gt;name</code>;</h2><h2 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h2><p>1.<code>不限制长度</code><br>2.访问数据更安全<br>3.有正向反向迭代器<br>4.动态插入和删除</p>
-<h2 id="各项参数"><a href="#各项参数" class="headerlink" title="各项参数"></a>各项参数</h2><table>
+<h2 id="各项参数"><a href="#各项参数" class="headerlink" title="各项参数"></a>各项参数</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>参数</th>
@@ -480,6 +481,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <div class="note default"><p>注：<code>a.erase(pos)</code>删除pos位置的数据，传回下一个数据的位置 </p></div>
 <div class="note default"><p><code>a.erase(begin,end)</code> 删除<code>[begin,end）</code>区间的数据，传回下一个数据的位置 </p></div>
 <div class="note default"><p>其他：<code>setw(int len)</code>控制格式长度 </p></div>
@@ -487,7 +489,8 @@
 <h1 id="set"><a href="#set" class="headerlink" title="set"></a>set</h1><hr>
 <p>set实现了红黑树的平衡二叉检索树，，它会自动调整二叉树的排列，把元素放到适当的位置，以保证每个子树根节点键值大于左子树所有节点的键值，小于右子树所有节点的键值；另外，还得保证根节点左子树的高度与右子树高度相等。<br>平衡二叉检索树使用中序遍历算法，检索效率高于vector、deque和list等容器，另外使用中序遍历可将键值按照<code>从小到大</code>遍历出来。<br>构造set集合主要目的是为了快速检索，不可直接去修改键值。<br>利用set插入时，是按从小到大排序的这一特性，可以简单的解决一些问题（如：UVA10815）。</p>
 <h2 id="头文件-lt-set-gt"><a href="#头文件-lt-set-gt" class="headerlink" title="头文件 &lt;set&gt;"></a>头文件 <code>&lt;set&gt;</code></h2><h2 id="变量声明-set-lt-type-gt-name"><a href="#变量声明-set-lt-type-gt-name" class="headerlink" title="变量声明 set&lt;type&gt;name;"></a>变量声明 <code>set&lt;type&gt;name</code>;</h2><h2 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h2><p>1.检索快速</p>
-<h2 id="各项参数-1"><a href="#各项参数-1" class="headerlink" title="各项参数"></a>各项参数</h2><table>
+<h2 id="各项参数-1"><a href="#各项参数-1" class="headerlink" title="各项参数"></a>各项参数</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>参数</th>
@@ -513,10 +516,14 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>注</strong> 还有set_union取并集，set_intersection取交集</p>
 <h1 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h1><p>set里的元素不可以重复，但是multiset可以。</p>
 <h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><hr>
-<p>map是一类关联式容器。就是从键(key)到值(value)的映射。因为重载了运算符[]，map像是数组的高级版。<br>例如可以用一个map<string,int>month_name来表示“月份名字到月份编号”的映射，然后用month_name[“july”]=7;这样的方式来赋值。map又称为“关联数组”。<a href="转自刘汝佳的《算法入门经典》">^sample_footnote</a></string,int></p>
+<p>map是一类关联式容器。就是从键(key)到值(value)的映射。因为重载了运算符[]，map像是数组的高级版。<br>例如可以用一个map<string,int>month_name来表示“月份名字到月份编号”的映射，然后用month_name[“july”]=7;这样的方式来赋值。map又称为“关联数组”。<sup><a href="#fn_sample_footnote" id="reffn_sample_footnote">sample_footnote</a></sup></string,int></p>
+<blockquote id="fn_sample_footnote">
+<sup>sample_footnote</sup>. 转自刘汝佳的《算法入门经典》<a href="#reffn_sample_footnote" title="Jump back to footnote [sample_footnote] in the text."> &#8617;</a>
+</blockquote>
 <h2 id="头文件-lt-map-gt"><a href="#头文件-lt-map-gt" class="headerlink" title="头文件 &lt;map&gt;"></a>头文件 <code>&lt;map&gt;</code></h2><h2 id="变量声明-map-lt-type1，type2-gt-name"><a href="#变量声明-map-lt-type1，type2-gt-name" class="headerlink" title="变量声明 map&lt;type1，type2&gt;name;"></a>变量声明 <code>map&lt;type1，type2&gt;name</code>;</h2><h2 id="优点：-2"><a href="#优点：-2" class="headerlink" title="优点："></a>优点：</h2><p>1.快速插入删除记录<br>2.可以自己配对</p>
 <h2 id="各项参数-2"><a href="#各项参数-2" class="headerlink" title="各项参数"></a>各项参数</h2><p><img src="/2017/08/30/容器/img/map.png" alt="map"></p>
 <h2 id="例题：UVA156"><a href="#例题：UVA156" class="headerlink" title="例题：UVA156"></a>例题：UVA156</h2><p>找出不能通过字母重排得到文本中另一个单词（判断时不区分大小写），输出所有符合的单词，按字典序排序，所有大写字母在所有小写字母的前面。输入以‘#’结束</p>
@@ -524,7 +531,7 @@
 <h1 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h1><hr>
 <p>pair是一种模板类型，其中包含两个数据值，两个数据的类型可以不同，基本的定义如下：<br><code>pair&lt;int,string&gt;a</code>;<br>对于pair类，由于它只有两个元素，分别名为first和second，因此直接使用普通的点操作符即可访问其成员。</p>
 <h1 id="一些常用函数"><a href="#一些常用函数" class="headerlink" title="一些常用函数"></a>一些常用函数</h1><hr>
-<p>在使用STL容器时，配套上一些函数，会使程序更加优美。当然，这些函数也可以使用在容器的原型–数组之上。<br><code>1.sort(begin,end,compare());//默认从小到大
+<p>在使用STL容器时，配套上一些函数，会使程序更加优美。当然，这些函数也可以使用在容器的原型—数组之上。<br><code>1.sort(begin,end,compare());//默认从小到大
  2.lower_bound(begin,end,x);//返回第一个小于x的地址</code></p>
 <hr>
 <p>推荐一个网站<a href="http://www.cplusplus.com" target="_blank" rel="external">http://www.cplusplus.com</a><br>转载请注明出处，谢谢。</p>
@@ -689,7 +696,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -700,7 +707,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -711,7 +718,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1098,6 +1105,45 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
 
   
 

@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -168,7 +168,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -182,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -432,7 +432,7 @@
 <ol>
 <li>计算样本均值\(\overline{x}\)和方差\(S^2\)</li>
 <li>\(E_x = \overline{x}\)</li>
-<li>\(E<em>n = \sqrt{\frac{\pi}{2}}*\frac{1}{n}\sum</em>{1}^n\left|x-E_x\right|\)</li>
+<li>\(E_n = \sqrt{\frac{\pi}{2}}*\frac{1}{n}\sum_{1}^n\left|x-E_x\right|\)</li>
 <li>\(H_e = \sqrt{S^2-{E_n}^2}\)</li>
 </ol>
 <h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><p>could_transform.m<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> [x,y,Ex,En,He] = could_transform(y_spor,n)</div><div class="line"> </div><div class="line">Ex = mean(y_spor);</div><div class="line">En = mean(abs(y_spor - Ex)) .* sqrt(pi ./ 2);</div><div class="line">He = sqrt(var(y_spor) - En.^2);</div><div class="line"> </div><div class="line"><span class="keyword">for</span> q = 1:n</div><div class="line">    Enn = randn(1).* He + En;</div><div class="line">    x(q) = randn(1).* Enn + Ex;</div><div class="line">    y(q) = exp(-(x(q) - Ex) .^ 2 ./ (2 .* Enn .^2));</div><div class="line">end</div><div class="line">x;</div><div class="line">y;</div><div class="line">end</div></pre></td></tr></table></figure></p>
@@ -442,11 +442,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">X0 = []; %回归数据</div><div class="line">XE = []; %验证与预测数据</div><div class="line">Y0 = []; %回归数据P值</div><div class="line"> </div><div class="line">% 数据转化和参数回归</div><div class="line">n = size(Y0,1);</div><div class="line"><span class="keyword">for</span> i = 1:n</div><div class="line">    <span class="keyword">if</span> Y0(i) == 0</div><div class="line">        Y1(i,1) = 0.25;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        Y1(i,1) = 0.75;</div><div class="line">    end</div><div class="line">end</div><div class="line"> </div><div class="line">X1 = ones(size(X0,1),1); %构建常数项系数</div><div class="line">X = [X1,X0];</div><div class="line">Y = <span class="built_in">log</span>(Y1 ./ (1 - Y1));</div><div class="line">b = regress(Y,X);</div><div class="line"> </div><div class="line">%模型的验证</div><div class="line"><span class="keyword">for</span> i = 1:size(XE,1)</div><div class="line">    q0 = exp(b(1) + b(2) * XE(i,1) + b(3) * XE(i,2) + b(4) * XE(i,3))/(1+...</div><div class="line">    exp(b(1) + b(2) * XE(i,1) + b(3) * XE(i,2) + b(4) * XE(i,3)));</div><div class="line">    <span class="keyword">if</span> q0 &lt;= 0.5</div><div class="line">        P(i) = 0;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        P(i) = 1;</div><div class="line">    end</div><div class="line">end</div><div class="line"> </div><div class="line">disp([<span class="string">'回归系数'</span>num2str(b<span class="string">')]);</span></div><div class="line"><span class="string">disp(['</span>评价结果<span class="string">'num2str(P)]);</span></div></pre></td></tr></table></figure>
 <h2 id="主成分分析-PCA"><a href="#主成分分析-PCA" class="headerlink" title="主成分分析(PCA)"></a>主成分分析(PCA)</h2><p>对指标体系进行降维处理<br>看到某O奖论文里用这个了～</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
-<li>对原始数据进行标准化处理<br>\(x<em>{ij}^\ast=\frac{x</em>{ij}-\overline{x_j}}{\sqrt{Var(x_j)}}\)    \(i=1,2,\cdot\cdot\cdot,n;j=1,2,\cdot\cdot\cdot,p)\)<br>其中，\(\overline{x<em>j}=\frac{1}{n}\sum</em>{i=1}^nx_{ij}\)<br>\(Var(x<em>j)=\frac{1}{n-1}\sum</em>{i=1}^n(x_{ij}-\overline{x_j})^2        (j=1,2,\cdot\cdot\cdot,p)\)</li>
+<li>对原始数据进行标准化处理<br>\(x_{ij}^\ast=\frac{x_{ij}-\overline{x_j}}{\sqrt{Var(x_j)}}\)    \(i=1,2,\cdot\cdot\cdot,n;j=1,2,\cdot\cdot\cdot,p)\)<br>其中，\(\overline{x_j}=\frac{1}{n}\sum_{i=1}^nx_{ij}\)<br>\(Var(x_j)=\frac{1}{n-1}\sum_{i=1}^n(x_{ij}-\overline{x_j})^2        (j=1,2,\cdot\cdot\cdot,p)\)</li>
 <li>计算样本相关系数矩阵   <code>corrcoef()</code><br>\(r_{ij}=cov(x_i,x_j)\)</li>
 <li>计算相关系数矩阵\(R\(的特征值   <code>eig()</code></li>
-<li>计算贡献率，选择主成分<br>\(贡献率=\frac{\lambda<em>i}{\sum</em>{i=1}^p\lambda_i}\0</li>
-<li>计算主成分得分<br>\(F<em>{ij}=\sum</em>{i=1}^pa<em>{jk}x</em>{ik} ,i=1,2,\cdot\cdot\cdot,n;j=1,2,\cdot\cdot\cdot,p\)</li>
+<li>计算贡献率，选择主成分<br>\(贡献率=\frac{\lambda_i}{\sum_{i=1}^p\lambda_i}\\0</li>
+<li>计算主成分得分<br>\(F_{ij}=\sum_{i=1}^pa_{jk}x_{ik} ,i=1,2,\cdot\cdot\cdot,n;j=1,2,\cdot\cdot\cdot,p\)</li>
 <li>依据主成分得分数据，进一步对问题进行后续的分析和建模</li>
 </ol>
 <h3 id="Matlab-2"><a href="#Matlab-2" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">%数据导入</div><div class="line">A = [];</div><div class="line"></div><div class="line">%	标准化处理</div><div class="line">a = size(A,1);</div><div class="line">b = size(A,2);</div><div class="line"><span class="keyword">for</span> i = 1:b</div><div class="line">	SA(:,i) = (A(:,i) - mean(A(:,i))) / std(A(:,i));</div><div class="line">end</div><div class="line"></div><div class="line">%计算相关系数矩阵</div><div class="line">CM = corrcoef(SA);</div><div class="line">[V,D] = eig(CM);</div><div class="line"><span class="keyword">for</span> j = 1:b</div><div class="line">    DS(j,1) = D(b + 1 - j,b + 1 - j);</div><div class="line">end</div><div class="line"></div><div class="line"><span class="keyword">for</span> i = 1:b</div><div class="line">	DS(i,2) = DS(i,1) / sum(DS:,1));%贡献率</div><div class="line">	DS(i,3) = sum(DS(1:i,1)) / sum(DS(:,1));%累积贡献率</div><div class="line">end</div><div class="line"></div><div class="line">%选择主成分</div><div class="line">T = 0.9; %主成分信息保留率</div><div class="line"><span class="keyword">for</span> k = 1:b</div><div class="line">	<span class="keyword">if</span> DS(k,3) &gt;= T</div><div class="line">		Com_num = k;</div><div class="line">		<span class="built_in">break</span>;</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">%提取主成分对应的特征向量</div><div class="line"><span class="keyword">for</span> j = 1:Com_num</div><div class="line">	PV(:,j) = V(:,b + 1 - j);</div><div class="line">end</div><div class="line"></div><div class="line">%计算主成分得分</div><div class="line">new_score = SA * PV;</div><div class="line"><span class="keyword">for</span> i = 1:a</div><div class="line">	total_score(i,1) = sum(new_score(i,:));</div><div class="line">	total_score(i,2) = i;</div><div class="line">end</div><div class="line">result_report = [new_score,total_score];</div><div class="line">result_report = sortrows(result_report,-4);%将总分按降序排序</div></pre></td></tr></table></figure>
@@ -618,7 +618,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -629,7 +629,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -640,7 +640,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1027,6 +1027,45 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
 
   
 

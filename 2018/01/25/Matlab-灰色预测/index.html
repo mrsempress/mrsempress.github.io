@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -167,7 +167,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -181,7 +181,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -428,7 +428,7 @@
 <ol>
 <li>白化GM(1,1)模型<br>离散到连续的过程<br>白化模型<br>\(\frac{dx^{(1)}}{dk}+ax^{(1)}=b\)</li>
 <li>求解模型<br>将<code>5</code>中的数据变形可得<br>连续函数表达式    \(X=(x^{(0)}(1)-\frac ba)e^{-ak},k=0,1,2,3,\cdot\cdot\cdot\)<br>具体数学表达式    \(\breve{x}^{(1)}(k+1)=x^{(0)}(1)-\frac ba)e^{-ak}+\frac ba\)<br>将数据累减(IAGO)从而还原为<br>\(\breve{x}^{(0)}(k+1)=\breve{x}^{(1)}(k+1)-\breve{x}^{(1)}(k),k=1,2,3,\cdot\cdot\cdot,n\)</li>
-<li>模型检验<br>1）相对残差Q检验（越小越好）<br>\(\varepsilon<em>k=x^{(k)}-\breve{x}^{(k)}\)<br>\(Q=\frac 1n\sum</em>{k=1}^n\frac {\varepsilon_k}{x^{(0)}(k)}\)<br>2)方差比C检验（越小越好）<br>\(\varepsilon^{(0)}=(\varepsilon_1,\varepsilon_2,\varepsilon_3,\cdot\cdot\cdot,\varepsilon<em>n)\)<br>\(\overline{x}=\frac 1n\sum</em>{k=1}^nx^{(0)}(k)\)<br>\(\overline{\varepsilon}=\frac 1n\sum<em>{k=1}^n\varepsilon^{(0)}(k)\)<br>\(S1^2=\frac 1n\sum</em>{(k=1)}^n(x^{(0)}(k)-\overline{x})\)<br>\(S2^2=\frac 1n\sum_{(k=1)}^n(\varepsilon^{(0)}(k)-\overline{\varepsilon})\)<br>3)小误差概率p的检验（置信水平取0.5时）（p越大越好）<br>\(p=P(\left|\varepsilon_k-\overline{\varepsilon} \right| &lt;0.6745S1)\)</li>
+<li>模型检验<br>1）相对残差Q检验（越小越好）<br>\(\varepsilon_k=x^{(k)}-\breve{x}^{(k)}\)<br>\(Q=\frac 1n\sum_{k=1}^n\frac {\varepsilon_k}{x^{(0)}(k)}\)<br>2)方差比C检验（越小越好）<br>\(\varepsilon^{(0)}=(\varepsilon_1,\varepsilon_2,\varepsilon_3,\cdot\cdot\cdot,\varepsilon_n)\)<br>\(\overline{x}=\frac 1n\sum_{k=1}^nx^{(0)}(k)\)<br>\(\overline{\varepsilon}=\frac 1n\sum_{k=1}^n\varepsilon^{(0)}(k)\)<br>\(S1^2=\frac 1n\sum_{(k=1)}^n(x^{(0)}(k)-\overline{x})\)<br>\(S2^2=\frac 1n\sum_{(k=1)}^n(\varepsilon^{(0)}(k)-\overline{\varepsilon})\)<br>3)小误差概率p的检验（置信水平取0.5时）（p越大越好）<br>\(p=P(\left|\varepsilon_k-\overline{\varepsilon} \right| &lt;0.6745S1)\)</li>
 <li>模型的预测<br>通过计算数列的“级比”来判断是都可用GM(1,1)来预测<br>\(\lambda(k)=\frac {x^{(0)}(k-1)}{x^{(0)}(k)},k=2,3,4,\cdot\cdot\cdot\)<br>如果\(\lambda(k)\)能够落入到\(\left[e^{-\frac{2}{n+1}},e^{\frac{2}{n+1}}\right]\)区间内，则可用GM(1,1)来预测。</li>
 </ol>
 <h3 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">x0 = [92.810 97.660 98.800 99.281 99.537 99.537 99.817 100.00];</div><div class="line">n = length(x0);</div><div class="line"></div><div class="line">% 做级比判断看是否适合用GM(1,1)建模</div><div class="line">lamda = x0(1:n-1) ./ x0(2:n);</div><div class="line">range = minmax(lamda);% minmax 用于获取数组中每一行的最小值和最大值</div><div class="line"><span class="keyword">if</span> range(1,1) &lt; exp(-e/(n+2))) | range(1,2) &gt; exp(2/(n+2))</div><div class="line">    error(<span class="string">'级比没有落入灰色模型的范围内'</span>);</div><div class="line"><span class="keyword">else</span></div><div class="line">    disp(<span class="string">'          '</span>);</div><div class="line">    disp(<span class="string">'0'</span>);</div><div class="line">end</div><div class="line">% 做AGO累加处理</div><div class="line">x1 = cumsum(x0);% cumsum 求各行的累加值</div><div class="line"><span class="keyword">for</span> i =2:n</div><div class="line">	 % 计算紧邻均值</div><div class="line">    z(i) = 0.5 * (x1(i) + x1(i-1));</div><div class="line">end</div><div class="line">B = [-z(2:n)<span class="string">',ones(n-1,1)];</span></div><div class="line"><span class="string">Y = x0(2:n)'</span>;</div><div class="line">u = B\Y;% 注意是右除</div><div class="line">% 在Matlab中，用大写的D表示导数，dsolve函数用来求解符号常微分方程</div><div class="line">x = dslove(<span class="string">'Dx + a * x = b'</span>,<span class="string">'x(0) = x0'</span>);</div><div class="line">% subs函数的作用是替换元素，这里是把常量a,b,x0换成具体u(1),u(2),x1(1)数值</div><div class="line">x = subs(x,&#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'x0'</span>&#125;,&#123;u(1),u(2),x1(1)&#125;);</div><div class="line">forecast1 = subs(x,<span class="string">'t'</span>,[0:n-1]);</div><div class="line">digits(6);</div><div class="line">% R = vpa(A, d) 用d个位数代替当前设置的位数。</div><div class="line">% vpa是在运算时就控制了精度，但是digits是对结果控制精度</div><div class="line">y = vpa(x);</div><div class="line">% 累减</div><div class="line">% diff用于对符号表达式进行求导</div><div class="line">% diff用于对向量时，是计算原向量相邻元素的差</div><div class="line">exchange = diff(forecast1);</div><div class="line">% 输出灰色预测的值</div><div class="line">forcast = [x0(1),exchange]</div><div class="line">% 计算残差</div><div class="line">epsilon = x0 - forecast;</div><div class="line">% 计算相对误差</div><div class="line">delta = abs(epsilon ./ x0);</div><div class="line"></div><div class="line">% 相对误差Q的检验</div><div class="line">Q = mean(delta)</div><div class="line">% 方差比C的检验</div><div class="line">C = std(epsilon,1)/std(x0,1)</div><div class="line">% 小误差概率p的检验</div><div class="line">S1 = std(x0,1);</div><div class="line">S1_new = S1 * 0.6745;</div><div class="line">temp_P = find(abs(epsilon - mean(epsilon)) &lt; S1_new);</div><div class="line">P = length(temp_P)/n</div><div class="line">% 绘制两数列差异折线图</div><div class="line">plot(1:n,x0,<span class="string">'ro'</span>,<span class="string">'markersize'</span>,11);</div><div class="line">hold on</div><div class="line">plot(1:n,forecast,<span class="string">'k-'</span>,<span class="string">'linewidth'</span>,2.5);</div><div class="line">grid on;</div><div class="line">axis tight;</div><div class="line">xlabel(<span class="string">'x'</span>);</div><div class="line">ylabel(<span class="string">'y'</span>);</div><div class="line">title(<span class="string">'****'</span>);</div><div class="line">legend(<span class="string">'原始数列'</span>,<span class="string">'模型数列'</span>);</div></pre></td></tr></table></figure>
@@ -600,7 +600,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -611,7 +611,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -622,7 +622,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1009,6 +1009,45 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
 
   
 

@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Notes," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 回归模型 应该算是最基础的吧 梯度下降法，之后也用的比较多 幸好之前也选修了数值分析 对这些东西还算有了解啦！">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning-regression model">
+<meta property="og:url" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 回归模型 应该算是最基础的吧 梯度下降法，之后也用的比较多 幸好之前也选修了数值分析 对这些东西还算有了解啦！">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-10-30T15:34:46.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning-regression model">
+<meta name="twitter:description" content="This is my blog. 回归模型 应该算是最基础的吧 梯度下降法，之后也用的比较多 幸好之前也选修了数值分析 对这些东西还算有了解啦！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/10/30/Machine-Learning-regression-model/"/>
+
+
+
+
+
+  <title>Machine Learning-regression model | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/10/30/Machine-Learning-regression-model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine Learning-regression model</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T20:26:33+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/30/Machine-Learning-regression-model/" class="leancloud_visitors" data-flag-title="Machine Learning-regression model">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>回归模型</p>
+<p>应该算是最基础的吧</p>
+<p>梯度下降法，之后也用的比较多</p>
+<p>幸好之前也选修了数值分析</p>
+<p>对这些东西还算有了解啦！</p>
+<a id="more"></a>
+<p>这里只要有两种，一种是线性回归，另一种是逻辑回归</p>
+<p>遇到了一个函数，sigmoid，这个函数还是很神奇哒！</p>
+<p>Octave集成的也很棒，Matlab也很棒啦！</p>
+<p>打算学完之后，用python巩固一下</p>
+<p>好像看到班里的大大们，都是用python研究的么！</p>
+<h2 id="Lesson-2-liner-regression"><a href="#Lesson-2-liner-regression" class="headerlink" title="Lesson 2 liner regression"></a>Lesson 2 liner regression</h2><p>Regression: predict the <strong>real-value</strong> output</p>
+<p>the hypothesis is like that:</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta_0 + \theta_1x</script><p>Squared error cost function: an <strong>average difference</strong> of all <strong>the results of the hypothesis</strong> with inputs from x’s and <strong>the actual output y’s.</strong></p>
+<script type="math/tex; mode=display">
+J(\theta_0,\theta_1) = \frac 1 {2m}\sum_{i=1}^{m}(h_\theta(x_{i})-y_i)^2</script><p>$\frac 1 2$ is convenience for the computation of the <strong>gradient descent</strong></p>
+<p>and our goal is:</p>
+<script type="math/tex; mode=display">
+minimize_{\theta_0,\theta_1} J(\theta_0,\theta_1)</script><p>the difference between $h_\theta(x)$ and $J(\theta_0,\theta_1)$ is that:</p>
+<p>  $h_\theta(x)$ is a function of x, and $J(\theta_0,\theta_1)$ is a function of $\theta_0,\theta_1$</p>
+<p>In order to achieve the goal, we use the algorithm———<strong>Gradient descent</strong>:</p>
+<h4 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a>Gradient descent</h4><script type="math/tex; mode=display">
+\theta_j := \theta_j - \alpha \frac \partial {\partial \theta_j}J(\theta_0,\theta_1)</script><p>some symbols:</p>
+<p><strong>:=</strong> ：赋值运算</p>
+<p><strong>=</strong>  ：真假判断语句（和编程语言不一样呢！</p>
+<p>$\alpha$ ：learning rate; if $\alpha$ is too small, gradient descent is slow; if $\alpha$ is too large, gradient descent can over shootthe minimum. It may fail to converge, or even diverge.</p>
+<p>Attention: In the updating, we should <strong>simultaneously</strong> update both the parameters $\theta_0$ and $\theta_1 $</p>
+<p>The closer is, the slower is.</p>
+<p>problem: you may find <strong>local minimum</strong>, not the <strong>global minimum</strong>. But in the liner regression, the figure is like a bowl, so the problem will not happened.</p>
+<p>“Batch” gradient descent: which says each steps of gradient descent uses <strong>all of training examples</strong></p>
+<p>Matrix:  Dimension of matrix: rows <em> columns (n</em>m)</p>
+<p>Vector: an n*1 matrix </p>
+<h2 id="Lesson-3-multivariate-Liner-regression"><a href="#Lesson-3-multivariate-Liner-regression" class="headerlink" title="Lesson 3 multivariate Liner regression"></a>Lesson 3 multivariate Liner regression</h2><p>some Notation:</p>
+<p>n：number of features </p>
+<p>$x^{(i)}$： $i^{th}$  example</p>
+<p>$x^{(i)}_j$：$i^{th}$  example’s $j^{th}$ features</p>
+<p>the hypothesis is like that:</p>
+<script type="math/tex; mode=display">
+h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_2+\cdot\cdot\cdot+\theta_nx_n
+=\theta^TX</script><p>in this $x_0=1$</p>
+<p>cost function:</p>
+<script type="math/tex; mode=display">
+J(\theta_0,\theta_1,\cdot\cdot\cdot,\theta_n) = \frac 1 {2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2=\frac 1 {2m}\sum_{i=1}^{m}(\theta^Tx^{(i)}-y^{(i)})^2
+=\frac 1 {2m}\sum_{i=1}^{m}(\sum_{j=0}^{n}\theta_jx^{(i)}_j-y^{(i)})^2</script><h4 id="gradient-descent"><a href="#gradient-descent" class="headerlink" title="gradient descent"></a><strong>gradient descent</strong></h4><script type="math/tex; mode=display">
+\theta_j := \theta_j - \alpha \frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(i)}</script><p>it’s style ias same as liner regression</p>
+<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling:"></a><strong>Feature Scaling:</strong></h4><script type="math/tex; mode=display">
+-1 \leq x_{(i)} \leq1 \\
+or\\
+-0.5 \leq x_{(i)}\leq 0.5</script><p>It <strong>speeds up gradient descent</strong> by making it require <strong>fewer iterations</strong> to get to a good solution.</p>
+<p><strong>mean normalization(normalized feature):</strong></p>
+<script type="math/tex; mode=display">
+x_i:=\frac{x_i-u_i}{s_i}</script><p>$u_i$ is the average of all the values for feature (i)</p>
+<p>$s_i$ is the range of values (max - min) or is the standard deviation  </p>
+<p>If gradient descent  doesn’t work, maybe the $\alpha$ is too big</p>
+<h4 id="Polynomial-Regression："><a href="#Polynomial-Regression：" class="headerlink" title="Polynomial Regression："></a><strong>Polynomial Regression：</strong></h4><p><strong>change the behavior or curve</strong> of our hypothesis function by making it a quadratic, cubic or square root function (or any other form).  </p>
+<p>just like：</p>
+<p>$h_\theta(x) = \theta_0 + \theta_1x$ and you find it is not suitable, you can change like that:</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta_0 + \theta_1x_1+\theta_2x_1^2+\theta_3x_1^3</script><p>or maybe like that:</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta_0 + \theta_1x_1+\theta_2\sqrt{x1}</script><p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
+<p>by math we can know the $\theta$ can easily caculte like that:(通过求偏导后等于0，算出$\theta$的值)</p>
+<script type="math/tex; mode=display">
+\theta = (X^TX)^{-1}X^Ty</script><p>In octave:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pinv(x&apos; * x) * x&apos; * y</div></pre></td></tr></table></figure>
+<p>The ‘pinv’ function will give you a value of θ even if $X^TX)\ is not invertible.[if you use the inv(), then you will get error! ]</p>
+<p>And the reasons for the “not invertible” are:</p>
+<ul>
+<li>Redundant features, where two features are very <strong>closely related</strong> (i.e. they are linearly dependent)</li>
+<li><strong>Too many features</strong> (e.g. m ≤ n). In this case, delete some features or use “regularization” (正则化)</li>
+</ul>
+<p>But the two ways have both advantages and disadvantages :</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Gradient Descent</th>
+<th>Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Need to choose alpha</td>
+<td>No need to choose alpha</td>
+</tr>
+<tr>
+<td>Needs many iterations</td>
+<td>No need to iterate</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>O ($kn^2$)</td>
+<td>O ($n^3$, need to calculate inverse of $X^TX$</td>
+</tr>
+<tr>
+<td>Works well when n is large</td>
+<td>Slow if n is very large</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>and in other more complicated problems we will find the gradient descent is more useful.</p>
+<p>In practice, when n exceeds 10,000 it might be a good time to go from a normal solution to an iterative process.</p>
+<h2 id="Lesson-4-Octave"><a href="#Lesson-4-Octave" class="headerlink" title="Lesson 4 Octave"></a>Lesson 4 Octave</h2><p>In octave, the index is not from “0”, but from “1”.</p>
+<p>Basics :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">PS1(&quot;&gt;&gt; &quot;)</div><div class="line">a=pi</div><div class="line">disp(sprintf(&quot;%.6f&quot;,a))</div><div class="line">disp(&quot;hello\n&quot;)</div><div class="line">who % all the variables in the workplace</div><div class="line">whos %like who, but give you details</div><div class="line"></div><div class="line">% something like cmd</div><div class="line">pwd</div><div class="line">cd &apos;C:\&apos;</div><div class="line">ls</div><div class="line">clear</div><div class="line">addpath(&apos;C:\&apos;)</div><div class="line"></div><div class="line">% something like matlab</div><div class="line">format long</div><div class="line">format short</div><div class="line"></div><div class="line">rand(3) % 3*3</div><div class="line">rand(1,2) % 0到1之前的随机值</div><div class="line">randn(1,2) % 平均值为0，平均方差为1的高斯随机值</div><div class="line"></div><div class="line">A(2,:) % : means every elements in 2th row</div><div class="line">A([1 3],:) % all the elements in the first and third row</div><div class="line">A(:) % but in this answer, the ans will be in a vector, not like the matrix</div><div class="line"></div><div class="line">A = [1;2]</div><div class="line">size(A) % 2 1</div><div class="line">length(A) % 2;the longest size</div></pre></td></tr></table></figure>
+<p>Input data:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">load(&apos;file_name.dat&apos;)</div><div class="line">load &apos;file_name.dat&apos;</div><div class="line"></div><div class="line">file_name % see the data</div><div class="line"></div><div class="line">save name.mat V %put the V into the &apos;name.data&apos;</div><div class="line">save name.txt V -ascii % save as txt, and you can see the result only by open the txt</div></pre></td></tr></table></figure>
+<p>Computing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">A*B % can not write like that &quot;AB&quot;</div><div class="line">A+2 % every element add 2</div><div class="line">x/2 % every element divide 2</div><div class="line">x.^2 % every element multiply themself, not same as x^2</div><div class="line">A .* B % 矩阵哈达马积，对应元素相乘</div><div class="line">A .^ 2 % every element to multiple 2</div><div class="line">exp(V)</div><div class="line">log(V)</div><div class="line">abs(V)</div><div class="line">val = max(A)</div><div class="line">[val,index] = max(A)</div><div class="line">find(V&lt;3) % the index of V&apos;s elements that smaller than 3</div><div class="line">[r,c] = find(A&lt;3)</div><div class="line"></div><div class="line">magic(x) % x*x matrix, and the sum of every rows, column, diagonals is same</div><div class="line"></div><div class="line">sum(A)</div><div class="line">floor(A)</div><div class="line">ceil(A)</div><div class="line">prod(A) % all the elements multiply together</div><div class="line"></div><div class="line">max(A,[],x) %find the max in every x columns</div><div class="line"></div><div class="line">sum(A,1) % the sum of every column</div><div class="line">sum(A,2) % the sum of every row</div><div class="line"></div><div class="line">filpud(A) %上下翻转</div><div class="line"></div><div class="line">pinv(A) % inv(A)</div></pre></td></tr></table></figure>
+<p>Plotting:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">plot(x,y);</div><div class="line"></div><div class="line">% do something with firgure</div><div class="line">plot(x,y1,&apos;r&apos;)</div><div class="line">plot(x,y2,&apos;b&apos;)</div><div class="line">hold on;</div><div class="line">xlabel(&apos;x&apos;)</div><div class="line">ylabel(&apos;y&apos;)</div><div class="line">title(&apos;title&apos;)</div><div class="line">legend(&apos;y1&apos;,&apos;y2&apos;)</div><div class="line"></div><div class="line">print -dpng &apos;myplot.png&apos;</div><div class="line">% also can change the path like that</div><div class="line">cd &apos;C:/&apos; print -dpng &apos;myplot.png&apos;</div><div class="line">close</div><div class="line"></div><div class="line">figure(1);plot(x,y1,&apos;r&apos;)</div><div class="line">figure(2);plot(x,y2,&apos;b&apos;)</div><div class="line"></div><div class="line">subplot(1,2,1) %divides plot 1*2 grid, access element 1</div><div class="line">plot(x,y1,&apos;r&apos;)</div><div class="line">subplot(1,2,2)</div><div class="line">plot(x,y2,&apos;b&apos;)</div><div class="line">axis([0.5 1 -1 1]) % x[0.5 1] y[-1 1] for subplot(1,2,2)</div><div class="line"></div><div class="line">clf; % clear figure</div><div class="line"></div><div class="line">% other figure</div><div class="line">imagesc(A)</div><div class="line">imagesc(A),colorbar,colormap gray</div></pre></td></tr></table></figure>
+<p>Control:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">for i=1:10,</div><div class="line">	% ....</div><div class="line">end;</div><div class="line"></div><div class="line"></div><div class="line">if</div><div class="line">elseif</div><div class="line">else</div><div class="line">end;</div><div class="line"></div><div class="line">function y=functionname(X)</div><div class="line">	y=x^2</div></pre></td></tr></table></figure>
+<p>if you can use the vector, try to use it to cacluate which will decrease the length of code.</p>
+<h2 id="Lesson-5-Classfication"><a href="#Lesson-5-Classfication" class="headerlink" title="Lesson 5 Classfication"></a>Lesson 5 Classfication</h2><p>离散的值</p>
+<p>First, we talk about $y\in\{0,1\}$</p>
+<p>then you can find the liner regression doesn’t work well, so …</p>
+<p>But there is something <strong>different</strong>:</p>
+<p>in the classification,  $h_\theta(x)$ can both smaller than zero and bigger than one</p>
+<p>But in  logistic regression, the value is must like this,  $0\leq h_\theta(x)\leq 1$</p>
+<p>当有一个feature时是一条直线,当有两个feature时一条曲线,有更多的feature时是一条弯七弯八的曲线<br>当feature越来越多时,曲线越来越拟合,即损失函数越来越小 </p>
+<h4 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a><strong>sigmoid function</strong></h4><p>$h_\theta(x) = g(\theta^TX)\\                            </p>
+<p>$g(z) = \frac 1 {1+e^{-z}}$  this is called <strong>sigmoid function</strong> or <strong>logistic function</strong> </p>
+<p>In this function, when z&gt;4.6, the value is very close 1(0.99), and when z&lt;-4.6, the value is very close 0(0.01)</p>
+<p>$h_\theta(x)=P(y=1|x;\theta)$ : probability that y=1, given x, parameterized by $\theta$</p>
+<p> $P(y=1|x;\theta)+P(y=0|x;\theta)=1$</p>
+<p>ifh_\theta(x)<0.5$ (z<0="" -=""> $\theta^TX &lt; 0$) then y=0                  Else y=1</0.5$></p>
+<h2 id="Lesson-6-Logistic-Regression-Model"><a href="#Lesson-6-Logistic-Regression-Model" class="headerlink" title="Lesson 6 Logistic Regression Model"></a>Lesson 6 Logistic Regression Model</h2><p>cost function doesn’t like liner regression, which is $ J(\theta_0,\theta_1) = \frac 1 {2m}\sum_{i=1}^{m}(h_\theta(x_{i})-y_i)^2$ </p>
+<p>but is like this:</p>
+<script type="math/tex; mode=display">
+Cost(h_\theta(x),y)=\{_{-log(1-h_\theta(x))\ \  if\ y=0}^{-log(h_\theta(x))\ \ \ \ \ if\ y=1}\ =-ylog(h_\theta(x))-(1-y)log(1-h_\theta(x))
+\\J(\theta)=\frac 1 m\sum_{i=1}^mCost(h_\theta(x^{(i)}),y^{(i)})=-\frac 1 m\sum_{i=1}^m [y^{(i)}log(h_\theta(x))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]</script><p>If our correct answer ‘y’ is 0, then the cost function will be 0 if our hypothesis function also outputs 0. If our hypothesis approaches 1, then the cost function will approach infinity.</p>
+<p>Note that writing the cost function in this way guarantees that J(θ) is <strong>convex</strong> for logistic regression.</p>
+<p>if J(θ) is decreasing on every iteration, it says <strong>the learning rate α is set properly and that gradient descent is running correctly</strong></p>
+<h4 id="Gradient-descent-1"><a href="#Gradient-descent-1" class="headerlink" title="Gradient descent"></a><strong>Gradient descent</strong></h4><p>As we know in Lesson2, the normal gradient descent is.</p>
+<p>And we will find that the gradient descent both in liner regression and in logistic regression are same.</p>
+<script type="math/tex; mode=display">
+\theta_j := \theta_j - \alpha \frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(i)}</script><p>The only different is in liner regression, </p>
+<script type="math/tex; mode=display">
+h_\theta(x)=\theta^TX</script><p>but in logistic regression,</p>
+<script type="math/tex; mode=display">
+h_\theta(x)=\frac 1 {1+e^{-\theta^TX}}</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function [jVal, gradient] = costFunction(theta)</div><div class="line">  jVal = [...code to compute J(theta)...];</div><div class="line">  gradient = [...code to compute derivative of J(theta)...];</div><div class="line">end</div><div class="line"></div><div class="line">options = optimset(&apos;GradObj&apos;, &apos;on&apos;, &apos;MaxIter&apos;, 100);</div><div class="line">initialTheta = zeros(2,1);</div><div class="line">[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);</div></pre></td></tr></table></figure>
+<p>There are other three ways to solve it, and these ways are <strong>more faster</strong> and you <strong>don’t need find the optimal α by manually</strong>. But it is more complex. (It isn’t because it will lost in local minimum)</p>
+<h4 id="Conjuate-gradient"><a href="#Conjuate-gradient" class="headerlink" title="Conjuate gradient"></a>Conjuate gradient</h4><h4 id="BFGS"><a href="#BFGS" class="headerlink" title="BFGS"></a>BFGS</h4><h4 id="L-BFGS"><a href="#L-BFGS" class="headerlink" title="L-BFGS"></a>L-BFGS</h4><h4 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h4><p>Train a logistic regression classifier $h_\theta(x)$ <strong>for each class￼</strong> to predict the probability that ￼ $￼y = i$ ￼.</p>
+<p>To make a prediction on a new x, pick the class ￼that maximizes $h_\theta (x)$</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>上交完实验后，还是很开心哒！</p>
+<p>不过我居然在绿色计算机大赛的时候</p>
+<p>犯了小迷糊</p>
+<p>可能那一天都在迷糊吧</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=448917180&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/30/Machine-Learning-foreword/" rel="next" title="Machine Learning-foreword">
+                <i class="fa fa-chevron-left"></i> Machine Learning-foreword
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/Machine-Learning-regularization/" rel="prev" title="Machine Learning-regularization">
+                Machine Learning-regularization <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-2-liner-regression"><span class="nav-number">1.</span> <span class="nav-text">Lesson 2 liner regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.0.1.</span> <span class="nav-text">Gradient descent</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-3-multivariate-Liner-regression"><span class="nav-number">2.</span> <span class="nav-text">Lesson 3 multivariate Liner regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent"><span class="nav-number">2.0.1.</span> <span class="nav-text">gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Scaling"><span class="nav-number">2.0.2.</span> <span class="nav-text">Feature Scaling:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-Regression："><span class="nav-number">2.0.3.</span> <span class="nav-text">Polynomial Regression：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-4-Octave"><span class="nav-number">3.</span> <span class="nav-text">Lesson 4 Octave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-5-Classfication"><span class="nav-number">4.</span> <span class="nav-text">Lesson 5 Classfication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sigmoid-function"><span class="nav-number">4.0.1.</span> <span class="nav-text">sigmoid function</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-6-Logistic-Regression-Model"><span class="nav-number">5.</span> <span class="nav-text">Lesson 6 Logistic Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent-1"><span class="nav-number">5.0.1.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conjuate-gradient"><span class="nav-number">5.0.2.</span> <span class="nav-text">Conjuate gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFGS"><span class="nav-number">5.0.3.</span> <span class="nav-text">BFGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L-BFGS"><span class="nav-number">5.0.4.</span> <span class="nav-text">L-BFGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiclass-Classification"><span class="nav-number">5.0.5.</span> <span class="nav-text">Multiclass Classification</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

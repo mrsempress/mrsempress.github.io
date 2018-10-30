@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -164,7 +164,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -178,7 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -422,7 +422,8 @@
 <h1 id="D-Hack-Portals"><a href="#D-Hack-Portals" class="headerlink" title="D. Hack Portals"></a>D. <a href="https://nanti.jisuanke.com/t/16953" target="_blank" rel="external">Hack Portals</a></h1><p>题目还未曾看！惊悚！</p>
 <h1 id="E-Half-consecutive-Numbers"><a href="#E-Half-consecutive-Numbers" class="headerlink" title="E. Half-consecutive Numbers"></a>E. <a href="https://nanti.jisuanke.com/t/16954" target="_blank" rel="external">Half-consecutive Numbers</a></h1><p><img src="/2017/09/22/2017ACM-ICPC网络赛1/Users/mrs_empress/blog/source/_posts/2017ACM-ICPC网络赛1/icpc21.png" alt="icpc21"></p>
 <h2 id="打表思路一"><a href="#打表思路一" class="headerlink" title="打表思路一"></a>打表思路一</h2><p>\(\frac{r*(r+1)}{2}=k^2\quad(\forall k\in\mathbb N)\)<br>除了1以外,\(r!=\frac{r+1}{2}\(且\(r+1!=\frac{r}{2}\),<br>如果r是奇数,那么\(\frac{r+1}{2}\)和r是完全平方数；<br>所以\(\frac{r+1}{2}=\frac{i^2+1}{2}\)是完全平方数，且\(r=i^2\),<br>如果r是偶数,那么\(\frac{r}{2}\)和\(r+1\)是完全平方数；<br>所以\(\frac{r+1-1}{2}=\frac{i^2-1}{2}\)是完全平方数，且\(r=i^2-1\),</p>
-<h2 id="打表思路二"><a href="#打表思路二" class="headerlink" title="打表思路二"></a>打表思路二</h2><table>
+<h2 id="打表思路二"><a href="#打表思路二" class="headerlink" title="打表思路二"></a>打表思路二</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>1</th>
@@ -444,8 +445,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>我们会发现第一个数字是前面的第一个和第二个数字之和，而第二个数字是第一个数字的平方的两倍加减一，当为第偶数个时，减一；当为第奇数个时减一。我们现在找到了我们的了我们的k了，于是乎，我们即可以求出r了。</p>
-<h2 id="打表思路三"><a href="#打表思路三" class="headerlink" title="打表思路三"></a>打表思路三</h2><p>转自一个<a href="https://wiki-three-investigators.icpc-camp.org/2017%20ACM-ICPC%20Asia%20Regional%20Urumqi%20Online" target="_blank" rel="external">dalao的博客</a><br>其实我没有看懂，但是我知道他的递推式好厉害啊！<br>\(r_1=0,r<em>2=1,r</em>{n+2}=6*r_{n+1}-r_n+2\)<br>数学的感觉很重要呐！！！</p>
+<h2 id="打表思路三"><a href="#打表思路三" class="headerlink" title="打表思路三"></a>打表思路三</h2><p>转自一个<a href="https://wiki-three-investigators.icpc-camp.org/2017%20ACM-ICPC%20Asia%20Regional%20Urumqi%20Online" target="_blank" rel="external">dalao的博客</a><br>其实我没有看懂，但是我知道他的递推式好厉害啊！<br>\(r_1=0,r_2=1,r_{n+2}=6*r_{n+1}-r_n+2\)<br>数学的感觉很重要呐！！！</p>
 <p>经过测试，我觉得第二个更快，也可能是第一个思路更正常吧！（我只测了一和二，dalao的那个不知道是怎么推出来的，看他的解释看不懂啊！！欢迎来给我讲解呢！</p>
 <h2 id="AC代码-3"><a href="#AC代码-3" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;cstdio&gt;</span></div><div class="line"><span class="comment">#include &lt;cmath&gt;</span></div><div class="line"><span class="comment">#define ll long long</span></div><div class="line">using namespace std;</div><div class="line">ll a[25]=&#123;1,8,</div><div class="line">    49,</div><div class="line">    288,</div><div class="line">    1681,</div><div class="line">    9800,</div><div class="line">    57121,</div><div class="line">    332928,</div><div class="line">    1940449,</div><div class="line">    11309768,</div><div class="line">    65918161,</div><div class="line">    384199200,</div><div class="line">    2239277041,</div><div class="line">    13051463048,</div><div class="line">    76069501249,</div><div class="line">    443365544448,</div><div class="line">    2584123765441,</div><div class="line">    15061377048200,</div><div class="line">    87784138523761,</div><div class="line">    511643454094368,</div><div class="line">    2982076586042449&#125;;</div><div class="line">int <span class="function"><span class="title">main</span></span>()&#123;</div><div class="line">//    ll x=1,y=1;</div><div class="line">//    int flag=1;</div><div class="line">//    <span class="keyword">for</span>(ll i=1;i&lt;=20;i++)&#123;</div><div class="line">//        ll xx=x+y;</div><div class="line">//        y=sqrt(xx*xx*2+flag);</div><div class="line">//        x=xx;</div><div class="line">//         <span class="keyword">if</span>(i%2)</div><div class="line">//         cout&lt;&lt;xx*xx*2&lt;&lt;endl;</div><div class="line">//        <span class="keyword">else</span>  cout&lt;&lt;xx*xx*2-1&lt;&lt;endl;</div><div class="line">//        cout&lt;&lt;(ll)(x*y*sqrt(2.0))&lt;&lt;endl;</div><div class="line">//        flag*=-1;</div><div class="line">//    &#125;</div><div class="line">//</div><div class="line">    int T;</div><div class="line">    scanf(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    int cas=1;</div><div class="line">    <span class="keyword">while</span>(T--)&#123;</div><div class="line">        long long n;</div><div class="line">        scanf(<span class="string">"%lld"</span>,&amp;n);</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;=21;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i]&gt;=n)&#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"Case #%d: %lld\n"</span>,cas++,a[i]);</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="小记-1"><a href="#小记-1" class="headerlink" title="小记"></a>小记</h2><p>判断是否是完全平方时，用sqrt函数后，需要将其强制转换成int类型后，再平方。</p>
@@ -617,7 +619,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -628,7 +630,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -639,7 +641,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1026,6 +1028,45 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
 
   
 
