@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 最近听编译老师吹嘘JavaScript 发现书架上正巧有这本书 那就学习一下吧！ Javascript有三个部分 这一部分的笔记记录的基本就是语法">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-30T14:34:51.486Z">
+<meta property="og:updated_time" content="2018-10-31T14:03:26.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript-ECMAScript">
 <meta name="twitter:description" content="This is my blog. 最近听编译老师吹嘘JavaScript 发现书架上正巧有这本书 那就学习一下吧！ Javascript有三个部分 这一部分的笔记记录的基本就是语法">
@@ -410,7 +410,7 @@
 
       
         <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
-<p>最近听编译老师吹嘘JavaScript</p>
+<p>最近听编译老师吹嘘<code>JavaScript</code></p>
 <p>发现书架上正巧有这本书</p>
 <p>那就学习一下吧！</p>
 <p>Javascript有三个部分</p>
@@ -422,24 +422,136 @@
 <p>先给个概述：</p>
 <p>Javascript 由 核心(ECMAScript ) 、文档对象模型（DOM）、浏览器对象模型（BOM）组成</p>
 <p>其中ECMAScript：规定了语法、类型、语句、关键字、保留字、操作符、对象</p>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="不同于c语言的"><a href="#不同于c语言的" class="headerlink" title="不同于c语言的"></a>不同于c语言的</h2><ul>
-<li>定义变量的时候，不指定类型，只有<code>var</code>关键字</li>
-<li>增加了<code>undefined</code>类型，在定义变量之后没有赋值的情况下会出现</li>
-<li><code>bool</code>类型封装成<code>Boolean</code></li>
-<li>整数，浮点数合并为<code>Number</code>类型，其中含有<code>NaN</code>，表示非数值</li>
-<li><code>printf</code>被<code>alert</code>代替</li>
-<li>数值转换，<code>parseInt</code>:string-&gt;int等等</li>
-<li>字符串和python一样可以直接用”+”连接</li>
-<li>和java一样有object类型，其他类型都是从其中派生出来的</li>
-<li>其中&lt;&lt;左移，&lt;&lt;&lt;无符号左移；右边类似</li>
-<li>with语句，简化编写同一对象的工作 <code>with(object){}</code>，相当于不用写<code>.function</code></li>
-<li></li>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><ul>
+<li><p>默认全局变量存在于window对象中</p>
+</li>
+<li><p>定义变量的时候，不指定类型，只有<code>var</code>关键字；在非严格模式下，没有var关键字的作为全局变量；在严格模式下，则是错误语句，设置为严格模式使用<code>&#39;use strict&#39;;</code>语句</p>
+</li>
+<li><p>增加了<code>undefined</code>类型，在定义变量之后没有赋值的情况下会出现；<code>null</code>表示一个空的值</p>
+</li>
+<li><p><code>bool</code>类型封装成<code>Boolean</code></p>
+</li>
+<li><p>整数，浮点数合并为<code>Number</code>类型，其中含有<code>NaN</code>，表示非数值</p>
+</li>
+<li><p>整数相除可以得到小数</p>
+</li>
+<li><p>浮点数在运算过程中会产生误差</p>
+</li>
+<li><p>数值转换，<code>parseInt</code>:string-&gt;int等等</p>
+</li>
+<li><p>和java一样有object类型，其他类型都是从其中派生出来的</p>
+</li>
+<li><p>字符串</p>
+<ul>
+<li>多行字符串的表示方法，用反引号 <em>`</em> … <em>`</em> 表示：</li>
 </ul>
-<h2 id="和c相似，但需要注意的"><a href="#和c相似，但需要注意的" class="headerlink" title="和c相似，但需要注意的"></a>和c相似，但需要注意的</h2><ul>
-<li>除法和c存在一样的问题，整数相除是整数</li>
-<li>和c后面的版本类似，可以用<code>for(var i in arrays);</code></li>
-<li>有<code>label:statement</code>语句</li>
-<li>复制变量值的时候，除了基本类型是复制值，完全独立外；其他都是复制一个引用地址；所以在函数传递参数的时候需要注意呀！！！！</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">`这是一个</span></div><div class="line"><span class="string">多行</span></div><div class="line"><span class="string">字符串`</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>得到字符串的长度，不是使用方法吗？反正感觉不像函数，<code>s.length</code>；看了一下chrome的报错信息，真的不是函数呢！</p>
+</li>
+<li><p>字符串是不可变的！就很神奇，可能是因为JavaScript中的变量除了基本类型都是引用类型的原因吧，使得这些赋值的时候，都是指向一个地址，然后这个字符串就是一个const值了；但是通过调用<code>toUpperCase()</code>函数，这说明返回的是一个新的字符串呢！那这样的话，原字符串就没有变</p>
+</li>
+<li><p>字符串可以直接用”+”连接；但是JavaScript还提供了新的一种方法，使用<code>${}</code>包含变量的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'小明'</span>;</div><div class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> message = <span class="string">`你好, <span class="subst">$&#123;name&#125;</span>, 你今年<span class="subst">$&#123;age&#125;</span>岁了!`</span>;</div><div class="line">alert(message);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Array</p>
+<ul>
+<li>数组可以包括任意数据类型</li>
+<li><code>arrayname.length</code>，这不叫函数了，我也不知道叫什么呢；并且可以对他进行直接赋值！但是由于字符串不可变，所以赋值以后没有变化；对于变长后，后面的值默认为undefined；如果通过索引赋值时，索引超过了范围，同样会引起<code>Array</code>大小的变化；</li>
+<li><code>slice()</code>就是对应String的<code>substring()</code>版本；</li>
+<li><code>push()</code>向<code>Array</code>的末尾添加若干元素，<code>pop()</code>则把<code>Array</code>的最后一个元素删除掉【好像说array可以队列也可以是堆栈操作；</li>
+<li>如果要往<code>Array</code>的头部添加若干元素，使用<code>unshift()</code>方法，<code>shift()</code>方法则把<code>Array</code>的第一个元素删掉；</li>
+<li><code>splice()</code>方法是修改<code>Array</code>的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素；</li>
+<li><code>concat()</code>方法把当前的<code>Array</code>和另一个<code>Array</code>连接起来，并返回一个新的<code>Array</code>，并没有修改当前<code>Array</code>，而是返回了一个新的<code>Array</code>；</li>
+<li>sort()会直接修改当前<code>Array</code>的元素位置</li>
+</ul>
+</li>
+<li><p>变量本身类型不固定的语言称之为动态语言，与之对应的是静态语言。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如Java是静态语言</p>
+</li>
+<li><p>复制变量值的时候，除了基本类型是复制值，完全独立外；其他都是复制一个引用地址；所以在函数传递参数的时候需要注意呀！！！！</p>
+</li>
+<li><p>对于同一个变量，不可以声明两次</p>
+</li>
+</ul>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>键值组合，感觉像map，但是这里叫做对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">    name: <span class="string">'Bob'</span>,</div><div class="line">    age: <span class="number">20</span>,</div><div class="line">    tags: [<span class="string">'js'</span>, <span class="string">'web'</span>, <span class="string">'mobile'</span>],</div><div class="line">    city: <span class="string">'Beijing'</span>,</div><div class="line">    hasCar: <span class="literal">true</span>,</div><div class="line">    zipcode: <span class="literal">null</span> <span class="comment">//最后一个键值对不需要加,</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>访问属性用.或者[“”];若是访问不存在的属性，则返回undefined，并会给该对象添加这个属性</li>
+<li><p>删除属性，直接用<code>delete 对象.属性名</code></p>
+</li>
+<li><p>可以判断属性是否存在<code>属性 in 对象</code></p>
+</li>
+<li>可以通过<code>对象.hasOwnProperty()</code>的方法，判断这个属性是否是这个对象的，而不是从父类继承而来的</li>
+</ul>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><ul>
+<li>创建<code>var m = new Map();</code></li>
+<li>赋值<code>m.set(a,b);</code></li>
+<li>查询<code>m.get(a); //b</code></li>
+<li>删除<code>m.delete(a);</code></li>
+</ul>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><ul>
+<li>创建<code>var s = new Set()</code></li>
+<li>添加<code>s.add(value);</code></li>
+<li>删除<code>s.delete(value);</code></li>
+</ul>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li><p>可以用迭代器来遍历，如<code>for(var x of arrays/Map/Set)</code>，这样输出的x就是他的值</p>
+</li>
+<li><p>forEach 可以接收一个函数</p>
+<p>这里是Array，对于Set没有index；而Map则是value,kep,map</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">element, index, array</span>) </span>&#123;</div><div class="line">    <span class="comment">// element: 指向当前元素的值</span></div><div class="line">    <span class="comment">// index: 指向当前索引</span></div><div class="line">    <span class="comment">// array: 指向Array对象本身</span></div><div class="line">    <span class="built_in">console</span>.log(element + <span class="string">', index = '</span> + index);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li><p>其中&lt;&lt;左移，&lt;&lt;&lt;无符号左移；右边类似</p>
+</li>
+<li><p><code>==</code>比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
+<p><code>===</code>比较，它不会自动转换数据类型，如果数据类型不一致，返回<code>false</code>，如果一致，再比较。</p>
+<p>不要使用<code>==</code>比较，始终坚持使用<code>===</code>比较</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>; <span class="comment">// false 注意中间的a是小写呐</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>有<code>^2</code>，表示平方</p>
+</li>
+</ul>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><ul>
+<li>with语句，简化编写同一对象的工作 <code>with(object){}</code>，相当于不用写<code>.function</code></li>
+<li>和c后面的版本类似，可以用<code>for(var i in arrays);</code>，但是i的值是下标，必须用<code>arrays[i]</code>来获得值</li>
+<li>有<code>label:statement</code>语句，类似于<code>goto</code>语句</li>
+</ul>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>const、var</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><p><code>printf</code>被<code>alert</code>代替，会弹出对话框，可以用<code>console.log()</code>在控制台打印内容</p>
+</li>
+<li><p>弹出输入框，并将输入的值作为返回值</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prompt(<span class="string">'请输入身高(m):'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>异常</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> x !== <span class="string">'number'</span>) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="string">'Not a number'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>块级定义的变量，在块结束后可用，但是函数体内定义的就只能在函数体内使用；若是要和c的块内变量一样的话，用let而不是var</p>
+</li>
+<li><p>支持解构赋值<code>var [x, y, z] = [&#39;hello&#39;, &#39;JavaScript&#39;, &#39;ES6&#39;];</code></p>
+</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">   ....</div><div class="line">   <span class="keyword">return</span> x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line"><span class="keyword">var</span> name = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line">   ....</div><div class="line">   <span class="keyword">return</span> x;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>关键字<code>arguments</code>，它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。可以用arguments的属性例如<code>length</code>来进行操作</p>
+</li>
+<li><p>rest参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a, b, ...rest</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a = '</span> + a);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'b = '</span> + b);</div><div class="line">    <span class="built_in">console</span>.log(rest);<span class="comment">//这个返回值是一个array</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>return 不支持多行写，那为什么缩进不严格要求呢？！，若是要多行写的时候，需要将返回值用大括号括起来，表示一个整体</p>
+</li>
+<li><p>和java一样支持函数嵌套；函数在查找变量时从自身函数定义开始，从“内”向“外”查找。如果内部函数定义了与外部函数重名的变量，则内部函数的变量将“屏蔽”外部函数的变量。</p>
+</li>
+<li><p>会先扫描整个函数体的语句，把所有申明的变量“提升”到函数顶部，所以如果声明在后面也不会报错（挺神奇的，感觉解释器有点难写）</p>
+</li>
 <li></li>
 </ul>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
@@ -515,8 +627,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/30/Javascript-DOM/" rel="prev" title="Javascript-DOM">
-                Javascript-DOM <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/30/Javascript-HTML/" rel="prev" title="Javascript-HTML">
+                Javascript-HTML <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -707,7 +819,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不同于c语言的"><span class="nav-number">1.1.</span> <span class="nav-text">不同于c语言的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和c相似，但需要注意的"><span class="nav-number">1.2.</span> <span class="nav-text">和c相似，但需要注意的</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">1.1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">1.2.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.2.1.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">1.2.2.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">1.2.3.</span> <span class="nav-text">迭代器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">1.3.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-number">1.4.</span> <span class="nav-text">语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">1.5.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.6.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li></ol></div>
             
 
           </div>

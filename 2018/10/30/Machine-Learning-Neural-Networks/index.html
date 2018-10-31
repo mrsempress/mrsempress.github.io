@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is  my blog. 这一章，大二的时候就去听过了演讲吧 大概就是做个卷积 什么池来着 然后弄了个手写识别 然后被嘲笑了 是的（抄代码的时候抄错了，然后被说你个搞ACM的怎么这错误都会犯 我……emmmm……不和你们说话">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-30T15:35:18.851Z">
+<meta property="og:updated_time" content="2018-10-31T08:21:05.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning-Neural Networks">
 <meta name="twitter:description" content="This is  my blog. 这一章，大二的时候就去听过了演讲吧 大概就是做个卷积 什么池来着 然后弄了个手写识别 然后被嘲笑了 是的（抄代码的时候抄错了，然后被说你个搞ACM的怎么这错误都会犯 我……emmmm……不和你们说话">
@@ -426,6 +426,7 @@
 <p>Weight: $\theta$</p>
 <p>sigmoid (logistic) activation function: $\frac 1 {1+e^{-\theta^TX}}$</p>
 <p>Input layer -&gt; (hidden layer) -&gt; output layer</p>
+<p>hidden layer:  usually <strong>more the better</strong> (must balance with cost of computation as it increases with more hidden units) . If you have more than 1 hidden layer, then it is recommended that you have <strong>the same number of units in every hidden layer.</strong></p>
 <p>$a_i^{(j)}$: “activation” of unit i in layer j</p>
 <p>$Θ^{(j)}$: matrix of weights controlling function mapping from layer j to layer j + 1</p>
 <p>If we had one hidden layer, it would look like:</p>
@@ -453,6 +454,14 @@ h_\theta(x) = a_1^{(3)} = g(Θ_{10}^{(2)}a_0^{(2)} + Θ_{11}^{(2)}a_1^{(2)} + Θ
 Z_k^{(i)} = \Theta_{k,0}^{(i-1)}x_0+\Theta_{k,1}^{(i-1)}x_1+\cdot\cdot\cdot+\Theta_{k,n}^{(i-1)}x_n</script><script type="math/tex; mode=display">
 z^{(j)}=\Theta^{(j-1)}a^{(j-1)}</script><script type="math/tex; mode=display">
 h_\theta(x)=a^{(j+1)} = g(z^{(j+1)})</script><p>between layer j and layer j+1, we are doing <strong>exactly the same thing</strong> as we did in logistic regression. </p>
+<h3 id="Training-a-Neural-Network"><a href="#Training-a-Neural-Network" class="headerlink" title="Training a Neural Network"></a>Training a Neural Network</h3><ol>
+<li>Randomly <strong>initialize the weights</strong></li>
+<li>Implement <strong>forward propagation</strong> to get $h_\Theta(x^{(i)})$ for any $x^{(i)}$</li>
+<li>Implement the <strong>cost function</strong></li>
+<li>Implement <strong>backpropagation</strong> to compute <strong>partial derivatives</strong></li>
+<li>Use gradient checking to <strong>confirm that your backpropagation works</strong>. Then disable gradient checking.</li>
+<li>Use gradient descent or a built-in optimization function to <strong>minimize the cost function</strong> with the weights in theta.</li>
+</ol>
 <h2 id="Lesson-9-Cost-function-and-backpropagation"><a href="#Lesson-9-Cost-function-and-backpropagation" class="headerlink" title="Lesson 9 Cost function and backpropagation"></a>Lesson 9 Cost function and backpropagation</h2><h3 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h3><p>some notation:</p>
 <p>L: total layer; if no hidden layer, L = 2</p>
 <p>$s_l$: the $l^{th}$ layer have $s_l$ units, but not counting bias unit</p>
@@ -774,7 +783,7 @@ J(\Theta)=-\frac 1 m\sum_{i=1}^m \sum_{k=1}^{K} [y_k^{(i)}log((h_\Theta(x^{(i)})
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-8-Neural-Networks"><span class="nav-number">1.</span> <span class="nav-text">Lesson 8 Neural Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-9-Cost-function-and-backpropagation"><span class="nav-number">2.</span> <span class="nav-text">Lesson 9 Cost function and backpropagation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-function"><span class="nav-number">2.1.</span> <span class="nav-text">Cost function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#backpropagation-algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">backpropagation algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#In-Octave"><span class="nav-number">2.3.</span> <span class="nav-text">In Octave</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-initial"><span class="nav-number">2.4.</span> <span class="nav-text">Random initial</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-8-Neural-Networks"><span class="nav-number">1.</span> <span class="nav-text">Lesson 8 Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-a-Neural-Network"><span class="nav-number">1.1.</span> <span class="nav-text">Training a Neural Network</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-9-Cost-function-and-backpropagation"><span class="nav-number">2.</span> <span class="nav-text">Lesson 9 Cost function and backpropagation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-function"><span class="nav-number">2.1.</span> <span class="nav-text">Cost function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#backpropagation-algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">backpropagation algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#In-Octave"><span class="nav-number">2.3.</span> <span class="nav-text">In Octave</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-initial"><span class="nav-number">2.4.</span> <span class="nav-text">Random initial</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
             
 
           </div>
