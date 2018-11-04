@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is  my blog. 这一章，大二的时候就去听过了演讲吧 大概就是做个卷积 什么池来着 然后弄了个手写识别 然后被嘲笑了 是的（抄代码的时候抄错了，然后被说你个搞ACM的怎么这错误都会犯 我……emmmm……不和你们说话">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-31T08:21:05.385Z">
+<meta property="og:updated_time" content="2018-11-02T07:28:50.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning-Neural Networks">
 <meta name="twitter:description" content="This is  my blog. 这一章，大二的时候就去听过了演讲吧 大概就是做个卷积 什么池来着 然后弄了个手写识别 然后被嘲笑了 是的（抄代码的时候抄错了，然后被说你个搞ACM的怎么这错误都会犯 我……emmmm……不和你们说话">
@@ -480,8 +480,9 @@ J(\Theta)=-\frac 1 m\sum_{i=1}^m \sum_{k=1}^{K} [y_k^{(i)}log((h_\Theta(x^{(i)})
 <p>$\delta_j^{(4)}=a_j^{(4)}-y_j$</p>
 <p>$\delta^{(3)}=(\Theta^{(3)})^T\delta^{(4)}.*g’(z^{(3)})$</p>
 <p>$\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$</p>
+<p>对于反向传播，可以看<a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">图解</a>，这样就可以理解为什么要用反向传播（减少重复计算）；</p>
+<p>同时也可以更好得理解上面的式子是怎么来的</p>
 <p>Note: there is no $\delta^{(1)}$, because we don’t need to calculate the error of the input layer</p>
-<p>$\displaystyle\delta^{(i)}_j=\sum_{k=1}^{s_{i+1}}\delta^{(i+1)}_{k}\Theta^{(i)}_{kj}$</p>
 <p>Test:</p>
 <p>FP using $x^{(1)}$ followed by BP using $y^{(1)}$.</p>
 <p>(FP = forward propagation, BP = back propagation)</p>
@@ -509,6 +510,7 @@ J(\Theta)=-\frac 1 m\sum_{i=1}^m \sum_{k=1}^{K} [y_k^{(i)}log((h_\Theta(x^{(i)})
 <p>and then we can use <code>fminunc</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fminunc(@costFunction, initialTheta, options)</div><div class="line">function [jval, gradientVec] = costFunction(thetaVec)</div></pre></td></tr></table></figure>
 <h3 id="Random-initial"><a href="#Random-initial" class="headerlink" title="Random initial"></a>Random initial</h3><p>Initializing all theta weights to zero <strong>does not work</strong> with neural networks(It does work in liner). When we backpropagate, all nodes will <strong>update to the same value</strong> repeatedly.</p>
+<p>因为如果神经网络计算出来的输出值都一个样，那么反向传播算法计算出来的梯度值一样，并且参数更新值也一样(Theta=Theta−α∗dTheta)。<strong>更一般地说，如果权重初始化为同一个值，网络就不可能不对称(即是对称的)。</strong></p>
 <p>Hence, we initialize each $\Theta^{(l)}_{ij}$ to a random value between$[-\epsilon,\epsilon]$. </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">% If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.</div><div class="line"></div><div class="line">Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</div><div class="line">Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</div><div class="line">Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</div></pre></td></tr></table></figure>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>嘿嘿嘿</p>
@@ -673,7 +675,7 @@ J(\Theta)=-\frac 1 m\sum_{i=1}^m \sum_{k=1}^{K} [y_k^{(i)}log((h_\Theta(x^{(i)})
             
               <a href="/archives">
             
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
