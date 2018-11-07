@@ -109,12 +109,12 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/Users/mrs_empress/blog/source/_posts/Machine-Learning-手写数字识别/3.png">
-<meta property="og:updated_time" content="2018-11-07T14:39:08.270Z">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/3.png">
+<meta property="og:updated_time" content="2018-11-07T15:20:09.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-手写数字识别">
 <meta name="twitter:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
-<meta name="twitter:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/Users/mrs_empress/blog/source/_posts/Machine-Learning-手写数字识别/3.png">
+<meta name="twitter:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/3.png">
 
 
 
@@ -473,7 +473,7 @@ db=\frac{dL}{db}=\frac{dL}{dz}\frac{dz}{db}=dz</script><p><strong>均方误差</
 <p>对于sigmoid</p>
 <p> $\begin{cases}\displaystyle \delta_j^l = \frac{\partial J}{ \partial z_j^l} = \sum_k \frac{\partial J}{\partial z_k^{l + 1}} \frac{\partial z_k^{l + 1}}{\partial z_j ^l} = \sum_k \frac{\partial z_k^{l + 1}}{\partial z_j ^l}\delta_k^{l + 1} \\ \displaystyle \frac{\partial z_k^{l + 1}}{\partial z_j^l} =\frac{\partial z_k^{l + 1}}{\partial a_j^{l+1}}\frac{\partial a_j^{l + 1}}{\partial z_j^{l}}= \sum_k w_{kj}^{l + 1}\sigma’(z_j^l) \\ \displaystyle \delta _j^l = \sum_kw_{kj}^{l+1}\delta_k^{l + 1}\text{sigmoid}’(z_j^l)= \sum_kw_{kj}^{l+1}\delta_k^{l + 1}f(z_j^l)(1-f(z_j^l)) \end{cases}$</p>
 <p><strong>小批量数据基础上运用反向传播算法</strong>，通过随机选取小量训练输⼊样本 来计算 ∇C x ，进而估算梯度 ∇C。通过计算少量样本的平均值我们可以快速得到⼀个对于实际 梯度 ∇C 的很好的估算，这有助于加速梯度下降，进而加速学习过程。</p>
-<p><img src="/2018/11/06/Machine-Learning-手写数字识别/Users/mrs_empress/blog/source/_posts/Machine-Learning-手写数字识别/3.png" alt="反向传播算法"></p>
+<p><img src="/2018/11/06/Machine-Learning-手写数字识别/3.png" alt="反向传播算法"></p>
 <h3 id="一些有意思的问题"><a href="#一些有意思的问题" class="headerlink" title="一些有意思的问题"></a>一些有意思的问题</h3><p>Q：为什么输出神经元是十个，而不是4个（2^4=16&gt;10)</p>
 <p>A：因为隐藏层表示的是每一个形状的概率值，对于一个特定数字只需专注于构成他的部分是否都存在即可；就好像识别一个人，可以分成这人有眼睛鼻子嘴巴吗？而眼睛里有可以有睫毛，虹膜等组成部分，最后我们都可以归结到像素是否可以组成这个形状</p>
 <p>​      而对于二进制表示，那么隐含层应该和二进制的位有关系，这样的表示不是很奇怪么</p>
