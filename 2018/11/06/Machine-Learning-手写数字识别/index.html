@@ -110,7 +110,7 @@
 <meta property="og:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/Users/mrs_empress/blog/source/_posts/Machine-Learning-手写数字识别/3.png">
-<meta property="og:updated_time" content="2018-11-07T14:11:29.317Z">
+<meta property="og:updated_time" content="2018-11-07T14:29:47.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-手写数字识别">
 <meta name="twitter:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
@@ -416,6 +416,8 @@
 <p>一做，就发现</p>
 <p>哇！瞬间通了一点！</p>
 <p>果然还是要静下来好好推公式哒！</p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 <a id="more"></a>
 <h3 id="Perceptron感知机"><a href="#Perceptron感知机" class="headerlink" title="Perceptron感知机"></a>Perceptron感知机</h3><p>输入是0或者1</p>
 <p>在逻辑运算中，表现很好</p>
@@ -423,7 +425,42 @@
 <p>当wx+b的绝对值很大的时候，可以近似于感知机</p>
 <h3 id="MLP多层感知机"><a href="#MLP多层感知机" class="headerlink" title="MLP多层感知机"></a>MLP多层感知机</h3><p>其实是由多个<strong>s型神经元</strong>构成的多层网络</p>
 <h3 id="损失（代价）函数"><a href="#损失（代价）函数" class="headerlink" title="损失（代价）函数"></a>损失（代价）函数</h3><h4 id="均方差MSE函数"><a href="#均方差MSE函数" class="headerlink" title="均方差MSE函数"></a>均方差MSE函数</h4><p>\(J = \displaystyle \frac{1}{2}\sum_{i = 1}^{M}(t_i - y_i)^2\)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;</div><div class="line">  &lt;mi&gt;J&lt;/mi&gt;</div><div class="line">  &lt;mo&gt;=&lt;/mo&gt;</div><div class="line">  &lt;mstyle displaystyle=&quot;true&quot; scriptlevel=&quot;0&quot;&gt;</div><div class="line">    &lt;mfrac&gt;</div><div class="line">      &lt;mn&gt;1&lt;/mn&gt;</div><div class="line">      &lt;mn&gt;2&lt;/mn&gt;</div><div class="line">    &lt;/mfrac&gt;</div><div class="line">    &lt;munderover&gt;</div><div class="line">      &lt;mo&gt;&amp;#x2211;&lt;!-- ∑ --&gt;&lt;/mo&gt;</div><div class="line">      &lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;</div><div class="line">        &lt;mi&gt;i&lt;/mi&gt;</div><div class="line">        &lt;mo&gt;=&lt;/mo&gt;</div><div class="line">        &lt;mn&gt;1&lt;/mn&gt;</div><div class="line">      &lt;/mrow&gt;</div><div class="line">      &lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;</div><div class="line">        &lt;mi&gt;M&lt;/mi&gt;</div><div class="line">      &lt;/mrow&gt;</div><div class="line">    &lt;/munderover&gt;</div><div class="line">    &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;</div><div class="line">    &lt;msub&gt;</div><div class="line">      &lt;mi&gt;t&lt;/mi&gt;</div><div class="line">      &lt;mi&gt;i&lt;/mi&gt;</div><div class="line">    &lt;/msub&gt;</div><div class="line">    &lt;mo&gt;&amp;#x2212;&lt;!-- − --&gt;&lt;/mo&gt;</div><div class="line">    &lt;msub&gt;</div><div class="line">      &lt;mi&gt;y&lt;/mi&gt;</div><div class="line">      &lt;mi&gt;i&lt;/mi&gt;</div><div class="line">    &lt;/msub&gt;</div><div class="line">    &lt;msup&gt;</div><div class="line">      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;</div><div class="line">      &lt;mn&gt;2&lt;/mn&gt;</div><div class="line">    &lt;/msup&gt;</div><div class="line">  &lt;/mstyle&gt;</div><div class="line">&lt;/math&gt;</div></pre></td></tr></table></figure>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>J</mi>
+  <mo>=</mo>
+  <mstyle displaystyle="true" scriptlevel="0">
+​    <mfrac>
+​      <mn>1</mn>
+​      <mn>2</mn>
+​    </mfrac>
+​    <munderover>
+​      <mo>&#x2211;<!-- ∑ --></mo>
+​      <mrow class="MJX-TeXAtom-ORD">
+​        <mi>i</mi>
+​        <mo>=</mo>
+​        <mn>1</mn>
+​      </mrow>
+​      <mrow class="MJX-TeXAtom-ORD">
+​        <mi>M</mi>
+​      </mrow>
+​    </munderover>
+​    <mo stretchy="false">(</mo>
+​    <msub>
+​      <mi>t</mi>
+​      <mi>i</mi>
+​    </msub>
+​    <mo>&#x2212;<!-- − --></mo>
+​    <msub>
+​      <mi>y</mi>
+​      <mi>i</mi>
+​    </msub>
+​    <msup>
+​      <mo stretchy="false">)</mo>
+​      <mn>2</mn>
+​    </msup>
+  </mstyle>
+</math>
+
 <h4 id="交叉熵函数"><a href="#交叉熵函数" class="headerlink" title="交叉熵函数"></a>交叉熵函数</h4><p>更好的泛化</p>
 <script type="math/tex; mode=display">
 \displaystyle y(w,b)=\frac 1 m\sum_{i=1}^m L(\hat y^{(i)},y^{(i)})</script><script type="math/tex; mode=display">
