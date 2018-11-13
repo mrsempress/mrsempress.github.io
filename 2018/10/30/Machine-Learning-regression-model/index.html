@@ -109,10 +109,18 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 回归模型 应该算是最基础的吧 梯度下降法，之后也用的比较多 幸好之前也选修了数值分析 对这些东西还算有了解啦！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-07T14:56:32.732Z">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/1.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/2.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/3.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/4.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/5.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/6.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/7.png">
+<meta property="og:updated_time" content="2018-11-13T09:33:55.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning-regression model">
 <meta name="twitter:description" content="This is my blog. 回归模型 应该算是最基础的吧 梯度下降法，之后也用的比较多 幸好之前也选修了数值分析 对这些东西还算有了解啦！">
+<meta name="twitter:image" content="http://empress.top/2018/10/30/Machine-Learning-regression-model/1.png">
 
 
 
@@ -427,60 +435,17 @@
 
 
 
-<h2 id="Lesson-2-liner-regression"><a href="#Lesson-2-liner-regression" class="headerlink" title="Lesson 2 liner regression"></a>Lesson 2 liner regression</h2><p>Regression: predict the <strong>real-value</strong> output</p>
-<p>the hypothesis is like that:</p>
-<script type="math/tex; mode=display">
-h_\theta(x) = \theta_0 + \theta_1x</script><p>Squared error cost function: an <strong>average difference</strong> of all <strong>the results of the hypothesis</strong> with inputs from x’s and <strong>the actual output y’s.</strong></p>
-<script type="math/tex; mode=display">
-J(\theta_0,\theta_1) = \frac 1 {2m}\sum_{i=1}^{m}(h_\theta(x_{i})-y_i)^2</script><p>$\frac 1 2$ is convenience for the computation of the <strong>gradient descent</strong></p>
-<p>and our goal is:</p>
-<script type="math/tex; mode=display">
-minimize_{\theta_0,\theta_1} J(\theta_0,\theta_1)</script><p>the difference between $h_\theta(x)$ and $J(\theta_0,\theta_1)$ is that:</p>
-<p>  $h_\theta(x)$ is a function of x, and $J(\theta_0,\theta_1)$ is a function of $\theta_0,\theta_1$</p>
-<p>In order to achieve the goal, we use the algorithm———<strong>Gradient descent</strong>:</p>
-<h4 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a>Gradient descent</h4><script type="math/tex; mode=display">
-\theta_j := \theta_j - \alpha \frac \partial {\partial \theta_j}J(\theta_0,\theta_1)</script><p>some symbols:</p>
-<p><strong>:=</strong> ：赋值运算</p>
-<p><strong>=</strong>  ：真假判断语句（和编程语言不一样呢！</p>
-<p>$\alpha$ ：learning rate; if $\alpha$ is too small, gradient descent is slow; if $\alpha$ is too large, gradient descent can over shootthe minimum. It may fail to converge, or even diverge.</p>
+<h2 id="Lesson-2-liner-regression"><a href="#Lesson-2-liner-regression" class="headerlink" title="Lesson 2 liner regression"></a>Lesson 2 liner regression</h2><p><img src="/2018/10/30/Machine-Learning-regression-model/1.png" alt=""></p>
+<p>shootthe minimum. It may fail to converge, or even diverge.</p>
 <p>Attention: In the updating, we should <strong>simultaneously</strong> update both the parameters $\theta_0$ and $\theta_1 $</p>
 <p>The closer is, the slower is.</p>
 <p>problem: you may find <strong>local minimum</strong>, not the <strong>global minimum</strong>. But in the liner regression, the figure is like a bowl, so the problem will not happened.</p>
 <p>“Batch” gradient descent: which says each steps of gradient descent uses <strong>all of training examples</strong></p>
 <p>Matrix:  Dimension of matrix: rows <em> columns (n</em>m)</p>
 <p>Vector: an n*1 matrix </p>
-<h2 id="Lesson-3-multivariate-Liner-regression"><a href="#Lesson-3-multivariate-Liner-regression" class="headerlink" title="Lesson 3 multivariate Liner regression"></a>Lesson 3 multivariate Liner regression</h2><p>some Notation:</p>
-<p>n：number of features </p>
-<p>$x^{(i)}$： $i^{th}$  example</p>
-<p>$x^{(i)}_j$：$i^{th}$  example’s $j^{th}$ features</p>
-<p>the hypothesis is like that:</p>
-<script type="math/tex; mode=display">
-h_\theta(x)=\theta_0+\theta_1x_1+\theta_2x_2+\cdot\cdot\cdot+\theta_nx_n
-=\theta^TX</script><p>in this $x_0=1$</p>
-<p>cost function:</p>
-<script type="math/tex; mode=display">
-J(\theta_0,\theta_1,\cdot\cdot\cdot,\theta_n) = \frac 1 {2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2=\frac 1 {2m}\sum_{i=1}^{m}(\theta^Tx^{(i)}-y^{(i)})^2
-=\frac 1 {2m}\sum_{i=1}^{m}(\sum_{j=0}^{n}\theta_jx^{(i)}_j-y^{(i)})^2</script><h4 id="gradient-descent"><a href="#gradient-descent" class="headerlink" title="gradient descent"></a><strong>gradient descent</strong></h4><script type="math/tex; mode=display">
-\theta_j := \theta_j - \alpha \frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(i)}</script><p>it’s style ias same as liner regression</p>
-<h4 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling:"></a><strong>Feature Scaling:</strong></h4><script type="math/tex; mode=display">
--1 \leq x_{(i)} \leq1 \\
-or\\
--0.5 \leq x_{(i)}\leq 0.5</script><p>It <strong>speeds up gradient descent</strong> by making it require <strong>fewer iterations</strong> to get to a good solution.</p>
-<p><strong>mean normalization(normalized feature):</strong></p>
-<script type="math/tex; mode=display">
-x_i:=\frac{x_i-u_i}{s_i}</script><p>$u_i$ is the average of all the values for feature (i)</p>
-<p>$s_i$ is the range of values (max - min) or is the standard deviation  </p>
-<p>If gradient descent  doesn’t work, maybe the $\alpha$ is too big</p>
-<h4 id="Polynomial-Regression："><a href="#Polynomial-Regression：" class="headerlink" title="Polynomial Regression："></a><strong>Polynomial Regression：</strong></h4><p><strong>change the behavior or curve</strong> of our hypothesis function by making it a quadratic, cubic or square root function (or any other form).  </p>
-<p>just like：</p>
-<p>$h_\theta(x) = \theta_0 + \theta_1x$ and you find it is not suitable, you can change like that:</p>
-<script type="math/tex; mode=display">
-h_\theta(x) = \theta_0 + \theta_1x_1+\theta_2x_1^2+\theta_3x_1^3</script><p>or maybe like that:</p>
-<script type="math/tex; mode=display">
-h_\theta(x) = \theta_0 + \theta_1x_1+\theta_2\sqrt{x1}</script><p>One important thing to keep in mind is, if you choose your features this way then feature scaling becomes very important.</p>
-<p>by math we can know the $\theta$ can easily caculte like that:(通过求偏导后等于0，算出$\theta$的值)</p>
-<script type="math/tex; mode=display">
-\theta = (X^TX)^{-1}X^Ty</script><p>In octave:</p>
+<h2 id="Lesson-3-multivariate-Liner-regression"><a href="#Lesson-3-multivariate-Liner-regression" class="headerlink" title="Lesson 3 multivariate Liner regression"></a>Lesson 3 multivariate Liner regression</h2><p><img src="/2018/10/30/Machine-Learning-regression-model/2.png" alt=""></p>
+<p><img src="/2018/10/30/Machine-Learning-regression-model/3.png" alt=""></p>
+<p>In octave:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pinv(x&apos; * x) * x&apos; * y</div></pre></td></tr></table></figure>
 <p>The ‘pinv’ function will give you a value of θ even if $X^TX)\ is not invertible.[if you use the inv(), then you will get error! ]</p>
 <p>And the reasons for the “not invertible” are:</p>
@@ -489,38 +454,7 @@ h_\theta(x) = \theta_0 + \theta_1x_1+\theta_2\sqrt{x1}</script><p>One important 
 <li><strong>Too many features</strong> (e.g. m ≤ n). In this case, delete some features or use “regularization” (正则化)</li>
 </ul>
 <p>But the two ways have both advantages and disadvantages :</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Gradient Descent</th>
-<th>Normal Equation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Need to choose alpha</td>
-<td>No need to choose alpha</td>
-</tr>
-<tr>
-<td>Needs many iterations</td>
-<td>No need to iterate</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>O ($kn^2$)</td>
-<td>O ($n^3$, need to calculate inverse of $X^TX$</td>
-</tr>
-<tr>
-<td>Works well when n is large</td>
-<td>Slow if n is very large</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><img src="/2018/10/30/Machine-Learning-regression-model/4.png" alt=""></p>
 <p>and in other more complicated problems we will find the gradient descent is more useful.</p>
 <p>In practice, when n exceeds 10,000 it might be a good time to go from a normal solution to an iterative process.</p>
 <h2 id="Lesson-4-Octave"><a href="#Lesson-4-Octave" class="headerlink" title="Lesson 4 Octave"></a>Lesson 4 Octave</h2><p>In octave, the index is not from “0”, but from “1”.</p>
@@ -535,37 +469,11 @@ h_\theta(x) = \theta_0 + \theta_1x_1+\theta_2\sqrt{x1}</script><p>One important 
 <p>Control:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">for i=1:10,</div><div class="line">	% ....</div><div class="line">end;</div><div class="line"></div><div class="line"></div><div class="line">if</div><div class="line">elseif</div><div class="line">else</div><div class="line">end;</div><div class="line"></div><div class="line">function y=functionname(X)</div><div class="line">	y=x^2</div></pre></td></tr></table></figure>
 <p>if you can use the vector, try to use it to cacluate which will decrease the length of code.</p>
-<h2 id="Lesson-5-Classfication"><a href="#Lesson-5-Classfication" class="headerlink" title="Lesson 5 Classfication"></a>Lesson 5 Classfication</h2><p>离散的值</p>
-<p>First, we talk about $y\in\{0,1\}$</p>
-<p>then you can find the liner regression doesn’t work well, so …</p>
-<p>But there is something <strong>different</strong>:</p>
-<p>in the classification,  $h_\theta(x)$ can both smaller than zero and bigger than one</p>
-<p>But in  logistic regression, the value is must like this,  $0\leq h_\theta(x)\leq 1$</p>
-<p>当有一个feature时是一条直线,当有两个feature时一条曲线,有更多的feature时是一条弯七弯八的曲线<br>当feature越来越多时,曲线越来越拟合,即损失函数越来越小 </p>
-<h4 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a><strong>sigmoid function</strong></h4><p>$h_\theta(x) = g(\theta^TX)\\                            </p>
-<p>$g(z) = \frac 1 {1+e^{-z}}$  this is called <strong>sigmoid function</strong> or <strong>logistic function</strong> </p>
-<p>In this function, when z&gt;4.6, the value is very close 1(0.99), and when z&lt;-4.6, the value is very close 0(0.01)</p>
-<p>$h_\theta(x)=P(y=1|x;\theta)$ : probability that y=1, given x, parameterized by $\theta$</p>
-<p> $P(y=1|x;\theta)+P(y=0|x;\theta)=1$</p>
-<p>ifh_\theta(x)<0.5$ (z<0="" -=""> $\theta^TX &lt; 0$) then y=0                  Else y=1</0.5$></p>
-<h2 id="Lesson-6-Logistic-Regression-Model"><a href="#Lesson-6-Logistic-Regression-Model" class="headerlink" title="Lesson 6 Logistic Regression Model"></a>Lesson 6 Logistic Regression Model</h2><p>cost function doesn’t like liner regression, which is $ J(\theta_0,\theta_1) = \frac 1 {2m}\sum_{i=1}^{m}(h_\theta(x_{i})-y_i)^2$ </p>
-<p>but is like this:</p>
-<script type="math/tex; mode=display">
-Cost(h_\theta(x),y)=\{_{-log(1-h_\theta(x))\ \  if\ y=0}^{-log(h_\theta(x))\ \ \ \ \ if\ y=1}\ =-ylog(h_\theta(x))-(1-y)log(1-h_\theta(x))
-\\J(\theta)=\frac 1 m\sum_{i=1}^mCost(h_\theta(x^{(i)}),y^{(i)})=-\frac 1 m\sum_{i=1}^m [y^{(i)}log(h_\theta(x))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]</script><p>If our correct answer ‘y’ is 0, then the cost function will be 0 if our hypothesis function also outputs 0. If our hypothesis approaches 1, then the cost function will approach infinity.</p>
-<p>Note that writing the cost function in this way guarantees that J(θ) is <strong>convex</strong> for logistic regression.</p>
-<p>if J(θ) is decreasing on every iteration, it says <strong>the learning rate α is set properly and that gradient descent is running correctly</strong></p>
-<h4 id="Gradient-descent-1"><a href="#Gradient-descent-1" class="headerlink" title="Gradient descent"></a><strong>Gradient descent</strong></h4><p>As we know in Lesson2, the normal gradient descent is.</p>
-<p>And we will find that the gradient descent both in liner regression and in logistic regression are same.</p>
-<script type="math/tex; mode=display">
-\theta_j := \theta_j - \alpha \frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(i)}</script><p>The only different is in liner regression, </p>
-<script type="math/tex; mode=display">
-h_\theta(x)=\theta^TX</script><p>but in logistic regression,</p>
-<script type="math/tex; mode=display">
-h_\theta(x)=\frac 1 {1+e^{-\theta^TX}}</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function [jVal, gradient] = costFunction(theta)</div><div class="line">  jVal = [...code to compute J(theta)...];</div><div class="line">  gradient = [...code to compute derivative of J(theta)...];</div><div class="line">end</div><div class="line"></div><div class="line">options = optimset(&apos;GradObj&apos;, &apos;on&apos;, &apos;MaxIter&apos;, 100);</div><div class="line">initialTheta = zeros(2,1);</div><div class="line">[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);</div></pre></td></tr></table></figure>
+<h2 id="Lesson-5-Classfication"><a href="#Lesson-5-Classfication" class="headerlink" title="Lesson 5 Classfication"></a>Lesson 5 Classfication</h2><p><img src="/2018/10/30/Machine-Learning-regression-model/5.png" alt=""></p>
+<h2 id="Lesson-6-Logistic-Regression-Model"><a href="#Lesson-6-Logistic-Regression-Model" class="headerlink" title="Lesson 6 Logistic Regression Model"></a>Lesson 6 Logistic Regression Model</h2><p><img src="/2018/10/30/Machine-Learning-regression-model/6.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function [jVal, gradient] = costFunction(theta)</div><div class="line">  jVal = [...code to compute J(theta)...];</div><div class="line">  gradient = [...code to compute derivative of J(theta)...];</div><div class="line">end</div><div class="line"></div><div class="line">options = optimset(&apos;GradObj&apos;, &apos;on&apos;, &apos;MaxIter&apos;, 100);</div><div class="line">initialTheta = zeros(2,1);</div><div class="line">[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);</div></pre></td></tr></table></figure>
 <p>There are other three ways to solve it, and these ways are <strong>more faster</strong> and you <strong>don’t need find the optimal α by manually</strong>. But it is more complex. (It isn’t because it will lost in local minimum)</p>
-<h4 id="Conjuate-gradient"><a href="#Conjuate-gradient" class="headerlink" title="Conjuate gradient"></a>Conjuate gradient</h4><h4 id="BFGS"><a href="#BFGS" class="headerlink" title="BFGS"></a>BFGS</h4><h4 id="L-BFGS"><a href="#L-BFGS" class="headerlink" title="L-BFGS"></a>L-BFGS</h4><h4 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h4><p>Train a logistic regression classifier $h_\theta(x)$ <strong>for each class￼</strong> to predict the probability that ￼ $￼y = i$ ￼.</p>
-<p>To make a prediction on a new x, pick the class ￼that maximizes $h_\theta (x)$</p>
+<h4 id="Conjuate-gradient"><a href="#Conjuate-gradient" class="headerlink" title="Conjuate gradient"></a>Conjuate gradient</h4><h4 id="BFGS"><a href="#BFGS" class="headerlink" title="BFGS"></a>BFGS</h4><h4 id="L-BFGS"><a href="#L-BFGS" class="headerlink" title="L-BFGS"></a>L-BFGS</h4><h4 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h4><p><img src="/2018/10/30/Machine-Learning-regression-model/7.png" alt=""></p>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>上交完实验后，还是很开心哒！</p>
 <p>不过我居然在绿色计算机大赛的时候</p>
 <p>犯了小迷糊</p>
@@ -839,7 +747,7 @@ h_\theta(x)=\frac 1 {1+e^{-\theta^TX}}</script><figure class="highlight plain"><
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-2-liner-regression"><span class="nav-number">1.</span> <span class="nav-text">Lesson 2 liner regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">1.0.1.</span> <span class="nav-text">Gradient descent</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-3-multivariate-Liner-regression"><span class="nav-number">2.</span> <span class="nav-text">Lesson 3 multivariate Liner regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent"><span class="nav-number">2.0.1.</span> <span class="nav-text">gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Scaling"><span class="nav-number">2.0.2.</span> <span class="nav-text">Feature Scaling:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-Regression："><span class="nav-number">2.0.3.</span> <span class="nav-text">Polynomial Regression：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-4-Octave"><span class="nav-number">3.</span> <span class="nav-text">Lesson 4 Octave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-5-Classfication"><span class="nav-number">4.</span> <span class="nav-text">Lesson 5 Classfication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sigmoid-function"><span class="nav-number">4.0.1.</span> <span class="nav-text">sigmoid function</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-6-Logistic-Regression-Model"><span class="nav-number">5.</span> <span class="nav-text">Lesson 6 Logistic Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-descent-1"><span class="nav-number">5.0.1.</span> <span class="nav-text">Gradient descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conjuate-gradient"><span class="nav-number">5.0.2.</span> <span class="nav-text">Conjuate gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFGS"><span class="nav-number">5.0.3.</span> <span class="nav-text">BFGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L-BFGS"><span class="nav-number">5.0.4.</span> <span class="nav-text">L-BFGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiclass-Classification"><span class="nav-number">5.0.5.</span> <span class="nav-text">Multiclass Classification</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-2-liner-regression"><span class="nav-number">1.</span> <span class="nav-text">Lesson 2 liner regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-3-multivariate-Liner-regression"><span class="nav-number">2.</span> <span class="nav-text">Lesson 3 multivariate Liner regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-4-Octave"><span class="nav-number">3.</span> <span class="nav-text">Lesson 4 Octave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-5-Classfication"><span class="nav-number">4.</span> <span class="nav-text">Lesson 5 Classfication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-6-Logistic-Regression-Model"><span class="nav-number">5.</span> <span class="nav-text">Lesson 6 Logistic Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Conjuate-gradient"><span class="nav-number">5.0.1.</span> <span class="nav-text">Conjuate gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFGS"><span class="nav-number">5.0.2.</span> <span class="nav-text">BFGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#L-BFGS"><span class="nav-number">5.0.3.</span> <span class="nav-text">L-BFGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiclass-Classification"><span class="nav-number">5.0.4.</span> <span class="nav-text">Multiclass Classification</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
             
 
           </div>

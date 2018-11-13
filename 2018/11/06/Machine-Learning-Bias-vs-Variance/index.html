@@ -109,10 +109,15 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 好冷啊 想要窝起来">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-07T14:56:08.031Z">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-Bias-vs-Variance/1.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-Bias-vs-Variance/2.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-Bias-vs-Variance/3.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-Bias-vs-Variance/4.png">
+<meta property="og:updated_time" content="2018-11-13T09:21:40.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-Bias-vs-Variance">
 <meta name="twitter:description" content="This is my blog. 好冷啊 想要窝起来">
+<meta name="twitter:image" content="http://empress.top/2018/11/06/Machine-Learning-Bias-vs-Variance/1.png">
 
 
 
@@ -417,20 +422,7 @@
 
 
 
-<h1 id="Evaluating-a-learning-algorithm"><a href="#Evaluating-a-learning-algorithm" class="headerlink" title="Evaluating a learning algorithm"></a>Evaluating a learning algorithm</h1><p>Training set : test set=7:3</p>
-<p>The new procedure using these two sets is then:</p>
-<ol>
-<li>Learn Θ and minimize $J_{train}(\Theta)$ using the training set</li>
-<li>Compute the test set error $J_{test}(\Theta)$</li>
-</ol>
-<h3 id="The-test-set-error"><a href="#The-test-set-error" class="headerlink" title="The test set error"></a>The test set error</h3><ol>
-<li><p>For linear regression: $J_{test}(\Theta) = \dfrac{1}{2m_{test}} \sum_{i=1}^{m_{test}}(h_\Theta(x^{(i)}_{test}) - y^{(i)}_{test})^2$</p>
-</li>
-<li><p>For classification ~ Misclassification error (aka 0/1 misclassification error):</p>
-</li>
-</ol>
-<p>$err(hΘ(x),y)=1\ if\  hΘ(x)≥0.5\ \ y=0\ or\ hΘ(x)&lt;0.5\ y=1\\ $</p>
-<p>$Test Error=\frac 1 {mtest}∑_{i=1}^{mtest}err(h_Θ(x_{test}^{(i)}),y_{test}^{(i)})$</p>
+<p><img src="/2018/11/06/Machine-Learning-Bias-vs-Variance/1.png" alt=""></p>
 <h3 id="Cross-validation-CV"><a href="#Cross-validation-CV" class="headerlink" title="Cross validation(CV)"></a>Cross validation(CV)</h3><p>In order to choose the model of your hypothesis, you can test <strong>each degree of polynomial</strong> and look at the error result.</p>
 <p>One way to break down our dataset into the three sets is:</p>
 <ul>
@@ -445,24 +437,8 @@
 <li><strong>Find</strong> the polynomial <strong>degree d</strong> with the least error using <strong>the cross validation set</strong>.</li>
 <li><strong>Estimate</strong> the generalization <strong>error</strong> <strong>using the test set</strong> with$ J_{test}(\Theta^{(d)})$, (d = theta from polynomial with lower error);</li>
 </ol>
-<h3 id="Bias-vs-Variance"><a href="#Bias-vs-Variance" class="headerlink" title="Bias vs Variance"></a>Bias vs Variance</h3><p><strong>High bias(偏差)  (underfitting)</strong>: both $J_{train}(\Theta)$ and$ J_{CV}(\Theta)$ will be high. Also, $J_{CV}(\Theta) \approx J_{train}(\Theta)$.</p>
-<p><strong>High variance(方差) (overfitting)</strong>: $J_{train}(\Theta)$ will be low and $J_{CV}(\Theta)$will be much greater than $J_{train}(\Theta)$.</p>
-<p>The <strong>training error</strong> will tend to <strong>decrease</strong> as we increase the degree d of the polynomial.</p>
-<p>At the same time, <strong>the cross validation error</strong> will tend to <strong>decrease</strong> as we increase d up to a point, and then it will <strong>increase</strong> as d is increased, forming a convex curve.</p>
-<h4 id="Neural-network-and-Bias-Variance"><a href="#Neural-network-and-Bias-Variance" class="headerlink" title="Neural network and Bias/Variance"></a>Neural network and Bias/Variance</h4><p>A neural network with <strong>fewer parameters</strong> is <strong>prone to underfitting</strong>. It is also <strong>computationally cheaper</strong>.</p>
-<p>A large neural network with <strong>more parameters</strong> is <strong>prone to overfitting</strong>. It is also <strong>computationally expensive</strong>. In this case you can use regularization <strong>(increase λ)</strong> to address the overfitting.</p>
-<p>Using <strong>a single hidden layer</strong> is a good <strong>starting default</strong>.</p>
-<h4 id="Regularization-and-Bias-Variance"><a href="#Regularization-and-Bias-Variance" class="headerlink" title="Regularization and Bias/Variance"></a>Regularization and Bias/Variance</h4><p><strong>High bias(偏差)  (underfitting)</strong>: large λ</p>
-<p><strong>High variance(方差) (overfitting)</strong>: small λ</p>
-<p> In order to choose the model and the regularization term λ, we need to:</p>
-<ol>
-<li>Create <strong>a list of lambdas</strong> </li>
-<li>Create a set of models with <strong>different degrees or any other variants.</strong></li>
-<li>Iterate through the λs and <strong>for each λ</strong> go through all the models <strong>to learn some Θ</strong>.</li>
-<li><strong>Compute the cross validation</strong> error using the learned Θ (computed with λ) on the $J_{CV}(\Theta)$<strong>without</strong> regularization or λ = 0.</li>
-<li><strong>Select the best combo</strong> that produces the lowest error on the cross validation set.</li>
-<li><strong>Using the best combo Θ and λ,</strong> apply it on $J_{test}(\Theta)$ to see if it has a good generalization of the problem.</li>
-</ol>
+<p><img src="/2018/11/06/Machine-Learning-Bias-vs-Variance/2.png" alt=""></p>
+<p><img src="/2018/11/06/Machine-Learning-Bias-vs-Variance/3.png" alt=""></p>
 <ul>
 <li><p>Getting more training examples (<strong>high variance</strong>)</p>
 <p>适用在算法复杂，特征值少的（和隐藏层单元数无关）</p>
@@ -518,13 +494,7 @@
 </tbody>
 </table>
 </div>
-<p><strong>Precision查准率</strong></p>
-<p>$\frac {True\ positive}{True\ positive+False\ positive}$</p>
-<p><strong>Recall召回率</strong></p>
-<p>$\frac{True\ positive}{True\ positive+False\ positive}$</p>
-<p>通过改变临界值，来表达对查准率和召回率的偏重；一般来说，高临界值，高查准率，低召回率；低临界值，低查准率，高召回率</p>
-<p>选择临界值可以通过交叉验证集来计算F1 Score</p>
-<p>$F_1 score = 2\frac {PR}{P+R}$</p>
+<p><img src="/2018/11/06/Machine-Learning-Bias-vs-Variance/4.png" alt=""></p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>感觉这章用途还是很大哒</p>
 <p>突然不知道这个后记说什么了</p>
 <p>幸好 还理我 姑且认为还有希望吧</p>
@@ -798,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Evaluating-a-learning-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Evaluating a learning algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-test-set-error"><span class="nav-number">1.0.1.</span> <span class="nav-text">The test set error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-validation-CV"><span class="nav-number">1.0.2.</span> <span class="nav-text">Cross validation(CV)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bias-vs-Variance"><span class="nav-number">1.0.3.</span> <span class="nav-text">Bias vs Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-network-and-Bias-Variance"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Neural network and Bias/Variance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization-and-Bias-Variance"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Regularization and Bias/Variance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solve-machine-learning-problem"><span class="nav-number">1.0.4.</span> <span class="nav-text">Solve machine learning problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skewed-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Skewed problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">1.2.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-validation-CV"><span class="nav-number">1.</span> <span class="nav-text">Cross validation(CV)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solve-machine-learning-problem"><span class="nav-number">2.</span> <span class="nav-text">Solve machine learning problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skewed-problem"><span class="nav-number"></span> <span class="nav-text">Skewed problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
             
 
           </div>

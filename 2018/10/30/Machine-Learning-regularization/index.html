@@ -109,10 +109,13 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 正则化，一开始我看英文都没有想中文是啥 嘿嘿嘿，被嘲笑了（不对，应该是嘤嘤嘤">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-07T14:56:37.667Z">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regularization/1.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-regularization/2.png">
+<meta property="og:updated_time" content="2018-11-13T09:34:50.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning-regularization">
 <meta name="twitter:description" content="This is my blog. 正则化，一开始我看英文都没有想中文是啥 嘿嘿嘿，被嘲笑了（不对，应该是嘤嘤嘤">
+<meta name="twitter:image" content="http://empress.top/2018/10/30/Machine-Learning-regularization/1.png">
 
 
 
@@ -430,31 +433,9 @@
 <li>Keep all the features, but reduce the magnitude of parameters θj.</li>
 <li>Regularization works well when we have a lot of slightly useful features.</li>
 </ul>
-<script type="math/tex; mode=display">
-J(\theta) = \frac 1 {2m} (\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda\sum_{j=1}^n\theta_j^2)</script><p>  if $\lambda$ is set to an extremely large value, algorithm results in <strong>underfitting</strong> (fails to fit even the training set). It makes $J(\theta) = \theta_0$morning </p>
-<p>  so, the <strong>gradient descent</strong> is like that:</p>
-<script type="math/tex; mode=display">
-\theta_0 := \theta_0 - \alpha \frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(0)}\\
-  \theta_j := \theta_j - \alpha (\frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(j)})-y^{(j)})*x_i^{(j)} + \frac \lambda m \theta_j) = \theta_j(1-\alpha\frac\lambda m )-\alpha\frac 1 
-  m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(i)}</script><p>  And we can easily know that $1-\alpha\frac\lambda m &lt; 1$</p>
-<p>​    And the <strong>normal quation</strong> is like that:</p>
-<p>if it is liner regression: </p>
-<script type="math/tex; mode=display">
-\theta = (X^TX+\lambda L)^{-1}X^Ty</script><p>​    where</p>
-<script type="math/tex; mode=display">
-L = \begin{bmatrix}
-0 &  &  & & &\\
-  &1 &  & & &\\
-  &  &. & & &\\  
-  &  &  &.& &\\ 
-  &  &  & &.&\\ 
-  &  &  & & &1 
-\end{bmatrix}\in R^{n+1}</script><p>Note: if m &lt; n, then $X^TX$ is non-invertible. However, when we add the term λ⋅L, then $X^TX+\lambda L$ becomes invertible.</p>
-<p>if it is logistic regression:</p>
-<script type="math/tex; mode=display">
-J(\theta)=-\frac 1 m\sum_{i=1}^m [y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]+\frac \lambda {2m}\sum_{j=1}^{n}\theta_j^2</script><script type="math/tex; mode=display">
-\theta_0 := \theta_0 - \alpha \frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})*x_j^{(0)}\\
-\theta_j := \theta_j - \alpha (\frac 1 m\sum_{i=1}^{m}(h_\theta(x^{(j)})-y^{(j)})*x_i^{(j)} + \frac \lambda m \theta_j )</script><p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+<p><img src="/2018/10/30/Machine-Learning-regularization/1.png" alt=""></p>
+<p><img src="/2018/10/30/Machine-Learning-regularization/2.png" alt=""></p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=448917180&auto=1&height=66"></iframe>
 

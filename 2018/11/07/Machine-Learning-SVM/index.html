@@ -109,10 +109,12 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 感觉课程讲的还不够 打算再找找资料，补充一下 （未完待续） 我会乖乖地呆在宿舍 不让自己着凉 好好干事情的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-07T15:21:10.954Z">
+<meta property="og:image" content="http://empress.top/2018/11/07/Machine-Learning-SVM/1.png">
+<meta property="og:updated_time" content="2018-11-13T09:23:45.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-SVM">
 <meta name="twitter:description" content="This is my blog. 感觉课程讲的还不够 打算再找找资料，补充一下 （未完待续） 我会乖乖地呆在宿舍 不让自己着凉 好好干事情的">
+<meta name="twitter:image" content="http://empress.top/2018/11/07/Machine-Learning-SVM/1.png">
 
 
 
@@ -426,27 +428,7 @@
 <p>如果C很小（即λ很大的时候）higher bias, low variance</p>
 <p>向量机各特征之间也还是需要归一化的</p>
 <p>package：<code>liblinear</code>,<code>libsvm</code></p>
-<h3 id="Kernel核函数"><a href="#Kernel核函数" class="headerlink" title="Kernel核函数"></a>Kernel核函数</h3><p>使用核函数需要满足莫塞尔定理（Mercer’s Theorem）</p>
-<p>通过kernel来训练非线性分类</p>
-<p>其中$l^{(i)}$代表训练集的一个点，x是一个测试集的点</p>
-<ul>
-<li><p>Gaussian kernel: when n is small and m is intermediate</p>
-<p>$f_i=similarity(x, l^{(i)})=exp(-\frac {||x-l^{(i)}||}{2\sigma^2})=exp(-\frac{\sum_{j=1}^n(x_j-l_j^{(i)})^2}{2\sigma^2})$</p>
-</li>
-</ul>
-<p>​    large $\sigma^2$ :features fi vary more smoothly. Higher bias, lower variance.</p>
-<p>​    Small $\sigma^2$ :features fi vary less smoothly. lower bias, higher variance.</p>
-<p>​    </p>
-<p>​    如果x和$l^{(i)}$的值接近，$f_i=1$</p>
-<p>​    否则，$f_i=0$</p>
-<p>​    评估的时候用类似于$\theta_0+\theta_1f_1+\theta_2f_2+\cdot\cdot\cdot$</p>
-<p>​    来判断，若大于等于0，则说明和l这些点所表示的类别很接近，即可认为x是这个类别的</p>
-<ul>
-<li><p>Linear kernel means “No kernel “!!!!</p>
-<script type="math/tex; mode=display">0\leq\theta_0+\theta_1x_1+\theta_2x_2+\cdot\cdot\cdot+\theta_nx_n</script></li>
-</ul>
-<p>when n is big and m is small或者 n is small, m is large 我们使用逻辑回归或者线性核函数</p>
-<p>对于k分类问题，我们可以将一类和其他类分开的方法，重复k次</p>
+<p><img src="/2018/11/07/Machine-Learning-SVM/1.png" alt=""></p>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>回想了很多事情</p>
 <p>发现 真好</p>
 <p>翻了 日记</p>
@@ -722,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机SVM"><span class="nav-number">1.</span> <span class="nav-text">支持向量机SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kernel核函数"><span class="nav-number">1.1.</span> <span class="nav-text">Kernel核函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机SVM"><span class="nav-number">1.</span> <span class="nav-text">支持向量机SVM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
             
 
           </div>

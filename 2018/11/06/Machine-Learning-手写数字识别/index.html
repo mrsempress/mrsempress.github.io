@@ -109,12 +109,17 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/1.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/2.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/4.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/5.png">
+<meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/6.png">
 <meta property="og:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/3.png">
-<meta property="og:updated_time" content="2018-11-07T15:20:39.800Z">
+<meta property="og:updated_time" content="2018-11-13T09:19:18.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-手写数字识别">
 <meta name="twitter:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
-<meta name="twitter:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/3.png">
+<meta name="twitter:image" content="http://empress.top/2018/11/06/Machine-Learning-手写数字识别/1.png">
 
 
 
@@ -424,54 +429,12 @@
 <h3 id="S型神经元"><a href="#S型神经元" class="headerlink" title="S型神经元"></a>S型神经元</h3><p>用到了sigmoid函数，并且输入可以是0到1之间的任意值；输出也可以是0-1之间的任意值了</p>
 <p>当wx+b的绝对值很大的时候，可以近似于感知机</p>
 <h3 id="MLP多层感知机"><a href="#MLP多层感知机" class="headerlink" title="MLP多层感知机"></a>MLP多层感知机</h3><p>其实是由多个<strong>s型神经元</strong>构成的多层网络</p>
-<h3 id="损失（代价）函数"><a href="#损失（代价）函数" class="headerlink" title="损失（代价）函数"></a>损失（代价）函数</h3><h4 id="均方差MSE函数"><a href="#均方差MSE函数" class="headerlink" title="均方差MSE函数"></a>均方差MSE函数</h4><p>\(J = \displaystyle \frac{1}{2}\sum_{i = 1}^{M}(t_i - y_i)^2\)</p>
-<h4 id="交叉熵函数"><a href="#交叉熵函数" class="headerlink" title="交叉熵函数"></a>交叉熵函数</h4><p>更好的泛化</p>
-<script type="math/tex; mode=display">
-\displaystyle y(w,b)=\frac 1 m\sum_{i=1}^m L(\hat y^{(i)},y^{(i)})</script><script type="math/tex; mode=display">
-L(\hat y^,y)=-(y\ log\ \hat y+(1-y)log(1-\hat y))</script><h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><h4 id="sigmoid"><a href="#sigmoid" class="headerlink" title="sigmoid"></a>sigmoid</h4><script type="math/tex; mode=display">
-f(z)=\frac 1 {1+e^{-z}}</script><script type="math/tex; mode=display">
-f'(z)=\frac {\partial a}{\partial z}\\= \frac {e^{-z}}{(1+e^{-z})^2}\\
-\ \ \ \ \ \ \ \ \ =\frac{1+e^{-z}-1}{(1+e^{-z})^2}\\\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\frac 1 {1+e^{-z}} - \frac{1} {(1+e^{-z})^2}\\\ \ \ \ \ \ \ 
-\ =f(z)(1-f(z))</script><h4 id="softmax"><a href="#softmax" class="headerlink" title="softmax"></a>softmax</h4><script type="math/tex; mode=display">
-f(z)=\frac{e^{z_i}}{\sum_k e^{z_k}}</script><script type="math/tex; mode=display">
-\frac{\partial J}{\partial z_i} = \frac{\partial J}{\partial a_j}\frac{\partial a_j} {\partial z_i}</script><p><strong>若代价函数是交叉熵</strong></p>
-<p>其中 </p>
-<script type="math/tex; mode=display">
-\frac{\partial J}{\partial a_j}=\frac{\partial (-\sum_jy_jlna_j)}{\partial a_j}=-\sum_jy_j\frac1 {a_j}</script><p>对于另一部分，分为$i$和$j$是否相等来考虑</p>
-<p>易得$i=j$ 时，</p>
-<script type="math/tex; mode=display">
-\frac{\partial a_j} {\partial z_i}=\displaystyle \frac {\partial\frac{e^{z_i}}{\sum_k e^{z_k}}}{\partial z_i}=\frac{\sum_k e^{z_k}e^{z_i}-e^{z_i}e^{z_i}}{(\sum_k e^{z_k})^2}=\frac{e^{z_i}}{\sum_k e^{z_k}}(1-\frac{e^{z_i}}{\sum_k e^{z_k}})=a_i(1-a_i)</script><p>$i\not=j$时，</p>
-<script type="math/tex; mode=display">
-\frac{\partial a_j} {\partial z_i}=\frac{\partial a_j} {\partial z_j}=\displaystyle \frac {\partial\frac{e^{z_i}}{\sum_k e^{z_k}}}{\partial z_i}=\frac{-e^{z_j}e^{z_i}}{(\sum_k e^{z_k})^2}=-\frac{e^{z_j}}{\sum_k e^{z_k}}\frac{e^{z_i}}{\sum_k e^{z_k}}=-a_ja_i</script><p>又因为对于分类问题，只会有一个$y_j=1$，其余均为0，所以</p>
-<script type="math/tex; mode=display">
-\frac{\partial J}{\partial z_i} =-\sum_jy_j\frac1 {a_j}(a_i(1-a_i)-\sum_{j\not=i}a_ja_i)=-\frac {y_i}{a_i}*a_i*1+\sum_{j}\frac {y_j}{ a_j} a_ja_i=a_i-y_i</script><p><strong>若代价函数是均方差</strong></p>
-<p>其中 </p>
-<script type="math/tex; mode=display">
-\frac{\partial J}{\partial a_j}=\frac{\partial (\displaystyle\frac 1 2\displaystyle\sum_{i=1}^m(a_i-y_i)^2)}{\partial a_j}=a_j-y_j</script><p>对于另一部分，分为$i$和$j$是否相等来考虑</p>
-<p>易得$i=j$ 时，</p>
-<script type="math/tex; mode=display">
-\frac{\partial a_j} {\partial z_i}=a_i(1-a_i)</script><p>$i\not=j$时，</p>
-<script type="math/tex; mode=display">
-\frac{\partial a_j} {\partial z_i}=-a_ja_i</script><p>又因为对于分类问题，只会有一个$y_j=1$，其余均为0，所以</p>
-<script type="math/tex; mode=display">
-\frac{\partial J}{\partial z_i} =(a_i-y_i)*a_i(1-a_i)-\displaystyle \sum_{j\not=i} (a_j-y_j)a_ja_i=(a_i-y_i)*a_i*1-\displaystyle \sum_{j}(a_j-y_j) a_ja_i\\=a_i((a_i-y_i)+\sum_j(y_i-a_j)a_j)</script><h4 id="relu"><a href="#relu" class="headerlink" title="relu"></a>relu</h4><script type="math/tex; mode=display">
-f(z)=\begin{cases}z,\ if\ z>0\\0,\ if\ z\leq0\end{cases}</script><p>在python中可以用<code>np.maximum(0,x)</code></p>
-<script type="math/tex; mode=display">
-f'(z)=\begin{cases}1,\ if\ z>0\\0,\ if\ z\leq0\end{cases}</script><h3 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h3><script type="math/tex; mode=display">
-Z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)}</script><script type="math/tex; mode=display">
-a^{(l)}=g^{(l)}(z^{(l)})</script><h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><script type="math/tex; mode=display">
-Z=WX+b</script><script type="math/tex; mode=display">
-\hat y=a=g(z)</script><p><strong>交叉熵</strong></p>
-<script type="math/tex; mode=display">
-da=\frac {dL}{da}=-\frac {y}{a}+\frac{1-y}{1-a}</script><script type="math/tex; mode=display">
-dz=\frac{dL}{dz}=\frac{dL}{da}\frac{da}{dz}=(-\frac {y}{a}+\frac{1-y}{1-a})*a(1-a)=a-y</script><script type="math/tex; mode=display">
-dw=\frac{dL}{dw}=\frac{dL}{dz}\frac{dz}{dw}=dz*X</script><script type="math/tex; mode=display">
-db=\frac{dL}{db}=\frac{dL}{dz}\frac{dz}{db}=dz</script><p><strong>均方误差</strong></p>
-<script type="math/tex; mode=display">
-\delta_j^l=\frac {\partial J}{\partial z_j^l}</script><p>对于softmax</p>
-<p>$\begin{cases}\displaystyle \frac{\partial J}{\partial z_j^L}=\sum_k\frac{\partial J}{\partial a _k^L}\frac{\partial a_k^L}{\partial z_j^L} = \frac{\partial J}{\partial a _j^L}\frac{\partial a_j^L}{\partial z_j^L} \\ \displaystyle \frac{\partial J}{\partial a _j^L}  = \frac{\partial (\frac{1}{2}(a_j - y_i)^2)}{\partial a_i} = a_j - y_j \\ \displaystyle \frac{\partial a_j^L }{\partial z_j^L} = \text{softmax}’(z_j) =a_i(1-a_i)-\sum_{j\not=i}a_ja_i \\ \displaystyle \delta^L_j = (a_j - y_j).*[(a_j - y_j) + \sum_{i = 1}^{M}(y_i - a_i)a_i]  \end{cases} $</p>
+<p><img src="/2018/11/06/Machine-Learning-手写数字识别/1.png" alt=""></p>
+<p><img src="/2018/11/06/Machine-Learning-手写数字识别/2.png" alt=""></p>
+<p><img src="/2018/11/06/Machine-Learning-手写数字识别/4.png" alt=""></p>
+<p><img src="/2018/11/06/Machine-Learning-手写数字识别/5.png" alt=""></p>
 <p>对于sigmoid</p>
-<p> $\begin{cases}\displaystyle \delta_j^l = \frac{\partial J}{ \partial z_j^l} = \sum_k \frac{\partial J}{\partial z_k^{l + 1}} \frac{\partial z_k^{l + 1}}{\partial z_j ^l} = \sum_k \frac{\partial z_k^{l + 1}}{\partial z_j ^l}\delta_k^{l + 1} \\ \displaystyle \frac{\partial z_k^{l + 1}}{\partial z_j^l} =\frac{\partial z_k^{l + 1}}{\partial a_j^{l+1}}\frac{\partial a_j^{l + 1}}{\partial z_j^{l}}= \sum_k w_{kj}^{l + 1}\sigma’(z_j^l) \\ \displaystyle \delta _j^l = \sum_kw_{kj}^{l+1}\delta_k^{l + 1}\text{sigmoid}’(z_j^l)= \sum_kw_{kj}^{l+1}\delta_k^{l + 1}f(z_j^l)(1-f(z_j^l)) \end{cases}$</p>
+<p><img src="/2018/11/06/Machine-Learning-手写数字识别/6.png" alt=""></p>
 <p><strong>小批量数据基础上运用反向传播算法</strong>，通过随机选取小量训练输⼊样本 来计算 ∇C x ，进而估算梯度 ∇C。通过计算少量样本的平均值我们可以快速得到⼀个对于实际 梯度 ∇C 的很好的估算，这有助于加速梯度下降，进而加速学习过程。</p>
 <p><img src="/2018/11/06/Machine-Learning-手写数字识别/3.png" alt="反向传播算法"></p>
 <h3 id="一些有意思的问题"><a href="#一些有意思的问题" class="headerlink" title="一些有意思的问题"></a>一些有意思的问题</h3><p>Q：为什么输出神经元是十个，而不是4个（2^4=16&gt;10)</p>
@@ -760,7 +723,7 @@ db=\frac{dL}{db}=\frac{dL}{dz}\frac{dz}{db}=dz</script><p><strong>均方误差</
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perceptron感知机"><span class="nav-number">1.</span> <span class="nav-text">Perceptron感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S型神经元"><span class="nav-number">2.</span> <span class="nav-text">S型神经元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MLP多层感知机"><span class="nav-number">3.</span> <span class="nav-text">MLP多层感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失（代价）函数"><span class="nav-number">4.</span> <span class="nav-text">损失（代价）函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均方差MSE函数"><span class="nav-number">4.1.</span> <span class="nav-text">均方差MSE函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵函数"><span class="nav-number">4.2.</span> <span class="nav-text">交叉熵函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-number">5.</span> <span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sigmoid"><span class="nav-number">5.1.</span> <span class="nav-text">sigmoid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax"><span class="nav-number">5.2.</span> <span class="nav-text">softmax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#relu"><span class="nav-number">5.3.</span> <span class="nav-text">relu</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向传播"><span class="nav-number">6.</span> <span class="nav-text">前向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反向传播"><span class="nav-number">7.</span> <span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些有意思的问题"><span class="nav-number">8.</span> <span class="nav-text">一些有意思的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perceptron感知机"><span class="nav-number">1.</span> <span class="nav-text">Perceptron感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S型神经元"><span class="nav-number">2.</span> <span class="nav-text">S型神经元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MLP多层感知机"><span class="nav-number">3.</span> <span class="nav-text">MLP多层感知机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些有意思的问题"><span class="nav-number">4.</span> <span class="nav-text">一些有意思的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number"></span> <span class="nav-text">后记</span></a></div>
             
 
           </div>

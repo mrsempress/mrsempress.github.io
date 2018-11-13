@@ -109,10 +109,13 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 呼～ 原来并且在octave里是&amp;amp;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-11T09:51:49.097Z">
+<meta property="og:image" content="http://empress.top/2018/11/10/Machine-Learning-week9/1.png">
+<meta property="og:image" content="http://empress.top/2018/11/10/Machine-Learning-week9/2.png">
+<meta property="og:updated_time" content="2018-11-13T09:25:00.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-week9">
 <meta name="twitter:description" content="This is my blog. 呼～ 原来并且在octave里是&amp;amp;">
+<meta name="twitter:image" content="http://empress.top/2018/11/10/Machine-Learning-week9/1.png">
 
 
 
@@ -418,36 +421,13 @@
 
 
 <h2 id="Anomaly-Detection异常检测算法"><a href="#Anomaly-Detection异常检测算法" class="headerlink" title="Anomaly Detection异常检测算法"></a>Anomaly Detection异常检测算法</h2><p>无监督学习</p>
-<h3 id="Gaussian-distribution"><a href="#Gaussian-distribution" class="headerlink" title="Gaussian distribution"></a>Gaussian distribution</h3><h4 id="单变量"><a href="#单变量" class="headerlink" title="单变量"></a>单变量</h4><p>x is a distributed Gaussian(Normal) with mean（均值） u, variance $\sigma^2$（方差）</p>
-<p>x~N(u, $\sigma^2$)</p>
-<p>$\sigma$ Standard deviation (标准差) $\sigma^2=\frac 1 m\sum_{i=1}^m(x^{(i)}-u)^2$</p>
-<p>$u=\frac 1 m\sum_{i=1}^mx^{(i)}$</p>
-<p>概率分布$P(x;u,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-u)^2}{2\sigma^2})$</p>
-<p>图形包围面积是1，如果$\sigma$减小，则会变窄</p>
+<h3 id="Gaussian-distribution"><a href="#Gaussian-distribution" class="headerlink" title="Gaussian distribution"></a>Gaussian distribution</h3><h4 id="单变量"><a href="#单变量" class="headerlink" title="单变量"></a>单变量</h4><p><img src="/2018/11/10/Machine-Learning-week9/1.png" alt=""></p>
 <h4 id="多变量"><a href="#多变量" class="headerlink" title="多变量"></a>多变量</h4><p>特征之间有关系</p>
 <p>u是中点的位置<code>n*1</code>，$\sigma$是一个范围的区间<code>n*n</code></p>
 <h4 id="单变量-VS-多变量"><a href="#单变量-VS-多变量" class="headerlink" title="单变量 VS 多变量"></a>单变量 VS 多变量</h4><p>x = CPU load/memory</p>
 <p>单变量更便宜</p>
 <p>多变量，特征之间存在关系，并且需满足样本数量大于特征数量（一般来说m&gt;=10n)，否则不可逆</p>
-<h3 id="Fraud-detection"><a href="#Fraud-detection" class="headerlink" title="Fraud detection"></a>Fraud detection</h3><p>$x^{(i)}=features\ of\ user\ i’s\ activities  $</p>
-<p>$Model\ p(x)\ from\ data$</p>
-<p>$identify\ unusual\ users\ by\ checking\ which\ have\ p(x)&lt;\epsilon$</p>
-<p>so in Gaussian distribution:</p>
-<p>$μ_j=\frac 1 m∑_{i=1}^m x_j^{(i)}$</p>
-<p>$σ_j^2=\frac 1 m∑_{i=1}^m(x_j^{(i)}−μ_j)^2$</p>
-<p>$\displaystyle p(x)=\prod_{j=1}^np(x_j;u_j;\sigma_j^2)$</p>
-<p>10000 y=0(good) 20 y=1(bad)</p>
-<p>Training set: 6000 (y=0)</p>
-<p>CV: 2000 (y=0) 10 (y=1)    通过CV确定$\sigma$的值</p>
-<p>Test: 2000 (y=0) 10 (y=1)</p>
-<p>because of skewed classes (so an algorithm that always predicts y = 0 will have high accuracy), classification accuracy is a bad way to measure the algorithm’s performance.</p>
-<p>but we can see this value:(in the lesson 11)</p>
-<ul>
-<li>True positive  False positive  False negative  True negative</li>
-<li>Precision recall</li>
-<li>F1-score</li>
-</ul>
-<p>如果画出来的图形发现不是高斯分布，（不对称），那么可以通过一些数据转换的方法，例如用log(x+c)或者$x^{\frac 1 c}$来代替x的值</p>
+<h3 id="Fraud-detection"><a href="#Fraud-detection" class="headerlink" title="Fraud detection"></a>Fraud detection</h3><p><img src="/2018/11/10/Machine-Learning-week9/2.png" alt=""></p>
 <p>对于异常检测算法未分类好的，可以再进行观察，找出新的特征</p>
 <h3 id="异常检测算法-VS-监督学习算法"><a href="#异常检测算法-VS-监督学习算法" class="headerlink" title="异常检测算法 VS 监督学习算法"></a>异常检测算法 VS 监督学习算法</h3><p>当正样本数和负样本数都很大的时候用监督学习算法；而当正样本数很大，但负样本数(y=1)很小的时候(0-20 is common)，则用异常检测算法</p>
 <p>因为监督算法可以知道负样本的特征大概是怎样的，而且测试样本的负样本会和他很相似</p>

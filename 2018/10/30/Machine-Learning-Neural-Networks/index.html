@@ -109,10 +109,18 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is  my blog. 这一章，大二的时候就去听过了演讲吧 大概就是做个卷积 什么池来着 然后弄了个手写识别 然后被嘲笑了 是的（抄代码的时候抄错了，然后被说你个搞ACM的怎么这错误都会犯 我……emmmm……不和你们说话">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-07T14:56:27.338Z">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/1.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/2.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/3.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/4.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/5.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/6.png">
+<meta property="og:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/7.png">
+<meta property="og:updated_time" content="2018-11-13T09:30:02.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning-Neural Networks">
 <meta name="twitter:description" content="This is  my blog. 这一章，大二的时候就去听过了演讲吧 大概就是做个卷积 什么池来着 然后弄了个手写识别 然后被嘲笑了 是的（抄代码的时候抄错了，然后被说你个搞ACM的怎么这错误都会犯 我……emmmm……不和你们说话">
+<meta name="twitter:image" content="http://empress.top/2018/10/30/Machine-Learning-Neural-Networks/1.png">
 
 
 
@@ -424,86 +432,12 @@
 
 
 
-<h2 id="Lesson-8-Neural-Networks"><a href="#Lesson-8-Neural-Networks" class="headerlink" title="Lesson 8 Neural Networks"></a>Lesson 8 Neural Networks</h2><p>Model:</p>
-<p>Input: $x_1,x_2,\cdot\cdot\cdot,x_n$        And sometimes, has $x_0=1$, which called the “bias unit”  </p>
-<p>Output: $h_\theta(x)$</p>
-<p>Weight: $\theta$</p>
-<p>sigmoid (logistic) activation function: $\frac 1 {1+e^{-\theta^TX}}$</p>
-<p>Input layer -&gt; (hidden layer) -&gt; output layer</p>
-<p>hidden layer:  usually <strong>more the better</strong> (must balance with cost of computation as it increases with more hidden units) . If you have more than 1 hidden layer, then it is recommended that you have <strong>the same number of units in every hidden layer.</strong></p>
-<p>$a_i^{(j)}$: “activation” of unit i in layer j</p>
-<p>$Θ^{(j)}$: matrix of weights controlling function mapping from layer j to layer j + 1</p>
-<p>If we had one hidden layer, it would look like:</p>
-<script type="math/tex; mode=display">
-\begin{bmatrix}
-x_0\\
-x_1\\
-x_2\\  
-x_3\\ 
-\end{bmatrix} \rarr 
-\begin{bmatrix}
-a_0^{(2)}\\
-a_1^{(2)}\\
-a_2^{(2)}\\  
-a_3^{(2)}\\ 
-\end{bmatrix} \rarr
-h_\theta(x)</script><p>The values for each of the “activation” nodes is obtained as follows:</p>
-<script type="math/tex; mode=display">
-a_1^{(2)} = g(Θ_{10}^{(1)}x_0 + Θ_{11}^{(1)}x_1 + Θ_{12}^{(1)}x_2 + Θ_{13}^{(1)}x_3)=g(z_1^{(2)})\\
-a_2^{(2)} = g(Θ_{20}^{(1)}x_0 + Θ_{21}^{(1)}x_1 + Θ_{22}^{(1)}x_2 + Θ_{23}^{(1)}x_3)g(z_2^{(2)})\\
-a_3^{(2)} = g(Θ_{30}^{(1)}x_0 + Θ_{31}^{(1)}x_1 + Θ_{32}^{(1)}x_2 + Θ_{33}^{(1)}x_3)=g(z_3^{(2)})\\
-h_\theta(x) = a_1^{(3)} = g(Θ_{10}^{(2)}a_0^{(2)} + Θ_{11}^{(2)}a_1^{(2)} + Θ_{12}^{(2)}a_2^{(2)} + Θ_{13}^{(2)}a_3^{(2)})</script><p>If network has $s_j$ units in layer j and $s_{j+1}$ units in layer j+1, then Θ(j) will be of dimension $s_{j+1}×(s_j+1)$</p>
-<p>The +1 comes from the addition in $\Theta^{(j)}$ of the “bias nodes,” $x_0$ and $\Theta_0^{(j)}$. In other words <strong>the output nodes will not include the bias nodes while the inputs will.</strong> </p>
-<script type="math/tex; mode=display">
-Z_k^{(i)} = \Theta_{k,0}^{(i-1)}x_0+\Theta_{k,1}^{(i-1)}x_1+\cdot\cdot\cdot+\Theta_{k,n}^{(i-1)}x_n</script><script type="math/tex; mode=display">
-z^{(j)}=\Theta^{(j-1)}a^{(j-1)}</script><script type="math/tex; mode=display">
-h_\theta(x)=a^{(j+1)} = g(z^{(j+1)})</script><p>between layer j and layer j+1, we are doing <strong>exactly the same thing</strong> as we did in logistic regression. </p>
-<h3 id="Training-a-Neural-Network"><a href="#Training-a-Neural-Network" class="headerlink" title="Training a Neural Network"></a>Training a Neural Network</h3><ol>
-<li>Randomly <strong>initialize the weights</strong></li>
-<li>Implement <strong>forward propagation</strong> to get $h_\Theta(x^{(i)})$ for any $x^{(i)}$</li>
-<li>Implement the <strong>cost function</strong></li>
-<li>Implement <strong>backpropagation</strong> to compute <strong>partial derivatives</strong></li>
-<li>Use gradient checking to <strong>confirm that your backpropagation works</strong>. Then disable gradient checking.</li>
-<li>Use gradient descent or a built-in optimization function to <strong>minimize the cost function</strong> with the weights in theta.</li>
-</ol>
-<h2 id="Lesson-9-Cost-function-and-backpropagation"><a href="#Lesson-9-Cost-function-and-backpropagation" class="headerlink" title="Lesson 9 Cost function and backpropagation"></a>Lesson 9 Cost function and backpropagation</h2><h3 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h3><p>some notation:</p>
-<p>L: total layer; if no hidden layer, L = 2</p>
-<p>$s_l$: the $l^{th}$ layer have $s_l$ units, but not counting bias unit</p>
-<p>K: number of output units/classes</p>
-<p>And the cost function is like in regression model</p>
-<p>we take logistic regression as an example.</p>
-<p>First, we recall the cost function in logistic regression.</p>
-<script type="math/tex; mode=display">
-J(\theta)=-\frac 1 m\sum_{i=1}^m [y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]+\frac \lambda {2m}\sum_{j=1}^{n}\theta_j^2</script><p>And, now we can compare it with neural networks’.</p>
-<script type="math/tex; mode=display">
-J(\Theta)=-\frac 1 m\sum_{i=1}^m \sum_{k=1}^{K} [y_k^{(i)}log((h_\Theta(x^{(i)}))_k)+(1-y_k^{(i)})log(1-(h_\Theta(x^{(i)}))_k)]+\frac \lambda {2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}}(\Theta_{j,i}^{(l)})^2</script><h3 id="backpropagation-algorithm"><a href="#backpropagation-algorithm" class="headerlink" title="backpropagation algorithm"></a>backpropagation algorithm</h3><p>some notation:</p>
-<p>$z^{(i)}=\Theta^{(i-1)}a^{(i-1)}$</p>
-<p>$a^{(1)}=x\ \ \ \ \ \ \ a^{(i)}=g(z^{(i)})$</p>
-<p>$\delta_j^{(l)}=”error” of\ node\ j\ in\ layer\ l $</p>
-<p>for example(L=4):</p>
-<p>$\delta_j^{(4)}=a_j^{(4)}-y_j$</p>
-<p>$\delta^{(3)}=(\Theta^{(3)})^T\delta^{(4)}.*g’(z^{(3)})$</p>
-<p>$\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$</p>
-<p>对于反向传播，可以看<a href="http://colah.github.io/posts/2015-08-Backprop/" target="_blank" rel="external">图解</a>，这样就可以理解为什么要用反向传播（减少重复计算）；</p>
-<p>同时也可以更好得理解上面的式子是怎么来的</p>
-<p>Note: there is no $\delta^{(1)}$, because we don’t need to calculate the error of the input layer</p>
-<p>Test:</p>
-<p>FP using $x^{(1)}$ followed by BP using $y^{(1)}$.</p>
-<p>(FP = forward propagation, BP = back propagation)</p>
-<p>The algorithm:</p>
-<p>Given training set $\lbrace (x^{(1)}, y^{(1)}) \cdots (x^{(m)}, y^{(m)})\rbrace$</p>
-<p>Set $\Delta^{(l)}_{i,j}$ := 0 for all (l,i,j), (hence you end up having a matrix full of zeros)</p>
-<p>For t =1 to m:</p>
-<p>​    Set $a^{(1)}$ := $x^{(t)}$</p>
-<p>​    Perform forward propagation to compute $a^{(l)}$ for l=2,3,…,L</p>
-<p>​    Using $y^{(t)}$, compute $\delta^{(L)} = a^{(L)} - y^{(t)}$</p>
-<p>​    Compute $\delta^{(L-1)}, \delta^{(L-2)},\dots,\delta^{(2)}$ </p>
-<p>​    $\Delta^{(l)}_{ij} :=\Delta^{(l)}_{ij}+a_{j}^{(l)}\delta_i^{(l+1)}$  also it can calculate like that: $\Delta^{(l)}:=\Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$</p>
-<p>$D_{ij}^{(l)}:=\frac 1 m \Delta_{ij}^{(l)}+\lambda\Theta_{ij}^{(l)}\ \ if\ j\not=0$</p>
-<p>$D_{ij}^{(l)}:=\frac 1 m \Delta_{ij}^{(l)}\ \ if\ j=0$</p>
-<p>$\frac ∂ {∂Θ_{ij}^{(l)}}J(Θ)= D_{ij}^{(l)}$</p>
-<p>And the reason why $\frac ∂ {∂Θ_{ij}^{(l)}}J(Θ)= D_{ij}^{(l)}$, we can salute the value:</p>
-<p>$\frac ∂ {∂Θ_{j}} J(Θ)= \frac{J(\Theta_1,\cdot\cdot\cdot,\Theta_j+\epsilon,\cdot\cdot\cdot,\Theta_n)-J(\Theta_1,\cdot\cdot\cdot,\Theta_j-\epsilon,\cdot\cdot\cdot,\Theta_n)}{2\epsilon}$</p>
+<h2 id="Lesson-8-Neural-Networks"><a href="#Lesson-8-Neural-Networks" class="headerlink" title="Lesson 8 Neural Networks"></a>Lesson 8 Neural Networks</h2><p><img src="/2018/10/30/Machine-Learning-Neural-Networks/1.png" alt=""></p>
+<p><img src="/2018/10/30/Machine-Learning-Neural-Networks/2.png" alt=""></p>
+<h3 id="Training-a-Neural-Network"><a href="#Training-a-Neural-Network" class="headerlink" title="Training a Neural Network"></a>Training a Neural Network</h3><p><img src="/2018/10/30/Machine-Learning-Neural-Networks/3.png" alt=""></p>
+<h2 id="Lesson-9-Cost-function-and-backpropagation"><a href="#Lesson-9-Cost-function-and-backpropagation" class="headerlink" title="Lesson 9 Cost function and backpropagation"></a>Lesson 9 Cost function and backpropagation</h2><h3 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h3><p><img src="/2018/10/30/Machine-Learning-Neural-Networks/4.png" alt=""></p>
+<h3 id="backpropagation-algorithm"><a href="#backpropagation-algorithm" class="headerlink" title="backpropagation algorithm"></a>backpropagation algorithm</h3><p><img src="/2018/10/30/Machine-Learning-Neural-Networks/5.png" alt=""></p>
+<p><img src="/2018/10/30/Machine-Learning-Neural-Networks/6.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">epsilon = 1e-4;</div><div class="line">for i = 1:n,</div><div class="line">  thetaPlus = theta;</div><div class="line">  thetaPlus(i) += epsilon;</div><div class="line">  thetaMinus = theta;</div><div class="line">  thetaMinus(i) -= epsilon;</div><div class="line">  gradApprox(i) = (J(thetaPlus) - J(thetaMinus))/(2*epsilon)</div><div class="line">end;</div></pre></td></tr></table></figure>
 <p>And you will find  gradApprox ≈ deltaVector.</p>
 <p>Once you have verified once that your backpropagation algorithm <strong>is correct</strong>, you don’t need to compute gradApprox again. The code to compute gradApprox can be <strong>very slow</strong>.</p>
@@ -515,7 +449,7 @@ J(\Theta)=-\frac 1 m\sum_{i=1}^m \sum_{k=1}^{K} [y_k^{(i)}log((h_\Theta(x^{(i)})
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fminunc(@costFunction, initialTheta, options)</div><div class="line">function [jval, gradientVec] = costFunction(thetaVec)</div></pre></td></tr></table></figure>
 <h3 id="Random-initial"><a href="#Random-initial" class="headerlink" title="Random initial"></a>Random initial</h3><p>Initializing all theta weights to zero <strong>does not work</strong> with neural networks(It does work in liner). When we backpropagate, all nodes will <strong>update to the same value</strong> repeatedly.</p>
 <p>因为如果神经网络计算出来的输出值都一个样，那么反向传播算法计算出来的梯度值一样，并且参数更新值也一样(Theta=Theta−α∗dTheta)。<strong>更一般地说，如果权重初始化为同一个值，网络就不可能不对称(即是对称的)。</strong></p>
-<p>Hence, we initialize each $\Theta^{(l)}_{ij}$ to a random value between$[-\epsilon,\epsilon]$. </p>
+<p><img src="/2018/10/30/Machine-Learning-Neural-Networks/7.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">% If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.</div><div class="line"></div><div class="line">Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</div><div class="line">Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</div><div class="line">Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;</div></pre></td></tr></table></figure>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>嘿嘿嘿</p>
 <p>今天看到了好多小哥哥 小姐姐</p>

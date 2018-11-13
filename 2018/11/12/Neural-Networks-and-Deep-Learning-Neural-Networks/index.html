@@ -109,12 +109,14 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 新的一门课开始啦～ 感觉还不错啦～ 新的一门课，找首新歌吧～">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/1.png">
+<meta property="og:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/2.png">
 <meta property="og:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/Logistic%20regression.png">
-<meta property="og:updated_time" content="2018-11-13T08:21:24.879Z">
+<meta property="og:updated_time" content="2018-11-13T09:15:08.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Networks and Deep Learning--NeuralNetworks">
 <meta name="twitter:description" content="This is my blog. 新的一门课开始啦～ 感觉还不错啦～ 新的一门课，找首新歌吧～">
-<meta name="twitter:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/Logistic%20regression.png">
+<meta name="twitter:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/1.png">
 
 
 
@@ -447,34 +449,8 @@
 </ul>
 <h2 id="Logistics-Regression-as-a-neural-network"><a href="#Logistics-Regression-as-a-neural-network" class="headerlink" title="Logistics Regression as a neural network"></a>Logistics Regression as a neural network</h2><p>It is a <strong>Binary classification</strong> （二分类问题）</p>
 <p>在<a href="http://mrsempress.top/2018/10/30/Machine-Learning-regression-model/" target="_blank" rel="external">Regression Model-Lesson6</a>提到过一些概念，现大致重述如下：</p>
-<h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3><p>Given $x\in R^{n_x}$  , </p>
-<p>And we have two Parameters $w\in R^{n_x}$ and $b\in R$</p>
-<p>then get $a=\hat y=P(y=1|x)$, beacause it represent possibilities, $0\leq \hat y\leq1 $</p>
-<p>Also $a=\hat y=\sigma(w^Tx+b)=\sigma(z)$</p>
-<p>Actually we will add $x_0=1$ to the X, so the size is now $n_x+1$</p>
-<h3 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h3><p>And we want $\hat y\approx y$, so we define two things to evaluate it performance:</p>
-<p><strong>Loss function</strong> $L (\hat y,y)=-ylog\hat y-(1-y)log(1-\hat y) $</p>
-<p>在这里我们不使用均方误差来衡量，因为J曲线不是<strong>凸函数(convex function)</strong></p>
-<p>And now we knoe the <strong>cost function</strong> $J(w,b)=\frac 1 m\displaystyle \sum_{i=1}^mL(\hat y^{(i)},y^{(i)})$</p>
-<p><strong>The loss function</strong> computes the error for a <strong>single</strong> training example; <strong>the cost function</strong> is the <strong>average</strong> of the loss functions of the entire training set.</p>
-<h3 id="Measure"><a href="#Measure" class="headerlink" title="Measure"></a>Measure</h3><p><strong>Initialization:</strong> J = 0; dw = zeros(m,n); db = zeros(n); [Beacuse we only have global minimum, so we don’t need random initialize]</p>
-<p>Repeat {</p>
-<p>​    for i = 1:m{</p>
-<p>​        $z^{(i)}=w^TX^{(i)}+b$</p>
-<p>​        $a^{(i)}=\sigma(z^{(i)})$</p>
-<p>​        $dz^{(i)}=a^{(i)}-y^{(i)}$</p>
-<p>​        for j = 1:n{</p>
-<p>​            $dw_j+=X^{(i)}_jdz^{(i)}$</p>
-<p>​        }</p>
-<p>​        $db+=dz^{(i)}$</p>
-<p>​    }</p>
-<p>​    $J /= m$</p>
-<p>​    for j = 1:n{</p>
-<p>​        $dw_j/=m$</p>
-<p>​    }</p>
-<p>​    $w:=w-\alpha\frac{\partial J(w,b)}{\partial w}=w-\alpha dw$</p>
-<p>​    $b:=b-\alpha\frac{\partial J(w,b)}{\partial b}=b-\alpha db$</p>
-<p>}</p>
+<p><img src="/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/1.png" alt=""></p>
+<p><img src="/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/2.png" alt=""></p>
 <h3 id="optimization"><a href="#optimization" class="headerlink" title="optimization"></a>optimization</h3><p><strong>vectorization</strong></p>
 <p>在<code>python</code>的<code>numpy</code>包中有许多内置函数，可以进行并行运算，比<code>for</code>循环更快</p>
 <p>一些内置函数</p>
@@ -764,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggestion"><span class="nav-number">1.</span> <span class="nav-text">Suggestion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Neural-Nerworks"><span class="nav-number">2.</span> <span class="nav-text">What is Neural Nerworks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-number">2.1.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structured-Data"><span class="nav-number">2.2.</span> <span class="nav-text">Structured Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unstructured-Data"><span class="nav-number">2.3.</span> <span class="nav-text">Unstructured Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NN"><span class="nav-number">2.4.</span> <span class="nav-text">NN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistics-Regression-as-a-neural-network"><span class="nav-number">3.</span> <span class="nav-text">Logistics Regression as a neural network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notation"><span class="nav-number">3.1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target"><span class="nav-number">3.2.</span> <span class="nav-text">Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Measure"><span class="nav-number">3.3.</span> <span class="nav-text">Measure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization"><span class="nav-number">3.4.</span> <span class="nav-text">optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Computation-graph"><span class="nav-number">3.5.</span> <span class="nav-text">Computation graph</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggestion"><span class="nav-number">1.</span> <span class="nav-text">Suggestion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Neural-Nerworks"><span class="nav-number">2.</span> <span class="nav-text">What is Neural Nerworks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-number">2.1.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structured-Data"><span class="nav-number">2.2.</span> <span class="nav-text">Structured Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unstructured-Data"><span class="nav-number">2.3.</span> <span class="nav-text">Unstructured Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NN"><span class="nav-number">2.4.</span> <span class="nav-text">NN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistics-Regression-as-a-neural-network"><span class="nav-number">3.</span> <span class="nav-text">Logistics Regression as a neural network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization"><span class="nav-number">3.1.</span> <span class="nav-text">optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Computation-graph"><span class="nav-number">3.2.</span> <span class="nav-text">Computation graph</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
