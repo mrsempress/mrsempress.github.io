@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Notes," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 新的一门课开始啦～ 感觉还不错啦～ 新的一门课，找首新歌吧～">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neural Networks and Deep Learning--NeuralNetworks">
+<meta property="og:url" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 新的一门课开始啦～ 感觉还不错啦～ 新的一门课，找首新歌吧～">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/Logistic%20regression.png">
+<meta property="og:updated_time" content="2018-11-13T08:13:25.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neural Networks and Deep Learning--NeuralNetworks">
+<meta name="twitter:description" content="This is my blog. 新的一门课开始啦～ 感觉还不错啦～ 新的一门课，找首新歌吧～">
+<meta name="twitter:image" content="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/Logistic%20regression.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/"/>
+
+
+
+
+
+  <title>Neural Networks and Deep Learning--NeuralNetworks | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://empress.top/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Neural Networks and Deep Learning--NeuralNetworks</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T08:49:56+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/" class="leancloud_visitors" data-flag-title="Neural Networks and Deep Learning--NeuralNetworks">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>新的一门课开始啦～</p>
+<p>感觉还不错啦～</p>
+<p>新的一门课，找首新歌吧～</p>
+<a id="more"></a>
+<h2 id="Suggestion"><a href="#Suggestion" class="headerlink" title="Suggestion"></a>Suggestion</h2><ul>
+<li>多读文献</li>
+<li>编程</li>
+<li>培养自己的直觉，并且相信自己的直觉</li>
+</ul>
+<h2 id="What-is-Neural-Nerworks"><a href="#What-is-Neural-Nerworks" class="headerlink" title="What is Neural Nerworks"></a>What is Neural Nerworks</h2><h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>具体可见之间文章<a href="http://mrsempress.top/2018/11/06/Machine-Learning-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/" target="_blank" rel="external">手写数字识别</a></p>
+<ul>
+<li><p>线性整流函数(Rectified linear unit) RELU</p>
+<p><code>max(0,y)</code></p>
+</li>
+<li><p>sigmoid</p>
+</li>
+<li><p>softmax</p>
+</li>
+</ul>
+<h3 id="Structured-Data"><a href="#Structured-Data" class="headerlink" title="Structured Data"></a>Structured Data</h3><p>给出结构化数据，每一个特征都有清晰的定义</p>
+<p>每一个特征都有明确的数值</p>
+<h3 id="Unstructured-Data"><a href="#Unstructured-Data" class="headerlink" title="Unstructured Data"></a>Unstructured Data</h3><p>非结构的，例如音频，图片，文字</p>
+<p><strong>The iterative process of developing DL systems</strong>： Idea-&gt;Code-&gt;Experiment-&gt;Idea-&gt;….</p>
+<h3 id="NN"><a href="#NN" class="headerlink" title="NN"></a>NN</h3><p>之后的博文会更新，更新完后，会在此加上链接</p>
+<ul>
+<li>Standard NN</li>
+<li>CNN</li>
+<li>RNN</li>
+</ul>
+<h2 id="Logistics-Regression-as-a-neural-network"><a href="#Logistics-Regression-as-a-neural-network" class="headerlink" title="Logistics Regression as a neural network"></a>Logistics Regression as a neural network</h2><p>It is a <strong>Binary classification</strong> （二分类问题）</p>
+<p>在<a href="http://mrsempress.top/2018/10/30/Machine-Learning-regression-model/" target="_blank" rel="external">Regression Model-Lesson6</a>提到过一些概念，现大致重述如下：</p>
+<h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3><p>Given $x\in R^{n_x}$  , </p>
+<p>And we have two Parameters $w\in R^{n_x}$ and $b\in R$</p>
+<p>then get $a=\hat y=P(y=1|x)$, beacause it represent possibilities, $0\leq \hat y\leq1 $</p>
+<p>Also $a=\hat y=\sigma(w^Tx+b)=\sigma(z)$</p>
+<p>Actually we will add $x_0=1$ to the X, so the size is now $n_x+1$</p>
+<h3 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h3><p>And we want $\hat y\approx y$, so we define two things to evaluate it performance:</p>
+<p><strong>Loss function</strong> $L (\hat y,y)=-ylog\hat y-(1-y)log(1-\hat y) $</p>
+<p>在这里我们不使用均方误差来衡量，因为J曲线不是<strong>凸函数(convex function)</strong></p>
+<p>And now we knoe the <strong>cost function</strong> $J(w,b)=\frac 1 m\displaystyle \sum_{i=1}^mL(\hat y^{(i)},y^{(i)})$</p>
+<p><strong>The loss function</strong> computes the error for a <strong>single</strong> training example; <strong>the cost function</strong> is the <strong>average</strong> of the loss functions of the entire training set.</p>
+<h3 id="Measure"><a href="#Measure" class="headerlink" title="Measure"></a>Measure</h3><p><strong>Initialization:</strong> J = 0; dw = zeros(m,n); db = zeros(n); [Beacuse we only have global minimum, so we don’t need random initialize]</p>
+<p>Repeat {</p>
+<p>​    for i = 1:m{</p>
+<p>​        $z^{(i)}=w^TX^{(i)}+b$</p>
+<p>​        $a^{(i)}=\sigma(z^{(i)})$</p>
+<p>​        $dz^{(i)}=a^{(i)}-y^{(i)}$</p>
+<p>​        for j = 1:n{</p>
+<p>​            $dw_j+=X^{(i)}_jdz^{(i)}$</p>
+<p>​        }</p>
+<p>​        $db+=dz^{(i)}$</p>
+<p>​    }</p>
+<p>​    $J /= m$</p>
+<p>​    for j = 1:n{</p>
+<p>​        $dw_j/=m$</p>
+<p>​    }</p>
+<p>​    $w:=w-\alpha\frac{\partial J(w,b)}{\partial w}=w-\alpha dw$</p>
+<p>​    $b:=b-\alpha\frac{\partial J(w,b)}{\partial b}=b-\alpha db$</p>
+<p>}</p>
+<h3 id="optimization"><a href="#optimization" class="headerlink" title="optimization"></a>optimization</h3><p><strong>vectorization</strong></p>
+<p>在<code>python</code>的<code>numpy</code>包中有许多内置函数，可以进行并行运算，比<code>for</code>循环更快</p>
+<p>一些内置函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">cal = A.sum(axis=<span class="number">0</span>) <span class="comment"># 列求和，行压缩</span></div><div class="line">np.log(A, B)</div><div class="line">np.exp(A, B) <span class="comment"># the "math" library in deep learning because the inputs of the functions are real numbers. In deep learning we mostly use matrices and vectors. This is why numpy is more useful.</span></div><div class="line"></div><div class="line"><span class="comment"># 对于以下三种乘法，我将重点分析一下区别</span></div><div class="line">A * B <span class="comment"># 会进行广播原则，对应元素相乘</span></div><div class="line"></div><div class="line">np.dot(A, B) <span class="comment"># For 2-D arrays it is equivalent to matrix multiplication, and for 1-D arrays to inner product of vectors (without complex conjugation)【对应元素相乘再相加，见下面例子中的np.dot(c, a).而若A，B是matrix的时候，则需要大小满足矩阵相乘的条件</span></div><div class="line"></div><div class="line">np.multiply(A, B) <span class="comment"># 对应元素相乘，当矩阵的维度不相同时，会根据一定的广播规则将维数扩充到一致的形式. 如果不能广播相同的size，multiply就会失败</span></div><div class="line"></div><div class="line">x_norm = np.linalg.norm(x, ord =<span class="number">2</span>, axis=<span class="number">1</span>, keepdims=<span class="keyword">True</span>) <span class="comment"># 求范式</span></div><div class="line"><span class="comment"># ord几范式（默认二范式） 一范式：|x1|+...+|xn|	二范式：sqrt(x1^2+...+xn^2) 无穷范式: max(|xi|)</span></div><div class="line"><span class="comment"># axis=1表示按行向量处理，求多个行向量的范数；axis=0表示按列向量处理，求多个列向量的范数；axis=None表示矩阵范数</span></div><div class="line"><span class="comment"># keepdims True表示保持矩阵的二维特性，False相反</span></div></pre></td></tr></table></figure>
+<p>给一下测试的结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])  <span class="comment"># (3,)</span></div><div class="line">array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) 	</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.array([[<span class="number">1</span>, <span class="number">2</span>,<span class="number">3</span>]]) <span class="comment"># (1,3)</span></div><div class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]])	</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c = np.array([[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]) <span class="comment"># (2,3)</span></div><div class="line">array([[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], </div><div class="line">       [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])		</div><div class="line"></div><div class="line"><span class="comment"># A * B </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a*b) <span class="comment"># 对应元素相乘</span></div><div class="line">[[<span class="number">1</span> <span class="number">4</span> <span class="number">9</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a*c) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(c*a) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(b*c) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(c*b) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(b*a) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[<span class="number">1</span> <span class="number">4</span> <span class="number">9</span>]]</div><div class="line"></div><div class="line"><span class="comment"># np.dot(A, B)</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.dot(a,b)) <span class="comment"># 不满足矩阵相乘概念 a(3,) b(1,3)注意a只是秩为1，它的shape很神奇哦</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#32&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    print(np.dot(a,b))</div><div class="line">ValueError: shapes (<span class="number">3</span>,) <span class="keyword">and</span> (<span class="number">1</span>,<span class="number">3</span>) <span class="keyword">not</span> aligned: <span class="number">3</span> (dim <span class="number">0</span>) != <span class="number">1</span> (dim <span class="number">0</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.dot(b,a)) <span class="comment"># b(1,3) a(3, ) </span></div><div class="line">[<span class="number">14</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.dot(a,c)) <span class="comment"># 不满足矩阵相乘概念 a(3,) c(2,3)</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#34&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    print(np.dot(a,c))</div><div class="line">ValueError: shapes (<span class="number">3</span>,) <span class="keyword">and</span> (<span class="number">2</span>,<span class="number">3</span>) <span class="keyword">not</span> aligned: <span class="number">3</span> (dim <span class="number">0</span>) != <span class="number">2</span> (dim <span class="number">0</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.dot(c, a)) <span class="comment"># c(2,3) a(3,)得到的不是两行哦！32=1*4+2*3*6	50=1*7+2*8+3*9</span></div><div class="line">[<span class="number">32</span> <span class="number">50</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.dot(b,c)) <span class="comment"># 不满足矩阵相乘概念 b(1,3) c(2,3)</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#36&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    print(np.dot(b,c))</div><div class="line">ValueError: shapes (<span class="number">1</span>,<span class="number">3</span>) <span class="keyword">and</span> (<span class="number">2</span>,<span class="number">3</span>) <span class="keyword">not</span> aligned: <span class="number">3</span> (dim <span class="number">1</span>) != <span class="number">2</span> (dim <span class="number">0</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.dot(c,b)) <span class="comment"># 不满足矩阵相乘概念 c(2,3) b(1,3)</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#37&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    print(np.dot(c,b))</div><div class="line">ValueError: shapes (<span class="number">2</span>,<span class="number">3</span>) <span class="keyword">and</span> (<span class="number">1</span>,<span class="number">3</span>) <span class="keyword">not</span> aligned: <span class="number">3</span> (dim <span class="number">1</span>) != <span class="number">1</span> (dim <span class="number">0</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.dot(c,b.T) <span class="comment"># c(2,3) b.T(3,1) 矩阵运算</span></div><div class="line">array([[<span class="number">32</span>],</div><div class="line">       [<span class="number">50</span>]])</div><div class="line"></div><div class="line"><span class="comment"># np.multiply(A, B)</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.multiply(a,b)) <span class="comment"># a(3, ) b(1,3)对应元素相乘</span></div><div class="line">[[<span class="number">1</span> <span class="number">4</span> <span class="number">9</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.multiply(b,a)) <span class="comment"># b(1,3) a(3, )对应元素相乘</span></div><div class="line">[[<span class="number">1</span> <span class="number">4</span> <span class="number">9</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.multiply(a,c)) <span class="comment"># a(3, ) c(2,3)对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.multiply(c,a)) <span class="comment"># c(2,3) a(3, )对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.multiply(b,c)) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(np.multiply(c,b)) <span class="comment"># 先进行广播原则，再对应元素相乘</span></div><div class="line">[[ <span class="number">4</span> <span class="number">10</span> <span class="number">18</span>]</div><div class="line"> [ <span class="number">7</span> <span class="number">16</span> <span class="number">27</span>]]</div></pre></td></tr></table></figure>
+<p>在<code>python</code>中，若是一个向量加上一个常数，那么就等同于一个向量加上一个同样大小的向量，并且这个向量的值都是这个常数，这叫作<code>broadcasting</code></p>
+<p>因此现在我们可以将方法二的进行向量化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):</div><div class="line">    <span class="comment"># 前向传播</span></div><div class="line">	Z = np.dot(W.T, X) <span class="comment"># X (n_x * m) W (n_x * 1)</span></div><div class="line">	A = sigma(Z) <span class="comment"># A (1 * m)</span></div><div class="line">    <span class="comment">#反向传播</span></div><div class="line">	dZ = A - Y <span class="comment"># Y (1 * m)</span></div><div class="line">	dW = <span class="number">1</span> / m * X * dZ.T <span class="comment"># dW (n_x * 1)</span></div><div class="line">	db = <span class="number">1</span> / m * np.sum(dZ) <span class="comment"># db (1 * 1)</span></div><div class="line">    <span class="comment"># 梯度下降</span></div><div class="line">    W = W - alpha * dW</div><div class="line">    b = b - alpha * db</div></pre></td></tr></table></figure>
+<p>接下来，我们来了解一下<code>python</code>中的<code>broadcasting</code></p>
+<p>当array的时候，(m,n) 要[+,-,*,/] (1,n)或者(m,1)的向量的时候，后者会扩展为(m,n)的向量，再进行运算</p>
+<p>注意当用array创建的时候，用<code>np.random.randn(5,1)</code>而不是<code>np.random.randn(5)</code>，前者创建的是矩阵，后者创建的是秩为1的数组；后者是形如<code>[[1, 2, 3]]</code>前者是<code>[1, 2, 3]</code></p>
+<h3 id="Computation-graph"><a href="#Computation-graph" class="headerlink" title="Computation graph"></a>Computation graph</h3><p>正向流程图，forward to compute the cost function</p>
+<p>One step of backward propagation on a computation graph yields derivative of final output variable.后向计算导数，优化代价函数</p>
+<p><strong>链式法则</strong>：感觉有点像蝴蝶效应（我瞎说的，就是一种影响的传播</p>
+<p><img src="/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/Logistic%20regression.png" alt="逻辑回归"></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>逻辑回归神经网络，刚开始看<code>machine learning</code>这个课程的时候，</p>
+<p>含含糊糊，到写了机器学习的作业后，开始推导公式，</p>
+<p>一步一步理解，</p>
+<p>到现在再来一遍的时候，</p>
+<p>感觉舒服多了</p>
+<p>原来这门课只有四周很开心呐～</p>
+<p>所以，我的零食什么时候到呀！</p>
+<p>哦，对！我的解释器，emmm……</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=17423740&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/11/Machine-Learning-last-class/" rel="next" title="Machine-Learning-last-class">
+                <i class="fa fa-chevron-left"></i> Machine-Learning-last-class
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suggestion"><span class="nav-number">1.</span> <span class="nav-text">Suggestion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Neural-Nerworks"><span class="nav-number">2.</span> <span class="nav-text">What is Neural Nerworks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-number">2.1.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structured-Data"><span class="nav-number">2.2.</span> <span class="nav-text">Structured Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unstructured-Data"><span class="nav-number">2.3.</span> <span class="nav-text">Unstructured Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NN"><span class="nav-number">2.4.</span> <span class="nav-text">NN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistics-Regression-as-a-neural-network"><span class="nav-number">3.</span> <span class="nav-text">Logistics Regression as a neural network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notation"><span class="nav-number">3.1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target"><span class="nav-number">3.2.</span> <span class="nav-text">Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Measure"><span class="nav-number">3.3.</span> <span class="nav-text">Measure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization"><span class="nav-number">3.4.</span> <span class="nav-text">optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Computation-graph"><span class="nav-number">3.5.</span> <span class="nav-text">Computation graph</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

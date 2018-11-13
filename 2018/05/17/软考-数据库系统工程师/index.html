@@ -104,14 +104,14 @@
 <meta name="description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mrs_empress">
+<meta property="og:title" content="软考--数据库系统工程师">
 <meta property="og:url" content="http://empress.top/2018/05/17/软考-数据库系统工程师/index.html">
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-25T01:22:00.067Z">
+<meta property="og:updated_time" content="2018-11-12T00:47:40.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mrs_empress">
+<meta name="twitter:title" content="软考--数据库系统工程师">
 <meta name="twitter:description" content="This is my blog. 本来打算写常考清单的，但是手中题目只做了一点，书也没看完，就看到不会的都写了下来，然后就成了啰里八嗦的一篇未完待续了……下星期就要软考了。 加油吧！">
 
 
@@ -148,7 +148,7 @@
 
 
 
-  <title> | Mrs_empress</title>
+  <title>软考--数据库系统工程师 | Mrs_empress</title>
   
 
 
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">软考--数据库系统工程师</h1>
         
 
         <div class="post-meta">
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2018/05/17/软考-数据库系统工程师/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2018/05/17/软考-数据库系统工程师/" class="leancloud_visitors" data-flag-title="软考--数据库系统工程师">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -943,10 +943,10 @@
 <p>如果<code>R1∩R2</code>是<code>R1</code>或<code>R2</code>的超码，则<code>R上的分解（R1，R2）</code>是无损分解。</p>
 <h5 id="是否保持函数依赖-这个还有点晕"><a href="#是否保持函数依赖-这个还有点晕" class="headerlink" title="是否保持函数依赖(这个还有点晕)"></a>是否保持函数依赖(这个还有点晕)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">对F上的每一个α→β使用下面的过程：</div><div class="line">result:=α;</div><div class="line">while(result发生变化)do</div><div class="line">    for each 分解后的Ri</div><div class="line">        t=(result∩Ri)+ ∩Ri</div><div class="line">        result=result∪t</div></pre></td></tr></table></figure>
 <p>一个大练习：</p>
-<p>设关系模式<code>R&lt;U, F&gt;</code>，其中<code>U=｛A, B, C, D, E｝</code>，<code>F＝{A→BC，C→D，BC→E，E→A｝</code>，则分解<code>ρ={R1（ABCE），R2（CD）｝</code>满足<strong>__</strong>。<br>          A．具有无损连接性、保持函数依赖                 B．不具有无损连接性、保持函数依赖<br>              C．具有无损连接性、不保持函数依赖                 D．不具有无损连接性、不保持函数依赖</p>
+<p>设关系模式<code>R&lt;U, F&gt;</code>，其中<code>U=｛A, B, C, D, E｝</code>，<code>F＝{A→BC，C→D，BC→E，E→A｝</code>，则分解<code>ρ={R1（ABCE），R2（CD）｝</code>满足<strong>__</strong>。<br>​          A．具有无损连接性、保持函数依赖                 B．不具有无损连接性、保持函数依赖<br>​              C．具有无损连接性、不保持函数依赖                 D．不具有无损连接性、不保持函数依赖</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">先做无损链接的判断。</div><div class="line">R1∩R2=&#123;C&#125;，计算C+。</div><div class="line">Result=C</div><div class="line">由于C→D，C∈result，所以result=result∪D=CD</div><div class="line">可见C是R2的超码，该分解是一个无损分解。</div><div class="line"></div><div class="line">再做保持依赖的判断。</div><div class="line">A→BC，BC→E， E→A都在R1上成立（也就是说每一个函数依赖左右两边的属性都在R1中）</div><div class="line">C→D在R2上成立，因此给分解是保持依赖的。</div><div class="line"></div><div class="line">选A。</div></pre></td></tr></table></figure>
 <p>一个超大练习：</p>
-<p>给定关系模式<code>R&lt;U, F&gt;</code>，<code>U=｛A, B, C, D, E｝</code>，<code>F＝{B→A，D→A，A→E，AC→B｝</code>，其候选关键字为<br><strong>    ，则分解<code>ρ={R1（ABCE），R2（CD）｝</code>满足__</strong>。<br>          A．ABD             B．ABE             C．ACD            D．CD</p>
+<p>给定关系模式<code>R&lt;U, F&gt;</code>，<code>U=｛A, B, C, D, E｝</code>，<code>F＝{B→A，D→A，A→E，AC→B｝</code>，其候选关键字为<br><strong>    ，则分解<code>ρ={R1（ABCE），R2（CD）｝</code>满足__</strong>。<br>​          A．ABD             B．ABE             C．ACD            D．CD</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">对于第一问，分别计算ABCD四个选项的闭包，</div><div class="line"></div><div class="line">（ABD）+ = &#123; ABDE &#125;</div><div class="line"></div><div class="line">（ABE）+ = &#123; ABE &#125;</div><div class="line"></div><div class="line">（ACD）+ = &#123; ABCDE &#125;</div><div class="line"></div><div class="line">（CD）+ = &#123; ABCDE &#125;</div><div class="line"></div><div class="line">选D。</div><div class="line"></div><div class="line"></div><div class="line">再看第二问。</div><div class="line"></div><div class="line">先做无损链接的判断。R1∩R2=&#123;C&#125;，计算C+。</div><div class="line"></div><div class="line">result=C</div><div class="line"></div><div class="line">因此C既不是R1也不是R2的超码，该分解不具有无损分解性。</div><div class="line"></div><div class="line">再做保持依赖的判断。</div><div class="line"></div><div class="line">B→A，A→E，AC→B在R1上成立，D→A在R1和R2上都不成立，因此需做进一步判断。</div><div class="line"></div><div class="line">由于B→A，A→E，AC→B都是被保持的（因为它们的元素都在R1中），因此我们要判断的是D→A是不是也被保持。</div><div class="line"></div><div class="line">对于D→A应用算法二：</div><div class="line"></div><div class="line">result=D</div><div class="line"></div><div class="line">对R1，result∩R1=ф（空集，找不到空集的符号，就用这个表示吧），t=ф，result=D</div><div class="line"></div><div class="line">再对R2，result∩R2=D，D+ =ADE ，t=D+ ∩R2=D，result=D</div><div class="line"></div><div class="line">一个循环后result未发生变化，因此最后result=D，并未包含A，所以D→A未被保持，该分解不是保持依赖的。</div></pre></td></tr></table></figure>
 <h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ul>
 <li>1NF<ul>
@@ -1226,7 +1226,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
