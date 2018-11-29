@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Notes," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 这段时间忙着准备CCF和PAT 唔……其实只有PAT想好好考啦～ 一些莫名的bug 继续学习机器学习啦～">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Improving Deep Neural Networks">
+<meta property="og:url" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 这段时间忙着准备CCF和PAT 唔……其实只有PAT想好好考啦～ 一些莫名的bug 继续学习机器学习啦～">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/1.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/2.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/3.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/4.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/5.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/6.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/7.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/8.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/9.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/10.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/11.png">
+<meta property="og:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/12.png">
+<meta property="og:updated_time" content="2018-11-29T12:18:45.249Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Improving Deep Neural Networks">
+<meta name="twitter:description" content="This is my blog. 这段时间忙着准备CCF和PAT 唔……其实只有PAT想好好考啦～ 一些莫名的bug 继续学习机器学习啦～">
+<meta name="twitter:image" content="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/"/>
+
+
+
+
+
+  <title>Improving Deep Neural Networks | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Improving Deep Neural Networks</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-29T15:01:36+08:00">
+                2018-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/" class="leancloud_visitors" data-flag-title="Improving Deep Neural Networks">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>这段时间忙着准备CCF和PAT</p>
+<p>唔……其实只有PAT想好好考啦～</p>
+<p>一些莫名的bug</p>
+<p>继续学习机器学习啦～</p>
+<a id="more"></a>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><h3 id="Train-dev-test-sets"><a href="#Train-dev-test-sets" class="headerlink" title="Train/dev/test sets"></a>Train/dev/test sets</h3><p>每个问题，每个输入数据等都会影响超参数的设置</p>
+<p><code>Train set-&gt; hold out cross validation(development set)-&gt;test set</code></p>
+<p>他们之间的比例不一定，当数据很大的时候，比例可以相差到<code>99:1:1</code>；当数据小的时候，可能为<code>60:20:20</code></p>
+<p><strong>确保开发集和测试集的数据分布相同</strong></p>
+<h3 id="Bias-Variance"><a href="#Bias-Variance" class="headerlink" title="Bias/Variance"></a>Bias/Variance</h3><p>通过观察<code>Train set error</code> 和<code>Dev set error</code></p>
+<p>贝叶斯误差来评估<code>error</code>是否正常</p>
+<ul>
+<li><p>高偏差/欠拟合</p>
+<ul>
+<li>Bigger network</li>
+<li>Train longer</li>
+<li>换种神经网络结构</li>
+</ul>
+</li>
+<li><p>高方差/过拟合</p>
+<ul>
+<li><p>get more data（可以通过对现有数据的变换，比如对图片进行翻转</p>
+</li>
+<li><p>Regularization </p>
+<p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/1.png" alt=""></p>
+<ul>
+<li>Early stopping 早停<ul>
+<li>无法分开解决优化代价函数和防止过拟合问题（正交化）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>换种神经网络结构</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>高偏差和高方差可以同时出现（比如，总体线性，但是又将个别特殊点区分开了的情况）</p>
+<h3 id="Normalizing-training-sets归一化"><a href="#Normalizing-training-sets归一化" class="headerlink" title="Normalizing training sets归一化"></a>Normalizing training sets归一化</h3><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/2.png" alt=""></p>
+<p>对一个训练集和测试集应该使用相同的归一化参数</p>
+<p>如果不归一化，则代价函数的图中是个椭圆，这样在长边的速度就很慢，而如果是个圆，随机初始化后，无论哪个点到最小值的速度都相同，而且到最小值的速度（相对于椭圆，同一个样本中）都很快</p>
+<h3 id="Weight-initialization"><a href="#Weight-initialization" class="headerlink" title="Weight initialization"></a>Weight initialization</h3><p><strong>Vanishing/Exploding gradients梯度消失或者爆炸</strong></p>
+<p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/3.png" alt=""></p>
+<h3 id="Gradient-checking梯度检验"><a href="#Gradient-checking梯度检验" class="headerlink" title="Gradient checking梯度检验"></a>Gradient checking梯度检验</h3><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/4.png" alt=""></p>
+<h2 id="Mini-batch-gradient-descent"><a href="#Mini-batch-gradient-descent" class="headerlink" title="Mini-batch gradient descent"></a>Mini-batch gradient descent</h2><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/5.png" alt=""></p>
+<h4 id="Hyperparameter：the-mini-batch-Size"><a href="#Hyperparameter：the-mini-batch-Size" class="headerlink" title="Hyperparameter：the mini-batch Size"></a>Hyperparameter：the mini-batch Size</h4><p>小批量梯度大小的数据大小不可以过大也不可以过小，这样我们可以使用向量的方法，一次处理多个样例</p>
+<ul>
+<li>Small training set<ul>
+<li>Use batch gradient descent (m&lt;=2000)</li>
+</ul>
+</li>
+<li>Typical mini-batch size<ul>
+<li>64～512设置为2的幂次会快一些</li>
+<li>同时size需要可以装进CPU/GPU的容量中</li>
+</ul>
+</li>
+</ul>
+<h2 id="optimization-algorithm"><a href="#optimization-algorithm" class="headerlink" title="optimization algorithm"></a>optimization algorithm</h2><h3 id="Exponentially-weighted-averages"><a href="#Exponentially-weighted-averages" class="headerlink" title="Exponentially weighted averages"></a>Exponentially weighted averages</h3><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/6.png" alt=""></p>
+<h4 id="Bias-correction-偏差修正"><a href="#Bias-correction-偏差修正" class="headerlink" title="Bias correction 偏差修正"></a>Bias correction 偏差修正</h4><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/7.png" alt=""></p>
+<h3 id="gradient-descent-Momentum"><a href="#gradient-descent-Momentum" class="headerlink" title="(gradient descent) Momentum"></a>(gradient descent) Momentum</h3><p>动量或者动量梯度下降法，几乎比标准的梯度下降法要快</p>
+<p><strong>主要思想：</strong>计算梯度的指数加权平均，然后使用这个梯度来更新权重</p>
+<p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/8.png" alt=""></p>
+<p>对于不是朝最小值的方向，由于震荡的正负值抵消，所以在其他方向的值在指数加权平均下，震荡的小了；并且在朝最小值的方向上似乎因为动量而加速了</p>
+<h4 id="Two-Hyperparameter"><a href="#Two-Hyperparameter" class="headerlink" title="Two Hyperparameter"></a><strong>Two Hyperparameter</strong></h4><p> $\alpha\ and\ \beta $ </p>
+<p>在动量梯度下降中，不使用偏差修正，因为这里的$\beta$很小，就代表有很多的之前的数据的平均值，已经可以使用了</p>
+<h3 id="RMSprop-Root-Mean-Square-prop"><a href="#RMSprop-Root-Mean-Square-prop" class="headerlink" title="RMSprop(Root Mean Square prop)"></a>RMSprop(Root Mean Square prop)</h3><p>均方根传递算法，可以用来加速梯度下降</p>
+<p>目标：减缓不是最小值方向的速度，加快（或者不减慢最小值方向的速度）</p>
+<p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/9.png" alt=""></p>
+<h3 id="Adam-optimization-algorithm"><a href="#Adam-optimization-algorithm" class="headerlink" title="Adam optimization algorithm"></a>Adam optimization algorithm</h3><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/10.png" alt=""></p>
+<h4 id="Hyperparameter"><a href="#Hyperparameter" class="headerlink" title="Hyperparameter"></a>Hyperparameter</h4><p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/11.png" alt=""> </p>
+<h2 id="The-problem-of-local-optima"><a href="#The-problem-of-local-optima" class="headerlink" title="The problem of local optima"></a>The problem of local optima</h2><p>局部最优问题</p>
+<p><strong>Saddle Point（鞍点）：</strong>梯度为0的点，但是在高维空间中，很少出现鞍点是局部最优点的情况（深度学习中一般都是高维空间，有很多参数）</p>
+<p>所以降低学习率的不是局部最优问题，而是停滞区</p>
+<p><strong>Plateaus（停滞区）：</strong>是指导数长时间接近于零的一段区域</p>
+<p>可以用Adam等算法，来更快地离开停滞区</p>
+<h2 id="Hyperparameter-tuning"><a href="#Hyperparameter-tuning" class="headerlink" title="Hyperparameter tuning"></a>Hyperparameter tuning</h2><ul>
+<li><p>layers</p>
+</li>
+<li><p>hidden units</p>
+</li>
+<li><p>learning rates</p>
+<p><img src="/2018/11/29/Neural-Networks-and-Deep-Learning-Improving-Deep-Neural-Networks/12.png" alt=""></p>
+</li>
+<li><p>activation functions</p>
+</li>
+<li><p>mini-batch Size</p>
+</li>
+<li><p>…</p>
+</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>嚯嚯嚯！出门学习啦～</p>
+<p>突然有了不宅在宿舍的动力了</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=17423740&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/12/Neural-Networks-and-Deep-Learning-Neural-Networks/" rel="next" title="Neural Networks and Deep Learning">
+                <i class="fa fa-chevron-left"></i> Neural Networks and Deep Learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic"><span class="nav-number">1.</span> <span class="nav-text">Basic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Train-dev-test-sets"><span class="nav-number">1.1.</span> <span class="nav-text">Train/dev/test sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bias-Variance"><span class="nav-number">1.2.</span> <span class="nav-text">Bias/Variance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normalizing-training-sets归一化"><span class="nav-number">1.3.</span> <span class="nav-text">Normalizing training sets归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weight-initialization"><span class="nav-number">1.4.</span> <span class="nav-text">Weight initialization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-checking梯度检验"><span class="nav-number">1.5.</span> <span class="nav-text">Gradient checking梯度检验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mini-batch-gradient-descent"><span class="nav-number">2.</span> <span class="nav-text">Mini-batch gradient descent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter：the-mini-batch-Size"><span class="nav-number">2.0.1.</span> <span class="nav-text">Hyperparameter：the mini-batch Size</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization-algorithm"><span class="nav-number">3.</span> <span class="nav-text">optimization algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exponentially-weighted-averages"><span class="nav-number">3.1.</span> <span class="nav-text">Exponentially weighted averages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bias-correction-偏差修正"><span class="nav-number">3.1.1.</span> <span class="nav-text">Bias correction 偏差修正</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent-Momentum"><span class="nav-number">3.2.</span> <span class="nav-text">(gradient descent) Momentum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Two-Hyperparameter"><span class="nav-number">3.2.1.</span> <span class="nav-text">Two Hyperparameter</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RMSprop-Root-Mean-Square-prop"><span class="nav-number">3.3.</span> <span class="nav-text">RMSprop(Root Mean Square prop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam-optimization-algorithm"><span class="nav-number">3.4.</span> <span class="nav-text">Adam optimization algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter"><span class="nav-number">3.4.1.</span> <span class="nav-text">Hyperparameter</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-problem-of-local-optima"><span class="nav-number">4.</span> <span class="nav-text">The problem of local optima</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperparameter-tuning"><span class="nav-number">5.</span> <span class="nav-text">Hyperparameter tuning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
