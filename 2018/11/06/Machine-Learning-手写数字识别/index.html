@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://mrsempress.top/2018/11/06/Machine-Learning-手写数字识别/5.png">
 <meta property="og:image" content="http://mrsempress.top/2018/11/06/Machine-Learning-手写数字识别/6.png">
 <meta property="og:image" content="http://mrsempress.top/2018/11/06/Machine-Learning-手写数字识别/3.png">
-<meta property="og:updated_time" content="2018-11-13T09:19:18.815Z">
+<meta property="og:updated_time" content="2018-11-30T11:58:40.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-手写数字识别">
 <meta name="twitter:description" content="This is my blog. 机器学习的一个0-5数字识别的作业 一做，就发现 哇！瞬间通了一点！ 果然还是要静下来好好推公式哒！">
@@ -435,6 +435,8 @@
 <p><img src="/2018/11/06/Machine-Learning-手写数字识别/5.png" alt=""></p>
 <p>对于sigmoid</p>
 <p><img src="/2018/11/06/Machine-Learning-手写数字识别/6.png" alt=""></p>
+<p>Sigmoid（tanh）中，能在激活的时候，更关注数据在零（或中心点）前后的细小变化，而忽略数据在极端时的变化，多用于全连接层</p>
+<p>ReLU还有避免梯度消失的作用，多用于卷积层。 </p>
 <p><strong>小批量数据基础上运用反向传播算法</strong>，通过随机选取小量训练输⼊样本 来计算 ∇C x ，进而估算梯度 ∇C。通过计算少量样本的平均值我们可以快速得到⼀个对于实际 梯度 ∇C 的很好的估算，这有助于加速梯度下降，进而加速学习过程。</p>
 <p><img src="/2018/11/06/Machine-Learning-手写数字识别/3.png" alt="反向传播算法"></p>
 <h3 id="一些有意思的问题"><a href="#一些有意思的问题" class="headerlink" title="一些有意思的问题"></a>一些有意思的问题</h3><p>Q：为什么输出神经元是十个，而不是4个（2^4=16&gt;10)</p>
@@ -609,7 +611,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -620,7 +622,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

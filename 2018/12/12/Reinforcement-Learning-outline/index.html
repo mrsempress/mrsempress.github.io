@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Notes," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 初识Reinforcement Learning 很多概念，只是提及，之后待补充">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reinforcement Learning outline">
+<meta property="og:url" content="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 初识Reinforcement Learning 很多概念，只是提及，之后待补充">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/Q_learning.png">
+<meta property="og:image" content="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/DQN.png">
+<meta property="og:image" content="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/DQN-algorithm.jpg">
+<meta property="og:updated_time" content="2018-12-14T03:27:34.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reinforcement Learning outline">
+<meta name="twitter:description" content="This is my blog. 初识Reinforcement Learning 很多概念，只是提及，之后待补充">
+<meta name="twitter:image" content="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/Q_learning.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/"/>
+
+
+
+
+
+  <title>Reinforcement Learning outline | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2018/12/12/Reinforcement-Learning-outline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Reinforcement Learning outline</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-12T00:29:15+08:00">
+                2018-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Reinforcement-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Reinforcement Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Reinforcement-Learning/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/12/Reinforcement-Learning-outline/" class="leancloud_visitors" data-flag-title="Reinforcement Learning outline">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>初识Reinforcement Learning</p>
+<p>很多概念，只是提及，之后待补充</p>
+<a id="more"></a>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+<h1 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h1><p>Reinforcement Learning is much more focused on <strong>goal-directed</strong> learning from <strong>interaction</strong> </p>
+<p>让计算机实现从<strong>一开始什么都不懂（即没有数据和标签）</strong>，通过不断地尝试，从错误中学习（规律），<strong>最后找到规律</strong>，学会了达到目的的方法。</p>
+<p>强化学习最大的特点是在<strong>交互中学习（Learning from Interaction）</strong>。Agent在与环境的交互中根据获得的奖励或惩罚不断的学习知识，更加适应环境。</p>
+<p>强化学习不同于无监督学习（虽然有些人认为算无监督学习），它试图最大化奖励信号而不是试图找到隐藏的结构。</p>
+<p>深度学习具有较强的<strong>感知能力</strong>，但是缺乏一定的决策能力；而强化学习具有较强的<strong>决策能力</strong>，但对感知问题束手无策</p>
+<p>These <strong>three characteristics</strong>—being <strong>closed-loop</strong> in an essential way, <strong>not having direct instructions</strong> as to what actions to take, and where <strong>the consequences of actions</strong>, including reward signals, <strong>play out over extended time periods</strong>—are the three most important distinguishing features of reinforcement learning problems.</p>
+<p>Beyond the <strong>agent</strong> and the <strong>environmen</strong>t, one can identify four main subelements of a reinforcement learning system: <strong>a policy, a reward signal, a value function</strong>, and, optionally, <strong>a model of the environment.</strong></p>
+<p>Whereas <strong>the reward signal</strong> indicates what is good <strong>in an immediate sense</strong>, <strong>a value function</strong> speciﬁes what is good <strong>in the long run.</strong> </p>
+<p>和其他学科关系，生物启发……</p>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ul>
+<li>Reinforcement Learning: 不理解环境Model-Free RL<ul>
+<li>基于价值Value-Based: RL<ul>
+<li>根据最高价值来选择；一定选择价值最高的</li>
+<li>Q Learning（回合更新制，离线学习off-policy）</li>
+<li>Sarsa（回合更新制，在线学习on-policy）</li>
+<li>Deep Q Network(DQN)</li>
+<li>DQN改进<ul>
+<li>Dueling DQN</li>
+<li>DDQN</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于概率Policy-Based RL<ul>
+<li>每种动作都有可能会被选中，只是可能性不同；但是不一定是选择概率最高的</li>
+<li>Policy Gradients（单步更新制）</li>
+</ul>
+</li>
+<li>两者结合，Actor-Critic，一种时序差分算法<ul>
+<li>Actor基于概率作出动作</li>
+<li>critic对作出的动作给出价值</li>
+<li>DDPG（Continuous control with deep reinforcement learning）深度确定策略梯度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>理解环境Model based RL<ul>
+<li>Dynamic Programming</li>
+</ul>
+</li>
+</ul>
+<h2 id="Markov"><a href="#Markov" class="headerlink" title="Markov"></a>Markov</h2><p>The formulation is intended to include just these <strong>three aspects</strong>—<strong>sensation, action, and goal</strong>—in their simplest possible forms without trivializing any of them.</p>
+<p>在马尔科夫链上包含两种状态转化：状态到动作、动作到状态</p>
+<h3 id="MDP"><a href="#MDP" class="headerlink" title="MDP"></a>MDP</h3><p>MDP：Markov Decision Process，马尔科夫决策</p>
+<p><strong>时间不变性</strong>：随着MDP的过程的进行，最终不同时刻下的相同状态总会有着相同的价值</p>
+<h3 id="Model-Free"><a href="#Model-Free" class="headerlink" title="Model-Free"></a>Model-Free</h3><p>代理在每次操作之前<strong>不可以预测</strong>下一个状态和奖励的算法，一步步来试图学习最优的策略，经过多次迭代后得到整个环境中最优的策略。</p>
+<p>model-free reinforcement learning <strong>does not use environment</strong> to learn the action that result in the best reward.</p>
+<p>The model-free learning only uses its action and reward to <strong>infer</strong> the best action.</p>
+<p>In model-free learning, the agent simply relies on some <strong>trial-and-error experience</strong> for action selection.</p>
+<p>运用<strong>蒙特卡洛</strong>的方法：基于<strong>经验</strong>（包括样本序列的状态、动作、奖励）平均来代替随机变量的期望（随机样本估计期望）[之后再补充蒙特卡洛]</p>
+<script type="math/tex; mode=display">
+v_\pi(s)=E_\pi[G_t|S_t=s]</script><script type="math/tex; mode=display">
+G_t=R_{t+1}+\gamma R_{t+2}+\cdot\cdot\cdot</script><p>虽然没有环境模型，无法评估当前策略的好坏，但是在实际中使用的更多</p>
+<h3 id="Model-based"><a href="#Model-based" class="headerlink" title="Model-based"></a>Model-based</h3><p>代理在每次操作之前可以<strong>预测</strong>下一个状态和奖励的算法；提前知道转移概率，来推断之后的可能性，从而找到最优马尔可夫链</p>
+<p>The model-based reinforcement learning tries to <strong>infer environment</strong> to gain the reward </p>
+<p>The model-based learning uses environment, action and reward to <strong>get</strong> the most reward from the action. </p>
+<p>In model-based learning, the agent <strong>exploits a previously learned model</strong> to accomplish the task</p>
+<p>更多采用Dynamic Programming动态规划来解决问题，将一个问题转化为多个可重复利用和存储的优化的子问题。</p>
+<h3 id="On-policy"><a href="#On-policy" class="headerlink" title="On-policy"></a>On-policy</h3><p>交互更新值函数，获取策略，一步步朝着最优值函数，进而获取最优策略</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>直接，简洁</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>可能陷入局部最优</li>
+</ul>
+<h3 id="Off-policy"><a href="#Off-policy" class="headerlink" title="Off-policy"></a>Off-policy</h3><p><strong>优点：</strong></p>
+<ul>
+<li>通用性强，保证了探索性</li>
+<li>数据全面性，所有行为都可覆盖</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>每次对于状态的值函数的估计过高</li>
+<li>存在一些状态未被采样到</li>
+</ul>
+<h3 id="Value-Based"><a href="#Value-Based" class="headerlink" title="Value-Based"></a>Value-Based</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>According to <strong>state</strong>, calculate approximate <strong>value function</strong> instead a table, then choose the action。</p>
+<p>更新值函数，让其最优化（贪心最大化或者随机策略$\varepsilon$-greedy​），基于值函数选取策略</p>
+<h4 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h4><p>状态值函数（计算期望）</p>
+<script type="math/tex; mode=display">
+v_\pi(s_t)=\displaystyle \sum_{a_t}\pi(a_t|s_t)\sum_{s_{t+1}}p(s_{t+1}|s_t,a_t)[r_{t+1}+v_\pi(s_{t+1})]</script><p>$\hat v(s,W)\approx v_\pi(s)$ for the approximated value of state s given <strong>weight vector w</strong></p>
+<p>Typically, the number of parameters n <strong>(the number of components of w)</strong> is much <strong>less than</strong> <strong>the number of states,</strong> and changing one parameter changes the estimated value of many states.</p>
+<p>when a single state is <strong>backed up</strong>, the change generalizes from that state to aﬀect the values of <strong>many other states.</strong></p>
+<p><strong>Evaluating function:</strong> always use root-mean-squared error （RMSE均方根误差）</p>
+<script type="math/tex; mode=display">
+RMSE(W)=\sqrt{\displaystyle \sum_{s\in S}d(s)[v_\pi(s)-\hat v(s,W)]^2}</script><p>$s\to[0,1]\ and\ \displaystyle \sum_sd(s)=1$</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>决策简单</li>
+<li>主要应用于离散动作空间的任务</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>值函数的方法无法解决状态空间过大或者不连续的情形 </li>
+</ul>
+<h3 id="Policy-Based"><a href="#Policy-Based" class="headerlink" title="Policy-Based"></a>Policy-Based</h3><h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>参数化策略$\pi$为$\pi_\theta$，然后计算得到<strong>动作上策略梯度</strong>，沿着梯度方法，一点点的调整动作，逐渐得到最优策略。</p>
+<p>每种动作都有可能会被选中，只是可能性不同；不一定是选择概率最高的</p>
+<p>先更新全部状态的值函数，再更新策略，再更新值函数，如此反复。</p>
+<p>包括：</p>
+<ul>
+<li><p>策略评估</p>
+<ul>
+<li>寻找一个描述策略更为准确的值函数</li>
+</ul>
+</li>
+<li><p>策略更新</p>
+<ul>
+<li>基于优化后的值函数，找到一个好的策略</li>
+</ul>
+</li>
+</ul>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>策略化参数的方法更简单，更容易收敛到局部极值点</li>
+<li>稳定性，可靠性强，具有完备的理论性</li>
+<li>主要适用于连续动作空间的任务</li>
+<li>收敛快</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>在评估单个策略时，评估的并不好，容易收敛到局部最小值，方差过大</li>
+<li>大多数的策略梯度算法难以选择合适的梯度更新步长，因而实际情况下评估器的训练常处于振荡不稳定的状态</li>
+<li>算法的实现和调参过程都比较复杂</li>
+</ul>
+<h3 id="Actor-Critic"><a href="#Actor-Critic" class="headerlink" title="Actor-Critic"></a>Actor-Critic</h3><p><strong>优点：</strong></p>
+<ul>
+<li>相比以值函数为中心的算法，Actor - Critic应用了策略梯度的做法，这能让它在<strong>连续动作</strong>或者<strong>高维动作空间</strong>中选取合适的动作</li>
+<li>相比单纯策略梯度，Actor - Critic应用了Q-learning或其他策略评估的做法，使得Actor Critic能进行<strong>单步更新</strong>而不是回合更新，比单纯的Policy Gradient的效率要高。不再使用采样得到的真实回报，<strong>降低了因为采样率导致的方差</strong></li>
+</ul>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="Q-Learning"><a href="#Q-Learning" class="headerlink" title="Q Learning"></a>Q Learning</h3><p>Q-Table：创建一个表格。通过它，我们可以为每一个状态（state）上进行的每一个动作（action）计算出最大的未来奖励（reward）的期望。通过这个表格，我们可以知道为每一个状态采取的最佳动作。</p>
+<h4 id="学习动作值函数（action-value-function）"><a href="#学习动作值函数（action-value-function）" class="headerlink" title="学习动作值函数（action value function）"></a>学习动作值函数（action value function）</h4><p>动作值函数（或称「Q 函数」）有两个输入：「状态」和「动作」。它将返回在该状态下执行该动作的未来奖励期望。</p>
+<p>$Q^\pi(s_t,a_t)=E[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\cdot\cdot\cdot|s_t,a_t]$</p>
+<p>初始化为零，通过迭代地使用Bellman方程（动态规划方程）更新Q(s,a)，给出越来越好的近似</p>
+<h4 id="Algorithm-1"><a href="#Algorithm-1" class="headerlink" title="Algorithm"></a>Algorithm</h4><p><img src="/2018/12/12/Reinforcement-Learning-outline/Q_learning.png" alt=""></p>
+<p>From <a href="https://github.com/simoninithomas" target="_blank" rel="external">simoninithomas</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># List of rewards</span></div><div class="line">rewards = []</div><div class="line"></div><div class="line"><span class="comment"># 2 For life or until learning is stopped</span></div><div class="line"><span class="keyword">for</span> episode <span class="keyword">in</span> range(total_episodes):</div><div class="line">    <span class="comment"># Reset the environment</span></div><div class="line">    state = env.reset()</div><div class="line">    step = <span class="number">0</span></div><div class="line">    done = <span class="keyword">False</span></div><div class="line">    total_rewards = <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(max_steps):</div><div class="line">        <span class="comment"># 3. Choose an action a in the current world state (s)</span></div><div class="line">        <span class="comment">## First we randomize a number</span></div><div class="line">        exp_exp_tradeoff = random.uniform(<span class="number">0</span>, <span class="number">1</span>)</div><div class="line">        </div><div class="line">        <span class="comment">## If this number &gt; greater than epsilon --&gt; exploitation (taking the biggest Q value for this state)</span></div><div class="line">        <span class="keyword">if</span> exp_exp_tradeoff &gt; epsilon:</div><div class="line">            action = np.argmax(qtable[state,:])</div><div class="line"></div><div class="line">        <span class="comment"># Else doing a random choice --&gt; exploration</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            action = env.action_space.sample()</div><div class="line"></div><div class="line">        <span class="comment"># 4.Take the action (a) and observe the outcome state(s') and reward (r)</span></div><div class="line">        new_state, reward, done, info = env.step(action)</div><div class="line"></div><div class="line">        <span class="comment"># 5.Update Q(s,a):= Q(s,a) + lr [R(s,a) + gamma * max Q(s',a') - Q(s,a)]</span></div><div class="line">        <span class="comment"># qtable[new_state,:] : all the actions we can take from new state</span></div><div class="line">        qtable[state, action] = qtable[state, action] + learning_rate * (reward + gamma * np.max(qtable[new_state, :]) - qtable[state, action])</div><div class="line">        </div><div class="line">        total_rewards += reward</div><div class="line">        </div><div class="line">        <span class="comment"># Our new state is state</span></div><div class="line">        state = new_state</div><div class="line">        </div><div class="line">        <span class="comment"># If done (if we're dead) : finish episode</span></div><div class="line">        <span class="keyword">if</span> done == <span class="keyword">True</span>: </div><div class="line">            <span class="keyword">break</span></div><div class="line">        </div><div class="line">    <span class="comment"># Reduce epsilon (because we need less and less exploration)</span></div><div class="line">    epsilon = min_epsilon + (max_epsilon - min_epsilon)*np.exp(-decay_rate*episode) </div><div class="line">    rewards.append(total_rewards)</div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"Score over time: "</span> +  str(sum(rewards)/total_episodes))</div><div class="line">print(qtable)</div></pre></td></tr></table></figure>
+<h3 id="Deep-Q-Network-DQN"><a href="#Deep-Q-Network-DQN" class="headerlink" title="Deep Q Network(DQN)"></a>Deep Q Network(DQN)</h3><p>是一种融合了神经网络和Q Learning的方法，有效解决了使用神经网络非线性动作值函数逼近器带来的不稳定和发散性问题</p>
+<p>将<strong>状态和动作</strong>当成神经网络的<strong>输</strong>入，然后经过神经网络分析后得到动作的 Q 值。</p>
+<p><img src="/2018/12/12/Reinforcement-Learning-outline/DQN.png" alt="DQN"></p>
+<p>通过 NN 预测出Q(s2, a1) 和 Q(s2,a2) 的值, 这就是 Q 估计. 然后我们选取 Q 估计中最大值的动作来换取环境中的奖励 reward；通过旧NN参数加学习率 alpha 乘以Q现实和Q 估计的差来更新神经网络的参数。</p>
+<h4 id="Experience-replay"><a href="#Experience-replay" class="headerlink" title="Experience replay"></a>Experience replay</h4><p>存在一个记忆库，用于每次DQN更新时，随机抽取学习之前的经历，<strong>切断相关性</strong>。</p>
+<h4 id="Fixed-Q-targets"><a href="#Fixed-Q-targets" class="headerlink" title="Fixed Q-targets"></a>Fixed Q-targets</h4><p>通常情况下，能够使得Q大的样本，y也会大，这样模型震荡和发散可能性变大。而构建一个独立的慢于当前Q-Network的target Q-Network来计算y，使得<strong>训练震荡发散可能性降低，更加稳定</strong>。</p>
+<p>DQN 中使用到两个结构相同但参数不同的神经网络, 预测 Q 估计 的神经网络具备最新的参数, 而预测 Q 现实的神经网络使用的参数则是很久以前的</p>
+<h4 id="Algorithm-2"><a href="#Algorithm-2" class="headerlink" title="Algorithm"></a>Algorithm</h4><p><img src="/2018/12/12/Reinforcement-Learning-outline/DQN-algorithm.jpg" alt=""></p>
+<p>算法流程描述：(from <a href="https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/1-1-A-RL/" target="_blank" rel="external">莫烦</a>)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> maze_env <span class="keyword">import</span> Maze</div><div class="line"><span class="keyword">from</span> RL_brain <span class="keyword">import</span> DeepQNetwork</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_maze</span><span class="params">()</span>:</span></div><div class="line">    step = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> episode <span class="keyword">in</span> range(<span class="number">300</span>):</div><div class="line">        <span class="comment"># initialization</span></div><div class="line">        observation = env.reset()</div><div class="line">        </div><div class="line">		<span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="comment"># 刷新环境</span></div><div class="line">            env.render()</div><div class="line"></div><div class="line">            <span class="comment"># DQN 根据观测值选择行为</span></div><div class="line">            action = RL.choose_action(observation)</div><div class="line"></div><div class="line">            <span class="comment"># 环境根据行为给出下一个 state, reward, 是否终止</span></div><div class="line">            observation_, reward, done = env.step(action)</div><div class="line"></div><div class="line">            <span class="comment"># DQN 存储记忆</span></div><div class="line">            RL.store_transition(observation, action, reward, observation_)</div><div class="line"></div><div class="line">            <span class="comment"># 控制学习起始时间和频率 (先累积一些记忆再开始学习)</span></div><div class="line">            <span class="keyword">if</span> (step &gt; <span class="number">200</span>) <span class="keyword">and</span> (step % <span class="number">5</span> == <span class="number">0</span>):</div><div class="line">                RL.learn()</div><div class="line"></div><div class="line">            <span class="comment"># 将下一个 state_ 变为 下次循环的 state</span></div><div class="line">            observation = observation_</div><div class="line"></div><div class="line">            <span class="comment"># 如果终止, 就跳出循环</span></div><div class="line">            <span class="keyword">if</span> done:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            step += <span class="number">1</span>   <span class="comment"># 总步数</span></div><div class="line"></div><div class="line">    <span class="comment"># end of game</span></div><div class="line">    print(<span class="string">'game over'</span>)</div><div class="line">    env.destroy()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    env = Maze()</div><div class="line">    RL = DeepQNetwork(env.n_actions, env.n_features,</div><div class="line">                      learning_rate=<span class="number">0.01</span>,</div><div class="line">                      reward_decay=<span class="number">0.9</span>,</div><div class="line">                      e_greedy=<span class="number">0.9</span>,</div><div class="line">                      replace_target_iter=<span class="number">200</span>,  <span class="comment"># 每 200 步替换一次 target_net 的参数</span></div><div class="line">                      memory_size=<span class="number">2000</span>, <span class="comment"># 记忆上限</span></div><div class="line">                      <span class="comment"># output_graph=True   # 是否输出 tensorboard 文件</span></div><div class="line">                      )</div><div class="line">    env.after(<span class="number">100</span>, run_maze)</div><div class="line">    env.mainloop()</div><div class="line">    RL.plot_cost()  <span class="comment"># 输出神经网络的误差曲线</span></div></pre></td></tr></table></figure>
+<p>神经网络结构</p>
+<p><code>target_net</code> 用于预测 <code>q_target</code> 值, 他不会及时更新参数，是<code>eval_net</code>的历史版本，通过<code>trainable=True</code></p>
+<p> <code>eval_net</code> 用于预测 <code>q_eval</code>, 这个神经网络拥有最新的神经网络参数</p>
+<p>不过这两个神经网络结构是完全一样的, 只是里面的参数不一样</p>
+<h4 id="DDQN"><a href="#DDQN" class="headerlink" title="DDQN"></a>DDQN</h4><p>DDQN：Double DQN，本质上是构造了两个Q网络</p>
+<h4 id="Dueling-DQN"><a href="#Dueling-DQN" class="headerlink" title="Dueling DQN"></a>Dueling DQN</h4><h3 id="DDPG"><a href="#DDPG" class="headerlink" title="DDPG"></a>DDPG</h3><p>深度确定策略梯度：Continuous control with deep reinforcement learning</p>
+<p>DQN+actor-critic算法</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>好冷的天呐～</p>
+<p>成功将星巴克的三杯圣诞主题外加小甜点都吃到啦～</p>
+<p>嘿嘿嘿～</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=17423740&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/30/Deep-learning-frameworks/" rel="next" title="Deep Learning Frameworks">
+                <i class="fa fa-chevron-left"></i> Deep Learning Frameworks
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#强化学习"><span class="nav-number">1.</span> <span class="nav-text">强化学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类"><span class="nav-number">2.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markov"><span class="nav-number">2.1.</span> <span class="nav-text">Markov</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MDP"><span class="nav-number">2.1.1.</span> <span class="nav-text">MDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Free"><span class="nav-number">2.1.2.</span> <span class="nav-text">Model-Free</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-based"><span class="nav-number">2.1.3.</span> <span class="nav-text">Model-based</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#On-policy"><span class="nav-number">2.1.4.</span> <span class="nav-text">On-policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Off-policy"><span class="nav-number">2.1.5.</span> <span class="nav-text">Off-policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value-Based"><span class="nav-number">2.1.6.</span> <span class="nav-text">Value-Based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Notation"><span class="nav-number">2.1.6.2.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.1.6.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">2.1.6.4.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policy-Based"><span class="nav-number">2.1.7.</span> <span class="nav-text">Policy-Based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想-1"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.1.7.3.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-Critic"><span class="nav-number">2.1.8.</span> <span class="nav-text">Actor-Critic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Learning"><span class="nav-number">2.2.1.</span> <span class="nav-text">Q Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#学习动作值函数（action-value-function）"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">学习动作值函数（action value function）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-1"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-Q-Network-DQN"><span class="nav-number">2.2.2.</span> <span class="nav-text">Deep Q Network(DQN)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Experience-replay"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">Experience replay</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fixed-Q-targets"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Fixed Q-targets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-2"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DDQN"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">DDQN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dueling-DQN"><span class="nav-number">2.2.2.5.</span> <span class="nav-text">Dueling DQN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDPG"><span class="nav-number">2.2.3.</span> <span class="nav-text">DDPG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">2.3.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
