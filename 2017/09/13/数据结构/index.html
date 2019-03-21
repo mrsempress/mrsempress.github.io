@@ -101,19 +101,19 @@
 
 
 
-<meta name="description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。（未完待续）">
+<meta name="description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。  2019.03.19  对于面试基础知识的准备，今天开始复习数据结构部分了，同时将此篇博文进行扩展，相对于原目的acm来说，会增加一些细节部分">
 <meta name="keywords" content="队列,图,栈,链表,二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构——基础">
 <meta property="og:url" content="http://mrsempress.top/2017/09/13/数据结构/index.html">
 <meta property="og:site_name" content="Mrs_empress">
-<meta property="og:description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。（未完待续）">
+<meta property="og:description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。  2019.03.19  对于面试基础知识的准备，今天开始复习数据结构部分了，同时将此篇博文进行扩展，相对于原目的acm来说，会增加一些细节部分">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://mrsempress.top/2017/09/13/数据结构/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png">
-<meta property="og:updated_time" content="2018-02-07T14:31:50.720Z">
+<meta property="og:updated_time" content="2019-03-21T15:09:13.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构——基础">
-<meta name="twitter:description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。（未完待续）">
+<meta name="twitter:description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。  2019.03.19  对于面试基础知识的准备，今天开始复习数据结构部分了，同时将此篇博文进行扩展，相对于原目的acm来说，会增加一些细节部分">
 <meta name="twitter:image" content="http://mrsempress.top/2017/09/13/数据结构/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png">
 
 
@@ -266,6 +266,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/ChenxiHuang%20.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -400,23 +410,194 @@
       
 
       
-        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。<br>（未完待续）<br><a id="more"></a></p>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><hr>
-<p>所谓栈，就是LIFO，后进先出。具有pop、push、top三种基本操作。其头文件为<code>&lt;stack&gt;</code>，用<code>stack&lt;int&gt;s</code>来声明一个栈。<br>例题：UVA12096</p>
-<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><hr>
-<h2 id="（原始）队列"><a href="#（原始）队列" class="headerlink" title="（原始）队列"></a>（原始）队列</h2><p>所谓队列，就是FIFO，先进先出。具有pop、push、front三种基本操作。其头文件为<code>&lt;queue&gt;</code>，用<code>queue&lt;int&gt;s</code>来声明一个队列。<br>例题：UVA540</p>
-<h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><p>优先队列是一种抽象数据类型，ADT。先出队列的是队列中优先级最高的元素。具有pop、push、top三种基本操作。其头文件为<code>&lt;queue&gt;</code>,用<code>priority_queue&lt;int&gt;pq</code>来声明，在这个例子中，越小的整数优先级越低。而对于自定义类型的优先队列，可以定义一个结构体cmp，重载<code>（）</code>。<br>例如，要实现一个“个位数大的整数优先级反而小的优先队列。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct cmp&#123;</div><div class="line">		bool operator() (const int a, const int b) const&#123;</div><div class="line">				<span class="built_in">return</span> a%10&gt;b%10;</div><div class="line">		&#125;</div><div class="line">&#125;</div><div class="line">priority_queue&lt;int,vector&lt;int&gt;,cmp&gt;pq;</div></pre></td></tr></table></figure></p>
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.<br>数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。</p>
+<hr>
+<p>2019.03.19 </p>
+<p>对于面试基础知识的准备，今天开始复习数据结构部分了，同时将此篇博文进行扩展，相对于原目的acm来说，会增加一些细节部分</p>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>数据结构从一般的表、树、图，到扩展的网络、集合代数论、格、关系等方面</p>
+<p><strong>数据</strong>是对客观事物的符号表示，在计算机科学中是指所有能输入到计算机中并被计算机程序处理的符号的总称</p>
+<p><strong>数据元素</strong>是数据的基本单位，在计算机程序中通常作为一个整体进行考虑和处理；一个数据元素可由若干个<strong>数据项</strong>组成；数据项是数据的不可分割的最小单位</p>
+<p><strong>数据对象</strong>是性质相同的数据元素的集合，是数据的一个子集</p>
+<hr>
+<p><strong>数据结构</strong>是相互之间存在一种或多种特定关系的数据元素的集合；通常有4类基本结构：<strong>集合</strong>（同属于一个集合的关系）、<strong>线性结构</strong>（一个对一个的关系）、<strong>树形结构</strong>（一个对多个的关系）、<strong>图状结构或网状结构</strong>（多个对多个的结构）</p>
+<script type="math/tex; mode=display">
+Data\_Structure = (D, S)</script><p>其中$D$是数据元素的有限集，$S$是$D$上关系的有限集</p>
+<p>数据结构在计算机中的表示（又称映像）称为数据的<strong>物理结构</strong>，又称<strong>存储结构</strong>。它包括数据元素的表示和关系的表示。在计算机中表示信息的最小单位是二进制数的一位，叫做<strong>位</strong>。用由若干数据项组合起来形成的一个位串表示一个数据元素，通常称这个位串为<strong>元素</strong>或<strong>结点</strong>。当数据元素由若干数据项组成时，位串中对应于各个数据项的子位串称为<strong>数据域</strong>。</p>
+<hr>
+<p>数据元素之间的关系在计算机中有两种不同的表示方法：<strong>顺序映像</strong>和<strong>非顺序映像</strong>；由此得到两种不同的存储结构：<strong>顺序存储结构</strong>（相对位置）和<strong>链式存储结构</strong>（指针）</p>
+<p><strong>数据类型</strong>是<em>一个值的集合</em>和定义在这个值集上的<em>一组操作</em>的总称，高级程序语言中可分为<strong>非结构的原子型</strong>（不可分解的）和<strong>结构类型</strong>（它的成分可以是非结构的，也可以是结构的）</p>
+<p><strong>抽象数据类型 ADT</strong>是指一个数学模型以及定义在该模型上的一组操作。分为原子类型、固定聚合类型、可变聚合类型。</p>
+<script type="math/tex; mode=display">
+ADT = (D,S,P)</script><p>其中$P$是对$D$的基本操作集</p>
+<p><strong>多形数据类型</strong>是指其值的<em>成分不确定</em>的数据类型（感觉像是模版类这种）</p>
+<hr>
+<p><strong>算法</strong>是对特定问题求解步骤的一种描述，它是指令的有限序列，其中每一条指令表示一个或多个操作；其含有5个重要特性：有穷性、确定性、可行性、输入（0个或多个）、输出（<em>一个</em>或多个）；算法设计的目标：正确性、可读性、健壮性（输入非法时）、效率与低存储量需求（问题规模、使用的语言、策略、机器、机器代码的质量）</p>
+<p>一个算法是由<strong>控制结构</strong>（顺序、分支和循环）和<strong>原操作</strong>（固有数据类型的操作）构成的</p>
+<hr>
+<p><strong>渐近时间复杂度</strong>（<em>asymptotic time complexity</em>），简称<strong>时间复杂度</strong>，$T(n)=O(f(n))$</p>
+<p>语句的<strong>频度</strong>是指该语句重复执行的次数</p>
+<p><strong>空间复杂度</strong>，$S(n)=O(f(n))$</p>
+<p>若额外空间相对于输入数据量来说是常数，则称此算法为<strong>原地工作</strong></p>
+<script type="math/tex; mode=display">
+O(1)<O(lgn)<O(n)<O(nlgn)<O(n^2)<O(2^n)</script><h1 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h1><p>在数据元素的非空有限集合中：</p>
+<ul>
+<li>存在唯一的一个被称做“第一个”的数据元素“</li>
+<li>存在唯一的一个被称做”最后一个“的数据元素</li>
+<li>除第一个之外，集合中的每个数据元素均只有一个前驱</li>
+<li>除最后一个之外，集合中每个数据元素均只有一个后继</li>
+</ul>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><blockquote>
+<p>n个数据元素的有限序列</p>
+</blockquote>
+<p>常把数据元素称为<strong>记录</strong>，含有大量记录的线性表又称<strong>文件</strong></p>
+<p>操作：访问、插入、删除</p>
+<h3 id="顺序表示"><a href="#顺序表示" class="headerlink" title="顺序表示"></a>顺序表示</h3><p>用一组<em>地址连续</em>的存储单元依次存储线性表的数据元素</p>
+<script type="math/tex; mode=display">
+LOC(a_i)=LOC(a_1)+(i-1)*l</script><p>其中$l$为存储宽度</p>
+<p><strong>随机存取</strong>的存储结构，但是插入或者删除操作，需移动大量元素</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">L.elem = (ELemType *)<span class="built_in">malloc</span>(LIST_INIT_SIZE * <span class="keyword">sizeof</span>(ElemType));</div></pre></td></tr></table></figure>
+<h3 id="链式表示"><a href="#链式表示" class="headerlink" title="链式表示"></a>链式表示</h3><p>用一组<em>任意的存储单元</em>（可以是连续的，也可以是不连续的）存储线性表的数据元素</p>
+<p>数据元素$a_i$的存储映象，称为<strong>结点</strong>；它包含两个域，其中存储数据元素信息的域称为<strong>数据域</strong>；存储直接后继位置的域称为<strong>指针域</strong>。指针域中存储的信息称为指针或链</p>
+<p>n个结点链结成一个链表，即为线性表的链式存储结构</p>
+<hr>
+<p>每个结点中只包含一个指针域，故又称<strong>线性链表</strong>或<strong>单链表</strong></p>
+<p>整个链表的存取必须从<strong>头指针</strong>开始进行，最后一个数据元素没有直接后继，则线性链表中最后一个结点的指针为“空”（NULL）</p>
+<p>有时，在单链表的第一个结点之前附设一个结点，称之为<strong>头结点</strong>；其数据域可以不存储任何信息，也可以存储如线性表的长度等的附加信息；这样可以使对第一个元素结点的操作与表中其他结点操作一致，对空表和非空表操作一致</p>
+<p>$p\to next$是指向$a_i$的指针    $p\to next\to data$才是数据元素$a_i$</p>
+<hr>
+<p><strong>循环链表</strong>，表中最后一个结点的指针域指向头结点，整个链表形成一个环。</p>
+<hr>
+<p><strong>双向链表</strong>，在双向链表的结点中有两个指针域，其一指向直接后继，另一指向直接前驱</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>所谓栈，限定<em>仅在表尾</em>进行插入或删除操作的线性表，表尾端称为<strong>栈顶top</strong>，相应地表头断称为<strong>栈底bottom</strong>；不含元素的空表称为<strong>空栈</strong>；<strong>LIFO结构</strong>，后进先出。具有pop出栈、push入栈、top三种基本操作。其头文件为<code>&lt;stack&gt;</code>，用<code>stack&lt;int&gt;s</code>来声明一个栈。</p>
+<hr>
+<p>顺序栈、链栈</p>
+<hr>
+<p>例题：括号匹配、数值转换、迷宫求解、表达式求值、Hanoi塔问题、UVA12096</p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="（原始）队列"><a href="#（原始）队列" class="headerlink" title="（原始）队列"></a>（原始）队列</h3><p>所谓队列，就是FIFO，先进先出。具有pop、push、front三种基本操作。其头文件为<code>&lt;queue&gt;</code>，用<code>queue&lt;int&gt;s</code>来声明一个队列。<br>例题：UVA540</p>
+<h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h3><p>优先队列是一种抽象数据类型，ADT。先出队列的是队列中优先级最高的元素。具有pop、push、top三种基本操作。其头文件为<code>&lt;queue&gt;</code>,用<code>priority_queue&lt;int&gt;pq</code>来声明，在这个例子中，越小的整数优先级越低。而对于自定义类型的优先队列，可以定义一个结构体cmp，重载<code>（）</code>。<br>例如，要实现一个“个位数大的整数优先级反而小的优先队列。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct cmp&#123;</div><div class="line">		bool operator() (const int a, const int b) const&#123;</div><div class="line">				<span class="built_in">return</span> a%10&gt;b%10;</div><div class="line">		&#125;</div><div class="line">&#125;</div><div class="line">priority_queue&lt;int,vector&lt;int&gt;,cmp&gt;pq;</div></pre></td></tr></table></figure></p>
 <p><strong>注</strong> 两个<code>&gt;&gt;</code>不要写在一起，编译器可能难以理解。<br>例题：UVA136</p>
-<h2 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h2><p>双端队列，可以支持快速地在首尾两端进行插入和删除。<br>具有front、back、pop_front、pop_back、erase、push_front、push_back、insert三种基本操作。其头文件为<code>&lt;deque&gt;</code>，用<code>deque&lt;int&gt;s</code>来声明一个队列。<br>在xcode上试验了一下，结果如下：<br><img src="/2017/09/13/数据结构/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png" alt="屏幕快照 2017-09-14 下午8.35.17"></p>
-<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><hr>
-<p>链表存储中，在一般学习中我们有两种方法。一则是用数组，开辟一个next数组，记录其下一个指向的元素的下标，同时也需要规定一个结束标志；二则是用指针，但在acm竞赛中，我们很少会使用指针，主要是为了防止出错。<br>链表还可以分为单向链表、双向链表、循环链表。</p>
-<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><hr>
+<h3 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h3><p>双端队列，可以支持快速地在首尾两端进行插入和删除。<br>具有front、back、pop_front、pop_back、erase、push_front、push_back、insert三种基本操作。其头文件为<code>&lt;deque&gt;</code>，用<code>deque&lt;int&gt;s</code>来声明一个队列。<br>在xcode上试验了一下，结果如下：<br><img src="/2017/09/13/数据结构/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png" alt="屏幕快照 2017-09-14 下午8.35.17"></p>
+<h3 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h3><h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><p>字符串一般简称为串，由<strong>零个</strong>或多个字符组成的有限序列</p>
+<p><strong>块链结构</strong>，每个结点包含固定的字符，若最后不是整数倍的用<code>#</code>填满，由此产生了<strong>串值的存储密度</strong>的概念</p>
+<h3 id="串的模式匹配"><a href="#串的模式匹配" class="headerlink" title="串的模式匹配"></a>串的模式匹配</h3><p><strong>暴力法BF</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t, <span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = pos;</div><div class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(i &lt;= s[<span class="number">0</span>] &amp;&amp; j &lt;= t[<span class="number">0</span>]) &#123;</div><div class="line">        <span class="keyword">if</span>(s[i] == t[j]) &#123;</div><div class="line">            i++; j++;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            i = i - j + <span class="number">2</span>; <span class="comment">//j-1一个匹配，本趟起始位置为i-(j-1)，所以下一趟从i-j+1+1开始</span></div><div class="line">            j = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	<span class="keyword">if</span>(j &gt; t[<span class="number">0</span>]) <span class="keyword">return</span> i - t[<span class="number">0</span>];</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>KMP算法</strong>（克努特-莫里斯-普拉特）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_next</span><span class="params">(<span class="built_in">string</span> t, <span class="keyword">int</span> next[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</div><div class="line">  next[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || t[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">      next[i] = j;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j = next[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 上面的仍有缺陷，如模式“aaaab”和主串“aaabaaaab”，对于234的a这点不匹配的时候，那肯定也和它的next[i]不匹配，因此可以跳过，优化如下</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_nextval</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> nextval[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</div><div class="line">  nextval[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || t[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">      <span class="keyword">if</span>(t[i] != t[j]) nextval[i] = j;</div><div class="line">			<span class="keyword">else</span> nextval[i] = nextval[j];</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j = nextval[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">index_KMP</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t, <span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = pos, j = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; s[<span class="number">0</span>] &amp;&amp; j &lt;= t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || s[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j= next[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组一旦被定义，它的维数和维界就不再改变。因此，除了结构的初始化和销毁之外，数组只有<em>存取元素</em>和<em>修改元素值</em>的操作</p>
+<p>有以<strong>列</strong>为主序和以<strong>行</strong>为主序</p>
+<p>若以行为主，则：</p>
+<script type="math/tex; mode=display">
+LOC(j_1,j_2,\cdot\cdot\cdot,j_n) = LOC(0,0,\cdot\cdot\cdot,0) + (b2*\cdot\cdot\cdot*b_n*j_1+b3*\cdot\cdot\cdot*b_n*j_2+\cdot\cdot\cdot+b_n*j_{n-1}+j_n)L\\=LOC(0,0,\cdot\cdot\cdot,0)+\sum^n_{i=1}c_ij_i</script><p>其中$c_n=L,c_{i-1}=b_i*c_i,1&lt;i\leq n$</p>
+<p>一旦确定了数组的各维的长度，$c_i$就是常数。由于计算各元素存储位置的时间相等，所以<em>存取数组中任一元素的时间也相等</em>。称具有这一特点的存储结构为<strong>随机存储结构</strong>。</p>
+<hr>
+<p>矩阵的<strong>压缩存储</strong>：为多个值相同的元只分配一个存储空间，对零元不分配空间</p>
+<p>假如值相同的元素或者零元素在矩阵中的分布有一定规律，称此类矩阵为<strong>特殊矩阵</strong>；反之，称为<strong>稀疏矩阵</strong></p>
+<hr>
+<p>n阶<strong>对称矩阵</strong></p>
+<script type="math/tex; mode=display">
+a_{ij}=a_{ji}</script><p>我们可以行序为主序存储其下三角</p>
+<hr>
+<p><strong>对角矩阵</strong>：所有的非零元都集中在以主对角为中心的带状区域中</p>
+<hr>
+<p>假设在$m<em>n$的矩阵中，有$t$各元素不为零。则矩阵的<strong>稀疏因子</strong>$\delta=\frac{t}{m</em>n}$</p>
+<p>通常认为$\delta\leq 0.05$时，称为稀疏矩阵</p>
+<p>可以只存储非零元的位置和值，也就是用一个三元组$(i,j,a_{ij})$；也可以存储每行每列有几个，第一个开始的位置；十字链表，行列的后继</p>
+<h2 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h2><script type="math/tex; mode=display">
+LS=(\alpha_1,\alpha_2,\cdot\cdot\cdot,\alpha_n)</script><p>与线性表不同的是，$a_i​$不仅限于单个元素，而是可以是广义表；所以有<strong>表结点</strong>和<strong>原子结点</strong></p>
+<p>当广义表$LS$非空时，称第一个元素$a_1$为$LS$的<strong>表头</strong>，称其余元素组成的广义表$(\alpha_2,\alpha_3,\cdot\cdot\cdot,\alpha_n)$是$LS$的<strong>表尾</strong></p>
+<p>列表可以为其他列表所共享，也可以递归自己</p>
+<p>表头可以是单个元素，也可以是列表；<em>表尾一定是列表</em></p>
+<h1 id="树型结构"><a href="#树型结构" class="headerlink" title="树型结构"></a>树型结构</h1><p>树是以分支关系定义的层次结构；树是$n(0\leq n)$个结点的有限集</p>
+<p><strong>结点</strong></p>
+<p><strong>度：</strong>结点拥有的<strong>子树数</strong>称为结点的度</p>
+<p><strong>叶子/终端结点：</strong>度为0的结点</p>
+<p><strong>分支结点/非终端结点：</strong>度不为0的结点（除根结点之外，分支结点也称为内部结点）</p>
+<p><strong>树的度：</strong>树内各结点的度的最大值</p>
+<p><strong>孩子：</strong>结点的子树的根（相应地，该结点称为孩子的双亲）</p>
+<p><strong>兄弟：</strong>同一双亲的孩子之间互称兄弟</p>
+<p><strong>堂兄弟：</strong>其双亲在同一层的结点互为堂兄弟</p>
+<p><strong>层次：</strong>结点的层次从根开始定义起</p>
+<p><strong>深度/高度：</strong>树中结点的最大层次</p>
+<p><strong>有序树/无序数</strong></p>
+<p><strong>森林：</strong>$m(0\leq m)$棵互不相交的树的集合（双亲表示法、孩子表示法、孩子兄弟表示法）</p>
+<p>森林$\to$二叉树，孩子左结点，兄弟右节点</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>有序树</p>
 <p>递归的定义为：二叉树要么为空，要么由根结点、左子树和右子树组成，而左子树和右子树又分别是一颗二叉树。</p>
-<h2 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h2><p>一般所要用的知识，即：左结点 2k 右结点 2k+1；其余规律，可以参考数据结构的书本。<br><strong>注</strong> 在用内存申请的方法下建树时，勿忘释放空间。<br>当然在acm中，为了避免指针的出现，我们可以开两个数组，left和right。若是编号跳跃性，则可以定义一个结构体。</p>
-<h2 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h2><p>先序遍历：DLR<br>中序遍历：LDR<br>后序遍历：LRD<br>层次遍历<br>这里的序，都是参照根来的。以此衍生出来的题目，有给你两个遍历方式，推出另一种遍历方式，当然，不是任意两种遍历方式都可以的。一般考察的是<code>先序+中序-&gt;后序</code>；<code>中序+后续-&gt;先序</code>；<code>中序+层次-&gt;后序</code>。主要掌握遍历规则，再配合queue和stack应该就能做出来了。<br>刚学数据结构的时候，做了好多题，好久没碰，就来一发吧！</p>
-<h2 id="例题：UVA-548"><a href="#例题：UVA-548" class="headerlink" title="例题：UVA 548"></a>例题：UVA 548</h2><h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3><p>给定中序和后序遍历，找一个叶子使得它到根的路径上的权和最小。如果有多解，该叶子本身的权应尽量小。权值各不相同，且都是小于10000的正整数。<br>首先我们就需要根据中序和后序遍历，建树。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;string&gt;</span></div><div class="line"><span class="comment">#include &lt;sstream&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">const int maxn=10000+10;</div><div class="line">int in_order[maxn],post_order[maxn],lch[maxn],rch[maxn];</div><div class="line">int n;</div><div class="line"></div><div class="line">bool read_list(int *a)&#123;</div><div class="line">    string line;</div><div class="line">    <span class="keyword">if</span>(!getline(cin,line))<span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">    stringstream ss(line);</div><div class="line">    n=0;</div><div class="line">    int x;</div><div class="line">    <span class="keyword">while</span>(ss&gt;&gt;x)a[n++]=x;</div><div class="line">    <span class="built_in">return</span> n&gt;0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int build(int L1,int R1,int L2,int R2)&#123;</div><div class="line">    <span class="keyword">if</span>(L1&gt;R1) <span class="built_in">return</span> 0;</div><div class="line">    int root=post_order[R2];</div><div class="line">    int p=L1;</div><div class="line">    <span class="keyword">while</span>(in_order[p]!=root)p++;</div><div class="line">    int cnt=p-L1;</div><div class="line">    lch[root]=build(L1,p-1,L2,L2+cnt-1);</div><div class="line">    rch[root]=build(p+1,R1,L2+cnt,R2-1);</div><div class="line">    <span class="built_in">return</span> root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int best,best_sum;</div><div class="line"></div><div class="line">void dfs(int u,int sum)&#123;</div><div class="line">    sum+=u;</div><div class="line">    <span class="keyword">if</span>(!lch[u]&amp;&amp;!rch[u])&#123;</div><div class="line">        <span class="keyword">if</span>(sum&lt;best_sum||(sum==best_sum&amp;&amp;u&lt;best))&#123;</div><div class="line">            best=u;</div><div class="line">            best_sum=sum;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(lch[u]) dfs(lch[u],sum);</div><div class="line">    <span class="keyword">if</span>(rch[u]) dfs(rch[u],sum);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">while</span>(read_list(in_order))&#123;</div><div class="line">        read_list(post_order);</div><div class="line">        build(0, n-1, 0, n-1);</div><div class="line">        best_sum=1e9;</div><div class="line">        dfs(post_order[n-1], 0);</div><div class="line">        cout&lt;&lt;best&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此代码稍微改一改就是我数据结构机考的一题咯！</p>
-<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><hr>
+<h3 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h3><p>一般所要用的知识，即：其余规律，可以参考数据结构的书本。</p>
+<ul>
+<li>第$i$层上至多有$2^{i-1}$个结点$(1\leq i)$</li>
+<li>深度为$k$的二叉树至多有$2^k-1$个结点$(1\leq k)$</li>
+<li>对任何一棵二叉树$T$，如果其终端结点数为$n_0$，度为2的结点数为$n_2$，则$n_0=n_2+1$<ul>
+<li>因为$n_0+n_1+n_2=n_0=n_1+2*n_2+1$</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>特殊的二叉树：<strong>满二叉树、完全二叉树</strong>（满二叉树一定是完全二叉树）</p>
+<hr>
+<p><strong>完全二叉树的性质：</strong></p>
+<ul>
+<li>具有n个结点的完全二叉树的深度为$\lfloor log_2 n \rfloor + 1$</li>
+<li>左结点 $2k$；右结点 $2k+1$；双亲$\lfloor i/2 \rfloor$</li>
+</ul>
+<hr>
+<p>顺序存储：适合完全二叉树</p>
+<p>链式存储：</p>
+<ul>
+<li>二叉链表（左右孩子指针、数据域）</li>
+<li>三叉链表（增加双亲指针）</li>
+<li>线索二叉树<ul>
+<li>若结点有左子树，则其lchild域指示其左孩子，否则令lchild域指示其前驱</li>
+<li>若结点有右子树，则其rchild域指示其右孩子，否则令rchild域指示其后继</li>
+<li>增加两个标志域</li>
+<li>指向前驱后继的指针，称为<strong>线索</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>注</strong> 在用内存申请的方法下建树时，勿忘释放空间。<br>当然在acm中，为了避免指针的出现，我们可以开两个数组，left和right。若是编号跳跃性，则可以定义一个结构体。</p>
+<h2 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h2><p>先序遍历：DLR 波兰式<br>中序遍历：LDR<br>后序遍历：LRD 逆波兰式<br>层次遍历<br>这里的序，都是参照根来的。以此衍生出来的题目，有给你两个遍历方式，推出另一种遍历方式，当然，不是任意两种遍历方式都可以的。一般考察的是<code>先序+中序-&gt;后序</code>；<code>中序+后续-&gt;先序</code>；<code>中序+层次-&gt;后序</code>。主要掌握遍历规则，再配合queue和stack应该就能做出来了。</p>
+<p>刚学数据结构的时候，做了好多题，好久没碰，就来一发吧！</p>
+<h2 id="例题：UVA-548"><a href="#例题：UVA-548" class="headerlink" title="例题：UVA 548"></a>例题：UVA 548</h2><h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3><p>给定中序和后序遍历，找一个叶子使得它到根的路径上的权和最小。如果有多解，该叶子本身的权应尽量小。权值各不相同，且都是小于10000的正整数。<br>首先我们就需要根据中序和后序遍历，建树。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;string&gt;</span></div><div class="line"><span class="comment">#include &lt;sstream&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">const int maxn=10000+10;</div><div class="line">int in_order[maxn],post_order[maxn],lch[maxn],rch[maxn];</div><div class="line">int n;</div><div class="line"></div><div class="line">bool read_list(int *a)&#123;</div><div class="line">    string line;</div><div class="line">    <span class="keyword">if</span>(!getline(cin,line))<span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">    stringstream ss(line);</div><div class="line">    n=0;</div><div class="line">    int x;</div><div class="line">    <span class="keyword">while</span>(ss&gt;&gt;x)a[n++]=x;</div><div class="line">    <span class="built_in">return</span> n&gt;0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int build(int L1,int R1,int L2,int R2)&#123;</div><div class="line">    <span class="keyword">if</span>(L1&gt;R1) <span class="built_in">return</span> 0;</div><div class="line">    int root=post_order[R2];</div><div class="line">    int p=L1;</div><div class="line">    <span class="keyword">while</span>(in_order[p]!=root)p++;</div><div class="line">    int cnt=p-L1;</div><div class="line">    lch[root]=build(L1,p-1,L2,L2+cnt-1);</div><div class="line">    rch[root]=build(p+1,R1,L2+cnt,R2-1);</div><div class="line">    <span class="built_in">return</span> root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int best,best_sum;</div><div class="line"></div><div class="line">void dfs(int u,int sum)&#123;</div><div class="line">    sum+=u;</div><div class="line">    <span class="keyword">if</span>(!lch[u]&amp;&amp;!rch[u])&#123;</div><div class="line">        <span class="keyword">if</span>(sum&lt;best_sum||(sum==best_sum&amp;&amp;u&lt;best))&#123;</div><div class="line">            best=u;</div><div class="line">            best_sum=sum;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(lch[u]) dfs(lch[u],sum);</div><div class="line">    <span class="keyword">if</span>(rch[u]) dfs(rch[u],sum);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">while</span>(read_list(in_order))&#123;</div><div class="line">        read_list(post_order);</div><div class="line">        build(0, n-1, 0, n-1);</div><div class="line">        best_sum=1e9;</div><div class="line">        dfs(post_order[n-1], 0);</div><div class="line">        cout&lt;&lt;best&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此代码稍微改一改就是我数据结构机考的一题咯！（时隔两年的自己：好傻啊，这孩子(-.-)）</p>
+<h3 id="哈夫曼树-最优树-赫夫曼树"><a href="#哈夫曼树-最优树-赫夫曼树" class="headerlink" title="哈夫曼树/最优树/赫夫曼树"></a>哈夫曼树/最优树/赫夫曼树</h3><p>从树中一个结点到另一个结点之间的分支构成这两个结点之间的路径，路径上的分支数目称做<strong>路径长度</strong>；<strong>树的路径长度</strong>是从树根到每一个结点的路径长度之和，通常记为$WPL=\displaystyle\sum^n_{k=1}w_kl_k$</p>
+<p>其中<strong>WPL最小的二叉树</strong>称作哈夫曼树</p>
+<hr>
+<p><strong>建立：</strong>每一个结点，作为带权值的左右子树均为空的树，然后就是每次取最小，同时设置根的权值为其左右孩子的权值之和，从集合中删除取得两个树，直到剩下一颗树为止</p>
+<p><strong>编码：</strong>左右用10区分</p>
+<p>若要设计长短不等的编码，则必须是任一字符的编码都不是另一个字符的编码的前缀，这种编码称为<strong>前缀编码</strong></p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p><strong>顶点：</strong>数据元素</p>
+<p>$V$是顶点的有穷非空集合；$VR$是两个顶点之间的关系的集合</p>
+<hr>
+<p>若$<v,w>\in VR$，则$<v,w>$表示从$v$到$w$的一条<strong>弧</strong>，且$v$为弧尾或初始点，$w$为弧头或终端点，此时的图称为<strong>有向图</strong></v,w></v,w></p>
+<p>若$<v,w>\in VR$必有$<w,v>\in VR$，即$VR$是对称的，则以无序对$(v,w)$代替这两个有序对，表示$v$和$w$之间的一条<strong>边</strong>，此时的图称为<strong>无向图</strong></w,v></v,w></p>
+<p>我们用$n$表示图中顶点数目，用$e$表示边或弧的数目</p>
+<p>对于无向图，e的取值范围为$0$到$\frac 1 2n(n-1)$，有$\frac 1 2n(n-1)$条边的无向图称为<strong>完全图</strong></p>
+<p>对于有图，e的取值范围为$0$到$n(n-1)$，有$n(n-1)$条弧的有向图称为<strong>有向完全图</strong></p>
+<p>有很少条边或弧（如$e&lt;nlogn​$）的图称为<strong>稀疏图</strong>，反之称为<strong>稠密图</strong></p>
+<p>与图的边或弧具有与它相关的数叫做<strong>权</strong>，带权的图通常称为<strong>网</strong></p>
+<hr>
+<p><strong>子图</strong></p>
+<p><strong>邻接点</strong>：一条边的两个顶点的互称    （边）<strong>依附</strong>（两个顶点），或者说它们边和两个顶点相关联</p>
+<p><strong>度</strong>    <strong>入度</strong>    <strong>出度</strong></p>
+<p><strong>路径</strong>    <strong>回路/环</strong>    <strong>简单路径</strong>（顶点不重复）</p>
+<p>无向图：<strong>连通图</strong>    <strong>连通分量</strong>    </p>
+<p>有向图：<strong>强连通图</strong>    <strong>强连通分量</strong></p>
+<p><strong>关节点</strong>（删去此点后一个连通分量分割成两个或两个以上的连通分量）【若生成树的根有两个及以上的子树，则根结点必是关节点）</p>
+<p><strong>重连通图：</strong>一个没有关节点的连通图</p>
+<p>若在连通图上至少删去k个顶点才能破坏图的连通性，则称此图的连通度为k</p>
+<hr>
+<p>存储方式：数组表示法、邻接表（每个结点到其他结点若有边或弧则加入到这个结点的链中）、十字链表（增加弧尾、弧头、弧头相同的下一条弧的信息）、邻接多重链表（增加是否被搜索过）</p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>深度优先搜索：矩阵$O(n^2)$、邻接表$O(n+e)$</p>
+<p>广度优先搜索：时间复杂度相同，只是对顶点访问的顺序不同</p>
+<p>无向图由遍历产生<strong>生成树</strong></p>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>构造连通网的最小代价生成树（简称<strong>最小生成树</strong>）的问题</p>
+<h3 id="Prim"><a href="#Prim" class="headerlink" title="Prim"></a>Prim</h3><p>在点集合中寻找以此点开始的最小的边，同时另一个点不在集合中，将这条边加入边集合，将另一个点加入点集合</p>
+<p>$O(n^2)$，适用于边稠密的网</p>
+<h3 id="Kruskal"><a href="#Kruskal" class="headerlink" title="Kruskal"></a>Kruskal</h3><p>每次加入最小的边，且加入这条边不会构成回路</p>
+<p>$O(eloge)$</p>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>STL也是需要进行测试的，虽说STL经过多人的完善，但毕竟是人写的（ 是神啊！），同时也是为了测试之后能更好地了解库的用法和优缺点。<br>在测试的时候我们可以使用<code>cstdlib</code>中的rand()函数，当然在使用之前需要随机种子srand（一次就够喽）,可以产生[0,RAND_max]内的随机整数，一般来说为2^15-1=32767，如果要在n范围内，可以模<code>n+1</code>。我们还可以使用<code>assert()</code>宏，其作用是，当表达式为真时，无变化，但为假时，终止程序，并且给出错误提示。</p>
 <p><strong>注</strong> 本文参考刘汝佳的《算法入门经典》。<br>最后叮嘱一句哦，对于学习数据结构的同学来说，不要在学习时就使用STL，还是需要掌握一下内在构造，当然在机考时，建议使用STL，毕竟可以省代码，还不容易出错。</p>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
@@ -589,7 +770,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -696,7 +877,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#栈"><span class="nav-number">1.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#队列"><span class="nav-number">2.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（原始）队列"><span class="nav-number">2.1.</span> <span class="nav-text">（原始）队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先队列"><span class="nav-number">2.2.</span> <span class="nav-text">优先队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双端队列"><span class="nav-number">2.3.</span> <span class="nav-text">双端队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链表"><span class="nav-number">3.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树"><span class="nav-number">4.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本性质"><span class="nav-number">4.1.</span> <span class="nav-text">基本性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历方式"><span class="nav-number">4.2.</span> <span class="nav-text">遍历方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：UVA-548"><span class="nav-number">4.3.</span> <span class="nav-text">例题：UVA 548</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">4.3.1.</span> <span class="nav-text">题意：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">5.</span> <span class="nav-text">图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性结构"><span class="nav-number">2.</span> <span class="nav-text">线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表"><span class="nav-number">2.1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序表示"><span class="nav-number">2.1.1.</span> <span class="nav-text">顺序表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式表示"><span class="nav-number">2.1.2.</span> <span class="nav-text">链式表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-number">2.2.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">2.3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（原始）队列"><span class="nav-number">2.3.1.</span> <span class="nav-text">（原始）队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优先队列"><span class="nav-number">2.3.2.</span> <span class="nav-text">优先队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双端队列"><span class="nav-number">2.3.3.</span> <span class="nav-text">双端队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环队列"><span class="nav-number">2.3.4.</span> <span class="nav-text">循环队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串"><span class="nav-number">2.4.</span> <span class="nav-text">串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串的模式匹配"><span class="nav-number">2.4.1.</span> <span class="nav-text">串的模式匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.5.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义表"><span class="nav-number">2.6.</span> <span class="nav-text">广义表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树型结构"><span class="nav-number">3.</span> <span class="nav-text">树型结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">3.1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本性质"><span class="nav-number">3.1.1.</span> <span class="nav-text">基本性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历方式"><span class="nav-number">3.2.</span> <span class="nav-text">遍历方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：UVA-548"><span class="nav-number">3.3.</span> <span class="nav-text">例题：UVA 548</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">3.3.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼树-最优树-赫夫曼树"><span class="nav-number">3.3.2.</span> <span class="nav-text">哈夫曼树/最优树/赫夫曼树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">4.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">4.1.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树"><span class="nav-number">4.2.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim"><span class="nav-number">4.2.1.</span> <span class="nav-text">Prim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal"><span class="nav-number">4.2.2.</span> <span class="nav-text">Kruskal</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>

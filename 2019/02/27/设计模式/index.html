@@ -114,7 +114,9 @@
 <meta property="og:image" content="http://mrsempress.top/2019/02/27/设计模式/抽象工厂模式.png">
 <meta property="og:image" content="http://mrsempress.top/2019/02/27/设计模式/工厂方法模式1.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/02/27/设计模式/工厂方法模式2.jpeg">
-<meta property="og:updated_time" content="2019-03-10T14:47:23.676Z">
+<meta property="og:image" content="http://mrsempress.top/2019/02/27/设计模式/代理模式.jpeg">
+<meta property="og:image" content="http://mrsempress.top/2019/02/27/设计模式/代理模式1.jpeg">
+<meta property="og:updated_time" content="2019-03-19T15:06:52.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
 <meta name="twitter:description" content="This is my blog. 软件工程这门课当时只是粗浅认识，便匆匆应付考试了 对于软件工程包括软件体系结构这几门课程，确实学习的不理想 看到书架上的《设计模式》，决定再来学习一番">
@@ -270,6 +272,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/ChenxiHuang%20.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -420,12 +432,75 @@
 <p>对于软件工程包括软件体系结构这几门课程，确实学习的不理想</p>
 <p>看到书架上的《设计模式》，决定再来学习一番</p>
 <a id="more"></a>
-<ul>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
 <li>良好的OO设计必须具备<strong>可复用、可扩充、可维护</strong>三个特性</li>
 <li>模式被认为是历经验证的OO设计经验</li>
 </ul>
-<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><p>书中例子：不同鸭子不同行为</p>
+<h2 id="模式的概念"><a href="#模式的概念" class="headerlink" title="模式的概念"></a>模式的概念</h2><p><strong>模式</strong>是在某情境<em>(context)</em>下，针对某问题的某种解决方案</p>
+<p>​    <strong>情境</strong>就是应用某个模式的情况，是会<em>不断出现的情况</em></p>
+<p>​    <strong>问题</strong>就是你想在某情境下达到的<em>目标</em>，但也可以是某情境下的<em>约束</em></p>
+<p>​    <strong>解决方案</strong>就是你所追求的：一个<em>通用的设计</em>，用来解决约束，达到目标</p>
+<h2 id="模式的分类"><a href="#模式的分类" class="headerlink" title="模式的分类"></a>模式的分类</h2><p>根据模式的<strong>目标</strong>，可以分成三个不同类目：<em>创建型、行为型和结构型</em></p>
+<ul>
+<li><strong>创建型模式</strong>设计到将对象实例化，这类模式都提供一个方法，将<strong>客户</strong>从所需要<strong>实例化的对象</strong>中<strong>解耦</strong><ul>
+<li>Singleton</li>
+<li>Abstract Factory</li>
+<li>Factory Method</li>
+<li>Builder</li>
+<li>Prototype</li>
+</ul>
+</li>
+<li><strong>行为型模式</strong>都涉及到<strong>类</strong>和<strong>对象</strong>如何<strong>交互</strong>及<strong>分配职责</strong><ul>
+<li>Template Method</li>
+<li>Command</li>
+<li>Strategy</li>
+<li>State</li>
+<li>Observer</li>
+<li>Iterator</li>
+<li>Mediator</li>
+<li>Visitor</li>
+<li>Interpreter</li>
+<li>Chain of Responsibility</li>
+<li>Memento</li>
+</ul>
+</li>
+<li><strong>结构型模式</strong>可以把类或对象组合到更大的结构中、<ul>
+<li>Decorator</li>
+<li>Composite</li>
+<li>Proxy</li>
+<li>Facade</li>
+<li>Adapter</li>
+<li>Flyweight</li>
+<li>Bridge</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>模式还可以根据<strong>所处理的</strong>是<em>类</em>还是<em>对象</em>进行分类</p>
+<ul>
+<li>类<ul>
+<li>Template Method</li>
+<li>Factory Method</li>
+<li>Adapter</li>
+<li>Interpreter</li>
+</ul>
+</li>
+<li>对象</li>
+</ul>
+<h2 id="一些建议"><a href="#一些建议" class="headerlink" title="一些建议"></a>一些建议</h2><ol>
+<li>保持简单 keep it simple<em>(kiss)</em>，优先考虑简单的方案（“杀鸡焉用牛刀”）</li>
+<li>设计模式非万灵丹</li>
+<li>是否需要模式，用什么模式以及用了模式之后产生的后果</li>
+<li>当未来可能发生的实际改变时，考虑模式</li>
+<li>并非只有在设计时才考虑引进模式，在重构时也要这样做（看是否可以让它拥有更好的结构）</li>
+<li>当系统变得过于复杂，并且不需要预留弹性的时候，需要删除模式</li>
+</ol>
+<h2 id="反模式"><a href="#反模式" class="headerlink" title="反模式"></a>反模式</h2><p><strong>反模式</strong>告诉你如何采用一个<em>不好的解决方案</em>解决一个问题</p>
+<p>通过将不好的解决方案归档，帮助其他开发人员避免犯同样的错误；会告诉你为何这个方法从长远看会造成不好的印象，同时指出正确的方向</p>
+<h1 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式 Strategy"></a>策略模式 <em>Strategy</em></h1><p>书中例子：不同鸭子不同行为</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>策略模式</strong>定义了<em>算法族</em>，分别封装起来，让它们之间<em>可以互相替换</em>，此模式让<em>算法的变化独立于使用算法的客户</em>。</p>
+<hr>
+<p><strong>封装</strong>可以互换的<strong>行为</strong>，并使用<strong>委托</strong>来<strong>决定</strong>要使用哪个</p>
 <hr>
 <p><strong>情景：</strong></p>
 <p>新的需求增加，使某方面的代码发生变化</p>
@@ -449,7 +524,7 @@
 <p>​    更进一步的，我们可以更好地利用继承中的动态特性</p>
 <p>​    比如我们可以在运行时想改变鸭子的行为，这时候我们只需要：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在超类中增加一个方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlyBehavior</span><span class="params">(FlyBehavior fb)</span> </span>&#123;</div><div class="line">    flyBehavior = fb;</div><div class="line">&#125;</div><div class="line"><span class="comment">//若刚开始的模型鸭是不会飞的，但是技术更新后，模型鸭可以飞行了，那么在我们的测试类中可以如下：</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DuckSimulator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Duck model = <span class="keyword">new</span> ModelDuck();</div><div class="line">        model.performFly();<span class="comment">//I can't fly</span></div><div class="line">        model.setFlyBehavior(<span class="keyword">new</span> FlywithWings());</div><div class="line">        model.performFly();<span class="comment">//I'm flying!</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>书中例子：气象布告牌与气象站的推拉</p>
+<h1 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式 Observer"></a>观察者模式 <em>Observer</em></h1><p>书中例子：气象布告牌与气象站的推拉</p>
 <h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p><strong>观察者模式</strong>定义了对象之间的<strong>一对多</strong>依赖，这样一来，当一个对象<strong>改变状态时</strong>，它的<strong>所有依赖者</strong>都会<strong>收到通知并自动更新</strong></p>
 <p>存在两种：</p>
 <ul>
@@ -462,6 +537,8 @@
 </ul>
 </li>
 </ul>
+<hr>
+<p>让对象能够在<strong>状态改变</strong>的时候<strong>被通知</strong></p>
 <hr>
 <p><strong>松耦合：</strong></p>
 <p>主题<em>subject</em>和观察者<em>observer</em>之间是松耦合的，主题不需要知道具体观察者，只需要知道观察者列表，在有变化的时候，通知他们即可，同时观察者的增加、删除、改变对主题无影响</p>
@@ -485,11 +562,13 @@
 <hr>
 <p><strong>swing API：JButton</strong></p>
 <p>ActionListener倾听可能发生在按钮上的动作，例如按下按钮</p>
-<h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><p>书中例子：咖啡店</p>
+<h1 id="装饰者模式-Decorator"><a href="#装饰者模式-Decorator" class="headerlink" title="装饰者模式 Decorator"></a>装饰者模式 <em>Decorator</em></h1><p>书中例子：咖啡店</p>
 <p>记忆提示：好多个圈圈，圈圈里套圈圈，表示装饰外有装饰外有装饰……</p>
 <h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p><strong>装饰者模式</strong>动态地将责任附加到对象上，若要扩展功能，装饰者提供了比继承更有弹性的替代方案</p>
 <p><img src="/2019/02/27/设计模式/装饰者模式.jpeg" alt=""></p>
 <p>首先设计一个Decorator继承超类，表示所有装饰者的接口（也可以是抽象类），然后对于每一个装饰者中一定含有一个实例变量<code>Component wrappedObj</code>，表示被装饰者，同时需要继承超类的方法</p>
+<hr>
+<p>包装一个对象，以<strong>提供新的行为</strong></p>
 <hr>
 <p>缺点：常常造成设计中有大量的小类，数量太多，造成使用此API程序员的困扰</p>
 <h2 id="设计原则-2"><a href="#设计原则-2" class="headerlink" title="设计原则"></a>设计原则</h2><ol>
@@ -499,9 +578,11 @@
 <p><em>FileInputStream</em>是<strong>被装饰的“组件”</strong>，提供基本的字节读取功能</p>
 <p><em>BufferedInputStream</em>是一个<strong>具体的“装饰者”</strong>，加入两种<strong>行为</strong>：利用缓冲输入来改善性能；用一个<em>readline()</em>方法（用来一次读取一行文本输入数据）来增强接口</p>
 <p><em>LineNumberInputStream</em>也是一个<strong>具体的“装饰者”</strong>，加上了计算行数的能力</p>
-<h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><p>书中例子：披萨连锁店</p>
-<h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p><strong>工厂方法模式</strong>定义了一个<em>创建对象的接口</em>，但由<em>子类决定要实例化的类</em>是哪一个。工厂方法让类把实例化推迟到子类</p>
+<h1 id="工厂模式-Factory"><a href="#工厂模式-Factory" class="headerlink" title="工厂模式 Factory"></a>工厂模式 <em>Factory</em></h1><p>书中例子：披萨连锁店</p>
+<h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><h3 id="工厂方法模式-Factory-Method"><a href="#工厂方法模式-Factory-Method" class="headerlink" title="工厂方法模式 Factory Method"></a>工厂方法模式 <em>Factory Method</em></h3><p><strong>工厂方法模式</strong>定义了一个<em>创建对象的接口</em>，但由<em>子类决定要实例化的类</em>是哪一个。工厂方法让类把实例化推迟到子类</p>
 <p><strong>工厂方法模式</strong>通过<em>子类决定</em>该创建的对象是什么，来达到将<em>对象创建</em>的过程<em>封装</em>的目的</p>
+<hr>
+<p>由<strong>子类决定</strong>要创建的<strong>具体类</strong>是哪一个</p>
 <hr>
 <p><strong>声明一个工厂的方法：</strong></p>
 <p><code>abstract Product factoryMethod(string type)</code></p>
@@ -509,7 +590,10 @@
 <hr>
 <p>产品类和创建者类是平行的类层级，它们都有抽象类，而抽象类都有许多具体的子类，每个子类都有自己特定的实现</p>
 <p><img src="/2019/02/27/设计模式/工厂方法模式.png" alt=""></p>
-<p><strong>抽象工厂模式</strong>提供了一个接口，用于创建相关或依赖<strong>对象的家族</strong>，而不需要明确指定具体类</p>
+<h3 id="抽象工厂模式-Abstract-Factory"><a href="#抽象工厂模式-Abstract-Factory" class="headerlink" title="抽象工厂模式 Abstract Factory"></a>抽象工厂模式 <em>Abstract Factory</em></h3><p><strong>抽象工厂模式</strong>提供了一个接口，用于创建相关或依赖<strong>对象的家族</strong>，而不需要明确指定具体类</p>
+<hr>
+<p>允许<strong>客户创建对象家族</strong>，而<strong>无需指定</strong>他们的<strong>具体类</strong></p>
+<hr>
 <p><img src="/2019/02/27/设计模式/抽象工厂模式.png" alt=""></p>
 <p>抽象工厂中的方法是工厂方法</p>
 <hr>
@@ -539,8 +623,11 @@
 <p><img src="/2019/02/27/设计模式/工厂方法模式1.jpeg" alt=""></p>
 <p>应用此原则后：（明显可以看到箭头的方向，也变明白了“倒置”）</p>
 <p><img src="/2019/02/27/设计模式/工厂方法模式2.jpeg" alt="工厂方法模式2"></p>
-<h1 id="单件模式"><a href="#单件模式" class="headerlink" title="单件模式"></a>单件模式</h1><p>书中例子：巧克力工厂</p>
+<h1 id="单件模式-Singleton"><a href="#单件模式-Singleton" class="headerlink" title="单件模式 Singleton"></a>单件模式 <em>Singleton</em></h1><p>书中例子：巧克力工厂</p>
 <h2 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h2><p><strong>单件模式</strong>确保一个类只有一个实例，并提供一个全局访问点</p>
+<hr>
+<p>确保<strong>有且只有一个对象被创建</strong></p>
+<hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;	</div><div class="line">        <span class="comment">//	static静态方法，可以在任何地方访问，并且单件可以延迟实例化</span></div><div class="line">        <span class="comment">// synchronized同步，可以解决在多线程的时候，出现多个实例的情况</span></div><div class="line">        <span class="comment">// 但是同步降低速度，而且只有在刚开始设置的时候，需要同步；因此在getInstance()对性能不是很关键的时候，就还是保留同步；对于急切创建实例（或者一定会创建的），不用延迟实例化的做法</span></div><div class="line">        <span class="comment">// 或者通过“双重检查加锁”的方法</span></div><div class="line">        <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">            uniqueInstance = <span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> uniqueInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>不延迟实例化的做法：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance = <span class="keyword">new</span> Singleton();</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;	</div><div class="line">        <span class="keyword">return</span> uniqueInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -555,8 +642,11 @@
 <li>单件类<strong>不适合继承</strong>，继承前必须使基类实现注册功能</li>
 <li>单件模式相比<strong>全局变量</strong>有延迟实例化的优点，并且全局变量不能保证只有一个实例</li>
 </ul>
-<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><p>书中例子：遥控器</p>
+<h1 id="命令模式-Command"><a href="#命令模式-Command" class="headerlink" title="命令模式 Command"></a>命令模式 <em>Command</em></h1><p>书中例子：遥控器</p>
 <h2 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h2><p><strong>命令模式</strong>将<em>“请求”封装成对象</em>，以便使用不同的请求、队列或者日志来参数化其他对象。命令模式也支持可撤销的操作</p>
+<hr>
+<p><strong>封装请求称为对象</strong></p>
+<hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Command</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">undo</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LightOnCommand</span> <span class="title">implement</span> <span class="title">Command</span> </span>&#123;</div><div class="line">    Light light;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LightOnCommand</span><span class="params">(Light light)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.light = light;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">        light.on();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">undo</span><span class="params">()</span></span>&#123;</div><div class="line">        light.off();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LightOffCommand</span> <span class="title">implement</span> <span class="title">Command</span> </span>&#123;</div><div class="line">    Light light;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LightOffCommand</span><span class="params">(Light light)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.light = light;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">        light.off();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">undo</span><span class="params">()</span></span>&#123;</div><div class="line">        light.on();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -569,9 +659,11 @@
 <p><strong>更多应用</strong>：队列请求（日程安排，线程池，工作队列）、日志请求（事务）</p>
 <h2 id="空对象"><a href="#空对象" class="headerlink" title="空对象"></a>空对象</h2><p>空对象：<em>null object</em></p>
 <p>当你不想返回一个有意义的对象时，可以使用空对象</p>
-<h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><p>书中例子：交流电适配器</p>
+<h1 id="适配器模式-Adapter"><a href="#适配器模式-Adapter" class="headerlink" title="适配器模式 Adapter"></a>适配器模式 <em>Adapter</em></h1><p>书中例子：交流电适配器</p>
 <h2 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h2><p><strong>适配器模式</strong>将一个类的接口，<em>转换成客户期望的另一个接口</em>。适配器让原本<em>接口不兼容的类</em>可以合作无间</p>
 <p>分为<strong>对象适配器</strong>和<strong>类适配器</strong></p>
+<hr>
+<p><strong>封装对象</strong>，并提供<strong>不同的接口</strong></p>
 <hr>
 <p>对象适配器：（使用了<strong>对象组合</strong>，以修改的接口包装被适配者；被适配者的<strong>任何子类</strong>，都可以搭配着适配器使用）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="title">implement</span> <span class="title">Target</span> </span>&#123;</div><div class="line">    Adaptee adaptee;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Adapter</span><span class="params">(Adaptee adaptee)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.adaptee = adaptee;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//....覆盖Target的方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -583,6 +675,9 @@
 <hr>
 <p><strong>注：</strong>外观模式<em>可以只针对一个拥有复杂接口的类</em>，也可以针对多个类，意图是，提供子系统的一个简化接口；同时，也将客户从组件的子系统中解耦；同时外观模式也支持直接访问低层接口</p>
 <h2 id="定义-7"><a href="#定义-7" class="headerlink" title="定义"></a>定义</h2><p><strong>外观模式</strong>提供了一个<em>统一</em>的接口，用来访问子系统中的<em>一群接口</em>。外观定义了一个高层接口，让子系统<em>更容易使用</em></p>
+<hr>
+<p><strong>简化一群类的接口</strong></p>
+<hr>
 <h2 id="设计原则-4"><a href="#设计原则-4" class="headerlink" title="设计原则"></a>设计原则</h2><ol>
 <li><p><strong>“最少知识原则”：</strong>只和你的密友谈话【也称为墨忒尔法则】</p>
 <p>减少对象之间的交互，只留下几个”密友“</p>
@@ -599,8 +694,11 @@
 <p><strong>注：</strong>但是也会导致更多的“包装类”被制造出来，以处理和其他组件的沟通，这可能会导致复杂度和开放时间的增加，并降低运行时的性能</p>
 </li>
 </ol>
-<h1 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h1><p>书中例子：泡茶与泡咖啡</p>
+<h1 id="模版方法模式-Template-Method"><a href="#模版方法模式-Template-Method" class="headerlink" title="模版方法模式 Template Method"></a>模版方法模式 <em>Template Method</em></h1><p>书中例子：泡茶与泡咖啡</p>
 <h2 id="定义-8"><a href="#定义-8" class="headerlink" title="定义"></a>定义</h2><p><strong>模版方法模式</strong>在一个方法中定义<em>一个算法的骨架</em>，而<em>将一些步骤延迟到子类中</em>。模版方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤</p>
+<hr>
+<p>由<strong>子类决定</strong>如何实现<strong>一个算法</strong>中的<strong>步骤</strong></p>
+<hr>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">templateMethod</span><span class="params">()</span> </span>&#123;	<span class="comment">//模版方法被声明为final，以免子类改变这个算法的顺序</span></div><div class="line">        commonMethod1();</div><div class="line">        primitiveOperation1();</div><div class="line">        primitiveOperation2();</div><div class="line">        hook();</div><div class="line">        <span class="comment">//.....</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">primitiveOperation1</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">primitiveOperation2</span><span class="params">()</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">commonMethod1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 实现</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hook</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteClass</span> <span class="keyword">extends</span> <span class="title">AbstractClass</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">primitiveOperation1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//实现</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">primitiveOperation2</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//实现</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">    void hook() &#123;</span></div><div class="line"><span class="comment">    	//实现</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">    */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>一个变种：（不使用继承）</p>
@@ -618,9 +716,12 @@
 <h2 id="设计原则-5"><a href="#设计原则-5" class="headerlink" title="设计原则"></a>设计原则</h2><ol>
 <li>“好莱坞原则”：高层组件调用低层组件，而不允许低层组件调用高层组件</li>
 </ol>
-<h1 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h1><p>书中例子：煎饼菜单和餐厅菜单的合并</p>
+<h1 id="迭代器模式-Iterator"><a href="#迭代器模式-Iterator" class="headerlink" title="迭代器模式 Iterator"></a>迭代器模式 <em>Iterator</em></h1><p>书中例子：煎饼菜单和餐厅菜单的合并</p>
 <h2 id="定义-9"><a href="#定义-9" class="headerlink" title="定义"></a>定义</h2><p><strong>迭代器模式</strong>提供一种方法<em>顺序访问</em>一个<em>聚合对象</em>中的各个元素，而又<em>不暴露其内部的表示</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">可以直接继承java.util.Iterator，而不用自己创建新的接口，java中的接口还有一个方法叫remove()</span></div><div class="line"><span class="comment">remove()在多线程中可能会出现问题</span></div><div class="line"><span class="comment">对于ArrayList它自己已经又了一个返回迭代器iterator()的方法了</span></div><div class="line"><span class="comment">对于HashTable来说，可以调用values.iterator()方法</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">public interface Iterator &#123;</span></div><div class="line"><span class="comment">    boolean hasNext();</span></div><div class="line"><span class="comment">    Object next();</span></div><div class="line"><span class="comment">&#125;</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="comment">// import java.util.Iterator;</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteIterator1</span> <span class="title">implement</span> <span class="title">Iterator</span> </span>&#123;</div><div class="line">    ConcreteItem[] items;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteIterator1</span><span class="params">(ConcreteItem[] items)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.items = items;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">next</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 实现</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 实现</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Aggregate</span> </span>&#123;</div><div class="line">    <span class="function">Iterator <span class="title">createIterator</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteAggregate1</span> <span class="title">implement</span> <span class="title">Aggregate</span> </span>&#123;</div><div class="line">    ConcreteItem[] items;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteAggregate1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 构造器</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> Iterator <span class="title">createIterator</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteIterator1(items);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>在对象的<strong>集合</strong>之中游走，而<strong>不暴露</strong>集合的<strong>实现</strong></p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">可以直接继承java.util.Iterator，而不用自己创建新的接口，java中的接口还有一个方法叫remove()</span></div><div class="line"><span class="comment">remove()在多线程中可能会出现问题</span></div><div class="line"><span class="comment">对于ArrayList它自己已经又了一个返回迭代器iterator()的方法了</span></div><div class="line"><span class="comment">对于HashTable来说，可以调用values.iterator()方法</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</div><div class="line">    <span class="function">Object <span class="title">next</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// import java.util.Iterator;</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteIterator1</span> <span class="title">implement</span> <span class="title">Iterator</span> </span>&#123;</div><div class="line">    ConcreteItem[] items;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteIterator1</span><span class="params">(ConcreteItem[] items)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.items = items;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">next</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 实现</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 实现</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Aggregate</span> </span>&#123;</div><div class="line">    <span class="function">Iterator <span class="title">createIterator</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteAggregate1</span> <span class="title">implement</span> <span class="title">Aggregate</span> </span>&#123;</div><div class="line">    ConcreteItem[] items;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteAggregate1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 构造器</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> Iterator <span class="title">createIterator</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteIterator1(items);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="设计原则-6"><a href="#设计原则-6" class="headerlink" title="设计原则"></a>设计原则</h2><ol>
 <li><em>一个类</em>应该只有<em>一个引起变化的原因</em></li>
 </ol>
@@ -631,10 +732,294 @@
 <p>这样在就不用特判NUll的情况了</p>
 <h2 id="Java内置实现-2"><a href="#Java内置实现-2" class="headerlink" title="Java内置实现"></a>Java内置实现</h2><p>在java 5中，所有的集合都已经新增了对遍历的支持</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (Object obj: collection) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>书中例子：甜品菜单作为菜单的子菜单</p>
+<h1 id="组合模式-Composite"><a href="#组合模式-Composite" class="headerlink" title="组合模式 Composite"></a>组合模式 <em>Composite</em></h1><p>书中例子：甜品菜单作为菜单的子菜单</p>
 <h2 id="定义-10"><a href="#定义-10" class="headerlink" title="定义"></a>定义</h2><p><strong>组合模式</strong>允许你将对象组合成<em>树形结构</em>来表现<em>“整体/部分”</em>层次结构。组合能让客户以<em>一致的方式</em>处理<em>个别对象</em>以及<em>对象组合</em></p>
+<hr>
+<p>客户用<strong>一致的方式</strong>处理<strong>对象集合</strong>和<strong>单个对象</strong></p>
+<hr>
 <p><strong>注：</strong>对于个别对象和对象组合中存在一些差异的方法，如果一个不支持的话，建议抛出<code>UnsupportOperationException</code>异常，所以在抽象类中的方法均定义为异常的，若是之后可以实现，则覆盖</p>
 <p>这可能会违反迭代器模式中的设计原则，也会出现在叶节点中增加一个组合对象表示的孩子，出现错误，同时让一个元素是组合还是叶节点对于客户来说都是透明的；所以需要折衷考虑</p>
+<h1 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式 State"></a>状态模式 <em>State</em></h1><p>书中例子：糖果机游戏</p>
+<h2 id="定义-11"><a href="#定义-11" class="headerlink" title="定义"></a>定义</h2><p><strong>状态模式</strong>允许对象在<em>内部状态改变时</em>改变它的<em>行为</em>，<em>对象看起来好像修改了它的类</em></p>
+<hr>
+<p>封装了基于<strong>状态的行为</strong>，并使用委托在<strong>行为之间切换</strong></p>
+<hr>
+<p>将状态封装成为独立的类，并将动作委托到代表当前状态的对象</p>
+<p>对象中有状态这个变量，状态作为一个接口/抽象类，具体状态实现接口，对于内部状态改变时，调用状态的方法，就会多态根据具体的状态作出对应的行为（哇，感觉多态真妙呢！）</p>
+<p>状态类之间产生依赖</p>
+<p>状态共享需要将每个状态指定到静态实例中</p>
+<hr>
+<p>类图和策略模式相同，但是意图不同</p>
+<p>一般来说策略模式想成是除了<strong>继承</strong>之外的一种弹性替代方案，通过<strong>组合</strong>不同的对象来<strong>改变行为</strong></p>
+<p>而把状态模式想成是不用在context中放置<strong>许多条件判断</strong>的替代方案。通过将<strong>行为包装进状态对象中</strong>，通过在context内简单地<strong>改变状态对象</strong>来<strong>改变context行为</strong></p>
+<h1 id="代理模式-Proxy"><a href="#代理模式-Proxy" class="headerlink" title="代理模式 Proxy"></a>代理模式 <em>Proxy</em></h1><p>书中例子：CEO需要多地的糖果机报告、加载图片中出现的提示语、用户不可以更改评分和给自己评分的相亲网站</p>
+<h2 id="定义-12"><a href="#定义-12" class="headerlink" title="定义"></a>定义</h2><p><strong>代理模式</strong>为另一个对象提供一个<em>替身或占位符</em>以控制对这个对象的访问</p>
+<hr>
+<p><strong>包装对象</strong>，以<strong>控制</strong>对此对象的<strong>访问</strong></p>
+<hr>
+<ul>
+<li>远程代理控制访问<strong>远程对象</strong></li>
+<li>虚拟代理控制访问创建<strong>开销大的资源</strong><ul>
+<li>例如，加载时，虚拟代理显示“正在加载中”，然后图片加载完，即资源创建完，再显示图片</li>
+</ul>
+</li>
+<li>保护代理<strong>基于权限控制对资源的访问</strong></li>
+<li>其他<ul>
+<li>防火墙代理<ul>
+<li>控制网络资源的访问，保护主题免于“坏客户”的侵害</li>
+</ul>
+</li>
+<li>智能引用代理<ul>
+<li>当主题被引用时，进行额外的动作，例如计算一个对象被引用的次数</li>
+</ul>
+</li>
+<li>缓存代理<ul>
+<li>为开销大的运算结果提供暂时存储，它也允许多个客户共享结果，以减少计算或网络延迟</li>
+</ul>
+</li>
+<li>同步代理<ul>
+<li>在多线程的情况下为主题提供安全的访问</li>
+</ul>
+</li>
+<li>复杂隐藏代理<ul>
+<li>用来隐藏一个类的复杂集合的复杂度，并进行访问控制。有时候也被称为外观代理（与外观代理不同，代理控制访问，而外观模式只提供一组接口）</li>
+</ul>
+</li>
+<li>写入时复制代理<ul>
+<li>用来控制对象的复制，方法是延迟对象的复制，直到客户真的需要为止（这是虚拟代理的变体）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>装饰者模式是为对象增加行为；代理模式是控制对象的访问</p>
+<p>适配器模式会改变对象适配器的接口；代理模式则实现相同的接口</p>
+<p><img src="/2019/02/27/设计模式/代理模式.jpeg" alt=""></p>
+<p><img src="/2019/02/27/设计模式/代理模式1.jpeg" alt="代理模式1"></p>
+<h2 id="JAVA内置实现"><a href="#JAVA内置实现" class="headerlink" title="JAVA内置实现"></a>JAVA内置实现</h2><p>java在<code>java.lang.reflect</code>包中有自己的代理支持，利用这个包你可以在<strong>运行时动态</strong>地<strong>创建一个代理类</strong>，实现<strong>一个或多个接口</strong>，并将方法的调用转发到你所指定的类——<strong><em>动态代理</em></strong></p>
+<h3 id="远程代理"><a href="#远程代理" class="headerlink" title="远程代理"></a>远程代理</h3><p>RMI提供了<strong>客户辅助对象</strong>和<strong>服务辅助对象</strong>，不必书写任何网络或I/O代码（存在一定风险和失败的可能性）</p>
+<p>客户辅助对象称为<em>桩stub</em>；服务辅助对象称为<em>骨架skeleton</em></p>
+<h4 id="远程服务制作步骤"><a href="#远程服务制作步骤" class="headerlink" title="远程服务制作步骤"></a>远程服务制作步骤</h4><ol>
+<li><p>制作远程接口（<strong>供客户调用的远程方法</strong>，是一个<strong>接口</strong>，是服务的类类型）</p>
+<p>接口：<code>java.rmi.Remote</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.rmi.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyRemote</span> <span class="keyword">extends</span> <span class="title">Remote</span> </span>&#123;</div><div class="line">    <span class="comment">//任何方法都需要抛出异常；网络传送会失败</span></div><div class="line">    <span class="comment">//任何返回值必须是原语primitive类型或者可序列化Serializable类型；网络需要打包传送</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>制作远程实现（客户真正想要调用方法的对象）【糖果机】</p>
+<p>实现远程接口（即客户将要调用的方法的接口）</p>
+<p>扩展<code>java.rmi.server.UnicastRemoteObject</code>，实现远程功能</p>
+<p>不带变量的构造器，并抛出<code>RemoteException</code>异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.rmi.*;</div><div class="line"><span class="keyword">import</span> java.rmi.server.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRemoteImpl</span> <span class="keyword">extends</span> <span class="title">UnicastRemoteObject</span> <span class="keyword">implements</span> <span class="title">MyRemote</span> </span>&#123;</div><div class="line">   </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;	<span class="comment">//注意不需要声明RemoteException </span></div><div class="line">        <span class="keyword">return</span> <span class="string">"Server says, 'Hey'"</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyRemoteImpl</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            MyRemote service = <span class="keyword">new</span> MyRemoteImpl();</div><div class="line">            Naming.rebing(<span class="string">"RemoteHello"</span>, service);</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>利用<em>rmic</em>产生的<em>stub</em>和<em>skeleton</em>（JDK中有rmic）</p>
+<p>命令行<code>% rmic MyRemoteImpl</code>（不要加<strong>.class</strong>，直接类名即可）</p>
+</li>
+<li><p>启动<em>RMI registry（rmiregistry）</em>【电话簿，客户可以查到代理的位置，即<em>stub helper</em>对象】</p>
+<p>命令行<code>% rmiregistry</code>（在classes目录启动，<strong><em>必须先于开始远程服务</em></strong>）</p>
+</li>
+<li><p>开始远程服务（实例化一个服务实例，并注册到<em>RMI registry</em>）</p>
+<p>注册服务使用了<code>java.rmi.Naming</code>类的静态<code>rebind(String name, Remote service)</code>方法</p>
+</li>
+</ol>
+<h4 id="客户代码"><a href="#客户代码" class="headerlink" title="客户代码"></a>客户代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.rmi.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRemoteClient</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">new</span> MyRemoteClient.go();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="comment">//Naming.lookup()返回值为Object类型，需要强制转换</span></div><div class="line">            <span class="comment">//需要指定IP地址或主机名以及服务被绑定/重绑定时用的名称</span></div><div class="line">            MyRemote service = (MyRemote) Naming.lookup( <span class="string">"rmi://127.0.0.1/RemoteHello"</span>);</div><div class="line">            String s = service.sayHello();</div><div class="line">            </div><div class="line">            system.println(s);</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="保护代理"><a href="#保护代理" class="headerlink" title="保护代理"></a>保护代理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.lang.reflect.*;	<span class="comment">//InvocationHandler是java.lang.reflect包的一部分</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OwnerInvocationHandler</span> <span class="keyword">implements</span> <span class="title">invocationHandler</span> </span>&#123;</div><div class="line">    PersonBean Person;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> OwnerInvocationHandler（PersonBean person) &#123;</div><div class="line">        <span class="keyword">this</span>.person = person;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span>(method.getName().startsWith(<span class="string">"get"</span>)) &#123;</div><div class="line">                <span class="keyword">return</span> method.invoke(person, args);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(method.getName.equals(<span class="string">"setHotOrNotRating"</span>)) &#123;		<span class="comment">//被保护部分</span></div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalAccessException();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(method.getName().startsWith(<span class="string">"set"</span>))&#123;</div><div class="line">                <span class="keyword">return</span> method.invoke(person, args);</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">catch</span>(IllegalAccessException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">PersonBean <span class="title">getOwnerProxy</span><span class="params">(PersonBean person)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (PersonBean) Proxy.newProxyInstance(</div><div class="line">    		person.getClass.getClassLoader(),</div><div class="line">        	person.getClass.getInterfaces(),</div><div class="line">        	<span class="keyword">new</span> OwnerInvocationHandler(person));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="复合模式-Compound"><a href="#复合模式-Compound" class="headerlink" title="复合模式 Compound"></a>复合模式 <em>Compound</em></h1><p>书中例子：DJView，心脏跳动</p>
+<hr>
+<p><strong>注：</strong>不是某些模式结合在一起使用就是复合模式了，必须具有一般性，适合解决许多问题才行</p>
+<h2 id="MVC-Model-View-Controller"><a href="#MVC-Model-View-Controller" class="headerlink" title="MVC (Model-View-Controller)"></a>MVC <em>(Model-View-Controller)</em></h2><p><a href="https://www.youtube.com/watch?v=YYvOGPMLVDo" target="_blank" rel="external">Headfirst里的超可爱的<del>胖胖的</del>大叔唱的呢！</a></p>
+<hr>
+<p><strong><em>MVC：模型-视图-控制器</em></strong></p>
+<p><strong>模型：</strong> 模型持有所有的<strong>数据</strong>、<strong>状态</strong>和<strong>程序逻辑</strong>。模型没有注意到视图和控制器，虽然它提供了操纵和检索状态的接口，并发送状态改变通知给观察者</p>
+<p><strong>视图：</strong>用来呈现模型。视图通常直接从模型中取得它需要显示的状态与数据</p>
+<p><strong>控制器：</strong>取得用户的输入并解读其对模型的意思</p>
+<hr>
+<p>MVC是复合模式，结合了<em>观察者模式、策略模式和组合模式</em></p>
+<p>模型利用“<strong>观察者</strong>”让控制器和视图可以随最新的状态改变而更新</p>
+<p>视图和控制器则实现了“<strong>策略模式</strong>“。控制器是视图的<strong>行为/策略</strong>，如果你希望有不同的行为，可以直接换一个控制器。</p>
+<p>视图内部使用<strong>组合模式</strong>来管理窗口、按钮以及其他显示组件。每个显示组件不是组合节点（例如窗口），就是叶节点（例如按钮）。当控制器告诉视图更新时，只需告诉视图最顶层的组件即可，组合会处理其余的事。</p>
+<hr>
+<p>使用<strong>适配器模式</strong>将模型适配成符合现有视图和控制器需要的模型</p>
+<hr>
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><p>在web中，适配MVC而产生符合浏览器/服务器模型（Model 2），并使用Servlet和JSP技术的结合，来达到MVC的分离效果</p>
+<p><strong>servlet——控制器    html/jsp——视图</strong></p>
+<p>但控制器不是直接和视图进行交互的，而是通过Bean（BeatModel）</p>
+<h1 id="桥接模式-Bridge"><a href="#桥接模式-Bridge" class="headerlink" title="桥接模式 Bridge"></a>桥接模式 <em>Bridge</em></h1><p>书中例子：每部不同型号的电视都有自己的遥控器实现</p>
+<p>两难：电视机和遥控器都会发生改变</p>
+<hr>
+<p><strong>桥接模式</strong>通过将<em>实现</em>和<em>抽象</em>放在两个<em>不同的类层次中</em>而使它们可以<em>独立改变</em></p>
+<p>例如，不是将TV直接继承远程控制这个接口，来各自实现，而是将远程控制接口和电视机接口分开，中间以<code>Has-A</code>连接</p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>将实现予以解耦，让它和界面之间不再永久绑定</li>
+<li>抽象和实现可以独立扩展，不会影响到对方</li>
+<li>对于“具体的抽象类”所做的改变，不会影响到客户</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>适合使用在需要跨越多个平台的图形和窗口系统上</li>
+<li>当需要用不同方式改变接口和实现时</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>增加了复杂度</li>
+</ul>
+<h1 id="生成器模式-Builder"><a href="#生成器模式-Builder" class="headerlink" title="生成器模式 Builder"></a>生成器模式 <em>Builder</em></h1><p>书中例子：制定一套度假计划，每天都有吃饭、住房（但是本地居民不需要）、活动</p>
+<hr>
+<p><strong>生成器模式</strong> <em>封装一个产品的构造过程，并允许按步骤构造</em></p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>将一个复杂对象的创建过程封装起来</li>
+<li>允许对象通过<em>多个步骤</em>来创建，并且可以改变过程（工厂模式只有一个步骤）</li>
+<li>向客户隐藏产品的内部表现</li>
+<li>产品的实现可以被替换，因为客户只看到一个抽象的接口</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>经常被用来创建组合结构</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>与工厂模式相比，采用生成器模式创建对象的客户，需要具备更多的领域知识</li>
+</ul>
+<h1 id="责任链模式-Chain-of-Responsibility"><a href="#责任链模式-Chain-of-Responsibility" class="headerlink" title="责任链模式 Chain of Responsibility"></a>责任链模式 <em>Chain of Responsibility</em></h1><p>书中例子：过滤分类之后的邮件送到对应的部门手中</p>
+<hr>
+<p><strong>责任链模式</strong>让<em>一个以上的对象</em>有机会能够处理<em>某个请求</em></p>
+<p>例如：先某个部门处理它能处理的邮件，剩下的传给下一个部门，一直传到最后就是垃圾邮件了</p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>将请求的发送者和接受者解耦</li>
+<li>可以简化你的对象，因为它不需要知道链的结构</li>
+<li>通过改变链内的成员或调动它们的次序，允许你动态地新增或者删除责任</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>经常被使用在窗口系统中，处理鼠标和键盘之类的事件</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>并不保证请求一定会被执行，如果没有任何对象处理它的话，它可能会落到链尾端之外（可能也是优点）</li>
+<li>可能不容易观察运行时的特征，有碍于除错</li>
+</ul>
+<h1 id="蝇量模式-Flyweight"><a href="#蝇量模式-Flyweight" class="headerlink" title="蝇量模式 Flyweight"></a>蝇量模式 Flyweight</h1><p>书中例子：房产公司规划树木绿化，树很多，公司一个</p>
+<hr>
+<p><strong>蝇量模式</strong>让某个类的<em>一个实例</em>能用来提供<em>许多“虚拟实例”</em></p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>减少运行时对象实例的个数，节省内存</li>
+<li>将许多“虚拟”对象的状态集中管理</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>当一个类有许多实例，而这些实例能被同一方法控制的时候</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>单个的逻辑实例将无法拥有独立而不同的行为</li>
+</ul>
+<h1 id="解释器模式-Interpreter"><a href="#解释器模式-Interpreter" class="headerlink" title="解释器模式 Interpreter"></a>解释器模式 <em>Interpreter</em></h1><p>书中例子：儿童学习编程工具</p>
+<hr>
+<p><strong>解释器模式</strong>为语言创建解释器，<em>每个语法规则用一个类代表</em>，类直接映射到语法</p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>将每一个语法规则表示成一个类，方便实现语言</li>
+<li>因为语言由许多类表示，所以你可以轻易地改变或扩展此语言</li>
+<li>通过在类结构中加入新的方法，可以在解释的同时增加新的行为</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>实现一个简单语言时</li>
+<li>有一个简单语法，而且简单比效率更重要时</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>当语法规则的数目太大时，这个模式会变得非常复杂（这种情况下，使用解释器/编译器的产生器可能更合适）</li>
+</ul>
+<h1 id="中介者模式-Mediator"><a href="#中介者模式-Mediator" class="headerlink" title="中介者模式 Mediator"></a>中介者模式 <em>Mediator</em></h1><p>书中例子：未来屋的每天闹钟不同事例的提醒</p>
+<hr>
+<p><strong>中介者模式</strong>来集中相关对象之间复杂的<em>沟通和控制方式</em>，对象之间彻底解耦，中介者内包含了整个系统的控制逻辑</p>
+<hr>
+<ul>
+<li>每个对象都会在自己的状态改变时，告诉中介者</li>
+<li>每个对象都会对终结者所发出的请求作出回应</li>
+</ul>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>通过将对象彼此解耦，可以增加对象的复用性</li>
+<li>通过将控制逻辑集中，可以简化系统维护</li>
+<li>可以让对象之间所传递的消息变得简单而且大幅减少</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>常常被用来协调相关GUI组件</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>如果设计不当，中介者对象本身会变得过于复杂</li>
+</ul>
+<h1 id="备忘录模式-Mememto"><a href="#备忘录模式-Mememto" class="headerlink" title="备忘录模式 Mememto"></a>备忘录模式 <em>Mememto</em></h1><p>书中例子：游戏的存储进度功能</p>
+<hr>
+<p><strong>备忘录模式</strong>可以让对象<em>返回之前的状态</em>（“撤销”）</p>
+<p>备忘录模式有<strong>两个目标</strong>：</p>
+<ul>
+<li>储存系统<em>关键对象</em>的<em>重要状态</em></li>
+<li>维护<em>关键对象</em>的<em>封装</em></li>
+</ul>
+<p><strong>注：</strong>单一责任原则，不要把保持状态的工作和关键对象混在一起，<strong>专门掌握状态的对象</strong>，就称为备忘录；在JAVA系统中，可以考虑使用序列化机制储存系统的状态</p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>将被储存的状态放在外面，不要和关键对象混在一起，只可以帮助内聚</li>
+<li>保持关键对象的数据封装</li>
+<li>提供了容易实现的恢复能力</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>备忘录用于储存状态</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>储存和恢复状态的过程可能相当耗时</li>
+</ul>
+<h1 id="原型模式-Prototype"><a href="#原型模式-Prototype" class="headerlink" title="原型模式 Prototype"></a>原型模式 <em>Prototype</em></h1><p>书中例子：设计怪兽随着场景的变换而变化的游戏</p>
+<hr>
+<p><strong>原型模式</strong>使用在<em>创建</em>给定类的<em>实例</em>的过程<em>很昂贵或很复杂时</em>，通过<em>复制现有的实例</em>来创建新的实例</p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>向客户隐藏制造新实例的复杂性</li>
+<li>提供让客户能够产生未知类型对象的选项</li>
+<li>在某些环境下，复制对象比创建新对象更有效</li>
+</ul>
+<p><strong>用途：</strong></p>
+<ul>
+<li>在一个复杂的类层次中，当系统必须从其中的许多类型创建新对象时</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>对象的复制有时相当复杂</li>
+</ul>
+<h1 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式 Visitor"></a>访问者模式 <em>Visitor</em></h1><p>书中例子：在餐厅点菜的时候询问营养信息</p>
+<hr>
+<p><strong>访问者模式</strong>使用在需要为<em>一个对象的组合增加新的能力</em>，且<em>封装并不重要时</em></p>
+<p>访问者通过导游对象的引导，收集组合中所有对象的状态</p>
+<hr>
+<p><strong>优点：</strong></p>
+<ul>
+<li>允许对组合结构加入新的操作，而无需改变结构本身</li>
+<li>想要加入新的操作，相对容易</li>
+<li>访问者所进行的操作，其代码是集中在一起的</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>打破组合类的封装</li>
+<li>因为游走的功能牵涉其中，对组合结构的改变就更加困难</li>
+</ul>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>2019.02.27</p>
 <p>最近开始重拾英语了，也就是看看之前六级买的资料，好多资料都没看呢！</p>
 <p>希望能坚持下去，让我的英语水平恢复到正常点的状态呗！</p>
@@ -664,10 +1049,14 @@
 <p>晕晕乎乎</p>
 <p>2019.03.10</p>
 <p>有先见之明的我，提前两个月开始准备礼物了</p>
-<p>因为一千片的星空拼图啊</p>
+<p>因为一千片的星空拼图啊（分完6类后，头都大了</p>
 <p>希望我能如期完成吧！</p>
 <p>然后我们从平遥换到成都的清明旅游啦</p>
 <p>要准备攻略啦～</p>
+<p>2019.02.19</p>
+<p>拼图完成了四分之一了，发现有些片缺少了呢</p>
+<p>记一下设计模式的其他经典书籍，四人组的《Design Patterns——Elements of Reusable Object-Oriented Software》</p>
+<p>希望我销卡顺利 卖书顺利（还有好多书没看过呢(._.)）</p>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28996668&auto=1&height=66"></iframe>
@@ -830,7 +1219,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -937,7 +1326,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则"><span class="nav-number">1.2.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式"><span class="nav-number">2.</span> <span class="nav-text">观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-1"><span class="nav-number">2.2.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内置实现"><span class="nav-number">2.3.</span> <span class="nav-text">Java内置实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰者模式"><span class="nav-number">3.</span> <span class="nav-text">装饰者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-2"><span class="nav-number">3.2.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内置实现-1"><span class="nav-number">3.3.</span> <span class="nav-text">Java内置实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂模式"><span class="nav-number">4.</span> <span class="nav-text">工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-3"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-3"><span class="nav-number">4.2.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单件模式"><span class="nav-number">5.</span> <span class="nav-text">单件模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-4"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式"><span class="nav-number">6.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-5"><span class="nav-number">6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空对象"><span class="nav-number">6.2.</span> <span class="nav-text">空对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适配器模式"><span class="nav-number">7.</span> <span class="nav-text">适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-6"><span class="nav-number">7.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外观模式-Facade"><span class="nav-number">8.</span> <span class="nav-text">外观模式 Facade</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-7"><span class="nav-number">8.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-4"><span class="nav-number">8.2.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模版方法模式"><span class="nav-number">9.</span> <span class="nav-text">模版方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-8"><span class="nav-number">9.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钩子-hook"><span class="nav-number">9.2.</span> <span class="nav-text">钩子 hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-5"><span class="nav-number">9.3.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器模式"><span class="nav-number">10.</span> <span class="nav-text">迭代器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-9"><span class="nav-number">10.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-6"><span class="nav-number">10.2.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内聚-Cohesion"><span class="nav-number">10.3.</span> <span class="nav-text">内聚 Cohesion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空迭代器"><span class="nav-number">10.4.</span> <span class="nav-text">空迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内置实现-2"><span class="nav-number">10.5.</span> <span class="nav-text">Java内置实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合模式"><span class="nav-number">11.</span> <span class="nav-text">组合模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-10"><span class="nav-number">11.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">12.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式的概念"><span class="nav-number">1.1.</span> <span class="nav-text">模式的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式的分类"><span class="nav-number">1.2.</span> <span class="nav-text">模式的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些建议"><span class="nav-number">1.3.</span> <span class="nav-text">一些建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反模式"><span class="nav-number">1.4.</span> <span class="nav-text">反模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式-Strategy"><span class="nav-number">2.</span> <span class="nav-text">策略模式 Strategy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则"><span class="nav-number">2.2.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式-Observer"><span class="nav-number">3.</span> <span class="nav-text">观察者模式 Observer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-1"><span class="nav-number">3.2.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内置实现"><span class="nav-number">3.3.</span> <span class="nav-text">Java内置实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰者模式-Decorator"><span class="nav-number">4.</span> <span class="nav-text">装饰者模式 Decorator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-2"><span class="nav-number">4.2.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内置实现-1"><span class="nav-number">4.3.</span> <span class="nav-text">Java内置实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂模式-Factory"><span class="nav-number">5.</span> <span class="nav-text">工厂模式 Factory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-3"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂方法模式-Factory-Method"><span class="nav-number">5.1.1.</span> <span class="nav-text">工厂方法模式 Factory Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工厂模式-Abstract-Factory"><span class="nav-number">5.1.2.</span> <span class="nav-text">抽象工厂模式 Abstract Factory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-3"><span class="nav-number">5.2.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单件模式-Singleton"><span class="nav-number">6.</span> <span class="nav-text">单件模式 Singleton</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-4"><span class="nav-number">6.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式-Command"><span class="nav-number">7.</span> <span class="nav-text">命令模式 Command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-5"><span class="nav-number">7.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空对象"><span class="nav-number">7.2.</span> <span class="nav-text">空对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适配器模式-Adapter"><span class="nav-number">8.</span> <span class="nav-text">适配器模式 Adapter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-6"><span class="nav-number">8.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外观模式-Facade"><span class="nav-number">9.</span> <span class="nav-text">外观模式 Facade</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-7"><span class="nav-number">9.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-4"><span class="nav-number">9.2.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模版方法模式-Template-Method"><span class="nav-number">10.</span> <span class="nav-text">模版方法模式 Template Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-8"><span class="nav-number">10.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钩子-hook"><span class="nav-number">10.2.</span> <span class="nav-text">钩子 hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-5"><span class="nav-number">10.3.</span> <span class="nav-text">设计原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器模式-Iterator"><span class="nav-number">11.</span> <span class="nav-text">迭代器模式 Iterator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-9"><span class="nav-number">11.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则-6"><span class="nav-number">11.2.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内聚-Cohesion"><span class="nav-number">11.3.</span> <span class="nav-text">内聚 Cohesion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空迭代器"><span class="nav-number">11.4.</span> <span class="nav-text">空迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内置实现-2"><span class="nav-number">11.5.</span> <span class="nav-text">Java内置实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合模式-Composite"><span class="nav-number">12.</span> <span class="nav-text">组合模式 Composite</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-10"><span class="nav-number">12.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态模式-State"><span class="nav-number">13.</span> <span class="nav-text">状态模式 State</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-11"><span class="nav-number">13.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式-Proxy"><span class="nav-number">14.</span> <span class="nav-text">代理模式 Proxy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-12"><span class="nav-number">14.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA内置实现"><span class="nav-number">14.2.</span> <span class="nav-text">JAVA内置实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程代理"><span class="nav-number">14.2.1.</span> <span class="nav-text">远程代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#远程服务制作步骤"><span class="nav-number">14.2.1.1.</span> <span class="nav-text">远程服务制作步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户代码"><span class="nav-number">14.2.1.2.</span> <span class="nav-text">客户代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保护代理"><span class="nav-number">14.2.2.</span> <span class="nav-text">保护代理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复合模式-Compound"><span class="nav-number">15.</span> <span class="nav-text">复合模式 Compound</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC-Model-View-Controller"><span class="nav-number">15.1.</span> <span class="nav-text">MVC (Model-View-Controller)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web"><span class="nav-number">15.1.1.</span> <span class="nav-text">Web</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#桥接模式-Bridge"><span class="nav-number">16.</span> <span class="nav-text">桥接模式 Bridge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成器模式-Builder"><span class="nav-number">17.</span> <span class="nav-text">生成器模式 Builder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#责任链模式-Chain-of-Responsibility"><span class="nav-number">18.</span> <span class="nav-text">责任链模式 Chain of Responsibility</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蝇量模式-Flyweight"><span class="nav-number">19.</span> <span class="nav-text">蝇量模式 Flyweight</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解释器模式-Interpreter"><span class="nav-number">20.</span> <span class="nav-text">解释器模式 Interpreter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中介者模式-Mediator"><span class="nav-number">21.</span> <span class="nav-text">中介者模式 Mediator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备忘录模式-Mememto"><span class="nav-number">22.</span> <span class="nav-text">备忘录模式 Mememto</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型模式-Prototype"><span class="nav-number">23.</span> <span class="nav-text">原型模式 Prototype</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问者模式-Visitor"><span class="nav-number">24.</span> <span class="nav-text">访问者模式 Visitor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">25.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
