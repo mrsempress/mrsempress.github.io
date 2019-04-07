@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="软件工程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 之前没有好好学习软件工程呢！ 所以打算好好开始看看呢！">
+<meta name="keywords" content="软件工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程">
+<meta property="og:url" content="http://mrsempress.top/2019/03/27/软件工程/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 之前没有好好学习软件工程呢！ 所以打算好好开始看看呢！">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-07T15:16:45.057Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程">
+<meta name="twitter:description" content="This is my blog. 之前没有好好学习软件工程呢！ 所以打算好好开始看看呢！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/03/27/软件工程/"/>
+
+
+
+
+
+  <title>软件工程 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/03/27/软件工程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件工程</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-27T22:59:23+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件工程/" itemprop="url" rel="index">
+                    <span itemprop="name">软件工程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/27/软件工程/" class="leancloud_visitors" data-flag-title="软件工程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>之前没有好好学习软件工程呢！</p>
+<p>所以打算好好开始看看呢！</p>
+<a id="more"></a>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><strong>软件工程</strong>是应用计算机科学、数学及管理科学等原理，以工厂化的原则和方法来解决软件问题的工程，其目的是<em>提高软件生产率、提高软件质量、降低软件成本。</em></p>
+<p>软件工程学：</p>
+<ul>
+<li>软件开发技术<ul>
+<li>软件开发方法学</li>
+<li>软件工具</li>
+</ul>
+</li>
+<li>软件工程管理<ul>
+<li>软件工程管理学</li>
+<li>软件经济学</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>软件工程过程是指为获得软件产品，在软件工具的支持下由软件工程师完成的一系列软件工程活动</p>
+<p>包括以下<strong>四个方面</strong>：</p>
+<ol>
+<li>P（Plan）软件规格说明，规定软件的功能及其运行时的限制</li>
+<li>D（DO）软件开发，开发出满足规格说明的软件</li>
+<li>C（Check）软件确认，确认开发的软件能够满足用户的需求</li>
+<li>A（Action）软件演进，软件在运行过程中不断改进以满足客户新的需求</li>
+</ol>
+<hr>
+<p><strong>原则：</strong></p>
+<ol>
+<li>抽象；</li>
+<li>信息隐蔽；</li>
+<li>模块化；</li>
+<li>局部化；</li>
+<li>确定性；</li>
+<li>一致性；</li>
+<li>完备性；</li>
+<li>可验证性</li>
+</ol>
+<hr>
+<p><strong>计算机软件：</strong></p>
+<ul>
+<li>系统软件：一整套服务于其他程序的程序</li>
+<li>应用软件：解决特定业务需要的独立应用程序</li>
+<li>工程/科学软件：通常带有”数值计算”算法的特征</li>
+<li>嵌入式软件：面向最终使用者和系统本身的特性</li>
+<li>产品线软件：为多个不同用户的使用提供特定功能</li>
+<li>Web应用软件：以网络为中心</li>
+<li>人工智能软件：利用非数值算法解决计算和直接分析无法解决的复杂问题</li>
+<li>开放计算：普适计算、分布式计算</li>
+<li>网络资源</li>
+<li>开源软件</li>
+</ul>
+<hr>
+<p>描述<strong>Bug</strong>的术语：</p>
+<p>当人们在进行软件开发活动的过程中出错时（称为<strong>错误error</strong>），就会出现<strong>故障（fault）</strong>；是从开发人员的角度来看待系统；<strong>单个错误可能会产生多个故障</strong></p>
+<p><strong>失效（failure）</strong>是指系统违背了它应有的行为；是从用户角度看到的问题；<strong>并非每一个故障对应于一个失效</strong>，如果不执行故障代码，则不会使代码失效</p>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>这七条原理被认为是确保软件产品质量和开发效率的原理的最小集合</p>
+<ol>
+<li>用分阶段的生命周期<strong>计划</strong>严格管理<br>在软件的这个生存周期中应该制定并严格执行六类计划：<ul>
+<li>项目概要计划</li>
+<li>里程碑计划</li>
+<li>项目控制计划</li>
+<li>产品控制计划</li>
+<li>验证计划</li>
+<li>运行维护计划</li>
+</ul>
+</li>
+<li>坚持进行<strong>阶段评审</strong><br>统计发现设计错误占软件错误的63%，而编码错误仅占37%；而且错误发现与改正得越晚，所需付出的代价越高</li>
+<li>实现严格的<strong>产品控制</strong><br>在软件开发中，改变需求是难免的；在改变需求时，为了保持软件各个配置成分的一致性，必须实行严格的产品控制，其中主要是实行<strong>基准配置管理</strong>；基准配置又称为<strong>基线配置</strong>，它是经过阶段评审后的软件配置成分；一旦有修改，必须按照严格的规程进行评审，在获得批准后才能实施修改</li>
+<li>采用现代程序<strong>设计技术</strong><br>采用先进的技术既可以提高软件开发的效率，又可以降低软件维护的成本</li>
+<li><strong>结果</strong>应能清楚地<strong>审查</strong></li>
+<li>开发小组的<strong>人员应少而精</strong><br>人数多，则通信开销增加；高素质开发人员的效率高，同时错误也少</li>
+<li>承认<strong>不断改进</strong>软件工程实践的必要性</li>
+</ol>
+<h2 id="软件生存周期"><a href="#软件生存周期" class="headerlink" title="软件生存周期"></a>软件生存周期</h2><p>一个软件产品或软件系统要经历孕育、诞生、成长、成熟、衰亡的阶段，一般称为<strong>软件生存周期</strong></p>
+<p>从<strong>软件开发</strong>的观点看，它就是使用适当的资源（包括人员，软硬件资源，时间等），为开发软件进行的一组开发活动，在活动结束时输入（即用户的需求）转化为输出（最终符合用户需求的软件产品）</p>
+<p>分为<strong>三个阶段：</strong></p>
+<ul>
+<li><p>定义阶段</p>
+<ul>
+<li><p><strong>可行性研究初步项目计划</strong></p>
+<p>确定软件的<strong>开发目标</strong>及其<strong>可行性</strong></p>
+<p>需要回答：要解决的问题是什么？有可行解吗？若有解，需要多少费用、资源、时间？</p>
+<p>需要进行问题定义、可行性分析，制定项目开发计划</p>
+<p><strong>参加人员：</strong>用户、项目负责人、系统分析师</p>
+<p><strong>主要文档：</strong>可行性分析报告和项目开发计划</p>
+</li>
+<li><p>需求分析</p>
+<p>准确地确定软件系统<strong>必须做什么</strong>，<strong>确定</strong>软件系统的功能、性能、数据和界面等<strong>要求</strong>，从而确定系统的<strong>逻辑模型</strong></p>
+<p><strong>参加人员：</strong>用户、项目负责人、系统分析师</p>
+<p><strong>主要文档：</strong>软件需求说明书</p>
+</li>
+</ul>
+</li>
+<li><p>开发阶段</p>
+<ul>
+<li><p>概要设计</p>
+<p>开发人员把确定的各项<strong>功能需求</strong>转换成需要的<strong>体系结构</strong>，在该体系结构中，每个成分都是意义明确的模块，即每个<strong>模块</strong>都和某些<strong>功能需求</strong>相对应。</p>
+<p>即设计软件的结构，明确软件由哪些模块组成，这些模块的层次结构、调用关系，功能，同时还要设计该项目的应用系统的总体数据结构和数据库结构，即应用系统要存储什么数据，这些数据是什么样的结构，它们之间有什么关系。</p>
+<p><strong>参加人员：</strong>系统分析师、软件设计师</p>
+<p><strong>主要文档：</strong>概要设计说明书</p>
+</li>
+<li><p>详细设计<br>对每个模块完成的功能进行<strong>具体描述</strong>，要把功能描述转变为精确的、结构化的<strong>过程描述</strong>。即该模块的控制结构是怎么样的，先做什么，后做什么，有什么样的条件判定，有些什么重复处理等，并用相应的表示工具把这些控制结构表示出来。</p>
+<p><strong>参加人员：</strong>软件设计师、程序员</p>
+<p><strong>主要文档：</strong>详细设计文档</p>
+</li>
+<li><p>实现<br>把每个模块的控制结构转换成计算机可接受的<strong>程序代码</strong>，即写成某种特定程序设计语言表示的源程序清单</p>
+</li>
+<li><p>测试<br>保证软件质量的重要手段，其主要方式是在设计测试用例的基础上检查软件的各个组成部分。</p>
+<p><strong>参加人员：</strong>是另一部门（或单位）的软件设计师或系统分析师</p>
+<p><strong>主要文档：</strong>软件测试计划、测试用例和软件测试报告</p>
+</li>
+</ul>
+</li>
+<li><p>运行和维护阶段</p>
+<ul>
+<li><p>运行</p>
+</li>
+<li><p>维护<br>软件生存周期中<strong>时间最长</strong>的阶段</p>
+<p>修改的情况：发现隐含错误、为了适应软件工作环境、由于用户业务需求的增加需要扩充和增强软件性能、为将来的软件维护活动做预先准备</p>
+</li>
+<li><p>废弃</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="软件过程"><a href="#软件过程" class="headerlink" title="软件过程"></a>软件过程</h1><p>在软件开发中所遵循的路线图称为<strong>“软件过程”</strong>。过程是活动的集合，活动是任务的集合。</p>
+<p>软件过程有3层含义：个体含义（软件产品或系统在生存周期中的某一类活动的集合）、整体含义（软件产品或系统在所有上述含义下的软件过程的总体）、工程含义（解决软件过程的工程）</p>
+<hr>
+<p>过程包含以下7种类型的要素：</p>
+<ol>
+<li>活动</li>
+<li>序列：活动的顺序</li>
+<li>过程模型：是关于系统兴趣的观点</li>
+<li>资源</li>
+<li>控制</li>
+<li>策略：指导原则</li>
+<li>组织：过程代理的层次化结构</li>
+</ol>
+<hr>
+<p>过程：一组有序的任务，它涉及<strong>活动、约束、资源</strong>使用的一系列步骤</p>
+<p>软件开发过程有时又称为<strong>软件生命周期</strong></p>
+<p>包含以下活动：</p>
+<ul>
+<li>需求分析与定义</li>
+<li>系统设计</li>
+<li>程序设计</li>
+<li>编写程序</li>
+<li>单元测试</li>
+<li>集成测试</li>
+<li>系统测试</li>
+<li>系统交付</li>
+<li>维护</li>
+</ul>
+<hr>
+<p>开发团队人员：</p>
+<ul>
+<li>需求分析员</li>
+<li>设计人员</li>
+<li>程序员</li>
+<li>测试人员</li>
+<li>培训人员</li>
+</ul>
+<p>一般来说，维护过程中，开发团队的所有人员都需要参与</p>
+<p><strong>资料管理人员</strong>负责准备和存储在系统生命周期中用到的文档，包括需求规格说明、设计描述、程序文档、培训手册、测试数据、进度等。</p>
+<p><strong>配置管理小组</strong>，让开发人员知道若改变需求，需要改变哪些，会影响哪些；还要协调可能建立或支持的系统的不同版本</p>
+<h2 id="评价模型"><a href="#评价模型" class="headerlink" title="评价模型"></a>评价模型</h2><h3 id="CMM（Capability-Maturity-Model-of-Software）"><a href="#CMM（Capability-Maturity-Model-of-Software）" class="headerlink" title="CMM（Capability Maturity Model of Software）"></a>CMM<em>（Capability Maturity Model of Software）</em></h3><p><strong>软件过程能力成熟度模型</strong>，提供了一种评价软件承接方能力的方法，同时它可帮助软件组织改进软件过程。</p>
+<p>五个成熟度级别：</p>
+<ol>
+<li><p>初始级</p>
+</li>
+<li><p>可重复级<br>建立<strong>基本的项目管理过程和实践</strong>来跟踪项目费用、进度和功能特性，有必要的<strong>过程准则</strong>来<strong>重复</strong>以前在同类项目中的<strong>成功</strong></p>
+</li>
+<li><p>已定义级<br>管理和工程两方面的软件工程已经<strong>文档化、标准化</strong>，并综合成整个软件开发组织的标准软件过程。所有项目都采用<strong>根据实际情况修改后</strong>得到的<strong>标准软件工程</strong>来开发和维护软件。</p>
+</li>
+<li><p>已管理级<br>制定了软件过程和产品质量的<strong>详细度量标准</strong>。软件过程的产品质量都被开发组织的成员所理解和控制</p>
+</li>
+<li><p>优化级</p>
+<p>加强了<strong>定量分析</strong>，通过来自<strong>过程质量反馈</strong>和来自<strong>新观念、新技术的反馈</strong>使过程能<strong>不断持续地改进</strong></p>
+</li>
+</ol>
+<h3 id="CMMI"><a href="#CMMI" class="headerlink" title="CMMI"></a>CMMI</h3><p><strong>能力成熟度模型</strong>是若干过程模型的综合和改进，是支持多个工程学科和领域的、系统的、一致的过程改进框架，能适应现代工程的特点和需要，能提高过程的质量和工作效率。</p>
+<p>两种表示方法：</p>
+<ol>
+<li><p>阶段式模型<br>类似于CMM，关注<strong>组织的</strong>成熟度</p>
+<ol>
+<li>初始的：过程不可预测且缺乏控制</li>
+<li>可重复的：过程为项目服务</li>
+<li>已定义的：过程为组织服务</li>
+<li>定量管理的：过程已度量和控制</li>
+<li>优化的：集中于过程改进</li>
+</ol>
+</li>
+<li><p>连续式模型<br>关注于每个<strong>过程域的</strong>能力</p>
+<p>能力等级：</p>
+<ul>
+<li>CL0（未完成的）</li>
+<li>CL1（已执行的）</li>
+<li>CL2（已管理的）</li>
+<li>CL3（已定义级的）</li>
+<li>CL4（定量管理的）</li>
+<li>CL5（优化的）</li>
+</ul>
+</li>
+</ol>
+<h2 id="UP-统一过程"><a href="#UP-统一过程" class="headerlink" title="UP 统一过程"></a>UP 统一过程</h2><p><strong>统一过程模型</strong>是一种”<strong>用例和风险驱动</strong>，<strong>以架构为中心</strong>，<strong>迭代并且增量</strong>“的开发过程，由UML方法和工具支持。</p>
+<p>迭代指的是将整个软件开发项目划分成许多个小的”袖珍项目”，每个”袖珍项目”都包含正常软件项目的所有元素：计划、分析与设计、构造、集成和测试，以及内部和外部发布。</p>
+<p>典型代表：<strong><em>RUP（Rational unified Process）</em></strong>。RUP是UP的商业扩展，兼容UP，但比UP更完整、更详细</p>
+<p>4个技术阶段及其制品：</p>
+<ol>
+<li><p>起始阶段<br>专注于项目的<strong>初创</strong>活动</p>
+<p><strong>工作产品：</strong>构想文档、初始用例模型、初始项目术语表、初始业务用例、初始风险评估、项目计划（阶段及迭代）、业务模型以及一个或多个原型（需要时）</p>
+<p><strong>里程碑：</strong>生命周期目标</p>
+</li>
+<li><p>精化阶段</p>
+<p>在理解了最初的领域范围之后进行<strong>需求分析</strong>和<strong>架构演进</strong></p>
+<p><strong>工作产品：</strong>用例模型、补充需求（包括非功能需求）、分析模型、软件体系结构描述、可执行的软件体系结构原型、修订的风险列表、项目计划（包括迭代计划、调整的工作流、里程碑和技术工作产品）以及初始用户手册</p>
+<p><strong>里程碑：</strong>生命周期架构</p>
+</li>
+<li><p>构建阶段<br>关注系统的<strong>构建</strong>，产生<strong>实现模型</strong></p>
+<p><strong>工作产品：</strong>设计模型、软件构件、集成的软件增量、测试计划及步骤、测试用例以及支持文档（用户手册、安装手册和对于并发增量的描述）</p>
+<p><strong>里程碑：</strong>初始运作功能</p>
+</li>
+<li><p>移交阶段<br>关注于<strong>软件提交方面</strong>的工作，产生<strong>软件增量</strong></p>
+<p><strong>工作产品：</strong>提交的软件增量、$\beta$测试报告和综合用户反馈</p>
+<p><strong>里程碑：</strong>产品发布</p>
+</li>
+</ol>
+<h2 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h2><p>也称为软件开发模型，它是软件开发全部过程、活动和任务的结构框架。</p>
+<p><strong>静态模型</strong>描述过程，表明了从输入到输出的转换过程</p>
+<p><strong>动态模型</strong>能够动态展现过程，这样用户能够看到中间产品和最终产品是如何随着时间的推移进行转换的</p>
+<hr>
+<p>过程模型中，方框表示活动，从左边进入的箭头表示资源，从右边离开的箭头表示输出，从顶部进入的箭头表示控制或约束，从下部进入的箭头表示机制（这些机制辅助开发人员执行活动，例如：工具、数据库或技术）</p>
+<hr>
+<p><strong>过程表示法：</strong>如何用执行过程的人员能够理解的方式记录过程</p>
+<p><strong>过程模型：</strong>如何使用一组合适的活动、资源、产品和工具来描述过程</p>
+<p><strong>过程建模支持工具：</strong>如何演示或模拟一个过程模型，从而可以评价资源的可用性、有用性和性能</p>
+<p><strong>过程测度和评价：</strong>在特定的时间或环境下，如何判断哪些活动、资源、子过程和模型类型最有益于生产高质量产品</p>
+<hr>
+<h3 id="瀑布模型-Waterfall-Model"><a href="#瀑布模型-Waterfall-Model" class="headerlink" title="瀑布模型 Waterfall Model"></a>瀑布模型 <em>Waterfall Model</em></h3><p><strong><em>瀑布模型</em></strong>是将软件生存周期中的各个活动规定为依<strong>线性顺序连接</strong>的若干阶段的模型，包括<em>需求分析、设计、编码、测试、运行与维护</em>。它规定了由前至后、相互衔接的<strong>固定次序</strong>，如同瀑布流水逐级下落。</p>
+<p>以<strong>文档</strong>为驱动，适合于<strong>软件需求很明确</strong>的软件项目的模型</p>
+<p><strong>优点：</strong></p>
+<p>容<strong>易理解</strong>，<strong>管理成本低</strong>；强调开发的阶段性早期计划及需求调查和产品测试</p>
+<p><strong>不足：</strong></p>
+<p>客户必须完整、正确、清晰地<strong>表达</strong>他们的<strong>需要</strong>；在开始的两个或三个阶段中，很<strong>难评估</strong>真正的进度状态；当<strong>接近项目结束时</strong>，出现了<strong>大量的集成和测试</strong>工作；直到项目结束之前，都<strong>不能演示系统的能力</strong>；对于项目风险的控制能力较弱</p>
+<hr>
+<h4 id="变体：V模型"><a href="#变体：V模型" class="headerlink" title="变体：V模型"></a>变体：V模型</h4><p>V模型<strong>左侧步骤向下推进</strong>，基本问题需求<strong>逐步细化</strong>，形成问题及解决方案的技术描述。一旦编码结束，沿着V模型<strong>右侧的步骤向上推进</strong>工作，其实际上是执行了一系列的<strong>测试（质量保证活动）</strong></p>
+<p>瀑布模型关注<strong>文档和制品</strong>，而V模型关注<strong>活动和正确性</strong></p>
+<hr>
+<h3 id="阶段化开发"><a href="#阶段化开发" class="headerlink" title="阶段化开发"></a>阶段化开发</h3><p>阶段化开发：增量和迭代</p>
+<p>通常会有两个系统在并行运行：产品系统和开发系统</p>
+<p><strong>运行系统</strong>或<strong>产品系统</strong>是当前正在被客户和用户使用的系统；而<strong>开发系统</strong>是准备用来替换现行产品系统的下一个版本</p>
+<h4 id="增量模型-Incremental-Model"><a href="#增量模型-Incremental-Model" class="headerlink" title="增量模型 Incremental Model"></a>增量模型 <em>Incremental Model</em></h4><p>将需求分段成<strong>一系列增量产品</strong>，每一增量<strong>分别开发</strong>。该模型采用随着日程时间的进展而<strong>交错的线性序列</strong>，每一线性序列产生软件的一个可发布的增量。客户对每个增量的使用和评估都作为下一个增量发布的<strong>新特征和功能</strong>。</p>
+<p><strong>优点：</strong>（除具有瀑布模型的优点之外）</p>
+<p>第一个可交付版本所需要的<strong>成本和时间很少</strong>；开发由增量表示的小系统所承担的<strong>风险不大</strong>；由于很快发布了第一个版本，因此可以<strong>减少用户需求的变更</strong>；运行<strong>增量投资</strong>，即在项目开始可以仅对一个或两个增量投资。</p>
+<p><strong>不足：</strong></p>
+<p>如果没有对用户的变更要求规划，那么产生的初始增量可能会造成后来增量的不稳定；如果需求不像早期思考的那样稳定和完整，那么一些增量需要重新开发，重新发布；管理发生的成本、进度和配置的复杂性可能会超出组织的能力。</p>
+<h4 id="迭代模型"><a href="#迭代模型" class="headerlink" title="迭代模型"></a>迭代模型</h4><p>增量模型是<strong>增加</strong>功能，而迭代模型是在一开始就提交一个完整的系统，然后在每一个新的发布中<strong>改变</strong>每个子系统的功能。</p>
+<h3 id="演化模型-Evolutionary-Model"><a href="#演化模型-Evolutionary-Model" class="headerlink" title="演化模型 Evolutionary Model"></a>演化模型 <em>Evolutionary Model</em></h3><p>演化模型是<strong>迭代</strong>的过程模型，特别适用于对<strong>软件需求缺乏准确认识</strong>的情况</p>
+<h4 id="原型模型-Prototype-Model"><a href="#原型模型-Prototype-Model" class="headerlink" title="原型模型 Prototype Model"></a>原型模型 <em>Prototype Model</em></h4><p><strong>原型</strong>是预期系统的一个可执行版本，反映了系统性质的一个选定的子集。一个原型不必满足目标软件的所有约束，其目的是能<strong>快速、低成本</strong>地构建原型。</p>
+<p>原型模型开始于沟通，<strong>其目的是定义软件的总体目标，标识需求</strong>，然后快速制定原型开发的计划，确定原型的目标和范围，采用快速设计的方式对其进行建模，并构建原型。被开发的原型应交付给客户使用，并收集客户的反馈意见，这些反馈意见在<strong>下一轮</strong>中对原型进行改进。（一轮完成后，下一轮才开始，和增量的交错线性不同）</p>
+<p>根据原型的目的不同，原型可以分为：</p>
+<ul>
+<li><p>探索型原型</p>
+<p>弄清<strong>目标的要求</strong>，确定所希望的特性，并探讨多种方案的可行性</p>
+</li>
+<li><p>实验型原型<br><strong>验证方案或算法的合理性</strong>，是在大规模开发和实现前，用于考查方案是否合适、规格说明是否可靠</p>
+</li>
+<li><p>演化型原型<br><strong>将原型作为目标系统的一部分</strong>，通过对原型的多次改进，逐步将原型演化成最终的目标系统</p>
+</li>
+</ul>
+<p>系统测试阶段会确认，<strong>确认</strong>（<em>validation</em>）确保系统实现了所有的需求；也会对需求进行<strong>验证</strong>（<em>verification</em>），验证确保每一项功能都是正确的</p>
+<h4 id="螺旋模型-Spiral-Model"><a href="#螺旋模型-Spiral-Model" class="headerlink" title="螺旋模型 Spiral Model"></a>螺旋模型 <em>Spiral Model</em></h4><p>螺旋模型将瀑布模型和原型模型合起来，加入了两种模型均忽略的<strong>风险分析</strong>，适用于<strong>庞大、复杂且具有高风险</strong>的系统</p>
+<p>四个步骤：</p>
+<ol>
+<li>制定计划：决定目标、方案和限制</li>
+<li>风险分析：评价方案、识别风险、消除风险</li>
+<li>实施工程：开发、验证下一产品</li>
+<li>用户评估</li>
+</ol>
+<p><strong>优点：</strong></p>
+<p>支持<strong>用户需求的动态变化</strong>，为用户参与软件开发的所有关键决策提供了方便，有助于提高软件的适应能力，并且为项目管理人员及时调整管理决策提供了便利，从而降低了软件开发的风险。</p>
+<p><strong>不足：</strong></p>
+<p>开发人员需要具有丰富的风险评估经验和专门知识；过多的迭代次数会增加开发成本，延迟提交时间。</p>
+<h4 id="喷泉模型-Water-Fountain-Model"><a href="#喷泉模型-Water-Fountain-Model" class="headerlink" title="喷泉模型 Water Fountain Model"></a>喷泉模型 <em>Water Fountain Model</em></h4><p>喷泉模型是一种以<strong>用户需求为动力</strong>，以对象作为驱动的模型，适合于<strong>面向对象的开发方法</strong>；开发过程具有迭代性和无间隙性（指在开发活动【如分析、设计、编码】之间不存在明显的边界）。</p>
+<p>克服了瀑布模型不支持软件重用和多项开发活动集成的局限性</p>
+<p><strong>优点：</strong></p>
+<p>提高软件项目的开发效率，节省开发时间</p>
+<p><strong>不足：</strong></p>
+<p>需要大量开发人员，不利于项目的管理；需要严格管理文档，使得审核难度加大</p>
+<h3 id="基于构件的开发模型-Component-based-Development-Model"><a href="#基于构件的开发模型-Component-based-Development-Model" class="headerlink" title="基于构件的开发模型 Component-based Development Model"></a>基于构件的开发模型 <em>Component-based Development Model</em></h3><p>利用<strong>预先包装的构件</strong>来构造应用系统。构件可以是组织<strong>内部开发</strong>的构件，也可以是<strong>商品化成品</strong>（Commercial Off-The-Self，COTS）软件构件。本质上是<strong>演化模型</strong>，需要以迭代方式构建构件。</p>
+<p>包括<strong>领域工程</strong>和<strong>应用系统工程</strong>两部分</p>
+<h3 id="形式化方法模型-Formal-Methods-Model"><a href="#形式化方法模型-Formal-Methods-Model" class="headerlink" title="形式化方法模型 Formal Methods Model"></a>形式化方法模型 <em>Formal Methods Model</em></h3><p>建立在<strong>严格数学基础上</strong>的一种软件开发方法，其主要活动是生成<strong>形式化的数学规格说明</strong></p>
+<h3 id="其它模型"><a href="#其它模型" class="headerlink" title="其它模型"></a>其它模型</h3><h4 id="可操作规格说明模型"><a href="#可操作规格说明模型" class="headerlink" title="可操作规格说明模型"></a>可操作规格说明模型</h4><p><strong>可操作规格说明模型</strong>，通过演示系统行为的方式来评估或执行系统需求。即，一旦指定了需求，就可以用软件包进行演示。</p>
+<p>瀑布模型把功能与设计分离，而可操作规格说明模型允许把功能和设计合并起来</p>
+<h4 id="可转换模型"><a href="#可转换模型" class="headerlink" title="可转换模型"></a>可转换模型</h4><p>去除某些主要开发步骤来设法减少出错机会。利用自动化手段的支持，转换过程使用一系列转换把需求规格说明变为一个可支付使用的系统。</p>
+<p>转换的样例有：</p>
+<ul>
+<li>改变数据表示</li>
+<li>选择算法</li>
+<li>优化</li>
+<li>编译</li>
+</ul>
+<h1 id="软件开发方法"><a href="#软件开发方法" class="headerlink" title="软件开发方法"></a>软件开发方法</h1><h2 id="结构化方法"><a href="#结构化方法" class="headerlink" title="结构化方法"></a>结构化方法</h2><p>由结构化分析、结构化设计、结构化程序设计构成，是一种<strong>面向数据流</strong>的开发方法；总的指导思想是<strong>自顶向下、逐层分解</strong>，基本原则是<strong>功能的分解与抽象</strong>。适合于数据处理领域的问题。</p>
+<p>结构化分析是根据<strong>分解与抽象</strong>的原则，按照系统中数据处理的流程，用<strong>数据流图</strong>来建立系统的功能模型，从而完成需求分析工作。</p>
+<p>结构化设计是根据<strong>模块独立性准则</strong>，软件结构优化准则将数据流图转换为<strong>软件体系结构</strong>，用<strong>软件结构图</strong>来建立系统的物理模型，实现系统的概要设计。</p>
+<p>结构化程序设计使用<strong>三种基本控制结构</strong>构造程序</p>
+<h2 id="Jackson方法"><a href="#Jackson方法" class="headerlink" title="Jackson方法"></a>Jackson方法</h2><p><strong>面向数据结构</strong>的开发方法，适合于小规模的项目。</p>
+<p>又发展了JSD（Jackson System Development）。首先建立现实世界的模型，再确定系统的功能需求，对需求的描述特别强调操作之间的时序性。它是以<strong>事件</strong>作为驱动的，是一种<strong>基于进程</strong>的开发方法。适用于<strong>时许特点较强的系统</strong>，包括数据处理系统和一些实时控制系统。</p>
+<h2 id="原型方法"><a href="#原型方法" class="headerlink" title="原型方法"></a>原型方法</h2><p>开发原型系统首先确定用户需求，开发初始原型，然后征求用户对初始原型的改进意见，并根据意见修改原型。适合于<strong>用户需求不清、需求经常变化</strong>的情况。</p>
+<h2 id="面向对象方法"><a href="#面向对象方法" class="headerlink" title="面向对象方法"></a>面向对象方法</h2><p>UML（Unified Modeling Language）同一建模语言是面向对象的标准建模语言。</p>
+<h2 id="敏捷开发方法"><a href="#敏捷开发方法" class="headerlink" title="敏捷开发方法"></a>敏捷开发方法</h2><p>总体目标是通过”尽可能<strong>早地、持续地</strong>对有价值的软件的交付”使客户满意。</p>
+<p>4条原则：</p>
+<ol>
+<li>相对于过程和工具，更强调个人和交互价值</li>
+<li>更喜欢在生产运行的软件上花费时间，而不是将时间花费在编写各种文档上</li>
+<li>将精力集中在与客户合作上，而不是合同谈判上</li>
+<li>专注于对变化的反应，而不是创建一个计划而后遵循这个计划</li>
+</ol>
+<h3 id="极限编程XP"><a href="#极限编程XP" class="headerlink" title="极限编程XP"></a>极限编程XP</h3><p>XP是一种轻量级（敏捷）、高效、低风险、柔性、可预测的、科学的软件开发方式。</p>
+<p>4个部分组成：</p>
+<ul>
+<li>4大价值观：沟通、简单性、反馈和勇气（尽早和经常交付功能的承诺）</li>
+<li>5个原则：快速反馈、简单性假设、逐步修改、提倡更改和优质工作</li>
+<li>12个最佳实践：规划游戏、小的发布、隐喻（对于系统将如何运行的设想取得一致意见）、简单设计（只处理当前的需求）、首先编写测试、重构（重新审视需求和设计，重新明确地描述它们以符合新的现有的需要）、结对编程、集体所有权、持续集成、可以忍受的步伐、在现场的客户、代码标准</li>
+<li>行为</li>
+</ul>
+<h3 id="水晶法-Crystal"><a href="#水晶法-Crystal" class="headerlink" title="水晶法 Crystal"></a>水晶法 <em>Crystal</em></h3><p>水晶法认为每一个不同的项目都需要一套不同的策略、约定和方法论</p>
+<p>它认为随着开发人员素质的提高，项目和过程的质量也随之提高。</p>
+<h3 id="并列争球法-Scrum"><a href="#并列争球法-Scrum" class="headerlink" title="并列争球法 Scrum"></a>并列争球法 <em>Scrum</em></h3><p>使用迭代的方法，把每30天一次的迭代称为一个”冲刺”（sprint），并按优先级别来实现产品。多个自组织和自治的小组并行地递增实现产品。协调是通过简短的日常会议来进行。</p>
+<h3 id="自适应软件开发-ASD"><a href="#自适应软件开发-ASD" class="headerlink" title="自适应软件开发 ASD"></a>自适应软件开发 <em>ASD</em></h3><h1 id="软件工具"><a href="#软件工具" class="headerlink" title="软件工具"></a>软件工具</h1><p>用来辅助软件开发、运行、维护、管理和支持等过程中的活动的软件称为软件工具</p>
+<p>计算机辅助软件工程（<em>Computer-Aided Software Engineer，CASE</em>）工具</p>
+<ul>
+<li>软件开发工具<ul>
+<li>需求分析工具</li>
+<li>设计工具</li>
+<li>编码与排错工具</li>
+<li>测试工具</li>
+</ul>
+</li>
+<li>软件维护工具<ul>
+<li>版本控制工具</li>
+<li>文档分析工具</li>
+<li>开发信息库工具</li>
+<li>逆向工程工具</li>
+<li>再工程工具</li>
+</ul>
+</li>
+<li>软件管理和软件支持工具<ul>
+<li>项目管理工具</li>
+<li>配置管理工具</li>
+<li>软件评价工具</li>
+</ul>
+</li>
+</ul>
+<h1 id="软件开发环境"><a href="#软件开发环境" class="headerlink" title="软件开发环境"></a>软件开发环境</h1><p>指支持软件产品开发的软件系统，它由软件工具集和环境集成机制构成</p>
+<h1 id="软件项目管理"><a href="#软件项目管理" class="headerlink" title="软件项目管理"></a>软件项目管理</h1><p>有效的软件项目管理集集中在4个P上，即</p>
+<ul>
+<li>人员（Person）：工作风格（外向/内向、理性/感性）<ul>
+<li>项目管理人员</li>
+<li>高级管理人员</li>
+<li>研发人员</li>
+<li>客户</li>
+<li>最终用户</li>
+</ul>
+</li>
+<li>产品（Product）</li>
+<li>过程（Procedure）</li>
+<li>项目（Project）</li>
+</ul>
+<hr>
+<p>项目组织：</p>
+<ul>
+<li>主程序员负责制小组 <em>chief programmer team</em><ul>
+<li>高度确定性、稳定性、一致性和重复性</li>
+</ul>
+</li>
+<li>忘我方法 <em>egoless approach</em>：让每个人平等地承担责任，民主式投票产生结果<ul>
+<li>大量的不确定性时</li>
+</ul>
+</li>
+</ul>
+<h2 id="软件项目估算"><a href="#软件项目估算" class="headerlink" title="软件项目估算"></a>软件项目估算</h2><p>方法：已完成类似项目、分解技术、经验</p>
+<h3 id="成本估算方法"><a href="#成本估算方法" class="headerlink" title="成本估算方法"></a>成本估算方法</h3><p>自顶向下、自底向上、差别估算、专家估算法、类推估算法、算式估算法</p>
+<p>悲观的预测x，乐观的预测y、最有可能的猜测z</p>
+<p>则beta概率分布的平均值为$(x+4y+z)/6$</p>
+<h3 id="COCOMO-估算模型"><a href="#COCOMO-估算模型" class="headerlink" title="COCOMO 估算模型"></a>COCOMO 估算模型</h3><ul>
+<li><p>基本COCOMO模型（静态单变量）</p>
+<p>$E=a(L)^b\\D=cE^d​$</p>
+<p>其中E工作量，D开发时间，L源代码行数</p>
+</li>
+<li><p>中级COCOMO模型（静态多变量，分为系统和部件）</p>
+<p>$E=a(L)^bEAF$</p>
+<p>其中EAF是工作量调节因子（15种影响软件工作量的因素）</p>
+</li>
+<li><p>详细COCOMO模型（分为系统、子系统、模块）</p>
+</li>
+</ul>
+<p>演化成COCOMOII模型，包括应用组装模型、早期设计阶段模型、体系结构阶段模型</p>
+<p>$E=bS^cm(X)$</p>
+<p>其中，$bS^c$是初始的基于规模的估算，通过关于成本驱动因子信息的向量$m(X)$对它进行调整</p>
+<h3 id="Putnam模型"><a href="#Putnam模型" class="headerlink" title="Putnam模型"></a>Putnam模型</h3><p>动态多变量模型，假设在软件开发的整个生存期种工作量有特定的分布</p>
+<script type="math/tex; mode=display">
+L=C_kE^{1/3}t_d^{1/3}</script><p>其中$t_d$表示开发持续时间，$C_k$表示技术状态常数，其值依赖于开发环境</p>
+<h2 id="软件度量"><a href="#软件度量" class="headerlink" title="软件度量"></a>软件度量</h2><p>分类：</p>
+<ol>
+<li>面向规模的度量：通常用程序的代码行数LOC来衡量</li>
+<li>面向功能的度量</li>
+</ol>
+<hr>
+<ol>
+<li>生产率度量</li>
+<li>质量度量</li>
+<li>技术度量</li>
+</ol>
+<p>复杂性度量：规模、难度、结构、智能度</p>
+<h2 id="McCabe度量法"><a href="#McCabe度量法" class="headerlink" title="McCabe度量法"></a>McCabe度量法</h2><p>又称环路度量，是程序流程图的改变</p>
+<p>度量值$V(G)=m-n+2p$</p>
+<p>其中，m是弧的个数，n是结点数，p是强连通分量的个数</p>
+<p>一般10是上限，要充分测试此模块变得很艰难</p>
+<h2 id="进度管理"><a href="#进度管理" class="headerlink" title="进度管理"></a>进度管理</h2><p><strong>项目进度（Project schedule）</strong>通过列举项目的各个阶段，把每个阶段分解成离散的任务或活动，来描述特定项目的软件开发周期。</p>
+<p><strong>可交付产品（deliverable）</strong>，即在项目开发的过程中客户希望看到的产品：</p>
+<ul>
+<li>文档</li>
+<li>功能的演示</li>
+<li>子系统的演示</li>
+<li>精确性的演示</li>
+<li>可靠性、安全性或性能的演示</li>
+</ul>
+<hr>
+<p><strong>活动（actibity）</strong>：是项目的一部分，它在一段时间内发生</p>
+<p>可以通过4个参数对活动进行描述：</p>
+<ul>
+<li>前驱（precursor）：活动的一组条件</li>
+<li>工期（duration）</li>
+<li>截止日期（due date）</li>
+<li>终点（end point）：表示活动已经结束，通常是一个里程碑或可交付的产品</li>
+</ul>
+<p><strong>活动图：</strong>表示活动之间的依赖关系，虚线表示这些活动必须在后一个活动之前完成</p>
+<p><strong>关键路径法（Critical Path Method， CPM）</strong>：是每个节点的时差都为零的路径</p>
+<p><em>时差slack time/浮动时间float = 可用时间available time - 真实时间real time/实际时间actual time</em></p>
+<p><em>时差=最晚开始时间 - 最早开始时间</em></p>
+<p><strong>里程碑（milestone）</strong>是活动的完成——某一特定的时刻</p>
+<p><strong>工作分解结构（work breakdown structure）</strong>：把项目描述为由若干离散部分构成的集合</p>
+<hr>
+<p>工具：</p>
+<ul>
+<li>Gantt甘特图<ul>
+<li>水平条形图，以日历为基准</li>
+<li>清晰地描述，每个任务从何时开始，到何时结束，任务的进展情况以及各个任务之间的并行性</li>
+<li>但不能清楚地反映出各任务之间的依赖关系，难以确定整个项目的关键所在，也不能反映计划中有潜力的部分</li>
+</ul>
+</li>
+<li>PERT（Program Evaluation &amp; Review Technique）项目计划评审技术图<ul>
+<li>采用正态分布，对于实际时间的一个估计的窗口window/区间interval</li>
+<li>有向图，箭头表示任务，结点表示事件</li>
+<li>清晰地描述，每个任务从何时开始，到何时结束，给出各任务之间的关系，</li>
+<li>但不能反映各个任务之间的并行性</li>
+</ul>
+</li>
+</ul>
+<h2 id="软件项目的组织"><a href="#软件项目的组织" class="headerlink" title="软件项目的组织"></a>软件项目的组织</h2><ul>
+<li>主程序员制小组</li>
+<li>民主制小组</li>
+<li>层次式小组</li>
+</ul>
+<h2 id="软件质量管理"><a href="#软件质量管理" class="headerlink" title="软件质量管理"></a>软件质量管理</h2><p><strong>质量特性：</strong></p>
+<ul>
+<li>ISO/IEC 9126指标<ul>
+<li>质量特性<ul>
+<li>功能性</li>
+<li>可靠性</li>
+<li>易使用性</li>
+</ul>
+</li>
+<li>质量子特性</li>
+<li>度量指标</li>
+</ul>
+</li>
+<li>Mc Call软件质量模型<ul>
+<li>产品运行</li>
+<li>产品修正</li>
+<li>产品转移</li>
+</ul>
+</li>
+</ul>
+<p><strong>质量保证</strong></p>
+<p><strong>软件评审</strong></p>
+<p><strong>软件容错技术</strong></p>
+<h2 id="软件配置管理"><a href="#软件配置管理" class="headerlink" title="软件配置管理"></a>软件配置管理</h2><p><em>Software Configure Management（SCM）</em>，用于整个软件工程过程，其目标是标识变更，控制变更，确保变更准确实现，报告有关变更</p>
+<ul>
+<li>基线：各开发阶段的一个特定点，使开发阶段的工作划分更明确</li>
+<li>软件配置项 <em>Software Configure Item，SCI</em>，配置管理的基本单位</li>
+<li>版本控制</li>
+<li>变更控制</li>
+</ul>
+<h2 id="风险管理"><a href="#风险管理" class="headerlink" title="风险管理"></a>风险管理</h2><p><strong>风险类别</strong></p>
+<p><strong>识别风险</strong></p>
+<p><strong>风险预测/分析风险</strong></p>
+<p><strong>评估风险/为每个风险分配优先级</strong></p>
+<p>RE：风险显露度/风险暴露（risk exposure）</p>
+<script type="math/tex; mode=display">
+RE=P*C</script><p>其中，P是风险发生的概率，C是风险发生时带来的项目成本</p>
+<p><strong>风险评估</strong></p>
+<script type="math/tex; mode=display">
+(r_i,l_i,x_i)</script><p>分别表示<strong>风险，概率，影响</strong></p>
+<p><strong>风险杠杆</strong> = （降低前的风险暴露-降低后的风险暴露）/（降低风险的成本）</p>
+<p><strong>风险控制</strong></p>
+<hr>
+<p>回归测试 <em>regression testing</em>：确保已有的功能仍能正常地工作</p>
+<h1 id="获取需求"><a href="#获取需求" class="headerlink" title="获取需求"></a>获取需求</h1><p>关注于<strong>问题</strong></p>
+<h2 id="需求过程"><a href="#需求过程" class="headerlink" title="需求过程"></a>需求过程</h2><p>寻找需求：标识关键实体、限定实体、定义实体之间的关系</p>
+<p>特定于实现的描述不被认为是需求（除非是客户强行规定的），需求阶段的目标是理解客户的问题和需要，集中于<strong>客户和问题</strong>，而不是解决方案和实现</p>
+<p><strong>规格说明（specification）</strong>阶段，将决定我们的软件系统将完成哪些需求；在<strong>设计（design）</strong>阶段，制定关于将如何实现指定行为的计划</p>
+<p>需求过程的最终结果是<strong>软件需求规格说明SRS</strong>，它用于与其他软件开发人员（设计人员、测试人员、维护人员）交流，探讨最终产品行为</p>
+<h2 id="需求引发"><a href="#需求引发" class="headerlink" title="需求引发"></a>需求引发</h2><h3 id="风险承担者"><a href="#风险承担者" class="headerlink" title="风险承担者"></a>风险承担者</h3><p>委托人：为要开发的软件支付费用的人</p>
+<p>客户：在软件开发后购买软件的人</p>
+<p>用户：熟悉当前系统，并将使用最终系统的人</p>
+<p>领域专家：对软件必须自动化问题很熟悉的那些人</p>
+<p>市场研究人员：进行调查，以确定将来的趋势以及潜在客户的需要的那些人</p>
+<p>律师或审计人员：对政府、安全性以及法律的需求熟悉的那些人</p>
+<p>软件工程师或其他技术专家：确保在技术上和经济上是可行的</p>
+<h2 id="需求的类型"><a href="#需求的类型" class="headerlink" title="需求的类型"></a>需求的类型</h2><p><strong>功能需求（functional requirement）</strong>根据要求的活动来描述需要的行为。</p>
+<p><strong>质量需求（quality requirement）/非功能性需求（nonfunctional requirement）</strong>描述一些软件解决方案必须拥有的质量属性：如快速的响应时间、易使用性、高可靠性或低维护代价</p>
+<p><strong>设计约束（design constraint）</strong>是已经做出的设计决策或限制问题解决方案的设计决策：如平台或构件接口的选择</p>
+<p><strong>过程约束（process constraint）</strong>是对用于构建系统的技术和资源的限制</p>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>需求可分为：必须的、值得要的、可选的</p>
+<h3 id="两种需求文档"><a href="#两种需求文档" class="headerlink" title="两种需求文档"></a>两种需求文档</h3><p><strong>需求定义</strong> <em>requirement definition</em>：面向业务相关的人员</p>
+<p><strong>需求规格说明</strong> <em>requirement specification</em>：面向技术性人员</p>
+<h2 id="需求的特性"><a href="#需求的特性" class="headerlink" title="需求的特性"></a>需求的特性</h2><ul>
+<li>正确</li>
+<li>一致性</li>
+<li>无二义性</li>
+<li>完备</li>
+<li>可行</li>
+<li>相关</li>
+<li>可测试</li>
+<li>可跟踪</li>
+</ul>
+<h2 id="建模表示法"><a href="#建模表示法" class="headerlink" title="建模表示法"></a>建模表示法</h2><h3 id="实体-联系图"><a href="#实体-联系图" class="headerlink" title="实体-联系图"></a>实体-联系图</h3><p><em>entity-relationship diagram，ER diagram</em></p>
+<p>3个核心结构：<strong>实体、属性和联系</strong></p>
+<p>实体<em>entity</em>：矩形，代表具有共同性质和行为的现实世界对象构成的集合（有时也称为类）</p>
+<p>联系<em>relationship</em>：表示为两个实体之间的边，边的中间有一个菱形，说明联系的类型</p>
+<p>属性<em>attribute</em>：是实体上的注释，描述实体相关的数据或性质</p>
+<h3 id="UML-类图"><a href="#UML-类图" class="headerlink" title="UML 类图"></a>UML 类图</h3><p>统一建模语言是用于文档化软件规格说明和设计的一组表示法</p>
+<p>每一个方框是一个<strong>类</strong>，表示一组相似类型的实体。一个类具有<strong>名称（name）</strong>、<strong>属性（attribute）</strong>集和类的属性上的<strong>操作（operation）</strong>集</p>
+<p>属性是简单数据变量（即它的值太简单，本身不足以成为一个类），其值可以随着时间和类实体的不同而发生变化</p>
+<p><strong>类范围属性（class-scope attribute）</strong>用带下划线的属性表示，是被类的所有实例共享的数据值</p>
+<p><strong>类范围操作（class-scope operation）</strong>书写为带下划线的操作，是由抽象类执行的操作，而不是由类的实例执行的操作</p>
+<p>两个类之间的连线称为<strong>关联</strong>，表示类的实体之间的关系</p>
+<p><strong>聚合关联（aggregate association）</strong>：<code>has-a</code>关系，用空心菱形的关联来表示</p>
+<p><strong>组装（composition）</strong>关联是一种特殊类型的聚合，用实心菱形的聚合来表示</p>
+<p>一端带有三角形的关联表示<strong>概化（generalization）</strong>关联，也称为子类型或<code>is-a</code>关系</p>
+<p><strong>关联类（association class）</strong>，将属性和操作联系到关联上</p>
+<h3 id="事件踪迹"><a href="#事件踪迹" class="headerlink" title="事件踪迹"></a>事件踪迹</h3><p><em>event trace</em></p>
+<p>事件踪迹是关于现实世界实体之间交换的事件序列的图形描述</p>
+<p>每一条竖线表示不同实体的时间线，其名字出现在线的顶部。每一条水平线表示两个实体之间的一个事件或交互，通常理解为从一个实体到另一个实体的消息传递。时间按从顶到下踪迹进展。每一个图描述一个<strong>踪迹（trace）</strong>，表示的是若干可能行为中的一个</p>
+<h3 id="消息时序图"><a href="#消息时序图" class="headerlink" title="消息时序图"></a>消息时序图</h3><p><em>Message Sequence Chart</em></p>
+<p>是扩充的事件踪迹表示法。具有创建和撤销实体、指定动作和计时器，以及组合事件踪迹的能力；一般只用于描述关键的场景，而不是说明整个问题。</p>
+<p>每一条竖线表示一个参与的<strong>实体</strong>，而将一个<strong>消息</strong>描述为从发送实体到接收实体的箭头，箭头上的标记制定该消息的名称和数据参数。一个消息箭头可以向下斜，体现了消息发送时间和消息接受时间之间的时间段。虚线的箭头表示创建事件，产生新的实体。实体线底部的交叉符号表示实体执行的终结。<strong>动作（action）</strong>为位于实体执行线上的带标记的矩形。<strong>条件（condition）</strong>带标记的六边形。</p>
+<h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p><em>state machine</em></p>
+<p>用于在单个模型中表示一组事件踪迹，是一种图形描述，描述了系统与其环境之间的所有对话。每一个节点称为<strong>状态</strong>，表示存在于事件发生之间的一个稳定的条件集合。每一个边称为<strong>转移（transition）</strong>，表示由一个事件的发生而产生的行为或条件的变化。每一个转移都标记有触发事件，还可能有输出事件</p>
+<h3 id="UML-状态图"><a href="#UML-状态图" class="headerlink" title="UML 状态图"></a>UML 状态图</h3><p>用于描述一个UML类中对象的动态行为。根据涉及的实体与实体之间的关系，刻画出了一个问题的静态的、总体的视图。<strong>没有说明实体是如何运转的，或对于输入事件，行为是如何变化的。</strong>而是说明的是，<strong>一个类的实例</strong>应该如何改变其状态，以及在这些对象彼此交互时，它们的属性值是如何改变的，即单个实体是如何响应输入事件以及产生输出事件的。</p>
+<p>通常与MSC（消息时序图）【两个实体之间的消息传递】相辅相成。</p>
+<p>具有<strong>公共转移</strong>的状态合并进<strong>超状态（superstate）</strong>，可以将超状态看作是子状态机，具有自己的状态和转移集。</p>
+<hr>
+<p>转移标记的语法：<code>event(args) [condition] \ action* ^Object.event(args)*</code></p>
+<p><strong>触发事件</strong>是一个可能携带参数的消息；<strong>激活条件</strong>由方括弧括起来，是关于对象属性的谓词。如果一个转移发生，其动作（每一个的前面带有斜杠<code>&quot;/&quot;</code>）表示对象属性的赋值；星号<code>&quot;*&quot;</code>表明一个转移可能含有任意多个<strong>动作</strong>。如果该转移发生，它可能生成多个<strong>输出事件</strong>，表示为<code>/^对象.事件</code>(<code>/^Object.event</code>)。一个输出事件可能携带参数，或者指定目标对象，或者广播到所有对象。</p>
+<p>可以没有触发事件、条件等，表示总是被激活的</p>
+<hr>
+<p><strong>动作&amp;活动：</strong></p>
+<p>动作是一个相对没有时间花费的计算，并且是不可中断的；活动是更为重要复杂的计算，它执行一段时间，并且可以被中断。</p>
+<h3 id="Petri图"><a href="#Petri图" class="headerlink" title="Petri图"></a>Petri图</h3><p>是<strong>状态-转移表示法</strong>的一种形式，用于建模并发活动以及它们之间的交互；Petri网中的圆圈称为<strong>位置</strong>，表示活动或条件；条表示<strong>变迁</strong>；有向的箭头称为弧，将变迁与其输入位置和输出位置连接在一起。位置中放置的是令牌（token），作为变迁的启动条件。当一个变迁被触发时，就清楚每一个输入位置中的令牌，并将令牌插入每一个输出位置。为每一条弧分配一个权重，指出在变迁触发的时候，在弧的输入位置清除了多少令牌，或者在弧的输出位置插入了多少令牌。</p>
+<h3 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h3><p><em>data-flow diagram，DFD</em></p>
+<p>建模功能以及从一个功能到另一个功能的数据流；一个泡泡表示一个<strong>加工（process）</strong>或功能，它转换数据。箭头表示<strong>数据流（data flow）</strong>。单个计算使用之外的持久数据保存在<strong>数据存储（data store）</strong>，它是一个正式的库或信息库，表示为两个平行的条。数据源或数据接收器表示为矩形，称为<strong>参与者（actor）</strong></p>
+<p>优势：提供了两种直观的模型：一种是关于被提议系统的高层功能的，一种是各种加工之间的数据依赖关系。</p>
+<p>最好作为问题的早期模型使用，因为此时细节并不是很重要。</p>
+<h3 id="UML用例图"><a href="#UML用例图" class="headerlink" title="UML用例图"></a>UML用例图</h3><p><em>use-case diagram</em></p>
+<p>类似于顶层的数据流图，它根据系统和系统的环境之间的交互，描述可观察到的、用户发起的功能。大的方框表示系统的边界；方框外的小人描绘的是参与者，包括人或系统；方框之内的椭圆是用例，表示<strong>必需的主要功能及其变种</strong>；参与者和用例之间的线表明参与者参与了该用例。用例不一定建模系统应该提供的所有任务，而是用于说明用户对重要系统行为的观察。</p>
+<p>虚线箭头，标注构造型<code>&lt;&lt;include&gt;&gt;</code>或者<code>&lt;extend&gt;</code>，分别表示调用和扩展</p>
+<h3 id="函数与关系"><a href="#函数与关系" class="headerlink" title="函数与关系"></a>函数与关系</h3><p>基于数学的规格说明和设计技术称为<strong>形式化方法</strong></p>
+<p>当一个输入值映射到多个输出值的时候，就使用<strong>关系</strong></p>
+<p>每一个输入都映射到单个输出，则这个函数定义上是<strong>一致的</strong>；如果一个函数为每一个不同的输入指定一个输出，则称为全函数，并且定义上是<strong>完备的</strong>。</p>
+<h3 id="判定表"><a href="#判定表" class="headerlink" title="判定表"></a>判定表</h3><p><em>decision table</em></p>
+<p>是函数规格说明的表格式表示，将事件和条件映射到适当的反应或动作上。</p>
+<p>该规格说明是非形式化的，因为输入（事件和条件）和输出（动作）可以用自然语言表示，也可以用数学表达式表示，或者同时使用两者。</p>
+<p>如果有$n$个输入条件，就可能会有$2^n$个条件的组合。</p>
+<h3 id="Parnas表"><a href="#Parnas表" class="headerlink" title="Parnas表"></a>Parnas表</h3><p>是数学函数和关系的表格式表示；与判定表不同的是，Parnas表的输入和输出是纯数学表达式。</p>
+<h3 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h3><p><strong>描述性的表示法</strong>是，根据问题或提议的解决方案的性质或者不变行为来对它进行描述的表示法，更适合于表达全局性质或约束</p>
+<p><strong>逻辑</strong>由一种表述性质的语言加上一组推理规则组成，这些推理规则用于规定的性质导出新的、合乎逻辑的性质。</p>
+<h3 id="对象约束语言"><a href="#对象约束语言" class="headerlink" title="对象约束语言"></a>对象约束语言</h3><p><em>Object control language</em></p>
+<p>具有数学精确性，又对非数学专业人员易读、易写、易理解的约束语言</p>
+<p>（感觉像是类似于数据库的E-R图+类图）</p>
+<h3 id="Z"><a href="#Z" class="headerlink" title="Z"></a>Z</h3><p>发音为<em>zed</em></p>
+<p><strong>形式化</strong>的需求规格说明语言，将<strong>集合论</strong>的变量定义组织到一个问题的完整的抽象数据类型模型当中，并使用逻辑来表示每一个操作的前置条件和后置条件。</p>
+<p>Z利用软件工程的抽象方法将规格说明分解为可管理的模块，称为<strong>模式（schema）</strong></p>
+<h3 id="SDL数据"><a href="#SDL数据" class="headerlink" title="SDL数据"></a>SDL数据</h3><p>SDL数据用于创建<strong>规格说明和描述语言（SDL）</strong>中的用户定义数据类型以及参数化的数据类型</p>
+<p>操作：生成操作（构建定义数据类型的规范表示）、操纵操作（返回值）、查询</p>
+<h2 id="需求和规格说明语言"><a href="#需求和规格说明语言" class="headerlink" title="需求和规格说明语言"></a>需求和规格说明语言</h2><p>一个完整的规格说明可能包含若干种模型，其中每一种说明系统的一个不同的方面</p>
+<h3 id="统一建模语言UML"><a href="#统一建模语言UML" class="headerlink" title="统一建模语言UML"></a>统一建模语言UML</h3><p>UML标准包含8种图形建模表示法，再加上OCL约束语言：</p>
+<ul>
+<li>用例图<ul>
+<li>一种高层的DFD（数据流图）</li>
+<li>用在新项目的开始阶段，记录基本顶层功能</li>
+</ul>
+</li>
+<li>类图<ul>
+<li>一种ER图</li>
+<li>UML规格说明中最重要的模型，强调问题的实体以及实体之间的相互关系</li>
+</ul>
+</li>
+<li>时序图<ul>
+<li>一种事件踪迹</li>
+<li>开发阶段早期的行为模型</li>
+<li>强调时间顺序</li>
+</ul>
+</li>
+<li>合作图<ul>
+<li>一种事件踪迹</li>
+<li>强调类之间的关系</li>
+</ul>
+</li>
+<li>状态图<ul>
+<li>一种状态机模型</li>
+</ul>
+</li>
+<li>OCL特性<ul>
+<li>逻辑</li>
+<li>描述建模元素的特性</li>
+</ul>
+</li>
+</ul>
+<h3 id="规格说明和描述语言SDL"><a href="#规格说明和描述语言SDL" class="headerlink" title="规格说明和描述语言SDL"></a>规格说明和描述语言SDL</h3><p>用于精确说明通过<strong>无限的消息队列通信</strong>的<strong>实时、并发、分布</strong>处理行为</p>
+<p>包含3个主要的图，外加定义复杂数据类型的代数规格说明</p>
+<ul>
+<li>SDL系统图<ul>
+<li>一种DFD</li>
+<li>描述规格说明的<strong>高层</strong>块和连接各个块的通信信道。信道是有向的。</li>
+<li>信道的消息传递是异步的，意味着不能对消息将被接收的时间做任何假设</li>
+</ul>
+</li>
+<li>SDL方框图<ul>
+<li>一种DFD</li>
+<li>建模<strong>低层</strong>的一组块以及连接它们的消息延迟信道</li>
+<li>同一模块中的进程之间的消息传送是即时接收的（高度耦合的进程，并行同步的进程应该处于同一模块中）</li>
+</ul>
+</li>
+<li>SDL进程图<ul>
+<li>一种状态机模型</li>
+<li>其转移是语言构成成分的序列（输入、决策、任务、输出），起始或终止于状态的构成成分</li>
+</ul>
+</li>
+<li>SDL数据类型（代数规格说明）<ul>
+<li>用于声明复杂的、用户定义的变量类型</li>
+</ul>
+</li>
+</ul>
+<h4 id="软件成本降低SCR"><a href="#软件成本降低SCR" class="headerlink" title="软件成本降低SCR"></a>软件成本降低SCR</h4><p>鼓励采用好的<strong>软件工程设计原则</strong>而设计的一组技术，将软件需求建模为数学函数，该函数将<strong>监测变量</strong>映射为<strong>控制变量</strong>。每一个函数都负责设置一个控制变量的值或一个项的值。</p>
+<h2 id="原型化需求"><a href="#原型化需求" class="headerlink" title="原型化需求"></a>原型化需求</h2><p>两种方法：（均称为快速化原型）</p>
+<ul>
+<li>抛弃型原型<ul>
+<li>快速不考虑质量，确定问题的答案后抛弃</li>
+</ul>
+</li>
+<li>演化型模型<ul>
+<li>会演变成最终的产品</li>
+</ul>
+</li>
+</ul>
+<h2 id="需求文档"><a href="#需求文档" class="headerlink" title="需求文档"></a>需求文档</h2><p><strong>需求定义：</strong>（客户的术语记录需求）</p>
+<ol>
+<li>概述系统的总体目的和范围，并列出任何可能有用的术语、指称和缩写</li>
+<li>描述系统的开发的背景和理由</li>
+<li>描述可接受解决方案的基本特性</li>
+<li>描述系统将运转的环境</li>
+<li>描述客户对解决问题的提议</li>
+<li>列出对环境行为所做的一切假设</li>
+</ol>
+<p><strong>需求规格说明</strong>：（开发人员的角度编写的，按照系统的接口）</p>
+<ol>
+<li>详细描述所有的输入和输出（包括源、目的地、值的范围、数据格式、协议等等）</li>
+<li>根据接口的输入和输出陈述要求的功能</li>
+<li>对每一个客户的质量需求，设计适配标准</li>
+</ol>
+<p><strong>过程管理（它跟踪）：</strong></p>
+<ul>
+<li>定义系统应该做什么的需求</li>
+<li>需求生成的设计模块</li>
+<li>实现设计的程序代码</li>
+<li>验证系统功能的测试</li>
+<li>描述系统的文档</li>
+</ul>
+<h2 id="确认和验证"><a href="#确认和验证" class="headerlink" title="确认和验证"></a>确认和验证</h2><p><strong>需求确认（requirements validation）</strong>，检查<em>需求定义</em>是否<em>准确地</em>反映了客户（风险承担者）的需要，通过<strong>走查</strong>、<strong>正式审查</strong>、<strong>需求评审</strong></p>
+<p><strong>验证（verification）</strong>，检查一个文档或制品是否<em>符合</em>另一个文档或制品【在这一阶段，验证需求规格说明是否符合需求定义）</p>
+<h2 id="测量需求"><a href="#测量需求" class="headerlink" title="测量需求"></a>测量需求</h2><p>对需求理解进行评分</p>
+<h2 id="选择规格说明技术"><a href="#选择规格说明技术" class="headerlink" title="选择规格说明技术"></a>选择规格说明技术</h2><p>选择合适的标准，用标准来判断哪一个技术是最适合它的</p>
+<h1 id="设计体系结构"><a href="#设计体系结构" class="headerlink" title="设计体系结构"></a>设计体系结构</h1><h1 id="设计模块"><a href="#设计模块" class="headerlink" title="设计模块"></a>设计模块</h1><h1 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h1><h1 id="测试程序"><a href="#测试程序" class="headerlink" title="测试程序"></a>测试程序</h1><h1 id="测试系统"><a href="#测试系统" class="headerlink" title="测试系统"></a>测试系统</h1><h1 id="交付系统"><a href="#交付系统" class="headerlink" title="交付系统"></a>交付系统</h1><h1 id="维护系统"><a href="#维护系统" class="headerlink" title="维护系统"></a>维护系统</h1><h1 id="评估产品、过程、资源"><a href="#评估产品、过程、资源" class="headerlink" title="评估产品、过程、资源"></a>评估产品、过程、资源</h1><h1 id="改进预测、产品、过程和资源"><a href="#改进预测、产品、过程和资源" class="headerlink" title="改进预测、产品、过程和资源"></a>改进预测、产品、过程和资源</h1><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>2019.03.27</p>
+<p>看完了《杨绛传》，看到她对孩子，对丈夫，对他人，对生活，对事业</p>
+<p>本来没有想过这种过法的，一直以来，<strong>我都没有试过把自己看作零</strong></p>
+<p>没有想到这位先生一般的人物，做过我认为卑微的事</p>
+<p>看到她有一股劲 但和我的劲却不同</p>
+<p>没有想过作为一个女性，可以如此尽心尽力，打理好一切</p>
+<p>也没有想到最后，她是最后的人</p>
+<p>更没有想到，她思念的方式</p>
+<p>作为旁观者来说，她的一生并不算太幸福，但却是满足的</p>
+<p>羡慕她与先生的平平淡淡，羡慕她能尝试喜剧、小说</p>
+<p>如果这书是在昨天看完的话 也许昨天自己受到打击的时候 就不会那么痛苦了</p>
+<p>规整为零 想把自己也如此了</p>
+<p>现在想来 自己不必让所有人承认我</p>
+<p>我觉得自己现在挺好的</p>
+<p>做自己想做的事情 想慵懒就慵懒 想学点什么就去学</p>
+<p>每个周末还能有人约我一起吃吃饭饭 聊聊天</p>
+<p>挺好的 </p>
+<p>刚开始觉得<code>empress</code>有股霸气</p>
+<p>但好像自己理会错了父亲想要我霸气的意思了</p>
+<p>现在 感觉心境平缓了 真好</p>
+<p>2019.03.31</p>
+<p>马上就可以出去玩了</p>
+<p>结果还有小测试</p>
+<p>然后我还没有想好衣服和拍照姿势</p>
+<p>头疼</p>
+<p>然后发现Mac，拼音的时候按<code>tab</code>键，可以选择是第几声的</p>
+<p>2019.04.07</p>
+<p>最近有点神经质</p>
+<p>已经问了三个人：你生我气了吗？</p>
+<p>然后发现是自己过于敏感了</p>
+<p>简历改了至少二十多份了吧！</p>
+<p>有点强迫症</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=497463179&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/软件工程/" rel="tag"><i class="fa fa-tag"></i> 软件工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/24/随想小记2019-03-24/" rel="next" title="随想小记2019-03-24">
+                <i class="fa fa-chevron-left"></i> 随想小记2019-03-24
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">91</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本原理"><span class="nav-number">1.1.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件生存周期"><span class="nav-number">1.2.</span> <span class="nav-text">软件生存周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件过程"><span class="nav-number">2.</span> <span class="nav-text">软件过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#评价模型"><span class="nav-number">2.1.</span> <span class="nav-text">评价模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CMM（Capability-Maturity-Model-of-Software）"><span class="nav-number">2.1.1.</span> <span class="nav-text">CMM（Capability Maturity Model of Software）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMMI"><span class="nav-number">2.1.2.</span> <span class="nav-text">CMMI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UP-统一过程"><span class="nav-number">2.2.</span> <span class="nav-text">UP 统一过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件过程模型"><span class="nav-number">2.3.</span> <span class="nav-text">软件过程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#瀑布模型-Waterfall-Model"><span class="nav-number">2.3.1.</span> <span class="nav-text">瀑布模型 Waterfall Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变体：V模型"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">变体：V模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阶段化开发"><span class="nav-number">2.3.2.</span> <span class="nav-text">阶段化开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增量模型-Incremental-Model"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">增量模型 Incremental Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代模型"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">迭代模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#演化模型-Evolutionary-Model"><span class="nav-number">2.3.3.</span> <span class="nav-text">演化模型 Evolutionary Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原型模型-Prototype-Model"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">原型模型 Prototype Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#螺旋模型-Spiral-Model"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">螺旋模型 Spiral Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#喷泉模型-Water-Fountain-Model"><span class="nav-number">2.3.3.3.</span> <span class="nav-text">喷泉模型 Water Fountain Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于构件的开发模型-Component-based-Development-Model"><span class="nav-number">2.3.4.</span> <span class="nav-text">基于构件的开发模型 Component-based Development Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式化方法模型-Formal-Methods-Model"><span class="nav-number">2.3.5.</span> <span class="nav-text">形式化方法模型 Formal Methods Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它模型"><span class="nav-number">2.3.6.</span> <span class="nav-text">其它模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可操作规格说明模型"><span class="nav-number">2.3.6.1.</span> <span class="nav-text">可操作规格说明模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可转换模型"><span class="nav-number">2.3.6.2.</span> <span class="nav-text">可转换模型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件开发方法"><span class="nav-number">3.</span> <span class="nav-text">软件开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构化方法"><span class="nav-number">3.1.</span> <span class="nav-text">结构化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jackson方法"><span class="nav-number">3.2.</span> <span class="nav-text">Jackson方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型方法"><span class="nav-number">3.3.</span> <span class="nav-text">原型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象方法"><span class="nav-number">3.4.</span> <span class="nav-text">面向对象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷开发方法"><span class="nav-number">3.5.</span> <span class="nav-text">敏捷开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#极限编程XP"><span class="nav-number">3.5.1.</span> <span class="nav-text">极限编程XP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水晶法-Crystal"><span class="nav-number">3.5.2.</span> <span class="nav-text">水晶法 Crystal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并列争球法-Scrum"><span class="nav-number">3.5.3.</span> <span class="nav-text">并列争球法 Scrum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自适应软件开发-ASD"><span class="nav-number">3.5.4.</span> <span class="nav-text">自适应软件开发 ASD</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件工具"><span class="nav-number">4.</span> <span class="nav-text">软件工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件开发环境"><span class="nav-number">5.</span> <span class="nav-text">软件开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件项目管理"><span class="nav-number">6.</span> <span class="nav-text">软件项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件项目估算"><span class="nav-number">6.1.</span> <span class="nav-text">软件项目估算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#成本估算方法"><span class="nav-number">6.1.1.</span> <span class="nav-text">成本估算方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#COCOMO-估算模型"><span class="nav-number">6.1.2.</span> <span class="nav-text">COCOMO 估算模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Putnam模型"><span class="nav-number">6.1.3.</span> <span class="nav-text">Putnam模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件度量"><span class="nav-number">6.2.</span> <span class="nav-text">软件度量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#McCabe度量法"><span class="nav-number">6.3.</span> <span class="nav-text">McCabe度量法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进度管理"><span class="nav-number">6.4.</span> <span class="nav-text">进度管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件项目的组织"><span class="nav-number">6.5.</span> <span class="nav-text">软件项目的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件质量管理"><span class="nav-number">6.6.</span> <span class="nav-text">软件质量管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件配置管理"><span class="nav-number">6.7.</span> <span class="nav-text">软件配置管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#风险管理"><span class="nav-number">6.8.</span> <span class="nav-text">风险管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取需求"><span class="nav-number">7.</span> <span class="nav-text">获取需求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求过程"><span class="nav-number">7.1.</span> <span class="nav-text">需求过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求引发"><span class="nav-number">7.2.</span> <span class="nav-text">需求引发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#风险承担者"><span class="nav-number">7.2.1.</span> <span class="nav-text">风险承担者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求的类型"><span class="nav-number">7.3.</span> <span class="nav-text">需求的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突"><span class="nav-number">7.3.1.</span> <span class="nav-text">解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种需求文档"><span class="nav-number">7.3.2.</span> <span class="nav-text">两种需求文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求的特性"><span class="nav-number">7.4.</span> <span class="nav-text">需求的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建模表示法"><span class="nav-number">7.5.</span> <span class="nav-text">建模表示法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实体-联系图"><span class="nav-number">7.5.1.</span> <span class="nav-text">实体-联系图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UML-类图"><span class="nav-number">7.5.2.</span> <span class="nav-text">UML 类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件踪迹"><span class="nav-number">7.5.3.</span> <span class="nav-text">事件踪迹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息时序图"><span class="nav-number">7.5.4.</span> <span class="nav-text">消息时序图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态机"><span class="nav-number">7.5.5.</span> <span class="nav-text">状态机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UML-状态图"><span class="nav-number">7.5.6.</span> <span class="nav-text">UML 状态图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Petri图"><span class="nav-number">7.5.7.</span> <span class="nav-text">Petri图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据流图"><span class="nav-number">7.5.8.</span> <span class="nav-text">数据流图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UML用例图"><span class="nav-number">7.5.9.</span> <span class="nav-text">UML用例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数与关系"><span class="nav-number">7.5.10.</span> <span class="nav-text">函数与关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判定表"><span class="nav-number">7.5.11.</span> <span class="nav-text">判定表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parnas表"><span class="nav-number">7.5.12.</span> <span class="nav-text">Parnas表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑"><span class="nav-number">7.5.13.</span> <span class="nav-text">逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象约束语言"><span class="nav-number">7.5.14.</span> <span class="nav-text">对象约束语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Z"><span class="nav-number">7.5.15.</span> <span class="nav-text">Z</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDL数据"><span class="nav-number">7.5.16.</span> <span class="nav-text">SDL数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求和规格说明语言"><span class="nav-number">7.6.</span> <span class="nav-text">需求和规格说明语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#统一建模语言UML"><span class="nav-number">7.6.1.</span> <span class="nav-text">统一建模语言UML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规格说明和描述语言SDL"><span class="nav-number">7.6.2.</span> <span class="nav-text">规格说明和描述语言SDL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件成本降低SCR"><span class="nav-number">7.6.2.1.</span> <span class="nav-text">软件成本降低SCR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型化需求"><span class="nav-number">7.7.</span> <span class="nav-text">原型化需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求文档"><span class="nav-number">7.8.</span> <span class="nav-text">需求文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认和验证"><span class="nav-number">7.9.</span> <span class="nav-text">确认和验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测量需求"><span class="nav-number">7.10.</span> <span class="nav-text">测量需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择规格说明技术"><span class="nav-number">7.11.</span> <span class="nav-text">选择规格说明技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计体系结构"><span class="nav-number">8.</span> <span class="nav-text">设计体系结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模块"><span class="nav-number">9.</span> <span class="nav-text">设计模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写程序"><span class="nav-number">10.</span> <span class="nav-text">编写程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试程序"><span class="nav-number">11.</span> <span class="nav-text">测试程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试系统"><span class="nav-number">12.</span> <span class="nav-text">测试系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交付系统"><span class="nav-number">13.</span> <span class="nav-text">交付系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#维护系统"><span class="nav-number">14.</span> <span class="nav-text">维护系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评估产品、过程、资源"><span class="nav-number">15.</span> <span class="nav-text">评估产品、过程、资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#改进预测、产品、过程和资源"><span class="nav-number">16.</span> <span class="nav-text">改进预测、产品、过程和资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">17.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

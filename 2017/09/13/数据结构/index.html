@@ -110,7 +110,7 @@
 <meta property="og:description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。  2019.03.19  对于面试基础知识的准备，今天开始复习数据结构部分了，同时将此篇博文进行扩展，相对于原目的acm来说，会增加一些细节部分">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://mrsempress.top/2017/09/13/数据结构/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-14%20%E4%B8%8B%E5%8D%888.35.17.png">
-<meta property="og:updated_time" content="2019-03-21T15:09:13.436Z">
+<meta property="og:updated_time" content="2019-03-25T14:01:12.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构——基础">
 <meta name="twitter:description" content="This is my blog.数据结构也是十分重要的，在面试中，常常会对数据结构进行考察，了解数据结构的基本原理，掌握如何使用成了一门必须掌握的课程。在本篇博客中，只会点出其优势，且只涉及acm中所需要的内容。  2019.03.19  对于面试基础知识的准备，今天开始复习数据结构部分了，同时将此篇博文进行扩展，相对于原目的acm来说，会增加一些细节部分">
@@ -268,7 +268,7 @@
       
         
         <li class="menu-item menu-item-resume">
-          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/ChenxiHuang%20.pdf" rel="section">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
@@ -483,7 +483,7 @@ LOC(a_i)=LOC(a_1)+(i-1)*l</script><p>其中$l$为存储宽度</p>
 <h3 id="串的模式匹配"><a href="#串的模式匹配" class="headerlink" title="串的模式匹配"></a>串的模式匹配</h3><p><strong>暴力法BF</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t, <span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = pos;</div><div class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(i &lt;= s[<span class="number">0</span>] &amp;&amp; j &lt;= t[<span class="number">0</span>]) &#123;</div><div class="line">        <span class="keyword">if</span>(s[i] == t[j]) &#123;</div><div class="line">            i++; j++;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            i = i - j + <span class="number">2</span>; <span class="comment">//j-1一个匹配，本趟起始位置为i-(j-1)，所以下一趟从i-j+1+1开始</span></div><div class="line">            j = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	<span class="keyword">if</span>(j &gt; t[<span class="number">0</span>]) <span class="keyword">return</span> i - t[<span class="number">0</span>];</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>KMP算法</strong>（克努特-莫里斯-普拉特）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_next</span><span class="params">(<span class="built_in">string</span> t, <span class="keyword">int</span> next[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</div><div class="line">  next[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || t[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">      next[i] = j;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j = next[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 上面的仍有缺陷，如模式“aaaab”和主串“aaabaaaab”，对于234的a这点不匹配的时候，那肯定也和它的next[i]不匹配，因此可以跳过，优化如下</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_nextval</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> nextval[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</div><div class="line">  nextval[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || t[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">      <span class="keyword">if</span>(t[i] != t[j]) nextval[i] = j;</div><div class="line">			<span class="keyword">else</span> nextval[i] = nextval[j];</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j = nextval[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">index_KMP</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t, <span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = pos, j = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; s[<span class="number">0</span>] &amp;&amp; j &lt;= t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || s[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j= next[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_next</span><span class="params">(<span class="built_in">string</span> t, <span class="keyword">int</span> next[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</div><div class="line">  next[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || t[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">      next[i] = j;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j = next[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 上面的仍有缺陷，如模式“aaaab”和主串“aaabaaaab”，对于234的a这点不匹配的时候，那肯定也和它的next[i]不匹配，因此可以跳过，优化如下</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_nextval</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> nextval[])</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</div><div class="line">  nextval[<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || t[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">      <span class="keyword">if</span>(t[i] != t[j]) nextval[i] = j;</div><div class="line">			<span class="keyword">else</span> nextval[i] = nextval[j];</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j = nextval[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">index_KMP</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t, <span class="keyword">int</span> pos)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i = pos, j = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; s[<span class="number">0</span>] &amp;&amp; j &lt;= t[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="keyword">if</span>(j == <span class="number">0</span> || s[i] == t[j]) &#123;</div><div class="line">      i++; j++;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">      j= next[j];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(j &gt; t[<span class="number">0</span>]) <span class="keyword">return</span> i - t[<span class="number">0</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组一旦被定义，它的维数和维界就不再改变。因此，除了结构的初始化和销毁之外，数组只有<em>存取元素</em>和<em>修改元素值</em>的操作</p>
 <p>有以<strong>列</strong>为主序和以<strong>行</strong>为主序</p>
 <p>若以行为主，则：</p>
@@ -585,7 +585,15 @@ LS=(\alpha_1,\alpha_2,\cdot\cdot\cdot,\alpha_n)</script><p>与线性表不同的
 <p><strong>路径</strong>    <strong>回路/环</strong>    <strong>简单路径</strong>（顶点不重复）</p>
 <p>无向图：<strong>连通图</strong>    <strong>连通分量</strong>    </p>
 <p>有向图：<strong>强连通图</strong>    <strong>强连通分量</strong></p>
+<hr>
 <p><strong>关节点</strong>（删去此点后一个连通分量分割成两个或两个以上的连通分量）【若生成树的根有两个及以上的子树，则根结点必是关节点）</p>
+<p><strong>求关节点：</strong></p>
+<p>$visited[v]$即为$v$在深度优先生成树的前序序列中的序号</p>
+<p>$low[v]$可由后续遍历深度优先生成树求得</p>
+<script type="math/tex; mode=display">
+low(v)=Min(visited[v], low[w], visited[k])</script><p>其中，$w$是顶点$v$在深度优先生成树上的孩子结点，$k$是顶点$v$在深度优先生成树上的祖先结点</p>
+<p>若对于某个结点，存在孩子结点$w$且$visited[v] \leq low[w]$，则该顶点$v$必为关节点。因为当$w$是$v$的孩子结点时，$visited[v]\leq low[w]$，表明$w$及其子孙均无指向$v$的祖先的回边</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FindArticul</span><span class="params">(AlGraph G)</span> </span>&#123;</div><div class="line">  count = <span class="number">1</span>;</div><div class="line">  visited[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; G.vexnum; i++) &#123; visited[i] = <span class="number">0</span>; &#125;</div><div class="line">  p = G.vertices[<span class="number">0</span>].firstarc;</div><div class="line">  v = p -&gt; adjvex;</div><div class="line">  DFSArticul(G, v);</div><div class="line">  <span class="keyword">if</span>(count &lt; G.vexnum) &#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="number">0</span>, G.vertices[<span class="number">0</span>].data);</div><div class="line">    <span class="keyword">while</span>(p -&gt; nextarc) &#123;</div><div class="line">      p = p -&gt; nextarc;</div><div class="line">      v = p -&gt; adjvex;</div><div class="line">      <span class="keyword">if</span>(visited[v] == <span class="number">0</span>) DFSArticul(g, v);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSArticul</span><span class="params">(ALGraph G, <span class="keyword">int</span> v0)</span> </span>&#123;</div><div class="line">  visited[v0] = min = ++count;</div><div class="line">  <span class="keyword">for</span>(p = G.vertices[v0].first; p; p = p -&gt; nextarc) &#123;</div><div class="line">    w = p -&gt; adjvex;</div><div class="line">    <span class="keyword">if</span>(visited[w] == <span class="number">0</span>) &#123;</div><div class="line">      DFSArticul(G, w);</div><div class="line">      <span class="keyword">if</span>(low[w] &lt; min) min = low[w];</div><div class="line">      <span class="keyword">if</span>(low[w] &gt;= visited[v0]) <span class="built_in">printf</span>(v0, G.vertices[v0].data);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(visited[w] &lt; min) min = visited[w];</div><div class="line">  &#125;</div><div class="line">  low[v0] = min;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>重连通图：</strong>一个没有关节点的连通图</p>
 <p>若在连通图上至少删去k个顶点才能破坏图的连通性，则称此图的连通度为k</p>
 <hr>
@@ -598,6 +606,217 @@ LS=(\alpha_1,\alpha_2,\cdot\cdot\cdot,\alpha_n)</script><p>与线性表不同的
 <p>$O(n^2)$，适用于边稠密的网</p>
 <h3 id="Kruskal"><a href="#Kruskal" class="headerlink" title="Kruskal"></a>Kruskal</h3><p>每次加入最小的边，且加入这条边不会构成回路</p>
 <p>$O(eloge)$</p>
+<h2 id="DAG"><a href="#DAG" class="headerlink" title="DAG"></a>DAG</h2><p>有向无环图</p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p><strong>偏序：</strong>集合中只有部分元素之间可以比较</p>
+<p><strong>全序：</strong>集合中的任两个元素之间都可以比较</p>
+<p><strong>拓扑排序：</strong>由偏序定义得到拓扑有序的操作</p>
+<ul>
+<li>方法：<ol>
+<li>在有向图中选一个没有前驱的顶点且输出之</li>
+<li>从图中删除该结点和所有以它为尾的弧</li>
+</ol>
+</li>
+</ul>
+<p>直至结点全部输出，或者当前图中不存在无前驱的顶点为止（存在环）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function">status <span class="title">TopologicalSort</span><span class="params">(ALGraph G)</span> </span>&#123;</div><div class="line">  FindInDegree(G, indegree);	<span class="comment">//求各顶点的度, O(e)</span></div><div class="line">  InitStack(S);</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++) &#123;	<span class="comment">// O(n)</span></div><div class="line">    <span class="keyword">if</span>(!indegree[i]) Push(S, i);</div><div class="line">  &#125;</div><div class="line">  count = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(!StackEmpty(S)) &#123;</div><div class="line">    Pop(S, i);</div><div class="line">    <span class="built_in">printf</span>(i, G.vertices[i].data);</div><div class="line">    count++;</div><div class="line">    <span class="keyword">for</span>(p = G.vertices[i].firstarc; p; p = p -&gt; nextarc) &#123;</div><div class="line">      k = p -&gt; adjvex;</div><div class="line">      <span class="keyword">if</span>(!(-- indegree[k])) Push(S, k);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(count &lt; G.vernum) <span class="keyword">return</span> ERROR;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">return</span> OK;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>时间复杂度分析：每个顶点进栈一次，出栈一次，入度减一的操作在$while$语句中执行$e$次，所以总的时间复杂度$O(n+e)$</p>
+<h4 id="AOV-网"><a href="#AOV-网" class="headerlink" title="AOV-网"></a>AOV-网</h4><p>用<em>顶点表示活动</em>，用<em>弧表示活动间的有限关系</em>的有向图称为顶点表示活动的网（不存在环，即自己不可以以自己为先决条件）</p>
+<h4 id="AOE-网"><a href="#AOE-网" class="headerlink" title="AOE-网"></a>AOE-网</h4><p>顶点表示事件，边表示活动的带权（持续时间）的有向无环网</p>
+<p>在正常情况下，网中只有一个入度为零的点（称作源点）和一个出度为零的点（称作汇点）</p>
+<p><em>AOE研究的问题</em>是完成整项工程所需要的时间，以及哪些活动是影响工程进度的关键</p>
+<p><strong>关键路径：</strong>路径长度最长的路径</p>
+<p>$e(i)$表示活动$a_i$的最早开始时间    $l(i)$表示活动$a_i$最晚开始的时间</p>
+<p><strong>关键活动：</strong>$e(i) =  l(i)$</p>
+<p>首先拓扑正序，求出最早开始时间，同时对于存在环的情况作出出错处理，然后拓扑逆序，求出最晚开始时间，并同时输出关键活动</p>
+<h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><ol>
+<li><p>从某个源点到其余各顶点的最短路径</p>
+<p><strong>Dijkstra</strong>$O(n^2)$</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(MGraph G, <span class="keyword">int</span> v0, PathMatrix &amp;P, ShortPathTable &amp;D)</span> </span>&#123;</div><div class="line">  <span class="comment">//P[v][w]为TRUE，则w是从v0到v当前求得最短路径上的顶点</span></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.vexnum; v++) &#123;</div><div class="line">    final[v] = <span class="literal">false</span>;</div><div class="line">    D[v] = G.arcs[v0][v];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; w++) &#123; P[v][w] = <span class="literal">false</span>; &#125;</div><div class="line">    <span class="keyword">if</span>(D[v] &lt; INFINITY) &#123;</div><div class="line">      P[v][v0] = <span class="literal">true</span>;</div><div class="line">      P[v][v] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  D[v0] = <span class="number">0</span>; final[v0] = <span class="literal">true</span>;</div><div class="line">  </div><div class="line">  </div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; G.vexnum; i++) &#123;</div><div class="line">    min = INFINITY;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; w++) &#123;</div><div class="line">      <span class="keyword">if</span>(!final[w]) &#123;</div><div class="line">        <span class="keyword">if</span>(D[w] &lt; min) &#123;</div><div class="line">          v = w; min = D[w];</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    final[v] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; w++) &#123;</div><div class="line">      <span class="keyword">if</span>(!final[w] &amp;&amp; (min + G.arcs[v][w] &lt; D[w])) &#123;</div><div class="line">        D[w] = min + G.arcs[v][w];</div><div class="line">        P[w] = P[v];</div><div class="line">        P[w][w] = <span class="literal">true</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>每一对顶点之间的最短路径</p>
+<p><strong>Floyd</strong>$O(n^3)$</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Floyd</span><span class="params">(MGraph G, PathMatrix &amp;P[], DistancMatrix &amp;D)</span> </span>&#123;</div><div class="line">  <span class="comment">//P[v][w][u]为TRUE，则u是从v到w当前求得最短路径上的顶点</span></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.vexnum; v++) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; w++) &#123;</div><div class="line">      D[v][w] = G.arcs[v][w];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; G.vexnum; u++) &#123;</div><div class="line">        P[v][w][u] = <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(D[v][w] &lt; INFINITY) &#123;</div><div class="line">        P[v][w][v] = <span class="literal">true</span>;</div><div class="line">        P[v][w][w] = <span class="literal">true</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line"> 	<span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; G.vexnum; u++) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.vexnum; v++) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; w++) &#123;</div><div class="line">        <span class="keyword">if</span>(D[v][u] + D[u][w] &lt; D[v][w]) &#123;</div><div class="line">          D[v][w] = D[v][u] + D[u][w];</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++) &#123;</div><div class="line">            P[v][w][i] = P[v][u][i] || P[u][w][i];</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="动态存储管理"><a href="#动态存储管理" class="headerlink" title="动态存储管理"></a>动态存储管理</h1><p>空间表结构：</p>
+<ol>
+<li>每次分配大小相同</li>
+<li>分配块有若干种规格</li>
+<li>分配块大小不固定</li>
+</ol>
+<p>分配策略：</p>
+<ol>
+<li>首次拟合法</li>
+<li>最佳拟合法</li>
+<li>最差拟合法</li>
+</ol>
+<p>伙伴系统：</p>
+<p>占用块和空闲块的大小都是2的k次幂</p>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><p><strong>关键字</strong>（可以标识一个数据元素）    <strong>主关键字（唯一）</strong></p>
+<ul>
+<li><p><strong>静态查找表</strong></p>
+<ul>
+<li>顺序查找</li>
+<li>折半查找（有序的情况下）</li>
+<li>分块查找（又称索引顺序查找）<ul>
+<li>最大关键字和指针</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动态查找表（元素会改变）</p>
+<ul>
+<li><p>二叉排序树/二叉查找树<strong>BST</strong>（左结点&lt;根&lt;右节点）</p>
+<ul>
+<li><p>中序遍历，可得到有序序列</p>
+</li>
+<li><p>删除结点的时候</p>
+<ul>
+<li><p>叶子，直接删除</p>
+</li>
+<li><p>若只含有左子树或只含有右子树，则让它的孩子继承它所在的位置即可</p>
+</li>
+<li><p>含有左右孩子的时候</p>
+<ul>
+<li>直接前驱（直接后继）代替它</li>
+<li>让左子树代替，然后让右子树作为左子树的右子树</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function">status <span class="title">Delete</span><span class="params">(BiTree &amp;p)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span>(!p -&gt; rchild) &#123;</div><div class="line">    q = p;</div><div class="line">    p = p -&gt; lchild;</div><div class="line">    <span class="built_in">free</span>(q);</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!p -&gt; lchild) &#123;</div><div class="line">    q = p;</div><div class="line">    p = p -&gt; rchild;</div><div class="line">    <span class="built_in">free</span>(q);</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">    q = p;</div><div class="line">    s = p -&gt; lchild;</div><div class="line">    <span class="keyword">while</span>(s -&gt; rchild) &#123;</div><div class="line">      q = s;</div><div class="line">      s = s -&gt; rchild;	<span class="comment">//	找直接前驱</span></div><div class="line">    &#125;</div><div class="line">    p -&gt; data = s -&gt; data;</div><div class="line">    <span class="keyword">if</span>(q != p) q -&gt; rchild = s -&gt; lchild;</div><div class="line">    <span class="keyword">else</span> q -&gt; lchild = s -&gt; lchild;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>平衡二叉树<strong>AVL</strong>（左右子树的深度差的绝对值不超过1）</p>
+<ul>
+<li>建立：四种（右，左，右左，左右）</li>
+</ul>
+</li>
+<li><p>B-树（平衡多路查找树，文件系统中，不太熟）</p>
+<ul>
+<li>m阶B-树或为空树或需满足：<ul>
+<li>树中每个结点至多有m棵子树</li>
+<li>若根结点不是叶子结点，则至少有2棵子树</li>
+<li>除根之外的所有非终端结点至少有$\lceil m/2 \rceil$棵子树</li>
+<li>所有的非终端结点需包含以下信息<ul>
+<li>$(n, A_0,K_1,A_1,K_2,A_2,\cdot\cdot\cdot,K_n,A_n)$</li>
+<li>$K_i$为关键字，且$K_i&lt;K_{i+1}$</li>
+<li>$A_i$为指向子树根结点的指针，且指针$A_{i-1}$所指子树中所有结点的关键字均小于$K_i$，$A_{n}$所指子树中所有结点的关键字均大于$K_n$</li>
+</ul>
+</li>
+<li>所有的叶子结点都出现在同一层次上，并且不带信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>B+树（不太熟，很像目录树）</p>
+<ul>
+<li>是一种B-树的变种</li>
+<li>两种m阶的差异：<ul>
+<li>有n棵子树的结点中含有n个关键字</li>
+<li>所有的叶子结点中包含了<em>全部关键字</em>的信息，及指向含有这些关键字记录的指针，且叶子结点本身依关键字的大小<em>自小而大</em>顺序链接</li>
+<li>所有的非终端结点可以看成是索引部分，结点中仅含有其子树（根结点）中的<em>最大（或最小）关键字</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>键树/数字查找树</p>
+<ul>
+<li>内部结点可以是字母</li>
+<li>两种存储结构：孩子兄弟链表、树的多重链表</li>
+</ul>
+</li>
+<li><p>哈希表/散列表</p>
+<ul>
+<li>存储位置和关键字之间建立一个确立关系：哈希函数<ul>
+<li>直接定址法</li>
+<li>数字分析法：取关键字的若干数位</li>
+<li>平方取中法：取平方后的中间几位</li>
+<li>折叠法：分割成数位相同的部分（除最后一部分），然后叠加和</li>
+<li>除留余数法：取余</li>
+</ul>
+</li>
+<li>解决冲突的方法：<ul>
+<li>开放地址法：$H_i=(H(key) + d_i)\ MOD\ m\ i=1,2,\cdot\cdot\cdot,k\ (k\leq m-1)$<ul>
+<li>线性探测再散列 $d_i=1,2,3,\cdot\cdot\cdot,m-1​$</li>
+<li>二次探测再散列 $d_i=1^2,-1^2,2^2,-2^2,3^3,\cdot\cdot\cdot,k^2,-k^2(k\leq m/2)​$</li>
+<li>伪随机探测再散列</li>
+</ul>
+</li>
+<li>再哈希法 $H_i=RH_i(key)$<ul>
+<li>$RH_i$均是不同的哈希函数</li>
+</ul>
+</li>
+<li>链地址法：关键字相同的存储在同一链表中</li>
+<li>建立公共溢出区</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><ul>
+<li>外部排序</li>
+<li>内部排序<ul>
+<li>插入排序：每次插入1个到已排好的队列中<ul>
+<li>直接插入排序：一个一个比较，同时移位</li>
+<li>折半插入排序：在插入寻找位置的时候用二分的办法</li>
+<li>2-路插入排序：first指针和final指针，一个变小一个变大</li>
+<li>表插入排序：一个key域，一个next域（下一个的下标位置）</li>
+<li>希尔排序：每次不同间隔的序列排序（间隔从大缩小）</li>
+</ul>
+</li>
+<li>交换排序<ul>
+<li>起泡排序/冒泡排序<em>Bubble sort</em><ul>
+<li>每次将目前最大的元素放到最后，若是这一组没有交换的动作或者已是最后一组，则停止</li>
+</ul>
+</li>
+<li>快速排序<ul>
+<li>每次寻找一个枢轴，然后划分成左右两部分，递归排序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>选择排序：每一趟在$n-i+1\ (i=1,2,\cdot\cdot\cdot,n-1)$个记录中选取关键字最小的记录作为有序序列中第$i$个记录<ul>
+<li>简单选择排序</li>
+<li>树型选择排序/锦标赛排序<ul>
+<li>每次两两比较，如此重复</li>
+</ul>
+</li>
+<li>堆排序（大小顶堆）<ul>
+<li>建堆：从$\lfloor n/2\rfloor$个元素开始，或是每次加入一个元素重复调整堆</li>
+<li>调整：每次和左右孩子比较，若不对，交换并接下来继续比较，直到正确为止</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>归并排序：将两个或两个以上的有序表组合成一个新的有序表<ul>
+<li>2-路归并排序：每次两组归并排序</li>
+</ul>
+</li>
+<li>基数排序：多关键字排序<ul>
+<li>MSD：最高位优先</li>
+<li>LSD：最低位优先（卡片机）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>稳定<ul>
+<li>归并排序</li>
+<li>基数排序</li>
+</ul>
+</li>
+<li>不稳定<ul>
+<li>快速排序</li>
+<li>堆排序</li>
+<li>希尔排序</li>
+</ul>
+</li>
+</ul>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>STL也是需要进行测试的，虽说STL经过多人的完善，但毕竟是人写的（ 是神啊！），同时也是为了测试之后能更好地了解库的用法和优缺点。<br>在测试的时候我们可以使用<code>cstdlib</code>中的rand()函数，当然在使用之前需要随机种子srand（一次就够喽）,可以产生[0,RAND_max]内的随机整数，一般来说为2^15-1=32767，如果要在n范围内，可以模<code>n+1</code>。我们还可以使用<code>assert()</code>宏，其作用是，当表达式为真时，无变化，但为假时，终止程序，并且给出错误提示。</p>
 <p><strong>注</strong> 本文参考刘汝佳的《算法入门经典》。<br>最后叮嘱一句哦，对于学习数据结构的同学来说，不要在学习时就使用STL，还是需要掌握一下内在构造，当然在机考时，建议使用STL，毕竟可以省代码，还不容易出错。</p>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
@@ -759,7 +978,7 @@ LS=(\alpha_1,\alpha_2,\cdot\cdot\cdot,\alpha_n)</script><p>与线性表不同的
             
               <a href="/archives">
             
-                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-count">91</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -781,7 +1000,7 @@ LS=(\alpha_1,\alpha_2,\cdot\cdot\cdot,\alpha_n)</script><p>与线性表不同的
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -877,7 +1096,7 @@ LS=(\alpha_1,\alpha_2,\cdot\cdot\cdot,\alpha_n)</script><p>与线性表不同的
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性结构"><span class="nav-number">2.</span> <span class="nav-text">线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表"><span class="nav-number">2.1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序表示"><span class="nav-number">2.1.1.</span> <span class="nav-text">顺序表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式表示"><span class="nav-number">2.1.2.</span> <span class="nav-text">链式表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-number">2.2.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">2.3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（原始）队列"><span class="nav-number">2.3.1.</span> <span class="nav-text">（原始）队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优先队列"><span class="nav-number">2.3.2.</span> <span class="nav-text">优先队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双端队列"><span class="nav-number">2.3.3.</span> <span class="nav-text">双端队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环队列"><span class="nav-number">2.3.4.</span> <span class="nav-text">循环队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串"><span class="nav-number">2.4.</span> <span class="nav-text">串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串的模式匹配"><span class="nav-number">2.4.1.</span> <span class="nav-text">串的模式匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.5.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义表"><span class="nav-number">2.6.</span> <span class="nav-text">广义表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树型结构"><span class="nav-number">3.</span> <span class="nav-text">树型结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">3.1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本性质"><span class="nav-number">3.1.1.</span> <span class="nav-text">基本性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历方式"><span class="nav-number">3.2.</span> <span class="nav-text">遍历方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：UVA-548"><span class="nav-number">3.3.</span> <span class="nav-text">例题：UVA 548</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">3.3.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼树-最优树-赫夫曼树"><span class="nav-number">3.3.2.</span> <span class="nav-text">哈夫曼树/最优树/赫夫曼树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">4.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">4.1.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树"><span class="nav-number">4.2.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim"><span class="nav-number">4.2.1.</span> <span class="nav-text">Prim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal"><span class="nav-number">4.2.2.</span> <span class="nav-text">Kruskal</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性结构"><span class="nav-number">2.</span> <span class="nav-text">线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表"><span class="nav-number">2.1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序表示"><span class="nav-number">2.1.1.</span> <span class="nav-text">顺序表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式表示"><span class="nav-number">2.1.2.</span> <span class="nav-text">链式表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-number">2.2.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">2.3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（原始）队列"><span class="nav-number">2.3.1.</span> <span class="nav-text">（原始）队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优先队列"><span class="nav-number">2.3.2.</span> <span class="nav-text">优先队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双端队列"><span class="nav-number">2.3.3.</span> <span class="nav-text">双端队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环队列"><span class="nav-number">2.3.4.</span> <span class="nav-text">循环队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串"><span class="nav-number">2.4.</span> <span class="nav-text">串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串的模式匹配"><span class="nav-number">2.4.1.</span> <span class="nav-text">串的模式匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.5.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义表"><span class="nav-number">2.6.</span> <span class="nav-text">广义表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树型结构"><span class="nav-number">3.</span> <span class="nav-text">树型结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">3.1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本性质"><span class="nav-number">3.1.1.</span> <span class="nav-text">基本性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历方式"><span class="nav-number">3.2.</span> <span class="nav-text">遍历方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：UVA-548"><span class="nav-number">3.3.</span> <span class="nav-text">例题：UVA 548</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">3.3.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼树-最优树-赫夫曼树"><span class="nav-number">3.3.2.</span> <span class="nav-text">哈夫曼树/最优树/赫夫曼树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">4.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">4.1.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树"><span class="nav-number">4.2.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim"><span class="nav-number">4.2.1.</span> <span class="nav-text">Prim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal"><span class="nav-number">4.2.2.</span> <span class="nav-text">Kruskal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DAG"><span class="nav-number">4.3.</span> <span class="nav-text">DAG</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-number">4.3.1.</span> <span class="nav-text">拓扑排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AOV-网"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">AOV-网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOE-网"><span class="nav-number">4.3.1.2.</span> <span class="nav-text">AOE-网</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路径"><span class="nav-number">4.4.</span> <span class="nav-text">最短路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态存储管理"><span class="nav-number">5.</span> <span class="nav-text">动态存储管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找"><span class="nav-number">6.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">7.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>
