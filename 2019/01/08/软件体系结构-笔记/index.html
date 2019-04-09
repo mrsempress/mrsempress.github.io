@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="课堂笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="软件体系结构知识点">
+<meta name="keywords" content="课堂笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件体系结构-笔记">
+<meta property="og:url" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="软件体系结构知识点">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/style.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/批处理.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/Users/mrs_empress/Documents/软件工程体系结构/管道和过滤器.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/闭环控制.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/主程序:子程序.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/对象图2.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/层次结构.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/C:S.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/Web服务.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/仓库.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/黑板.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/解释器.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/基于规则的系统.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/Users/mrs_empress/Documents/软件工程体系结构/通信进程系统.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/事件系统.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/ATAM.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/效用树.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/UML.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/用例图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/类图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/对象图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/状态图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/协作图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/序列图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/活动图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/包图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/组件图.png">
+<meta property="og:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/部署图.png">
+<meta property="og:updated_time" content="2019-04-09T01:19:07.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件体系结构-笔记">
+<meta name="twitter:description" content="软件体系结构知识点">
+<meta name="twitter:image" content="http://mrsempress.top/2019/01/08/软件体系结构-笔记/style.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/01/08/软件体系结构-笔记/"/>
+
+
+
+
+
+  <title>软件体系结构-笔记 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/01/08/软件体系结构-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件体系结构-笔记</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-08T22:32:18+08:00">
+                2019-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件工程/" itemprop="url" rel="index">
+                    <span itemprop="name">软件工程</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件工程/软件体系结构/" itemprop="url" rel="index">
+                    <span itemprop="name">软件体系结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/08/软件体系结构-笔记/" class="leancloud_visitors" data-flag-title="软件体系结构-笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>软件体系结构知识点</p>
+<a id="more"></a>
+<h1 id="软件体系结构知识点分析"><a href="#软件体系结构知识点分析" class="headerlink" title="软件体系结构知识点分析"></a>软件体系结构知识点分析</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>题量不大</p>
+<ul>
+<li>简答题(pipe-and-filter常考) </li>
+<li>选择题(给定拓扑结构问是哪个style；给UML问是什么UML) ，有五道左右的选择题</li>
+<li>描述需求选择style；场景；tactics；适合用什么style；效用（调用？）树；敏感点 &amp; 权衡点 &amp; 风险点 等的定义以及划分。</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>考点：</p>
+<ul>
+<li><p>体系结构产生的背景</p>
+<ul>
+<li>软件体系结构的定义</li>
+</ul>
+<p>软件体系结构包括<strong>构成系统的设计元素的描述</strong>，设计元素之间<strong>交互模式</strong>，以及在这些模式中的<strong>约束</strong>，即软件体系结构由组件、连接件和约束组成 Software Architecture = Components + Connectors + Constrains</p>
+<p><strong>作用和意义：</strong></p>
+<ul>
+<li>是风险承担者进行<strong>交流</strong>的手段</li>
+<li>是<strong>早期设计决策</strong>的体现，明确了对系统实现的约束条件，决定了开发和维护组织的组织结构，制约着系统的质量属性，通过评价软件体系结构，可预测软件的质量</li>
+<li>是<strong>可传承、可重用</strong>的模型</li>
+</ul>
+</li>
+<li><p>体系结构描述语言（ADL）</p>
+<ul>
+<li>ADL是在<strong>底层语义模型</strong>的支持下，为软件系统的概念体系结构建模提供了<strong>具体语法</strong>和<strong>概念框架</strong>。基于底层语义的工具为体系结构的<strong>表示、分析、演化、细化、设计</strong>过程等提供支持。其三个基本元素是：<strong>构件、连接件、体系结构配置</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Style设计模式和连接件-组件-约束"><a href="#Style设计模式和连接件-组件-约束" class="headerlink" title="Style设计模式和连接件 组件 约束"></a>Style设计模式和连接件 组件 约束</h2><p>考点：</p>
+<ul>
+<li>优缺点与适用场合</li>
+<li>给定拓扑结构问是哪个style</li>
+<li><strong>描述体系结构的风格</strong><ul>
+<li>描述<strong>一类体系结构</strong></li>
+<li>独立于实际问题，强调软件系统中<strong>通用组织结构</strong></li>
+<li>在实践中被<strong>多次</strong>设计、应用</li>
+<li>是若干设计思想的<strong>综合</strong></li>
+<li>具有已经<strong>被熟知的特性</strong>，并且可以<strong>复用</strong></li>
+<li>描述系统<strong>组织方式</strong>的<strong>惯用范例</strong>，强调组织方式和惯用范 例。精简为<strong>构件/连接件</strong>，<strong>拓扑和约束</strong></li>
+</ul>
+</li>
+<li>给一个架构，为什么可以满足需求，以及为什么该架构的缺点是可容忍的</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/style.png" alt=""></p>
+<p>共性的优点：高内聚，低耦合（可修改性），模块的可修改，重用性【数据流中，基于规则的系统】</p>
+<p>可重用、可复制的，一个软件可对应多个style; style之间存在重叠，并非完全独立</p>
+<ul>
+<li><p>data flow数据流系统</p>
+<p>数据流：由<strong>数据控制计算</strong>，系统结构由数据在处理之间的<strong>有序移动</strong>决定；强调线性；</p>
+<p>优点：</p>
+<ul>
+<li>模块易于<strong>替换</strong></li>
+<li>系统易于<strong>维护</strong>、<strong>理解</strong></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>流程基本固定，<strong>交互性不强</strong></li>
+<li><strong>限制</strong>了系统的<strong>拓扑结构</strong>，只能是线性序列</li>
+</ul>
+<p>适用场合：适用于<strong>数据主导</strong>的任务，并且呈现出了<strong>明显的数据（线性）关系</strong></p>
+<p>组件：处理数据的过程/工序/工具</p>
+<p>连接件：数据流（单向的）</p>
+<ul>
+<li><p>batch sequential批处理系统</p>
+<p>特点：</p>
+<p>每个处理步骤是一个<strong>独立</strong>的程序；</p>
+<p>每一步必须在<strong>前一步结束后</strong>才能开始（<strong>有次序</strong>）；</p>
+<p>数据必须是完整的，以<strong>整体</strong>的方式传递</p>
+<p>应用：<strong>compilers</strong>，Computer Aided Software Engineering</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/批处理.png" alt=""></p>
+</li>
+<li><p><strong>pipes &amp; filters</strong>管道/过滤器</p>
+<p><strong>递增</strong>地转化数据，数据<strong>“边到来，边处理”</strong>，在输入被完全处理之前，输出便产生了</p>
+<p>过滤器之间是独立的</p>
+<p>优点/特点：</p>
+<ul>
+<li><em>使得软件具有良好的<strong>隐蔽性</strong>和<em>*高内聚、低耦合</em></em>的特点</li>
+<li><em>便于设计者<em>*理解</em></em></li>
+<li><em>支持功能<em>*模块的重用</em></em></li>
+<li><em>系统<em>*易于维护和扩展：</em></em>新的过滤器容易加入到系统中，旧的过滤器也可被改进的过滤器替换</li>
+<li><em>支持某些<em>*特定属性的分析</em></em>，如吞吐量和死锁检测</li>
+<li><em>支持多个过滤器的<em>*并发执行</em></em>，适合多核/多线程环境</li>
+<li>可将整个系统的I/O出特性理解为各个过滤器功能的简单<strong>合成</strong></li>
+<li>任意两个过滤器只要相互间<strong>所传输的数据格式上达成一致</strong>，就可以<strong>连接在一起</strong></li>
+</ul>
+<p>注：理想情况是组件之间只有“<strong>数据依赖</strong>”</p>
+<p>缺点：</p>
+<ul>
+<li><strong>*不</strong>适合于<strong>交互性</strong>很强的应用</li>
+<li><em>在数据传输上没有<strong>通用的标准</strong>，[每个过滤器都<strong>增加了解析数据的工作</strong>，]<strong>导致系统性能的下降，</strong>[也会增加编写过滤器的复杂性 （<em>*数据格式转换与映射</em></em>）]</li>
+<li><em>处理两个独立但<strong>相关</strong>的数据流可能会遇到困难，如<em>*需要处理同步</em></em>等问题</li>
+<li>某些filter可能需要大尺寸<strong>cache</strong>（如排序组件）</li>
+<li>通常导致进程成为批处理的结构</li>
+</ul>
+<p>适用场合：</p>
+<ul>
+<li><strong>Unix Shell</strong></li>
+<li>they permit <strong>reuse</strong> and <strong>reconfiguration</strong> of filters</li>
+<li>generally <strong>easy</strong> to reason about</li>
+<li><strong>reduce</strong> system <strong>testing</strong></li>
+<li>may allow <strong>incremental</strong> AND <strong>parallel processing</strong></li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/Users/mrs_empress/Documents/软件工程体系结构/管道和过滤器.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Batch Sequential</th>
+<th>Pipe/Filter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>total</strong></td>
+<td><strong>incremental</strong></td>
+</tr>
+<tr>
+<td>High   latency (real-time is hard)</td>
+<td><strong>Results start immediately</strong></td>
+</tr>
+<tr>
+<td><strong>Random access to input</strong></td>
+<td>Processing   localized in input</td>
+</tr>
+<tr>
+<td>No   concurrency</td>
+<td>Feedback   loops possible</td>
+</tr>
+<tr>
+<td>Non-interactive</td>
+<td>Often   interactive, awkwardly</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>Procedure control</p>
+<p>根据系统实际值和目标值而改变，如空调</p>
+<p>一个<strong>控制持续过程</strong>的软件体系结构模式可基于过程控制模型</p>
+<p>Set point：受控变量的<strong>参考值</strong>（理想值）</p>
+<p>Sensors：获得控制所需的过程变量值</p>
+<p><strong>适用场合</strong></p>
+<ul>
+<li>the task involves <strong>continuous</strong> action, behavior, changing state<br>任务包含连续的动作、行为、状态的改变</li>
+<li>when open loop control systems are <strong>inadequate</strong> 不适合人参与的情况</li>
+<li>software can be reasonably be embedded in a physical system（一般是<strong>软硬件结合</strong>的系统）</li>
+</ul>
+<p>闭环控制器有两种通用形式：反馈控制和前馈控制</p>
+<ul>
+<li>反馈控制器根据<strong>受控变量</strong>的测量值来调整过程</li>
+<li>通过测量其他过程变量，来<strong>预计</strong>输入变量对被控变量将产生的影响。前馈控制基于这些变量来调整过程。在实际中更有价值</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/闭环控制.png" alt=""></p>
+<p>反馈：开车上坡，眼睛紧盯速度表，根据车速的下降来加大油门</p>
+<p>前馈：在看到坡以后，还未开始上坡之前，提前加速，使上坡过程顺利。</p>
+</li>
+</ul>
+<ul>
+<li><p>call/return调用/返回系统</p>
+<ul>
+<li><p>main program &amp; subroutine主/子程序系统</p>
+<p>大任务化成子任务，层次性 </p>
+<p><strong>依据功能分解的编程模型</strong></p>
+<p>优点：</p>
+<ul>
+<li><p>*逐步分解，易于调试，易于理解，子程序可复用</p>
+</li>
+<li><p>*单线程控制</p>
+</li>
+<li>*子程序正确性受主程序正确性影响</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p><strong>*只</strong>适用于可以定义为<strong>一系列步骤</strong>的问题</p>
+</li>
+<li><p><strong>*子系统结构不清晰</strong></p>
+</li>
+</ul>
+<p><strong>适用场合</strong>：能够分层的结构，强调层次的结构</p>
+<p>系统模块：层次化地调用和定义</p>
+<p>组件：procedures and explicitly visible data <strong>过程和显式可见的数据</strong></p>
+<p>连接件：<strong>过程调用和数据共享</strong></p>
+<p>控制结构：<strong>单线程</strong></p>
+<p><img src="/2019/01/08/软件体系结构-笔记/主程序:子程序.png" alt=""></p>
+</li>
+<li><p>object oriented面向对象系统</p>
+<p>封装（限制对某些信息的访问）、交互（通过过程调用或者类似的协议）、多态（在运行时选择具体的操作）、继承（对共享的功能保持唯一的接口）、复用和维护（利用封装和聚合提高生产力）</p>
+<p>优点/特点：</p>
+<ul>
+<li><strong>对象抽象</strong>，使得组件和组件之间的操作以黑箱的方式进行</li>
+<li><strong>封装性</strong>使得细节内容对外部环境得以良好的隐藏，<strong>对象之间的访问</strong>是通过<strong>方法调用</strong>来实现的</li>
+<li>封装完成了相关<strong>功能</strong>和<strong>属性</strong>的<strong>包装</strong>，并由<strong>对象</strong>来对它们进行<strong>管理</strong></li>
+<li>使用某个对象提供的服务并不需要知道<strong>服务内部</strong>是如何实现</li>
+<li><p><strong>多线程</strong></p>
+</li>
+<li><p>易于理解；易于设计</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><strong>高耦合</strong>，<strong>过程调用</strong>等进行<strong>交互</strong>，必须知道<strong>对象的标识</strong>；如果对象的标识换了，则必须修改所有显式调用它的其他对象，消除由此带来的一些副作用</li>
+<li>过多的<strong>对象</strong>难以维护</li>
+<li>过多的<strong>交互</strong>难以维护</li>
+</ul>
+<p>适用场合：中心问题是识别和保护相关信息，特别是表示信息的应用。现实世界；游戏；教务系统</p>
+<p>系统模块：局部状态维护</p>
+<p>组件：对象、抽象数据类型</p>
+<p>连接件：过程调用</p>
+<p>控制结构：分散的，多线程的</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/对象图2.png" alt="对象图2"></p>
+</li>
+<li><p><strong>layered</strong></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>大的问题分解为小问题逐步解决，<strong>降低了复杂度</strong></li>
+<li>每一层<strong>只为</strong>上一层<strong>提供服务</strong>，<strong>使用下一层服务</strong></li>
+<li>修改一层，<strong>最多影响两层</strong></li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>层层相调，影响性能</strong></li>
+<li>上层<strong>必须知道下层的身份</strong></li>
+<li><strong>不能</strong>调整层与层之间的<strong>顺序</strong></li>
+<li>修改一层可<strong>能会导致级联的修改</strong></li>
+</ul>
+<p>适用场合：适用于涉及不同类服务的应用程序，并且可以按层次排列。 通常有基本系统级服务的层，适用于许多实用程序，以及应用程序的特定任务。B/S，C/S ，基于.NET平台</p>
+<p>系统模块：不透明的层结构</p>
+<p>组件：层</p>
+<p>连接件：层与层的调用；层与层之间的交互</p>
+<p>控制结构：单线程</p>
+<p>一般会有<strong>客户层，web层（业务层，数据与企业信息集成层）</strong></p>
+<p><img src="/2019/01/08/软件体系结构-笔记/层次结构.png" alt=""></p>
+<ul>
+<li><p>C/S</p>
+<p>基于资源不对等，且为实现共享而提出</p>
+<p>有三个主要组成部分：数据库服务器、客户端、网络</p>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>对客户端软硬件配置要求较高，客户端臃肿</li>
+<li>客户端设计复杂</li>
+<li>数据安全性不好，<strong>客户端程序可以直接访问数据库服务器</strong></li>
+<li>信息内容和形式单一</li>
+<li>用户界面风格不一，使用繁杂，不利于推广使用</li>
+<li>软件维护升级困难，每个客户机上的软件都需要维护</li>
+</ul>
+<p>三层C/S，增加了应用服务器，应用功能分为三层：表示层、功能层、数据层</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/C:S.png" alt=""></p>
+</li>
+<li><p>B/S</p>
+<p>客户端为浏览器的C/S特例</p>
+<p><strong>优点：</strong>跨平台；版本升级简单；对客户硬件要求较低</p>
+<p>缺点：安全性难以控制；数据查询等响应速度低于C/S体系结构；服务器的负荷大，客户机的资源浪费</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/Web服务.png" alt=""></p>
+<p>服务提供者：<strong>提供服务</strong>，并<strong>进行注册</strong>以使服务可用。</p>
+<p>服务代理：<strong>中介</strong>作用，它是<strong>服务的注册场所</strong>，充当服务提供者和服务请求者之间的<strong>媒介</strong></p>
+<p>服务请求者：在<strong>应用程序中</strong>通过<strong>向服务代理</strong>请求服务，<strong>调用</strong>所需服务。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>data-centered/shared data</p>
+<p>数据为中心：数据的增删改查；特点：数据共享</p>
+<p>优点：很容易增加数据的生产者和消费者</p>
+<p>缺点：</p>
+<ul>
+<li>同步问题</li>
+<li>配置和管理</li>
+<li>原子性</li>
+<li>一致性</li>
+<li>持久性</li>
+<li>性能</li>
+</ul>
+<p>适用场合：收集、操作、存储<strong>大量</strong>的数据；迫切需要数据即时存取</p>
+<hr>
+<ul>
+<li><p>repository仓库</p>
+<p>通常需要数据库等特定软件的支持<br>​    </p>
+<p>优点：</p>
+<ul>
+<li><strong>并行</strong>操作，更快的<strong>更新速度</strong></li>
+<li>很容易<strong>增加数据的生产者和消费者</strong></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><strong>同步</strong>问题</li>
+<li><strong>配置和管理</strong>问题</li>
+<li><strong>原子性</strong>问题</li>
+<li><strong>一致性</strong>问题</li>
+<li><strong>持久性</strong>问题</li>
+<li><strong>性能</strong>问题</li>
+</ul>
+<p>适用场合：需要建立，扩张和维护一个复杂的数据体，信息能以多种方式操作，数据必须需要长期的持久化，例如：数据库，剪贴板，注册表</p>
+<p>系统模块：以数据为中心</p>
+<p>组件：共享的<strong>内存/存储器</strong>和多个<strong>纯计算进程/处理器</strong></p>
+<p>连接件：计算进程的<strong>内存访问</strong>、<strong>直接数据访问</strong>或<strong>过程调用</strong></p>
+<p>集成多个数据库，在查询/更新操作中，增加过滤器/包装器来匹配不同的视图；但是查询分解和结果合并很难</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/仓库.png" alt=""></p>
+</li>
+<li><p><strong>blackboard</strong></p>
+<p>黑板风格是<strong>仓库风格的变种</strong>，<strong>核心</strong>是一个<strong>以数据为中心</strong>的系统，用户<strong>只能通过共享的知识存储“黑板”进行交互</strong></p>
+<p>黑板属于仓库的变种，黑板的作用相当于<strong>共享内存</strong></p>
+<p>问题比较复杂，就像有多位不同专长的专家在同一块黑板上交流思想，每位专家都可以利用自己的专长去解决问题</p>
+<p><em>考试时与仓库难以区分，会标出ks(knowledge source)</em>，注意知识源与黑板之间是双向箭头</p>
+<p>黑板的状态触发进一步的操作，而仓库操作的执行次序是预先确定的</p>
+<p>黑板的组成部分：</p>
+</li>
+</ul>
+<ol>
+<li><p>知识源(专家)：</p>
+<p>知识源之间的通讯<strong>只通过黑板</strong>来完成，<strong>无法与其他知识源交互</strong>；</p>
+<p>代表整个问题求解中的<strong>独立子任务</strong>；】</p>
+<p>每个知识源被组织成一个条件部分和一个动作部分，条件部分规定<strong>什么时候知识源可用</strong>；动作部分负责<strong>处理相关的黑板元素</strong>并<strong>产生新的元素</strong></p>
+</li>
+<li><p>黑板结构数据：知识源相互作用的唯一媒介；全局共享数据，包含域的全部状态</p>
+</li>
+<li><p>控制(仲裁者)：控制完全由黑板的<strong>状态驱动</strong>，<strong>监控</strong>黑板的变化和<strong>负责计算的优先次序</strong></p>
+<p>特点：</p>
+<ul>
+<li>没有直接的算法可解，需要多个领域的专门知识协作解决</li>
+<li>不确定性，数据和解决方法可能错误或者变化，数据中的信噪比、算法会变化</li>
+<li>没有唯一的答案，正确的答案会变化</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li><strong>可更改性和可维护性</strong></li>
+<li><strong>可重用的知识源</strong></li>
+<li><strong>容错性和健壮性</strong></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>测试困难 </li>
+<li>不能保证有好的解决方案</li>
+<li>难以建立好的控制策略，问题解答的不确定性</li>
+<li>抵效</li>
+<li>开发困难</li>
+<li>缺少并行机制</li>
+</ul>
+<p>适用场合：</p>
+<ul>
+<li>适用于<strong>解决无确定性</strong>策略问题(摸着石头过河)</li>
+<li><strong>不成熟的领域</strong>，其中没有相近的方法</li>
+<li>在合理的时间内，<strong>解空间的完全求解不可行</strong></li>
+<li>由于领域不成熟，模块应<strong>易于替换以便试验</strong></li>
+<li>对<strong>子问题的求解</strong>可以有多种方法</li>
+<li>例如：信号处理，专家系统，模式识别等领域</li>
+</ul>
+<p>组件：黑板、知识源、控制（仲裁者）</p>
+<p>连接件：调用</p>
+<p>解决方案：</p>
+<ul>
+<li>设计公共数据结构</li>
+<li>设计多个专用组件，<strong>每个组件解决任务的一个特定部分</strong></li>
+<li>每个组件可以对公共数据结构进行添加、修改、删除</li>
+<li>仲裁者组件对每个组件的工作结果的进行评估，协调各组件的工作</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/黑板.png" alt=""></p>
+</li>
+</ol>
+</li>
+<li><p>vitual machine</p>
+<p>一种软件，创建了虚拟的环境，屏蔽了底层平台</p>
+<p>分类：</p>
+<ol>
+<li><p>系统级(硬件虚拟机)：可以把一台电脑虚拟为运行不同os的多台电脑</p>
+</li>
+<li><p>进程级(应用程序虚拟机)：JVM</p>
+</li>
+<li><p>机器聚合：云计算</p>
+</li>
+</ol>
+<ul>
+<li><p><strong>Interpreter</strong></p>
+<p>解释器是用来“执行其他程序的程序”，即程序源代码直接被解释执行（不需编译），浏览器也是典型的解释器</p>
+<p>优点：</p>
+<ul>
+<li><p><strong>功能性</strong>：可以测试非本机功能</p>
+</li>
+<li><p><strong>测试</strong>：可以模拟一些“故障”模式</p>
+</li>
+<li><p><strong>灵活</strong>：非常通用的工具</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p><strong>效率低</strong>：<strong>比硬件慢，执行速度比编译系统慢</strong></p>
+</li>
+<li><p><strong>测试</strong>：<strong>附加软件层需要被验证</strong></p>
+</li>
+</ul>
+<p>适用场合：</p>
+<ul>
+<li>解释型语言</li>
+<li>通信协议</li>
+<li>用户输入</li>
+</ul>
+<p>组件：【1+3】 一个状态机（解释引擎）+三个存储区（ 解释器内部状态引擎，被解释执行的程序，程序执行的当前状态）</p>
+<p>连接件：对存储区的数据访问和过程调用</p>
+<p>控制：状态转移</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/解释器.png" alt=""></p>
+</li>
+<li><p><strong>rule-based system</strong></p>
+<p><em>考试时与解释器不一样，会标出rule</em></p>
+<p>一种特殊的虚拟机，使用模式匹配搜索来寻找规则，并在正确时机应用正确的规则</p>
+<p>仍然是1引擎+3存储区的结构【解释引擎+（工作存储器，知识库「规则库，事实库」+规则/数据元素选择器）】</p>
+<p>常见的规则：</p>
+<ul>
+<li>用户界面输入的合法性检查</li>
+<li>安全规则/权限控制规则</li>
+<li>业务策略（如VIP折扣策略等）</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li><p>降低修改业务逻辑的成本与风险</p>
+</li>
+<li><p>缩短开发时间</p>
+</li>
+<li><p>规则可以在多个应用中共享</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>难以观察单条规则对整个决策的作用</li>
+<li>低效的搜索策略；基于规则的大型系统不适用于实时应用</li>
+<li>没有学习能力，无法打破规则</li>
+</ul>
+<p>适用场合：</p>
+<ul>
+<li>当<strong>业务规则很复杂</strong>时，不宜用if-else结构表示</li>
+<li>可变部分多的，需要把可变部分和不变部分分离的</li>
+</ul>
+<p>组件：</p>
+<p>连接件：</p>
+<p><strong>与解释器风格的不同：</strong></p>
+<ul>
+<li>解释器：在<strong>高级程序语言与os/硬件平台间</strong>建立虚拟机</li>
+<li>基于规则的系统：在<strong>自然语言/XML规则和高级程序语言间</strong>建立虚拟机</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/基于规则的系统.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>independent components</p>
+<ul>
+<li><p>communicating process</p>
+<p>组件间相对独立，依靠“发消息”通信</p>
+<p>消息长了错误率高，消息短了效率低</p>
+<blockquote>
+<p>This pattern is suiteable for applications that involve a collection of distinct, largely independent computations whose execution should proceed independently. The computations invovle coordination of data or control at discrete points in time. As result, correctness of the system requires attention to the routing and synchronization of the messages.</p>
+<p>此模式适用于涉及一系列不同的基本上<strong>独立计算的</strong>应用程序，这些计算的执行应独立进行。 <strong>离散时间点</strong>调整<strong>数据或控制</strong>的协调。系统的正确性需要注意<strong>消息的路由和同步。</strong></p>
+</blockquote>
+<p>组件：收发消息的过程</p>
+<p>连接件：消息</p>
+<p>约束：线程的控制</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/Users/mrs_empress/Documents/软件工程体系结构/通信进程系统.png" alt=""></p>
+</li>
+<li><p><strong>event systems</strong></p>
+<p>Implicit invocation 公众号</p>
+<p>事件的触发者不知道哪些构件会被事件影响</p>
+<p>当一个事件被宣布时，（隐式）调用相关的程序调用顺序是非确定性的</p>
+<p>核心思想：系统分解为多个低耦合的模块</p>
+<p>优点：</p>
+<ul>
+<li>为软件<strong>重用</strong>提供了强大的支持，当需要一个构件加入现存系统中时，只需将它注册到系统的事件中</li>
+<li>为<strong>改进</strong>系统带来了方便，当用一个构件代替另一个构件时，不会影响到其它构件的接口</li>
+<li>将问题分解了</li>
+<li>一个构件崩溃之后不会影响其他构件</li>
+<li>调用可以并行</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>构件放弃了<strong>对系统计算的控制</strong>：一个构件触发一个事件时，<strong>不能确定</strong>其他构件是否会<strong>响应</strong>它；<strong>无法控制调用的顺序</strong></li>
+<li><strong>数据交换</strong>的问题：在一些情况下，基于事件的系统必须依靠一个共享的仓库进行交互，出现了<strong>全局性能和资源管理的问题</strong>(递归多次转发导致信息多次发送)</li>
+<li>过程的语义必须<strong>依赖于</strong>被触发事件的<strong>上下文约束</strong>，<strong>信息广播的正确性很难保证</strong></li>
+<li>间接通信可能导致性能的下降</li>
+</ul>
+<p>适用场合：频繁变化的系统；涉及于松散耦合组件集合的应用程序</p>
+<p>组件：（在不知道信号接收者的情况下）发出重大事件信号的过程</p>
+<p>连接件：<strong>自动调用</strong>已注册对事件感兴趣的进程；事件过程绑定</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/事件系统.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="质量属性-amp-Tactics"><a href="#质量属性-amp-Tactics" class="headerlink" title="质量属性&amp;Tactics"></a>质量属性&amp;Tactics</h2><p>考点：</p>
+<ul>
+<li>给出八个需求，要求判断分别是什么质量属性；一般有两个是功能需求</li>
+<li>给出质量属性，写出其场景</li>
+<li>给出tactics（满足特定质量属性的具体设计手段）判断提升了什么质量属性</li>
+<li>给出质量属性写出两个tactics</li>
+</ul>
+<ol>
+<li><p>QAW(Quality Attributes Workshop)【在软件体系结构创建前使用】</p>
+<p>输入：Stakeholders的需求<br>输出：按优先级排序的质量属性</p>
+</li>
+<li><p>ADD(Attribute-Driven Design method)质量属性驱动的设计方法</p>
+<p>质量属性驱动的设计方法（ADD）是一个<strong>逐步</strong>的方法，用来<strong>系统化</strong>地为一个系统生成<strong>第一个</strong>体系结构设计</p>
+<p>输入：质量属性需求、功能需求、约束、架构师所掌握的策略与风格</p>
+<p>输出：初步设计的体系结构</p>
+</li>
+<li><p>ATAM(Architecture Tradeoff Analysis Method)质量属性评估</p>
+<p>主要任务：对产生的软件体系结构进行评估，判断其是否合理，是否达到我们所希望的目的</p>
+<p>输入：软件体系结构和业务需求</p>
+<p>输出：绩效树、场景、风险点、非风险点、敏感点和权衡点</p>
+</li>
+</ol>
+<p><strong>质量属性：</strong>主要用来描述软件的<strong>非功能性需求</strong>，主要<strong>包括可用性、性能、安全性、可修改性、可测试性和易用性六个方面</strong></p>
+<p><strong>非功能性需求；</strong>功能特性并不是软件体系结构中唯一要考虑的特性；如果仅考虑功能特性甚至不需要软件体系结构</p>
+<p><strong>尽早了解各方涉众的需求和观点，pattern/style和tatics分别处理高层和具体细节</strong></p>
+<p>必须结合<strong>设计、实现、部署</strong>三方面才能满足质量属性  </p>
+<p>属性之间<strong>相互影响</strong>，<strong>甚至相互抑制</strong></p>
+<p>分为：System Quality attribute、Business Quality attribute、Architecture Quality attribute</p>
+<p> 质量属性<strong>场景</strong>（描述系统如何对刺激做出反应）分为六个部分:</p>
+<p>质量属性场景是<strong>用来描述软件质量的方法</strong>，是一个具体的质量属性需求，场景就是<strong>风险承担者</strong>与<strong>系统交互</strong>的简短陈述</p>
+<ul>
+<li><strong>刺激源</strong>：可以是一些实体，如人，计算机系统或者其他的刺激源</li>
+<li><strong>刺激</strong>：到达系统的刺激是一个需要被考虑的情况</li>
+<li><strong>制品artifact(指刺激是影响在哪一个部分上的)</strong>：某些制品被激发，可能是整个系统或者其中的一部分</li>
+<li><strong>环境(当前系统处于什么样的状态)</strong>：刺激在一定的条件下发生</li>
+<li><strong>响应/反应</strong>：反应是刺激达到后所产生的活动</li>
+<li><strong>响应/反应测量</strong>：当反应发生的时候，必须可被测量，从而需求也可被检测</li>
+</ul>
+<p>U-STAMP</p>
+<ul>
+<li><p>易用性usability</p>
+<ul>
+<li><strong>最终用户容易使用和学习</strong></li>
+<li><strong>方便用户入门；提高使用效率；降低用户出错造成的影响；让软件适应用户的需求；提高用户的自信和舒适度</strong></li>
+<li>易用性关注一个用户<strong>完成需要的工作的容易程度</strong>和<strong>系统提供的用户支持的种类</strong>，包括：<ul>
+<li><strong>学习</strong>系统特性：如果用户对某一特定系统或者系统的特定方面不熟悉，系统应该怎样使得学习变得容易</li>
+<li>高效地<strong>使用</strong>系统：系统在帮助用户更高效操作方面能做什么</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>source of stimulus</p>
+<p>终端用户</p>
+</li>
+<li><p>stimulus</p>
+<p>最终用户对<strong>有效地使用系统</strong>，容易<strong>学习</strong>使用系统，<strong>最小化错误的影响</strong>，<strong>能够调整系统</strong>，<strong>对系统感到舒适的希望</strong></p>
+</li>
+<li><p>artifact</p>
+<p>系统</p>
+</li>
+<li><p>environment</p>
+<p>运行时或系统配置时</p>
+</li>
+<li><p>response</p>
+<p>为用户提供所需的功能或预测用户的需求</p>
+</li>
+<li><p>response measure</p>
+<p>通过任务时间，错误数量，解决的问题数量，用户满意度，用户知识获取程度，成功操作与总操作的比率，发生错误时丢失的时间/数据量来衡量</p>
+</li>
+</ul>
+<ul>
+<li><p>Tactics：仿照现有的工具，和环境统一的界面外观，和工具统一风格的帮助，统一的系统模型，允许用户定制</p>
+<ul>
+<li>自动存档、网络同步、词语联想</li>
+<li>运行时策略</li>
+</ul>
+<ol>
+<li><strong>维护任务模型，系统猜测用户要完成的任务</strong></li>
+<li><strong>维护用户的模型，确定用户对系统的了解程度，在预期响应时间的行为</strong>：网站调整鼠标的滚轮速度</li>
+<li><strong>维护系统的模型，确定预期的系统行为，以便可以向用户提供适当的反馈</strong>：在copy文件时提示预估的剩余时间，浏览器打开页面时显示进度</li>
+</ol>
+<ul>
+<li>设计时策略</li>
+</ul>
+<ol>
+<li><strong>模型-视图-控制器</strong></li>
+<li><strong>表示-抽象-控制</strong></li>
+<li><strong>将用户界面与业务逻辑分开</strong>Seeheim</li>
+<li>Arch/Slinky</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>安全性security</p>
+<ul>
+<li><strong>在对合法用户提供服务的同时，阻止未授权用户的使用企图【合法用户可用，非法用户不可用】</strong></li>
+<li>特点：nonrepudiation(不可否认), confidentiality(机密性), integrity(完整性), assurance(保证性)【–你的成绩单会被确保寄到家长手里】, availability(可用性), and auditing(审计)【银行对每笔转账都有监控，利用数据库log进行恢复】</li>
+</ul>
+<ul>
+<li><p>source of stimulus </p>
+<p>人或其他系统（可能已被识别或当前未知）</p>
+</li>
+<li><p>stimulus </p>
+<p>攻击或企图破坏安全的事件（未经授权的人或系统，试<strong>图显示信息，更改或删除信息，介入系统服务或降低系统服务的可用性</strong>）</p>
+</li>
+<li><p>artifact </p>
+<p>攻击的目标，如系统的服务或数据。</p>
+</li>
+<li><p>environment</p>
+<p>系统的状态（联机/脱机，连接网络/断开网络，防火墙打开/打开网络）</p>
+</li>
+<li><p>response<br>授权合法用户并授予他们访问数据和服务的权限，支持授予或撤销访问权限。<br>拒绝未经授权的用户，拒绝他们访问，并报告未经授权的访问<br>审计跟踪来引起对惩罚的恐惧（审计跟踪对于纠正成功的攻击也很有用）【ATM机监控摄像】</p>
+</li>
+<li><p>response measuer</p>
+<p>增加攻击的难度以及增加从攻击中恢复的能力，如：入侵检测，入侵容忍，多机备份……</p>
+</li>
+</ul>
+<ul>
+<li><p>Tactics：入侵监测，防火墙，加密，提供最少的入口（用户权限）</p>
+<ul>
+<li><strong>抵抗攻击</strong></li>
+</ul>
+<ol>
+<li><strong>验证用户</strong>：密码</li>
+<li><strong>授权用户</strong>：经过身份验证的用户有权访问或修改数据或其它服务</li>
+<li><strong>维护数据的机密性</strong>：网银常用https来提高保密性</li>
+<li><strong>维护完整性</strong>：软件公布自己的MD5码防止被篡改</li>
+<li><strong>限制暴露的信息</strong>：关闭无用端口、自启动的服务、无线路由SSID等等</li>
+<li><strong>限制访问</strong>：无线路由设置MAC过滤</li>
+<li>在外部用户和提供服务的系统之间认证服务器</li>
+<li>把要保护的系统置于通讯防火墙之后</li>
+<li>在某个可信内核的基础上构建系统，由该内核提供安全</li>
+</ol>
+<ul>
+<li><strong>检测攻击</strong></li>
+</ul>
+<ol>
+<li>通过入侵检测系统（IDS）来检测攻击：将流量模式与已知攻击的历史模式进行比较，必须过滤数据包才能进行比较。。。</li>
+</ol>
+<ul>
+<li><strong>从攻击中恢复</strong></li>
+</ul>
+<ol>
+<li>恢复状态：从不一致的状态恢复到一致的状态</li>
+<li><strong>识别攻击者</strong>：保持审计跟踪；审计跟踪=交易副本+识别信息</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>可测试性testability</p>
+<ul>
+<li><strong>让软件容易被证明是错的，易于发现错误的能力</strong>（不是让软件没有错误）</li>
+</ul>
+<ul>
+<li><p>source of stimulus</p>
+<p>单元测试人员，集成测试人员，系统测试人员或客户端执行人员（测试团队与开发团队未必是一组人）</p>
+</li>
+<li><p>stimulus</p>
+<p>开发过程的一个<strong>阶段结束（里程碑）</strong>，可能是<strong>分析/设计/编码/集成阶段的结束，或系统完全开发结束</strong></p>
+</li>
+<li><p>artifact</p>
+<p>被测试的部分：设计或一段代码或整个系统</p>
+</li>
+<li><p>environment</p>
+<p>设计时，开发时，编译时或部署时</p>
+</li>
+<li><p>response</p>
+<p>控制系统以执行期望的测试，并且可以观察每个测试的结果</p>
+</li>
+<li><p>response measure</p>
+<p>语句覆盖率<br>最长测试链的长度（衡量执行测试的难度）<br>发现其他故障的可能性</p>
+</li>
+</ul>
+<ul>
+<li><p>Tactics：自检、捕获、回放（playback）、故障注入和报告，一致的错误处理方式</p>
+<ul>
+<li>黑盒测试</li>
+</ul>
+<ol>
+<li><strong>记录/重放</strong>：半自动化/自动化测试</li>
+<li><strong>分离实现和接口</strong></li>
+<li><strong>提供特殊的界面/接口专门用于测试</strong></li>
+<li>提供输入捕获输出</li>
+</ol>
+<ul>
+<li>白盒测试</li>
+</ul>
+<ol>
+<li><strong>内部监控</strong>：IDE中设置断点</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>可用性availability</p>
+<ul>
+<li><p><strong>能长时间正确运行，并可迅速从错误状态恢复到正确状态</strong></p>
+</li>
+<li><p><strong>关心系统的故障和与故障关联的结果</strong>，每周停机维护不算在故障中</p>
+</li>
+<li><p>可用性是<strong>软件质量属性中的一种</strong>，它所关心的是<strong>系统故障</strong>和<strong>它所带来的后果</strong></p>
+</li>
+<li><p>保持系统<strong>一直正常运作（24小时监控）</strong>也属于可用性的范畴，因为需要预防故障的产生</p>
+</li>
+<li><p>source of stimulus</p>
+<p><strong>内部和外部的故障或故障指示</strong>（遗漏、奔溃、超时、无响应、错响应）</p>
+</li>
+<li><p>stimulus：</p>
+<p>组件无法响应输入；组件反复出现错误；组件响应但响应过早或过晚；组件响应的值不正确。</p>
+</li>
+<li><p>artifact</p>
+<p>高可用性所需要的资源，如：处理器，通信通道，进程，存储器</p>
+</li>
+<li><p>environment</p>
+<p>正常或者降级的操作系统</p>
+</li>
+<li><p>response</p>
+<p>记错误日志<br>通知用户或其他系统<br>切换到安全模式<br>关闭外部系统<br>在修理期间不可用</p>
+</li>
+<li><p>response measure </p>
+<p>可用性百分比<br>指定修复时间<br>系统必须可用的持续时间</p>
+</li>
+<li><p>Tactics：尽可能地降低“故障”所造成的影响</p>
+<ul>
+<li><strong>故障检测</strong></li>
+</ul>
+<ol>
+<li><strong>ping/echo：</strong>监控组件向关键组件发出ping消息，关键组件收到ping后返回；echo根据是否收到echo消息以及延时长短，来做出反应消息，监控组件</li>
+<li>heartbeat心跳：保持间歇的通信信号（即心跳信号），周期性的检测各个节点的状态</li>
+<li><strong>exceptions异常：</strong>异常的抛出、捕获、处理</li>
+</ol>
+<ul>
+<li><strong>故障恢复</strong></li>
+</ul>
+<ol>
+<li><strong>表决</strong>：多机投票出结果</li>
+<li>双机热备系统、热重启、<strong>主动冗余</strong>：A，B<strong>服务器</strong>运行同样的服务，某一个时刻B坏了，切换到A；备份组件的状态和工作组件的状态是一致的</li>
+<li>双机备份系统、温重启、<strong>被动冗余</strong>：A完成运算后，将自己的状态告知B，B才开始更新</li>
+<li>备件：<strong>备份盘</strong></li>
+<li><strong>Shadow操作</strong>：内部测试服务器上进行测试，确认无误后再将补丁公开</li>
+<li>状态再同步：恢复提供服务前的状态</li>
+<li><strong>检查点/回滚：</strong>Word每隔5分钟进行自动保存，出错意外关闭后，重新打开时会提示是否恢复已保存的文档</li>
+</ol>
+<ul>
+<li><strong>故障预防</strong></li>
+</ul>
+<ol>
+<li>从服务中移除：惹不起躲得起</li>
+<li><strong>事务</strong>：数据库常用</li>
+<li><strong>进程监控器</strong>：任务管理器关闭程序</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>可修改性modifiability</p>
+<ul>
+<li><p>关于<strong>修改的成本和时间</strong>，两个关心的方面：改变什么，什么时候和谁改变</p>
+</li>
+<li><p>系统会与<strong>很多种不同类型的设备</strong>进行<strong>交互</strong>属于<strong>可修改性</strong>的范畴</p>
+</li>
+<li><p>source of stimulus</p>
+<p>进行更改的人员：开发人员，系统管理员或最终用户</p>
+</li>
+<li><p>stimulus</p>
+<p>希望添加/删除/修改/变更功能、质量属性、容量</p>
+</li>
+<li><p>artifact</p>
+<p>要更改的内容：系统的功能，平台，用户界面，环境或与其互操作的其他系统</p>
+</li>
+<li><p>environment</p>
+<p>何时可以进行更改：设计时间，编译时间，构建时间，启动时间或运行时（修改的时间越迟越不利）</p>
+</li>
+<li><p>response</p>
+<p>进行更改的人必须了解如何修改，然后进行修改，测试，部署（不仅仅是修改）</p>
+</li>
+<li><p>response measure </p>
+<p>时间和成本</p>
+</li>
+<li><p>Tactics：控制实现、测试和部署更改的时间和成本</p>
+<ul>
+<li><strong>本地化修改/局部修改</strong></li>
+</ul>
+<ol>
+<li><strong>维持语义的一致性</strong>：尽量把对程序的修改控制在一个模块内；要求程序内的多个模块是高内聚低耦合的，不同模块完成相对单一的功能</li>
+<li><strong>预计期望的变更</strong>：单一职责原则</li>
+<li><strong>泛化模块</strong>：使模块更通用，根据输入可以计算更广泛的功能</li>
+<li><strong>限制可能的选择</strong>：限制选项可以减少修改的影响</li>
+</ol>
+<ul>
+<li><strong>防止连锁效应</strong>：模块间依赖的种类是不同的（语法【参数类型】、语义【参数意义】、顺序、接口、地点【运行时地点和假设一致】、数据的质量、A的存在、A的资源行为）</li>
+</ul>
+<ol>
+<li><p><strong>信息隐藏</strong>：选择哪些信息私有以及哪些信息公开</p>
+</li>
+<li><p><strong>维护现有接口</strong>：语法允许可以保持不变（电话订餐，只要电话号码（接口）不发生变化，则搬店不会影响）</p>
+</li>
+<li><p>控制通信路径：限制给定模块与之共享数据的模块，减少“多对多”的关系，让模块间的数据联系简单化</p>
+</li>
+<li><p><strong>使用中介</strong></p>
+</li>
+<li><p>A运行时的位置：IP地址改变，但是还可以通过名称服务器来访问</p>
+</li>
+<li><p>A的存在：B的行为依赖A的存在</p>
+</li>
+<li><p>A的资源行为或A控制的资源：由资源管理器来调配资源</p>
+</li>
+</ol>
+<ul>
+<li><strong>推迟绑定时间</strong></li>
+</ul>
+<ol>
+<li><strong>运行时注册：支持即插即用操作</strong>，但需要额外的管理注册开销</li>
+<li>发布/订阅注册：可以在运行时或加载时实现。</li>
+<li><strong>配置文件：用于在启动时设置参数</strong>，可以避免把数据写入代码</li>
+<li><strong>多态：允许方法调用的后期绑定</strong></li>
+<li><strong>组件更换：允许加载时绑定</strong></li>
+<li><strong>遵守已定义的协议：允许独立进程运行时绑定</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>性能performance</p>
+<ul>
+<li><p>系统的<strong>响应时间</strong>，硬件资源的占用率，速度</p>
+</li>
+<li><p>使性能变得复杂的一个因素是事件源的数量和到达模式（周期性的或随机的）</p>
+</li>
+<li><p>例子：大门开关侦测到有障碍的时候需要立刻停止（一种响应）</p>
+</li>
+<li><p>source of stimulus</p>
+<p>外部（可能是多个）或内部</p>
+</li>
+<li><p>stimulus</p>
+<p>周期事件到达、偶然事件到达、随机事件到达</p>
+</li>
+<li><p>artifact</p>
+<p>系统的服务</p>
+</li>
+<li><p>environment</p>
+<p>各种操作模式，例如正常，紧急或过载</p>
+</li>
+<li><p>response</p>
+<p>处理到达的事件（可能导致系统环境的改变）</p>
+</li>
+<li><p>response measure<br>处理事件所花的时间，一定时间内处理事件的个数，处理的错误率/丢失率</p>
+</li>
+<li><p>Tactics：在一定时间限制内生成对到达系统的事件的响应；分而治之，监测与调节，简单的资源<strong>申请与释放</strong>机制，给予充足的资源；用资源+等资源</p>
+<ul>
+<li>资源需求：改进关键区域中使用的算法将减少延迟。</li>
+</ul>
+<ol>
+<li><strong>减少处理一个事件所需要的资源：提高计算效率，减少计算开销</strong></li>
+<li><strong>减少需要同时处理事件的数量：管理事件的速率（外部生成时间的采样频率），控制采样频率（对排队请求的采样频率，可能导致请求丢失）</strong></li>
+<li><strong>控制资源的使用：限制执行时间（控制迭代的轮数，绑定队列大小），限制队列大小（例如私家菜馆一天只接受5桌）</strong></li>
+</ol>
+<ul>
+<li>资源管理</li>
+</ul>
+<ol>
+<li><strong>引入并发</strong>：并发, 多机、多进程、多线程</li>
+<li><strong>维护数据或计算的多个副本：</strong>客户端 - 服务器模式中的客户端是计算的副本</li>
+<li><strong>增加可用资源：添加硬件</strong></li>
+</ol>
+<ul>
+<li>资源仲裁</li>
+</ul>
+<ol>
+<li>先来先服务</li>
+<li>固定优先级</li>
+<li><strong>动态优先级调度</strong><br>循环法：餐馆厨师依次给每一桌客人上一道菜，而不是给一桌彻底做完再开始做第二桌。<br>最早的截止日期优先：优先级可以动态改变（急诊室根据病人的病情，优先重伤的病人A.但当新来更严重的病人乙时，会优先救治乙）</li>
+<li>静态调度：顺序执行，并且顺序是离线确定，不改变（急诊室根据现有病人情况指定救治顺序，顺序制定后不再变更，就算新来更严重的病人也只能等待现有病人都得到救治后才能施救）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="质量评估"><a href="#质量评估" class="headerlink" title="质量评估"></a>质量评估</h2><ul>
+<li>ATAM<strong>体系结构折衷分析</strong>是一种通过<strong>业务驱动</strong>，<strong>质量属性</strong>、<strong>情景</strong>等方面进行软件体系结构<strong>评估</strong>的<strong>方法</strong>，帮助<strong>参与者</strong>来发现<strong>架构设计决策</strong>中潜在的<strong>问题和风险</strong>，预测<strong>架构决策</strong>和<strong>系统属性</strong>之间的关系</li>
+<li>ATAM所带来的利益：<ul>
+<li>标示风险</li>
+<li>阐明质量属性需求</li>
+<li>改进架构文档</li>
+<li>为架构决策准备好文档化的基础</li>
+<li>增加投资者之间的通信</li>
+</ul>
+</li>
+<li>其交互过程如下图：</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/ATAM.png" alt=""></p>
+<ul>
+<li>从题目的表述当中描述属于一下四个中的某一个</li>
+</ul>
+<ol>
+<li><strong>风险：可能在将来损害某些质量属性的方案</strong></li>
+<li><strong>非风险：可以提高质量、帮助实现目标的决策</strong></li>
+<li><strong>关键点/敏感点sensitivity points：方案中一个小小的变化，就可能对某些质量属性有很大的影响</strong></li>
+<li><strong>权衡点tradeoffs：影响一个以上质量属性的决策</strong></li>
+</ol>
+<ul>
+<li><p>生成质量属性效率树,给出四点的定义；给出每个涉及什么质量属性；画出效用树</p>
+<p>从叶结点开始描绘；<strong>主要看质量属性与最后的叶结点对应，其他的就算没有对上也无所谓</strong>。</p>
+<p>同时叶结点的边应该标上二元组(重要程度，实现难易程度)，每一程度有三类H, M, L，分别表示高中低</p>
+</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/效用树.png" alt=""></p>
+<ul>
+<li>根<strong>Utility</strong>/实体</li>
+<li>第一层结点：<strong>质量属性</strong>（从叶子开始写，总结）</li>
+<li>第二层结点：具体细节</li>
+<li>叶子：题目描述<ul>
+<li>叶子上有<strong>二元组</strong><code>（重要性,  实现难度）</code></li>
+<li>分别用H,M,L来表示高中低</li>
+<li>Scenario场景<ul>
+<li>Use case： 用户<strong>常用</strong>的场景</li>
+<li>growth：系统可能<strong>变化</strong>的场景</li>
+<li>Exploratory：<strong>计划外</strong>（意外，如故障）的场景</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>考点：</p>
+<ul>
+<li><p>大概占十分，给UML问是什么UML</p>
+</li>
+<li><p>UML中图的区分：用例图以及类图的区分</p>
+</li>
+<li><p>要做什么事，应该选用什么图</p>
+</li>
+</ul>
+<p>选择适合目标系统的视图（cost, benefit, requires)</p>
+<p>每一个视图只关心系统的一个侧面，5个视图结合在一起才能反映系统的软件体系结构的全部内容</p>
+<p>“4+1”视图模型是用于<strong>描述软件体系结构的方式</strong>，主要用<strong>5个不同的视图</strong>：<strong>逻辑视图、开发视图、进程视图、场景视图、物理视图来描述软件体系结构</strong>；<strong>每一个视图只关心系统的一个侧面，5个视图结合在一起才能反映系统的软件体系结构的全部内容。</strong></p>
+<p>use case view：All of the other views rely on the use case view to guide them that’s why the model<br>is called 4+1.  用例图</p>
+<p>Logical View逻辑视图 </p>
+<ul>
+<li>静态结构 <ul>
+<li>类图</li>
+<li>对象图</li>
+</ul>
+</li>
+<li>动态结构<ul>
+<li>状态图</li>
+<li>协作图</li>
+<li>序列图</li>
+</ul>
+</li>
+</ul>
+<p>Development view 开发视图 </p>
+<ul>
+<li>静态结构 <ul>
+<li>包图 </li>
+<li>组件图</li>
+</ul>
+</li>
+</ul>
+<p>Process View 进程视图 </p>
+<ul>
+<li>动态结构<ul>
+<li>活动图</li>
+</ul>
+</li>
+</ul>
+<p>Physical view 物理视图 </p>
+<ul>
+<li>动态结构 <ul>
+<li>部署图</li>
+</ul>
+</li>
+</ul>
+<p>场景视图</p>
+<ul>
+<li>静态结构<ul>
+<li>用例图</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/UML.png" alt=""></p>
+<ul>
+<li><p>use case view</p>
+<p>用例：<strong>use case</strong>，对系统如何反应外界请求的描述</p>
+<p>用例图是用来理解系统的<strong>功能性</strong>需求的。包含了三部分：actor、system、use case</p>
+<p>看系统对外提供了什么“有价值的功能”</p>
+<ul>
+<li><p>Use case diagrams 用例图</p>
+<p>要会画图，前面说明人头的这些东西进行信息交互，然后说明要完成的事情；然后画图，注意include和extend</p>
+<p>用于显示若干角色以及这些角色与系统提供的用例之间的<strong>连接关系</strong>。用例是系统提供的<strong>功能的描述</strong>，用例描述系统对外提供的“价值”；主要给<strong>客户</strong>看，让客户了解</p>
+<ul>
+<li>Understand the functional requirements of a system</li>
+<li>external view of the system<strong>从外部视角来看系统，不关心系统内部</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/用例图.png" alt=""></p>
+</li>
+<li><p>Logical View逻辑视图 静态结构</p>
+<p>Describes the <strong>abstract</strong> descriptions of a <strong>system’s parts</strong></p>
+<p>系统各部分的抽象描述</p>
+<ul>
+<li><p>Class 类图</p>
+<p>表示系统中的<strong>类和类与类之间的关系</strong>，它是对系统静态结构的描述</p>
+<p>类之间的关系有：继承，组合。</p>
+<p>每个类在图中有三部分组成：类名、属性、方法</p>
+<p>backbone of the UML</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/类图.png" alt=""></p>
+</li>
+<li><p>Object 对象图</p>
+<p>Snapshot of the objects in a system at a point in time描述系统<strong>运行时刻的状态</strong>；也称    instance diagram</p>
+<p>整体是一个<strong>树</strong>的结构。结点下面有具体的对象。</p>
+<p>showing examples of objects connected together</p>
+<p><strong>注：</strong>和类图区别</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/对象图.png" alt=""></p>
+</li>
+<li><p>State machine 状态图</p>
+<p>描述类的对象所有<strong>可能的状态</strong>以及事件发生时状态的<strong>转移条件</strong>；通常，<strong>状态图是对类图的补充</strong></p>
+<p>就是编译原理里面的有限状态机。</p>
+<p>活动图与状态图十分相似，唯一的区别在于状态之间的是否存在<strong>转移条件(trigger)</strong></p>
+<ul>
+<li>用于描述<strong>一个对象</strong>在<strong>不同用例</strong>中的状态变化</li>
+<li>不用画所有的类，只需画感兴趣的类，适合<strong>UI和控制类对象</strong></li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/状态图.png" alt=""></p>
+</li>
+<li><p>Interaction/Communication diagrams协作图、通信图</p>
+<p><strong>描述对象间的协作关系</strong>，与序列图类似，显示对象间的动态合作关系。</p>
+<p>显示对象间的<strong>动态合作</strong>关系，但强调<strong>联系</strong></p>
+<p> <strong>交互图</strong>包含<strong>序列图</strong>和<strong>协作图</strong></p>
+<p><img src="/2019/01/08/软件体系结构-笔记/协作图.png" alt=""></p>
+</li>
+<li><p>Sequence Diagram 序列图</p>
+<p>显示对象间的<strong>动态协作</strong>关系，但强调<strong>时间</strong></p>
+<p>用来反映<strong>若干个</strong>对象之间的动态协作关系，即<strong>随着时间的推移，对象之间是如何交互的</strong>。箭头表示“一个类调用另一个类的方法”。</p>
+<p>特别关注先后顺序。</p>
+<p>一个用例或者一个业务或者一个功能可以对应一个序列图。如果说用例是黑盒，那么这里就是白盒，指导了应该如何实现功能。</p>
+<ul>
+<li>序列图描绘了<strong>多个对象</strong>如何协作来完成<strong>一个用例</strong></li>
+<li>不适合精确定义对象的行为</li>
+<li>如果想看<strong>单独对象</strong>在<strong>多个用例</strong>之间的行为，则使用状态图state machine</li>
+<li>如果想看<strong>多个用例和线程</strong>的时候，则使用活动图Activity diagrams</li>
+</ul>
+<p><img src="/2019/01/08/软件体系结构-笔记/序列图.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>Process View 进程视图 动态结构</p>
+<p>系统完成业务的过程</p>
+<ul>
+<li>Activity diagrams 活动图</li>
+</ul>
+<p>描述满足用例要求所要进行的<strong>活动</strong>以及活动间的<strong>约束</strong>关系，有利于识别<strong>并行</strong>活动</p>
+<p>很像一个<strong>流程图</strong></p>
+<p><img src="/2019/01/08/软件体系结构-笔记/活动图.png" alt=""></p>
+</li>
+<li><p>Development view 开发视图 静态结构</p>
+<p>系统各部分是如何组织的</p>
+<p>很像计网里面的<strong>拓扑结构</strong>。定义了系统中软硬件的<strong>物理</strong>体系结构。</p>
+<ul>
+<li><p>Package 包图</p>
+<p>Package is a grouping construct that allows you to take any construct in the UML and group its elements together into <strong>higher-level units</strong>. </p>
+<p>像文件夹一样</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/包图.png" alt=""></p>
+</li>
+<li><p>Component diagrams 组件图</p>
+<p>描述<strong>代码构件</strong>的<strong>物理</strong>结构各构件之间的依赖关系</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/组件图.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>Physical view 物理视图 动态结构</p>
+<p>系统的设计是如何对应到实际的</p>
+<p>现实世界中的实体（物理层面）</p>
+<ul>
+<li><p>Deployment diagrams 部署图</p>
+<p>定义系统中软、硬件的<strong>物理</strong>体系结构</p>
+<p><img src="/2019/01/08/软件体系结构-笔记/部署图.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=2931596&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/课堂笔记/" rel="tag"><i class="fa fa-tag"></i> 课堂笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/28/随想小记2018-12-28/" rel="next" title="随想小记2018与2019">
+                <i class="fa fa-chevron-left"></i> 随想小记2018与2019
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/27/设计模式/" rel="prev" title="设计模式">
+                设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件体系结构知识点分析"><span class="nav-number">1.</span> <span class="nav-text">软件体系结构知识点分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style设计模式和连接件-组件-约束"><span class="nav-number">1.3.</span> <span class="nav-text">Style设计模式和连接件 组件 约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#质量属性-amp-Tactics"><span class="nav-number">1.4.</span> <span class="nav-text">质量属性&Tactics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#质量评估"><span class="nav-number">1.5.</span> <span class="nav-text">质量评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML"><span class="nav-number">1.6.</span> <span class="nav-text">UML</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
