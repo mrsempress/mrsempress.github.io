@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%96%B9%E7%A8%8B%E5%BC%8F.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E8%BF%91%E8%BD%B4%E5%87%A0%E4%BD%95%E5%85%89%E5%AD%A6.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/zhang-%E5%BE%84%E5%90%91%E7%95%B8%E5%8F%98.png">
-<meta property="og:updated_time" content="2019-05-03T15:35:19.103Z">
+<meta property="og:updated_time" content="2019-05-03T15:41:37.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机视觉——一种现代方法">
 <meta name="twitter:description" content="为什么要研究视觉？ 计算机视觉：从图像或图像序列中获取对世界的描述从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化">
@@ -543,7 +543,7 @@ x_{wI}&y_{wI}&z_{wI}&1&0&0&0&0&-x_{wI}x_{cI}&-y_{wI}x_{cI}&-z_{wI}x_{cI}&-x_{cI}
 </li>
 </ol>
 <h2 id="Zhang’s-Method"><a href="#Zhang’s-Method" class="headerlink" title="Zhang’s Method"></a>Zhang’s Method</h2><p><a href="http://ais.informatik.uni-freiburg.de/teaching/ws10/robotics2/pdfs/rob2-10-camera-calibration.pdf" target="_blank" rel="external">PPT分布讲解</a></p>
-<p>首先，所有点是在一个平面上，因此在世界坐标系中我们可以认为$z_w=0$，从而外参矩阵的第三列对结果无影响。我们可以将外参矩阵第三列和$z_w$同时删去，简化为</p>
+<p>首先，所有点是在一个平面上，因此在世界坐标系中我们可以认为$z_w=0$（采用平面标定模板），从而外参矩阵的第三列对结果无影响。我们可以将外参矩阵第三列和$z_w$同时删去，简化为</p>
 <script type="math/tex; mode=display">
 \left(\begin{matrix}u\\v\\1\end{matrix}\right)\sim\left(\begin{matrix}f_x & 0 & c_x\\0&f_y&c_y\\0&0&1\end{matrix}\right)\left(\begin{matrix}r_{11}&r_{12}&t_1\\r_{21}&r_{22}&t_2\\r_{31}&r_{32}&t_3\end{matrix}\right)\left(\begin{matrix}x_w\\y_w\\1\end{matrix}\right)</script><p>令</p>
 <script type="math/tex; mode=display">
