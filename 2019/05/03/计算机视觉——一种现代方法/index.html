@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Notes,计算机视觉," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="为什么要研究视觉？ 计算机视觉：从图像或图像序列中获取对世界的描述从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化">
+<meta name="keywords" content="Notes,计算机视觉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机视觉——一种现代方法">
+<meta property="og:url" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="为什么要研究视觉？ 计算机视觉：从图像或图像序列中获取对世界的描述从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%92%88%E5%AD%94%E6%88%90%E5%83%8F%E6%A8%A1%E5%9E%8B.jpeg">
+<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C1.jpeg">
+<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C2.jpeg">
+<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%96%B9%E7%A8%8B%E5%BC%8F.jpeg">
+<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E8%BF%91%E8%BD%B4%E5%87%A0%E4%BD%95%E5%85%89%E5%AD%A6.jpeg">
+<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/zhang-%E5%BE%84%E5%90%91%E7%95%B8%E5%8F%98.png">
+<meta property="og:updated_time" content="2019-05-03T15:35:19.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机视觉——一种现代方法">
+<meta name="twitter:description" content="为什么要研究视觉？ 计算机视觉：从图像或图像序列中获取对世界的描述从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化">
+<meta name="twitter:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%92%88%E5%AD%94%E6%88%90%E5%83%8F%E6%A8%A1%E5%9E%8B.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/"/>
+
+
+
+
+
+  <title>计算机视觉——一种现代方法 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机视觉——一种现代方法</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-03T23:28:50+08:00">
+                2019-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/03/计算机视觉——一种现代方法/" class="leancloud_visitors" data-flag-title="计算机视觉——一种现代方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>为什么要研究视觉？</strong></p>
+<p>计算机视觉：从图像或图像序列中获取对世界的描述<br>从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律<br>医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化</p>
+<a id="more"></a>
+<h1 id="第一章-摄像机"><a href="#第一章-摄像机" class="headerlink" title="第一章 摄像机"></a>第一章 摄像机</h1><h2 id="针孔摄像机"><a href="#针孔摄像机" class="headerlink" title="针孔摄像机"></a>针孔摄像机</h2><h3 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h3><p><img src="/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%92%88%E5%AD%94%E6%88%90%E5%83%8F%E6%A8%A1%E5%9E%8B.jpeg" alt="针孔成像模型"></p>
+<p>下图表明了透视投影的效果：所观察到的物体大小取决于它们的距离</p>
+<p><img src="/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C1.jpeg" alt=""></p>
+<p>下图表明了：同一平面II上的两条平行线的投影在成像面上将会聚到（成像面上）一条水平线H上，H这条线是穿过针孔与II平行的平面与成像面相交的交线【同时，平面II上与成像面平行的线L在成像面上没有图像】</p>
+<p><img src="/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C2.jpeg" alt=""></p>
+<p><strong>透视投影方程式</strong></p>
+<p><img src="/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%96%B9%E7%A8%8B%E5%BC%8F.jpeg" alt=""></p>
+<p>图中，点$P$表示景物中坐标为$(x,y,z)$的一点，$P’$是它的图像，坐标为$(x’,y’,z’)$。因为P’处在图像中，所以有$z’=f$，又因为$P$，$O$，$P’$三点共线，则有：</p>
+<script type="math/tex; mode=display">
+\begin{cases}x'=\lambda x\\y'=\lambda y\\f' = \lambda z \end{cases}\Leftrightarrow \lambda=\frac{x'}{x}=\frac{y'}{y}=\frac{z'}{z}</script><p>因此有</p>
+<script type="math/tex; mode=display">
+\begin{cases}x'=f'\frac{x}{z} \\ y'=f'\frac{y}{z}\end{cases}</script><p>其中$x,y$是世界坐标，$x’, y’$是图像坐标，$f’$是针孔到视网膜的距离</p>
+<h3 id="仿射投影"><a href="#仿射投影" class="headerlink" title="仿射投影"></a>仿射投影</h3><p>以上面图a来说明，$z$必定为负值，因为平面位于针孔的前面。且m是个正值，称为放大率。当景物深度与它们到摄像机的平均距离相比很小时，m可以看作是一个常数，这种投影模型称为<strong>弱透视模型</strong>或<strong>按比例的正交</strong>。</p>
+<p><strong>弱透视投影：</strong></p>
+<script type="math/tex; mode=display">
+\begin{cases}x'=-mx \\ y'=-my\\m=-\frac {f'}{z_0}\end{cases}</script><p>其中$z_0$参考点深度（$<0$），$m$放大倍数（$>0$）</0$），$m$放大倍数（$></p>
+<p>当$m=-1$时，这就是<strong>正交投影</strong>，可以想象一下，满足这种条件的时候，光都是平行的。</p>
+<script type="math/tex; mode=display">
+\begin{cases}x'=x \\ y'=y\end{cases}</script><h2 id="带镜头的摄像机"><a href="#带镜头的摄像机" class="headerlink" title="带镜头的摄像机"></a>带镜头的摄像机</h2><p>使用镜头的理由：保持图像锐化聚焦，同时又可以从大面积中收集光线</p>
+<p><strong>折射公式Snell规则</strong></p>
+<script type="math/tex; mode=display">
+n_1\text{sin}\ \alpha_1=n_2\text{sin}\ \alpha_2</script><p>其中$n$是折射率，$\alpha$到法线的夹角</p>
+<p><img src="/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E8%BF%91%E8%BD%B4%E5%87%A0%E4%BD%95%E5%85%89%E5%AD%A6.jpeg" alt=""></p>
+<p><strong>近轴折射方程式</strong></p>
+<script type="math/tex; mode=display">
+n_1\alpha_1\approx n_2\alpha_a\Leftrightarrow \frac{n_1}{d_1}+\frac{n_2}{d_2}=\frac{n_2-n_1}{R}</script><p>推导成右式需要再增加角度的关系，以及由于角度较小用正切或正弦值代替，即$\alpha_1=\gamma+\beta_1\approx h(\frac1 R+\frac 1 {d_1})$和$\alpha_2=\gamma+\beta_2\approx h(\frac1 R-\frac 1 {d_2})$</p>
+<p><strong>薄透镜方程</strong></p>
+<script type="math/tex; mode=display">
+\frac 1 {z'}-\frac 1 z=\frac 1 f</script><p>其中，$z$物点深度（$&lt;0$），$z’$像点深度（$&gt;0$）$f$焦距</p>
+<h1 id="第二章-摄像机的几何模型"><a href="#第二章-摄像机的几何模型" class="headerlink" title="第二章 摄像机的几何模型"></a>第二章 摄像机的几何模型</h1><h2 id="欧几里得解析几何基础"><a href="#欧几里得解析几何基础" class="headerlink" title="欧几里得解析几何基础"></a>欧几里得解析几何基础</h2><p>右手坐标系，$i,j,k$分别对应右手的手指，拇指向上，食指向前，中指向左</p>
+<p>齐次坐标可以表示点、向量、平面；若要转换成普通坐标，只需要同除以最后一项即可</p>
+<p>原点不同，移动$\sideset{^B}{}P = \sideset{^A}{}P+\sideset{^B}{}O_A$；基向量不同，旋转$\sideset{^B}{}P = \sideset{^B_A}{^A}RP$；一般的刚体变换，$\sideset{^B}{}P = \sideset{^B_A}{^A}RP+\sideset{^B}{_A}O$，写成矩阵的形式$\left(\begin{matrix}\sideset{^B}{}P\\1\end{matrix}\right)=\sideset{^B_A}{}{\cal{T}}\left(\begin{matrix}\sideset{^A}{}P\\1\end{matrix}\right)$，其中，$\sideset{^B_A}{}{\cal{T}}=^\text{def}\left(\begin{matrix}\ \sideset{^B_A}{^A}RP&amp; \ \sideset{^B}{_A}O\\0^T&amp; 1\end{matrix}\right)$</p>
+<p>若R是一个非奇异3x3矩阵，则称$\cal{T}$表示一个仿射变换，新的坐标轴不一定能保证坐标轴长度为1且正交；若$\cal{T}$是非奇异4x4矩阵，则称其为投影变换</p>
+<p>在坐标变换中，下标表示被表示的对象，而上标指示用来表示对象的坐标系</p>
+<p>旋转矩阵的特点：</p>
+<ol>
+<li>旋转矩阵的逆矩阵和它的转置相同</li>
+<li>旋转矩阵的模是1</li>
+<li>一个旋转的各列构成了右手正交坐标系</li>
+<li>两个旋转矩阵的乘积仍然是旋转矩阵</li>
+<li>旋转矩阵的乘法满足结合律</li>
+</ol>
+<h2 id="摄像机参数和透视投影"><a href="#摄像机参数和透视投影" class="headerlink" title="摄像机参数和透视投影"></a>摄像机参数和透视投影</h2><p><strong>内参数</strong></p>
+<script type="math/tex; mode=display">
+\begin{cases}u=\alpha\frac x z-\alpha\text{cot}\theta\frac y z+u_0\\v=\frac \beta {\text{sin}\theta}\frac y z+v_0\end{cases}</script><script type="math/tex; mode=display">
+p=\left(\begin{matrix}u\\v\\1\end{matrix}\right), \cal{K}=^\text{def}\left(\begin{matrix}\alpha & -\alpha\text{cot}\theta & u_0\\0&\frac \beta{\text{sin}\theta} & v_0\\0& 0& 1\end{matrix}\right)\\p=\frac 1 z\cal{M}p, \cal{M}=^\text{def}\left(\begin{matrix}\cal{K} & 0\end{matrix}\right)</script><p>用$a^T_i(i=1,2,3)$表示由$\cal{A}$的最左边3列构成的矩阵$\cal{M}$的各行</p>
+<p>$\cal{K}$内参数矩阵，透视投影矩阵$\cal{M}=\cal{K}(R\ t)$</p>
+<p>$\cal{M}$是透视投影矩阵的充要条件是$Det(A)\not=0$</p>
+<p>$\cal{M}$是无偏歪透视投影矩阵的充要条件是$Det(A)\not=0$且$(a_1\times a_3)\cdot (a_2\times a_3)=0$</p>
+<p>$\cal{M}$是无偏歪单位长宽比透视投影矩阵的充要条件是$Det(A)\not=0$且$\begin{cases}(a_1\times a_3)\cdot (a_2\times a_3)=0\(a_1\times a_3)\cdot(a_1\times a_3)=(a_2\times a_3)\cdot(a_2\times a_3)\end{cases}$</p>
+<p><strong>外参数</strong></p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}\sideset{^C}{}P\\1\end{matrix}\right)=\left(\begin{matrix}\ \sideset{^C_W}{}R& \ \sideset{^C}{_W}O\\0^T& 1\end{matrix}\right)\left(\begin{matrix}\sideset{^W}{}P\\1\end{matrix}\right)</script><p>光心是唯一一个图像不唯一确定的点，满足$\cal{M}\bf{0}=0$</p>
+<p>投影矩阵可以由5个内参数和6个外参数（三个表示R，三个表示t）显式表达</p>
+<h2 id="仿射摄像机"><a href="#仿射摄像机" class="headerlink" title="仿射摄像机"></a>仿射摄像机</h2><p>当场景的深度大小变化远小于场景距摄像机的距离时，可以用仿射投影近似成像过程。</p>
+<p><del>近不下来看下次补</del></p>
+<p>仿射投影方程    $p=\cal{M}\left(\begin{matrix}P\\1\end{matrix}\right)=AP+b$</p>
+<p>弱透视投影矩阵    $\cal{M}=(A \ b)=\frac 1 {z_r}\left(\begin{matrix}k&amp;s\\0&amp; 1\end{matrix}\right)\left(\begin{matrix}\cal{R}_2 &amp;t_2\end{matrix}\right)$</p>
+<p>类透视投影矩阵I    $\cal{M}=\frac 1 {z_r}\left(\begin{matrix}k&amp;s\\0&amp; 1\end{matrix}\right)\left(\begin{matrix}\left(\begin{matrix}1&amp;0&amp;-x_r/z_r\\0&amp;1&amp;-y_r/z_r\end{matrix}\right)\cal{R} &amp;t_2\end{matrix}\right)$</p>
+<p>类透视投影矩阵II    $\cal{M}=\frac 1 {z_r}\left(\begin{matrix}\left(\begin{matrix}k&amp;s&amp;u_0-u_r\\0&amp;1&amp;v_0-v_r\end{matrix}\right)\cal{R} &amp;\left(\begin{matrix}k&amp;s\\0&amp; 1\end{matrix}\right)t_2\end{matrix}\right)$</p>
+<h2 id="三个几何问题"><a href="#三个几何问题" class="headerlink" title="三个几何问题"></a>三个几何问题</h2><p>From 《计算机视觉 模型、学习、推理》</p>
+<p>前景：$x=pinhole[w,K,R,T]$</p>
+<p>$Pr(x|w,A,R,T)=Norm_x[pinhole[w,K,R,T],\sigma^2I]$</p>
+<p>其中$\sigma^2$是噪声方差，加性噪声通常以球形协方差分布</p>
+<hr>
+<h3 id="学习外在参数"><a href="#学习外在参数" class="headerlink" title="学习外在参数"></a>学习外在参数</h3><p>假设一个已知对象有I个不同的3D点$\{w_i\}^{I}_{i=1}$，他们在图像中的对应投影点为$\{x_i\}^I_{i=1}$，以及已知的内在参数$K$。目标是对旋转矩阵$R$和平移矢量$T$进行估计，这两者可以将目标坐标系中的点映射为摄像机坐标系中的点，使得</p>
+<script type="math/tex; mode=display">
+\hat{R},\hat{T}=\displaystyle argmax_{R,T}[\sum^I_{i=1}log[Pr(x_i|w_i,K,R,T)]]</script><p>这是最大似然学习问题，我们的目标是要找到参数$R$和$T$使得模型的预测$pinhole[w_i,K,R,T]$与观测的2D点$x_i$一致</p>
+<p>我们已知</p>
+<script type="math/tex; mode=display">
+\lambda z_c\left(\begin{matrix}x\\y\\1\end{matrix}\right)=\left(\begin{matrix}w_{11} & w_{12}&w_{13}&t_x\\w_{21} & w_{22}&w_{3}&t_y\\w_{31} & w_{32}&w_{33}&t_z\end{matrix}\right)\left(\begin{matrix}x_w\\y_w\\z_w\\1\end{matrix}\right)</script><p>易得</p>
+<script type="math/tex; mode=display">
+\lambda = w_{31}x_w+w_{32}y_w+w_{33}z_w+t_z</script><p>将上式带入矩阵，可得</p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}(w_{31}x_w+w_{32}y_w+w_{33}z_w+t_z)x\\(w_{31}x_w+w_{32}y_w+w_{33}z_w+t_z)y\end{matrix}\right)=\left(\begin{matrix}w_{11} & w_{12}&w_{13}&t_x\\w_{21} & w_{22}&w_{3}&t_y\end{matrix}\right)\left(\begin{matrix}x_w\\y_w\\z_w\\1\end{matrix}\right)</script><p>由此我们可以构建方程组：</p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}x_{w1}&y_{w1}&z_{w1}&1&0&0&0&0&-x_{w1}x_{c1}&-y_{w1}x_{c1}&-z_{w1}x_{c1}&-x_{c1}\\
+0&0&0&0&x_{w1}&y_{w1}&z_{w1}&1&-x_{w1}y_{c1}&-y_{w1}y_{c1}&-z_{w1}y_{c1}&-y_{c1}\\
+x_{w2}&y_{w2}&z_{w2}&1&0&0&0&0&-x_{w2}x_{c2}&-y_{w2}x_{c2}&-z_{w2}x_{c2}&-x_{c2}\\
+0&0&0&0&x_{w2}&y_{w2}&z_{w2}&1&-x_{w2}y_{c2}&-y_{w2}y_{c2}&-z_{w2}y_{c2}&-y_{c2}\\
+\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot\\
+\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot\\
+\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot\\
+x_{wI}&y_{wI}&z_{wI}&1&0&0&0&0&-x_{wI}x_{cI}&-y_{wI}x_{cI}&-z_{wI}x_{cI}&-x_{cI}\\
+0&0&0&0&x_{wI}&y_{wI}&z_{wI}&1&-x_{wI}y_{cI}&-y_{wI}y_{cI}&-z_{wI}y_{cI}&-y_{cI}\\
+\end{matrix}\right)\left(\begin{matrix}w_{11}\\w_{12}\\w_{13}\\t_x\\w_{21}\\w_{22}\\w_{23}\\t_y\\w_{31}\\w_{32}\\w_{33}\\t_z\end{matrix}\right)=0</script><p>这样问题变为了求解最小方向问题（类似于椭圆中找到主轴）的标准形式$Ab=0$，我们要在满足$|b|=1$的条件下，寻找使$|Ab|^2$最小的b值，可以通过计算奇异值分解$A=ULV^T$并将$\hat b$设置为V的最后一列来得到解</p>
+<h3 id="学习内在参数"><a href="#学习内在参数" class="headerlink" title="学习内在参数"></a>学习内在参数</h3><p>目标是对内在参数$K$进行估计，$K$将通过光心的光线方向与图像平面上的坐标相关联。这一估计过程称为<strong>校准</strong>。</p>
+<p>形式化描述：给定一个已知3D对象，该对象有I个不同的3D点$\{w_i\}^{I}_{i=1}$以及在图像中的对应投影点$\{x_i\}^I_{i=1}$，对内在参数估计</p>
+<p>$\hat{K}=argmax_{K}[max_{R,T}[\displaystyle\sum^I_{i=1}log[Pr(x_i|w_i,K,R,T)]]]$</p>
+<p>这是最大似然学习问题，我们的目标是要找到参数$K, R$和$T$使得模型的预测$pinhole[w_i,K,R,T]$与观测的2D点$x_i$一致</p>
+<h3 id="推理3D世界点"><a href="#推理3D世界点" class="headerlink" title="推理3D世界点"></a>推理3D世界点</h3><p>给定$2\leq J$个校准摄像机以及场景中的点$w$在其中的投影$\{x_j\}^I_{J=1}$，我们希望对点$w$的3D位置进行估计</p>
+<p>当$j=2$时，称为校准立体重构；当$J&gt;2$时，这称为多视图重构</p>
+<p>形式化描述：在已知位置有$J$个校准摄像机对同一个3D点$w$进行观测，且已知对应的2D投影$\{x_j\}^I_{J=1}$，则在$J$幅图像中可以建立现实世界中点的3D位置$w$</p>
+<script type="math/tex; mode=display">
+\hat{w}=argmax_{w}[\sum^J_{j=1}log[Pr(x_j|w,K_j,R_j,T_j)]</script><h1 id="第三章-摄像机的几何标定"><a href="#第三章-摄像机的几何标定" class="headerlink" title="第三章 摄像机的几何标定"></a>第三章 摄像机的几何标定</h1><p>摄像机标定可以看做是一个优化问题，优化的目标是使摄像机观察到的特征与理论位置之间的距离最小</p>
+<h2 id="径向畸变"><a href="#径向畸变" class="headerlink" title="径向畸变"></a>径向畸变</h2><p>由于目标点偏离光轴而引起的畸变；改变了图像点p到图像中心的距离，但是没有改变图像点相对于中心直线方向；当$8\leq n$时，可以用齐次线性最小二乘法计算单位向量m的值</p>
+<p>$\cal{Q}=^\text{def}\left(\begin{matrix}v_1P_1^T&amp;-u_1P_1^T\\\cdot\cdot\cdot&amp;\cdot\cdot\cdot&amp;\cdot\cdot\cdot\\v_nP_n^T&amp;-u_nP_n^T\end{matrix}\right),n=^\text{def}\left(\begin{matrix}m_1\\m_2\end{matrix}\right)$</p>
+<p>估计内外参数：</p>
+<p>$\frac \beta \alpha=\frac {|a_2|}{|a_1|},cos\theta=-\frac{a_1\cdot a_2}{|a_2||a_1|}$</p>
+<p>$\alpha=\epsilon p|a_1|sin\theta, \beta=\epsilon p|a_2|sin\theta, \epsilon=\pm1$</p>
+<p>$\begin{cases}r_1=\frac \epsilon{sin\theta}(\frac 1 {|a_1|}+\frac {cos\theta}{|a_2|})\\r_2=\frac \epsilon{a_2}a_2\\r_3=r_1r_2\end{cases}$</p>
+<p>$\left(\begin{matrix}\alpha_x-\alpha cot\theta t_y\\\frac \beta {sin\theta}t\end{matrix}\right)=p\left(\begin{matrix}b_1\\b_2\end{matrix}\right)$</p>
+<h2 id="最小二乘法的参数估计"><a href="#最小二乘法的参数估计" class="headerlink" title="最小二乘法的参数估计"></a>最小二乘法的参数估计</h2><p>最小二乘法的意思就是使均方误差最小化</p>
+<p><strong>线性最小二乘法</strong></p>
+<p>假设有p个关于q个未知数的线性方程组，则</p>
+<p>当$p&lt;q$时，方程的解集构成一个(q-p)维的$\R^q$上的子空间</p>
+<p>当$p=q$时，有唯一的解</p>
+<p>当$p&gt;q$时，方程无解</p>
+<p>当方程组的右侧均为0的时候，则是齐次系统了</p>
+<p><strong>非线性最小二乘法</strong></p>
+<p>当$p&lt;q$时，解构成一个$\R^q$上的(q-p)维的子集</p>
+<p>当$p=q$时，有有限个解</p>
+<p>当$p&gt;q$时，无解</p>
+<p>牛顿法、高斯牛顿法（需要复习数值分析部分！！！还没看）</p>
+<h2 id="线性方法进行标定"><a href="#线性方法进行标定" class="headerlink" title="线性方法进行标定"></a>线性方法进行标定</h2><p>步骤：</p>
+<ol>
+<li><p>计算这个坐标系下摄像机的投影矩阵$\cal{M}$</p>
+<p>n个点的约束可以写成2n维的线性方程$\cal{M},Pm=0$，方程参数为投影矩阵的分量</p>
+<script type="math/tex; mode=display">
+\cal{P}=^\text{def}\left(\begin{matrix}P_1^T&0^T&-u_1P_1^T\\0^T&P_1^T&-v_1P_1^T\\\cdot\cdot\cdot&\cdot\cdot\cdot&\cdot\cdot\cdot\\P_n^T&0^T&-u_nP_n^T\\0^T&P_n^T&-v_nP_n^T\end{matrix}\right),m=^\text{def}\left(\begin{matrix}m_1\\m_2\\m_3\end{matrix}\right)</script><p>当$6\leq n$时，可以用齐次线性最小二乘法计算单位向量m的值</p>
+</li>
+<li><p>从投影矩阵估计摄像机的内外参数（投影矩阵有11个变量，因此根据上述所需的线性约束应该小于等于11）</p>
+</li>
+</ol>
+<h2 id="Zhang’s-Method"><a href="#Zhang’s-Method" class="headerlink" title="Zhang’s Method"></a>Zhang’s Method</h2><p><a href="http://ais.informatik.uni-freiburg.de/teaching/ws10/robotics2/pdfs/rob2-10-camera-calibration.pdf" target="_blank" rel="external">PPT分布讲解</a></p>
+<p>首先，所有点是在一个平面上，因此在世界坐标系中我们可以认为$z_w=0$，从而外参矩阵的第三列对结果无影响。我们可以将外参矩阵第三列和$z_w$同时删去，简化为</p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}u\\v\\1\end{matrix}\right)\sim\left(\begin{matrix}f_x & 0 & c_x\\0&f_y&c_y\\0&0&1\end{matrix}\right)\left(\begin{matrix}r_{11}&r_{12}&t_1\\r_{21}&r_{22}&t_2\\r_{31}&r_{32}&t_3\end{matrix}\right)\left(\begin{matrix}x_w\\y_w\\1\end{matrix}\right)</script><p>令</p>
+<script type="math/tex; mode=display">
+H=\left(\begin{matrix}h_1,h_2,h_3\end{matrix}\right)=\left(\begin{matrix}f_x & 0 & c_x\\0&f_y&c_y\\0&0&1\end{matrix}\right)\left(\begin{matrix}r_{11}&r_{12}&t_1\\r_{21}&r_{22}&t_2\\r_{31}&r_{32}&t_3\end{matrix}\right)=K\left(\begin{matrix}r_1,r_2,t\end{matrix}\right)</script><p>则</p>
+<script type="math/tex; mode=display">
+r_1=K^{-1}h_1,r_2=K^{-1}h_2</script><p>又由于$\left(\begin{matrix}r_1,r_2,r_3\end{matrix}\right)$三者正交，因此有</p>
+<script type="math/tex; mode=display">
+r_1^Tr_2=0,\|r_1\|=\|r_2\|=1</script><p>由上两个等式可得</p>
+<script type="math/tex; mode=display">
+h_1^TK^{-T}K^{-1}h_2=0\\h_1^TK^{-T}K^{-1}h_1-h_2^TK^{-T}K^{-1}h_2=0</script><p>设$B=K^{-T}K^{-1}$，易知$B$是对称正矩阵，我们将重复元素去除，定义$b=(b_{11},b_{12},b_{13},b_{22},b_{23},b_{33})$</p>
+<p>综合可知</p>
+<script type="math/tex; mode=display">
+Vb=0\\V=\left(\begin{matrix}V_{12}^T\\V_{11}^T-V_{22}^T\end{matrix}\right)\\
+V_{ij}=(h_{i1}h_{j1},h_{i1}h_{j2}+h_{i2}h_{j1},\cdot\cdot\cdot)</script><p>Find a solution that minimizes the least-squares error </p>
+<p>其中，V是一个2n×6的矩阵，b是一个6维向量，所以</p>
+<ul>
+<li>当n≥3，可以得到b的唯一解</li>
+<li>当n=2，则可以假设扭曲参数γ=0作为额外的约束条件</li>
+<li>当n=1，则值能计算两个相机的内参数</li>
+</ul>
+<p>对于方程$Vb=0$可以使用SVD求其最小二乘解。对$V^TV$进行SVD分解，其最小特征值对应的特征向量就是$Vb=0$的最小二乘解，从而求得矩阵B。犹豫这里得到的B的估计值是在相差一个常量因子下得到的，所以有：</p>
+<script type="math/tex; mode=display">
+B=\lambda A^{-T}A</script><p>从而可以得到相机的各个内参数：</p>
+<script type="math/tex; mode=display">
+\begin{cases}c_x=\gamma c_y/\beta-B_{13}\alpha^2/\lambda\\
+c_y=(B_{12}B_{13}-B_{11}B_{23})/(B_{11}B_{22}-B_{12}^2)\\
+\alpha=\sqrt{\lambda/B_{11}}\\
+\beta=\sqrt{\lambda B_{11}/(B_{11}B_{22}-B_{12}^2)}\\
+\gamma = -B_{12}\alpha^2\beta/\lambda\\
+\lambda=B_{33}-[B_{13}^2+c_y(B_{12}B_{13}-B_{11}B_{23})]/B_{11}\end{cases}</script><p>为了进一步增加标定结果的可靠性，可以使用最大似然估计(Maximum likelihood estimation)来优化上面估计得到的结果。</p>
+<p>对于<strong>畸变</strong>部分，张的方法如下：</p>
+<p>来自<a href="https://www.cnblogs.com/wangguchangqing/p/8335131.html" target="_blank" rel="external">博客</a></p>
+<p><img src="/2019/05/03/计算机视觉——一种现代方法/Users/mrs_empress/Documents/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/zhang-%E5%BE%84%E5%90%91%E7%95%B8%E5%8F%98.png" alt=""></p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+            <a href="/tags/计算机视觉/" rel="tag"><i class="fa fa-tag"></i> 计算机视觉</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/软件工程/" rel="next" title="软件工程">
+                <i class="fa fa-chevron-left"></i> 软件工程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">99</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-摄像机"><span class="nav-number">1.</span> <span class="nav-text">第一章 摄像机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#针孔摄像机"><span class="nav-number">1.1.</span> <span class="nav-text">针孔摄像机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#透视投影"><span class="nav-number">1.1.1.</span> <span class="nav-text">透视投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仿射投影"><span class="nav-number">1.1.2.</span> <span class="nav-text">仿射投影</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带镜头的摄像机"><span class="nav-number">1.2.</span> <span class="nav-text">带镜头的摄像机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-摄像机的几何模型"><span class="nav-number">2.</span> <span class="nav-text">第二章 摄像机的几何模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#欧几里得解析几何基础"><span class="nav-number">2.1.</span> <span class="nav-text">欧几里得解析几何基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#摄像机参数和透视投影"><span class="nav-number">2.2.</span> <span class="nav-text">摄像机参数和透视投影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仿射摄像机"><span class="nav-number">2.3.</span> <span class="nav-text">仿射摄像机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三个几何问题"><span class="nav-number">2.4.</span> <span class="nav-text">三个几何问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习外在参数"><span class="nav-number">2.4.1.</span> <span class="nav-text">学习外在参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习内在参数"><span class="nav-number">2.4.2.</span> <span class="nav-text">学习内在参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推理3D世界点"><span class="nav-number">2.4.3.</span> <span class="nav-text">推理3D世界点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-摄像机的几何标定"><span class="nav-number">3.</span> <span class="nav-text">第三章 摄像机的几何标定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#径向畸变"><span class="nav-number">3.1.</span> <span class="nav-text">径向畸变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小二乘法的参数估计"><span class="nav-number">3.2.</span> <span class="nav-text">最小二乘法的参数估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性方法进行标定"><span class="nav-number">3.3.</span> <span class="nav-text">线性方法进行标定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zhang’s-Method"><span class="nav-number">3.4.</span> <span class="nav-text">Zhang’s Method</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
