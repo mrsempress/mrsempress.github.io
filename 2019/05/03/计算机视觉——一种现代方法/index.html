@@ -114,8 +114,7 @@
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%95%88%E6%9E%9C2.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%96%B9%E7%A8%8B%E5%BC%8F.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/%E8%BF%91%E8%BD%B4%E5%87%A0%E4%BD%95%E5%85%89%E5%AD%A6.jpeg">
-<meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/zhang-%E5%BE%84%E5%90%91%E7%95%B8%E5%8F%98.png">
-<meta property="og:updated_time" content="2019-05-03T15:44:29.020Z">
+<meta property="og:updated_time" content="2019-05-04T02:37:03.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机视觉——一种现代方法">
 <meta name="twitter:description" content="为什么要研究视觉？ 计算机视觉：从图像或图像序列中获取对世界的描述从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化">
@@ -564,7 +563,7 @@ V_{ij}=(h_{i1}h_{j1},h_{i1}h_{j2}+h_{i2}h_{j1},\cdot\cdot\cdot)</script><p>Find 
 <li>当n=2，则可以假设扭曲参数γ=0作为额外的约束条件</li>
 <li>当n=1，则值能计算两个相机的内参数</li>
 </ul>
-<p>对于方程$Vb=0$可以使用SVD求其最小二乘解。对$V^TV$进行SVD分解，其最小特征值对应的特征向量就是$Vb=0$的最小二乘解，从而求得矩阵B。犹豫这里得到的B的估计值是在相差一个常量因子下得到的，所以有：</p>
+<p>对于方程$Vb=0$可以使用SVD求其最小二乘解。对$V^TV$进行SVD分解，其最小特征值对应的特征向量就是$Vb=0$的最小二乘解，从而求得矩阵B。由于这里得到的B的估计值是在相差一个常量因子下得到的，所以有：</p>
 <script type="math/tex; mode=display">
 B=\lambda A^{-T}A</script><p>从而可以得到相机的各个内参数：</p>
 <script type="math/tex; mode=display">
@@ -575,8 +574,30 @@ c_y=(B_{12}B_{13}-B_{11}B_{23})/(B_{11}B_{22}-B_{12}^2)\\
 \gamma = -B_{12}\alpha^2\beta/\lambda\\
 \lambda=B_{33}-[B_{13}^2+c_y(B_{12}B_{13}-B_{11}B_{23})]/B_{11}\end{cases}</script><p>为了进一步增加标定结果的可靠性，可以使用最大似然估计(Maximum likelihood estimation)来优化上面估计得到的结果。</p>
 <p>对于<strong>畸变</strong>部分，张的方法如下：</p>
-<p>来自<a href="https://www.cnblogs.com/wangguchangqing/p/8335131.html" target="_blank" rel="external">博客</a></p>
-<p><img src="/2019/05/03/计算机视觉——一种现代方法/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/zhang-%E5%BE%84%E5%90%91%E7%95%B8%E5%8F%98.png" alt=""></p>
+<p>在张氏标定法中只关注了影响较大的径向畸变。</p>
+<blockquote>
+<p>$(u,v)$是理想的无畸变的像素坐标</p>
+<p>$(\hat u, \hat v)$是畸变后的像素坐标</p>
+<p>$(u_0,v_0)$是相机的主点</p>
+<p>$(x,y)$是理想的无畸变的归一化的图像坐标</p>
+<p>$(\hat x,\hat y)$是畸变后的归一化的图像坐标</p>
+<p>$k_1,k_2$表示径向畸变的系数</p>
+</blockquote>
+<p>由此我们可以写出径向畸变公式：</p>
+<script type="math/tex; mode=display">
+\hat x = x+x[k_1(x^2+y^2)+k_2(x^2+y^2)^2]\\
+\hat y = y+y[k_1(x^2+y^2)+k_2(x^2+y^2)^2]</script><p>径向畸变的中心和相机的主心是在相同的位置，即</p>
+<script type="math/tex; mode=display">
+\hat u = u_0+\alpha\hat x+\gamma \hat y\\
+\hat v=v_0+\beta\hat y</script><p>假设$\gamma y=0$，则由上两式可得</p>
+<script type="math/tex; mode=display">
+\hat u = u+(u-u_0)[k_1(x^2+y^2)+k_2(x^2+y^2)^2]\\
+\hat v = v+(v-v_0)[k_1(x^2+y^2)+k_2(x^2+y^2)^2]</script><p>现有n幅图像，每幅图像可用点m个，则我们共可以得到2mn个等式，记$Dk=d$作为矩阵形式</p>
+<p>则</p>
+<script type="math/tex; mode=display">
+k=\left[\begin{matrix}k_1& k_2\end{matrix}\right]^T=(D^TD)^{-1}D^T d</script><p>然后便是利用最大似然估计取得最优解，即使得下述式子最小</p>
+<script type="math/tex; mode=display">
+\displaystyle \sum_{i=1}^n\sum_{j=1}^m\|\hat m(K,k_1,k_2,R_i,t_i,M_{ij})-m_{ij}\|^2</script><p>从而解得$k_1,k_2$后，将图像先去畸变，然后再通过上述的方法用图像坐标来估计相机内参数</p>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe>
