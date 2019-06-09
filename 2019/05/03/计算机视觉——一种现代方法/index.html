@@ -114,7 +114,7 @@
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/透视效果2.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/透视投影方程式.jpeg">
 <meta property="og:image" content="http://mrsempress.top/2019/05/03/计算机视觉——一种现代方法/近轴几何光学.jpeg">
-<meta property="og:updated_time" content="2019-05-05T12:51:20.904Z">
+<meta property="og:updated_time" content="2019-05-07T09:26:29.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机视觉——一种现代方法">
 <meta name="twitter:description" content="This is my blog. 为什么要研究视觉？ 计算机视觉：从图像或图像序列中获取对世界的描述从运动求取结构技术：从图像序列中获取所见物体的描述以及摄像机的运动规律医学图像处理与理解；检验人们对物体拍摄的图像，以便确定它们是否符合规定；卫星图像的理解；对收集的图片加以组织与结构化">
@@ -542,7 +542,15 @@ x_{wI}&y_{wI}&z_{wI}&1&0&0&0&0&-x_{wI}x_{cI}&-y_{wI}x_{cI}&-z_{wI}x_{cI}&-x_{cI}
 \cal{P}=^\text{def}\left(\begin{matrix}P_1^T&0^T&-u_1P_1^T\\0^T&P_1^T&-v_1P_1^T\\\cdot\cdot\cdot&\cdot\cdot\cdot&\cdot\cdot\cdot\\P_n^T&0^T&-u_nP_n^T\\0^T&P_n^T&-v_nP_n^T\end{matrix}\right),m=^\text{def}\left(\begin{matrix}m_1\\m_2\\m_3\end{matrix}\right)</script><p>当$6\leq n$时，可以用齐次线性最小二乘法计算单位向量m的值</p>
 </li>
 <li><p>从投影矩阵估计摄像机的内外参数（投影矩阵有11个变量，因此根据上述所需的线性约束应该小于等于11）</p>
-</li>
+<script type="math/tex; mode=display">
+\rho(A\ b)=\cal{K}(R\ t)\Leftrightarrow\rho\left(\begin{matrix}a_1^T\\a_2^T\\a_3^T\end{matrix}\right)=\left(\begin{matrix}\alpha r_1^T-\alpha cot\theta r_2^T+u_0r_3^T\\\frac\beta{sin\theta}r_2^T+v_0r_3^T\\r_3^T\end{matrix}\right)</script><p>其中$\rho$是比例系数，使投影矩阵的模为1；若加上旋转矩阵各行都是单位长度且相互垂直的约束，又可以得到</p>
+<script type="math/tex; mode=display">
+\begin{cases}\rho=\epsilon/|a_3|\\r_3=\rho a_3\\u_0=\rho^2(a_1\cdot a_3)\\v_0=\rho^2(a_2\cdot a_3)\end{cases} \ \ \epsilon = \mp1</script><p>由于$\theta$取值在$\pi/2$的领域之间，其正弦值总是正的，则有</p>
+<script type="math/tex; mode=display">
+\begin{cases}\rho^2(a_1\times a_3)=-\alpha r_2-\alpha cot\theta r_1\\\rho^2(a_2\times a_3)=\frac \beta{sin\theta}r_1\end{cases},\begin{cases}\rho^2|a_1\times a_3|=\frac \alpha {sin\theta}\\\rho^2|a_2\times a_3|=\frac {|\beta|}{sin\theta}\end{cases}</script><p>于是</p>
+<script type="math/tex; mode=display">
+\begin{cases}cos\theta=-\frac{(a_1\times a_3)\cdot(a_2\times a_3)}{\|a_1\times a_3\|\cdot\|a_2\times a_3\|}\\\alpha=\rho^2\|a_1\times a_3\|sin\theta\\\beta=\rho^2\|a_2\times a_3\|sin\theta\end{cases}\\
+r_1=\frac{\rho^2 sin\theta}{\beta}(a_2\times a_3)=\frac{a_2\times a_3}{\|a_2\times a_3\|}\\r_2=r_3\times r_1</script></li>
 </ol>
 <h2 id="Zhang’s-Method"><a href="#Zhang’s-Method" class="headerlink" title="Zhang’s Method"></a>Zhang’s Method</h2><p><a href="http://ais.informatik.uni-freiburg.de/teaching/ws10/robotics2/pdfs/rob2-10-camera-calibration.pdf" target="_blank" rel="external">PPT分布讲解</a></p>
 <p>首先，所有点是在一个平面上，因此在世界坐标系中我们可以认为$z_w=0$（采用平面标定模板），从而外参矩阵的第三列对结果无影响。我们可以将外参矩阵第三列和$z_w$同时删去，简化为</p>
@@ -676,6 +684,10 @@ k=\left[\begin{matrix}k_1& k_2\end{matrix}\right]^T=(D^TD)^{-1}D^T d</script><p>
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/06/09/从相机标定到视觉SLAM/" rel="prev" title="从相机标定到视觉SLAM">
+                从相机标定到视觉SLAM <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -754,7 +766,7 @@ k=\left[\begin{matrix}k_1& k_2\end{matrix}\right]^T=(D^TD)^{-1}D^T d</script><p>
             
               <a href="/archives">
             
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">101</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -776,7 +788,7 @@ k=\left[\begin{matrix}k_1& k_2\end{matrix}\right]^T=(D^TD)^{-1}D^T d</script><p>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SLAM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 记录谭平老师的课程，归零学习。">
+<meta name="keywords" content="SLAM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从相机标定到视觉SLAM">
+<meta property="og:url" content="http://mrsempress.top/2019/06/09/从相机标定到视觉SLAM/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 记录谭平老师的课程，归零学习。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-09T15:10:18.764Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从相机标定到视觉SLAM">
+<meta name="twitter:description" content="This is my blog. 记录谭平老师的课程，归零学习。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/06/09/从相机标定到视觉SLAM/"/>
+
+
+
+
+
+  <title>从相机标定到视觉SLAM | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/06/09/从相机标定到视觉SLAM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从相机标定到视觉SLAM</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-09T22:44:42+08:00">
+                2019-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/06/09/从相机标定到视觉SLAM/" class="leancloud_visitors" data-flag-title="从相机标定到视觉SLAM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>记录谭平老师的课程，归零学习。</p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<a id="more"></a>
+<h1 id="从相机标定到视觉SLAM"><a href="#从相机标定到视觉SLAM" class="headerlink" title="从相机标定到视觉SLAM"></a>从相机标定到视觉SLAM</h1><p>视频原网址：<a href="http://list.youku.com/albumlist/show/id_52188378.html?spm=a2h1n.8251843.0.0&amp;&amp;ascending=0" target="_blank" rel="external">http://list.youku.com/albumlist/show/id_52188378.html?spm=a2h1n.8251843.0.0&amp;&amp;ascending=0</a></p>
+<p>只记录一些特殊的知识点：（部分内容补充在正文中了），我是先看Geometry &amp; Camera Model部分的，还未全部看完教程</p>
+<h2 id="Geometry-amp-Camera-Model"><a href="#Geometry-amp-Camera-Model" class="headerlink" title="Geometry &amp; Camera Model"></a>Geometry &amp; Camera Model</h2><ol>
+<li><p>对于 $x_i=\lambda PX_i$中的$\lambda$是必须的，但是增加了变量，我们可以通过叉乘的方式$x_i\times PX_i=0$来解决，其可以化为矩阵的形式，即$[x_i]PX_i=0$</p>
+</li>
+<li><p>一般都会把方程化为AX=0，然后就可以求解X了，这种方法叫做DLT（Direct Linear Transform）。用SVT方法，先求解未知数（独立的）、约束，来得到需要多少个点（等式）来求解。</p>
+</li>
+<li><p>退化解，将模限定为1</p>
+</li>
+<li><p>Data Normalization（平移+放缩，使得点在半径为$\sqrt{2}$圆中，或半径为$\sqrt 3$的球体中）的重要性</p>
+</li>
+<li><p>Error：</p>
+<ul>
+<li>Geometric Error</li>
+</ul>
+<p>DLT直接最小化（最小化的是代数距离）结果不够好，需要用Geometric Error（投影点和2D点的距离和，欧几里得距离）来优化。先用DLT来得到初始值，然后用Geometric Error来优化（可以用梯度下降法）。对于约束，如果直接强制约束，会使error上升较大，可以将Geometric Error的函数中增加约束的等式，这样结果更好。</p>
+<ul>
+<li><p>Reprojection Error</p>
+</li>
+<li><p>Algebra Error</p>
+<p>DLT就是它的运用，他貌似和Geometric Error等价，但是Algebra Error相当于给了它一个权重，但这个权重是距离越远权重越大，而一般距离越远，出现误差的可能性越大。因此这不是一个好的选择。</p>
+</li>
+</ul>
+</li>
+<li><p>Perspective-n-Points</p>
+<p>内参已知，标外参，视觉SLAM中就是这种应用。</p>
+<p>用到了余弦定理，三个方程三个未知数（三个点，两两组和便可求解），因此最少3个点。求出来的解不是唯一的，需要去除虚假点，用其他点来验证去除虚假点。</p>
+<p>n大于等于5时，可以将PnP问题变为线性的。但是时间复杂度为五次方</p>
+</li>
+<li><p>Image of Absolute Conic(IAC)</p>
+<p>方向向量e，加入0变为齐次坐标（0表示无穷远），用变换矩阵可以得到e由R、K、v的等式。若两个向量垂直可以得到一个内参k的方程（即IAC方程，虚拟的图形），$x_i^T(K^{-T}K^{-1}X_i)$，则可以知道任意两个点围成的圆锥曲线的顶角度数。IAC是图像的内参。</p>
+</li>
+<li><p>Circular Points</p>
+<script type="math/tex; mode=display">
+I=\left(\begin{matrix}1\\i\\0\end{matrix}\right), \ J=\left(\begin{matrix}1\\-i\\0\end{matrix}\right),\ i=\sqrt{-1}</script><p>任何圆都必须经过这两个点，（根据圆的公式可推导出来）；因此圆和二次曲线一样都是用五个点（圆是三个加上I，J）来表示</p>
+</li>
+<li><p>张正友方法可以解释为如下四步：（既找外参，又找内参）</p>
+<ol>
+<li>通过四个角计算H矩阵</li>
+<li>将circular points通过H矩阵，映射到图像平面上</li>
+<li>（我们有三块板/或者三张不同角度的图片，则共有六个点）拟合出conic的值（conic只需五个点即可）</li>
+<li>通过Cholesky factorization计算K矩阵</li>
+</ol>
+</li>
+<li><p>基础矩阵、本征矩阵补充</p>
+<p>若P是图像上的一个点，则$FP$是关于P的一条极线，给出的限制是$q^TFp=0$</p>
+<p>现在来推导$e_2^TF=0,\ Fe_1=0$</p>
+<p>对于任意在极线上的一点p，则$e_2$一定经过$FP$，因此有$e_2^TFp=0$，因为p是任意的，所以有$e_2^TF=0$。同时还可以知道F的秩为2</p>
+<p>极线和F是用来缩小范围（运用在stereo时），可以在寻找特征点的时候，沿着极线搜索，将2维的变成1维的</p>
+<p>E矩阵可以通过F矩阵推导出来，也可以用5点算法来求解</p>
+</li>
+</ol>
+<h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><ol>
+<li><p>如果只有胶片，则胶片上的每一个点其实可以看到物体的每一个点，因为每个点都有无数个光线；而加上一个障碍物，则只允许特定光线通过，这样每一个点在胶片上只有一个点</p>
+</li>
+<li><p>障碍物中间的小孔称为<strong>光圈</strong>；光圈大，则进来光线多，会模糊；光圈小，则清晰，但同时会暗，甚至会产生干射现象；因此实际中会加上凸透镜。</p>
+</li>
+<li><p>二维到三维丢失了距离、角度、平行关系的信息，改变了长度信息</p>
+</li>
+<li><p>若物体到镜面$d_0$，镜面到成像平面$d_i$，则有$\frac 1 {d_o}+\frac 1 {d_i}=\frac 1 f$，否则会发生散开，成斑。如，手机点一下，可以让这一部分清晰，而让后部分虚化，这就是通过调节$d_i$而得到的。（是不断调整后，发现最清晰的，实际上是不知道哪个在前，哪个在后的）</p>
+</li>
+<li><p>有一个现象是最近的和最远的是模糊的，距离适中的才是清晰成像的，这个称作Depth of field<strong>景深</strong>。如果光圈变小，Depth of field变大；如果光圈变大，Depth of field变小（可能会出现模糊的现象）</p>
+</li>
+<li><p><strong>F-number</strong>: focal length/aperture diameter</p>
+<p>因此，f的值越小，光圈越大</p>
+</li>
+<li><p><strong>视野Field of View（Zoom）</strong>，焦距长，则角度变小，范围小，但可以把远处的东西拍清晰了；焦距短，角度变大</p>
+</li>
+<li><p>由于不同颜色的光波长不同，因此相交的位置实际不同，即出现<strong>色散</strong>的现象</p>
+</li>
+<li><p>LCD液晶，可以编程控制孔的位置，用两层LCD液晶可以选择性投影，不连续的FOV，这样可以更加突出关注物，并且每个物体的像素变多了</p>
+</li>
+</ol>
+<h2 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h2><ol>
+<li>RGB，数字化的必要性，有多个标准（因此不太准确），RGB无法表示出所有的颜色，人眼中对噪声最敏感的是绿色通道；做加法颜色组合的</li>
+<li>CIE XYZ，做了坐标变换，使负数的值换算成正数，同时希望y轴符合人眼对亮度的感受；标准的颜色空间</li>
+<li>YUV，Y亮度，UV描述颜色，一般用于视频和图像的压缩，人眼中对噪声最敏感的是Y</li>
+<li>CMYK，做减法颜色组合的，理解为滤光片；k是黑色；两层CMY，并且还可以错位，x错位变成RGB，y错位则拥有六种RGBCMY，对齐则只有CMY</li>
+</ol>
+<h2 id="Radiometric-Calibration-amp-HDR"><a href="#Radiometric-Calibration-amp-HDR" class="headerlink" title="Radiometric Calibration &amp; HDR"></a>Radiometric Calibration &amp; HDR</h2><ol>
+<li><p>Radiance单位面积单位时间单位空间角发出的能量<br>Irradiance单位面积单位时间上接收到的能量</p>
+</li>
+<li><p>Image Signal Processor(ISP)，包含多种处理过程；因此，像素x不代表能量是x，而是一个复杂的非线性关系；然后我们需要找到这个关系，这称为Radiometric Calibration</p>
+</li>
+<li><p>Auto white balance，由于不同光源的颜色不同（通过乘上一个对角矩阵）；<br>vignetting，中间亮，边缘暗（通过逆向消除衰减）；<br>noise reduction（找到相同颜色，平均一下）</p>
+</li>
+<li><p>HDR: High Dynamic Range，动态找到曝光的范围。<br>使用合适强度的闪光灯，使得所有范围的光一样强；<br>使用滤镜，将强的部分光过滤掉；<br>以上的不能适用所有的场景。</p>
+<p>我们可以首先拍很多张照片（不同光圈，不同曝光等），然后找到像素和曝光值的关系，即Radiometric Calibration，最后把多张图有意义的加权平均得到结果，最后remap回来（因为显示器范围只有0-255）。</p>
+</li>
+<li><p>Radiometric Calibration，首先$Exposure = Irradiance*\Delta t$，转换后可以得到$g(z)=\log f^{-1}(z)=\log Irradiance+\log\Delta t$<br>用不同点做出多条曲线后，进行拟合成一条光滑曲线；用离散化（256个+图片个数N个未知数），而方程为NK个（K为像素的个数）；方程太多，所以理论上不可解，需要regularization，可以两边乘上矩阵的转置；然后用一下最小二乘法。</p>
+</li>
+</ol>
+<h2 id="Reflectance-amp-Lighting"><a href="#Reflectance-amp-Lighting" class="headerlink" title="Reflectance &amp; Lighting"></a>Reflectance &amp; Lighting</h2><ol>
+<li>三个因素：光源（强度、位置）、物体本身反射属性、局部朝向</li>
+<li>BRDF：双向反射函数，先固定坐标系；知道了BRDF，就可以知道每一个像素的亮度；可以渲染物体</li>
+<li>PDF：概率分布函数</li>
+<li>计算机视觉：还原物体；计算机图形学：绘制出图像；两者是逆过程</li>
+<li>Specular reflection：当反射光与视线重合时，很亮；离开后，亮度变暗；与光源颜色一致</li>
+<li>Diffuse：漫反射，与物体本身颜色一致</li>
+</ol>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SLAM/" rel="tag"><i class="fa fa-tag"></i> SLAM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/03/计算机视觉——一种现代方法/" rel="next" title="计算机视觉——一种现代方法">
+                <i class="fa fa-chevron-left"></i> 计算机视觉——一种现代方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">101</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从相机标定到视觉SLAM"><span class="nav-number">1.</span> <span class="nav-text">从相机标定到视觉SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometry-amp-Camera-Model"><span class="nav-number">1.1.</span> <span class="nav-text">Geometry & Camera Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Camera"><span class="nav-number">1.2.</span> <span class="nav-text">Camera</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Color"><span class="nav-number">1.3.</span> <span class="nav-text">Color</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radiometric-Calibration-amp-HDR"><span class="nav-number">1.4.</span> <span class="nav-text">Radiometric Calibration & HDR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflectance-amp-Lighting"><span class="nav-number">1.5.</span> <span class="nav-text">Reflectance & Lighting</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
