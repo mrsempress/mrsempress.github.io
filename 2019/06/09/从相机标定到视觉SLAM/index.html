@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. 记录谭平老师的课程，归零学习。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-09T15:10:18.764Z">
+<meta property="og:updated_time" content="2019-06-11T03:56:24.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从相机标定到视觉SLAM">
 <meta name="twitter:description" content="This is my blog. 记录谭平老师的课程，归零学习。">
@@ -413,8 +413,83 @@
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 <a id="more"></a>
-<h1 id="从相机标定到视觉SLAM"><a href="#从相机标定到视觉SLAM" class="headerlink" title="从相机标定到视觉SLAM"></a>从相机标定到视觉SLAM</h1><p>视频原网址：<a href="http://list.youku.com/albumlist/show/id_52188378.html?spm=a2h1n.8251843.0.0&amp;&amp;ascending=0" target="_blank" rel="external">http://list.youku.com/albumlist/show/id_52188378.html?spm=a2h1n.8251843.0.0&amp;&amp;ascending=0</a></p>
-<p>只记录一些特殊的知识点：（部分内容补充在正文中了），我是先看Geometry &amp; Camera Model部分的，还未全部看完教程</p>
+<h1 id="从相机标定到视觉SLAM"><a href="#从相机标定到视觉SLAM" class="headerlink" title="从相机标定到视觉SLAM"></a>从相机标定到视觉SLAM</h1><h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><ol>
+<li><p>如果只有胶片，则胶片上的每一个点其实可以看到物体的每一个点，因为每个点都有无数个光线；而加上一个障碍物，则只允许特定光线通过，这样每一个点在胶片上只有一个点</p>
+</li>
+<li><p>障碍物中间的小孔称为<strong>光圈</strong>；光圈大，则进来光线多，会模糊；光圈小，则清晰，但同时会暗，甚至会产生干射现象；因此实际中会加上凸透镜。</p>
+</li>
+<li><p>二维到三维丢失了距离、角度、平行关系的信息，改变了长度信息</p>
+</li>
+<li><p>若物体到镜面$d_0$，镜面到成像平面$d_i$，则有$\frac 1 {d_o}+\frac 1 {d_i}=\frac 1 f$，否则会发生散开，成斑。如，手机点一下，可以让这一部分清晰，而让后部分虚化，这就是通过调节$d_i$而得到的。（是不断调整后，发现最清晰的，实际上是不知道哪个在前，哪个在后的）</p>
+</li>
+<li><p>有一个现象是最近的和最远的是模糊的，距离适中的才是清晰成像的，这个称作Depth of field<strong>景深</strong>。如果光圈变小，Depth of field变大；如果光圈变大，Depth of field变小（可能会出现模糊的现象）</p>
+</li>
+<li><p><strong>F-number</strong>: focal length/aperture diameter</p>
+<p>因此，f的值越小，光圈越大</p>
+</li>
+<li><p><strong>视野Field of View（Zoom）</strong>，焦距长，则角度变小，范围小，但可以把远处的东西拍清晰了；焦距短，角度变大</p>
+</li>
+<li><p>由于不同颜色的光波长不同，因此相交的位置实际不同，即出现<strong>色散</strong>的现象</p>
+</li>
+<li><p>LCD液晶，可以编程控制孔的位置，用两层LCD液晶可以选择性投影，不连续的FOV，这样可以更加突出关注物，并且每个物体的像素变多了</p>
+</li>
+</ol>
+<h2 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h2><ol>
+<li>RGB，数字化的必要性，有多个标准（因此不太准确），RGB无法表示出所有的颜色，人眼中对噪声最敏感的是绿色通道；做加法颜色组合的</li>
+<li>CIE XYZ，做了坐标变换，使负数的值换算成正数，同时希望y轴符合人眼对亮度的感受；标准的颜色空间</li>
+<li>YUV，Y亮度，UV描述颜色，一般用于视频和图像的压缩，人眼中对噪声最敏感的是Y</li>
+<li>CMYK，做减法颜色组合的，理解为滤光片；k是黑色；两层CMY，并且还可以错位，x错位变成RGB，y错位则拥有六种RGBCMY，对齐则只有CMY</li>
+</ol>
+<h2 id="Radiometric-Calibration-amp-HDR"><a href="#Radiometric-Calibration-amp-HDR" class="headerlink" title="Radiometric Calibration &amp; HDR"></a>Radiometric Calibration &amp; HDR</h2><ol>
+<li><p>Radiance单位面积单位时间单位空间角发出的能量<br>Irradiance单位面积单位时间上接收到的能量</p>
+</li>
+<li><p>Image Signal Processor(ISP)，包含多种处理过程；因此，像素x不代表能量是x，而是一个复杂的非线性关系；然后我们需要找到这个关系，这称为Radiometric Calibration</p>
+</li>
+<li><p>Auto white balance，由于不同光源的颜色不同（通过乘上一个对角矩阵）；<br>vignetting，中间亮，边缘暗（通过逆向消除衰减）；<br>noise reduction（找到相同颜色，平均一下）</p>
+</li>
+<li><p>HDR: High Dynamic Range，动态找到曝光的范围。<br>使用合适强度的闪光灯，使得所有范围的光一样强；<br>使用滤镜，将强的部分光过滤掉；<br>以上的不能适用所有的场景。</p>
+<p>我们可以首先拍很多张照片（不同光圈，不同曝光等），然后找到像素和曝光值的关系，即Radiometric Calibration，最后把多张图有意义的加权平均得到结果，最后remap回来（因为显示器范围只有0-255）。</p>
+</li>
+<li><p>Radiometric Calibration，首先$Exposure = Irradiance*\Delta t$，转换后可以得到$g(z)=\log f^{-1}(z)=\log Irradiance+\log\Delta t$<br>用不同点做出多条曲线后，进行拟合成一条光滑曲线；用离散化（256个+图片个数N个未知数），而方程为NK个（K为像素的个数）；方程太多，所以理论上不可解，需要regularization，可以两边乘上矩阵的转置；然后用一下最小二乘法。</p>
+</li>
+</ol>
+<h2 id="Reflectance-amp-Lighting"><a href="#Reflectance-amp-Lighting" class="headerlink" title="Reflectance &amp; Lighting"></a>Reflectance &amp; Lighting</h2><ol>
+<li>三个因素：光源（强度、位置）、物体本身反射属性、局部朝向</li>
+<li>BRDF：双向反射函数，先固定坐标系；知道了BRDF，就可以知道每一个像素的亮度；可以渲染物体</li>
+<li>PDF：概率分布函数</li>
+<li>计算机视觉：还原物体；计算机图形学：绘制出图像；两者是逆过程</li>
+<li>Specular reflection：当反射光与视线重合时，很亮；离开后，亮度变暗；与光源颜色一致</li>
+<li>Diffuse：漫反射，与物体本身颜色一致</li>
+<li>Lambert’s Model</li>
+<li>Phong Model</li>
+<li>Microfacet Theory</li>
+</ol>
+<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><p>刚看到这里，还没有看完，好像得抓紧复习了，还没看( ･᷄ὢ･᷅ )</p>
+<ol>
+<li><p>用周围的像素（包括自己共九个）加权平均和来更新中间像素的值</p>
+</li>
+<li><p>加权平均有：简单的平均（boxes filter高频明显）、按照离中心的距离，越近权值越大（高斯filter细节明显）<br>最后的权重要归一化，即所有的权值和为一</p>
+</li>
+<li><p>对于在边角上，周围没有九个数值的时候：可以默认为零、可以拷贝附近的值</p>
+</li>
+<li><p>图像先进行Gaussian blur，然后向右向下平移与原图像叠加，就像soft shadow了</p>
+</li>
+<li><p>如果filter九个数中只有中间为1，则不变；如果中间右为1，则向右平移</p>
+</li>
+<li><p>Edge：不连续的地方，有大的跳变<br>在连续函数中，它的导数也会很大：</p>
+<p>$f’(x)=\text{lim}_{h\to 0}\frac{f(x+0.5h)-f(x-0.5h)}{h}$<br>在离散中：<br><code>1*3</code>的filter，用前后两者作差来代替中心的值<br>但是图像有噪声，每一个像素点的导数都会很大；所以先用高斯blur，这样小噪声被去掉，但是大噪声会被衰弱（对结果没多大的影响，仍能找到边界）。</p>
+<p>DOG：Derivate of Gaussian 用高斯blur+filter的技术，合在一起</p>
+</li>
+<li><p>Sobel filter：水平方向做差分，则垂直方向边界明显；垂直方向做差分，则水平方向边界明显</p>
+</li>
+<li><p>计算图像的梯度：</p>
+<ol>
+<li>选择derivate filters</li>
+<li>Convolve with the image to compute derivatives 和图像做卷积来得到导数</li>
+<li>Form the image gradient, and compute its direction and amplitude(知道幅度，就不管在x还是y方向有大的变化，都可以找到，认为这是edge)</li>
+</ol>
+</li>
+</ol>
 <h2 id="Geometry-amp-Camera-Model"><a href="#Geometry-amp-Camera-Model" class="headerlink" title="Geometry &amp; Camera Model"></a>Geometry &amp; Camera Model</h2><ol>
 <li><p>对于 $x_i=\lambda PX_i$中的$\lambda$是必须的，但是增加了变量，我们可以通过叉乘的方式$x_i\times PX_i=0$来解决，其可以化为矩阵的形式，即$[x_i]PX_i=0$</p>
 </li>
@@ -465,54 +540,8 @@ I=\left(\begin{matrix}1\\i\\0\end{matrix}\right), \ J=\left(\begin{matrix}1\\-i\
 <p>E矩阵可以通过F矩阵推导出来，也可以用5点算法来求解</p>
 </li>
 </ol>
-<h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><ol>
-<li><p>如果只有胶片，则胶片上的每一个点其实可以看到物体的每一个点，因为每个点都有无数个光线；而加上一个障碍物，则只允许特定光线通过，这样每一个点在胶片上只有一个点</p>
-</li>
-<li><p>障碍物中间的小孔称为<strong>光圈</strong>；光圈大，则进来光线多，会模糊；光圈小，则清晰，但同时会暗，甚至会产生干射现象；因此实际中会加上凸透镜。</p>
-</li>
-<li><p>二维到三维丢失了距离、角度、平行关系的信息，改变了长度信息</p>
-</li>
-<li><p>若物体到镜面$d_0$，镜面到成像平面$d_i$，则有$\frac 1 {d_o}+\frac 1 {d_i}=\frac 1 f$，否则会发生散开，成斑。如，手机点一下，可以让这一部分清晰，而让后部分虚化，这就是通过调节$d_i$而得到的。（是不断调整后，发现最清晰的，实际上是不知道哪个在前，哪个在后的）</p>
-</li>
-<li><p>有一个现象是最近的和最远的是模糊的，距离适中的才是清晰成像的，这个称作Depth of field<strong>景深</strong>。如果光圈变小，Depth of field变大；如果光圈变大，Depth of field变小（可能会出现模糊的现象）</p>
-</li>
-<li><p><strong>F-number</strong>: focal length/aperture diameter</p>
-<p>因此，f的值越小，光圈越大</p>
-</li>
-<li><p><strong>视野Field of View（Zoom）</strong>，焦距长，则角度变小，范围小，但可以把远处的东西拍清晰了；焦距短，角度变大</p>
-</li>
-<li><p>由于不同颜色的光波长不同，因此相交的位置实际不同，即出现<strong>色散</strong>的现象</p>
-</li>
-<li><p>LCD液晶，可以编程控制孔的位置，用两层LCD液晶可以选择性投影，不连续的FOV，这样可以更加突出关注物，并且每个物体的像素变多了</p>
-</li>
-</ol>
-<h2 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h2><ol>
-<li>RGB，数字化的必要性，有多个标准（因此不太准确），RGB无法表示出所有的颜色，人眼中对噪声最敏感的是绿色通道；做加法颜色组合的</li>
-<li>CIE XYZ，做了坐标变换，使负数的值换算成正数，同时希望y轴符合人眼对亮度的感受；标准的颜色空间</li>
-<li>YUV，Y亮度，UV描述颜色，一般用于视频和图像的压缩，人眼中对噪声最敏感的是Y</li>
-<li>CMYK，做减法颜色组合的，理解为滤光片；k是黑色；两层CMY，并且还可以错位，x错位变成RGB，y错位则拥有六种RGBCMY，对齐则只有CMY</li>
-</ol>
-<h2 id="Radiometric-Calibration-amp-HDR"><a href="#Radiometric-Calibration-amp-HDR" class="headerlink" title="Radiometric Calibration &amp; HDR"></a>Radiometric Calibration &amp; HDR</h2><ol>
-<li><p>Radiance单位面积单位时间单位空间角发出的能量<br>Irradiance单位面积单位时间上接收到的能量</p>
-</li>
-<li><p>Image Signal Processor(ISP)，包含多种处理过程；因此，像素x不代表能量是x，而是一个复杂的非线性关系；然后我们需要找到这个关系，这称为Radiometric Calibration</p>
-</li>
-<li><p>Auto white balance，由于不同光源的颜色不同（通过乘上一个对角矩阵）；<br>vignetting，中间亮，边缘暗（通过逆向消除衰减）；<br>noise reduction（找到相同颜色，平均一下）</p>
-</li>
-<li><p>HDR: High Dynamic Range，动态找到曝光的范围。<br>使用合适强度的闪光灯，使得所有范围的光一样强；<br>使用滤镜，将强的部分光过滤掉；<br>以上的不能适用所有的场景。</p>
-<p>我们可以首先拍很多张照片（不同光圈，不同曝光等），然后找到像素和曝光值的关系，即Radiometric Calibration，最后把多张图有意义的加权平均得到结果，最后remap回来（因为显示器范围只有0-255）。</p>
-</li>
-<li><p>Radiometric Calibration，首先$Exposure = Irradiance*\Delta t$，转换后可以得到$g(z)=\log f^{-1}(z)=\log Irradiance+\log\Delta t$<br>用不同点做出多条曲线后，进行拟合成一条光滑曲线；用离散化（256个+图片个数N个未知数），而方程为NK个（K为像素的个数）；方程太多，所以理论上不可解，需要regularization，可以两边乘上矩阵的转置；然后用一下最小二乘法。</p>
-</li>
-</ol>
-<h2 id="Reflectance-amp-Lighting"><a href="#Reflectance-amp-Lighting" class="headerlink" title="Reflectance &amp; Lighting"></a>Reflectance &amp; Lighting</h2><ol>
-<li>三个因素：光源（强度、位置）、物体本身反射属性、局部朝向</li>
-<li>BRDF：双向反射函数，先固定坐标系；知道了BRDF，就可以知道每一个像素的亮度；可以渲染物体</li>
-<li>PDF：概率分布函数</li>
-<li>计算机视觉：还原物体；计算机图形学：绘制出图像；两者是逆过程</li>
-<li>Specular reflection：当反射光与视线重合时，很亮；离开后，亮度变暗；与光源颜色一致</li>
-<li>Diffuse：漫反射，与物体本身颜色一致</li>
-</ol>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>加油复习啦～</p>
+<p>没有几门课可以考试了呢，也就没有几门课可以拉分了呢！</p>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe>
@@ -782,7 +811,7 @@ I=\left(\begin{matrix}1\\i\\0\end{matrix}\right), \ J=\left(\begin{matrix}1\\-i\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从相机标定到视觉SLAM"><span class="nav-number">1.</span> <span class="nav-text">从相机标定到视觉SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometry-amp-Camera-Model"><span class="nav-number">1.1.</span> <span class="nav-text">Geometry & Camera Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Camera"><span class="nav-number">1.2.</span> <span class="nav-text">Camera</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Color"><span class="nav-number">1.3.</span> <span class="nav-text">Color</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radiometric-Calibration-amp-HDR"><span class="nav-number">1.4.</span> <span class="nav-text">Radiometric Calibration & HDR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflectance-amp-Lighting"><span class="nav-number">1.5.</span> <span class="nav-text">Reflectance & Lighting</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从相机标定到视觉SLAM"><span class="nav-number">1.</span> <span class="nav-text">从相机标定到视觉SLAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Camera"><span class="nav-number">1.1.</span> <span class="nav-text">Camera</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Color"><span class="nav-number">1.2.</span> <span class="nav-text">Color</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radiometric-Calibration-amp-HDR"><span class="nav-number">1.3.</span> <span class="nav-text">Radiometric Calibration & HDR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflectance-amp-Lighting"><span class="nav-number">1.4.</span> <span class="nav-text">Reflectance & Lighting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter"><span class="nav-number">1.5.</span> <span class="nav-text">Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometry-amp-Camera-Model"><span class="nav-number">1.6.</span> <span class="nav-text">Geometry & Camera Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">2.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
