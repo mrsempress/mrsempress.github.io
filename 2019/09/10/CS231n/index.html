@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Notes,计算机视觉," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. CS231n笔记 还剩下课程之后的材料阅读">
+<meta name="keywords" content="Notes,计算机视觉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS231n">
+<meta property="og:url" content="http://mrsempress.top/2019/09/10/CS231n/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. CS231n笔记 还剩下课程之后的材料阅读">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/GoogleNet.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/RNN-one-to-one.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/RNN-one-to-many.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/RNN-many-to-one.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/RNN-many-to-many.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/RNN.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/LSTM.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/Generative%20Models.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/GAN.png">
+<meta property="og:image" content="http://mrsempress.top/2019/09/10/CS231n/Q-learning.png">
+<meta property="og:updated_time" content="2019-09-10T06:44:41.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS231n">
+<meta name="twitter:description" content="This is my blog. CS231n笔记 还剩下课程之后的材料阅读">
+<meta name="twitter:image" content="http://mrsempress.top/2019/09/10/CS231n/GoogleNet.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/09/10/CS231n/"/>
+
+
+
+
+
+  <title>CS231n | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/09/10/CS231n/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CS231n</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-10T14:35:28+08:00">
+                2019-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/09/10/CS231n/" class="leancloud_visitors" data-flag-title="CS231n">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>CS231n笔记</p>
+<p>还剩下课程之后的材料阅读</p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<a id="more"></a>
+<h1 id="CS231n"><a href="#CS231n" class="headerlink" title="CS231n"></a>CS231n</h1><h2 id="Lesson-1-CNN-for-Visual-Recognition"><a href="#Lesson-1-CNN-for-Visual-Recognition" class="headerlink" title="Lesson 1: CNN for Visual Recognition"></a>Lesson 1: CNN for Visual Recognition</h2><ol>
+<li><p>what is computer vision</p>
+<p>It is really the study of <strong>visual data.</strong> And it includes physics, biology, psychology, computer science, mathematics, engineering. </p>
+</li>
+<li><p>The history of the computer vision.</p>
+<p>biological vision(540 millions): The first animal has eyes, and Big Bang happened.</p>
+<p>Cameras vision(1600): “Block world”—recognize them and reconstruct what these shapes are. </p>
+<p>Stages of Visual Representation(1970): </p>
+<ul>
+<li>Input image</li>
+<li>Primal sketch: likes zero crossings, blobs, edges, bars, ends, virtual lines, groups, curves boundaries.</li>
+<li>2 1/2-D Sketch: likes local surface orientation and discontinuities in depth and in surface orientation</li>
+<li>3-D model representation: organized in terms of surface and volumetric primitives.</li>
+</ul>
+<p>Maybe we should take <strong>image segmentation</strong> first, then take image recognition.</p>
+<p>SIFT feature:</p>
+<ul>
+<li>Identify critical features on the object</li>
+<li>Match the features to a similar object</li>
+</ul>
+<p>Image net:</p>
+<ul>
+<li>Recognize all the object in the world.</li>
+<li>Solve the overfitting oroblem in machine learning. </li>
+</ul>
+<p>CNN: deep learning(focus on).</p>
+</li>
+<li><p>Outline of CS231n</p>
+<p>Focus on image classification.<br>Transistors and pixels used in training are important.<br>Human don’t only have the ability to recognize objects, so there are many things we can do.</p>
+</li>
+</ol>
+<h2 id="Lesson-2-Image-Classification-pipeline"><a href="#Lesson-2-Image-Classification-pipeline" class="headerlink" title="Lesson 2: Image Classification pipeline"></a>Lesson 2: Image Classification pipeline</h2><ol>
+<li><p>Need</p>
+<p><strong>input and redetermined labels.</strong></p>
+</li>
+<li><p>Challenges</p>
+<p>illumination(eg. light), deformation(eg. position), occlusion(eg. In grass), intraclass variation(eg. cats are different).</p>
+</li>
+<li><p>Classifier</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify_image</span><span class="params">(image)</span>:</span></div><div class="line">  <span class="comment"># some magic here</span></div><div class="line">  <span class="keyword">return</span> class_label</div></pre></td></tr></table></figure>
+</li>
+<li><p>Method</p>
+<p>like the supervised learning: by dataset to predict the new examples</p>
+<p>have two functions: training function and predict function</p>
+</li>
+<li><p>Data-Driven approach</p>
+<ol>
+<li><strong>Collect</strong> a dataset of images and labels</li>
+<li>Use Machine Learning to <strong>train a classifier</strong></li>
+<li><strong>Evaluate</strong> the classifier on new images</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(images, labels)</span>:</span></div><div class="line">    <span class="comment"># Machine learning!</span></div><div class="line">    <span class="keyword">return</span> model</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(model, test_images)</span>:</span></div><div class="line">    <span class="comment"># use model to predict labels</span></div><div class="line">    <span class="keyword">return</span> test_labels</div></pre></td></tr></table></figure>
+</li>
+<li><p>Neighbor Classifier</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NearestNeighbor</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self, X, y)</span></span></div><div class="line"><span class="function">  	"""</span></div><div class="line"><span class="function">  	<span class="title">X</span> <span class="title">is</span> <span class="title">N</span>*<span class="title">D</span> <span class="title">where</span> <span class="title">each</span> <span class="title">row</span> <span class="title">is</span> <span class="title">an</span> <span class="title">example</span>. </span></div><div class="line"><span class="function">  	<span class="title">Y</span> <span class="title">is</span> 1-<span class="title">dimension</span> <span class="title">of</span> <span class="title">size</span> <span class="title">N</span></span></div><div class="line"><span class="function">  	"""</span></div><div class="line"><span class="function">    # <span class="title">the</span> <span class="title">nearest</span> <span class="title">neighbor</span> <span class="title">classifier</span> <span class="title">simply</span> <span class="title">remembers</span> <span class="title">all</span> <span class="title">the</span> <span class="title">training</span> <span class="title">data</span></span></div><div class="line">    self.Xtr = X</div><div class="line">    self.ytr = y</div><div class="line">    </div><div class="line">   <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, X)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    X is N*D where each row is an example we wish to predict label for</span></div><div class="line"><span class="string">    """</span></div><div class="line">    num_test = X.shape[<span class="number">0</span>]</div><div class="line">    <span class="comment"># lets make sure that the output type matches the input type</span></div><div class="line">    Ypred = np.zeros(num_test, dtype = self.ytr.dtype)</div><div class="line">    </div><div class="line">    <span class="comment"># loop over all test rows</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(num_test):</div><div class="line">      <span class="comment"># find the nearset training image to the i'th test image</span></div><div class="line">      <span class="comment"># using the L1 distance (sum of absolute value of differences)</span></div><div class="line">      distances = np.sum(np.abs(self.Xtr - X[i, :]), axis=<span class="number">1</span>)</div><div class="line">      min_index = np.argmin(distances) <span class="comment"># get the index with smallest distance</span></div><div class="line">      Ypred[i] = self.ytr[min_index] <span class="comment"># predict the label of the nrearest example</span></div><div class="line">     retrun Ypred</div></pre></td></tr></table></figure>
+<p>Train: O(1)    Predict: O(N)</p>
+<p>This is bad, we want to be fast at prediction. </p>
+<p>Disadvantage:</p>
+<ul>
+<li>Very slow at test time(on images, there are too pixels.)</li>
+<li>Distance metrics on pixels are not informative.</li>
+</ul>
+<p><strong><em>So, K-Nearest Neighbor on images never used.</em></strong></p>
+<hr>
+<p>K-Nearest  Neighbor: instead of coping label form nearest neighbor, <strong>take majority vote from K closet points.</strong>(curse of dimensionality)</p>
+</li>
+<li><p>Compare approach</p>
+<p><strong>L1 distance:  Manhattan distance</strong>(if the input has its mean, depen coordinate)</p>
+<script type="math/tex; mode=display">
+d_1(I_1,I_2) = \sum_p |I_1^p - I_2^p|</script><p><strong>L2 distance: Euclidean distance</strong></p>
+<script type="math/tex; mode=display">
+d_2(I_1,I_2)=\sqrt{\sum_P(I_1^P-I_2^P)^2}</script></li>
+<li><p><strong>Hyperparameters</strong></p>
+<p>choices about the algorithm that we set rather than learn, such as K(K-Nearest Neighbor), distance metric.</p>
+</li>
+<li><p>Dataset</p>
+<p>Such as, CIFAR10(<code>32*32*3</code>).</p>
+<p>Split the dataset to <strong>train, validation and test data.</strong></p>
+<ul>
+<li>Only whole, always works perfectly on training data</li>
+<li>Split to train and test data, then no idea how algotihm will perform on new data(may it’s too bad, because the train data and test data are so different).</li>
+</ul>
+<p>Also we can use <strong>cross-validation</strong>: split data into folds, try each fold as validation and average results(<em>but it doesn’t use in practice</em>, because it cots too much).</p>
+</li>
+<li><p><strong>Linear Classification</strong></p>
+<p>$f(X,W)=WX+b$: (W is parameters or weights, and make it more efficient than K-Nearest neighbor. And b is a bias.)Each of row is a temple probility of the classBut it only allow to learn one template per category, that may be caused that a horse has two head.And maybe the region of same kinds is not in linear, maybe a circle.</p>
+<p>Each line of <strong>W</strong> is a classifier of a classification category. If you change the number of one of the lines, you will see that the classifier’s corresponding line in space starts to <strong>rotate in different directions.</strong> The <strong>bias B</strong> allows <strong>the linear shift</strong> of the classifier. If there is <strong>no bias</strong>, all the classifier’s lines have to <strong>cross the origin point</strong>.</p>
+</li>
+</ol>
+<h2 id="Lesson-3-Loss-functions-and-Optimization"><a href="#Lesson-3-Loss-functions-and-Optimization" class="headerlink" title="Lesson 3: Loss functions and Optimization"></a>Lesson 3: Loss functions and Optimization</h2><ol>
+<li><p>Loss function</p>
+<p>Tells how good current classifier is.</p>
+</li>
+<li><p>Multiclass SVM loss</p>
+<script type="math/tex; mode=display">
+L_i=\sum_{j\not=y_i}\begin{cases}0,\ if\ s_{y_i}\geq s_j+1\\s_j-s_{y_i}+1,\ otherwise\end{cases}\\
+=\sum_{y\not=y_i}max(0,s_j-s_{y_i}+1)</script><p>The min is zero, and the max is infinity. The scale isn’t important, because we care about the max, not the value.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">L_i_vectorized</span><span class="params">(x, y, W)</span>:</span></div><div class="line">  scores = W.dot(x)</div><div class="line">  margins = np.maximum(<span class="number">0</span>, scores - scores[y] + <span class="number">1</span>)</div><div class="line">  margins[y] = <span class="number">0</span></div><div class="line">  loss_i = np.sum(margins)</div><div class="line">  <span class="keyword">return</span> loss_i</div></pre></td></tr></table></figure>
+<p>We want to make the loss be zero, and the W is not unique.</p>
+<p><strong>Data loss:</strong> model predictions should match <strong>training data.</strong></p>
+<p><strong>Regularization:</strong> model should be “simple”, so it works on <strong>test data</strong>(Occam’s Razor: the simplest is the best).</p>
+</li>
+<li><p>Multinomial logistic regression</p>
+<p><strong>softmax function:</strong> </p>
+<script type="math/tex; mode=display">
+P(Y=k|X=x_i)=\frac {e^sk}{\sum_je^{s_j}}\\
+s=f(x_i;W)</script><p>Want to maximize the log likelihood, or to minimize <strong>the negative log likelihood</strong> of the correct class.</p>
+<script type="math/tex; mode=display">
+L_i=-\log P(Y=y_i|X=x_i)</script><p>The min is zero, the max is infinity.</p>
+</li>
+<li><p><strong>Regularization</strong></p>
+<p><strong>L2 regularization</strong>(perfer W2 than W1):</p>
+<script type="math/tex; mode=display">
+R(W)=\sum_k\sum_l W_{k,l}^2</script><p><strong>L1 regularization</strong>(perfer W1 than W2):</p>
+<script type="math/tex; mode=display">
+R(W)=\sum_k\sum_l|W_{k,l}|</script><p><strong>Elastic net</strong>(L1+L2):</p>
+<script type="math/tex; mode=display">
+R(W)=\sum_k\sum_l\beta W_{k,l}^2+|W_{k,l}|</script><p><strong>Max norm regularization</strong>:</p>
+<p><strong>Dropout</strong>:</p>
+<p>Fancier: <strong>Batch normalization</strong>, <strong>stochastic depth</strong>.</p>
+</li>
+<li><p>Optimization(Find the W to minimize the loss)</p>
+<ul>
+<li><p>Random search(bad)</p>
+</li>
+<li><p>Follow the slope</p>
+<p>In 1-dimension, the derivative of a function:</p>
+<script type="math/tex; mode=display">
+\frac{d\ f(x)}{d\ x}=\text{lim}_{h\to 0}\frac{f(x+h)-f(x)}{h}</script><p>Also can:</p>
+<script type="math/tex; mode=display">
+\nabla_{w_{y_i}}L_i=-(\sum_{j\not=y_i}1(w_j^Tx_i-w_{y_i}^Tx_i+\Delta>0))x_i</script><p>In multiple dimensions, the gradient is the vector of (partial derivatives) along each dimension.</p>
+<p><strong>The slope</strong> in any direction is the <strong>dot product</strong> of the direction with the gradient. The direction of steepest descent is <strong>the negative gradient</strong>.</p>
+</li>
+</ul>
+</li>
+<li><p>Gradient</p>
+<ul>
+<li><strong>Numerical gradient</strong>: approximate, slow, easy to write</li>
+<li><strong>Analytic gradient</strong>: exact, fast, error-prone</li>
+<li>In practice: always use <strong>analytic gradient</strong>, but <strong>check</strong> implementation with <strong>numerical gradient</strong>(gradient check).</li>
+</ul>
+<p>Gradient descent:</p>
+<ul>
+<li><p>Stochastic Gradient Descent(SGD)</p>
+<p>Because full sum expensive when N is large! So we approximate sum using minibatch of examples 32/64/128 common.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Minibatch Gradient Descent</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">  data_batch = sample_training_data(data, <span class="number">256</span>) <span class="comment"># sample 256 examples</span></div><div class="line">  weights_grad = evaluate_gradient(loss_fun, data_batch, weights)</div><div class="line">  weights += -step_size * weights_grad <span class="comment"># perform parameter update</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Image features vs ConvNets</p>
+</li>
+</ol>
+<h2 id="Lecture-4-Introduction-to-Neural-Networks"><a href="#Lecture-4-Introduction-to-Neural-Networks" class="headerlink" title="Lecture 4: Introduction to Neural Networks"></a>Lecture 4: Introduction to Neural Networks</h2><ol>
+<li><p>Backpropagation</p>
+<p>Recursive application of the chain rule along a compuatational graph to compute the gradients of all</p>
+<p>Chain rule:</p>
+<script type="math/tex; mode=display">
+\frac {\partial f}{\partial y}=\frac {\partial f}{\partial q}\frac {\partial q}{\partial y}</script><p><strong>Patterns in backward flow</strong></p>
+<ul>
+<li><strong>add</strong> gate: gradient distributor</li>
+<li><strong>max</strong> gate: gradient router</li>
+<li><strong>mul</strong> gate: gradient switcher</li>
+</ul>
+</li>
+<li><p>forward() and backward() API</p>
+</li>
+<li><p>Neural networks</p>
+<p>example of 2-layer Neural Network:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> numpy.random <span class="keyword">import</span> randn</div><div class="line"></div><div class="line">N, D_in, H, D_out = <span class="number">64</span>, <span class="number">1000</span>, <span class="number">100</span>, <span class="number">10</span></div><div class="line">x, y - randn(N, D_in), randn(N, D_out)</div><div class="line">w1, w2 = randn(D_in, H), randn(H, D_out)</div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">2000</span>):</div><div class="line">  h = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x.dot(w1)))</div><div class="line">  y_pred = h.dot(w2)</div><div class="line">  loss = np.square(y_pred - y).sum()</div><div class="line">  print(t, loss)</div><div class="line">  </div><div class="line">  grad_y_pred = <span class="number">2.0</span> * (y_pred - y)</div><div class="line">  grad_w2 = h.T.dot(grad_y_pred)</div><div class="line">  grad_h = grad_y_pred.dot(w2.T)</div><div class="line">  grad_w1 = x.T.dot(grad_h * h * (<span class="number">1</span> - h))</div><div class="line">  </div><div class="line">  w1 -= <span class="number">1e-4</span> * grad_w1</div><div class="line">  w2 -= <span class="number">1e-4</span> * grad_w2</div></pre></td></tr></table></figure>
+</li>
+<li><p>Activation function</p>
+<ul>
+<li><p>Relu</p>
+<script type="math/tex; mode=display">
+max(0,x)</script></li>
+<li><p>sigmoid</p>
+<script type="math/tex; mode=display">
+\sigma(x)=\frac{1}{1+e^{-x}}</script></li>
+<li><p>tanh</p>
+<script type="math/tex; mode=display">
+tanh(x)</script></li>
+<li><p>Leaky Relu</p>
+<script type="math/tex; mode=display">
+max(0.1x, x)</script></li>
+<li><p>Maxout</p>
+<script type="math/tex; mode=display">
+max(w_1^Tx+b_1, w_2^Tx+b_2)</script></li>
+<li><p>ELU</p>
+<script type="math/tex; mode=display">
+\begin{cases}x,\ x\geq0\\\alpha(e^x-1), \ x<0\end{cases}</script></li>
+</ul>
+</li>
+<li><p>Nural networks: Architectures</p>
+<p>Hidden layer, Fully-connected layer</p>
+</li>
+</ol>
+<h2 id="Lecture-5-Convolutional-Neural-Networks-for-Visual-Recognition"><a href="#Lecture-5-Convolutional-Neural-Networks-for-Visual-Recognition" class="headerlink" title="Lecture 5: Convolutional Neural Networks for Visual Recognition"></a>Lecture 5: Convolutional Neural Networks for Visual Recognition</h2><ol>
+<li><p><strong>ConvNets</strong></p>
+<p>Used in classification, retrieval, detection, segmentation, self-driving cars, face recognition, image captioning, etc..</p>
+<p><strong>Typical architectures look like:</strong></p>
+<p><code>[(CONV-RELU)*N-POOL?]*M-(FC-RELU)*K, SOFTMAX</code></p>
+<p>Where N is usually up to ~5, M is large, $0\leq K\leq2$.</p>
+<p>But ResNet/GoogleNet challenge this paradigm.</p>
+</li>
+<li><p><strong>Filters</strong></p>
+<p>Filters alawys extend the full depth of the input volume. The last size should be the same.</p>
+</li>
+<li><p><strong>Stride</strong></p>
+<p>Stride x means you skip x-1 pixels.</p>
+<p><strong>Output size: <code>(N-F)/stride+1</code></strong> </p>
+<p>F: Filter size</p>
+<p>The size should be integer. So, the more common is add <strong>zero pad</strong> to the border(also mirror, extend, etc.).</p>
+<p>Shrinking too fast is not good, doesn’t work well.</p>
+</li>
+<li><p>Summary</p>
+<blockquote>
+<p>Accepts a volume of size $W_1\times H_1 \times D_1$</p>
+<p><strong>Requires four hyperparameters:</strong></p>
+<ul>
+<li>Number of filters K (powers of 2, e.g. 32,64,128,512)</li>
+<li>their spatial extent F</li>
+<li>the strde S</li>
+<li>the amount of zero padding P</li>
+</ul>
+<p><strong>Common settings:</strong></p>
+<ul>
+<li>F = 3, S = 1, P = 1</li>
+<li>F = 5, S = 1, P = 2</li>
+<li>F = 5, S = 2, P = ?(whatever fits)</li>
+<li>F = 1, S = 1, P = 0</li>
+</ul>
+<p><strong>Produces a volume of size $W_2\times H_2\times D_2$</strong> where:</p>
+<ul>
+<li>$W_2 = (W_1 - F + 2P)/S+1$</li>
+<li>$H_2=(H_1-F+2P)/S+1$ (i.e. width and height are computed equally by symmetry)</li>
+<li>$D_2=K$</li>
+</ul>
+<p><strong>With parameter sharing</strong>, it introduces $F\cdot F\cdot D_1$ weights per filter, for a total of $(F\cdot F\cdot D_1)\cdot K$ weights and $K$ biases.</p>
+<p>In the output volume, the d-th depth slice (of size $W_2\times H_2$) is the result of performing a valid convolution of the $d$-th filter over the input volume with a stride of $S$, and then offset by $d$-th bias.</p>
+</blockquote>
+<p>eg. Input volume: <code>32*32*3</code>10 <code>5*5</code> filters with stride 1, pad 2</p>
+<p>Output volume size:<code>(32+2*2-5)/1+1=32</code> spatially, so it is <code>32*32*10</code>.</p>
+<p>(The fist 2 means the left and right or the top and bottom.)</p>
+<p>And the number of parameters in this layer:</p>
+<p>Each filter has <code>5*5*3+1=76</code> params (+1 for bias). </p>
+<p>=&gt; So <code>76*10 = 760</code></p>
+</li>
+<li><p><strong>Pooling layer</strong></p>
+<ul>
+<li>Just <strong>downsampling</strong></li>
+<li>Makes the representations smaller and more manageable</li>
+<li>operates over each activation mao independently</li>
+</ul>
+<p>Eg. if you use the<code>max pooling</code> with <code>2*2</code> filters and stride 2, then  <code>2*2=4</code> numbers to choose the maximum one, and then skip 2 numbers, then loop. That means, if your input is <code>4*4</code>, then the output is <code>2*2</code>.</p>
+<p><strong>Not use the zero padding</strong>, because it just use the downsampling.</p>
+<p><strong>Common settings:</strong></p>
+<blockquote>
+<p>F = 2, S = 2</p>
+<p>F = 3, S = 2</p>
+</blockquote>
+</li>
+<li><p>Fully Connected Layer(FC layer)</p>
+<ul>
+<li>Contains neurons taht <strong>connect to the entire input volume</strong>, as in ordinary Neural Networks.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Lesson-6-Training-Neural-Networks-I"><a href="#Lesson-6-Training-Neural-Networks-I" class="headerlink" title="Lesson 6: Training Neural Networks I"></a>Lesson 6: Training Neural Networks I</h2><ul>
+<li><p>Activation functions</p>
+<ul>
+<li><p>sigmoid $\in(0,1)$, firing rate.</p>
+<script type="math/tex; mode=display">
+\sigma(x)=\frac{1}{1+e^{-x}}</script><ul>
+<li><strong>Saturated neurons “kill” the gradients</strong></li>
+<li><strong>Sigmoid outputs are not zero-centered, and will make the gradient update always in the same direction</strong></li>
+</ul>
+</li>
+<li><p>tanh $\in(-1,1)$</p>
+<script type="math/tex; mode=display">
+tanh(x)</script><ul>
+<li>Zero centered(nice)</li>
+<li><strong>still kills gradients when saturated</strong></li>
+</ul>
+</li>
+<li><p>Relu (the gradient in zero always says 0.)</p>
+<script type="math/tex; mode=display">
+max(0,x)</script><ul>
+<li>Does not saturate(in +region)</li>
+<li>Very computationally efficient</li>
+<li>Converges much faster than sigmoid/tanh in practice</li>
+<li>Actually more biologically plausible than sigmoid</li>
+<li><strong>Not zero-centered ouput</strong></li>
+<li><strong>an annoyance: when $x&lt;0$</strong></li>
+<li>Always like to initialize ReLu neurons with slightly positive biases to avoid bad initialization.</li>
+</ul>
+</li>
+<li><p>Leaky Relu</p>
+<script type="math/tex; mode=display">
+max(0.01x, x)</script><ul>
+<li>Does not saturate</li>
+<li>Computationally efficient</li>
+<li>Converges much faster than sigmoid/tanh in practice</li>
+<li>will not “die”</li>
+</ul>
+</li>
+<li><p>Parametric Rectufier(PReLu)</p>
+<script type="math/tex; mode=display">
+f(x)=max(\alpha x, x)</script><p>backprop into $\alpha$ parameter</p>
+</li>
+<li><p>ELU</p>
+<script type="math/tex; mode=display">
+\begin{cases}x,\ x\geq0\\\alpha(e^x-1), \ x<0\end{cases}</script><ul>
+<li>All benefits of Relu</li>
+<li>Closer to zero mean outputs</li>
+<li>Negative saturation regime compared with Leaky ReLu adds some robustness to noise</li>
+<li><strong>Computation requires exp()</strong></li>
+</ul>
+</li>
+<li><p>Maxout</p>
+<script type="math/tex; mode=display">
+max(w_1^Tx+b_1, w_2^Tx+b_2)</script><ul>
+<li>Does not have the basic form of dot product -&gt; nonlinearity</li>
+<li>Generalizes ReLu and Leaky ReLu</li>
+<li>Linear Regime! Does not saturate! Does not die!</li>
+<li><strong>Doubles the number of parameters/neuron</strong></li>
+</ul>
+</li>
+</ul>
+<p>So in practice:</p>
+<ul>
+<li>Use ReLu. Be careful with your learning rates</li>
+<li>Try out Leaky ReLu/ Maxout/ ELU</li>
+<li>Try out tanh but don’t expect much</li>
+<li>Don’t use sigmoid</li>
+</ul>
+</li>
+<li><p>Data preprocessing</p>
+<p>In image, we don’t normalized and other complicated method so much, because we have position, scales and so on.</p>
+<ul>
+<li><p><strong>zero-centered data</strong></p>
+<script type="math/tex; mode=display">
+X -= np.mean(X, axis=0)</script></li>
+<li><p><strong>Normalized data:</strong> if we don’t use it, it will be more sensitisensitive.</p>
+<script type="math/tex; mode=display">
+X/=np.std(X, axis=0)</script></li>
+<li><p><strong>Decorrelated data</strong></p>
+<p>data has diagonal covariance matrix</p>
+</li>
+<li><p><strong>Whitened data</strong></p>
+<p>covariance matrix is the identity matrix</p>
+</li>
+</ul>
+<p>So in practice:</p>
+<ul>
+<li>Subtract the mean image, eg. AlexNet</li>
+<li>Subtract per-channel mean, eg. VGGNet</li>
+<li>Not common to normalize variance, to do PCA or whitening</li>
+</ul>
+<p>And the mean solve the first layer problem in sigmoid, but in deeper layer, it will be worser.</p>
+</li>
+<li><p><strong>Weight initialization</strong></p>
+<ul>
+<li><p>if $W = 0$, then all the neurons do the same things, they don’t learn anything.</p>
+</li>
+<li><p>First idea: <strong>small random numbers</strong> (gaussian with zero mean and $1e-2$ standard deviation)[use tanh in this.]</p>
+<script type="math/tex; mode=display">
+W=0.01*np.random.randn(D, H)</script><p>Works okay for small networks, but problems with deeper networks. All actications become zero!</p>
+</li>
+<li><p>when we make 0.01 replaced 1.0, almost all neurons completely saturated, eith -1 and 1. Gradients will be zero.</p>
+</li>
+<li><p><strong>Xavier initialization:</strong> One kind of good rule of thumb that you can use:</p>
+<p><code>W = np.random.randn(fan_in,fan_out)/np.sqrt(fan_in)</code></p>
+<p>mathematical derivation <strong>assumes linear activations.</strong></p>
+<p>but when using the ReLU nonlinearity it breaks.</p>
+</li>
+<li><p>So we use the <code>W = np.random.randn(fan_in,fan_out)/np.sqrt(fan_in)/2</code></p>
+<p>note additional <code>/2</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Batch normalization</strong></p>
+<p>To make each dimension unit gaussian, apply:</p>
+<script type="math/tex; mode=display">
+\hat x^{(k)}=\frac{x^{(k)}-E[x^{(k)}]}{\sqrt{Var[x^{(k)}]}}</script><p>So we should first compute the empirical mean and variance independently for each dimension. Then normalized it.</p>
+<p><strong>Usually inserted after Fully Connected or Convolutional layers and before nonlinearity.</strong></p>
+<p>After normalize, then allow the network to squash the range if it wants to:</p>
+<script type="math/tex; mode=display">
+y^{(k)}=\gamma^{(k)}\hat x^{(k)}+\beta^{(k)}</script><p>The network can learn:</p>
+<script type="math/tex; mode=display">
+\gamma^{(k)}=\sqrt{Var[x^{(k)}]}\\
+\beta^{(k)}=E[x^{(k)}]</script><blockquote>
+<p>Batch Normalization</p>
+<p>Input: Values of x over a mini-batch: $\Beta = \{x_{1\dots m}\}$; Parameters to be learned: $\gamma, \beta$</p>
+<p>Output: $\{y_i=BN_{\gamma,\beta}(x_i)\}$</p>
+<script type="math/tex; mode=display">
+\mu_{\Beta}\leftarrow \frac 1 m\sum_{i=1}^m x_i\ \ \ \text{//mini-batch mean}\\
+\sigma_{\Beta}^2\leftarrow \frac 1 m\sum_{i=1}^m (x_i-\mu_{\Beta})^2\ \ \ \text{//mini-batch variance}\\
+\hat x_i\leftarrow\frac{x_i-\mu_{\Beta}}{\sqrt{\sigma^2_\Beta+\epsilon}} \ \ \text{//normalize}
+y_i\leftarrow \gamma\hat x_i+\beta\equiv BN_{\gamma,\beta}(x_i) \ \ \text{//scale and shift}</script></blockquote>
+<p><strong>The advantages:</strong></p>
+<ul>
+<li>Improves gradient flow through the network</li>
+<li>Allows higher learning rates</li>
+<li>Reduces the strong dependence on initialization</li>
+<li>Acts as a form of regularization in a funny way, and slightly reduces the need for dropout, maybe</li>
+<li>The mean/std are not computed based on the batch. Instead, a single fixed empirical mean of activations during training is used.</li>
+</ul>
+</li>
+<li><p>Babysitting <strong>the learning</strong> process</p>
+<ul>
+<li>Loss not going down: learning rate too low</li>
+<li>Loss exploding: learning rate too high</li>
+</ul>
+</li>
+<li><p><strong>Hyperparameter optimization</strong></p>
+<ul>
+<li><strong>Cross-validation strategy:</strong><ul>
+<li>First stage: only a few epochs to get rough idea of what params work</li>
+<li>Second stage: longer running time, finer search</li>
+</ul>
+</li>
+<li>Random search vs. Grid search</li>
+<li>Hyperparameters to play with:<ul>
+<li>network architecture</li>
+<li>learning rate, its decay schedule, update type</li>
+<li>regularization(L2/Dropout strength)</li>
+</ul>
+</li>
+<li>Big gap = overfitting; no gap = increase model capacity.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Lesson-7-Training-Neural-Networks-II"><a href="#Lesson-7-Training-Neural-Networks-II" class="headerlink" title="Lesson 7: Training Neural Networks II"></a>Lesson 7: Training Neural Networks II</h2><ol>
+<li><p>Fancier optimization</p>
+<ul>
+<li><p><strong>Loss function</strong> tells how good the algorithm is.</p>
+</li>
+<li><p>Problem 1: Lower in one direction(will get zigzagging), and quickly in another. And it will more usual in high-dimension space</p>
+</li>
+<li><p>Problem 2: local minima or saddle point(more common in high dimension, one decrease, other increase). The gradient is zero.</p>
+</li>
+<li><p>SGD(normal)</p>
+<script type="math/tex; mode=display">
+x_{t+1}=x_{t}-\alpha\triangledown f(x_t)</script></li>
+<li><p><strong>SGD+Momentum:</strong> can solve the last problems</p>
+<script type="math/tex; mode=display">
+v_{t+1}=\rho v_t+\triangledown f(x_t)\\
+x_{t+1}=x_{t}-\alpha v_{t+1}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vx = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">  dx = compute_gradient(x)</div><div class="line">  vx = rho * vx + dx</div><div class="line">  x += learning_rate * vx</div></pre></td></tr></table></figure>
+<p>$\rho$ gives “friction”, typically $\rho=0.9$ or $0.99$</p>
+</li>
+<li><p><strong>SGD+Nesterov  Momentum:</strong></p>
+<script type="math/tex; mode=display">
+v_{t+1}=\rho v_t-\alpha\triangledown f(x_t+\rho v_t)\\
+x_{t+1}=x_{t}+v_{t+1}</script><p>Annoying, usually we want update in terms of $x_t,\triangle f(x_t)$</p>
+<p>Change of variables $\tilde x_t=x_t+\rho v_t$ and rearrange:</p>
+<script type="math/tex; mode=display">
+v_{t+1}=\rho v_t-\alpha\triangledown f(\tilde x_t)\\
+\tilde x_{t+1}=\tilde x_{t}-\rho v_t + (1+\rho)v_{t+1}\\=\tilde x_t+v_{t+1}+\rho(v_{t+1}-v_t)</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dx = compute_gradient(x)</div><div class="line">old_v = v</div><div class="line">v = rho * v - learning_rate * dx</div><div class="line">x += -rho * old_v + (<span class="number">1</span> + rho) * v</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>AdaGrad</strong></p>
+<p>Added element-wise scaling of the gradient based on historical sum of squares in each dimension. If the grad_squared are big, then it will lower; if the grad_squared are small, then it will bigger. Then can solve the problem of different dimension.As the time going by, the Adagrad will be smaller.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">grad_squared = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">  dx = compute_gradient(x)</div><div class="line">  grad_squared += dx * dx</div><div class="line">  x -= learning_rate * dx / (np.sqrt(grad_squared) + <span class="number">1e-7</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RMSProp:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">grad_squared = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">  dx = compute_gradient(x)</div><div class="line">  grad_squared = decay_rate * grad_squared + (<span class="number">1</span> - decay_rate) * dx * dx</div><div class="line">  x -= learning_rate * dx / (np.sqrt(grad_squared) + <span class="number">1e-7</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Adam(use them both)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">first_moment = <span class="number">0</span></div><div class="line">second_moment = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">  dx = compute_gradient(x)</div><div class="line">  first_moment = beta1 * first_moment + (<span class="number">1</span> - beta1) * dx <span class="comment"># Momentum</span></div><div class="line">  second_moment = beta2 * second_moment + (<span class="number">1</span> - beta2) * dx * dx <span class="comment"># AdaGrad/RMSProp</span></div><div class="line">  x -= learning_rate * first_moment / (np.sqrt(second_squared) + <span class="number">1e-7</span>)</div></pre></td></tr></table></figure>
+<p>full form</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">first_moment = <span class="number">0</span></div><div class="line">second_moment = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_iterations):</div><div class="line">  dx = compute_gradient(x)</div><div class="line">  first_moment = beta1 * first_moment + (<span class="number">1</span> - beta1) * dx <span class="comment"># Momentum</span></div><div class="line">  second_moment = beta2 * second_moment + (<span class="number">1</span> - beta2) * dx * dx <span class="comment"># AdaGrad/RMSProp</span></div><div class="line">  first_unbias = first_moment / (<span class="number">1</span>- beta1 ** t)</div><div class="line">  second_unbias = second_moment / (<span class="number">1</span> - beta2 ** t)</div><div class="line">  x -= learning_rate * first_moment / (np.sqrt(second_squared) + <span class="number">1e-7</span>)</div></pre></td></tr></table></figure>
+<p>$\text{bet1} = 0.9,\ \text{beta2} = 0.999,\ \text{learning_rate}=1e-3\ or\ 5e-4$</p>
+<p>Learning rate decay over time! </p>
+<ul>
+<li><p>exponential decay</p>
+<script type="math/tex; mode=display">
+\alpha=\alpha_0 e^{-kt}</script></li>
+<li><p>1/t decay</p>
+<script type="math/tex; mode=display">
+\alpha=\alpha_0/(1+kt)</script></li>
+</ul>
+</li>
+<li><p>First-Order Optimization</p>
+<ul>
+<li>Use gradient form <strong>linear</strong> approximation</li>
+<li>Step to minimize the approximation</li>
+</ul>
+</li>
+<li><p>Second-Order Optimization</p>
+<ul>
+<li><p>Use gradient and <strong>Hessian</strong>($O(N^2)$) to form <strong>quadratic</strong> approximation</p>
+</li>
+<li><p>Step to the <strong>minima</strong> of the approximation</p>
+</li>
+<li><p>Second-order Taylor expansion:</p>
+<script type="math/tex; mode=display">
+J(\theta)\approx J(\theta_0)+(\theta-\theta_0)^T\triangledown_{\theta}J(\theta_0)+\frac 1 2(\theta-\theta_0)^TH(\theta-\theta_0)</script><p>Newton parameter update:</p>
+<script type="math/tex; mode=display">
+\theta^*=\theta_0-H^{-1}\triangledown_{\theta}J(\theta_0)</script></li>
+<li><p>And will take $O(N^3)$, $N=\text{(Tens or Hundreds of) Millions}$</p>
+</li>
+<li><p>Will use Quasi-Netton methods(BGFS most popular)</p>
+</li>
+<li><p>L-BFGS(Limited memory BFGS): Does not form/store the full inverse Hessian.</p>
+<ul>
+<li>Usually works vey well in full batch, deterministic mode</li>
+<li>Does not transfer very well to mini-batch setting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>In practice</p>
+<ul>
+<li><strong>Adam</strong> is a good default choice in most cases</li>
+<li>If you can afford to do <strong>full batch updates</strong> then try out <strong>L-BFGS</strong>(and don’t forget to disable all sources of noise)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Regularization</strong></p>
+<p>In common use:</p>
+<ul>
+<li><p>L2 regularization</p>
+<script type="math/tex; mode=display">
+R(W)=\sum_k\sum_l W_{k.l}^2\text{   (Weight decay)}</script></li>
+<li><p>L1 regularization</p>
+<script type="math/tex; mode=display">
+R(W)=\sum_k\sum_l |W_{k,l}|</script></li>
+<li><p>Elastic net (L1+L2)</p>
+<script type="math/tex; mode=display">
+R(W)=\sum_k\sum_l \beta W_{k,l}^2+|W_{k,l}|</script></li>
+<li><p><strong>Dropout</strong></p>
+<p>In each forward pass, randomly set some neurons to zero probability of dropping is a hyper parameter; 0.5 is common. More common in fully-connected layers. But sometimes see this in convolutional layers, as well.</p>
+<p>At test time, multiply by dropout probability.</p>
+</li>
+<li><p>Add random noise</p>
+</li>
+<li><p>DropConnect</p>
+</li>
+<li><p>Data Augmentation</p>
+</li>
+<li><p>Batch Normalization</p>
+</li>
+<li><p>Fractional Max pooling</p>
+</li>
+<li><p>Stochastic Depthz</p>
+</li>
+<li><p>Summary</p>
+<ul>
+<li>Training: add some kind of randomness</li>
+<li>Testing: Average out randomness (sometimes approximate)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Transfer learning</p>
+<p>|                     | Very similar dataset               | Very different dataset                                       |<br>| —————————- | ————————————————— | —————————————————————————————— |<br>| Very little data    | Use Linear Classifier on top layer | You’re in trouble… Try linear classifier from differnet stages |<br>| quite a lot of data | Finetune a few layers              | Finetune a larger number of layers                           |</p>
+<p>Don’t need too much data.</p>
+</li>
+</ol>
+<h2 id="Lesson-8-Deep-learning-Software"><a href="#Lesson-8-Deep-learning-Software" class="headerlink" title="Lesson 8: Deep learning Software"></a>Lesson 8: Deep learning Software</h2><ol>
+<li><p>CPU vs GPU</p>
+<p>Deep learning prefer NVIDIA than AMD. GPU can parally do same things.</p>
+<p>CPU: Fewer cores, but each core is much faster and much more capable; great at sequential tasks</p>
+<p>GPU: More cores, but each core is much slower and “dumber”; great for parallel tasks. Eg. matrix multiplication.</p>
+<p>Programming GPUs, can use:</p>
+<ul>
+<li>CUDA(NVIDIA only), write C-like code, have higher-level APIs: cuFFT, cuDNN, etc.</li>
+<li>OpenCL: similar to CUDA, but runs on anything, usually slower</li>
+<li>Udacity: just use existing libraries</li>
+</ul>
+<p>GPU is very fast, but if your data is in disk or something like, the reading is slow. There are three solutions:</p>
+<ul>
+<li>Read all data into RAM</li>
+<li>Use SSD instead of HDD</li>
+<li>Use multiple CPU threads to prefetch data</li>
+</ul>
+</li>
+<li><p>Deep learning framework</p>
+<p>The reason of using framework:</p>
+<ul>
+<li>Easily build big  computational graphs</li>
+<li>Easily compute gradients in computational graphs</li>
+<li>Run it all efficiently on GPU(wrap cuDNN, cuBLAS, etc.)</li>
+</ul>
+<hr>
+<p>Numpy can’t run on GPU and have to compute our own gradient.</p>
+<hr>
+<p><strong>Tensowflow</strong></p>
+<p>It is similar with Theano.</p>
+<p><code>tf.gradients(loss, [w1, w2])</code> you can use it to compute.</p>
+<p><code>tf.device(&#39;/cpu:0&#39;)</code> can change the cpu and gpu</p>
+<p><code>with tf.Session() as sess:</code> how to run the graph and feed it.</p>
+<p><code>sess.run()</code> run it.</p>
+<p><code>tf.train.GradientDescentOptimizer(1e-5)</code> set the optimizer.</p>
+<p><code>optimizer.minimize(loss)</code> use optimizer to compute gradients and update weights. And you can use other optimizer like RMSProp.</p>
+<p><code>tf.losses.mean_squared_error(y_pred, y)</code> use predefined common losses.</p>
+<p><code>tf.relu</code> as parameter </p>
+<p>First <strong>define computational graph</strong>, then <strong>run</strong> the graph many times. <strong>Crate placeholder</strong>s for input x, weights w1 and w2, and targets y.</p>
+<p>Problem: copying weights between CPU/GPU each step. The idea is that we change w1 and w2 from placeholder to Variable.</p>
+<p>Problem: loss is not going down. The solution is that we should explicitly tell TensorFlow to perform those update operations. If copy the new w1 and w2 replace the old one. So we use the dummy node.</p>
+<p>High-level wrappers:</p>
+<ul>
+<li>Keras</li>
+<li>TFLearn</li>
+<li>TensorLayer</li>
+<li>Ty.layers</li>
+<li>TF-Slim</li>
+<li>tf.contrib.learn</li>
+</ul>
+<hr>
+<p><strong>PyTorch</strong>: Three Levels of abstraction.</p>
+<p>Pytorch Tensors are just like Numpy array. In Tensorflow, we set up explicit graph, and then run it many times. It called dynadynamic computational graph. But in PyTorch, we built a new graph every time we do a forward pass. Torch only have two modules. It doesn’t habe ReLu, no autograd, but more stable, lots of existing code.</p>
+<p><code>dtype = torch.cuda.FloatTensor</code></p>
+<p><code>c.backward()</code> </p>
+<p><code>torch.autograd.Variable(torch.randn(N, D).cuda(), requires_grad=True)</code></p>
+<p><code>torch.nn.xx</code>, like <code>torch.nn.Linear(D_in, H)</code>, <code>torch.nn.ReLu()</code>, <code>torch.nn.MSELoss(size_average=False)</code>, etc.</p>
+<p><code>torch.utils.data.DataLoader()</code> wraps a dataset and provides minibatching, shuffling, multithreading for you.</p>
+<p>pretrained models: <code>torch vision.models.xx</code> like <code>torch vision.models.alexnet(pretrained=True)</code>, <code>torch vision.models.vgg16(pretrained=True)</code>, <code>torch vision.models.resnet101(pretrained=True)</code>, etc.</p>
+<p>And package Visdom that lets you visualize some of these loss statistics, it is similar with Tensorboard. But Tensorboard will show you the computational graph.</p>
+<hr>
+<p>Caffe:</p>
+<ul>
+<li>Core written in C++</li>
+<li><strong>Good for training or fine-tuning feedforward classification models.</strong></li>
+<li>Often no need to write code</li>
+<li>Still popular for deploying models</li>
+<li>Step: <ul>
+<li>Convert data(HDF5)</li>
+<li>Define Network(prototxt)</li>
+<li>Define Solver(prototxt)</li>
+<li>Train</li>
+</ul>
+</li>
+<li>have model zoo</li>
+<li>have python interface</li>
+<li>Now have caffe2, that shouldn’t do with prototxt.</li>
+</ul>
+<hr>
+<p>Static:</p>
+<ul>
+<li>Optimization: framework can optimize the graph for you before it runs.</li>
+<li>Serialization: Once graph is built, can serialize it and run it without the code that built the graph.</li>
+<li>Conditional: use ontrol flow operator.</li>
+<li>Loops: a little bit uglier.</li>
+</ul>
+<p>Dynamic:</p>
+<ul>
+<li>Optimization: Equivalent graph with fused operations.</li>
+<li>Serialization: Graph building and execution are intertwined, so always need to keep code around.</li>
+<li>Conditional: more simple</li>
+<li>Loops: super easy.</li>
+<li>Applications:<ul>
+<li>Recurrent networks</li>
+<li>Recursive networks</li>
+<li>Modular networks</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Advice</p>
+<ul>
+<li>TensorFlow is a safe bet for most projects. Not perfect but has huge community, wide usage. Maybe pair with high-level wrapper. Use TensorFlow for one graph over many machines.</li>
+<li>PyTorch is best for research, however stillness, there can be rough patches.</li>
+<li>Consider Caffe, Caffe2, or TensorFlow for production deployment.</li>
+<li>Consider TensorFlow or Caffe2 for mobile.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Lesson-9-CNN-Architectures"><a href="#Lesson-9-CNN-Architectures" class="headerlink" title="Lesson 9: CNN Architectures"></a>Lesson 9: CNN Architectures</h2><ol>
+<li><p><strong>AlexNet</strong> was the <strong>first large scale convolutional neural network</strong> that was able to do well on the ImageNet classification.</p>
+<p>If input is: 227x227x3 images, then:</p>
+<p>First layer(CONV1): 96 11x11 filters applied at stride 4, so the output volume size is (227-11)/4+1=55, [55x55x96], and the total number of parameters in this layer is [11x11x3]x96=35K</p>
+<p>Second layer(POOL1): 3x3 filters applied at stride 2, so the output volume is (55-3)/2+1=27, [27<em>27</em>96], and the total number of parameters in this layer is 0! Because the parameters is the weight that we need to learn, the pooling layer we always have ReLu. <strong><em>Pooling layer don’t need to learn parameters.</em></strong></p>
+<blockquote>
+<p>Fully (simplified) AlexNet <strong>architecture</strong>:</p>
+<p>[227x227x3] INPUT</p>
+<p>[55x55x96] CONV1: 96 11x11 filters at stride 4, pad 0</p>
+<p>[27x27x96] MAX POOL1: 3x3 filters at stride 2</p>
+<p>[27x27x96] NORM1: Normalization layer</p>
+<p>[27x27x256] CONV2: 256 5x5 filters at stride 1, pad 2</p>
+<p>[13x13x256] MAX POOL2: 3x3 filters at stride 2</p>
+<p>[13x13x256] NORM2: Normalization layer</p>
+<p>[13x13x384] CONV3: 384 3x3 filters at stride 1, pad 1</p>
+<p>[13x13x384] CONV4: 384 3x3 filters at stride 1, pad 1</p>
+<p>[13x13x256] CONV5: 256 3x3 filters at stride 1, pad 1</p>
+<p>[6x6x256] MAX POOL3: 3x3 filters at stride 2</p>
+<p>[4096] FC6: 4096 neurons</p>
+<p>[4096] FC7: 4096 neurons</p>
+<p>[1000] FC8: 1000 neurons(class scores)</p>
+<hr>
+<p>Detail/Retrospectives:</p>
+<ul>
+<li>First use of ReLU</li>
+<li>Used Norm layers(not common anymore)</li>
+<li>Heavy data augmentation</li>
+<li>Dropout 0.5</li>
+<li>Batch size 128</li>
+<li>SGD Momentum 0.9</li>
+<li>Learning rate 1e-2, reduced by 10 manually when val accuracy plateaus</li>
+<li>L2 weight decay 5e-4</li>
+<li>7 CNN ensemble: 18.2% -&gt; 15.4%</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>VGGNet</strong> has <strong>small filters, deeper networks.</strong></p>
+<p>8 layers(AlexNet) -&gt; 16-19 layers(VGG16Net)</p>
+<p>Only 3x3 CONV stride 1, pad 1 and 2x2 MAX POOL stride 2</p>
+<p>11.7% top 5 error in ILSVRC’13(ZFNet) -&gt; 7.3% top 5 error in ILSVRC’14</p>
+<p>Stack of three 3x3 conv (stride 1) layers has same effective receptive field as one 7x7 conv layer. But deeper, more non-linearities and fewer parameters ($3*(3^3C^2)\ vs.\ 7^2C^2$ for C channels per layer).</p>
+<p>Most memory is in early CONV, and most params are in late FC.</p>
+<blockquote>
+<p>Details:</p>
+<ul>
+<li>ILSVRC’14(a competition of image classification in 2014) 2nd in classification, 1st in localization</li>
+<li>Similar training procedure as Krizhevsky 2012</li>
+<li>No Local Response Normalisation(LRN)</li>
+<li>Use VGG16 or VGG19 (VGG19 only slightly better, more memory)</li>
+<li>Use ensembles for best results</li>
+<li>FC7 features generalize well to other tasks</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>GoogleNet</strong></p>
+<p>Deeper networks, with <strong>computational efficiency</strong></p>
+<blockquote>
+<p>Details:</p>
+<ul>
+<li>22 layers</li>
+<li><strong>Efficient “Inception” module</strong></li>
+</ul>
+<p>“Inception module”: design a good local network topology (network within a network) and then stack these modules on top of each other.</p>
+<p>Naive Inception module: Apply <strong>parallel filter operations</strong> on the input from previous layer:</p>
+<ul>
+<li>Multiple receptive field sizes for convolution(1x1, 3x3, 5x5)</li>
+<li>Pooling operation(3x3)</li>
+</ul>
+<p>Concatenate all filter outputs together depth-wise. But the computational complexity is bigger.</p>
+<p><img src="/2019/09/10/CS231n/GoogleNet.png" alt=""></p>
+<p>Use pad to keep 28x28.</p>
+<ul>
+<li>No FC layers network </li>
+<li>Only 5 million parameters! 12x less than AlexNet</li>
+<li>ILSVRC’14 classification winner (6.7% top 5 error)</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>ResNet</strong></p>
+<p>Very deep networks using residual connections</p>
+<blockquote>
+<p>Details:</p>
+<ul>
+<li>152-layer model for ImageNet</li>
+<li>ILSVRC’15 classification winner (3.57% top 5 error)</li>
+<li>Swept all classification and detection competitions in ILSVRC’15 and COCO’15!</li>
+</ul>
+<hr>
+<p>Full ResNet architecture:</p>
+<ul>
+<li>Stack residual blocks</li>
+<li>Every residual block has two 3x3 conv layers</li>
+<li>Periodically, double # of filters and downsampling spatially using stride 2(/2 in each dimension)</li>
+<li>Additional conv layer at the begining</li>
+<li>No FC layers at the end (only FC 1000 to output).</li>
+</ul>
+<hr>
+<p>Training ResNet in practice:</p>
+<ul>
+<li>Batch Normalization after every CONV layer</li>
+<li>Xavier/2 initialization from He et al.</li>
+<li>SGD + Momentum (0.9)</li>
+<li>Learning rate: 0.1, divided by 10 when 10 when validation error plateaus</li>
+<li>Mini-batch size 256</li>
+<li>Weight decay of 1e-5</li>
+<li>No dropout used</li>
+</ul>
+</blockquote>
+<p>The deep layer don’t work well both in test and training. It not dued to overfitting.</p>
+<p>Hypothesis: the problem is an optimization problem, deeper models are harder to optimize.</p>
+<p>The deeper model should be able to perform at least as well as the shallower model.</p>
+<p>Solution: Use network layers to fit a residual mapping instead of directly trying to fit a desired underlying mapping. In $F(x)+x$, the x is identity mapping, and F(x) is residual mapping.</p>
+<p>For deeper networks, use “bottleneck” layer to improve efficiency(similar to GoogleNet).</p>
+<p><strong>Can able to train very deep networks without degrading, and deeper networks now achieve lowing training error as expected.</strong></p>
+</li>
+<li><p>Summary:</p>
+<ul>
+<li><strong>GoogleNet</strong> was the most efficient.</li>
+<li><strong>AlexNet</strong>: smaller compute, still memory heavy(much parameters), lower accuracy</li>
+<li><strong>ResNet</strong>: moderate efficiency depending on model, highest accuracy.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>VGG, GoogleNet, ResNet all in wide use</strong>, available in model zoos</li>
+<li><strong>ResNet current best default</strong></li>
+<li>Trend towards extremely <strong>deep</strong> networks</li>
+<li>Sigificant research centers around design of <strong>layer / skip connections and improving gradient flow</strong></li>
+<li>Even more recent trend towards examining necessity of <strong>depth vs. width and residual</strong> connections.</li>
+</ul>
+</li>
+<li><p>Other architecture:</p>
+<ul>
+<li><p>Network in Network (NiN)</p>
+<p>Uses MLP. computer more abstract features for local patches. Philosophical inspiration of GoogleNet.</p>
+</li>
+<li><p>Identity Mappings in Deep Residual Networks</p>
+<p>Improved ResNet block design from creators of ResNet, creats a more direct path for propagating information</p>
+</li>
+<li><p>Wide Residual Networks</p>
+<p>Argues that residuals are the important factor, not depth, user wider residual blocks, increasing width instead of depth more computationally efficient(parallelizable).</p>
+</li>
+<li><p>ResNeXt</p>
+<p>Also from creators of ResNet, increases width of residual block through multiple parallel pathways, parallel pathways similar in spirit to inception module.</p>
+</li>
+<li><p>Deep Networks with Stochastic Depth</p>
+<p>Reduce vanishing gradients and training time through short networks during training, randomly drop a subset of layers during each training pass, bypass with identity funciton, use full deep network at test time.</p>
+</li>
+<li><p>FractalNet</p>
+<p>Argues that key is transitioning effectively from shallow to deep and residual representations are nit necessary, fractal architecture with both shallow and deep paths to output.</p>
+</li>
+<li><p>DenseNet</p>
+<p>Dense blocks where each layer is connected to every other layer in feedforward fashion, encourages feature reuse.</p>
+</li>
+<li><p>SqueezeNet</p>
+<p>Fire modules consisting of squeeze layer with 1x1 filters deeding an expand layer with 1x1 and 3x3 filters, can compress to 510x smaller than AlexNet.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Lesson-10-Recurrent-Neural-Networks"><a href="#Lesson-10-Recurrent-Neural-Networks" class="headerlink" title="Lesson 10: Recurrent Neural Networks"></a>Lesson 10: Recurrent Neural Networks</h2><ol>
+<li><p>Input <code>-&gt;</code> output</p>
+<ul>
+<li><p>one to one</p>
+<p><strong>Vanilla Neural Networks</strong></p>
+<p><img src="/2019/09/10/CS231n/RNN-one-to-one.png" alt=""></p>
+</li>
+<li><p>one to many</p>
+<p><strong>Image Captioning:</strong> image inverts to the sequence of words</p>
+<p>Visual Question Answering: RNN with attention</p>
+<p><img src="/2019/09/10/CS231n/RNN-one-to-many.png" alt=""></p>
+</li>
+<li><p>many to one</p>
+<p><strong>Sentiment Classification:</strong> sequence of words invert to sentiment</p>
+<p><img src="/2019/09/10/CS231n/RNN-many-to-one.png" alt=""></p>
+</li>
+<li><p>many to many(have intermedias)</p>
+<p><strong>Machine Translation:</strong> seq of words invert to seq of words</p>
+<p>You can see the many to many as <code>many-to-one + one-to-many</code></p>
+<p><img src="/2019/09/10/CS231n/RNN-many-to-many.png" alt=""></p>
+</li>
+<li><p>Many to many(one to one)</p>
+<p>eg. Video classification on frame level</p>
+</li>
+</ul>
+</li>
+<li><p><strong>RNN: Recurrent Neural Network</strong></p>
+<p>We can process <strong>a sequence</strong> of vectors x by applying a recurrence formula at every time step</p>
+<script type="math/tex; mode=display">
+h_t=f_W(h_{t-1},x_t)</script><p>Use old state to update the new state, and $x_t$ was the input in t step.</p>
+<p>Attention: we should <strong><em>use the same function and the same set of parameters at every time step of computation.</em></strong></p>
+<p>The underlying neural network establishes a weighted connection only <strong>between layers</strong>. And the biggest difference between RNNs is the establishment of a weighted connection <strong>between neurons</strong>.</p>
+<p><img src="/2019/09/10/CS231n/RNN.png" alt=""></p>
+</li>
+<li><p>BPTT: Back-propagation through time</p>
+<p>The training method for RNN, and the essential is BP. Forward through entire sequence to compute loss, then backward through entire sequence to compute gradient. But because of using sigmoid and tanh, in gradient prod, gradient vanishing will happen. As we known, updating the shared parameters of more layers based on the gradient of the finite layer will definitely cause problems.</p>
+<p>The main methods to solve <strong>the gradient disappearance</strong> are:</p>
+<ol>
+<li><strong>Selecting a better activation function</strong>, such as ReLU, but a constant 1 gradient exponential explosion can be resolved by setting a threshold.</li>
+<li><strong>Change the propagation structure</strong>, such as LSTM.</li>
+</ol>
+</li>
+<li><p>Truncated Backpropagation through time</p>
+<p>Carry hidden states forward in time forever, but only backpropagate for some smaller number of steps.</p>
+<p><code>min-char-rnn.py</code> that implements it.</p>
+</li>
+<li><p><strong>LSTM: Long short Term Memory</strong></p>
+<p>The reason for the disappearance of the RNN gradient is only short-term memory. LSTM <strong>combines short-term memory with long-term memory</strong> through gate control, and the repetitive modules are not just a single neural network. Added a <strong>c</strong> cell that represents long-term memory. <strong>Run directly on the chain</strong> with only a small amount of linear interaction. And <strong>using the door</strong>. Door is a way to <strong>let the information selection pass</strong>. <strong>Sigmoid</strong> selects the update <strong>content</strong>, and the <strong>tanh</strong> function creates update <strong>candidates</strong>.</p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}i\\f\\o\\g\end{matrix}\right)=\left(\begin{matrix}\sigma\\\sigma\\\sigma\\tanh\end{matrix}\right)W\left(\begin{matrix}h_{t-1}\\x_t\end{matrix}\right)\\
+c_t=f\odot c_{t-1}+i\odot g\\
+h_t=o\odot tanh(c_t)</script><p>f: Forget gate, whether to erase cell, use sigmoid</p>
+<p>i: input gate, whether to write to cell, use sigmoid</p>
+<p>g: gate gate, how much to write to cell, use tanh</p>
+<p>o: output gate, how much to reveal cell, use sigmoid</p>
+<p><img src="/2019/09/10/CS231n/LSTM.png" alt=""></p>
+<p>Uninterrupted gradient flow! And is similar to ResNet! In between: highway networks.</p>
+</li>
+<li><p><strong>Vanilla RNN</strong></p>
+<script type="math/tex; mode=display">
+h_t=tanh(W\left(\begin{matrix}h_{t-1}\\x_t\end{matrix}\right))</script></li>
+<li><p>Other RNN variants</p>
+<ul>
+<li>GRU</li>
+</ul>
+</li>
+<li><p>Summary</p>
+<ul>
+<li><strong>RNNs</strong> allow a lot of <strong>flexibility</strong> in <em>architecture design.</em></li>
+<li>Vanilla RNNs are simple but don’t work very well.</li>
+<li>Common to use <strong>LSTM or GRU</strong>: their <em>additive interactions</em> improve <strong>gradient flow</strong></li>
+<li><strong>Backward flow of gradients</strong> in RNN can <strong>explode or vanish</strong>. Exploding is controlled with gradient clipping. Vanishing is controlled with additive interactions(LSTM).</li>
+<li>Better/simpler architectures are a hot topic of current research</li>
+<li>Better understanding (both theoretical and empirical) is needed.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Lesson-11-Detection-and-Segmentation"><a href="#Lesson-11-Detection-and-Segmentation" class="headerlink" title="Lesson 11: Detection and Segmentation"></a>Lesson 11: Detection and Segmentation</h2><p>Many computer vision tasks.</p>
+<ol>
+<li><p><strong>Semantic Segmentation</strong>(No objects, just pixels)</p>
+<p>Output decision of a category for every pixel in that image. And label it.</p>
+<ul>
+<li><p>Sliding window (Not use this)</p>
+<p>But very inefficient! Not reusing shared features between overlapping patches.</p>
+</li>
+<li><p><strong>Fully convolutional</strong></p>
+<p>Get training data is very expansive, beacause we need give every pixels a category. Maybe we can draw a contour for the image, roughly. </p>
+<p>And if the input image is very big, then the computational is also too large. But we can design network as a bunch of convolutional layers, with <strong>downsampling</strong> and <strong>upsampling</strong> inseide the network. Then the network can be very deep, but the computational could be more efficient.</p>
+<p>Upsampling: </p>
+<ul>
+<li>uppooling</li>
+<li>Transpose convolution: we can express convolution in terms of a matrix multiplication. So transpose convolution multiplies by the transpose of the same matrix.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Classification + Localization</strong>(Single Object)</p>
+<p>Draw a bounding for the object in the image. We can treat localization as a regression problem.</p>
+<p>We have two loss: class scores <code>-&gt;</code> softmax loss and box coordinates <code>-&gt;</code> L2 loss</p>
+</li>
+<li><p><strong>Object Detection</strong>(Multiple Object)</p>
+<p>Core problem in computer vision. </p>
+<p>For the input image, every time one of those categories appears in the image, we draw a box around it and predict the category of that box. </p>
+<p>This is different from classification plus localization. Because there might be <strong>a varying number of outputs</strong> for every input image.</p>
+<p>And we don’t know how many object in image, so this is pretty challenge.</p>
+<ul>
+<li><p>Sliding window</p>
+<p>Apply a CNN to many different crops pf the image, CNN classifies each crop as object or background.</p>
+<p>How to choose the crop is very important.</p>
+</li>
+<li><p>Region proposals Network (RPN)</p>
+<ul>
+<li>Find “blobby” image regions that are likely to contain objects</li>
+<li>Relatively fast to run</li>
+</ul>
+</li>
+</ul>
+<p>Base Network:</p>
+<ul>
+<li>VGG16</li>
+<li>ResNet-101/ResNet</li>
+<li>Inception V2/Inception V3/Inception</li>
+<li>MobileNet</li>
+</ul>
+<p>Object Detection architecture:</p>
+<ul>
+<li>Faster R-CNN</li>
+<li>R-FCN</li>
+<li>SSD</li>
+</ul>
+<p>Image size: Region Proposals</p>
+<p>Takesways</p>
+<ul>
+<li>Faster R-CNN is slower but more accurate</li>
+<li>SSD is much faster but not as accurate</li>
+</ul>
+<p>Aside: object detection + captioning = dense captioning</p>
+</li>
+<li><p><strong>Instance Segmentation</strong>(Multiple Object, Semantic + Object detection)</p>
+<p>Full problem. We want to <strong>predict the locations and identities of objects</strong> in image similar to object detection, but rather than just predicting a bounding box for each of those objects, instead we want to <strong>predict a whole segmentation mask</strong> for each of those objects and predict <strong>which pixels</strong> in the input image <strong>corresponds to each object instance</strong>.</p>
+<p>Mask R-CNN: very good results!</p>
+</li>
+</ol>
+<h2 id="Lesson-12-Visualizing-and-Understanding"><a href="#Lesson-12-Visualizing-and-Understanding" class="headerlink" title="Lesson 12: Visualizing and Understanding"></a>Lesson 12: Visualizing and Understanding</h2><p>From the <strong>feature visualization</strong> of the network layer to the <strong>feature matching and feature inversion based on the gradient lifting method</strong>, <em>texture synthesis, image generation and style transfer</em> are derived.</p>
+<ol>
+<li><p>Visualizing</p>
+<ul>
+<li><p><strong>Visualize the filter</strong></p>
+<ul>
+<li>First layer: there are angles, lines, colors and so on. The visual result of the first convolutional layer is similar, looking for directed edges (such as light and dark lines)</li>
+<li>Last layer: dimensionality reduction. <strong>Visualize</strong> the space last layer feature vectors <strong>by reducing dimensionality of vectors</strong> from 4096 <strong>to 2 dimensions</strong>. You can use <strong>Principle component analysis (PCA), simply</strong>. Also, more complexly, <strong>t-SNE.</strong> Similar to the results of Nearest Neighbors, objects of similar character will come together.</li>
+</ul>
+</li>
+<li><p><strong>Visualizing activations</strong></p>
+<ul>
+<li><p>The weighting of the visual <strong>middle layer</strong> is not so strong, but the <strong>activation map</strong> of the visual middle layer is interpretable in some cases.</p>
+<p>The bigger one in feature map is object, others are background and something like this.</p>
+</li>
+<li><p>Also, you can select <strong>activating patches that maximizes the activation</strong> of different features and different neurons.</p>
+</li>
+<li><p>Add mask to illustrate it. This is <strong>Occlusion Experiments</strong>.</p>
+<p>The purpose of the occlusion experiment is to figure out <strong>which part of the input image is causing the neural network to make a classification decision</strong>. If we block a part of the image and lead to the sharp change in the value of the network, then the input image portion of this occlusion may play a very important role in the classification decision.</p>
+</li>
+<li><p><strong>Saliency Maps</strong></p>
+<p>Compute gradient of (unnormalized) class score with respect to image pixels, take absolute value and max over RGB channels <strong>to tell which pixels matter for classification.</strong> It is different with last one. <strong>The occlusion is about part, and saliency maps is about pixels.</strong></p>
+<p>You can use grabcut with saliency maps, and subdivide the objects in the image. But this method has some weakness.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Visualizing CNN features</strong>: Gradient Ascent</p>
+<ul>
+<li><p>(Guided) backprop: Find the part of an image that <strong>neuron</strong> responds to.</p>
+</li>
+<li><p>Gradient ascent: Generate a synthetic image that <strong>maximally activates a neuron.</strong></p>
+<script type="math/tex; mode=display">
+I^*=arg\ max_I\ f(I)+R(I)</script><p>$f(I)$: Neuron value, $R(I)$: Natural image regularizer.</p>
+<hr>
+<ol>
+<li>Initialize image to zeros</li>
+</ol>
+<p>Repeat:</p>
+<ol>
+<li>Forward image to compute current scores</li>
+<li>Backprop to get gradient of neuron value with respect to image pixels</li>
+<li>Make a small update to the image.</li>
+</ol>
+<hr>
+<p><strong>Which part of the input image affects the score of the neuron</strong>, the weight of the trained convolutional neural network <strong>is corrected by the gradient ascending method</strong>, and the gradient is raised on the pixels of the image to synthesize the image to try and <strong>maximize some intermediate neuron and class scores.</strong> </p>
+<p>In the process of performing a gradient rise, we are no longer optimized, <strong>the weight values in the neural network remain the same.</strong> Instead, we try to <strong>change the pixels</strong> of some images to <strong>maximize the value of this neuron</strong> or the fractional value of this class. In addition, we need some <strong>regular</strong> items $\lambda|I|^2_2$ to prevent the images we generate from overfitting the characteristics of a particular network.<br>Generating an image requires two properties:</p>
+<ol>
+<li><strong>Maximize the activation</strong> of some fractional values or values of neurons;</li>
+<li>We hope that this generated image will look natural, that is, <strong>the image we want to generate has statistics in the natural image.</strong> The image forced by the regular item looks like a natural image.</li>
+</ol>
+<p>Always optimize in FC6 latent space instead of pixel space.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Intermediate features via (guided) backprop</strong></p>
+<p>Instead of <strong>using the fractional values of the class</strong>, some neurons in the middle layer of the neural network are selected to see which parts of the image affect <strong>the scores of the neurons</strong> in the neural network. Only positive gradients are propagated, and only the positive effects of the entire neural network are tracked.</p>
+<p><strong>Compute gradient of neuron value</strong> with respect to image pixels.</p>
+<p>Images come out nicer if you only <strong>backprop positive gradients</strong> through each ReLU(guided backprop).</p>
+</li>
+<li><p><strong>Fooling images / Adversarial examples</strong> </p>
+<p>For example, we want to let the network think the elephant is a kola. Then the network modift the image and add gaussian noisy in it. But We can’t see the difference bewteen in these two images. The reseaon, we will see in lecture 13.</p>
+<ol>
+<li>Start from an arbitrary image</li>
+<li>Pick an arbitrary class</li>
+<li>Modify the image to maximize the class</li>
+<li>Repeat until network is fooled</li>
+</ol>
+</li>
+<li><p><strong>DeepDream</strong>: Amplify existing features.</p>
+<p>Pick different layers, you can get different results.</p>
+<p>Choose an image and a layer in CNN; repeat:</p>
+<ol>
+<li>Forward: compute activations at choose layer.</li>
+<li><strong>Set gradient of chosen layer equal to its activation</strong></li>
+<li>Backward: compute gradient on image</li>
+<li>Update image</li>
+</ol>
+<p>Some tricks:</p>
+<ul>
+<li><strong>Calculate the dithered image</strong> before the gradient, that is, instead of running the same image as the original image through the neural network, <strong>move the image by two pixels and wrap the other two pixels</strong>. This is a <strong>regularization method</strong> to make the image more smooth;</li>
+<li><strong>Normalization</strong> using the <strong>L1</strong> of the gradient;</li>
+<li>Sometimes <strong>modify some pixel value</strong>.</li>
+</ul>
+</li>
+<li><p><strong>Feature inversion</strong></p>
+<p>given a CNN feature vector for an image, find a new image that:</p>
+<ul>
+<li>Matches the given feature vector</li>
+<li>looks natural (image prior regularization)</li>
+</ul>
+<script type="math/tex; mode=display">
+x^*=argmin_{x\in R^{(H\times W\times C)}}l(\Phi(X),\Phi_0)+\lambda \mathcal R(x)\\
+l(\Phi(X),\Phi_0)=\|\Phi(X)-\Phi_0\|^2\\
+\mathcal R_{V^\beta}(x)=\sum((x_{i,j+1}-x_{ij})^2+(x_{i+1,j}-x_{ij})^2)^{\frac \beta 2}</script><p>And $\Phi(X)$ features of new image, $\Phi_0$ given feature vector, $\mathcal R_{V^\beta}$ is total variation regularizer (encourages spatial smoothness).</p>
+</li>
+<li><p><strong>Gram Matrix</strong></p>
+<p>It <strong>discards all spatial information</strong> in the feature volume because we average the feature vectors for each point in the image, it just <strong>captures the second-order co-occurrence statistics between features,</strong> which is ultimately a good texture description symbol. And <strong>the calculation efficiency of the Gram matrix is very high.</strong></p>
+</li>
+<li><p><strong>Neural style transfer: Texture Synthesis based on gram matrix + feature inversion of feature matching.</strong></p>
+<p>Also can multiple style images. But style transfer requires many forward / backward passes through VGG; very slow! The solution is that <strong>train another neural network to perform style transfer for us!</strong> </p>
+<ol>
+<li>Train a feedforward network for each style</li>
+<li>Use pretrained CNN to compute same losses as before</li>
+<li>After training, stylize images using a single forward pass</li>
+</ol>
+<p>You can use the same network for multiple styles using conditional instance normalization: learn separate scale and shift parameters per style.</p>
+</li>
+<li><p>Summary</p>
+<p>Many methods for understanding CNN representations.</p>
+<ul>
+<li>Activations<ul>
+<li>Nearest neighbors</li>
+<li>Dimensionality</li>
+<li>reduction</li>
+<li>maximal patches</li>
+<li>Occlusion</li>
+</ul>
+</li>
+<li>Gradients<ul>
+<li>Saliency maps</li>
+<li>Class visualization</li>
+<li>fooling images</li>
+<li>Feature inversion</li>
+</ul>
+</li>
+<li>Fun<ul>
+<li>DeepDream</li>
+<li>Style Transfer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Lesson-13-Generative-Models"><a href="#Lesson-13-Generative-Models" class="headerlink" title="Lesson 13: Generative Models"></a>Lesson 13: Generative Models</h2><p>Supervised learning and some problem about it.</p>
+<ol>
+<li><p>Supervised vs unsupervised learning</p>
+<p><strong>Supervised learning</strong> just <strong>learn a function</strong> to map <code>x -&gt; y</code></p>
+<p><strong>Unsupervised learning</strong> has just data, no labels! Traing data is cheap. It just understands structure of visual world, learn some <strong>underlying hidden structure of the data</strong>.</p>
+</li>
+<li><p>Generative Models</p>
+<p>Given training data, generate new samples from same distribution.</p>
+<p>Addresses density estimation, a core problem in unsupervised learning.</p>
+<p><strong>Generate model:</strong> infinite samples <code>==&gt;</code> probability density model = generate model <code>==&gt;</code> prediction<br>The <strong>generation method</strong> is based on the data learning joint probability distribution P(X, Y), and then the conditional probability distribution P(Y|X)=P(X, Y)/P(X) is obtained as a prediction model. The reason why such a method becomes a generation method is because the model indicates t<strong>he generation relationship of the output Y by a given input X.</strong></p>
+<ul>
+<li><p>Why?</p>
+<ul>
+<li>Realistic samples for artwork, super-resolution, colorization, etc.</li>
+<li>Generative models of time-series data can be used for simulation and planning (reinforcement learning applications)</li>
+<li>Training generative models can also enable inference of latent representations that can be useful as general features.</li>
+</ul>
+</li>
+<li><p>Taxonomy</p>
+<p>Also you can combine them to use it.</p>
+<p><img src="/2019/09/10/CS231n/Generative Models.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p><strong>PixelRNN/CNN</strong></p>
+<p>Fully visible belief network.</p>
+<p>Use chain rule to decompose <strong>likelihood of an image x</strong> into product of 1-d distributions:</p>
+<script type="math/tex; mode=display">
+p(x)=\prod_{i=1}^n p(x_i|x_1,\cdots,x_{i-1})</script><p>Then <strong>maximize likelihood of training data.</strong> We can express complex distribution over pixel values using a neural network.</p>
+<ul>
+<li><p>PixelRNN</p>
+<p>Generate image pixels starting from corner. Collect a lot of pictures, then use these pictures to start training the picture generation model, <strong>predict the next pixel according to the previous pixel</strong>, and generate a picture by giving a (or several) initial pixels after the training. PixelRNN not only works, but the graphs produced by PixelRNN in the various generation methods are the <strong>clearest</strong>. </p>
+<p>There are some tips on the image: If <strong>the three values of RGB are not much different</strong>, the resulting color is gray and not bright enough. You can <strong>cluster many colors into several classes and do 1-of-N encoding to “continuous”.</strong> The pixels become discrete.</p>
+</li>
+<li><p>PixelCNN</p>
+<p>Still generate image pixels starting from corner. But using a CNN over context region.</p>
+<p>Training faster then PixelRNN because of parallel.</p>
+<p><strong>But generation must still proceed sequentially, so it’s still slow.</strong></p>
+</li>
+</ul>
+<p>And both them have following properties:</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>can explicitly compute likelihood p(x)</li>
+<li>Explicit likelihood of training data gives good evaluation metric</li>
+<li>Good samples</li>
+</ul>
+<p><strong>Con:</strong></p>
+<ul>
+<li>Inefficient sequential generation =&gt; slow</li>
+</ul>
+<p><strong>Improving PixelCNN performance:</strong></p>
+<ul>
+<li>Gated convolutional layers</li>
+<li>Short-cut connections</li>
+<li>Discretized logistic loss</li>
+<li>Multi-scale</li>
+<li>Training tricks</li>
+<li>Etc.</li>
+</ul>
+</li>
+<li><p><strong>Variational Autoencoder</strong></p>
+<p>Use output and input to do the same unconstrained learning. After the training is completed, take out the decoder in the auto-encoder, and generate a vector as the code input to the decoder to get an image, but the effect is usually not good. VAE appeared.</p>
+<p>VAE is <strong>adding noise</strong> to the encoder output.</p>
+<p>VAEs define intractable density function with latent z:</p>
+<script type="math/tex; mode=display">
+p_{\theta}(x)=\int p_{\theta}(z)p_{\theta}(x|z)dz</script><p>Cannot optimize directly, derive and optimize lower bound on likelihood instead.</p>
+<p>And the loss function is L2, $|x-\hat x|^2$, don’t use labels. This is different.</p>
+<p>Encoder can be used to initialize a supervised model.</p>
+<p>x is an image, z is latent factors used to generate x: attributes, orientation, etc. choose prior p(z) to be simple. Eg.g. Gaussian. But conditional p(x|z) is complex, because it represents with neural network.</p>
+<p><strong>The problem is intractable.</strong> It is intractable to compute p(x|z) for every z. </p>
+<p>The solution is we define additional encoder network $q_\Phi(z|x)$ that approximates $q_\Phi(x|z)$. It derive a lower bound on the data likelihood.</p>
+<p>The data likelihood can be simplified as follows:</p>
+<script type="math/tex; mode=display">
+\log p_{\theta}(x^{(i)})=E_{z\sim q_{\Phi}(z|x^{(i)})}[\log p_{\theta(x^{(i)})}]\ \ \ (p_{\theta}(x^{(i)})\text{ Does not depend on z})\\
+=E_z[\log p_{\theta}(x^{(i)}|z)] - D_{KL}(q_{\Phi}(z|x^{(i)})\|p_\theta(z))+D_{KL}(q_{\Phi}(z|x^{(i)})\|p_\theta(z|x^{(i)}))</script><p>The first part: Decoder network gives $p_{\theta}(x|z)$, can compute estimate of this term through sampling.</p>
+<p>The second part is KL term that has nice closed-form.</p>
+<p>The last part: $p_{\theta}(z|x)$ intractable, can’t compute this KL term. But we know KL divergence represents distance and is always greater than or equal to zero by  definition.</p>
+<p><strong>So first two part make up to tractable lower bound.</strong> Then we maximize lower bound.</p>
+<p>The results is good, but it still has a bit of a blurry aspect to them.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Principled approach to generative models</li>
+<li>Allows inference of $q(z|x)$, can be useful feature representation for other tasks</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Maximizes lower bound of likelihood: okay, but not as good evaluation as PixelRNN/PixelCNN</li>
+<li>Samples blurrier and lower quality compared to state-of-the-art (GANs).</li>
+</ul>
+<p><strong>Active areas of research:</strong></p>
+<ul>
+<li>More flexible approximations, e.g. richer approximate posterior instead of diagonal Gaussian</li>
+<li>Incorporating structure in latent variables</li>
+</ul>
+</li>
+<li><p><strong>GAN: Generative Adversarial Networks</strong></p>
+<p>The last two cannot optimize directly, derive and optimize lower bound on likelihood instead. So what if we give up on explicit modeling density, and just want ability to sample?</p>
+<p>One of the biggest problems in VAE is that it can’t really be out of nothing, because its loss is MSE, <strong>the image generated by the constraint must be similar to the existing image pixel level, and can not produce a “conceptual” similarity out of thin air.</strong><br>GAN solves this problem very well. Its generator G has never seen a real picture. It can only learn from the gradient provided by the discriminator D. This is not a simple way to memorize an existing picture.</p>
+<p><strong>GAN: don’t work with any explicit density function.</strong> Instead, take game-theoretic approach: learn to generate from training distribution through 2-player game.</p>
+<p>Problem is that we wnat to sample from complex, high-dimensional training. No direct way to do this. <strong>But we can sample from a simple distribution</strong>, learn transformation to training distribution. And the complex transformation we can use a neural network to represent it.</p>
+<p>GAN is a Two-player game:</p>
+<ul>
+<li><strong>Generator network</strong>: try to fool the discriminator by generating real-looking images</li>
+<li><strong>Discriminator network</strong>: try to distinguish between real and fake images.</li>
+</ul>
+<p>Train jointly in <strong>minimax</strong> game, and the objective function is:</p>
+<script type="math/tex; mode=display">
+min_{\theta_g}\ max_{\theta_d}[\mathbb E_{x\sim p_{data}}\log D_{\theta_d}(x)+\mathbb E_{z\sim p(z)}\log (1-D_{\theta_d}(G_{\theta_g}(z)))]</script><p>The first one is Discriminator output for real data x, and the last one is discriminator output for generated fake data G(z).</p>
+<p>So, the discriminator ($\theta_d$) wants to <strong>maximize objective</strong> such that D(x) is close to 1 (real) and D(G(z)) is close to 0 (fake). And take gradient ascent.</p>
+<p>Generator($\theta_g$) wants to <strong>minimize objective</strong> such that D(G(z)) is close to1 (discriminator is fooled into the thinking generated G(z) is real). And take gradient deascent.</p>
+<p><img src="/2019/09/10/CS231n/GAN.png" alt=""></p>
+<p><strong>Trick:</strong></p>
+<p>Change the <code>min log (1-D(G(z))) to max log(D(G(z)))</code>, because in the original loss design, <strong>the better the discriminator, the more serious the generator gradient disappears, the harder to train.</strong> However, the improved model will also have a problem of <strong>mode collapse</strong>, which will be detailed in the future WGAN.<br>Note that our loss is BCELoss, the cross entropy loss, and later LSGAN will use MSELoss, ie the square difference loss.</p>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>Beautiful, state-of-the-art samples!</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>Tricker / more unstable to train</li>
+<li>Can’t solve inference queries such as p(x), p(z|x)</li>
+</ul>
+<p><strong>Active areas of research</strong>:</p>
+<ul>
+<li>Better loss functions, more stable training (Wasserstein Gan, LSGAN, many others)</li>
+<li>Conditional GANs, GANs for all kinds of applications.</li>
+</ul>
+</li>
+<li><p>Interpretable Vector math</p>
+<p>eg. smiling woman - natural woman + natural man, you can get smiling man.</p>
+</li>
+</ol>
+<h2 id="Lesson-14-Deep-Reinforcement-learning"><a href="#Lesson-14-Deep-Reinforcement-learning" class="headerlink" title="Lesson 14: Deep Reinforcement learning"></a>Lesson 14: Deep Reinforcement learning</h2><ol>
+<li><p><strong>Reinforcement learning</strong></p>
+<p>Problems involving an <strong>agent</strong> interacting with an <strong>environment</strong>, which provides numeric <strong>reward.</strong></p>
+<p>The Environment give agent a <strong>state $S_t$</strong>, then agent make an <strong>Action $a_t$</strong> to environment. After that, Environment <strong>reward $r_t$</strong> to agent, also gets the <strong>next state $S_{t+1}$</strong>.</p>
+<p>Goal: Learn how to take actions in order to maximize reward.</p>
+</li>
+<li><p><strong>Markov Decision Processes</strong></p>
+<p>It is Mathematical formulation of the RL problem.</p>
+<p><strong>Markov property:</strong> Current state completely characterises the state of the world.</p>
+<p><strong>Defined</strong> by: ($\mathcal{S,A,R},\mathbb{P},\gamma$)</p>
+<p>$\mathcal {S}$: set of possible states.</p>
+<p>$\mathcal {A}$: set of possible actions.</p>
+<p>$\mathcal {R}$: distribution of reward given (state, action) pair.</p>
+<p>$\mathbb {P}$: transition probability i.e. distribution over next state given (state, action) pair.</p>
+<p>$\gamma$: discount factor, it assigns weights to recent rewards as well as forward rewards.</p>
+<p>Then the <strong>process</strong>:</p>
+<blockquote>
+<p>At time step $t = 0$, environment samples initial state $s_0\sim p(s_0)$</p>
+<p>Then, for $t = 0$ until done:</p>
+<p>​        Agent selects action $a_t$</p>
+<p>​        Environment samples reward $r_t\sim R(\cdot|s_t,a_t)$</p>
+<p>​        Environment samples next state $s_{t+1}\sim P(\cdot|s_t,a_t)$ </p>
+<p>​        Agent receives reward $r_t$ and next state $s_{t+1}$</p>
+</blockquote>
+<p>A policy $\pi$ is a function from S to A that specifies waht action to take in each state.</p>
+<p><strong>Objective</strong>: find policy $\pi^<em>$ that <em>*maximizes cumulative discounted reward</em></em>: $\sum_{t&gt;0} \gamma^tr_t$</p>
+<p>So, it like in grid world how to go we can get the star more quickly. We can maximize the expected sum of rewards!</p>
+<p>Formally: </p>
+<script type="math/tex; mode=display">
+\pi^*=arg\ max_{\pi}\mathbb E[\sum_{t\geq 0}\gamma^tr_t|\pi]\\\ with\ s_0\sim p(s_0), a_t\sim \pi(\cdot|s_t),s_{t+1}\sim p(\cdot|s_t,a_t)</script></li>
+<li><p>Value function</p>
+<p>Following a policy produces sample trajectories (or paths) $s_0,a_0,r_0,s_1,a_1,r_1,\cdots$</p>
+<p>The value function at state s, <strong>is the expected cumulative reward</strong> from folloing the policy <strong>from state s</strong> (how good is a state):</p>
+<script type="math/tex; mode=display">
+V^{\pi}=\mathbb E[\sum_{t\geq 0}\gamma^tr_t|s_0=s,\pi]</script></li>
+<li><p>Q-value function</p>
+<p>The Q-value function at state s and action a,  <strong>is the expected cumulative reward</strong> from taking action a in state s and then following the policy (how good is a state-action pair):</p>
+<script type="math/tex; mode=display">
+Q^\pi(s,a)=\mathbb E[\sum_{t\geq 0}\gamma^tr_t|s_0=s,a_0=a,\pi]</script><p>And we want to find the optimal Q-value function $Q^<em>$ that is the <strong>maximum</strong> the last value. And $Q^</em>$ satisfies <strong>the Bellman equation</strong> (Also Dynamic Programming Equation):</p>
+<script type="math/tex; mode=display">
+Q^*(s,a)=\mathbb E_{s'\sim \epsilon}[r+\gamma max_{a'}\ Q^*(s',a')|s,a]</script><p>If the optimal state-action values for the next time-step $Q^<em>(s,a)$ are know, then the optimal strategy is to take action that maximizes the expected value of  $r+\gamma Q^</em>(s’,a’)$. Obviously, the optimal policy $\pi^<em>$ corresponds to taking the best action in any state as specified by $Q^</em>$.</p>
+<p>But this is not <strong>scalable</strong> that it must compute Q(s, a) for <em>every state-action pair</em>. </p>
+</li>
+<li><p><strong>Q-Learning</strong></p>
+<p>As we all known, if the computation is too complex, we can use neural network. Q-learning is the solution for the optimal policy.</p>
+<p><strong>Q-learning:</strong> Use a function approximator to estimate the action-value function. </p>
+<script type="math/tex; mode=display">
+Q(s,a;\theta)\approx Q^*(s, a)</script><p>If the function approximator is a deep neural network, then it is deep Q-learning.</p>
+<p>So the loss function is $L_i(\theta_i)=\mathbb E_{s,a\sim\rho(\cdot)}[(y_i-Q(s,a;\theta_i))^2]$ where $y_i=Q^*(s,a)$.</p>
+<p>And the backward is gradient update.</p>
+<script type="math/tex; mode=display">
+\triangledown_{\theta_i}L_i(\theta_i)=\mathbb E_{s,a\sim\rho(\cdot);s'\sim \epsilon}[r+\gamma max_{a'}Q(s',a';\theta_{i-1})-Q(s,a,\theta_i))\triangledown_{\theta_i}Q(s,a;\theta_i)]</script><p>But learning from batches of consecutive samples is problematic:</p>
+<ul>
+<li>Samples are correlated =&gt; <strong>inefficient learning</strong></li>
+<li>Current Q-network parameters determines next training samples -&gt; can lead to <strong>bad feedback loops</strong>.</li>
+</ul>
+<p>Address these problems using <strong>experience replay</strong>, update replay memory table of transitions ($s_t,a_t,r_t,s_{t+1}$) and train Q-network on random mini batches of transitions from replay memory.</p>
+<p><img src="/2019/09/10/CS231n/Q-learning.png" alt=""></p>
+<p>But it does not always work but when it works, usually more sample-efficient. <strong>Challenge: exploration.</strong> And <strong>zero guarantees</strong> since you are approximating Bellman equation with complicated function approximator.</p>
+</li>
+<li><p><strong>Policy Gradients</strong></p>
+<p>The Q-learning function can be very complicated!</p>
+<p>Define a class of parametrized policies: $\prod=\{\pi_\theta,\theta\in\R^m\}$.</p>
+<p>For each policy, define its value:</p>
+<script type="math/tex; mode=display">
+J(\theta)=\mathbb E[\sum_{t\geq0}\gamma^tr_t|\pi_\theta]</script><p>So, find the optimal policy $\theta^*=arg\ max\ J(\theta)$. Gradient ascent on policy parameters.</p>
+<script type="math/tex; mode=display">
+J(\theta)=\mathbb E_{\tau\sim p(\tau;\theta)}[r(\tau)]=\int_{\tau}r(\tau)p(\tau;\theta)d\tau</script><p>Where $r(\tau)$ is the reward of a trajectory $\tau=(s_0,a_0,r_0,s_1,\cdots)$</p>
+<p>Differentiate this:</p>
+<script type="math/tex; mode=display">
+\triangledown J(\theta)=\int_{\tau}r(\tau)\triangledown_\theta p(\tau;\theta)d\tau</script><p>Intractable! Gradient of an expectation is problematic when p depends on $\theta$.</p>
+<p>But we can use a nice trick:</p>
+<script type="math/tex; mode=display">
+\triangledown_\theta p(\tau;\theta)=p(\tau;\theta)\frac{\triangledown_\theta p(\tau;\theta)}{p(\tau;\theta)}=p(\tau;\theta)\triangledown_\theta \log p(\tau;\theta)</script><p>Then, it is:</p>
+<script type="math/tex; mode=display">
+\triangledown_\theta J(\theta)=\int_\tau(r(\tau)\triangledown_\theta \log p(\tau;\theta))p(\tau;\theta)d\tau\\=E_{\tau\sim p(\tau;\theta)}[r(\tau)\triangledown_\theta \log p(\tau;\theta)]</script><p>And we have:</p>
+<script type="math/tex; mode=display">
+p(\tau;\theta)=\prod_{t\geq 0}p(s_{t+1}|s_t,a_t)\pi_\theta(a_t|s_t)</script><p>Thus:</p>
+<script type="math/tex; mode=display">
+\log p(\tau;\theta)=\sum_{t\geq 0}\log p(s_{t+1}|s_t,a_t)+\log \pi_\theta(a_t|s_t)</script><p>And when differentiating:</p>
+<script type="math/tex; mode=display">
+\triangledown_\theta\log p(\tau;\theta)=\sum_{t\geq0}\triangledown_\theta\log \pi_\theta(a_t|s_t)</script><p>So, it doesn’t depend on transition probabilities!</p>
+<p>Therefore when sampling a trajectory $\tau$, we can estimate $J(\theta)$ with</p>
+<script type="math/tex; mode=display">
+\triangledown_\theta J(\theta)\approx \sum_{t\geq0}r(\tau)\triangledown_\theta\log \pi_\theta(a_t|s_t)</script><p>So, if $r(\tau)$ is high, push up the probabilities of the actions seen; if $r(\tau)$ is low, push down the probabilities of the actions seen. But this also suffers from <strong>high variance</strong> because credit assignment is really hard. So it requires a lot of samples. <strong>Challenge: sample-efficiency.</strong></p>
+<p>We can use discount factor $\gamma$ to ignore delayed effects.</p>
+<script type="math/tex; mode=display">
+\triangledown_\theta J(\theta)\approx \sum_{t\geq0}(\sum_{t'\geq t}y^{(t'-t)}r_{t'})\triangledown_\theta\log \pi_\theta(a_t|s_t)</script><p>Choose a simple baseline: constant moving average of rewards experienced so far from all trajectories.</p>
+<p>Also you can choose a better baseline: want to push up the probability of an action from a state, if this action was better than the <strong>expected value of what we should get from that state.</strong></p>
+<p>Converges to a local minima of $J(\theta)$, often good enough.</p>
+</li>
+<li><p>Actor-critic algorithm</p>
+<p>we can combine policy gradients and Q-learning by training both an actor (the policy) and a critic (the Q-function).</p>
+</li>
+<li><p>RAM: Recurrent Attention model</p>
+<p>When we look at the complicated images, we will focus one part. So like this, we will see some parts and then combine to the whole image. In that case, can save computing resources and helps with image classification because you can ignore the mess and a bunch of irrelevant information in the image. So the action is decide which part to observe in next time.</p>
+</li>
+</ol>
+<h2 id="Lesson-15-Efficient-Methods-and-Hardware-for-Deep-Learning"><a href="#Lesson-15-Efficient-Methods-and-Hardware-for-Deep-Learning" class="headerlink" title="Lesson 15: Efficient Methods and Hardware for Deep  Learning"></a>Lesson 15: Efficient Methods and Hardware for Deep  Learning</h2><p>The problems of model compression and optimization are explained from two aspects of <strong>algorithm and hardware</strong>, so as to <em>reduce the volume of the deep learning model, reduce the number of parameters, reduce the amount of calculation, and accelerate the calculation.</em></p>
+<ol>
+<li><p>Challenge</p>
+<ul>
+<li>Model size</li>
+<li>(training) Speed</li>
+<li>Energy efficiency, and it mostly in storage access.</li>
+</ul>
+</li>
+<li><p>Hardware</p>
+<ul>
+<li>General Purpose<ul>
+<li>CPU: latency oriented, like an elephant</li>
+<li>GPU: throughput oriented, like a group of small ants</li>
+</ul>
+</li>
+<li>Specialized hardware<ul>
+<li>FPGA: programmable logic, so it’s cheaper for you to try new ideas and do prototype, but it’s less efficient.</li>
+<li>ASIC: fixed logic, eg. Google TPU.</li>
+</ul>
+</li>
+</ul>
+<p>And the number representation of different cores are different, like int8 is <code>S1+M7</code>, FP32 is <code>S1+E8+M23</code> and so on. Because of energy for one operation, <strong>we prefer use 8 or 16 bits rather than 32 bits.</strong> </p>
+</li>
+<li><p>Algorithm for efficient inference</p>
+<ol>
+<li><p><strong>Pruning</strong> nerual network.</p>
+<p>We want <strong>less parameters</strong>, the accuracy are the same. And because not all parameter are useful, so this is feasible. Also <strong>changed the weight distribution</strong>, drop it, small it. </p>
+</li>
+<li><p><strong>Weight sharing</strong></p>
+<p>We want each parameter has fewer digits, so the model will become smaller when the parameters are multiplied together. Not all the number should be the exact number. The idea is that regroup the ownership and use a <strong>cluster centroid</strong> to represent these similar numbers, eg. kmeans.</p>
+</li>
+<li><p><strong>Quantization</strong></p>
+<p>Just use single number to represent. Also we can combine it with pruning. <strong>Huffman coding</strong> is used to represent infrequently occurring weights with more digits, and fewer digits to represent frequently occurring weights.</p>
+<p>Train with float, quantizing the weight and activation, and also fine-tune and convergence <strong>in float format.</strong></p>
+</li>
+<li><p>SqueezeNet</p>
+<p>Instead of compressing an existing model, build a streamlined model directly. We will have squeeze layer that share the same neurons.</p>
+</li>
+<li><p><strong>Low Rank Approximation</strong></p>
+<p>You can <strong>break complicated network to two simple network.</strong></p>
+</li>
+<li><p><strong>Binary / Ternary Net</strong></p>
+<p>During inference, only use two or three parameters.</p>
+</li>
+<li><p><strong>Winograd Transformation</strong></p>
+<p>It is about how do we implement convolution layer.</p>
+<p>Winograd Transformation is <strong>a equivalent method</strong> to Direct convolution. <strong>It transforms data to reduce math intensity.</strong></p>
+</li>
+</ol>
+</li>
+<li><p>Hardware for efficient inference</p>
+<p>A common goal: <strong>minimize memory access.</strong></p>
+<p>Rooflines in CPU, GPU, TPU, you will see TPU is more high. The so far below Rooflines is because low latency requirement that can’t batch more. And we can use less memory footprint to compress the model. And the challenge is the hardware that can infer on compressed model.</p>
+<p>EIE: the first DNN accelerator for sparse, compressed model by the Song Han.</p>
+</li>
+<li><p>Algorithm for efficient training </p>
+<ol>
+<li><p><strong>Paralleization</strong></p>
+<p>Including data paralleization and model parallelization.</p>
+<p>Data:</p>
+<ul>
+<li>Run multiple examples in parallel.</li>
+<li>Limited by batch size. </li>
+</ul>
+<p>Model:</p>
+<ul>
+<li>Split model over multiple processors</li>
+<li>By layer</li>
+<li>Conv layers by map region</li>
+<li>Fully connected layers by output activation. </li>
+</ul>
+</li>
+<li><p>Mexed precision with FP16 and FP32</p>
+</li>
+<li><p>Model Distillation</p>
+<p>Teacher model to teach student model. And we should use soft label, like dog 80%, cat 20%, instead of hard label, like dog. We can use softmax.</p>
+</li>
+<li><p>DSD: Dense-Sparse-Dense training</p>
+<p>A better regularization. Like learn the trunk first, then add leaves to learn all the tree.</p>
+</li>
+</ol>
+</li>
+<li><p>Hardware for efficient training</p>
+<p>New volta: tensor core.</p>
+</li>
+</ol>
+<h2 id="Lesson-16-Adversarial-Examples-and-Adversarial-Training"><a href="#Lesson-16-Adversarial-Examples-and-Adversarial-Training" class="headerlink" title="Lesson 16: Adversarial Examples and Adversarial Training"></a>Lesson 16: Adversarial Examples and Adversarial Training</h2><p>What are the Adversarial Examples, why they happen, how they destroy machine learning systems, how to defend them, and how to use them to improve machine learning performance, even without Adversarial Examples.</p>
+<ol>
+<li><p>Adversarial examples</p>
+<p>Example: panda + 0.07 * noise = gibbon. But In our eyes, it doesn’t change, in convolutional network it change much. And at first, 30% pandas, but after change, 99.9% gibbon.</p>
+<p>We can fool not just neural nets, but also linear models (logistic regression, softmax regression, SVMs), decision trees, nearest neighbors. </p>
+<p>And the reseaon, we guess:</p>
+<ul>
+<li><p>Adversarial examples from <strong>overfitting</strong> (No!!!)</p>
+<p>If it is over-fitting, then this picture is misclassified more or less bad luck, and is unique. If we fit a somewhat different model, we expect to randomly make another mistake on the training set. error. But this is not the case. We find that different models are easy to make mistakes on the same confrontation sample and will assign the same class to them. In addition, if we study the difference between the original sample and the antagonist sample, we have a direction in the input space, we can add a same offset vector to any other sample without noise, this method can always get a counter sample. So we realized that this is <strong>a systemic effect, not a random effect.</strong></p>
+</li>
+<li><p>Adversarial examples from <strong>excessive linearity</strong></p>
+</li>
+<li><p>Modern deep nets are very <strong>piecewise linear</strong></p>
+</li>
+<li><p><strong>Small inter-class distances</strong></p>
+</li>
+<li><p><strong>High-dimensional linear model</strong></p>
+</li>
+<li><p>Linear models of Imagenet</p>
+</li>
+</ul>
+<p>Like clever Hans learn the wrong cue.</p>
+<p><strong>Training on adversarial  samples is a good method of regularization. The beast is Train = Adv, and the test is Clean.</strong></p>
+</li>
+<li><p>Draw maps of Random cross-sections. </p>
+<p><strong>Different models use the same data to generate almost the same weight!</strong>  The middle of the cell corresponds to the original sample without modification. The left and right represent the direction of the FGSM attack, and the upper and lower sides represent the random direction perpendicular to FGSM. White pixels indicate correct classification and different colors indicate different categories. <strong>We can see that the left half of the cell is basically divided into pairs, the right half is a different color, and the boundary between the left and the right is almost linear.</strong> This means that FGSM recognizes a direction, and if we have a large internal product in this direction, we can get a confrontation sample. We find that each real sample is close to a linear decision boundary, and as you cross the boundary into the confrontation subspace, all other nearby points are against the sample. This means that as long as you find the right direction, you don’t have to find the specific spatial coordinates. You just need to <strong>find a direction, a direction that can form a large inner product with the gradient direction, and then you can deceive the network model by moving a little along this direction.</strong></p>
+<p>In general, a sample is correct (error) from the beginning, and <strong>adding noise does not improve the situation.</strong> Noise can also make the model classification wrong, especially for large noise. In addition, some cells are initially classified incorrectly, but noise can make it a correct classification. And <strong>Adversarial examples are not noise.</strong> </p>
+</li>
+<li><p>The fast gradient sign method(FGSM)</p>
+<p>When FGSM is used to attack a NN without any special defense, a 99% attack success rate is obtained, which means that the assumption that the <strong>model is too linear is valid.</strong></p>
+<script type="math/tex; mode=display">
+J(\tilde x, \theta)\approx J(x,\theta)+(\tilde x-x)^T\triangledown_x J(x)</script><p>Maximize $J(\tilde x, \theta)$, subject to</p>
+<script type="math/tex; mode=display">
+\|\tilde x-x\|_{\infty}\leq \epsilon\Rightarrow x=x+\epsilon \text{sign}(\triangledown_xf(x))</script><p>Generative modeling is not sufficient to solve the problem.</p>
+</li>
+<li><p>Estimating the subspace dimensionality</p>
+<p><strong>The larger the subspace dimension, the more likely the subspaces of the two models overlap.</strong> If you have two different models and have a large confrontational subspace, it is very likely that the confrontation sample will be migrated to another model. <strong>If the confrontation space is small, it is more difficult to migrate the samples</strong> unless the system effect makes the two models have exactly the same subspace, because the subspace is random.</p>
+</li>
+<li><p>Wrong alomost everywhere</p>
+<p>Almost all samples are misclassified, and the model performs well only on a very narrow manifold that is distributed near our training data. We hope that <strong>the noise energy is not divided into any class,</strong> that is, the value obtained by each sigmoid should be less than 0.5, and 0.5 is not a small threshold. For such a defective input, it is reasonable to change the sigmoid threshold to less than 0.01. But we will find that the Gaussian distribution of noise with a large norm is added to the model. These sigmoid always tend to be divided into a certain class.</p>
+</li>
+<li><p>Adversarial examples for RL</p>
+</li>
+<li><p>Adversarial training</p>
+<p><strong>With the exception of DNN, other models may not be well served through adversarial training.</strong></p>
+<ul>
+<li>Linear models: SVM/linear regression cannot learn a step function, so adversarial training is <strong>less useful, very similar to weight decay.</strong></li>
+<li>K-NN: adversarial training is prone to <strong>overfitting</strong></li>
+<li>Takeway: neural nets can actually become more secure than other models. Adversarially trained neural nets have <strong>the best empirical success rate</strong> on adversarial examples of any machine learning model.</li>
+</ul>
+<p><strong>Do an adversarial disturb that aims to change the decision.</strong> We want to make the network think this is a truck, or something similar. Not something you thought might be before. The category distribution that can <strong>be trained to judge it should be the same as before,</strong> that is, it still feels like a bird or an airplane. This method is called <strong>virtual adversarial training.</strong> Using virtual confrontation training, we can achieve <strong>semi-supervised learning</strong>, that is, using both labeled and unlabeled data for training, which <strong>improves the accuracy of the model.</strong></p>
+</li>
+<li><p>Failed defenses</p>
+<ul>
+<li>Generative pretraining</li>
+<li>Adding noise at test time</li>
+<li>Adding noise at train time</li>
+<li>Removing perturbation with an auto encoder</li>
+<li>Confidence-reducing perturbation at test time</li>
+<li>Ensembles </li>
+<li>Error correcting codes</li>
+<li>Multiple glimpses</li>
+<li>Weight decay</li>
+<li>Various non-linear units</li>
+<li>Double backprop</li>
+<li>Dropout</li>
+</ul>
+<p>Because machine learning algorithms are <strong>generalized</strong>. The objective function we hope to learn is independent of the data we train, and it does not matter which training sample we choose. If we want to generalize the test set to the training set, and hope that different training sets can get similar results. This means that they learn about <strong>similar functions,</strong> so they will <strong>be weak against similar confrontation samples.</strong></p>
+<p>Dawn Song of UC Berkeley et al. found that if several different models were integrated and then searched against a sample with gradient descent, each model in the integration could be deceived. When you deliberately lead to the <strong>migration phenomenon, it can really construct a very powerful migration.</strong></p>
+<p><strong>The shallow RBF network is well protected against disturbances.</strong> The current problem is that <strong>deep RBF networks are difficult to train</strong>, and it is possible to successfully train to solve the problem of against the sample. Because this model is highly nonlinear and has a wide, flat area, it is difficult for an enemy to increase the loss function by making small changes to the model’s input.</p>
+</li>
+<li><p>Universal approximator theorem</p>
+<p>The general approximation theorem tells us that <strong>no matter what shape our classification function wants, a neural network large enough can always be expressed.</strong> Whether we can train the neural network to get this function is still a problem that everyone can’t solve now, but we can <strong>at least give a right shape.</strong></p>
+</li>
+<li><p>Other problem</p>
+<p>There are still many problems when using neural networks as the optimization process. For example, we want to build a car that is very fast. We imagine a neural network accepting the blueprint of the car as input and predicting how fast the car can drive. We can Optimize the input of the neural network and find the blueprint of the fastest car that is predicted to run, so that we can build a super fast car. But unfortunately, <strong>we don’t have a blueprint for a very fast car now.</strong> We construct the confrontation sample so that the model thinks the car is very fast. If we can solve the problem against the sample, we can solve the model-based optimization problem.</p>
+</li>
+<li><p>Summary</p>
+<ul>
+<li>attacking is easy</li>
+<li>Defending is difficult</li>
+<li>Adversarial training provides regularization and semi-supervised learning</li>
+<li>The out-of-domain input problem is a bottleneck for model-based optimization generally.</li>
+</ul>
+</li>
+<li><p><strong>gradio</strong></p>
+<p><code>pip install gradio</code></p>
+<p> It allows you to: </p>
+<ul>
+<li>rapidly create visual interfaces on top of your model</li>
+<li>share them with others without dealing with hosting</li>
+<li>get feedback</li>
+</ul>
+</li>
+</ol>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>没有指引的日子，在不断探索</p>
+<p>还算健康，养生</p>
+<p>今天下雨了，就不去健身了</p>
+<p>中秋快到了，月饼还没有吃到</p>
+<p>今年中秋要去洛阳古城过了，小期待</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+            <a href="/tags/计算机视觉/" rel="tag"><i class="fa fa-tag"></i> 计算机视觉</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/23/迁移学习-深度迁移/" rel="next" title="迁移学习-深度迁移">
+                <i class="fa fa-chevron-left"></i> 迁移学习-深度迁移
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">104</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CS231n"><span class="nav-number">1.</span> <span class="nav-text">CS231n</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-1-CNN-for-Visual-Recognition"><span class="nav-number">1.1.</span> <span class="nav-text">Lesson 1: CNN for Visual Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-2-Image-Classification-pipeline"><span class="nav-number">1.2.</span> <span class="nav-text">Lesson 2: Image Classification pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-3-Loss-functions-and-Optimization"><span class="nav-number">1.3.</span> <span class="nav-text">Lesson 3: Loss functions and Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-4-Introduction-to-Neural-Networks"><span class="nav-number">1.4.</span> <span class="nav-text">Lecture 4: Introduction to Neural Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-5-Convolutional-Neural-Networks-for-Visual-Recognition"><span class="nav-number">1.5.</span> <span class="nav-text">Lecture 5: Convolutional Neural Networks for Visual Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-6-Training-Neural-Networks-I"><span class="nav-number">1.6.</span> <span class="nav-text">Lesson 6: Training Neural Networks I</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-7-Training-Neural-Networks-II"><span class="nav-number">1.7.</span> <span class="nav-text">Lesson 7: Training Neural Networks II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-8-Deep-learning-Software"><span class="nav-number">1.8.</span> <span class="nav-text">Lesson 8: Deep learning Software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-9-CNN-Architectures"><span class="nav-number">1.9.</span> <span class="nav-text">Lesson 9: CNN Architectures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-10-Recurrent-Neural-Networks"><span class="nav-number">1.10.</span> <span class="nav-text">Lesson 10: Recurrent Neural Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-11-Detection-and-Segmentation"><span class="nav-number">1.11.</span> <span class="nav-text">Lesson 11: Detection and Segmentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-12-Visualizing-and-Understanding"><span class="nav-number">1.12.</span> <span class="nav-text">Lesson 12: Visualizing and Understanding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-13-Generative-Models"><span class="nav-number">1.13.</span> <span class="nav-text">Lesson 13: Generative Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-14-Deep-Reinforcement-learning"><span class="nav-number">1.14.</span> <span class="nav-text">Lesson 14: Deep Reinforcement learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-15-Efficient-Methods-and-Hardware-for-Deep-Learning"><span class="nav-number">1.15.</span> <span class="nav-text">Lesson 15: Efficient Methods and Hardware for Deep  Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lesson-16-Adversarial-Examples-and-Adversarial-Training"><span class="nav-number">1.16.</span> <span class="nav-text">Lesson 16: Adversarial Examples and Adversarial Training</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">2.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

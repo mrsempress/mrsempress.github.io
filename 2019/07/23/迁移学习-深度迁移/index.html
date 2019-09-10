@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Transfer Learning," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="深度迁移部分，其实在上一篇中，DAN、DDC都是深度迁移 综述-Deep Visual Domain Adaptation: A Survey—20188这篇综述讨论的是深度域适配方法 核心贡献 （根据数据属性分类）分为监督和无监督，以及两者混合的半监督  （基于训练损失分类）可以分为分类损失classification loss，差异损失discrepancy loss和对抗性损失adversa">
+<meta name="keywords" content="Transfer Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迁移学习-深度迁移">
+<meta property="og:url" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="深度迁移部分，其实在上一篇中，DAN、DDC都是深度迁移 综述-Deep Visual Domain Adaptation: A Survey—20188这篇综述讨论的是深度域适配方法 核心贡献 （根据数据属性分类）分为监督和无监督，以及两者混合的半监督  （基于训练损失分类）可以分为分类损失classification loss，差异损失discrepancy loss和对抗性损失adversa">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/多步分类方法.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/域适配.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/MNISTtoUSPS.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/MNIST2USPS-1.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/DANN.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/DANN2.png">
+<meta property="og:updated_time" content="2019-07-23T01:35:00.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迁移学习-深度迁移">
+<meta name="twitter:description" content="深度迁移部分，其实在上一篇中，DAN、DDC都是深度迁移 综述-Deep Visual Domain Adaptation: A Survey—20188这篇综述讨论的是深度域适配方法 核心贡献 （根据数据属性分类）分为监督和无监督，以及两者混合的半监督  （基于训练损失分类）可以分为分类损失classification loss，差异损失discrepancy loss和对抗性损失adversa">
+<meta name="twitter:image" content="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/多步分类方法.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/"/>
+
+
+
+
+
+  <title>迁移学习-深度迁移 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/07/23/迁移学习-深度迁移/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">迁移学习-深度迁移</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-23T09:26:00+08:00">
+                2019-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/23/迁移学习-深度迁移/" class="leancloud_visitors" data-flag-title="迁移学习-深度迁移">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>深度迁移部分，其实在上一篇中，DAN、DDC都是深度迁移</p>
+<h3 id="综述-Deep-Visual-Domain-Adaptation-A-Survey—20188"><a href="#综述-Deep-Visual-Domain-Adaptation-A-Survey—20188" class="headerlink" title="综述-Deep Visual Domain Adaptation: A Survey—20188"></a>综述-Deep Visual Domain Adaptation: A Survey—2018<sup><a href="#fn_8" id="reffn_8">8</a></sup></h3><p>这篇综述讨论的是深度域适配方法</p>
+<h4 id="核心贡献"><a href="#核心贡献" class="headerlink" title="核心贡献"></a>核心贡献</h4><ol>
+<li><p>（根据数据属性分类）分为监督和无监督，以及两者混合的半监督</p>
+</li>
+<li><p>（基于训练损失分类）可以分为分类损失classification loss，差异损失discrepancy loss和对抗性损失adversarial loss。则可以分为基于差异的深度域适配Discrepancy-based deep DA，基于对抗的深度域适配Adversarial-based deep DA，基于重构的深度域适配Reconstruction-based deep DA 这三大类方法</p>
+</li>
+<li><p>（Multi-step (or transitive) DA多步域适配分类）考虑到源域和目标域的差异，可以多步域适配，有三种机制：手工制作hand-crafted，基于特征 feature-based和基于表示的机制representation-based</p>
+<p><img src="/2019/07/23/迁移学习-深度迁移/多步分类方法.png" alt=""></p>
+</li>
+<li><p>（CV上的应用）例如：图像分类、面部识别、风格转移，对象检测，语义分割和人物识别。</p>
+</li>
+<li><p>指出了当前方法的缺陷和未来研究的方向</p>
+</li>
+</ol>
+<h4 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h4><p>深度是指深度特征，而不是深度方法；</p>
+<p>从广义上讲，深度DA是一种利用<strong>深度网络</strong>来提高DA性能的方法。具有<strong>深层特征的浅层方法</strong>可被视为深度DA方法。而深度网络只提取矢量特征，对直接传递知识没有帮助。</p>
+<p>从狭义上讲，深度DA基于为DA设计的深度学习架构，可以通过<strong>反向传播</strong>从深度网络中获得最终效果。 直观的想法是将DA嵌入到学习表示的过程中，并学习具有语义意义和域不变性的深层特征表示。 通过“良好”的特征表示，目标任务的性能将显着提高。</p>
+<h5 id="单步域适配"><a href="#单步域适配" class="headerlink" title="单步域适配"></a>单步域适配</h5><p><img src="/2019/07/23/迁移学习-深度迁移/域适配.png" alt=""></p>
+<ol>
+<li><p>基于差异的深度域适配Discrepancy-based deep DA<br>利用<strong>fine-tuning</strong>来优化两个域的偏移。分为类标准，统计标准、结构标准、几何标准</p>
+</li>
+<li><p>基于对抗的深度域适配Adversarial-based deep DA<br>域鉴别器通过对抗性目标来鼓励<strong>域混淆</strong>（deep domain confusion network—DDC），以最小化源域和目标映射分布之间的距离。<br>根据是否存在生成模型分为生成模型GAN和非生成模型</p>
+<p>基于GAN，将判别模型与生成成分结合起来。 其中一个典型案例是使用源图像、噪声向量或两者来生成与目标样本类似的模拟样本，并保留源域的注释信息。</p>
+<p>CoGAN的核心思想是生成与合成源数据配对的合成目标数据。 它由一对GAN组成：GAN 1用于生成源数据，GAN 2用于生成目标数据。 生成模型中的前几层和判别模型中的最后几层的权重是相关的。 这种权重共享约束允许CoGAN在没有通信监督的情况下实现域不变的特征空间。 经过训练的CoGAN可以将输入噪声矢量调整为来自两个分布的成对图像并共享标签。 因此，合成目标样本的共享标签可用于训练目标模型。</p>
+<script type="math/tex; mode=display">
+min_G,T\ max_D\ V(D,G)=\alpha L_d(D,G)+\beta L_t(T,G)+\gamma L_c(G)\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>$L_d,L_t,L_c$分别是对抗损失、softmax损失和内容相似性损失</p>
+<p>非生成模型使用源域中的标签学习判别表示，并通过域混淆将目标数据映射到同一空间，从而导致域不变。</p>
+</li>
+<li><p>基于重构的深度域适配Reconstruction-based deep DA<br>使用数据重建作为辅助任务来确保特征不变性。重建器可以确保特定的域内表示和域间表示。分为编码器 - 解码器重建和对抗重建。<br>Encoder-Decoder Reconstruction编码器 - 解码器重建：通过使用堆叠自动编码器SAE。一般学习的编码器网络与数据重建的解码器网络相结合。</p>
+<p>基本的自动编码器框架是一个前馈神经网络，包括编码和解码过程。自动编码器首先对一些隐藏表示的输入进行编码，然后将该隐藏表示解码回重建版本。基于编码器 - 解码器重建的DA方法通常通过共享编码器学习域不变表示，并通过源域和目标域中的重建损失来维持域表示。</p>
+<script type="math/tex; mode=display">
+min\ λL_c (\{θ_{enc} , θ_{lab}\}) + (1 − λ)L_r (\{θ_{enc} , θ_{lab}\})\ \ \ \ \ \ \ \ \ \ \ (2)</script><hr>
+<p>对抗重建：通过经由GAN鉴别器获得的循环映射，为每个图像域内的重建图像和原始图像测量差异。</p>
+</li>
+</ol>
+<h5 id="多步域适配"><a href="#多步域适配" class="headerlink" title="多步域适配"></a>多步域适配</h5><ol>
+<li><strong>确定</strong>与源和目标域相关的<strong>中间域</strong></li>
+<li>知识转移过程将在源域，中间域和目标域之间执行，信息损失较少。</li>
+<li>关键是如何选择和利用中间域</li>
+</ol>
+<p>分为三类：手工制作，基于特征和基于表示的机制。</p>
+<ul>
+<li><p>手工制作：用户根据<strong>经验</strong>确定中间域</p>
+</li>
+<li><p>基于实例：从辅助数据集中选择<strong>数据的某些部分</strong>以组成中间域以训练深层网络<br>DDTL（distant domain transfer learning）通过删除不相关的源数据，来实现：</p>
+</li>
+<li><script type="math/tex; mode=display">
+J_1(f_e,f_d,v_S,v_T)=\frac 1 {n_S}\sum_{i=1}^{n_S}v_S^i\|\hat x_S^i- x_S^i\|_2^2\\
++\frac 1 {n_I}\sum_{i=1}^{n_I}v_I^i\|\hat x_I^i- x_I^i\|_2^2\\
++\frac 1 {n_T}\sum_{i=1}^{n_T}v_T^i\|\hat x_T^i- x_T^i\|_2^2+R(v_S,v_T)\ \ \ \ \ \ \ \ \ \ \ (3)</script><p>其中，$\hat x_*^i$是重建后的数据，中间数据$I^i$，$f_e,fd$是编码和解码的参数</p>
+</li>
+<li><p>基于表示：通过<strong>冻结先前训练的网络</strong>并使用其中间表示作为新表示的输入</p>
+</li>
+</ul>
+<h5 id="Domain-Adaptation域适配"><a href="#Domain-Adaptation域适配" class="headerlink" title="Domain Adaptation域适配"></a>Domain Adaptation域适配</h5><p> 对于一个随机变量$X$，$x\in X$是它的元素，对于每一个元素，都对应一个类别$y\in Y$。那么，它的边缘概率为$P(X)$，条件概率为$P(y|X)$，联合概率为$P(X, y)$。</p>
+<p>大多数域适配方法都假设两个领域的边缘分布不同，即$P\not=Q$，但条件分布相同，即$P(Y_s|X_s)= Q(Y_t|X_t)$。</p>
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
+<li><p>图像分类</p>
+</li>
+<li><p>面部识别<br>当训练图像中不存在测试图像的变化时，面部识别的性能显着降低。数据集移位可以由姿势，分辨率，照明，表达和模态引起。</p>
+</li>
+<li><p>物体检测</p>
+<p>物体检测的最新进展是由基于区域的卷积神经网络驱动的。 它们由<strong>窗口选择机制和分类器</strong>组成，这些分类器是使用从CNN提取的特征预先训练的标记边界框。 在测试时，分类器决定通过滑动窗口获得的区域是否包含该对象。 虽然R-CNN算法是有效的，但是需要大量标记数据的边界框来训练每个检测类别。 为了解决缺少标记数据的问题，考虑到窗口选择机制是域独立的，可以在分类器中使用深度DA方法来适应目标域。</p>
+</li>
+<li><p>语义分割<br>密集预测的完全卷积网络模型（FCN）已经证明在评估语义分段方面是成功的，但是在域移位下它们的性能也会降低。因此，一些工作也探索了使用<strong>弱标签</strong>来提高语义分割的性能。</p>
+</li>
+<li><p>图像转换<br>最近，图像到图像的转换在深度DA方面取得了巨大的成功，并且已经应用于各种任务，例如样式转换。特别地，当源图像和目标图像的特征空间不相同时，应该通过异构DA执行图像到图像的转换。</p>
+<p>通过<strong>fine-tune深度网络</strong>来匹配统计分布是实现图像到图像转换的另一种方式。通过总损失来调整CNN以实现DA，这是内容和风格损失之间的线性组合。<strong>内容损失</strong>使原始图像与较高层中生成的图像之间的特征表示的均方差最小化，而<strong>样式损失</strong>最小化每层上它们的Gram矩阵之间的元素均方差。</p>
+</li>
+<li><p>人物识别<br>当给定人的视频序列时，人员重新识别该人是否已经在另一个相机中以补偿固定设备的限制。<strong>域引导</strong>的丢失算法来丢弃无用的神经元，以便同时重新识别多个数据集上的人。 </p>
+</li>
+<li><p>图像字幕<br>图像字幕自动描述具有自然句子的图像。 由于缺乏配对的图像 - 句子训练数据，DA利用其他源域中的不同类型的数据来应对这一挑战。<strong>提出了一种新的对抗性训练程序</strong>（captioner v.s. critics），用于使用成对的源数据和未配对的目标数据进行跨域图像捕获。</p>
+</li>
+</ul>
+<h5 id="问题以及未来研究方向"><a href="#问题以及未来研究方向" class="headerlink" title="问题以及未来研究方向"></a>问题以及未来研究方向</h5><p>首先，大多数现有算法都关注于<strong>同构深度DA</strong>，它假设源域和目标域之间的特征空间是相同的。但是，在许多应用中，这种假设可能并非如此。<strong><em>异构深DA可能在未来吸引越来越多的关注。</em></strong></p>
+<p>此外，深度DA技术已成功应用于许多实际应用，包括图像分类和样式转换。以及涉及超越分类和识别的适应性，例如物体检测，人脸识别，语义分割和人物识别。<strong><em>如何在没有数据或数据量非常有限的情况下</em></strong>实现这些任务可能是未来几年深度数据库应该解决的主要挑战之一。</p>
+<p>最后，由于现有的深度DA方法旨在<strong>对齐边际分布</strong>，因此它们通常假设跨源和目标域的共享标签空间。然而，在实际场景中，<strong><em>源和目标域的图像可以来自不同的类别集合，或者仅共享几个感兴趣的类别。</em></strong></p>
+<h3 id="Fine-tune-最简单的深度迁移学习1"><a href="#Fine-tune-最简单的深度迁移学习1" class="headerlink" title="Fine-tune 最简单的深度迁移学习1"></a>Fine-tune 最简单的深度迁移学习<sup><a href="#fn_1" id="reffn_1">1</a></sup></h3><p>在论文《How transferable are features in deep neural networks?》中可以得到：</p>
+<ol>
+<li>深度迁移网络中加入fine-tune，效果会<strong>提升比较大</strong>，可能会比原网络效果还好；</li>
+<li>Fine-tune可以比较好地<strong>克服数据之间的差异性</strong>；</li>
+<li>深度迁移网络要比<strong>随机初始化权重</strong>效果好；</li>
+</ol>
+<h4 id="核心贡献-1"><a href="#核心贡献-1" class="headerlink" title="核心贡献"></a>核心贡献</h4><p>通过<strong>反向传播</strong>来进一步解锁卷基层，<strong>以提升效果</strong></p>
+<h4 id="核心内容-1"><a href="#核心内容-1" class="headerlink" title="核心内容"></a>核心内容</h4><p>冻结预训练模型的部分卷积层（通常是靠近输入的多数卷积层），训练剩下的卷积层（通常是靠近输出的部分卷积层）和全连接层。因为前面几层，一般提取的是共性、特征，后面几层具体化，因此可以适当公用基础层</p>
+<p>在不同数据集下使用的微调方法不同：</p>
+<ol>
+<li><p>数据量少，数据相似度高<br>修改最后几层或最终的softmax图层的输出类别</p>
+</li>
+<li><p>数据量少，数据相似度低<br>冻结预训练模型的初始层（比如k层），并再次训练剩余的（n-k）层</p>
+</li>
+<li><p>数据量大，数据相似度低</p>
+<p>从头开始训练神经网络（Training from scatch）</p>
+</li>
+<li><p>数据量大，数据相似度高</p>
+<p>保留模型的体系结构和模型的初始权重。然后，使用在预先训练的模型中的权重来重新训练该模型</p>
+</li>
+</ol>
+<p>有四种主要的技术：</p>
+<ol>
+<li><p>类标准Class criterion<br>使用<strong>类标签</strong>信息作为在不同域之间传递知识的指南；当这些样本不可用时，可以采用其他一些技术来代替类标记数据，例如伪标签</p>
+<script type="math/tex; mode=display">
+L=-\sum_{i=0}^N y_i log \hat y_i\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>其中，$\hat y_i$是softmax模型预测的值，代表是某一类的可能性</p>
+<script type="math/tex; mode=display">
+q_i=\frac{exp(z_i/T)}{\sum_j(exp(z_j/T))}\ \ \ \ \ \ \ \ \ \ \ (2)</script><p>另外还有边际Fisher分析准则和MMD准则来最小化：</p>
+<script type="math/tex; mode=display">
+min J=S_c{(M)}-\alpha S_b^{(M)}+\beta D_{ts}^{(M)}(X^s,X^t)\\+\gamma \sum_{m=1}^{M}(\|W^{(m)}\|_F^2+\|b^{(m)}\|_2^2)\ \ \ \ \ \ \ \ \ \ \ (3)</script><p>其中，$\alpha,\beta,\gamma$是正则参数，$W^{(m)},b^{(m)}$分别是m层的权重和偏差向量，$D_{ts}^{(M)}(X^s,X^t)$是MMD的表示，$S_c,S_b$分别是类内紧凑性和类间可分性。</p>
+<p>通过概率来确定是哪一类的，即比较$p(a_m|x)$，通过贝叶斯公式$p(y|a)=\frac{p(y)}{P(a^y)}\left[a=a^y\right]$，则先验概率为</p>
+<script type="math/tex; mode=display">
+p(y|x)=\sum_{a\in\{0,1\}^M}p(y|a)p(a|x)\\=\frac{p(y)}{p(a^y)}\prod_{m=1}^Mp(a^y_m|x)\ \ \ \ \ \ \ \ \ \ \ (4)</script></li>
+<li><p>统计标准statistic criterion<br>最常用的比较和减少<strong>分布偏移</strong>的方法是最大平均差异（MMD），相关性对齐（CORAL），Kullback-Leibler（KL）差异和H差异等</p>
+<ul>
+<li><p>Maximum Mean Discrepancy MMD</p>
+<script type="math/tex; mode=display">
+MMD^2(s,t)=sup_{\|\phi\|_H\leq 1}\|E_{x^s\sim s}[\phi(x^s)]-E_{x^t\sim s}[\phi(x^t)]\|_H^2\ \ \ \ \ \ \ \ \ \ \ (5)\\
+MMD^2(D_s,D_t)=\|\frac 1 {M}\sum_{i=1}^{M}\phi(x_s^{(i)})-\frac 1 {N}\sum_{j=1}^{N}\phi(x_t^{(j)})\|_H\ \ \ \ \ \ \ \ \ \ \ (6)</script><p>其中，$\phi$是核函数，将原始数据映射到RKHS中，同时在单位球中有$|\phi|_H \leq 1$</p>
+<p>则，损失函数为：</p>
+<script type="math/tex; mode=display">
+L=L_C(X^L,y)+\lambda MMD^2(X^sX^t)\ \ \ \ \ \ \ \ \ \ \ (7)</script><p>其中，$\lambda$是惩罚参数，$L_C(X^L,y)$代表分类的损失，$X^L$代表可用的标记数据，$y$是ground-truth标记，$MMD^2(X^sX^t)$代表源域和目标域的差距</p>
+</li>
+<li><p>CORAL：一种线性变换，它可以对齐域之间的二阶统计量</p>
+<script type="math/tex; mode=display">
+L_{CORAL}=\frac 1 {4d^2}\|C_S-C_T\|^2_F\ \ \ \ \ \ \ \ \ \ \ (8)</script><p>其中，$|\cdot|_F^2$是平方矩阵Frobenius范数，$C_S,C_T$分别是源数据和目标数据的协方差矩阵。</p>
+</li>
+<li><p>Kullback-Leibler (KL) divergence</p>
+<p>用来估计分布之间的距离</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+D_{KL}(P\|Q)=\sum_i P(i)log\frac{P(i)}{Q(i)}\ \ \ \ \ \ \ \ \ \ \ (9)</script><ul>
+<li>CMD：central moment discrepancy中心矩差异，匹配域分布的高阶矩<script type="math/tex; mode=display">
+CMD_K(X^s,X^t)=\frac 1 {(b-a)}\|E(X^s)-E(X^t)\|_2+\sum_{k=2}^K \frac 1 {|b-a|^k}\|C_k(X^s)-C_k(X^t)\|_2\ \ \ \ \ \ \ \ \ \ \ (10)</script>其中，$C_k(X)=E(x-E(X))^k$是所有k阶样本中心矩，$E(X)= \frac {1}{| X |} \sum _{x\in X^x}$是经验期望</li>
+</ul>
+</li>
+<li><p>结构标准architecture criterion<br>旨在通过调整<strong>深度网络的架构</strong>来提高学习更多可转移特征的能力。 被证明具有成本效益的技术包括自适应批量归一化BN，弱相关权重，域引导丢失等</p>
+<ul>
+<li>相应层中的权重不是共享的，而是由权重正则化因子$r_w(\cdot)$相关联以解释相应层之间的差异。<br>损失函数，则为：</li>
+</ul>
+<script type="math/tex; mode=display">
+r_w(\theta^s_j,\theta^t_j)=exp(\|\theta^s_j-\theta^t_j\|^2)-1\ \ \ \ \ \ \ \ \ \ \ (11)</script><p>​        其中，$\theta_j^s,\theta_j^t$是第j层源、目标域的参数</p>
+<p>​        放宽限制后，使得其中一个做线性变换：</p>
+<script type="math/tex; mode=display">
+r_w(\theta_j^s,\theta_j^t)=exp(\|a_j\theta_j^s+b_j-\theta_j^t\|^2)-1\ \ \ \ \ \ \ \ \ \ \ (12)</script><ul>
+<li><p>使用弱参数共享层。 惩罚项Ω控制参数的相关性</p>
+<script type="math/tex; mode=display">
+\Omega=\sum_{i=1}^L(\|W_S^{(l)}-W_T^{(l)}\|_F^2+|b_S^{(l)}-b_T^{(l)}\|_F^2)\ \ \ \ \ \ \ \ \ \ \ (13)</script><p>其中，$\{W_S^{(l)},b_S^{(l)}\}_{l=1}^L,\{W_T^{(l)},b_T^{(l)}\}_{l=1}^L$是第l层的源域和目标域</p>
+</li>
+<li><p>BN：规范化每个单独特征通道的平均值和标准偏差，使得每个层从类似分布接收数据，而不管它是来自源域还是目标域</p>
+<script type="math/tex; mode=display">
+BN(X^t)=\lambda(\frac{x-\mu(X^t)}{\sigma(X^t)})+\beta\ \ \ \ \ \ \ \ \ \ \ (14)</script><p>其中，$\mu(x),\sigma(x)$是每个特征通道独立计算的平均值和标准差。</p>
+</li>
+</ul>
+</li>
+<li><p>几何标准geometric criterion<br>该标准假设几何结构的关系可以减少域移位<br>GAN由两个模型组成：<strong>提取数据分布的生成模型G</strong>和通过预测二进制标签来区分样本是来自G还是训练数据集的<strong>判别模型D.</strong> 网络同时优化G以最小化损失，同时还训练D以最大化分配正确标签的概率：</p>
+<script type="math/tex; mode=display">
+min_G\ max_D\ V(D,G)=E_{x\sim p_{data}(x)}[logD(x)]+E_{z\sim p_{z}(z)}[log(1-D(G(z))]\ \ \ \ \ \ \ \ \ \ \ (15)</script></li>
+</ol>
+<h4 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h4><blockquote>
+<p>Algorithm:  Fine-tune</p>
+<ol>
+<li>初始化为预先训练的模型</li>
+<li>重新构造最后一层，使它的输出数与新数据集中的类数相同</li>
+<li>选择需要更新的参数以此来优化算法</li>
+<li>开始训练</li>
+</ol>
+</blockquote>
+<p><em>注</em>：可以见BaseLine：ResNet50，在那里复现的时候，有用到Fine-tune</p>
+<h3 id="DaNN：Domain-Adaptive-Neural-Networks—20145"><a href="#DaNN：Domain-Adaptive-Neural-Networks—20145" class="headerlink" title="DaNN：Domain Adaptive Neural Networks—20145"></a>DaNN：Domain Adaptive Neural Networks—2014<sup><a href="#fn_5" id="reffn_5">5</a></sup></h3><h4 id="核心贡献-2"><a href="#核心贡献-2" class="headerlink" title="核心贡献"></a>核心贡献</h4><p>DaNN虽然是一个简单的神经网络（只有一个隐藏层），来处理对象识别中的域适应问题。 但它的提出了非参数概率分布距离度量，即<strong><em>MMD(maximum mean discrpancy)度量作为监督学习中的正则化</em></strong>，作为样本差异性，以减少潜在空间中源域和目标域之间的分布不匹配。 之后的许多研究都在遵循这一想法，将MMD或其他测量（例如CORAL损失，Wasserstein距离）嵌入到更深层（例如AlexNet，ResNet）网络中。</p>
+<h4 id="核心内容-2"><a href="#核心内容-2" class="headerlink" title="核心内容"></a>核心内容</h4><p>DaNN 的方法可以用于 无监督迁移学习中，因此训练中只有源域参加。，DaNN 的最终目的是为了使得训练出的网络学习到 source 和 target 的<strong>不变式（公用）特征</strong>，使得网络能够应用在 target 数据上。</p>
+<p>仅有两层神经网络元组成：特征层和分类器层。创新之处在于：在特征层后加入了一项<strong>MMD适配层</strong>，用来计算源域和目标域的距离，并将其加入网络的损失中进行训练。因此，整个网络的目标也相应地由两部分构成：在有label的源域数据上的<strong>分类误差$l_C$</strong>以及对两个领域数据的<strong>判别误差$l_d$</strong>（和两个领域的距离有关），可以表示为：</p>
+<script type="math/tex; mode=display">
+l=l_C+\lambda l_D\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>很显然的由于网络层数太少，表征能力有限，精度不高。</p>
+<hr>
+<p>这里来详细探究一下MMD：</p>
+<p>MMD 的本质是在通过<strong>样本</strong>来计算<strong>两个分布之间的差异性大小</strong>。将 MMD 用于迁移学习想法早就有之，例如TCA。MMD 计算方法为：将来源于两个分布的样本<strong>投射入相同的空间</strong>，然后计算它们的<strong>均值差值</strong>。通过<strong>平方+开根</strong>的 trick 可以将 MMD 的计算变为一个<strong>核方法</strong>计算，DaNN 中采取的核为<strong>高斯核</strong>。</p>
+<p>首先在$X$上有两个可能性分布$p,q$，这样MMD被定义为：</p>
+<script type="math/tex; mode=display">
+MMD(\zeta,p,q)=sup_{f\in \zeta}(E_{x\sim p}[f(x)]-E_{y\sim q}[f(y)])\ \ \ \ \ \ \ \ \ \ \ (2)</script><p>其中，$\zeta$是$f:X\to R$的一个类别。再生核希尔伯特空间（RKHS）中单位球的函数集，用H表示。通过$MMD(F,p,q)= 0$，以此可以检测p和q之间的差异。</p>
+<p>在这个问题中，可以表示为：</p>
+<script type="math/tex; mode=display">
+MMD_e(X_s,X_t)=\|\frac 1 {n_s}\sum_{i=1}^{n_s}\phi(x_s^{(i)})-\frac 1 {n_t}\sum_{j=1}^{n_t}\phi(x_t^{(j)})\|_H\ \ \ \ \ \ \ \ \ \ \ (3)</script><p>其中，$\Phi(\cdot):X\to H$是关于特征空间映射的函数</p>
+<script type="math/tex; mode=display">
+MMD_e(x_s,x_t)=(\frac 1 {n_s^2}\sum_{i=1}^{n_s}\sum_{j=1}^{n_s}k(x_s^{(i)},x_s^{(j)})+\frac 1 {n_t^2}\sum_{i=1}^{n_t}\sum_{j=1}^{n_t}k(x_t^{(i)},x_t^{(j)})-\frac 2 {n_s n_t}\sum_{i=1}^{n_s}\sum_{j=1}^{n_s}k(x_s^{(i)},x_t^{(j)}))^{\frac 1 2}\\
+=(\frac {Tr(K_{xss})}{n_s^2}+\frac {Tr(K_{xtt})}{n_t^2}-2\frac{Tr(K_{xst})}{n_sn_t})^{\frac 1 2}\ \ \ \ \ \ \ \ \ \ \ (4)</script><p>其中$[K_{x<em>*}]_{ij}=k(x_</em>^{(i)},x_*^{(j)})$是所有在数据空间中的可能的核组成的Gram矩阵。</p>
+<blockquote>
+<p>Gram（格雷姆）矩阵：由n维欧式空间中任意$k(k\leq n)$个向量$\alpha_1,\alpha_2,\cdots \alpha_k$的内积所组成的矩阵</p>
+<script type="math/tex; mode=display">
+\Delta(\alpha_1,\alpha_2,\cdots \alpha_k)=\left(\begin{matrix}(\alpha1,\alpha1)&(\alpha2,\alpha2)&\cdots&(\alpha1,\alpha k)\\
+(\alpha2,\alpha1)&(\alpha2,\alpha2)&\cdots&(\alpha2,\alpha k)\\
+\cdots&\cdots&\cdots\\
+(\alpha k,\alpha1)&(\alpha k,\alpha2)&\cdots&(\alpha k,\alpha k)
+\end{matrix}\right)\ \ \ \ \ \ \ \ \ \ \ (5)</script><p>格拉姆矩阵可以看做<strong><em>特征之间的偏心协方差矩阵（即没有减去均值的协方差矩阵）</em></strong>。在feature map中，每个数字都来自于一个特定滤波器在特定位置的卷积，因此<strong><em>每个数字代表一个特征的强度</em></strong>，而Gram计算的实际上是<strong><em>两两特征之间的相关性</em></strong>，哪两个特征是同时出现的，哪两个是此消彼长的等等，同时，Gram的对角线元素，还体现了<strong><em>每个特征在图像中出现的量</em></strong>，因此，Gram有助于把握整个图像的大体风格。有了表示风格的Gram Matrix，<strong><em>要度量两个图像风格的差异，只需比较他们Gram Matrix的差异即可。</em></strong></p>
+</blockquote>
+<hr>
+<p>FFNN：Feed Forward Neural Network前馈神经网络</p>
+<p>标准的FFNN有三种类型的层：输入$x\in \R^{n_x}$、隐藏$h\in \R^{n_h}$和输出$o\in \R^{n_o}$；则有：</p>
+<script type="math/tex; mode=display">
+h = \sigma_1(W_1^Tx+b)\ \ \ \ \ \ \ \ \ \ \ (6)\\
+o=\sigma_2(W_2^Th+c)\ \ \ \ \ \ \ \ \ \ \ (7)</script><p>其中softplus函数$\sigma_1(u)_j=log(1+exp)u_j$和softmax函数$\sigma_2(v)_l=\frac {exp(v_l)}{\sum_k exp(v_k)}$；其中，$u\in\R^{n_h},v\in\R^{n_o}$</p>
+<p>最大似然损失函数则为：</p>
+<script type="math/tex; mode=display">
+J_{NN}=-\frac 1 n\sum_{i=1}^n\sum_{k=1}^l y_k^{(i)}log([g(x^{(i)})]_k)\ \ \ \ \ \ \ \ \ \ \ (8)</script><p>通过后向传播来最小化损失函数</p>
+<hr>
+<p>DAE：Denoising Auto-encoder去噪自动编码器</p>
+<p>自动编码器是通过损失函数重建其输入，来用于学习有效编码的无监督神经网络。而DAE，是在给定噪声对应物的情况下通过重建干净输入来捕获强大的表示零掩蔽、高斯以及椒盐噪声几种噪声类型来表征滤波器</p>
+<hr>
+<p>DaNN：Domain Adaptive Neural Network</p>
+<p>那么如何通过神经网络量化出两个分布的样本差异性呢？ 作者的方法非常 naive，将 source 和 target 的数据分别<strong>传入网络</strong>，然后将第一层（表征层）的网络<strong>输出结果输入</strong>，<strong>作为 MMD 的输入</strong>计算样本的差异性。</p>
+<p>DaNN 为了将 <strong>MMD 产生的 loss 传入网络</strong>，训练方式分为两步：</p>
+<ol>
+<li>先是和常规训练方式一样，利用 <strong>mini-batch GD</strong> 传递<strong>任务</strong>（e.g. 分类）的 <strong>loss 更新参数</strong>。</li>
+<li>然后用<strong>表征层</strong>分别<strong>计算</strong> source 和 domain 样本的 <strong>MMD loss</strong>，然后再次<strong>更新参数。</strong></li>
+</ol>
+<p>DaNN是DNN的变体，加入了MMD测量，因此损失函数变为：</p>
+<script type="math/tex; mode=display">
+J_{DANN}=J_{NN_s}+\gamma MMD^2_e(q_s,\overline {q_t})\ \ \ \ \ \ \ \ \ \ \ (9)\\
+J_{NN_s}=-\frac 1 n\sum_{i=1}^{n_s}\sum_{k=1}^l ([y_s^{(i)}]_k log([f(x^{(i)}_s)]_k))\ \ \ \ \ \ \ \ \ \ \ (10)\\
+q_s=W_1^Tx_s+b,\overline q_t= W_1^Tx_t+b\ \ \ \ \ \ \ \ \ \ \ (11)</script><p>要最小化损失函数，可以先对其进行求导，等式的前者的导数的值很小，可以用小批量随机梯度下降的方法来更新$U_1$；后者的求导和所选择k的值有关，用完全批量梯度下降法。如果我们选择高斯核，则$K_G(x,y)=exp(-\frac{|x-y|^2}{2s^2})$。同时改写$MMD^2_e(\cdot,\cdot)$为矩阵向量的形式。先将参数改写为矩阵的形式：$\tilde {X_s}^{(i)}=\left[\begin{matrix}1\\X_s^{(i)}\end{matrix}\right]\in \R^{(d+1)}, \forall i=1,\cdots,n_s,\ \tilde {X_t}^{(j)}=\left[\begin{matrix}1\\X_s^{(j)}\end{matrix}\right]\in \R^{(d+1)}, \forall j=1,\cdots,n_t$，参数矩阵$U_1\left[\begin{matrix}b^T\\W_1\end{matrix}\right]\in R^{(d+1)\times k},\ U_2\left[\begin{matrix}c^T\\W_2\end{matrix}\right]\in R^{(k+1)\times l}$。</p>
+<p>这样，$MMD^2_e(\cdot,\cdot)$表示为：</p>
+<script type="math/tex; mode=display">
+MMD^2_e(U_1^TX_s,U_1^TX_t)=\frac{1}{n_s^2}\sum_{i,j=1}^{n_s}exp(-\frac{(x_s^{(i)}-x_s^{(j)})^TU_1U_1^T(x_s^{(i)}-x_s^{(i)})}{2s^2})\\+\frac{1}{n_t^2}\sum_{i,j=1}^{n_t}exp(-\frac{(x_t^{(i)}-x_t^{(j)})^TU_1U_1^T(x_t^{(i)}-x_t^{(i)})}{2s^2})\\-\frac{2}{n_sn_t}\sum_{i,j=1}^{n_s,n_t}exp(-\frac{(x_s^{(i)}-x_t^{(j)})^TU_1U_1^T(x_s^{(i)}-x_t^{(i)})}{2s^2})\ \ \ \ \ \ \ \ \ \ \ (12)</script><p>让$G_{<em>*}(i,j)=-\frac 1 {s^2}K_G(x_</em>^{(i)},x_<em>^{(j)})(x_</em>^{(i)}-x_<em>^{(j)})(x_</em>^{(i)}-x_*^{(j)})^TU_1$，则有</p>
+<script type="math/tex; mode=display">
+\frac {\partial M_{st}^2}{\partial U_1}=\frac {1}{n_s^2}\sum_{i,j=1}^{n_s}G_{ss}(i,j)+\frac {1}{n_t^2}\sum_{i,j=1}^{n_t}G_{tt}(i,j)-\frac {2}{n_s,n_t}\sum_{i,j=1}^{n_s}G_{st}(i,j)</script><hr>
+<p>SURF：Speeded Up Robust Features加速稳健特征。步骤如下：</p>
+<ol>
+<li>特征提取</li>
+<li>构建尺度空间</li>
+<li>特征点定位</li>
+<li>特征点主方向分配</li>
+<li>生成特征点描述子特征点匹配</li>
+</ol>
+<p>这里运用SURF来获取图片特征：</p>
+<ol>
+<li>利用调整大小和灰度图像上的SURF描述符来检测图像特征，以检测局部尺度不变的兴趣点；</li>
+<li>使用从亚马逊图像的子集训练的码本将数据点编码成800个桶的直方图</li>
+<li>对最终特征进行归一化和z-评分，得到零均值和单位方差。</li>
+</ol>
+<h4 id="伪代码-1"><a href="#伪代码-1" class="headerlink" title="伪代码"></a>伪代码</h4><blockquote>
+<p>Algorithm: DaNN</p>
+<p>输入：权重向量$U_1\in\R^{(d+1,)<em>k},U_2\in\R^{(k+1,)</em>l}$，$h\in\R^k$隐藏层向量，$o\in\R^l$输出层向量，$\alpha$学习率，$\gamma$MMD的正则常数</p>
+<p>begin</p>
+<p>​    1.用随机小实数初始化$U_1,U_2$</p>
+<p>​    2.用标准向前、向后传播的批量随机梯度下降法分别来更新$U_2$和$U_1$</p>
+<p>​    3.通过离线梯度下降法来更新$U_1$</p>
+<script type="math/tex; mode=display">
+U_1(t):=U_1(t-1)-\alpha \gamma\frac{\partial M_{st}^2}{\partial U_1}</script><p>​    4.重复2、3步</p>
+<p>end</p>
+</blockquote>
+<h3 id="baseline：数字迁移使用网络—201510"><a href="#baseline：数字迁移使用网络—201510" class="headerlink" title="baseline：数字迁移使用网络—201510"></a>baseline：数字迁移使用网络—2015<sup><a href="#fn_10" id="reffn_10">10</a></sup></h3><p>根据上一标题《Self-Ensembling for Visual Domain Adaptation》的附录D所提及的网络</p>
+<h4 id="核心内容-3"><a href="#核心内容-3" class="headerlink" title="核心内容"></a>核心内容</h4><p>作者给出了网络结构的数据，我挑选了其中相对来说简短的<code>MNIST&lt;-&gt;USPS architecture</code></p>
+<p><img src="/2019/07/23/迁移学习-深度迁移/MNISTtoUSPS.png" alt=""></p>
+<p>先是输入；然后一个卷积一个池化；然后两个卷积一个池化；再一个Dropout；最后两个全联接。</p>
+<h4 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h4><p>即，根据上面的结构，进行编写。</p>
+<p>大概结构编写如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_classes)</span>:</span></div><div class="line">  			self.conv1_1 = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, (<span class="number">5</span>, <span class="number">5</span>))</div><div class="line">        self.conv1_1_bn = nn.BatchNorm2d(<span class="number">32</span>)</div><div class="line">      </div><div class="line">        self.pool1 = nn.MaxPool2d((<span class="number">2</span>, <span class="number">2</span>))</div><div class="line"></div><div class="line">        self.conv2_1 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>))</div><div class="line">        self.conv2_1_bn = nn.BatchNorm2d(<span class="number">64</span>)</div><div class="line"></div><div class="line">        self.conv2_2 = nn.Conv2d(<span class="number">64</span>, <span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>))</div><div class="line">        self.conv2_2_bn = nn.BatchNorm2d(<span class="number">64</span>)</div><div class="line"></div><div class="line">        self.pool2 = nn.MaxPool2d((<span class="number">2</span>, <span class="number">2</span>))</div><div class="line"></div><div class="line">        self.drop1 = nn.Dropout()</div><div class="line"></div><div class="line">        self.fc3 = nn.Linear(<span class="number">1024</span>, <span class="number">256</span>)</div><div class="line"></div><div class="line">        self.fc4 = nn.Linear(<span class="number">256</span>, n_classes)</div></pre></td></tr></table></figure>
+<p>解析一下上面所用到的函数：</p>
+<ol>
+<li><p><code>torch.nn.Conv2d(in_channerls, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)</code>二维卷积层, 输入的尺度是，输出尺度的计算方式： </p>
+<script type="math/tex; mode=display">
+out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}_{k=0}weight(C_{out_j},k)\bigotimes input(N_i,k)</script><p><strong>参数：</strong></p>
+<p><code>in_channels</code>(int) - 输入信号的通道$(N, C_{in},H,W_{in})$</p>
+<p><code>out_channels</code>(int) - 卷积产生的通道$(N,C_{out},H_{out},W_{out})$</p>
+<p><code>kerner_size</code>(int or tuple) - 卷积核的尺寸</p>
+<p><code>stride</code>(int or tuple, optional) - 控制相关系数的计算<strong>步长</strong></p>
+<p><code>padding</code>(int or tuple, optional) - 输入的每一条边补充0的层数</p>
+<p><code>dilation</code>(int or tuple, optional) - 用于控制<strong>内核点</strong>之间的<strong>距离</strong></p>
+<p><code>groups</code> - 控制输入和输出之间的<strong>阻塞连接数</strong>：</p>
+<ul>
+<li><code>group=1</code>，输出是所有的输入的卷积</li>
+<li><p><code>group=2</code>，此时相当于有并排的两个卷积层，每个卷积层计算输入通道的一半，并且产生的输出是输出通道的一半，随后将这两个输出连接起来</p>
+<p><strong>变量:</strong> </p>
+</li>
+</ul>
+<p><code>weight</code>(tensor) - 卷积的权重，大小是：<code>(out_channels, in_channels,kernel_size)</code> </p>
+<p><code>bias</code>(tensor) - 卷积的偏置系数，大小是：<code>(out_channel)</code></p>
+<script type="math/tex; mode=display">
+H_{out}=floor((H_{in}+2*padding[0]-dilation[0]*(kernerl_{size}[0]-1)-1)/stride[0]+1)\\
+W_{out}=floor((W_{in}+2*padding[1]-dilation[1]*(kernerl_{size}[1]-1)-1)/stride[1]+1)</script></li>
+<li><p><code>torch.nn.MaxPool2d(kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False)</code></p>
+<p>对于输入信号$(N, C_{in},W_{in})$，提供2维最大池化max pooling操作</p>
+<p>输出：$(N,C_{out},H_{out},W_{out})$</p>
+<p><strong>参数：</strong></p>
+<p><code>kerner_size</code>(int or tuple) - max pooling的窗口大小</p>
+<p><code>stride</code>(int or tuple, optional) - max pooling的窗口移动<strong>步长</strong>，默认为kernel_size</p>
+<p><code>padding</code>(int or tuple, optional) - 输入的每一条边补充0的层数</p>
+<p><code>dilation</code>(int or tuple, optional) - 用于控制窗口中元素步幅的参数<br><code>return_indices</code> - 如果等于True，会返回输出最大值的序号，对采样有帮助</p>
+<p><code>ceil_mode</code> - 如果等于True，计算输出信号大小的时候，会使用向上取整，代替默认的向下取整的操作</p>
+<script type="math/tex; mode=display">
+H_{out}=floor((H_{in}+2*padding[0]-dilation[0]*(kernerl_{size}[0]-1)-1)/stride[0]+1)\\
+W_{out}=floor((W_{in}+2*padding[1]-dilation[1]*(kernerl_{size}[1]-1)-1)/stride[1]+1)</script></li>
+<li><p><code>torch.nn.BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True)</code></p>
+<p>对小批量(mini-batch)3d数据组成的4d输入进行批标准化(Batch Normalization)操作</p>
+<script type="math/tex; mode=display">
+y = \frac{x - mean[x]}{ \sqrt{Var[x]} + \epsilon} * \gamma + \beta\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>输入输出大小相同。</p>
+<p><strong>参数：</strong></p>
+<p><code>num_features</code> - 期望输入的特征数，大小为<code>(batch_size x num_features x height x width)</code></p>
+<p><code>eps</code> - 为保证数值稳定性（分母不能趋近或取0）,给分母加上的值，默认为1e-5</p>
+<p><code>momentum</code> - 动态均值和动态方差所使用的动量。默认为0.1。</p>
+<p><code>affine</code> - 一个布尔值，当设为true，给该层添加可学习的仿射变换参数</p>
+</li>
+<li><p><code>torch.nn.functional.dropout(input, p=0.5, training=True, inplace=False)</code><br>在训练期间，使用伯努利分布的样本以概率p随机地将输入张量的一些元素归零。</p>
+<p><strong>参数:</strong><br><code>p</code> - 元素归零的概率，默认值：0.5</p>
+<p><code>training</code> - 如果为True，则应用dropout。 默认值：True</p>
+<p><code>inplace</code>  - 如果设置为True，将就地执行此操作。 默认值：False</p>
+</li>
+<li><p><code>torch.nn.Linear(in_features, out_features, bias=True)</code><br>对输入数据应用线性变换：$y=xA^T+b$</p>
+<p>输入数据大小：$(N, in_{features},H_{in})$</p>
+<p>输出数据大小：$(N, out_{features},H_{out})$</p>
+<p><code>in_features</code> - 输入数据特征数</p>
+<p><code>out_features</code> - 输出数据特征数</p>
+<p><code>bias</code> - 如果设置为False，则图层不会学习附加偏差，默认值：True<br><strong>变量：</strong></p>
+<p><code>Linear.weight</code>权重，大小为<code>(out_features, infeatures)</code>。值初始化为$\mu(-\sqrt k,\sqrt k)$，其中，$k=\frac 1 {in_features}$</p>
+<p><code>Linear.bias</code>偏差，大小为<code>(out_features)</code>。如果偏差为True，则初始化为，其中，$\mu(-\sqrt k,\sqrt k)$，其中，$k=\frac 1 {in_features}$</p>
+</li>
+</ol>
+<p>部分结果如下：</p>
+<p><img src="/2019/07/23/迁移学习-深度迁移/MNIST2USPS-1.png" alt=""></p>
+<h3 id="Domain-Adversarial-Training-of-Neural-Networks—201617"><a href="#Domain-Adversarial-Training-of-Neural-Networks—201617" class="headerlink" title="Domain Adversarial Training of Neural Networks—201617"></a>Domain Adversarial Training of Neural Networks—2016<sup><a href="#fn_17" id="reffn_17">17</a></sup></h3><h4 id="核心贡献-3"><a href="#核心贡献-3" class="headerlink" title="核心贡献"></a>核心贡献</h4><p><strong><em>利用GAN的思想</em></strong>来实现的。将域适应嵌入到深度特征学习过程中，使得所获得的前馈网络可以适用于目标域而<strong>不受两个域之间转换</strong>所带来的阻碍。虽然也是通过对齐特征分布来实现的，但是是通过<strong>标准反向传播</strong>训练完成对准。DANN背后的主要思想是<strong>禁止网络隐藏层去学习来预测源示例标签的表示</strong>。且该方法不仅适用于分类任务，几乎可以在任何<strong>通过反向传播训练的现有前馈架构创建DANN版本</strong>，例如用于人员重新识别的描述符学习。</p>
+<h4 id="核心内容-4"><a href="#核心内容-4" class="headerlink" title="核心内容"></a>核心内容</h4><p>也是通过对齐特征分布来实现的。域对抗性神经网络（DANN） 框架由feature extractor、label predictor和domain classifier（<strong>标签预测器，域分类器和特征提取器</strong>）三个部分组成，并且在特征提取器和域分类器之间有一个梯度反转层（使其在前向传播中使输入保持不变，并且在反向传播中乘以负标量来反转梯度）。</p>
+<p><img src="/2019/07/23/迁移学习-深度迁移/DANN.png" alt=""></p>
+<p>该网络由<strong>共享特征提取层</strong>和<strong>两个分类器</strong>组成（一个是<em>标记预测器</em>，用于预测类标签并在训练和测试时使用；另一个是<em>域分类器</em>用于训练时区分源和目标域）。 DANN最小化<strong>域混淆损失</strong>（对于所有样本，通过使用GRL）和<strong>标签预测损失</strong>（对于源样本）。其专注于学习结合<strong>判别性和域不变性</strong>的特征。</p>
+<p>优化特征映射参数的目的是为了<strong>最小化label classifier</strong>的损失函数，<strong>最大化domain classifier</strong>的损失函数，前者是为了提取出具有区分能力的特征，后者是为了提取出具有领域不变性的特征。因此 模型最后的分类决策是既有<strong>区分力</strong>又对领域变换具有<strong>不变性</strong>特征的。</p>
+<p><strong>Definition 1</strong></p>
+<p>DANN直接优化了<strong>H-divergence</strong>的概念。</p>
+<script type="math/tex; mode=display">
+d_{\mathcal{H}}(\mathcal{D}_S^X,\mathcal{D}_T^X)=2\text{sup}_{\eta\in \mathcal{H}}|\text{Pr}_{x\sim \mathcal{D}_S^x}[\eta(x)=1]-\text{Pr}_{x\sim \mathcal{D}_T^X}[\eta(x)=1]\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>其中，$H$是一个假设类，$D_S^X,D_T^X$上的两个域分布。</p>
+<p>根据经验的H-divergence：</p>
+<script type="math/tex; mode=display">
+\hat d_\mathcal{H}(S,T)=2(1-\text{min}_{\eta\in \mathcal{H}}[\frac 1 n \sum_{i=1}^n I[\eta(x_i)=0]+\frac 1 {n'}\sum_{i=n+1}^NI[\eta(x_i)=1]])\ \ \ \ \ \ \ \ \ \ \ (2)</script><p>其中，$I[a]$是指标函数，如果a为真，则为1，否则为0；$N = n + n_0$是样本的总数</p>
+<p>作者的想法，主要参考Ben-Davaid et al.(2006,2010)，即H-divergence的上界受其经验估计加上恒定复杂度项的依赖，该复杂项依赖于H的VC维数和大小。 样本S和T通过将该结果与源风险的类似界限相结合，得到以下定理。</p>
+<p><strong>Theorem 2</strong>：设$H$是$VC$维$d$的假设类。 X对于每个$η∈H$，在样本$S\sim(D_S)^n$和$T\sim(D_T^x)^n$的选择上概率为$1-δ$：</p>
+<script type="math/tex; mode=display">
+R_{D_T}(\eta)\leq R_S(\eta)+\sqrt{\frac 4 n(d\text{log}\frac {2en}{d}+\text{log}\frac 4 \delta)}+\hat d_H (S,T)+4\sqrt{\frac 1 n(d\text{log}\frac {2n}d+log\frac 4 \delta)}+\beta\ \ \ \ \ \ \ \ \ \ \ (3)\\
+\beta \geq \text{inf}_{\eta^*\in H}[R_{D_s}(\eta^*)+R_{D^T}(\eta^*)]\ \ \ \ \ \ \ \ \ \ \ (4)\\
+R_S(\eta)=\frac 1 n\sum^m_{i=1}I[\eta(x_i)\not= y_i]\ \ \ \ \ \ \ \ \ \ \ (5)</script><p>正如Ben-David等人所指出的那样。 （2006），控制H-发散的策略是找到示例的表示，其中源域和目标域尽可能无法区分。 根据这种表示，根据定理2，具有低源风险的假设将在目标数据上表现良好。 在本文中，我们提出了一种直接利用这一思想的算法。正如Ben-David等人所指出的那样，控制H-divergence的策略是找到样本表示，其中源域和目标域尽可能无法区分。 根据这种表示，具有低源风险的假设将在目标数据上表现良好。 在本文中，我们提出了一种直接利用这一思想的算法。</p>
+<h5 id="Proxy-Distance"><a href="#Proxy-Distance" class="headerlink" title="Proxy Distance"></a>Proxy Distance</h5><p>源域和目标域构成一个新的数据集，源域的标记为0，目标域的标记为1</p>
+<script type="math/tex; mode=display">
+U=\{(x_i,0)\}_{i=1}^n \cup\{(x_i,0)\}_{i=n+1}^{n'}\ \ \ \ \ \ \ \ \ \ \ (6)</script><p>这样式子(2)为：</p>
+<script type="math/tex; mode=display">
+\hat d_\mathcal{A}=2(1-2\epsilon)\ \ \ \ \ \ \ \ \ \ \ (7)</script><p>$\hat d_\mathcal{A}$也被称为PAD（proxy A-distance）。A-distance被定义为$d_\mathcal{A}(D_S^x,D_T^x)=2\text{sup}_{A\in \mathcal{A}}|\text{Pr}_{\mathcal{D}_S^X}(A)-\text{Pr}_{\mathcal{D}_T^X}|$，其中$\mathcal{A}$是$X$的子集，$A=\{A_\eta|\eta\in \mathcal{H}\}$。</p>
+<h6 id="With-shallow-NN"><a href="#With-shallow-NN" class="headerlink" title="With shallow NN"></a>With shallow NN</h6><p>首先考虑只有一层隐藏层的网络，我们假设输入空间是m维实向量，即$X=\R^m$。现在我们所要做的就是让隐藏层$G_f$去学习一个函数：$G_f:X\to\R^D$。这样就有一个未知矩阵向量$(W,b)\in\R^{D\times m}\times \R^D$:</p>
+<script type="math/tex; mode=display">
+G_f(x;W,b)=sigm(Wx+b)\ \ \ \ \ \ \ \ \ \ \ (8)\\
+sigma(a)=[\frac 1 {1+\text{exp}(-a_i)}]^{|a|}_{i=1}</script><p>同样的，预测层$G_y$需要学习一个函数：$G_y:R^D\to[0,1]^L$，未知参数为$(V,c)\in\R^{L\times D}\times\R^L$</p>
+<script type="math/tex; mode=display">
+G_y(G_f(x);V,c)=softmax(VG_f(x)+c)\ \ \ \ \ \ \ \ \ \ \ (9)\\
+softmax(a)=[\frac{\text{exp}(a_i)}{\sum_{j=1}^{|a|}\text{exp}(a_j)}]_{i=1}^{|a|}</script><p>其中，$L=|Y|$。通过softmax函数，$G_y(G_f(x))$的每个向量表示神经网络将$x$分配给由该分量表示的$Y$中类的条件概率。 </p>
+<p>给定一个源示例$(x_i,y_i)$，自然分类损失是正确标签的负对数概率：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_y(G_y(G_f(x_i)),y_i)=\log \frac 1 {G_y(G_f(x))_{y_i}}\ \ \ \ \ \ \ \ \ \ \ (10)</script><p>训练神经网络然后产生源域上的优化问题：</p>
+<script type="math/tex; mode=display">
+min_{W,b,V,c}\ [\frac 1 n\sum_{i=1}^n \mathcal{L}_y^i(W,b,V,c)+\lambda\cdot R(W,b)]\ \ \ \ \ \ \ \ \ \ \ (11)\\
+\mathcal{L}_y^i(W,b,V,c) = L_y(G_y(G_f(x_i;W,b);V,c),y_i)\ \ \ \ \ \ \ \ \ \ \ (12)</script><p>其中，$R(W,b)$是可选的超参数λ加权的正则化选项。</p>
+<p>我们把隐藏层的输出$G_f(\cdot)$当作神经网络的内部表示，因此我们把源域和目标域表示为：</p>
+<script type="math/tex; mode=display">
+S(G_f)=\{G_f(x)|x\in S\}\ \ \ \ \ \ \ \ \ \ \ (13)\\
+T(G_f)=\{G_f(x)|x\in T\}\ \ \ \ \ \ \ \ \ \ \ (14)</script><p>则式(2)为：</p>
+<script type="math/tex; mode=display">
+\hat d_\mathcal{H}(S(G_f),T(G_f))=2(1-\text{min}_{\eta\in \mathcal{H}}[\frac 1 n \sum_{i=1}^n I[\eta(G_f(x_i))=0]+\frac 1 {n'}\sum_{i=n+1}^NI[\eta G_f(x_i))=1]])\ \ \ \ \ \ \ \ \ \ \ (15)</script><p>受Proxy A-dsitance的启发，通过域分类层$G_d$估计式子(15)的“min”部分，该分类层（适应层）学习逻辑回归$G_d:\R^D\to[0,1]$，未知参数通过矢量标量对$(u,z)\in\R^D\times\R$表示，模拟给定输入来自源域$D_S^X$或目标域$D_T^X$的概率。 因此有：</p>
+<script type="math/tex; mode=display">
+G_d(G_f(x);u,z)=sigm(u^TG_f(x)+z)\ \ \ \ \ \ \ \ \ \ \ (16)</script><p>这里的$G_d(\cdot)$是域回归器，定义loss为：</p>
+<script type="math/tex; mode=display">
+\mathcal{L_d}(G_d(G_f(x_i)),d_i)=d_i\text{log}\frac 1 {G_d(G_f(x_i))}+(1-d_i)log\frac{1}{1-G_d(G_f(x_i))}\ \ \ \ \ \ \ \ \ \ \ (17)</script><p>其中，$d_i$表示是否是目标域的数据（用0，1表示）</p>
+<p>式子(11)改写为：</p>
+<script type="math/tex; mode=display">
+R(W,b)=min_{u,z}\ [-\frac 1 n\sum_{i=1}^n \mathcal{L}_d^i(W,b,u,z)-\frac 1 {n'}\sum_{i=n+1}^N \mathcal{L}_d^i(W,b,u,z)]\ \ \ \ \ \ \ \ \ \ \ (18)\\
+\mathcal{L}_d^i(W,b,u,z)=\mathcal{L}_d(G_d(G_f(x_i;W,b);u,z),d_i)\ \ \ \ \ \ \ \ \ \ \ (19)</script><p>该正则化器试图近似式子(15)的H-散度，因为$2(1-R(W,b))$是$\hat d_\mathcal{H}(S(G_f),T(G_f))$的替代。 根据定理2，式子(11)和(18)给出的优化问题实现了源风险$R_S(\cdot)$和分歧$\hat d_H(·,·)$之间的权衡。 超参数$\lambda$用于在学习过程中调整这两个量之间的权衡。</p>
+<p>我们继续改写式子(11)：</p>
+<script type="math/tex; mode=display">
+E(W,V,b,c,u,z)=\frac 1 n\sum_{i=1}^n\mathcal{L}_y^i(W,b,V,c)-\lambda(\frac 1 n\sum_{i=1}^nL_d^i(W,b,u,z)+\frac 1 {n'}\sum_{i=n+1}^N\mathcal{L}_d^i(W,b,u,z))\ \ \ \ \ \ \ \ \ \ \ (20)</script><p>对于$\hat W,\hat V, \hat b,\hat c,\hat u,\hat z$可以通过鞍点得到：</p>
+<script type="math/tex; mode=display">
+(\hat W,\hat V, \hat b,\hat c)=argmin_{W,V,b,c}\ E(W,V,b,c,\hat u,\hat z)\ \ \ \ \ \ \ \ \ \ \ (21)\\
+(\hat u,\hat z)=argmax_{u,z}\ E(W,V,b,c,\hat u,\hat z)\ \ \ \ \ \ \ \ \ \ \ (22)</script><h6 id="伪代码-2"><a href="#伪代码-2" class="headerlink" title="伪代码"></a>伪代码</h6><blockquote>
+<p>Algorithm: Shallow DANN – Stochastic随机 training update</p>
+<p>输入：</p>
+<ol>
+<li>样例$S=\{(x_i,y_i)\}_{i=1}^n,T=\{x_i\}_{i=1}^{n’}$</li>
+<li>隐藏层大小$D$</li>
+<li>适应层参数$\lambda$</li>
+<li>学习率$\mu$</li>
+</ol>
+<p>输出：神经网络$\{W,V,b,c\}$</p>
+<p>$W,V\leftarrow \text{random_init}(D)$</p>
+<p>$b,c,u,d\leftarrow 0$</p>
+<p>while stopping criterion is not met do</p>
+<p>​    for i from 1 to n do</p>
+<p>​            // 前向传播</p>
+<p>​            $G_f(x_i)\leftarrow sigm(b+Wx_i)$</p>
+<p>​            $G_y(G_f(x_i))\leftarrow softmax(VG_f(x_i)+c)$</p>
+<p>​            </p>
+<p>​            // 后向传播</p>
+<p>​            $\Delta_c\leftarrow (e(y_i)-G_y(G_f(x_i)))$</p>
+<p>​            $\Delta_V\leftarrow \Delta_cG_f(x_i)^T$</p>
+<p>​            $\Delta_b\leftarrow(V^T\Delta_c)\odot G_f(x_i)\odot(1-G_f(x_i))$</p>
+<p>​            $\Delta W\leftarrow \Delta_b\cdot(x_i)^T$</p>
+<p>​            // 域适应正则化</p>
+<p>​            //从当前域</p>
+<p>​            $G_d(G_f(x_i))\leftarrow sigm(d+u^TG_f(x_i))$</p>
+<p>​            $\Delta_d\leftarrow\lambda(1-G_d(G_f(x_i)))$</p>
+<p>​            $\Delta_u\leftarrow\lambda(1-G_d(G_f(x_i)))G_f(x_i)$</p>
+<p>​            $\text{tmp}\leftarrow\lambda(1-G_d(G_f(x_i)))\times u\odot G_f(x_i)\odot (1-G_f(x_i))$</p>
+<p>​            $\Delta_b\leftarrow \Delta_b+tmp$</p>
+<p>​            $\Delta_W\leftarrow W+tmp\cdot(x_i)^T$</p>
+<p>​            //从其他域</p>
+<p>​            $j\leftarrow \text{uniform_integer}(1,\dots , n’)$</p>
+<p>​            $G_f(x_j)\leftarrow sigm(b+Wx_j)$</p>
+<p>​            $G_d(G_f(x_j))\leftarrow sigm(d+u^TG_f(x_j))$</p>
+<p>​            $\Delta_d\leftarrow \Delta_d-\lambda G_d(G_f(x_j))$        </p>
+<p>​            $\Delta_u\leftarrow \Delta_u-\lambda G_d(G_f(x_j))G_f(x_j)$</p>
+<p>​            $\text{tmp}\leftarrow-\lambda G_d(G_f(x_j))\times u\odot G_f(x_j)\odot (1-G_f(x_j))$            </p>
+<p>​            $\Delta_b\leftarrow \Delta_b+tmp$</p>
+<p>​            $\Delta_W\leftarrow W+tmp\cdot(x_j)^T$</p>
+<p>​            </p>
+<p>​            //更新神经网络内部参数</p>
+<p>​            $W\leftarrow W-\mu\Delta_W$</p>
+<p>​            $V\leftarrow V-\mu\Delta_V$</p>
+<p>​            $b\leftarrow b-\mu\Delta_b$</p>
+<p>​            $c\leftarrow c-\mu\Delta_c$</p>
+<p>​            </p>
+<p>​            //更新与分类器</p>
+<p>​            $u\leftarrow u-\mu\Delta u$</p>
+<p>​            $d\leftarrow d-\mu\Delta d$</p>
+<p>​    end for</p>
+<p>end while</p>
+</blockquote>
+<p>其中，$e(y)$是”one-hot” vector，主要是采用N位状态寄存器来对N个状态进行编码,每个状态都由他独立的寄存器位,并且在任意时候只有一位有效。只有当y的时候为1，其余都为0。</p>
+<p>在训练过程中，神经网络$(W,b,V,c)$和域回归量$(u,z)$以对抗的方式相互竞争，在公式（20）上衡量。因此，称该网络为域-对抗神经网络（DANN）。 DANN将有效地尝试学习一个隐藏层$G_f(·)$，将一个例子（源或目标）映射到一个表示，允许输出层$G _y(·)$准确地对源样本进行分类，但是削弱了域回归的能力$G_d(·)$（检测每个示例是属于源域还是目标域）。</p>
+<h5 id="对架构的推广"><a href="#对架构的推广" class="headerlink" title="对架构的推广"></a>对架构的推广</h5><p>可以直接推广到其他复杂的体系结构。</p>
+<p>设$G_f(·;θ_f)$为D维神经网络特征提取器，参数为$θ_f$。另外，让$G_y(·;θ_y)$成为计算网络标签预测输出层的DANN的一部分，参数为$θ_y$，而$G_d(·;θ_d)$现在对应于域预测输出的计算网络，参数为$θ_d$。注意，为了保留定理2的理论保证，由域预测分量$G_d$生成的假设类$H_d$应该包括由标签预测分量$G_y$生成的假设类$H_y$。因此，$H_y⊆H_d$。</p>
+<p>我们将分别记录预测损失和域丢失：</p>
+<script type="math/tex; mode=display">
+\mathcal{L_y^i}(\theta_f,\theta_y)=\mathcal{L}_y(G_y(G_f(x_i;\theta_f);\theta_y),y_i)\ \ \ \ \ \ \ \ \ \ \ (23)\\
+\mathcal{L_d^i}(\theta_f,\theta_d)=\mathcal{L}_d(G_d(G_f(x_i;\theta_f);\theta_d),d_i)\ \ \ \ \ \ \ \ \ \ \ (24)</script><p>训练DANN，然后与单层案例平行并且优化：</p>
+<script type="math/tex; mode=display">
+E(\theta_f,\theta_y,\theta_d)=\frac 1 n\sum_{i=1}^n\mathcal{L}_y^i(\theta_f,\theta_y)-\lambda(\frac 1 n\sum_{i=1}^n\mathcal{L}_d^i(\theta_f,\theta_d)+\frac 1 {n'}\sum_{i=n+1}^N\mathcal{L}_d^i(\theta_f,\theta_d))\ \ \ \ \ \ \ \ \ \ \ (25)</script><p>同样，通过寻找鞍点来定义：</p>
+<script type="math/tex; mode=display">
+(\hat\theta_f,\hat\theta_y)=\text{argmin}_{\theta_f,\theta_y}\ E(\theta_f,\theta_y,\hat\theta_d)\ \ \ \ \ \ \ \ \ \ \ (26)\\
+\hat\theta_d=argmax_{\theta_d}\ E(\theta_f,\theta_y,\hat\theta_d)\ \ \ \ \ \ \ \ \ \ \ (27)</script><p>然后，就梯度更新：</p>
+<script type="math/tex; mode=display">
+\theta_f\leftarrow \theta_f-\mu(\frac{\partial\mathcal{L}_y^i}{\partial\theta_f}-\lambda\frac{\partial\mathcal{L}_y^i}{\partial\theta_f})\ \ \ \ \ \ \ \ \ \ \ (28)\\
+\theta_y\leftarrow \theta_y-\mu\frac{\partial\mathcal{L}_y^i}{\partial\theta_y}\ \ \ \ \ \ \ \ \ \ \ (29)\\
+\theta_d\leftarrow \theta_d-\mu\lambda\frac{\partial\mathcal{L}_d^i}{\partial\theta_d}\ \ \ \ \ \ \ \ \ \ \ (30)</script><p>其中，$\mu$是学习率。</p>
+<p>在数学上，将梯度反转层视为“伪函数”$R(x)$，描述其前向和后向传播行为的两个（不相容）方程定义为：</p>
+<script type="math/tex; mode=display">
+\mathcal{R}(x)=x\ \ \ \ \ \ \ \ \ \ \ (31)\\
+\frac {d\mathcal{R}}{dx}=-I\ \ \ \ \ \ \ \ \ \ \ (32)</script><p>其中，$I$是单位矩阵。</p>
+<p>定义目标“伪函数”$(θ_f,θ_y,θ_d)$，该函数通过随机梯度下降进行优化：</p>
+<script type="math/tex; mode=display">
+\tilde E(\theta_f,\theta_y,\theta_d)=\frac 1 n\sum_{i=1}^n\mathcal{L}_y(G_y(G_f(x_i;\theta_f);\theta_y),y_i)\\-\lambda(\frac 1 n\sum_{i=1}^n\mathcal{L}_d(G_d(\mathcal{R}(G_f(x_i;\theta_f));\theta d)d_i)\\+\frac 1 {n'}\sum_{i=n+1}^N\mathcal{L}_d(G_d(\mathcal{R}(G_f(x_i;\theta_f));\theta d)d_i))\ \ \ \ \ \ \ \ \ \ \ (33)</script><h5 id="可选优化"><a href="#可选优化" class="headerlink" title="可选优化"></a>可选优化</h5><p>最小化第一域$L_{d+}$会使域识别更好，最小化第二域$L_{d-}$当域不同时。随机梯度更新如下：</p>
+<script type="math/tex; mode=display">
+\theta_f\leftarrow \theta_f-\mu(\frac{\partial\mathcal{L}_y^i}{\partial\theta_f}+\frac{\partial\mathcal{L}_{d-}^i}{\partial\theta_f})\ \ \ \ \ \ \ \ \ \ \ (34)\\
+\theta_d\leftarrow \theta_d-\mu\frac{\partial\mathcal{L}_{d+}^i}{\partial\theta_d}\ \ \ \ \ \ \ \ \ \ \ (35)</script><p>在该框架中，梯度反转层构成特殊情况，对应于域损耗对$(L_d,-λL_d)$。也可以可以使用其他损失函数对。 一个例子是二项式交叉熵：</p>
+<script type="math/tex; mode=display">
+L_{d+}(q,d)=\sum_{i=1\dots N}d_i\text{log}(q_i)+(1-d_i)\text{log}(1-q_i)\ \ \ \ \ \ \ \ \ \ \ (36)</script><p>其中d表示域索引，q是预测器的输出。 通过交换域标签容易获得“对抗性”损失，即$L_{d-}(q,d)= L_{d+}(q,1-d)$。 如果域非常不同，这一特定对具有在早期学习阶段产生更强梯度的潜在优势。 然而，在实验中，没有观察到由于这种损失选择而导致的任何显着改善。</p>
+<h5 id="CNN架构"><a href="#CNN架构" class="headerlink" title="CNN架构"></a>CNN架构</h5><p>运用到了四种框架：</p>
+<ul>
+<li>源域数据集是MNIST，用了LeNet-5的模型</li>
+<li>对于SVHN数据集，采取了(Srivastava et al., 2014)</li>
+<li>在<code>SYN SINGS → GTSRB</code>中，用了single-CNN baseline(Cires¸an et al., 2012)</li>
+<li>对Office域，用了预训练模型AlexNet，适应层架构与(Tzenget al., 2014)相同：2层域分类器<code>(x→1024→1024→2)</code>附加到fc7的256维瓶颈中。</li>
+</ul>
+<h5 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h5><p>使用0.9动量的随机梯度下降和学习率退火：</p>
+<script type="math/tex; mode=display">
+\mu_p=\frac{u_0}{(1+\alpha\cdot\mathcal{p})^\beta}\ \ \ \ \ \ \ \ \ \ \ (37)</script><p>其中，p是从0到1线性变化的训练进度，$μ_0= 0.01,\alpha= 10,\beta= 0.75$（优化时间表以促进源域上的收敛和低误差）。</p>
+<h4 id="复现-1"><a href="#复现-1" class="headerlink" title="复现"></a>复现</h4><p>使用的网络的结构：</p>
+<p><img src="/2019/07/23/迁移学习-深度迁移/DANN2.png" alt=""></p>
+<p>除了MNIST<code>(x-&gt;1024-&gt;1024-&gt;2)</code>外，使用<code>(x-&gt;100-&gt;2)</code>的结构。其中p是从0到1线性变化的训练进度，$μ_0= 0.01,\alpha= 10,\beta= 0.75$，动量项使用0.9。</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Transfer-Learning/" rel="tag"><i class="fa fa-tag"></i> Transfer Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/07/迁移学习-基本概念/" rel="next" title="迁移学习">
+                <i class="fa fa-chevron-left"></i> 迁移学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/10/CS231n/" rel="prev" title="CS231n">
+                CS231n <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">104</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#综述-Deep-Visual-Domain-Adaptation-A-Survey—20188"><span class="nav-number">1.</span> <span class="nav-text">综述-Deep Visual Domain Adaptation: A Survey—20188</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心贡献"><span class="nav-number">1.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心内容"><span class="nav-number">1.2.</span> <span class="nav-text">核心内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单步域适配"><span class="nav-number">1.2.1.</span> <span class="nav-text">单步域适配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多步域适配"><span class="nav-number">1.2.2.</span> <span class="nav-text">多步域适配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Domain-Adaptation域适配"><span class="nav-number">1.2.3.</span> <span class="nav-text">Domain Adaptation域适配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">1.2.4.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题以及未来研究方向"><span class="nav-number">1.2.5.</span> <span class="nav-text">问题以及未来研究方向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fine-tune-最简单的深度迁移学习1"><span class="nav-number">2.</span> <span class="nav-text">Fine-tune 最简单的深度迁移学习1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心贡献-1"><span class="nav-number">2.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心内容-1"><span class="nav-number">2.2.</span> <span class="nav-text">核心内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪代码"><span class="nav-number">2.3.</span> <span class="nav-text">伪代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DaNN：Domain-Adaptive-Neural-Networks—20145"><span class="nav-number">3.</span> <span class="nav-text">DaNN：Domain Adaptive Neural Networks—20145</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心贡献-2"><span class="nav-number">3.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心内容-2"><span class="nav-number">3.2.</span> <span class="nav-text">核心内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪代码-1"><span class="nav-number">3.3.</span> <span class="nav-text">伪代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#baseline：数字迁移使用网络—201510"><span class="nav-number">4.</span> <span class="nav-text">baseline：数字迁移使用网络—201510</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心内容-3"><span class="nav-number">4.1.</span> <span class="nav-text">核心内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复现"><span class="nav-number">4.2.</span> <span class="nav-text">复现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-Adversarial-Training-of-Neural-Networks—201617"><span class="nav-number">5.</span> <span class="nav-text">Domain Adversarial Training of Neural Networks—201617</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心贡献-3"><span class="nav-number">5.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心内容-4"><span class="nav-number">5.2.</span> <span class="nav-text">核心内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Proxy-Distance"><span class="nav-number">5.2.1.</span> <span class="nav-text">Proxy Distance</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#With-shallow-NN"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">With shallow NN</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#伪代码-2"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">伪代码</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对架构的推广"><span class="nav-number">5.2.2.</span> <span class="nav-text">对架构的推广</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可选优化"><span class="nav-number">5.2.3.</span> <span class="nav-text">可选优化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CNN架构"><span class="nav-number">5.2.4.</span> <span class="nav-text">CNN架构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练过程"><span class="nav-number">5.2.5.</span> <span class="nav-text">训练过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复现-1"><span class="nav-number">5.3.</span> <span class="nav-text">复现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

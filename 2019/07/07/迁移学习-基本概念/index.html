@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Transfer Learning," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="开始学习迁移学习，记录一些基础概念等，就不加在论文报告里了 主要是跟着王晋东来学习的啦～">
+<meta name="keywords" content="Transfer Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迁移学习">
+<meta property="og:url" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="开始学习迁移学习，记录一些基础概念等，就不加在论文报告里了 主要是跟着王晋东来学习的啦～">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/迁移学习-基本概念/迁移学习分类2.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/迁移学习-基本概念/分类.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB2.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/TCA.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DDC2.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DDC.jpg">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DDC3.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DAN.jpg">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/JAN.png">
+<meta property="og:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/JDA-2.png">
+<meta property="og:updated_time" content="2019-08-25T14:13:10.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迁移学习">
+<meta name="twitter:description" content="开始学习迁移学习，记录一些基础概念等，就不加在论文报告里了 主要是跟着王晋东来学习的啦～">
+<meta name="twitter:image" content="http://mrsempress.top/2019/07/07/迁移学习-基本概念/迁移学习-基本概念/迁移学习分类2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2019/07/07/迁移学习-基本概念/"/>
+
+
+
+
+
+  <title>迁移学习 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2019/07/07/迁移学习-基本概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">迁移学习</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T10:34:13+08:00">
+                2019-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/07/迁移学习-基本概念/" class="leancloud_visitors" data-flag-title="迁移学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>开始学习迁移学习，记录一些基础概念等，就不加在论文报告里了</p>
+<p>主要是跟着王晋东来学习的啦～</p>
+<a id="more"></a>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ol>
+<li><p><strong>什么是迁移学习？</strong></p>
+<p>“迁移”这两个字就很好地说明了什么是迁移学习，就是一个系统将<strong>别的</strong>相关领域中的知识应用到本应用中的学习模式。比如：学习c++后，学习JAVA就很轻松</p>
+<p>One-shot learning: 当目标域中的样例很少时</p>
+<hr>
+<p>形式化定义：</p>
+<blockquote>
+<p>特征空间$P(X)$，$X=\{X_1, X_2, \cdot\cdot\cdot X_n\}$；域：$D=(X, P(X))$；</p>
+<p>目标预测函数：$f(\cdot)$；目标：$T=(Y,f(\cdot))$，$Y$标签空间</p>
+</blockquote>
+<ul>
+<li>条件：给定一个源域$D_S$和源域上的学习任务$T_S$，目标域$D_T$和目标域上的学习任务$T_T$</li>
+<li>目标：利用$D_S$和$T_S$学习在目标域上的预测函数$f(\cdot)$<br>$min_\epsilon(f_T(X),Y_T)$</li>
+<li>限制条件：$D_S\not= D_T$或$T_s\not=T_T$</li>
+</ul>
+</li>
+<li><p><strong>为什么要学习？</strong></p>
+<ul>
+<li>【标签难获取】：数据的标签难获取</li>
+<li>【提升可靠性】从头建立模型是复杂和耗时的，可以降低成本，同时可以学习前人的经验；并且迁移学习所训练的模型具有<strong>适应性</strong>，可以迁移到多个领域而不产生显著的性能下降。</li>
+<li>【冷启动问题】：刚开始没有数据（eg. 推荐系统无法工作）</li>
+<li>【满足个性化】：更好地提供个性化服务</li>
+<li>【适应小数据】训练数据分布不同，但数据集较小的时候，容易过拟合</li>
+</ul>
+<p>这样我们就可以实现：从<strong>已有的</strong>大型标注数据集，迁移知识到<strong>小型无标注</strong>（或<strong>少量标注</strong>）的数据集</p>
+<p>相比于机器学习来说，他不需要大量的数据标注，也不需要重新建模，训练和测试数据也可以不同分布</p>
+<p>在杨强2017年的演讲中，有提到：我们的昨天在深度学习上——大量数据、基于特征、应准确性来衡量（这一块已经做的比较好了）；我们的今天在强度学习上——大量数据、基于反馈、通过策略；而我们的明天应该会在迁移学习上——少量数据、通过学习方法以适应冷启动和个性化的情况</p>
+</li>
+<li><p><strong>专有名词</strong></p>
+<ul>
+<li><strong>域</strong>：由<strong>数据</strong>特征和<strong>特征</strong>分布组成，学习的主体<ul>
+<li>源域：已有知识域</li>
+<li>目标域：要进行学习的域</li>
+</ul>
+</li>
+<li><strong>任务：</strong>由目标函数和学习结果组成，是学习的结果</li>
+</ul>
+</li>
+<li><p><strong>分类方法</strong></p>
+<ul>
+<li><p>按迁移情境</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/./迁移学习-基本概念/迁移学习分类2.png" alt=""></p>
+<ul>
+<li><p>归纳式Inductive TL  </p>
+<p>源域和目标域的学习任务不同（需要进行归纳）</p>
+</li>
+<li><p>直推式Transductive TL</p>
+<p>源域和目标域不同（也可以相同，但他们的特征不同），学习任务相同（可以直接推导）</p>
+<p>域适应属于这一块</p>
+</li>
+<li><p>无监督Unsupervised TL</p>
+<p>源域和目标域均没有标签</p>
+</li>
+</ul>
+</li>
+<li><p>按迁移方法<br>前三者是数据层面，后者是模型层面</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/./迁移学习-基本概念/分类.png" alt=""></p>
+<ul>
+<li><p>基于实例的迁移Instance based TL  </p>
+<p>源域和目标域的一些数据共享很多<strong>共同特征</strong></p>
+<p>所以首先需要<strong>筛选</strong>出与目标域数据相似度高的数据，然后进行训练学习</p>
+<ul>
+<li>优点<ul>
+<li>方法<strong>较简单</strong>，实现容易</li>
+</ul>
+</li>
+<li>缺点</li>
+<li>权重选择与相似度度量<strong>依赖经验</strong><ul>
+<li>源域和目标域的数据分布<strong>往往不同</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>基于特征的迁移Feature based TL</p>
+<p>源域和目标域仅仅有一些<strong>交叉特征</strong></p>
+<p>所以先<strong>特征变换</strong>，将两个域的数据变换到同一特征空间（两个域需要重叠起来），然后进行传统的机器学习</p>
+<hr>
+<p><strong>优点</strong></p>
+</li>
+<li><p><strong>大多数</strong>方法采用</p>
+<ul>
+<li>特征选择与变换可以取得<strong>好效果</strong></li>
+</ul>
+<p><strong>缺点</strong></p>
+</li>
+<li><p>往往是一个<strong>优化问题</strong>，难求解</p>
+</li>
+</ul>
+</li>
+<li><p>容易发生<strong>过适配</strong></p>
+</li>
+<li><p>基于关系的迁移Relational TL</p>
+<p>两个域<strong>相似</strong>，则它们会共享某种<strong>相似关系</strong></p>
+<p>所以先利用源域学习逻辑关系模型，再应用于目标域上</p>
+</li>
+<li><p>基于模型的迁移Parameter/model based TL</p>
+<p>源域和目标域可以共享一些<strong>模型参数</strong></p>
+<p>所以，先将源域学习得到的<strong>模型运用</strong>在目标域上，再根据目标域学习新的模型；</p>
+<p>常用在神经网络上，比如fine-tuning</p>
+<hr>
+<p>  <strong>避免过拟合的方法：</strong></p>
+<ul>
+<li>Conservative Training: 在训练时，增加限制使得新的模型参数和原来的模型参数差别不太大</li>
+<li>Layer Transfer：在训练时，一些层直接复制参数，对于少数层进行调整参数</li>
+<li>语音：一般复制最后几层，输入层调整；因为每个人的说话方式语调不同</li>
+<li>图像：一般复制前面几层，最后层调整；因为前几层做的是简单的时间，比如检测是否是直线、曲线，最后几层是复杂的</li>
+</ul>
+<hr>
+<p><strong>优点</strong></p>
+<ul>
+<li>模型间存在相似性，可以<strong>被利用</strong></li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>模型参数<strong>不易收敛</strong></li>
+</ul>
+</li>
+<li><p>按特征空间<br>按照<strong>特征维度分布空间</strong>是否相同</p>
+<ul>
+<li>同构</li>
+<li><p>异构体</p>
+<ul>
+<li><p>分为两种</p>
+<ul>
+<li>源域和目标域都包含图像，并且特征空间的发散主要由不同的感觉设备（例如，可见光（VIS）与近红外（NIR）或RGB与深度），不同的感知设备引起图像样式不同（例如，草图与照片）。</li>
+<li><p>源和目标域中存在不同类型的媒体（例如，文本与图像和语言与图像）</p>
+</li>
+<li><p>根据变换是否对称分为两种：</p>
+<ul>
+<li>对称变换学习特征变换以将源和目标特征投影到公共子空间上。</li>
+<li>非对称变换将源和目标特征之一转换为与另一个对齐。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>上述两者都可以根据目标域是否有可用的标记数据分为监督、半监督、无监督这三个子类</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB.png" alt=""></p>
+<p>注：</p>
+<ol>
+<li><p>Zero-shot：目标域无标识，且两个源的目标不同</p>
+<p>如果对于一个在没有在源域中出现的X，可以：</p>
+<ol>
+<li>用database找到特点，这样我们可以得到一个$f(X)$，然后找到近的$g(Y)$，这样X就是Y；</li>
+<li>也可以，通过convex combination of semantic embedding来实现，就比如说，是由0.5A，也有0.5B可能性，那么用A、B向量得到$0.5V(A)+0.5V(B)$，然后根据这个向量寻找最近的，且离其他最远的Y</li>
+</ol>
+<p>衡量标准，可以用式子表示：</p>
+<ul>
+<li>Maximum Mean Discrepancy MMD最大均值差异</li>
+</ul>
+<script type="math/tex; mode=display">
+f^*,g^*=\text{arg} \text{min}_{f,g}\sum_n max(0,k-f(x^n)\cdot g(y^n)+max_{m\not=n}f(x^n)\cdot g(y^m))</script><p>​        一般表示为：</p>
+<script type="math/tex; mode=display">
+Dist(X,Y)=\|\frac 1 {n_1}\sum_{i=1}^{n_1}\phi(x_i)-\frac 1 {n_2}\sum_{i=1}^{n_2}\phi(y_i)\|_H\ \ \ \ \ \ \ \ \ \ \ (2)</script><p> ​        $\phi:x\to H,\ H$是再生希尔伯特核空间RKHS。</p>
+<p>​        希尔伯特空间是一个完备的内积空间（完备意味着里面的数列取极限是收敛的，再生，意味着其有再生的性质，他的再生核是唯一的，也就是说，只要找到<strong>一个再生性的核函数</strong>，那么一定<strong>对应着一个唯一的希尔伯特空间</strong>。如果没有再生性，那么这个核函数可能对应着多个不同的空间。</p>
+<p>​        第一部分表示最小化分布之间的距离，第二项表示特征空间中的方差最大化；或者说第一部分表示离正确的值很近，而和其他不正确的值相距很远。</p>
+<p>​        那么zero loss发生在后面那项小于0时，整理得到：</p>
+<script type="math/tex; mode=display">
+f(x^n)\cdot g(y^n)-max_{m\not=n}f(x^n)\cdot g(y^m)>k</script><ul>
+<li><p>Cosine similarity余弦相似度</p>
+<script type="math/tex; mode=display">
+sim(X,Y)=\frac{XY}{|X||Y|}</script></li>
+<li><p>Kullback-Leibler (KL) divergence用来估计分布之间的距离</p>
+<script type="math/tex; mode=display">
+D_{KL}(P\|Q)=\sum_i P(i)log\frac{P(i)}{Q(i)}</script></li>
+<li><p>Jensen-Shannon divergence (JSD)</p>
+<script type="math/tex; mode=display">
+M=\frac 1 2 (P+Q), \ JSD(P\|Q)=\frac 1 2D_{KL}(P\|M)+\frac1 2 D_{KL}(Q\|M)</script></li>
+</ul>
+</li>
+</ol>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB2.png" alt=""></p>
+</li>
+</ol>
+<ol>
+<li><p><strong>Distance Loss衡量</strong></p>
+<p>杨强老师在2017年报告总结了现有工作对领域间距离损失的三种主要范式：</p>
+<ol>
+<li>【<strong>差异</strong>损失(discrepancy loss)和基于差异的范式】：直接度量和最小化两个领域之间的差异。</li>
+</ol>
+</li>
+<li><p>【<strong>对抗</strong>损失(adversarial loss)和基于对抗的范式】：基于对抗目标(adversarial objective)，构建共同的特征空间，设计领域鉴别器(domain discriminator)。</p>
+</li>
+<li><p>【<strong>重建</strong>损失(reconstruction loss)和基于共享的范式】：结合非监督学习和监督学习，建立介于源领域和目标领域之间的共享领域(Intermediate domain)，后者作为中介一样承载着知识迁移。</p>
+</li>
+<li><p><strong>存在的问题</strong></p>
+<ul>
+<li><p>负迁移：两个task不像，不可以随便“东施效颦”</p>
+<p>可以通过Progressive Neural Networks：每一层都对于新的高一层进行贡献</p>
+<p>或者从方法层面来说，就是源域和目标域是相似的，但是，迁移学习方法不够好，没找到可迁移的成分。</p>
+<p>传统迁移学习只有两个领域足够相似才可以完成，而当两个领域不相似时，传递迁移学习却可以利用处于这两个领域之间的若干领域，将知识<strong>传递式</strong>的完成迁移。</p>
+</li>
+<li><p>缺乏理论支撑</p>
+</li>
+<li><p>相似度衡量</p>
+</li>
+</ul>
+</li>
+<li><p>难点</p>
+<p>找到两个域的共同点，不变量</p>
+</li>
+</ol>
+<h1 id="研究领域"><a href="#研究领域" class="headerlink" title="研究领域"></a>研究领域</h1><h2 id="域适配Domain-adaptation"><a href="#域适配Domain-adaptation" class="headerlink" title="域适配Domain adaptation"></a>域适配Domain adaptation</h2><p>迁移学习与领域自适应公开数据集<a href="https://github.com/jindongwang/transferlearning/blob/master/doc/dataset.md" target="_blank" rel="external">https://github.com/jindongwang/transferlearning/blob/master/doc/dataset.md</a></p>
+<p><em>有标签的源域</em>和<em>无标签的目标域</em>共享<strong>相同的特征和类别</strong>，但是<strong>特征分布不同</strong>，利用源域标定目标域</p>
+<script type="math/tex; mode=display">
+D_s\not=D_T\ P_s(X)\not=P_T(X)</script><p><strong>基本假设：</strong></p>
+<ul>
+<li>数据分布角度：源域和目标域的<strong>概率分布相似</strong>——<strong>最小化</strong>概率分布距离</li>
+<li>特征选择角度：源域和目标域<strong>共享着某些特征</strong>——<strong>选择</strong>出这部分公共特征</li>
+<li>特征变换角度：源域和目标域<strong>共享某些子空间</strong>——把两个域<strong>变换</strong>到相同的子空间</li>
+</ul>
+<p>这个假设是有一定局限性的，<strong>无法衡量</strong>源域和目标域之间<strong>相似性</strong>，可能发生<strong>负迁移</strong></p>
+<p>根据假设的三个角度，提出了三个方面的解决思路：概率分布适配法(Distribution Adaptation)、特征选择法(Feature Selection)、子空间学习法(Subspace Learning)</p>
+<h3 id="概率分布适配法"><a href="#概率分布适配法" class="headerlink" title="概率分布适配法"></a>概率分布适配法</h3><p>对于一个随机变量$X$，$x\in X$是它的元素，对于每一个元素，都对应一个类别$y\in Y$。那么，它的边缘概率为$P(X)$，条件概率为$P(y|X)$，联合概率为$P(X, y)$。</p>
+<h4 id="边缘分布适配法"><a href="#边缘分布适配法" class="headerlink" title="边缘分布适配法"></a>边缘分布适配法</h4><p>假设：$P(X_s)\not=P(X_t)$</p>
+<h5 id="TCA迁移成分分析"><a href="#TCA迁移成分分析" class="headerlink" title="TCA迁移成分分析"></a>TCA迁移成分分析</h5><p>TCA: transfer component analysis</p>
+<p>TCA是一种边缘假设：$P(X_s)\not=P(X_t)$，属于域适配（边缘分布不同，条件分布相同）</p>
+<p>PCA：主成分分析，一种降维的方法，用很少的一些代表性维度来表示，而不丢失关键的数据信息。</p>
+<p>TCA：类似于PCA的思想。源域和目标域处于不同数据分布时，将两个领域的数据一起<strong>映射到一个高维的再生核希尔伯特空间</strong>。在此空间中，<strong>最小化源和目标的数据距离</strong>，同时<strong>最大程度地保留它们各自的内部属性</strong>。直观地理解就是，在现在这个维度上不好最小化它们的距离，那么就找个映射，在映射后的空间上让它们最接近。将两个矩阵（域）通过变换，转换为两个小的矩阵。即，在边缘分布不同的情况下，<strong>学习一个映射函数φ</strong>，使得边缘分布$P(φ(X_s))≈P(φ(X_t))$和条件分布$P(Y_s |φ(X_s))≈P(Y_t|φ(X_t))$</p>
+<h6 id="核心贡献"><a href="#核心贡献" class="headerlink" title="核心贡献"></a>核心贡献</h6><p>解决了当<strong>边缘分布不同时</strong>的迁移学习，并且将问题转换成了数学问题，且这个数学问题转换到通用而简单的地步（虽然它实现简单，但尽管它绕开了SDP问题求解，然而对于大矩阵还是需要很多计算时间。主要消耗时间的操作是，最后那个伪逆的求解以及特征值分解）。</p>
+<h6 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h6><p>假设存在一个特征映射$\phi$，使得x映射后数据的分布$P(\phi(X_S))\approx P(\phi(X_T))$</p>
+<p>MMD是用来求映射后源域和目标域的均值之差，MMD距离平方展开后，有二次项乘积的部分。把一个难求的映射以核函数的形式来求。于是，TCA引入一个核矩阵$K=\left(\begin{matrix}K_{src,src}&amp;K_{src,tar}\\K_{tar,src}&amp;K_{tar,tar}\end{matrix}\right)$以及$L_{ij}=\begin{cases}\frac 1 {n_1^2},\ x_i,x_j\in X_{src}\\ \frac 1 {n_2^2},\ x_i,x_j\in X_{tar}\-\frac 1 {n_1n_2},\ otherwise\end{cases}$</p>
+<p>这样我们对于MMD：$dist(X’<br>_{src},X’<br>_{tar})=|\frac 1 {n_1}\sum_{i=1}^{n_1}\phi(x_{src_i})-\frac 1 {n_2}\sum_{i=1}^{n_2}\phi(x_{tar_i})|_H$可以转变为$trace(KL)-\lambda trace(K)$</p>
+<blockquote>
+<p>转变的推导如下：</p>
+<script type="math/tex; mode=display">
+\left\|\frac{1}{n_{s}} \sum_{i=1}^{n_{s}} \mathbf{A}^{\mathrm{T}} \mathbf{x}_{i}-\frac{1}{n_{t}} \sum_{j=n{s}+1}^{n{s}+n{t}} \mathbf{A}^{\mathrm{T}} \mathbf{x}_{j}\right\|^{2}\\
+=\left\|\frac{1}{n_{s}} \mathbf{A}^{\mathrm{T}} \begin{bmatrix}\mathbf{x}_1 & \mathbf{x}_2 & \cdots & \mathbf{x}_{n_s}\end{bmatrix}_{1 \times n_s} \begin{bmatrix}1\\1\\\vdots\\ 1\end{bmatrix}_{n_s \times 1}-\frac{1}{n_{t}} \mathbf{A}^{\mathrm{T}} \begin{bmatrix}
+\mathbf{x}_1 & \mathbf{x}_2 & \cdots & \mathbf{x}_{n_t} \end{bmatrix}_{1 \times n_t} \begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}{n_t \times 1}\right\|^{2}\\
+=\operatorname{tr} \left(\frac{1}{n^2_{s}} \mathbf{A}^{\mathrm{T}} \mathbf{X}_s \mathbf{1} (\mathbf{A}^{\mathrm{T}} \mathbf{X}_s \mathbf{1})^{\mathrm{T}} +\frac{1}{n^2_{t}} \mathbf{A}^{\mathrm{T}} \mathbf{X}_t \mathbf{1} (\mathbf{A}^{\mathrm{T}} \mathbf{X}_t \mathbf{1})^{\mathrm{T}} - \frac{1}{n_s n_t} \mathbf{A}^{\mathrm{T}} \mathbf{X}_s \mathbf{1} (\mathbf{A}^{\mathrm{T}} \mathbf{X}_t \mathbf{1})^{\mathrm{T}} - \frac{1}{n_s n_t} \mathbf{A}^{\mathrm{T}} \mathbf{X}_t \mathbf{1} (\mathbf{A}^{\mathrm{T}} \mathbf{X}_s \mathbf{1})^{\mathrm{T}}\right)\\
+=\operatorname{tr} \left(\frac{1}{n^2{s}} \mathbf{A}^{\mathrm{T}} \mathbf{X}_s \mathbf{1} \mathbf{1}^{\mathrm{T}} \mathbf{X}_s^{\mathrm{T}} \mathbf{A} +\frac{1}{n^2_{t}} \mathbf{A}^{\mathrm{T}} \mathbf{X}_t \mathbf{1} \mathbf{1}^{\mathrm{T}} \mathbf{X}_t^{\mathrm{T}} \mathbf{A} - \frac{1}{n_s n_t} \mathbf{A}^{\mathrm{T}} \mathbf{X}_s \mathbf{1} \mathbf{1}^{\mathrm{T}} \mathbf{X}t^{\mathrm{T}}A - \frac{1}{n_s n_t} \mathbf{A}^{\mathrm{T}} \mathbf{X}_t \mathbf{1} \mathbf{1}^{\mathrm{T}} \mathbf{X}_s^{\mathrm{T}}A \right)\\
+=\operatorname{tr} \left[ \mathbf{A}^{\mathrm{T}} \left( \frac{1}{n^2_s} \mathbf{1}\mathbf{1}^{\mathrm{T}} \mathbf{X}_s^{\mathrm{T}} \mathbf{X}_s + \frac{1}{n^2_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} \mathbf{X}_t^{\mathrm{T}} \mathbf{X}_t - \frac{1}{n_s n_t} \mathbf{1} \mathbf{1}^{\mathrm{T}} \mathbf{X}_s^{\mathrm{T}} \mathbf{X}_t - \frac{1}{n_s n_t} \mathbf{1} \mathbf{1}^{\mathrm{T}} \mathbf{X}_t^{\mathrm{T}} \mathbf{X}_s \right) \mathbf{A} \right]\\
+=\operatorname{tr} \left( \mathbf{A}^{\mathrm{T}} 
+\begin{bmatrix}\mathbf{X}_s^T & \mathbf{X}_t^T \end{bmatrix} 
+\begin{bmatrix} \frac{1}{n^2_s} \mathbf{1}\mathbf{1}^{\mathrm{T}} & \frac{-1}{n_s n_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} \\ 
+\frac{-1}{n_s n_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} & \frac{1}{n^2_t} \mathbf{1}\mathbf{1}^{\mathrm{T}}\end{bmatrix}
+\begin{bmatrix}\mathbf{X}s \\ \mathbf{X}t \end{bmatrix} \mathbf{A}\right)\\
+=\operatorname{tr} \left( \mathbf{A}^{\mathrm{T}} \mathbf{X}^{\mathrm{T}}   \mathbf{M} \mathbf{X} \mathbf{A} \right)\\
+=\operatorname{tr} \left( \mathbf{A}^{\mathrm{T}}  \mathbf{X} \mathbf{M} \mathbf{X}^{\mathrm{T}}  \mathbf{A} \right)</script><p>重要的性质:</p>
+<ol>
+<li>$||\mathbf{A}||^2 = \operatorname{tr}(\mathbf{A} \mathbf{A}^{\mathrm{T}})$，用在第二个等式中</li>
+<li>$\operatorname{tr}(\mathbf{A} \mathbf{B}) = \operatorname{tr}(\mathbf{B} \mathbf{A})$，用在第四个等式中</li>
+</ol>
+<blockquote>
+<p>注：<a href="https://zhuanlan.zhihu.com/p/63026435" target="_blank" rel="external">王晋东推导公式</a>中第五个等式错误，应该如上等式，然后再根据性质2，可以得到结论</p>
+</blockquote>
+<p>那么核心的公式就可以推导如下：</p>
+<script type="math/tex; mode=display">
+\left\| \frac{1}{n_s} \sum_{i=1}^{n_s} \phi(\mathbf{x}_i) - \frac{1}{n_t} \sum_{j=1}^{n_t} \phi(\mathbf{x}_j) \right\|^2\\
+=\operatorname{tr} \left( \begin{bmatrix}
+\phi(\mathbf{x}_s)&\phi(\mathbf{x}_t)\end{bmatrix}\begin{bmatrix}\frac{1}{n^2_s} \mathbf{1}\mathbf{1}^{\mathrm{T}} & \frac{-1}{n_s n_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} \\ \frac{-1}{n_s n_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} & \frac{1}{n^2_t} \mathbf{1}\mathbf{1}^{\mathrm{T}}\end{bmatrix}\begin{bmatrix}\phi(\mathbf{x}_s) \\ \phi(\mathbf{x}_t)\end{bmatrix} \right)\\
+=\operatorname{tr} \left( \begin{bmatrix}
+\phi(\mathbf{x}_s) \\ \phi(\mathbf{x}_t)
+\end{bmatrix}  \begin{bmatrix}
+\phi(\mathbf{x}_s) & \phi(\mathbf{x}_t)
+\end{bmatrix} \begin{bmatrix}
+\frac{1}{n^2_s} \mathbf{1}\mathbf{1}^{\mathrm{T}} & \frac{-1}{n_s n_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} \\ 
+\frac{-1}{n_s n_t} \mathbf{1}\mathbf{1}^{\mathrm{T}} & \frac{1}{n^2_t} \mathbf{1}\mathbf{1}^{\mathrm{T}}
+\end{bmatrix} \right)\\
+=\operatorname{tr} \left( \begin{bmatrix}
+<\phi(\mathbf{x}_s),\phi(\mathbf{x}_s)> & <\phi(\mathbf{x}_s),\phi(\mathbf{x}_t)> \\
+<\phi(\mathbf{x}_t),\phi(\mathbf{x}_s)> & <\phi(\mathbf{x}_t),\phi(\mathbf{x}_t)>
+\end{bmatrix} \mathbf{M} \right)\\
+=\operatorname{tr} \left( \begin{bmatrix} K_{s,s} & K_{s,t}\ K_{t,s} & K_{t,t} \end{bmatrix} \mathbf{M} \right)\\
+where,\\
+\left(M\right)_{i j}=\begin{cases}{\frac{1}{n_{s} n_{s}},} & {\mathbf{x}_{i}, \mathbf{x}_{j} \in \mathcal{D}_{s}} \\ {\frac{1}{n_{t} n_{t}},} & {\mathbf{x}_{i}, \mathbf{x}_{j} \in \mathcal{D}{t}} \\ {\frac{-1}{n_{s} n_{t}},} & {\text { otherwise }}\end{cases}</script></blockquote>
+<p>此时问题已变成数学中的半定规划的问题，解决仍然耗时。因此用了降维的方法。</p>
+<ul>
+<li><p>首先将核矩阵K进行分解，称为经验核映射：</p>
+<script type="math/tex; mode=display">
+K=(KK^{-1/2})(K^{-1/2}K)\ \ \ \ \ \ \ \ \ \ \ (1)</script></li>
+<li><p>利用矩阵$\tilde W$，将经验核映射转换为m维空间，核矩阵表示为</p>
+<script type="math/tex; mode=display">
+\tilde K=(KK^{-1/2}\tilde W)(\tilde W^TK^{-1/2}K)=KWW^TK\\
+\tilde W\in R^{(n_1+n_2)\times m}\\m<<n1+n2\\
+W=K^{-1/2}\tilde W\ \ \ \ \ \ \ \ \ \ \ (2)</script><p>那么一般的，$\tilde k(x_i,x_j)=(k_{x_i}^TWW^TK_{x_j})$, $\tilde k_x=[k(x_1,x),\cdots,k(x_{n_1+n_2},x)]^T$</p>
+<p>这里的W矩阵是比K更低维度的矩阵。最后的W就是问题的解答了。</p>
+</li>
+<li><p>这样我们就可以重写MMD了：</p>
+<script type="math/tex; mode=display">
+tr(KL)=re((KWW^TK)L)=tr(W^TKLKW)\ \ \ \ \ \ \ \ \ \ \ (3)</script></li>
+</ul>
+<p>但是这样是不够的，映射$\Phi$还需要保留对目标监督学习任务有用的数据属性，即最大限度地保留数据方差。</p>
+<p>因此，我们现在转换为：</p>
+<script type="math/tex; mode=display">
+min_W\ tr(W^TKLKW)+\mu tr(W^TW),\\\ s.t.\ W^TKHKW=I_m\ \ \ \ \ \ \ \ \ \ \ (4)</script><p>这里的H是一个中心矩阵，$H=I_{n_1+n_2}-1/(n_1+n_2)11^T$，$μ&gt;0$是一个平衡参数；$I$是单位矩阵；正则化项$tr(WTW)$来控制$W$的复杂性。</p>
+<p>对于一个矩阵A，它的scatter matrix就是$AHA^T$，因此第二个约束说的是要<strong>维持各自的数据特征，即散度。</strong></p>
+<p>对于上述的优化，则用了拉格朗日对偶。</p>
+<p>我们首先可以将上式再整理一下，变为</p>
+<script type="math/tex; mode=display">
+max_W\ tr((W^T(KLK+\mu I)W)^{-1}W^TKHKW\ \ \ \ \ \ \ \ \ \ \ (5)</script><p>这样表示成拉格朗日形式就是：</p>
+<script type="math/tex; mode=display">
+tr(W^T(KLK+\mu I)W)-tr((W^TKHKW-I)X)\ \ \ \ \ \ \ \ \ \ \ (6)</script><p>接下来开始解拉格朗日，首先对其求导并等于0，解得：</p>
+<script type="math/tex; mode=display">
+(KLK+\mu I)W = KHKWZ\ \ \ \ \ \ \ \ \ \ \ (7)</script><p>其中，Z是包含拉格朗日乘子的对角矩阵。</p>
+<p>两边同时乘以$W^T$，得到：</p>
+<script type="math/tex; mode=display">
+(min_W)\ tr((W^TKHKW)\ W^T(KLK+\mu I)W)\ \ \ \ \ \ \ \ \ \ \ (8)</script><p>最后，类似于KFD，W的解就是$(I+\mu KLK)^{-1}KHK$的前m个特征值。</p>
+<p>总结来说，就是：输入是两个特征矩阵，我们首先计算L和H矩阵，然后选择一些常用的核函数进行映射（比如线性核、高斯核）计算K，接着求$(KLK+\mu I)^{-1}KHK$的前m个特征值。然后，得到的就是源域和目标域的降维后的数据，我们就可以在上面用传统机器学习方法了。</p>
+<h6 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h6><p>KFD没有理解到位</p>
+<h6 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h6><blockquote>
+<p>Algorithm: TCA</p>
+<p>输入：源域和目标域</p>
+<p>输出：转换矩阵W</p>
+<ol>
+<li>构建核矩阵K以及矩阵L，中心矩阵H</li>
+<li>（无监督）特征分解$(KLK+\mu I)^{-1}KHK$，选择前m个特征值构建转换矩阵W</li>
+<li>（半监督）特征分解矩阵$(K(L+\lambda)LK+\mu I)^{-1}KH\tilde K_{yy}HK$，选择前m个特征值构建转换矩阵W</li>
+<li>返回矩阵W</li>
+</ol>
+</blockquote>
+<h6 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h6><p>取了一组情况，发现准确率不错。</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/TCA.png" alt=""></p>
+<h5 id="DDC"><a href="#DDC" class="headerlink" title="DDC"></a>DDC</h5><p>TAC的扩展，把MMD加入到神经网络中</p>
+<h6 id="核心贡献-1"><a href="#核心贡献-1" class="headerlink" title="核心贡献"></a>核心贡献</h6><p>提出了在源域与目标域之间添加一个<strong>适应层</strong>，相当于在网络上添加了正则化。适应层将两个并行的CNN网络（这里是AlexNet）连接到了一起，通过传递<strong>域混淆损失函数</strong>（这里是MMD loss）的方式，<strong>减小</strong>源域与目标域之间的<strong>分布差异</strong>，将两个分布通过网络表征后的特征，强行拉到同一个分布上，从而实现域自适应</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DDC2.png" alt="img"></p>
+<h6 id="核心内容-1"><a href="#核心内容-1" class="headerlink" title="核心内容"></a>核心内容</h6><p>在域适应中，由于目标无标记，所以直接进行fine-tune是不可行的。域适应的核心就是要学习在目标上最优的分类器，同时最小化源域和目标域的差异。</p>
+<p>DDC：网络包括两个流向，第一条流向的输入为带标签的源数据;另一条流向的输入为包含少量的标签或不带标签的目标数据，两个流向的卷积神经网络共享权值。</p>
+<p>与之不同的是在原有的AlexNet网络的基础上，在fc7层后加上一层<strong>适配层</strong>，通过适应层的输出计算出<strong>域损失函数</strong>，以此来单独考察网络对源域和目标域的<strong>判别能力</strong>。而在第7层（也就是<strong>feature层</strong>）加入了<strong>MMD距离</strong>来减小源与目标的差异。</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DDC.jpg" alt="img"></p>
+<p>损失函数为：</p>
+<p>其中，是分类损失函数，衡量了源域与目标域之间的距离。</p>
+<p>通过MMD距离来确定适应层的位置及尺寸。首先，通过逐层计算源数据与目标数据之间的MMD距离，来选择适应层的位置（在DDC中，因为使用的是ALexNet网络，作者已经将位置确定了，如下图，因此选择Fc7 256的适应层），使得MMD距离最小化。适应层位置确定后，同样通过尝试不同的尺寸的适应层，选择能使MMD距离最小化的尺寸。</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DDC3.png" alt="img"></p>
+<h5 id="DAN"><a href="#DAN" class="headerlink" title="DAN"></a>DAN</h5><p>把MKK-MMD加入到神经网络中</p>
+<h6 id="核心贡献-2"><a href="#核心贡献-2" class="headerlink" title="核心贡献"></a>核心贡献</h6><p>DAN解决了DDC的两个问题：</p>
+<ol>
+<li>【多层适配】DDC只适配了一层网络，可能不够，不同层都是可以迁移的；DAN多适配了几层</li>
+<li>【多核MMD】DDC用了单一固定核的MMD，但是单一固定的核可能不是最优的核；DAN用了多核的MMD（MK-MMD）</li>
+</ol>
+<h6 id="核心内容-2"><a href="#核心内容-2" class="headerlink" title="核心内容"></a>核心内容</h6><ol>
+<li>【冻结浅层(Frozen Shallow-Layer)】：多个领域共享浅层权值，认为浅层权值是具有强适应性的<strong>共性知识</strong>。</li>
+<li>【区分深层(Distinguish Deep-Layer for Different Domains)】：认为深层权值代表了<strong>领域知识</strong>，因此要把多个领域之间的距离刻画出来。</li>
+<li>【微调中层(Fine-tune Intermediate-Layer)】：介于浅层共性知识和深层领域知识之间，通过微调权值以满足对应领域的需求。</li>
+</ol>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/DAN.jpg" alt=""></p>
+<p>目标是学习$\Theta$和MK-MMD中的$\beta$</p>
+<p>优化目标（损失函数）：</p>
+<script type="math/tex; mode=display">
+min_\theta \frac 1 {n_a}\sum_{i=1}^{n_a} J(\theta(x_i^a),y_i^a)+\lambda \sum_{i=l_1}^{l_2}d_k^2(D_s^l,D_t^l)\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>其中，$\Theta$表示网络的所有权重和bias参数；$\lambda$是惩罚系数；$J(\cdot)$损失函数，在深度网络中一般是cross-entropy（$H(p,q)=-\sum_x p(x)\text{log}q(x)$）</p>
+<p><strong>多层适配</strong></p>
+<p>DAN基于AlexNet网络。</p>
+<p>在上述公式中$l_1=6,l_2=8$表示，第6层到第8层进行适配，即适配最后三层。在的文章中已经说了，网络的迁移能力在这三层开始就会以任务而具体分开，task-specific，所以要着重适配这三层。但是别的网络（比如GoogLeNet、VGG）等不一定是这三层。</p>
+<p><strong>Multi-kernel MMD</strong></p>
+<p>MK-MMD提出用多个核去构造这个总的核，这样效果肯定会比一个核好呀。对于两个概率分布$p,q$，它们的MK-MMD距离就是</p>
+<script type="math/tex; mode=display">
+d^2_k(p,q)=^{\Delta}\|E_p[\phi(X_s)]-E_q[\phi(X_t)]\|_H^2\ \ \ \ \ \ \ \ \ \ \ (2)</script><p>则，kernel就可以通过m个不同的kernel进行加权，权重就是$\beta_u$：</p>
+<script type="math/tex; mode=display">
+K=\Delta\{k=\sum_{u=1}^m\beta_u k_u: \beta_u > 0, \forall u\}\ \ \ \ \ \ \ \ \ \ \ (3)</script><p>如果通过内积计算会很复杂，$O(n^2)$；可以通过对MK-MMD的无偏估计：</p>
+<script type="math/tex; mode=display">
+d_k^2(p,q)=\frac 2 {n_s}\sum_{i=1}^{n_s/2}g_k(z_i)\ \ \ \ \ \ \ \ \ \ \ (4)\\
+z_i=^\Delta (X_{2i-1}^s,x_{2i}^s,X_{2i-1}^t,x_{2i}^t)\ \ \ \ \ \ \ \ \ \ \ (5)\\
+g_k(z_i)=^\Delta k(X_{2i-1}^s,x_{2i}^s)+k(X_{2i-1}^t,x_{2i}^t)-k(X_{2i-1}^s,x_{2i}^t)-k(X_{2i}^s,x_{2i-1}^t)\ \ \ \ \ \ \ \ \ \ \ (6)</script><p>这样就变成计算连续的一对数据的距离，可以把复杂度降低到$O(n)$</p>
+<h4 id="条件分布适配法"><a href="#条件分布适配法" class="headerlink" title="条件分布适配法"></a>条件分布适配法</h4><p>假设：$P(y_s|X_s)\not=P(y_t|X_t)$</p>
+<h4 id="联合分布适配法-JDA"><a href="#联合分布适配法-JDA" class="headerlink" title="联合分布适配法 JDA"></a>联合分布适配法 JDA</h4><p>直接继承于TCA，但是加入了条件分布适配</p>
+<p>假设：</p>
+<ol>
+<li>源域和目标域边缘分布不同</li>
+<li><strong>源域和目标域条件分布不同</strong>$P(X_s, y_s)\not=P(X_t,y_t)$（与TCA不同之处）</li>
+</ol>
+<p>因此同时适配两个分布就可以了</p>
+<h6 id="核心贡献-3"><a href="#核心贡献-3" class="headerlink" title="核心贡献"></a>核心贡献</h6><p>JDA完成了在原则维数约简过程中<strong><em>同时调整边际分布和条件分布</em></strong>，并构建新的特征表示。</p>
+<h6 id="核心内容-3"><a href="#核心内容-3" class="headerlink" title="核心内容"></a>核心内容</h6><p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/JAN.png" alt=""></p>
+<p>那么，JDA方法的目标就是，寻找一个变换后的$P(A^Tx_s)$和$P(A^Tx_t)$的距离尽可能接近的变换A，同时也要让条件分布的距离$P(y_s|A^Tx_s)$和$P(y_t|A^Tx_t)$的距离尽可能的小。</p>
+<p>因此，我们可以简单地认为此方法分为两个步骤，即边缘分布适配以及条件分布适配。</p>
+<p>那么第一步的边缘分布适配实际上也就是TCA。式子为</p>
+<script type="math/tex; mode=display">
+\|\frac 1 n\sum_{i=1}^{n}A^Tx_{s_i}-\frac 1 m\sum_{i=1}^{m}A^Tx_{t_i}\|_H^2\ \ \ \ \ \ \ \ \ \ \ (1)</script><p>同样，我们引入核方法，用迹表示为</p>
+<script type="math/tex; mode=display">
+D(D_s,D_t)=tr(A^TXM_0X^TA)\ \ \ \ \ \ \ \ \ \ \ (2)</script><p>A是变换矩阵，X是源域和目标域合并起来的数据，$M_0$是一个MMD矩阵，相当于在TCA中的L</p>
+<script type="math/tex; mode=display">
+(M_0)_{ij}=\begin{cases}\frac 1 {n^2},\ x_i,x_j\in D_s\\ \frac 1 {m^2},\ x_i,x_j\in D_t\\-\frac 1 {mn},\ otherwise\end{cases}\ \ \ \ \ \ \ \ \ \ \ (3)</script><p>接着做第二步，条件分布适配。但是在我们的目标域里，没有$y_t$。这是一种后验概率，比较复杂，但是我们可以根据贝叶斯公式$P(A|B)=\frac{P(B|A)<em>P(A)}{P(B)}$，转换为$P(y_t|x_t)</em>P(x_t)=P(y_t)P(x_t|y_t)$。又因为充分统计量（如果样本里有太多的东西未知，而样本足够好，我们就能够从中选择一些统计量，近似地代替我们要估计的分布）这样就可以用$P(x_t|y_t)$来代替$P(y_t|x_t)$，而省去$P(y_t)/P（x_t)$。</p>
+<p>现在，我们用$x_s,y_s$来训练一个简单的分类器（比如knn、逻辑斯特回归），到$x_t$上直接进行预测。得到一些伪标签$\hat y_t$。最后根据伪标签来计算。</p>
+<p>有了源标签和伪目标标签，我们可以匹配类条件分布$Q_s(x_s | y_s = c)$和$Q_t(x_t | y_t = c)$</p>
+<p>此时，MMD距离表示为</p>
+<script type="math/tex; mode=display">
+\sum_{c=1}^C\|\frac 1 {n^{(c)}_s}\sum_{x_{s_i}\in D_s^{(c)}}A^Tx_{s_i}-\frac 1 {n^{(c)}_t}\sum_{x_{t_i}\in D_t^{(c)}}A^Tx_{t_i}\|_H^2\ \ \ \ \ \ \ \ \ \ \ (4)</script><p>其中，$D_s = \{x_ i : x_i ∈ D_s ∧ y (x_i ) = c\}$，表示一组输入数据中，属于c类的元素；$y(x_i)$表示$x_i$的标签；$n_s=|D_s^{(c)}|$；同样的，$D_t = \{x_ j : x_j ∈ D_t ∧ \hat y (x_j ) = c\}$，表示一组目标数据中，属于c类的元素；$\hat y(x_i)$表示$x_i$的伪标签；$n_t=|D_t^{(c)}|$</p>
+<p>同样适用核方法，简化为（注意，这里的下标是1）</p>
+<script type="math/tex; mode=display">
+\sum_{c=1}^Ctr(A^TXM_cX^TA)\ \ \ \ \ \ \ \ \ \ \ (5)</script><p>$M_c$为：</p>
+<script type="math/tex; mode=display">
+(M_c)_{ij}=\begin{cases}\frac 1 {n_c^2},\ x_i,x_j\in D_s^{(c)}\\ \frac 1 {m_c^2},\ x_i,x_j\in D_t^{(c)}\\-\frac 1 {m_cn_c},\ \begin{cases}x_i\in D_s^{(c)},x_j\in D_t^{(c)}\\x_i\in D_t^{(c)},x_j\in D_s^{(c)}\end{cases}\\0,\ otherwise\end{cases}\ \ \ \ \ \ \ \ \ \ \ (6)</script><p>现在将两个距离合并起来，得到一个总的优化目标：（论文中，当数据集是数字、面部的时候，$\lambda=0.1$；当是物体数据集时，$\lambda = 1$）</p>
+<script type="math/tex; mode=display">
+min\sum_{c=0}^Ctr(A^TXM_cX^TA)+\lambda\|A\|^2_F\ \ \ \ \ \ \ \ \ \ \ (7)</script><p>其中后面这一项是正则项，使得模型良好定义。</p>
+<p>同TCA一样，还需加上一个条件：变换前后数据的方差要维持不变。同样的，其中$A^TXHX^TA=I,\ s.t.\ max\ A^TXHX^TA$</p>
+<p>合并后为：</p>
+<script type="math/tex; mode=display">
+min\ \sum_{c=0}^Ctr(A^TXM_cX^TA)+\lambda\|A\|^2_F,\ s.t.\ A^TXHX^TA=I\ \ \ \ \ \ \ \ \ \ \ (8)</script><p>可以化简为：</p>
+<script type="math/tex; mode=display">
+min\frac {\sum_{c=0}^Ctr(A^TXM_cX^TA)+\lambda\|A\|^2_F}{A^TXHX^TA}\ \ \ \ \ \ \ \ \ \ \ (9)</script><p>这时，我们就可以用拉格朗日了。变为：</p>
+<script type="math/tex; mode=display">
+L=tr(A^T(X\sum_{c=0}^C M_cX^T+\lambda I)A)+tr((I-A^TXHX^TA\Phi))\ \ \ \ \ \ \ \ \ \ \ (10)</script><p>其中，$\Phi$为拉格朗日乘子。</p>
+<p>根据拉格朗日求解规则，让$\frac{\partial L}{\partial A}=0$，则有：</p>
+<script type="math/tex; mode=display">
+(X\sum_{c=0}^CM_cX^T+\lambda I)A=XHX^TA\Phi\ \ \ \ \ \ \ \ \ \ \ (11)</script><p>最后，将上述等式简化为求解k个最小特征向量的等式，得到最佳自适应矩阵A。</p>
+<p>这样我们得到了伪标签，可以用迭代的方法（论文中迭代了10次），让结果更好。</p>
+<h6 id="伪代码-1"><a href="#伪代码-1" class="headerlink" title="伪代码"></a>伪代码</h6><blockquote>
+<p>Algorithm: JDA</p>
+<p>输入：源域X和目标域Y，子空间基数k，正则化参数$\lambda$</p>
+<p>输出：自适应矩阵A，嵌入Z，自适应分类器f</p>
+<p>Begin:</p>
+<p>​        根据等式(3)来构建MMD矩阵$M_0$，让 $\{M_c := 0\}_{c=1}^C $</p>
+<p>​        Repeat：</p>
+<p>​                根据等式(10)解决广义特征值分解的问题，求解k个最小特征向量，以此来构建自适应矩阵A，嵌入$Z:=A^T_X$</p>
+<p>​                训练一个在$ \{(A^Tx_i , y_i )\}_{i=1}^{n_s} $域上标准的自适应分类器$f$，来更新伪标签的值，${\hat y_j := f(A^T x_j )} _{j=n_s + 1}^{ n_s +n_t}$</p>
+<p>​                根据等式(6)来构建MMD矩阵$\{M_c := 1\}_{c=1}^C $</p>
+<p>​        直到收敛为止<br>返回在$\{Ax_i , y_i \}_{i=1}^{ n_s} $上的自适应分类器f</p>
+</blockquote>
+<h6 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h6><p>这组准确率并不高，不过不是因为算法的问题，而是这两者共同点较少，在已有的算法中，准确率都比较低。见Github上另外一些配对准确率可以达到79.62%。</p>
+<p><img src="/2019/07/07/迁移学习-基本概念/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/JDA-2.png" alt=""></p>
+<h6 id="与TCA的主要区别"><a href="#与TCA的主要区别" class="headerlink" title="与TCA的主要区别"></a>与TCA的主要区别</h6><ol>
+<li>TCA是无监督的（边缘分布适配不需要label）；JDA需要源域有label；</li>
+<li>TCA不需要迭代，JDA需要迭代</li>
+</ol>
+<h3 id="特征选择法"><a href="#特征选择法" class="headerlink" title="特征选择法"></a>特征选择法</h3><p>从源域和目标域中选择提取共享的特征，建立统一模型</p>
+<p>SCL寻找Pivot feature，将源域和目标域进行对齐</p>
+<h3 id="子空间学习法"><a href="#子空间学习法" class="headerlink" title="子空间学习法"></a>子空间学习法</h3><p>将源域和目标域变换到相同的子空间，然后建立统一的模型</p>
+<p>SA：直接寻求一个线性变换，把source变换到target空间中</p>
+<h2 id="多源Multi-source-TL"><a href="#多源Multi-source-TL" class="headerlink" title="多源Multi-source TL"></a>多源Multi-source TL</h2><p><strong>多个源域</strong>和目标域，进行有效的域筛选，从而进行迁移</p>
+<p>综合多个可用域，效果较好，但衡量多个域之间的相关性仍是一个问题</p>
+<p>一个很好的应用：多语言的识别，前面几个参数相同（都是语言），后面不太同（语言不同）</p>
+<h2 id="深度Deep-TL"><a href="#深度Deep-TL" class="headerlink" title="深度Deep TL"></a>深度Deep TL</h2><p>利用<strong>深度神经网络的结构</strong>进行迁移学习</p>
+<p>DHN、Domain-adversarial neural network深度网络中加入对抗</p>
+<h3 id="How-transferable-are-features-in-deep-neural-networks"><a href="#How-transferable-are-features-in-deep-neural-networks" class="headerlink" title="How transferable are features in deep neural networks?"></a>How transferable are features in deep neural networks?</h3><p>在神经网络中，前面几层都学习到的是通用的特征（general feature），随着网络的加深，后面的网络更偏重于学习特定的特征（specific feature）。</p>
+<p>AnB：（所有实验都是针对数据B来说的）将A网络的前n层拿来并将它frozen，剩下的8-n层随机初始化，然后对B进行分类。</p>
+<p>BnB：把训练好的B网络的前n层拿来并将它frozen，剩下的8-n层随机初始化，然后对B进行分类。</p>
+<p>这篇研究主要是通过实验来得出结论：</p>
+<ol>
+<li>从BnB+来说，结果基本保持不变，说明fine-tune对<strong>模型结果</strong>有着很好的促进作用！</li>
+<li>从AnB+的实验，加入了fine-tuning后对于所有的n几乎都非常好，甚至比初始更好，说明fine-tune对于<strong>深度迁移</strong>有着非常好的促进作用！</li>
+<li>通过改变A、B例子，使得几乎没有相似类别后，得到：随着可迁移层数的增加，模型性能下降。但是，前3层仍然还是可以迁移的！同时，与随机初始化所有权重比较，迁移学习的精度是很高的!</li>
+<li>神经网络的前3层基本都是general feature，进行迁移的效果会比较好；</li>
+<li>深度迁移网络中加入fine-tune，效果会提升比较大，可能会比原网络效果还好；</li>
+<li>Fine-tune可以比较好地克服数据之间的差异性；</li>
+<li>深度迁移网络要比随机初始化权重效果好；</li>
+</ol>
+<h2 id="异构Heterogeneous-TL"><a href="#异构Heterogeneous-TL" class="headerlink" title="异构Heterogeneous TL"></a>异构Heterogeneous TL</h2><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>就不分篇了，可以在我的<a href="https://github.com/mrsempress/transfer_learning" target="_blank" rel="external">github</a>上看到项目内容。</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29414075&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Transfer-Learning/" rel="tag"><i class="fa fa-tag"></i> Transfer Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/09/从相机标定到视觉SLAM/" rel="next" title="从相机标定到视觉SLAM">
+                <i class="fa fa-chevron-left"></i> 从相机标定到视觉SLAM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/23/迁移学习-深度迁移/" rel="prev" title="迁移学习-深度迁移">
+                迁移学习-深度迁移 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">104</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#研究领域"><span class="nav-number">2.</span> <span class="nav-text">研究领域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#域适配Domain-adaptation"><span class="nav-number">2.1.</span> <span class="nav-text">域适配Domain adaptation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率分布适配法"><span class="nav-number">2.1.1.</span> <span class="nav-text">概率分布适配法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#边缘分布适配法"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">边缘分布适配法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCA迁移成分分析"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text">TCA迁移成分分析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#核心贡献"><span class="nav-number">2.1.1.1.1.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#核心内容"><span class="nav-number">2.1.1.1.1.2.</span> <span class="nav-text">核心内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#遗留问题"><span class="nav-number">2.1.1.1.1.3.</span> <span class="nav-text">遗留问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#伪代码"><span class="nav-number">2.1.1.1.1.4.</span> <span class="nav-text">伪代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实验结果"><span class="nav-number">2.1.1.1.1.5.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DDC"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text">DDC</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#核心贡献-1"><span class="nav-number">2.1.1.1.2.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#核心内容-1"><span class="nav-number">2.1.1.1.2.2.</span> <span class="nav-text">核心内容</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DAN"><span class="nav-number">2.1.1.1.3.</span> <span class="nav-text">DAN</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#核心贡献-2"><span class="nav-number">2.1.1.1.3.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#核心内容-2"><span class="nav-number">2.1.1.1.3.2.</span> <span class="nav-text">核心内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件分布适配法"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">条件分布适配法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#联合分布适配法-JDA"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">联合分布适配法 JDA</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#核心贡献-3"><span class="nav-number">2.1.1.3.0.1.</span> <span class="nav-text">核心贡献</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#核心内容-3"><span class="nav-number">2.1.1.3.0.2.</span> <span class="nav-text">核心内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#伪代码-1"><span class="nav-number">2.1.1.3.0.3.</span> <span class="nav-text">伪代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实验结果-1"><span class="nav-number">2.1.1.3.0.4.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#与TCA的主要区别"><span class="nav-number">2.1.1.3.0.5.</span> <span class="nav-text">与TCA的主要区别</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择法"><span class="nav-number">2.1.2.</span> <span class="nav-text">特征选择法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子空间学习法"><span class="nav-number">2.1.3.</span> <span class="nav-text">子空间学习法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多源Multi-source-TL"><span class="nav-number">2.2.</span> <span class="nav-text">多源Multi-source TL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度Deep-TL"><span class="nav-number">2.3.</span> <span class="nav-text">深度Deep TL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-transferable-are-features-in-deep-neural-networks"><span class="nav-number">2.3.1.</span> <span class="nav-text">How transferable are features in deep neural networks?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异构Heterogeneous-TL"><span class="nav-number">2.4.</span> <span class="nav-text">异构Heterogeneous TL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
