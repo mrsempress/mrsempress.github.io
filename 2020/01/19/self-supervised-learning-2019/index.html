@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="paper,self-supervised," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
+<meta name="keywords" content="paper,self-supervised">
+<meta property="og:type" content="article">
+<meta property="og:title" content="self-supervised learning until 2019">
+<meta property="og:url" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png">
+<meta property="og:updated_time" content="2020-01-21T12:57:48.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="self-supervised learning until 2019">
+<meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
+<meta name="twitter:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/"/>
+
+
+
+
+
+  <title>self-supervised learning until 2019 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">self-supervised learning until 2019</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-19T14:12:28+08:00">
+                2020-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/self-supervised/" itemprop="url" rel="index">
+                    <span itemprop="name">self-supervised</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/01/19/self-supervised-learning-2019/" class="leancloud_visitors" data-flag-title="self-supervised learning until 2019">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p><strong>Self-Supervised Learning</strong> has become an exciting direction in AI community.</p>
+<ul>
+<li>Jitendra Malik: “Supervision is the opium of the AI researcher”</li>
+<li>Alyosha Efros: “The AI revolution will not be supervised”</li>
+<li>Yann LeCun: “self-supervised learning is the cake, supervised learning is the icing on the cake, reinforcement learning is the cherry on the cake”</li>
+</ul>
+<p>So, this blog is about the <strong>recent improvement </strong>(including STA) in self-supervised learning (for <strong>researchers</strong>).</p>
+<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br><a id="more"></a></p>
+<p>这篇post记述到2019年底为止关于self-supervised learning的论文概述，主要关注于经典benchmark和当下STA。首先从一篇综述开始，总揽当下。</p>
+<h1 id="Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey-20191"><a href="#Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey-20191" class="headerlink" title="Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey - 20191"></a>Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey - 2019<sup><a href="#fn_1" id="reffn_1">1</a></sup></h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>深度神经网络的性能很大程度上依赖于Network capability（比如其中的特征抽取部分网络：AlexNet, ResNet, etc.）和数据的数量（ImageNet, OpenImage），而大量的数据主要是为了预训练模型，然后再用特定数据去fine-tune。预训练之后的模型主要有两个优点：有好的起点，收敛更快，可以避免over-fitting现象的发生。</p>
+<p>但是对于数据的标注是耗时并且代价昂贵的，尤其是在video上。因此提出了self-supervised自主学习方法。首先是<strong>从数据的特性中<em>自动</em> 得到pretext tasks的伪标记</strong>，然后<strong>（通过ConvNet）从大量无标记的数据中学习visual features</strong>，然后将学习到的<strong>visual features去完成预先定义的pretext tasks</strong>，之后将在<strong>pretext task训练得到的网络参数（即ConvNet参数）作为监督学习downstream tasks的预训练参数</strong>，接下来就是按传统监督方式fine-tune了。</p>
+<h2 id="常见DNN结构"><a href="#常见DNN结构" class="headerlink" title="常见DNN结构"></a>常见DNN结构</h2><p>主要回顾了一些常见的网络结构，可以略过</p>
+<ul>
+<li>Image<ul>
+<li>AlexNet：每一个卷积层之后都应用了ReLU；由于只有8层，参数少，易过拟合，因此会带有数据增强、dropout、normalization等方法</li>
+<li>VGG：层数增加，减小stride和kernel size的大小，保留更多细节特征</li>
+<li>GoogLeNet：提出了Inception block，增加了网络的宽度</li>
+<li>ResNet：提出skip connection来解决梯度消失和梯度爆炸的问题</li>
+<li>DenseNet：提出了dense connection，使得浅层关注于浅层通用特征，高层关注于特定任务特征 </li>
+</ul>
+</li>
+<li>Video：包括将视频分成多个帧作为图像的2DConvNet-based，关注于空间和时序特点的3DConvNet-based，动态关注模型的LSTM-based<ul>
+<li>Two-Stream Network：由一个空间流模型和一个时间流模型组成</li>
+<li>Spatiotemporal CNN：增加人的动作识别</li>
+<li>Recurrent Neural Network：基于时序特点</li>
+</ul>
+</li>
+</ul>
+<h2 id="Pretext-tasks"><a href="#Pretext-tasks" class="headerlink" title="Pretext tasks"></a>Pretext tasks</h2><p>常见pretext tasks方法主要概括为下述四个部分：重新生成新的数据；基于内容之间的联系；在语义上生成伪标签；基于数据内在的联系。</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png" alt="常见Pretext tasks方法"></p>
+<p>下述会从Image和Video分别展开。</p>
+<h3 id="Image-feature-learning"><a href="#Image-feature-learning" class="headerlink" title="Image feature learning"></a>Image feature learning</h3><h4 id="Generation-based-Methods：重新生成数据"><a href="#Generation-based-Methods：重新生成数据" class="headerlink" title="Generation-based Methods：重新生成数据"></a>Generation-based Methods：重新生成数据</h4><p>这一部分的伪标签通常是images本身。</p>
+<h5 id="Image-generation-with-GANs：生成假images"><a href="#Image-generation-with-GANs：生成假images" class="headerlink" title="Image generation with GANs：生成假images"></a>Image generation with GANs：生成假images</h5><p>就是普通的GANs，生成器学习真实图片的<strong>分布</strong>，然后生成尽可能像真的伪images；判别器则区分images的真伪；two-players / min-max game；之后将<strong>判别器网络</strong>用在downstream tasks的初始化上即可。</p>
+<h5 id="Image-super-resolution：生成更高分辨率的images"><a href="#Image-super-resolution：生成更高分辨率的images" class="headerlink" title="Image super resolution：生成更高分辨率的images"></a>Image super resolution：生成更高分辨率的images</h5><ul>
+<li>自动编码器：通过压缩images，用低维度来表示原图</li>
+<li>GAN：仍然可以通过GAN的方法来生成高分辨率的images，生成器使用perceptual loss，包括pixel-loss和content loss两个部分，判别器使用二值损失，如MSE。</li>
+</ul>
+<h5 id="Image-inpainting：将images缺失部分补全"><a href="#Image-inpainting：将images缺失部分补全" class="headerlink" title="Image inpainting：将images缺失部分补全"></a>Image inpainting：将images缺失部分补全</h5><p>用剩余完整images信息特征（颜色、结构等等）来补全images；可以直接用卷积网络，也可以用GAN生成更真实的图片，生成网络的全连接层又包括编码器（补全信息）和解码器（预测补全后缺失区域的位置）。</p>
+<h5 id="Image-colorization：将灰度images填色"><a href="#Image-colorization：将灰度images填色" class="headerlink" title="Image colorization：将灰度images填色"></a>Image colorization：将灰度images填色</h5><p>这里的填色不需要和原彩色相同，只需要合理即可。因此首先需要辨认出目标，找到同一部分的pixel归为一类。一个直接的方法就是全连接网络，包含编码器（特征提取）和解码器（变色color hallucination to colorization），用L2 loss评估预测和真实的值。对于多种可能性，使用类别平衡来解决不确定性的问题。</p>
+<h4 id="Context-based-pretext-tasks：通过内容特征"><a href="#Context-based-pretext-tasks：通过内容特征" class="headerlink" title="Context-based pretext tasks：通过内容特征"></a>Context-based pretext tasks：通过内容特征</h4><h5 id="Context-similarity：patches之间特征的相似性"><a href="#Context-similarity：patches之间特征的相似性" class="headerlink" title="Context similarity：patches之间特征的相似性"></a>Context similarity：patches之间特征的相似性</h5><ul>
+<li><p>Image clustering-based methods</p>
+<p>根据数据的分布来group（可以使用KMeans）；一种naive的方法就是手工标记特征，如HOG、SIFT、Fisher vector；group之后同一组的距离较小，不同组的距离较大；是当前表示学习的STA。</p>
+</li>
+<li><p>Graph constraint-based</p>
+</li>
+</ul>
+<h5 id="Spatial-context-structure：patches之间空间的联系"><a href="#Spatial-context-structure：patches之间空间的联系" class="headerlink" title="Spatial context structure：patches之间空间的联系"></a>Spatial context structure：patches之间空间的联系</h5><p>比如任意两个patches之间的相对位置；比如一连串patches之间的顺序；当然这个联系的问题不可以过难或者过于简单。</p>
+<ul>
+<li>Image jigsaw puzzle：常见的9宫格拼图，实际上已经有9!种可能性了，patches之间可以增加空隙，避免因为一些连接特性而易找到位置关系。</li>
+<li>Context prediction</li>
+<li>Geometric transformation recognition</li>
+</ul>
+<h4 id="Free-semantic-label-based-methods：自动生成语义标签"><a href="#Free-semantic-label-based-methods：自动生成语义标签" class="headerlink" title="Free semantic label-based methods：自动生成语义标签"></a>Free semantic label-based methods：自动生成语义标签</h4><p>Free semantic label包括segmentation masks，深度图，光学流和surface normal images；</p>
+<p>主要通过硬编码和game engine，game engine可以在低cost且拥有pixel-level label下生成大量真实的合成数据，但是合成数据和真实数据不太一样，不可以直接训练，因此需要自主学习的辅助；hard-code programs是另一种生成合成数据的方法，但是其生成的label比较noisy。</p>
+<p>方法包括：</p>
+<ul>
+<li>Moving object segmentation</li>
+<li>Relative depth prediction</li>
+<li>Surface normal prediction</li>
+<li>Contour detection</li>
+<li>Depth estimation</li>
+<li>Semantic segmentation</li>
+</ul>
+<h3 id="Video-feature-learning"><a href="#Video-feature-learning" class="headerlink" title="Video feature learning"></a>Video feature learning</h3><h4 id="Generation-based-Methods：重新生成数据-1"><a href="#Generation-based-Methods：重新生成数据-1" class="headerlink" title="Generation-based Methods：重新生成数据"></a>Generation-based Methods：重新生成数据</h4><h5 id="Video-generation-with-GANs"><a href="#Video-generation-with-GANs" class="headerlink" title="Video generation with GANs"></a>Video generation with GANs</h5><p>同样用GAN做对抗，这里的网络有两个流，分别是前景和背景，然后训练完之后将判别器的参数传递到downstream tasks上。</p>
+<h5 id="Video-colorization"><a href="#Video-colorization" class="headerlink" title="Video colorization"></a>Video colorization</h5><p>这里就是将帧分开，每一个帧同样由灰色进行上色即可。很少有工作运用这个方法。</p>
+<h5 id="Video-future-prediction"><a href="#Video-future-prediction" class="headerlink" title="Video future prediction"></a>Video future prediction</h5><p>对于一个有限帧的video，用编码器寻找空间和时间上的特征，用解码器生成预测的未来帧。但是目前还没有研究探究这种方法的泛化能力。</p>
+<h4 id="Context-based-pretext-tasks：通过内容特征-1"><a href="#Context-based-pretext-tasks：通过内容特征-1" class="headerlink" title="Context-based pretext tasks：通过内容特征"></a>Context-based pretext tasks：通过内容特征</h4><h5 id="Temporal-context-structure"><a href="#Temporal-context-structure" class="headerlink" title="Temporal context structure"></a>Temporal context structure</h5><p>根据时序的顺序主要有两个方向：</p>
+<ul>
+<li>Frame order verification</li>
+<li>Frame order recognition</li>
+</ul>
+<p>都需要捕获帧之间细微的不同之处，因此在准备时需要对大量数据进行处理，比较耗时。</p>
+<h4 id="Cross-modal-based-methods：对于输入的两个不同的通道判断是否之间存在联系"><a href="#Cross-modal-based-methods：对于输入的两个不同的通道判断是否之间存在联系" class="headerlink" title="Cross modal-based methods：对于输入的两个不同的通道判断是否之间存在联系"></a>Cross modal-based methods：对于输入的两个不同的通道判断是否之间存在联系</h4><p>这里的通道包括：RGB顺序、光学流顺序、语音数据、相机姿势等。</p>
+<h5 id="Flow-RGB-correspondence-verification"><a href="#Flow-RGB-correspondence-verification" class="headerlink" title="Flow-RGB correspondence verification"></a>Flow-RGB correspondence verification</h5><h5 id="Optical-flow-estimation"><a href="#Optical-flow-estimation" class="headerlink" title="Optical flow estimation"></a>Optical flow estimation</h5><p>上面两者可以认为一类，都是从图像特征上来说的。</p>
+<h5 id="Audio-visual-correspondence"><a href="#Audio-visual-correspondence" class="headerlink" title="Audio visual correspondence"></a>Audio visual correspondence</h5><p>关注于visual stream和audio stream之间的关系。</p>
+<h5 id="Ego-motion"><a href="#Ego-motion" class="headerlink" title="Ego-motion"></a>Ego-motion</h5><p>无人驾驶汽车可以很容易收集到以自我为中心的行为数据。</p>
+<p>通过两个帧之间的关系，得出自己的旋转与平移的行为方式。</p>
+<h2 id="Downstream-tasks"><a href="#Downstream-tasks" class="headerlink" title="Downstream tasks"></a>Downstream tasks</h2><h3 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h3><p>这一部分就是传统监督学习所完成的任务</p>
+<p>包括：</p>
+<ul>
+<li>Semantic Segmentation：给每一像素都赋予语义标签；<ul>
+<li><strong>FCN全联接网络</strong>初始化为训练pretext tasks完成后的网络参数</li>
+<li>用语义分割数据fine-tune</li>
+<li>在语义分割任务上评估</li>
+</ul>
+</li>
+<li>Object Detection：定位和分类目标<ul>
+<li>Fast-RCNN等<strong>检测网络</strong>初始化为训练pretext tasks完成后的网络参数</li>
+<li>用目标检测数据fine-tune</li>
+<li>在目标检测任务上评估特征的泛化能力</li>
+</ul>
+</li>
+<li>Image classification：分类目标<ul>
+<li><strong>特征提取网络</strong>初始化为训练pretext tasks完成后的网络参数</li>
+<li>用分类数据训练分类器如SVM</li>
+<li>在分类任务测试上评估特征质量</li>
+</ul>
+</li>
+<li>Action Recognition：（在预定义动作列表中）判断人的动作<ul>
+<li><strong>Video特征提取网络</strong>初始化为训练pretext tasks完成后的网络参数</li>
+<li>用动作识别数据fine-tune</li>
+<li>在动作识别任务上评估特征质量</li>
+</ul>
+</li>
+</ul>
+<h3 id="质量评估"><a href="#质量评估" class="headerlink" title="质量评估"></a>质量评估</h3><p>对于质量评估方法主要包括：</p>
+<ul>
+<li><p>Kernel visualization</p>
+<p>将卷积第一层的kernel可视化，与监督学习的进行比较，越相似越好</p>
+</li>
+<li><p>Feature map visualization</p>
+<p>将特征图可视化，越大的激活代表越关注这个部分，与监督学习比较</p>
+</li>
+<li><p>Image retrieval visualization</p>
+<p>在特征空间中寻找K近邻</p>
+</li>
+</ul>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>所有监督学习上的数据都可以在去除标记后作为self-supervised learning的数据集使用，文中列出了Image和Video常用的数据集及其信息，可以略过。</p>
+<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><p>通过在downstream tasks上的表现来评估，但是这种方法不能洞察到在自主学习训练下的情况。因此需要更多的评估方法，比如network dissection。</p>
+<h2 id="当前质量表现"><a href="#当前质量表现" class="headerlink" title="当前质量表现"></a>当前质量表现</h2><ul>
+<li>Image feature learning<ul>
+<li>没有在ImageNet预训练上表现的好，但是可以比拟（相差1%～2%左右）</li>
+<li>每一层的特征都是有用的</li>
+<li>深层次的特征表现比较好，浅层次的特征表现不太好</li>
+<li>当数据集之间有gap时，可以和ImageNet预训练的相提并论</li>
+</ul>
+</li>
+<li>Video feature learning<ul>
+<li>明显低于监督学习下的，亟待改进（相差30%左右）</li>
+<li>可能和参数多、特征复杂有关系</li>
+</ul>
+</li>
+</ul>
+<h2 id="未来研究方向"><a href="#未来研究方向" class="headerlink" title="未来研究方向"></a>未来研究方向</h2><ul>
+<li>Learning Features from Synthetic Data</li>
+<li>Learning Features from Web Data</li>
+<li>Learning Spatiotemporal Features from Videos</li>
+<li>Learning with Data from Different Sensors</li>
+<li>Learning with Multiple Pretext Tasks</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey <a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1902.06162.pdf</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<p><div id="uyan_frame"></div></p>
+<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/paper/" rel="tag"><i class="fa fa-tag"></i> paper</a>
+          
+            <a href="/tags/self-supervised/" rel="tag"><i class="fa fa-tag"></i> self-supervised</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/19/self-supervised-learning-introduction/" rel="next" title="self-supervised_learning-introduction">
+                <i class="fa fa-chevron-left"></i> self-supervised_learning-introduction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">107</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey-20191"><span class="nav-number">1.</span> <span class="nav-text">Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey - 20191</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见DNN结构"><span class="nav-number">1.2.</span> <span class="nav-text">常见DNN结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pretext-tasks"><span class="nav-number">1.3.</span> <span class="nav-text">Pretext tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-feature-learning"><span class="nav-number">1.3.1.</span> <span class="nav-text">Image feature learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generation-based-Methods：重新生成数据"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Generation-based Methods：重新生成数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-generation-with-GANs：生成假images"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">Image generation with GANs：生成假images</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-super-resolution：生成更高分辨率的images"><span class="nav-number">1.3.1.1.2.</span> <span class="nav-text">Image super resolution：生成更高分辨率的images</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-inpainting：将images缺失部分补全"><span class="nav-number">1.3.1.1.3.</span> <span class="nav-text">Image inpainting：将images缺失部分补全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-colorization：将灰度images填色"><span class="nav-number">1.3.1.1.4.</span> <span class="nav-text">Image colorization：将灰度images填色</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-based-pretext-tasks：通过内容特征"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Context-based pretext tasks：通过内容特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Context-similarity：patches之间特征的相似性"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">Context similarity：patches之间特征的相似性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spatial-context-structure：patches之间空间的联系"><span class="nav-number">1.3.1.2.2.</span> <span class="nav-text">Spatial context structure：patches之间空间的联系</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Free-semantic-label-based-methods：自动生成语义标签"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Free semantic label-based methods：自动生成语义标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Video-feature-learning"><span class="nav-number">1.3.2.</span> <span class="nav-text">Video feature learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generation-based-Methods：重新生成数据-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Generation-based Methods：重新生成数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-generation-with-GANs"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">Video generation with GANs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-colorization"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">Video colorization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-future-prediction"><span class="nav-number">1.3.2.1.3.</span> <span class="nav-text">Video future prediction</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-based-pretext-tasks：通过内容特征-1"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Context-based pretext tasks：通过内容特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Temporal-context-structure"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text">Temporal context structure</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cross-modal-based-methods：对于输入的两个不同的通道判断是否之间存在联系"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">Cross modal-based methods：对于输入的两个不同的通道判断是否之间存在联系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Flow-RGB-correspondence-verification"><span class="nav-number">1.3.2.3.1.</span> <span class="nav-text">Flow-RGB correspondence verification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optical-flow-estimation"><span class="nav-number">1.3.2.3.2.</span> <span class="nav-text">Optical flow estimation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Audio-visual-correspondence"><span class="nav-number">1.3.2.3.3.</span> <span class="nav-text">Audio visual correspondence</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ego-motion"><span class="nav-number">1.3.2.3.4.</span> <span class="nav-text">Ego-motion</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Downstream-tasks"><span class="nav-number">1.4.</span> <span class="nav-text">Downstream tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含"><span class="nav-number">1.4.1.</span> <span class="nav-text">包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#质量评估"><span class="nav-number">1.4.2.</span> <span class="nav-text">质量评估</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">1.5.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估方法"><span class="nav-number">1.6.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当前质量表现"><span class="nav-number">1.7.</span> <span class="nav-text">当前质量表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未来研究方向"><span class="nav-number">1.8.</span> <span class="nav-text">未来研究方向</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
