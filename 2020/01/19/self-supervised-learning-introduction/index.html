@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-21T07:31:54.242Z">
+<meta property="og:updated_time" content="2020-02-03T13:37:21.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised_learning-introduction">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -428,15 +428,24 @@
 </ul>
 <p>So, this blog is about the <strong>introduction</strong> about self-supervised learning (only for <strong>beginners</strong>, like me).</p>
 <hr>
+<a id="more"></a>
 <p>其实，里面全是中文ᶘ ᵒᴥᵒᶅ，只是为了封面好看一些，所以开始探索啦！٩(˃̶͈̀௰˂̶͈́)و冲冲冲！</p>
-<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br><a id="more"></a></p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><strong>自主学习SSL</strong>，顾名思义就是数据监督自己来学习，<strong>几乎没有人的行为参与</strong>。self-supervised learning学到的feature不仅仅在recognition task上要比imagenet pre-trained model好，更关键的是它的<strong>generalization和transfer的能力</strong>也要优秀。</p>
-<p>自主学习在不同的场景下，属于不同的学习；感觉它是一个单独的类别；或者说它是一种在无监督的数据集上做监督行为的学习（网上对自主学习属于哪个类别众说纷纭，个人认为从整体来看，作为无监督会更好）。</p>
+<p>自主学习在不同的场景下，属于不同的学习；感觉它是一个单独的类别；或者说它是一种在无监督的数据集上做监督行为的学习（from <sup><a href="#fn_1" id="reffn_1">1</a></sup><code>A form of unsupervised learning where the data provides the supervision</code>），网上对自主学习属于哪个类别众说纷纭，个人认为从整体来看，作为无监督会更好。</p>
 <ul>
 <li>监督学习，对于pretext tasks（伪标记）和downstream tasks训练过程中还是使用标记数据的（从内部来看，可以当作监督）；</li>
 <li>半监督学习，结合标记数据和无标记数据共同来训练（这个也可以从全局来看）；</li>
 <li>无监督学习，用来查找未标记数据的特征，是一种<strong>表示学习</strong>，用于标记相同特征的未标记数据。（<a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">综述论文Longlong Jing and Yingli Tian, 2019</a>认为是无监督，从全局来看可以分为无监督）</li>
 </ul>
+<h2 id="理由"><a href="#理由" class="headerlink" title="理由"></a>理由</h2><ol>
+<li>数据集的构建耗时耗力</li>
+<li>一些领域难以进行标注，或者难以获取标注数据</li>
+<li>大量未标记的数据</li>
+<li>对于空白领域的学习困难</li>
+</ol>
 <h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><ul>
 <li>它可以<strong>减少手动标记数据</strong>的劳动力消耗，只利用少量标注数据，和大量没有标注数据（易获取）。深度学习中最大的障碍——注释数据将被（部分）消除；</li>
 <li>可以<strong>接近甚至超越ImageNet预训练的结果</strong>（但是在强语义任务上有些落后），也就是说在很多还没有标注的数据中学习的结果可以和用很多精准标注后预训练的结果相媲美，这样我们之后就可以不用花费大量的人力去标注数据了。现在的研究表明，可以提高一倍的数据效率（用一半的数据量达到相同的效果）；</li>
@@ -462,6 +471,14 @@
 <li>主动学习active learning，有大量大象和犀牛的样本（没有其他样本），少量已标记，大部分没有标记；先用标记数据训练一个学习器，然后对未标记的数据进行预测，对于预测中不确定性高或置信度低的样本咨询专家并进行打标，最后用扩充后的训练集重新训练；其是用<strong>少量的/有价值的咨询来获得更好的性能</strong>。</li>
 </ul>
 <p>可见自我学习更加符合实际的应用，因为我们的自然图像是很充足的、易获取的，但标记的图像却需要我们耗费一定的人力来获得。</p>
+<blockquote>
+<p>监督学习的方法可以总结为三个步骤：</p>
+<ol>
+<li>构建关于任务的大型标记数据集</li>
+<li>设计具体的网络结构以及训练损失函数</li>
+<li>训练网络，然后部署</li>
+</ol>
+</blockquote>
 <hr>
 <p>下述会从Image、Video、Control展开，讲述各自的pretext tasks的方法。实际上这个分类标准并不太准确，建议以<a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">综述</a>为准。</p>
 <h1 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h1><p>常见的工作流程是在一个或多个带有未标记图像的辅助任务上训练模型，然后用该模型的一个<strong>中间特征层</strong>进入多项Logistic回归分类器，最终的分类准确性量化了学习的表示的质量。</p>
@@ -469,36 +486,73 @@
 <h2 id="Distortion"><a href="#Distortion" class="headerlink" title="Distortion"></a>Distortion</h2><p>图片本身改变：通过轻微的扰动，让图片在没有改变语义特征和几何形式情况下，生成新的数据，同时新的数据的标注应该和原图片一样。</p>
 <ul>
 <li>Exemplar-CNN <a href="https://arxiv.org/abs/1406.6909" target="_blank" rel="external">Dosovitskiy et al., 2015</a>：对于一张图片首先用合理的梯度（包含目标的边缘）来切成小的patches，然后对这些patches随机扰动，产生多个同种类的新数据（可以产生任意多个新数据），最后用这些新（替代）数据来完成代理任务。</li>
-<li>Rotation <a href="https://arxiv.org/abs/1803.07728" target="_blank" rel="external">Gidaris et al. 2018</a>: 通过旋转让网络更加关注于全局的信息，而不是仅仅因为一个局部的信息而得出预测结果</li>
+<li>Rotation <a href="https://arxiv.org/abs/1803.07728" target="_blank" rel="external">Gidaris et al. 2018</a>: 通过旋转让网络更加关注于全局的信息，而不是仅仅因为一个局部的信息而得出预测结果【检测任务和监督学习相差2.4%】</li>
 </ul>
 <h2 id="Patches"><a href="#Patches" class="headerlink" title="Patches"></a>Patches</h2><p>图片分块：对于数据的生成可以通过随机旋转等变换或者可以丢失一些patches，让网络来预测。</p>
-<p><a href="https://arxiv.org/abs/1505.05192" target="_blank" rel="external">Doersch et al. (2015)</a> 对于一张图片随机选择两个patches（第一个随机采取，然后从其周围8个位置寻找第二个patches），然后预测它们的相对位置。为了避免因为线条（边界相邻的关系，采取patches时会隔一定的距离，也会增加一些小的扰动，或者随机降采样，更改色差等等操作）。</p>
+<p><a href="https://arxiv.org/abs/1505.05192" target="_blank" rel="external">Doersch et al. (2015)</a> 对于一张图片随机选择两个patches，第一个随机采取，然后从其周围8个位置寻找第二个patches，然后<strong>预测</strong>它们的<strong>相对位置</strong>。为了避免因为线条等边界相邻的关系，可以采样patches时隔一定的距离；也会增加一些小的扰动，使周围8个采集的不是完全平行线上；随机降采样；更改色差；只使用单一通道等等操作。【在PASCAL VOC+R-CNN上评估：ImageNet预训练后56.8%；相对位置自主学习后51.1%；无预训练45.6%】</p>
 <p> <a href="https://arxiv.org/abs/1603.09246" target="_blank" rel="external">Noroozi &amp; Favaro (2016)</a>则用了9个patches，设计了jigsaw puzzle game，提出了shuffle patches来控制复杂度。</p>
 <p><a href="https://arxiv.org/abs/1708.06734" target="_blank" rel="external">Noroozi, et al, 2017</a>其只考虑了两个变换，一个是扩大2倍后，视觉元素的数量应该保持不变，另一个是分成若干部分后得到的特征求和，应当等于整个图片直接的特征求和。实际上文中有增加别的约束，比如某个部分的特征应该和其他图片（不同类别）的特征的距离应该很远等等，否则结果肯定也是非常差的。</p>
-<h2 id="Colorization"><a href="#Colorization" class="headerlink" title="Colorization"></a>Colorization</h2><p>填色问题：在self-supervised learning中这个问题是常常被提及的。这里用的颜色用的是Lab，一种基于人的视觉的表示（L是亮度，0是黑色，100是白色；a和b表示颜色，其中a负表示绿色，a正表示洋红色，b负表示蓝色，b正表示黄色）。</p>
+<h2 id="Colorization"><a href="#Colorization" class="headerlink" title="Colorization"></a>Colorization</h2><p>填色问题<a href="https://arxiv.org/abs/1603.08511" target="_blank" rel="external">Zhang et al., 2016</a>：在self-supervised learning中这个问题是常常被提及的。这里用的颜色用的是Lab，一种基于人的视觉的表示（L是亮度，0是黑色，100是白色；a和b表示颜色，其中a负表示绿色，a正表示洋红色，b负表示蓝色，b正表示黄色）。</p>
 <p>这个问题其实我还没怎么看懂，我觉得是一个挺难的问题，就像小时候买的玩具一样（很多闪亮的粉倒入有粘性的纸上那个），就是一种创作，后续需要再看看。</p>
-<h3 id="Generative-Modeling"><a href="#Generative-Modeling" class="headerlink" title="Generative Modeling"></a>Generative Modeling</h3><p>泛化模型：就是需要让这个模型可以适合多个相关问题。主要就是在学习内在表示的时候，对于输入进行重构。刚开始会觉得扰动和分块都可以认为是改变输入，其实是不一样的。扰动是一种增加生成数据的方式；分块更不同了，每一块都是作为输入，并且块之间是有关系的；而这里对输入的改变可以说是一种永久性的，就是单纯将输入丢失一些特性，使得得到的模型更加泛化。</p>
+<h3 id="Generative-Modeling"><a href="#Generative-Modeling" class="headerlink" title="Generative Modeling"></a>Generative Modeling</h3><p>泛化模型<a href="https://arxiv.org/pdf/1406.6909.pdf" target="_blank" rel="external">Dosovitskiy et al., 2014</a>：就是需要让这个模型可以适合多个相关问题。主要就是在学习内在表示的时候，对于输入进行重构。刚开始会觉得扰动和分块都可以认为是改变输入，其实是不一样的。扰动是一种增加生成数据的方式；分块更不同了，每一块都是作为输入，并且块之间是有关系的；而这里对输入的改变可以说是一种永久性的，就是单纯将输入丢失一些特性，使得得到的模型更加泛化。</p>
 <p><a href="https://www.cs.toronto.edu/~larocheh/publications/icml-2008-denoising-autoencoders.pdf" target="_blank" rel="external">Vincent, et al, 2008</a>最简单的就是在自动编码器中增加随机噪声。</p>
 <p><a href="https://arxiv.org/abs/1604.07379" target="_blank" rel="external">Pathak, et al., 2016</a>随机丢失一些pixels。</p>
 <p><a href="https://arxiv.org/abs/1611.09842" target="_blank" rel="external">Zhang et al., 2017</a>将通道分开作不同成分，通过一些通道来预测剩余的一些通道。</p>
 <p><a href="https://arxiv.org/abs/1511.06434" target="_blank" rel="external">Radford et al., 2016</a>、<a href="https://arxiv.org/abs/1605.09782" target="_blank" rel="external">Donahue, et al, 2017</a>则是直接使用GAN来生成新的数据。</p>
+<h2 id="Multi-task-self-supervised-visual-learning"><a href="#Multi-task-self-supervised-visual-learning" class="headerlink" title="Multi-task self-supervised visual learning"></a>Multi-task self-supervised visual learning</h2><p>就是将多种方法融合起来。</p>
+<p><a href="">C Doersch, A Zisserman, ICCV 2017</a>文中有多种实验对比，场景是分类任务和目标检测任务。</p>
+<blockquote>
+<p>实验结果中发现：</p>
+<ol>
+<li>backbone深一些更好</li>
+<li>填色和相对位置的效果比泛化模型更好</li>
+<li>自主学习可以和监督学习比拟【分类任务和监督学习相差16.15%；检测任务和监督学习相差4.69%】</li>
+</ol>
+</blockquote>
 <h1 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h1><p>Video包含一系列语义相关的帧。可以直接从过去预测未来，然后下一秒可能就是未来，就可以直接做验证，这样就有源源不断地的数据来训练（Video可以提供充足的信息）。当然，也可以倒着，通过当前的行为预测之前的行为。对于video中的帧，使用active learning去选择，以此来减少不必要的运算。</p>
+<p>方法无外乎寻找帧之间的相关性，如：pixel-level - Optical Flow，object-level - Tracking，patch-level - Mid-level Correspondence</p>
+<p>对于video因为帧之间很相近，因此对于如何选择有信息的数据也是需要考虑研究的。</p>
 <h2 id="Tracking"><a href="#Tracking" class="headerlink" title="Tracking"></a>Tracking</h2><p>记得一次周会上有提到这个，但是那时候好像说的是强化学习吧（有点失忆( ･᷄ὢ･᷅ )）。</p>
 <p><a href="https://arxiv.org/abs/1505.00687" target="_blank" rel="external">Wang &amp; Gupta, 2015</a>由于帧是连续的，因此相近的帧之间目标有着相近的内在特征，可以利用这个特征来追踪目标。为了避免这种特征导致错误地认为所有帧特征都一致，需要随机选择一个帧，然后就是很平常的认为这个随机选择的帧应该和这两个帧之间的距离与这两个帧之间的距离不是一个等级的。</p>
+<h2 id="Cues"><a href="#Cues" class="headerlink" title="Cues"></a>Cues</h2><p>Donglai Wei, Joseph Lim, Bill Freeman, Andrew Zisserman CVPR 2018</p>
+<p>考虑的线索：</p>
+<ol>
+<li>重力</li>
+<li>熵</li>
+<li>摩擦</li>
+<li>因果关系</li>
+<li>照相机的行为</li>
+</ol>
+<p>与监督学习相比，在数据集UCF-101可以超过。</p>
 <h2 id="Frame-Sequence"><a href="#Frame-Sequence" class="headerlink" title="Frame Sequence"></a>Frame Sequence</h2><p>因为帧之间是有时间顺序的，因此我们认为好的表示应该从正确顺序的帧中学习得到。这个侧重的是帧顺序决定的特征，前面侧重的是相邻两帧之间的特征关系。</p>
-<p><a href="https://arxiv.org/abs/1603.08561" target="_blank" rel="external">Misra, et al 2016</a>辅助任务来确定是否是正确的顺序。这里对于五个帧作为一组，然后将数据分为Positive Tuples和Negative Tuples，然后再用这个元组来训练。</p>
-<h2 id="Colorization-1"><a href="#Colorization-1" class="headerlink" title="Colorization"></a>Colorization</h2><p>Video中的填色：感觉就是在image填色上，增加了相同目标之间的关联约束而已。</p>
+<p><a href="https://arxiv.org/abs/1603.08561" target="_blank" rel="external">Misra, et al 2016</a>辅助任务来确定是否是正确的顺序。这里对于五个帧作为一组，然后将数据分为Positive Tuples和Negative Tuples，然后再用这个元组来训练。对于每一个帧通过网络，然后将这几个帧通过concatenation连接网络得到预测顺序，通过分类网络判断，这里用交叉熵损失。【这里还蕴含了另一个角度，<strong>Geometric View</strong>，即对于棒球的运动轨迹，给出起点和终点，是否可以作为中间点】</p>
+<p><strong>评估：</strong></p>
+<ul>
+<li>在动作识别任务上，与监督学习相差16.9%；</li>
+<li>在人动作识别上<ul>
+<li>与监督学习在FLIC数据集上mean PCK -0.9%, AUC PCK -0.7% - Sapp &amp; Taskar, 2013</li>
+<li>在MPII数据上甚至超越了监督学习的结果 - Andriluka et al., 2014</li>
+</ul>
+</li>
+</ul>
+<h2 id="Colorization-1"><a href="#Colorization-1" class="headerlink" title="Colorization"></a>Colorization</h2><p>Video中的填色<a href="">Vondrick, Shrivastava, Fathi, Guadarrama, Murphy. ECCV 2018.</a>：感觉就是在image填色上，增加了相同目标之间的关联约束而已，这里有提到寻找对应点。</p>
+<h1 id="Video-with-sound"><a href="#Video-with-sound" class="headerlink" title="Video with sound"></a>Video with sound</h1><p>增加了声音的约束，即声音与图像之间的相关性和同步性。这里的任务不仅仅包括代理任务，比较复杂。</p>
 <h1 id="Control-Robotics"><a href="#Control-Robotics" class="headerlink" title="Control/Robotics"></a>Control/Robotics</h1><p>是针对于机器人控制的，通过多个摄像机的角度来一同做状态表示。</p>
 <h2 id="Multi-View-Metric-Learning"><a href="#Multi-View-Metric-Learning" class="headerlink" title="Multi-View Metric Learning"></a>Multi-View Metric Learning</h2><p>这部分感觉就是用多个摄像机（多个角度）寻找同一个目标，这样一个目标有多个角度来学习。</p>
 <h2 id="Autonomous-Goal-Generation"><a href="#Autonomous-Goal-Generation" class="headerlink" title="Autonomous Goal Generation"></a>Autonomous Goal Generation</h2><p>自动生成目标，使得可以实现多种目标。</p>
-<h1 id="Geometry"><a href="#Geometry" class="headerlink" title="Geometry"></a>Geometry</h1><h1 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h1><p>通过模型所学到的<strong>（generalized/visual）feature质量</strong>来评价自监督学习性能的高低。并且对于模型的评估，我们通常不关心其对于invented/pretext task的情况，甚至在结果不理想也不care（因为这个任务只是为了得到预训练模型，和实际任务并无直接关系）；而是更关注于它是否在<strong>语义和结构</strong>上有好的表示，在各种<strong>downstream tasks</strong>上有效。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>对于自主学习，其实就是一种学习的方法而已，主要是因为对于深度学习来说，预训练模型是很有必要的（尤其在数据较少的情况下），但是标注是很耗时耗力的。因此提出说，能不能让数据根据自己的数据来从数据中自主学习呢！具体的方法呢，主要就是两个步骤，第一部分就是需要建立代理任务，从数据的属性中获得代理任务的伪标记，用稀疏编码器完成无监督学习；之后就可以用代理任务训练的网络作为预训练模型来做监督学习，进行常规的分类回归问题了。</p>
+<h1 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h1><p>通过模型所学到的<strong>（generalized/visual）feature质量</strong>来评价自监督学习性能的高低。并且对于模型的评估，我们通常不关心其对于invented/pretext task的情况，甚至在结果不理想也不care（因为这个任务只是为了得到预训练模型，和实际任务并无直接关系）；而是更关注于它是否在<strong>语义和结构</strong>上有好的表示，在各种<strong>downstream tasks</strong>上有效。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>对于自主学习，其实就是一种学习的方法而已，主要是因为对于深度学习来说，预训练模型是很有必要的（尤其在数据较少的情况下），但是标注是很耗时耗力的。因此提出说，能不能让数据根据自己的数据来从数据中自主学习呢！具体的方法呢，主要就是两个步骤，第一部分就是需要<strong>建立代理任务</strong>，从数据的属性中获得代理任务的伪标记，用稀疏编码器完成无监督学习；之后就可以用代理任务训练的网络作为预训练模型来做<strong>监督学习</strong>，进行常规的分类回归问题了。</p>
 <p>那么再细节的问题，或者说更加具体的算法在这一篇post中暂时不叙述，只留下一个大概的认识与感觉！</p>
 <p>其实后面两者video和control都是可以转换为图像，只是他们的图像之间存在着某一种关联而已。</p>
 <p>虽然我感觉我后面的几种方法都没有仔细看清楚（看多了，总容易一目十行( ･᷄ὢ･᷅ )，所以暂时先这样，休息一会，再更新STA部分。下一个post见٩(˃̶͈̀௰˂̶͈́)و</p>
+<blockquote id="fn_1">
+<sup>1</sup>. self-Supervised Learning by Andrew Zisserman <a href="https://project.inria.fr/paiss/files/2018/07/zisserman-self-supervised.pdf" target="_blank" rel="external">https://project.inria.fr/paiss/files/2018/07/zisserman-self-supervised.pdf</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
-<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=1&height=66"></iframe><br><!-- UY BEGIN --></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
 <p><div id="uyan_frame"></div></p>
 <p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script><br><!-- UY END --></p>
 
@@ -767,7 +821,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#意义"><span class="nav-number">1.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">1.2.</span> <span class="nav-text">结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏编码器"><span class="nav-number">1.2.1.</span> <span class="nav-text">稀疏编码器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.3.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Image"><span class="nav-number">2.</span> <span class="nav-text">Image</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Distortion"><span class="nav-number">2.1.</span> <span class="nav-text">Distortion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Patches"><span class="nav-number">2.2.</span> <span class="nav-text">Patches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Colorization"><span class="nav-number">2.3.</span> <span class="nav-text">Colorization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generative-Modeling"><span class="nav-number">2.3.1.</span> <span class="nav-text">Generative Modeling</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Video"><span class="nav-number">3.</span> <span class="nav-text">Video</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tracking"><span class="nav-number">3.1.</span> <span class="nav-text">Tracking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame-Sequence"><span class="nav-number">3.2.</span> <span class="nav-text">Frame Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Colorization-1"><span class="nav-number">3.3.</span> <span class="nav-text">Colorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Control-Robotics"><span class="nav-number">4.</span> <span class="nav-text">Control/Robotics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-View-Metric-Learning"><span class="nav-number">4.1.</span> <span class="nav-text">Multi-View Metric Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autonomous-Goal-Generation"><span class="nav-number">4.2.</span> <span class="nav-text">Autonomous Goal Generation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Geometry"><span class="nav-number">5.</span> <span class="nav-text">Geometry</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评估方法"><span class="nav-number">6.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">7.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理由"><span class="nav-number">1.1.</span> <span class="nav-text">理由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#意义"><span class="nav-number">1.2.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">1.3.</span> <span class="nav-text">结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏编码器"><span class="nav-number">1.3.1.</span> <span class="nav-text">稀疏编码器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.4.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Image"><span class="nav-number">2.</span> <span class="nav-text">Image</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Distortion"><span class="nav-number">2.1.</span> <span class="nav-text">Distortion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Patches"><span class="nav-number">2.2.</span> <span class="nav-text">Patches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Colorization"><span class="nav-number">2.3.</span> <span class="nav-text">Colorization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generative-Modeling"><span class="nav-number">2.3.1.</span> <span class="nav-text">Generative Modeling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-task-self-supervised-visual-learning"><span class="nav-number">2.4.</span> <span class="nav-text">Multi-task self-supervised visual learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Video"><span class="nav-number">3.</span> <span class="nav-text">Video</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tracking"><span class="nav-number">3.1.</span> <span class="nav-text">Tracking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cues"><span class="nav-number">3.2.</span> <span class="nav-text">Cues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame-Sequence"><span class="nav-number">3.3.</span> <span class="nav-text">Frame Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Colorization-1"><span class="nav-number">3.4.</span> <span class="nav-text">Colorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Video-with-sound"><span class="nav-number">4.</span> <span class="nav-text">Video with sound</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Control-Robotics"><span class="nav-number">5.</span> <span class="nav-text">Control/Robotics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-View-Metric-Learning"><span class="nav-number">5.1.</span> <span class="nav-text">Multi-View Metric Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autonomous-Goal-Generation"><span class="nav-number">5.2.</span> <span class="nav-text">Autonomous Goal Generation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#评估方法"><span class="nav-number">6.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">7.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
