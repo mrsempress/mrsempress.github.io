@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Learning%20Correspondence%20from%20the%20Cycle-consistency%20of%20Time.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/MoCo.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/MoCo-2.png">
-<meta property="og:updated_time" content="2020-02-04T11:43:49.536Z">
+<meta property="og:updated_time" content="2020-02-04T12:08:09.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning in 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -576,7 +576,7 @@
 <hr>
 <p><strong>方法</strong>具体来说如下：</p>
 <p><img src="/2020/01/19/self-supervised-learning-2019/Learning Correspondence from the Cycle-consistency of Time.png" alt="Method"></p>
-<p>训练时，tracker $\mathcal{T}$和encoder$\phi$两者相伴，不断学习</p>
+<p>训练时，tracker <script type="math/tex">\mathcal{T}</script>和encoder<script type="math/tex">\phi</script>两者相伴，不断学习</p>
 <ul>
 <li><p>首先从start开始（这时时间为t），我们有一个<strong>初始patch</strong> <script type="math/tex">p_t</script>，将其通过卷积网络<script type="math/tex">\phi</script>来提取特征，得到<script type="math/tex">x_t^p</script>；</p>
 </li>
@@ -622,8 +622,8 @@ x_{t-k:t}^I=\phi(I_{t−k}:t)</script></li>
 \mathcal{T}^{(-1)}(x_{t-1}^I, x_t^p)=x_{t-1}^I\times x_t^p=x_{t-1}^p\\
 \mathcal{T}^{(−i)}(x_{t-1}^I, x_t^p) = \mathcal{T}(x_{t-i}^I, \mathcal{T}(x_{t-i+1}^I,\dots\mathcal{T} (x_{t-1}^I, x_p^t)))=x_{t-i}^p</script><p>Forward:</p>
 <script type="math/tex; mode=display">
-\mathcal{T}^{(1)}(x_{t-i+1}^I, x_{t-i}^p)=x_{t-i+1}^I\times x_{t-i}^p=x_{t-i+1}^p\\
-\mathcal{T}^{(i)}(x_{t-i+1}^I, x_{t-i}^p) = \mathcal{T}(x_{t-1}^I, \mathcal{T}(x_{t-2}^I,\dots\mathcal{T} (x_{t-i+1}^I, x_{t-i}^p)))=x^{p}_{t-1}</script></li>
+\mathcal{T}^{(1)}(x{t-i+1}^I, x{t-i}^p)=x{t-i+1}^I\times x{t-i}^p=x{t-i+1}^p\\
+\mathcal{T}^{(i)}(x{t-i+1}^I, x{t-i}^p) = \mathcal{T}(x{t-1}^I, \mathcal{T}(x{t-2}^I,\dots\mathcal{T} (x{t-i+1}^I, x{t-i}^p)))=x^{p}{t-1}</script></li>
 <li><p>计算loss</p>
 <p>对于loss部分，细化优化之后，包括tracking、skip cycle、特征相似性三个部分：</p>
 <p>Tracking：</p>
@@ -632,16 +632,17 @@ L_{long}^i=l_\theta(x_{t}^p, T^{(i)}(x_{t−i+1}^I, T^{(−i)}(x_{t−1}^I , x_t
 <script type="math/tex; mode=display">
 L_{skip}^{i}=l_{\theta}(x_t^p,\mathcal{T}(x_t^I,\mathcal{T}(x_{t-i}^I,x_t^p)))</script><p>其中，上两者中的$l_{\theta}$的定义为：</p>
 <script type="math/tex; mode=display">
-l_\theta=\text{euclidean distance}\\
-l_\theta(x_{t}^p, \hat x_{t}^p)=\frac{1}{n}\sum_{i=1}^n\|M(\theta_{x^p_*})_i−M(\theta_{\hat x^p_*})_i\|^2_2</script><p>其中，M表示n个坐标系下的变线性采样结果。</p>
+   l_\theta=\text{euclidean distance}\\
+   l_\theta(x_{t}^p, \hat x_{t}^p)=\frac{1}{n}\sum_{i=1}^n\|M(\theta_{x^p_*})_i−M(\theta_{\hat x^p_*})_i\|^2_2</script><p>其中，M表示n个坐标系下的变线性采样结果。</p>
 <p>Feature Similarity:</p>
 <script type="math/tex; mode=display">
-L_{sim}^i=-<x_t^p,\mathcal{T}(x_{t-i}^I,x_t^p)>,\text{<> represent cosine similarity.}</script><p>因此Loss定义为如下（k是cycles的数目）：</p>
+   L_{sim}^i=-<x_t^p,\mathcal{T}(x_{t-i}^I,x_t^p)>,\text{<> represent cosine similarity.}</script><p>因此Loss定义为如下（k是cycles的数目）：</p>
 <script type="math/tex; mode=display">
-\mathcal{L}=\sum_{i=1}^k\mathcal{L}_{sim}^i+\lambda\mathcal{L}_{skip}^i+\lambda\mathcal{L}_{long}^i</script><p>测试部分：</p>
-</li>
-<li><p>计算两个帧的相似矩阵</p>
-<script type="math/tex; mode=display">
+\mathcal{L}=\sum_{i=1}^k\mathcal{L}_{sim}^i+\lambda\mathcal{L}_{skip}^i+\lambda\mathcal{L}_{long}^i</script></li>
+</ol>
+<p>测试部分：</p>
+<ol>
+<li>计算两个帧的相似矩阵<script type="math/tex; mode=display">
 A_{t−1,t} = f(\phi(I_{t−1}), \phi(I_t ))</script></li>
 <li>计算新帧各个部分的标签<script type="math/tex; mode=display">
 y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
