@@ -111,7 +111,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Learning%20Correspondence%20from%20the%20Cycle-consistency%20of%20Time.png">
-<meta property="og:updated_time" content="2020-02-04T02:51:03.400Z">
+<meta property="og:updated_time" content="2020-02-04T03:05:20.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning until 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -576,34 +576,34 @@
 <p><img src="/2020/01/19/self-supervised-learning-2019/Learning Correspondence from the Cycle-consistency of Time.png" alt="Method"></p>
 <p>训练时，tracker $\mathcal{T}$和encoder$\phi$两者相伴，不断学习</p>
 <ul>
-<li><p>首先从start开始（这时时间为t），我们有一个<strong>初始patch $p_t$</strong>，将其通过卷积网络$\phi$来提取特征，得到$x_t^p$；</p>
+<li><p>首先从start开始（这时时间为t），我们有一个<strong>初始patch</strong> <script type="math/tex">p_t</script>，将其通过卷积网络<script type="math/tex">\phi</script>来提取特征，得到<script type="math/tex">x_t^p</script>；</p>
 </li>
-<li><p>接下来<strong>backward tracking</strong>，这一步我们需要通过tacker $\mathcal{T}$来获得下一时刻patch在t-1和t-2时的位置，即图b所完成的工作</p>
+<li><p>接下来<strong>backward tracking</strong>，这一步我们需要通过tacker <script type="math/tex">\mathcal{T}</script>来获得下一时刻patch在t-1和t-2时的位置，即图b所完成的工作</p>
 <ul>
-<li><p>t-1（t-2）时刻的图片$I_{t-1}$（$I_{t-2}$）首先通过卷积网络$\phi$来<strong>提取特征</strong>，得到$x_{t-1}^I$（$x_{t-2}^I$）（$\phi$在tracking中不断完善，因此在初期训练中，结果并不太优秀）</p>
+<li><p>t-1（t-2）时刻的图片<script type="math/tex">I_{t-1}</script>（<script type="math/tex">I_{t-2}</script>）首先通过卷积网络<script type="math/tex">\phi</script>来<strong>提取特征</strong>，得到<script type="math/tex">x_{t-1}^I</script>（<script type="math/tex">x_{t-2}^I</script>）（<script type="math/tex">\phi</script>在tracking中不断完善，因此在初期训练中，结果并不太优秀）</p>
 </li>
-<li><p><strong>Afﬁnity function f</strong>，将下一个时刻t（t-1）时的patch提取的特征$x_t^p$（$x_{t-1}^p$）与此时刻的特征$x_{t-1}^I$（$x_{t-2}^I$）进行运算，<strong>衡量</strong>对于patch特征图的第i个格子和图像特征图的第j个格子的<strong>相似性</strong>。</p>
-<p>定义$f(x^I_{t-1},x_t^p):=A_{t-1,t}$，$f:\R^{c\times30\times30}\times\R^{c\times10\times10}\rightarrow\R^{900\times100}$。具体的运算公式如下：</p>
+<li><p><strong>Afﬁnity function f</strong>，将下一个时刻t（t-1）时的patch提取的特征<script type="math/tex">x_t^p</script>（<script type="math/tex">x_{t-1}^p</script>）与此时刻的特征<script type="math/tex">x_{t-1}^I</script>（<script type="math/tex">x_{t-2}^I</script>）进行运算，<strong>衡量</strong>对于patch特征图的第i个格子和图像特征图的第j个格子的<strong>相似性</strong>。</p>
+<p>定义<script type="math/tex">f(x^I_{t-1},x_t^p):=A_{t-1,t}</script>，<script type="math/tex">f:\R^{c\times30\times30}\times\R^{c\times10\times10}\rightarrow\R^{900\times100}</script>。具体的运算公式如下：</p>
 <script type="math/tex; mode=display">
 A(j,i)=\frac{\text{exp}(x^I(j)^Tx^p(i))}{\sum_j\text{exp}(x^I(j)^Tx^p(i))}</script></li>
-<li><p><strong>Localizer g</strong>，通过相似矩阵A来<strong>寻找</strong>到与patch特征图<strong>最匹配</strong>下的局部参数$\theta$（$\theta$包括三个部分：2个维度表示空间坐标，1个维度表示旋转角度）。</p>
-<p>定义$g(A):=\theta$，$g:\R^{900\times100}\rightarrow\R^{3}$。g是由两个卷积层，一个线性层组成的。</p>
+<li><p><strong>Localizer g</strong>，通过相似矩阵A来<strong>寻找</strong>到与patch特征图<strong>最匹配</strong>下的局部参数<script type="math/tex">\theta</script>（<script type="math/tex">\theta</script>包括三个部分：2个维度表示空间坐标，1个维度表示旋转角度）。</p>
+<p>定义<script type="math/tex">g(A):=\theta</script>，<script type="math/tex">g:\R^{900\times100}\rightarrow\R^{3}</script>。g是由两个卷积层，一个线性层组成的。</p>
 </li>
-<li><p><strong>Bilinear Sampler h</strong>，则是用$\theta$在Image特征图上<strong>变线性采样</strong>，得到与patch特征图最匹配的小patch。</p>
-<p>定义$h(x^I,\theta)$，$f:\R^{c\times30\times30}\times\R^{3}\rightarrow\R^{c\times 10\times10}$。</p>
+<li><p><strong>Bilinear Sampler h</strong>，则是用<script type="math/tex">\theta</script>在Image特征图上<strong>变线性采样</strong>，得到与patch特征图最匹配的小patch。</p>
+<p>定义<script type="math/tex">h(x^I,\theta)</script>，<script type="math/tex">f:\R^{c\times30\times30}\times\R^{3}\rightarrow\R^{c\times 10\times10}</script>。</p>
 </li>
-<li><p>通过Tracking得到与$p_t$（$p_{t-1}$）在t-1（t-2）时刻的具有最大相似性的区域$p_{t-1}$（$p_{t-2}$）</p>
+<li><p>通过Tracking得到与<script type="math/tex">p_t</script>（<script type="math/tex">p_{t-1}</script>）在t-1（t-2）时刻的具有最大相似性的区域<script type="math/tex">p_{t-1}</script>（<script type="math/tex">p_{t-2}</script>）</p>
 </li>
 </ul>
 </li>
-<li><p>接下来<strong>forward tracking</strong>，和backward tracking步骤相似，通过tacker $\mathcal{T}$来获得上一时刻patch在t-1和t时的位置</p>
+<li><p>接下来<strong>forward tracking</strong>，和backward tracking步骤相似，通过tacker <script type="math/tex">\mathcal{T}</script>来获得上一时刻patch在t-1和t时的位置</p>
 </li>
-<li><p>将end获得的patch与start的patch进行<strong>比较</strong>，得到特征相似衡量部分的损失函数$l_\theta$（这里用两个空间的欧几里得距离来作为损失量）。</p>
+<li><p>将end获得的patch与start的patch进行<strong>比较</strong>，得到特征相似衡量部分的损失函数<script type="math/tex">l_\theta</script>（这里用两个空间的欧几里得距离来作为损失量）。</p>
 </li>
 <li><p>继续多组循环的计算，之后加上tracking和skip cycles部分的loss，共同组成损失函数部分，通过不断训练使得损失函数<strong>最小化</strong></p>
 </li>
 </ul>
-<p>测试时，用已经学习完成的encoder$\phi$，找到两个帧的特征相关性的矩阵A，然后将矩阵A和各个patch的标签来计算新帧各个部分的标签。</p>
+<p>测试时，用已经学习完成的encoder<script type="math/tex">\phi</script>，找到两个帧的特征相关性的矩阵A，然后将矩阵A和各个patch的标签来计算新帧各个部分的标签。</p>
 <hr>
 <p>用<strong>数学公式</strong>来表示，即：</p>
 <p>训练部分：</p>
@@ -660,15 +660,15 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 </li>
 <li>Input frames<ul>
 <li>240 × 240 pixels</li>
-<li>randomly cropped rescaled to $min(H, W) = 256$</li>
+<li>randomly cropped rescaled to <script type="math/tex">min(H, W) = 256</script></li>
 </ul>
 </li>
 <li>Image patches<ul>
 <li>80 × 80 pixels</li>
 </ul>
 </li>
-<li>Encoder $\phi$<ul>
-<li>ResNet-50 without res5 (the ﬁnal 3 residual blocks), optimizer Adam with a learning rate of 0.0002 and momentum term $\beta_1 = 0.5, \beta_2 = 0.999$.</li>
+<li>Encoder <script type="math/tex">\phi</script><ul>
+<li>ResNet-50 without res5 (the ﬁnal 3 residual blocks), optimizer Adam with a learning rate of 0.0002 and momentum term <script type="math/tex">\beta_1 = 0.5, \beta_2 = 0.999</script>.</li>
 <li>Input image的特征图大小 30 × 30</li>
 <li>Image patches的特征图大小10 × 10</li>
 </ul>
@@ -690,6 +690,7 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 <blockquote id="fn_2">
 <sup>2</sup>. Learning Correspondence from the Cycle-consistency of Time <a href="https://arxiv.org/pdf/1903.07593.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1903.07593.pdf</a> project address <a href="http://ajabri.github.io/timecycle" target="_blank" rel="external">http://ajabri.github.io/timecycle</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
 </blockquote>
+<hr>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
 </blockquote></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
