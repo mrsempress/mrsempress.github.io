@@ -104,16 +104,18 @@
 <meta name="description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
 <meta name="keywords" content="paper,self-supervised">
 <meta property="og:type" content="article">
-<meta property="og:title" content="self-supervised learning until 2019">
+<meta property="og:title" content="self-supervised learning in 2019">
 <meta property="og:url" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/index.html">
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Learning%20Correspondence%20from%20the%20Cycle-consistency%20of%20Time.png">
-<meta property="og:updated_time" content="2020-02-04T03:05:20.793Z">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/MoCo.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/MoCo-2.png">
+<meta property="og:updated_time" content="2020-02-04T11:43:49.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="self-supervised learning until 2019">
+<meta name="twitter:title" content="self-supervised learning in 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
 <meta name="twitter:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png">
 
@@ -151,7 +153,7 @@
 
 
 
-  <title>self-supervised learning until 2019 | Mrs_empress</title>
+  <title>self-supervised learning in 2019 | Mrs_empress</title>
   
 
 
@@ -327,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">self-supervised learning until 2019</h1>
+          <h1 class="post-title" itemprop="name headline">self-supervised learning in 2019</h1>
         
 
         <div class="post-meta">
@@ -391,7 +393,7 @@
 
           
           
-             <span id="/2020/01/19/self-supervised-learning-2019/" class="leancloud_visitors" data-flag-title="self-supervised learning until 2019">
+             <span id="/2020/01/19/self-supervised-learning-2019/" class="leancloud_visitors" data-flag-title="self-supervised learning in 2019">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,8 +433,8 @@
 </ul>
 <p>So, this blog is about the <strong>recent improvement </strong>(including STA) in self-supervised learning (for <strong>researchers</strong>).</p>
 <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br><a id="more"></a></p>
-<p>这篇post记述到2019年底为止关于self-supervised learning的论文概述，主要关注于经典benchmark和当下STA。首先从一篇综述开始，总揽当下。</p>
-<h1 id="Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey-20191"><a href="#Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey-20191" class="headerlink" title="Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey - 20191"></a>Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey - 2019<sup><a href="#fn_1" id="reffn_1">1</a></sup></h1><p>这篇概述主要就pretext tasks进行展开，将其分为四大类方法进行描述。并提及了自主学习的其他组成部分。</p>
+<p>这篇post记述到2019年中关于self-supervised learning的论文概述，主要关注于经典benchmark和当下STA。首先从一篇综述开始，总揽当下。</p>
+<h1 id="Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey1"><a href="#Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey1" class="headerlink" title="Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey1"></a>Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey<sup><a href="#fn_1" id="reffn_1">1</a></sup></h1><p>这篇概述主要就pretext tasks进行展开，将其分为四大类方法进行描述。并提及了自主学习的其他组成部分。</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>深度神经网络的性能很大程度上依赖于Network capability（比如其中的特征抽取部分网络：AlexNet, ResNet, etc.）和数据的数量（ImageNet, OpenImage），而大量的数据主要是为了预训练模型，然后再用特定数据去fine-tune。预训练之后的模型主要有两个优点：有好的起点，收敛更快；可以避免over-fitting现象的发生。</p>
 <p>但是对于数据的标注是耗时并且代价昂贵的，尤其是在video上。因此提出了self-supervised自主学习方法。首先是<strong>从数据的特性中<em>自动</em> 得到pretext tasks的伪标记</strong>，然后<strong>（通过ConvNet）从大量无标记的数据中学习visual features</strong>，然后将学习到的<strong>visual features去完成预先定义的pretext tasks</strong>，之后将在<strong>pretext task训练得到的网络参数（即ConvNet参数）作为监督学习downstream tasks的预训练参数</strong>，接下来就是按传统监督方式fine-tune了。</p>
 <h2 id="常见DNN结构"><a href="#常见DNN结构" class="headerlink" title="常见DNN结构"></a>常见DNN结构</h2><p>主要回顾了一些常见的网络结构，可略过</p>
@@ -564,7 +566,7 @@
 <li>Learning with Data from Different Sensors</li>
 <li>Learning with Multiple Pretext Tasks</li>
 </ul>
-<h1 id="Learning-Correspondence-from-the-Cycle-consistency-of-Time-20192"><a href="#Learning-Correspondence-from-the-Cycle-consistency-of-Time-20192" class="headerlink" title="Learning Correspondence from the Cycle-consistency of Time - 20192"></a>Learning Correspondence from the Cycle-consistency of Time - 2019<sup><a href="#fn_2" id="reffn_2">2</a></sup></h1><p>这篇文章主要是用周期一致性cycle-consistency的思想，适用于不同规模的语义相关程度上。在训练时，通过周期一致性，向前向后tracking，将起点和终点的不一致部分通过损失函数，来学习<strong>特征图的特征表示</strong>；在测试时，通过学习到的特征表示来寻找空间和时间上的<strong>最近邻</strong>。</p>
+<h1 id="Learning-Correspondence-from-the-Cycle-consistency-of-Time2"><a href="#Learning-Correspondence-from-the-Cycle-consistency-of-Time2" class="headerlink" title="Learning Correspondence from the Cycle-consistency of Time2"></a>Learning Correspondence from the Cycle-consistency of Time<sup><a href="#fn_2" id="reffn_2">2</a></sup></h1><p>这篇文章主要是用周期一致性cycle-consistency的思想，适用于不同规模的语义相关程度上。在训练时，通过周期一致性，向前向后tracking，将起点和终点的不一致部分通过损失函数，来学习<strong>特征图的特征表示</strong>；在测试时，通过学习到的特征表示来寻找空间和时间上的<strong>最近邻</strong>。</p>
 <p>概念上比较简单，但是需要考虑：</p>
 <ul>
 <li>当序列帧中目标并没有改变时，需要更换目标，否则学习不到</li>
@@ -583,14 +585,14 @@
 <li><p>t-1（t-2）时刻的图片<script type="math/tex">I_{t-1}</script>（<script type="math/tex">I_{t-2}</script>）首先通过卷积网络<script type="math/tex">\phi</script>来<strong>提取特征</strong>，得到<script type="math/tex">x_{t-1}^I</script>（<script type="math/tex">x_{t-2}^I</script>）（<script type="math/tex">\phi</script>在tracking中不断完善，因此在初期训练中，结果并不太优秀）</p>
 </li>
 <li><p><strong>Afﬁnity function f</strong>，将下一个时刻t（t-1）时的patch提取的特征<script type="math/tex">x_t^p</script>（<script type="math/tex">x_{t-1}^p</script>）与此时刻的特征<script type="math/tex">x_{t-1}^I</script>（<script type="math/tex">x_{t-2}^I</script>）进行运算，<strong>衡量</strong>对于patch特征图的第i个格子和图像特征图的第j个格子的<strong>相似性</strong>。</p>
-<p>定义<script type="math/tex">f(x^I_{t-1},x_t^p):=A_{t-1,t}</script>，<script type="math/tex">f:\R^{c\times30\times30}\times\R^{c\times10\times10}\rightarrow\R^{900\times100}</script>。具体的运算公式如下：</p>
+<p>定义<script type="math/tex">f(x^I_{t-1},x_t^p):=A_{t-1,t}</script>，<script type="math/tex">f:\mathbb{R}^{c\times30\times30}\times\mathbb{R}^{c\times10\times10}\rightarrow\mathbb{R}^{900\times100}</script>。具体的运算公式如下：</p>
 <script type="math/tex; mode=display">
 A(j,i)=\frac{\text{exp}(x^I(j)^Tx^p(i))}{\sum_j\text{exp}(x^I(j)^Tx^p(i))}</script></li>
 <li><p><strong>Localizer g</strong>，通过相似矩阵A来<strong>寻找</strong>到与patch特征图<strong>最匹配</strong>下的局部参数<script type="math/tex">\theta</script>（<script type="math/tex">\theta</script>包括三个部分：2个维度表示空间坐标，1个维度表示旋转角度）。</p>
-<p>定义<script type="math/tex">g(A):=\theta</script>，<script type="math/tex">g:\R^{900\times100}\rightarrow\R^{3}</script>。g是由两个卷积层，一个线性层组成的。</p>
+<p>定义<script type="math/tex">g(A):=\theta</script>，<script type="math/tex">g:\mathbb{R}^{900\times100}\rightarrow\mathbb{R}^{3}</script>。g是由两个卷积层，一个线性层组成的。</p>
 </li>
 <li><p><strong>Bilinear Sampler h</strong>，则是用<script type="math/tex">\theta</script>在Image特征图上<strong>变线性采样</strong>，得到与patch特征图最匹配的小patch。</p>
-<p>定义<script type="math/tex">h(x^I,\theta)</script>，<script type="math/tex">f:\R^{c\times30\times30}\times\R^{3}\rightarrow\R^{c\times 10\times10}</script>。</p>
+<p>定义<script type="math/tex">h(x^I,\theta)</script>，<script type="math/tex">f:\mathbb{R}^{c\times30\times30}\times\mathbb{R}^{3}\rightarrow\mathbb{R}^{c\times 10\times10}</script>。</p>
 </li>
 <li><p>通过Tracking得到与<script type="math/tex">p_t</script>（<script type="math/tex">p_{t-1}</script>）在t-1（t-2）时刻的具有最大相似性的区域<script type="math/tex">p_{t-1}</script>（<script type="math/tex">p_{t-2}</script>）</p>
 </li>
@@ -636,15 +638,12 @@ l_\theta(x_{t}^p, \hat x_{t}^p)=\frac{1}{n}\sum_{i=1}^n\|M(\theta_{x^p_*})_i−M
 <script type="math/tex; mode=display">
 L_{sim}^i=-<x_t^p,\mathcal{T}(x_{t-i}^I,x_t^p)>,\text{<> represent cosine similarity.}</script><p>因此Loss定义为如下（k是cycles的数目）：</p>
 <script type="math/tex; mode=display">
-\mathcal{L}=\sum_{i=1}^k\mathcal{L}_{sim}^i+\lambda\mathcal{L}_{skip}^i+\lambda\mathcal{L}_{long}^i</script></li>
-</ol>
-<p>测试部分：</p>
-<ol>
+\mathcal{L}=\sum_{i=1}^k\mathcal{L}_{sim}^i+\lambda\mathcal{L}_{skip}^i+\lambda\mathcal{L}_{long}^i</script><p>测试部分：</p>
+</li>
 <li><p>计算两个帧的相似矩阵</p>
 <script type="math/tex; mode=display">
 A_{t−1,t} = f(\phi(I_{t−1}), \phi(I_t ))</script></li>
-<li><p>计算新帧各个部分的标签</p>
-<script type="math/tex; mode=display">
+<li>计算新帧各个部分的标签<script type="math/tex; mode=display">
 y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 </ol>
 <hr>
@@ -683,12 +682,62 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 <li>对于在训练中跟踪目标的选择问题</li>
 <li>可以引入更多的上下文进行跟踪</li>
 </ol>
-<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><hr>
+<h1 id="Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3"><a href="#Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3" class="headerlink" title="Momentum Contrast for Unsupervised Visual Representation Learning3"></a>Momentum Contrast for Unsupervised Visual Representation Learning<sup><a href="#fn_3" id="reffn_3">3</a></sup></h1><p>这篇文章是利用<strong>查询字典</strong>来完成<strong>contrastive learning</strong>，即寻找一个关键字与查询点相近，但与其他不相似。基本思路就是建立一个<strong>动态字典</strong>（从某种意义上来说是一种随机采样），需要满足<strong><em>规模大</em></strong>和<strong><em>前后一致</em></strong>的特点。这个字典由<strong>队列</strong>来表示（实现规模大的特点），根据<strong>动量</strong>（保持一致性）来更新编码器。所要查询的<script type="math/tex">x^q</script>和当前字典的选择<script type="math/tex">x^k</script>，通过编码器得到各自的特征表示<script type="math/tex">q,k</script>，之后使用<strong>contrastive loss</strong>对比损失来衡量两者的相似性，这样不断来训练<strong>视觉表示编码器</strong>。</p>
+<hr>
+<p><strong>方法如下：</strong></p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/MoCo.png" alt="MoCo"></p>
+<ol>
+<li><p>有输入<script type="math/tex">x^q</script>，其可以是一张图片，也可以是一个小patch；还有一组候选样本<script type="math/tex">\{x_0^{key},x_1^{key},x_2^{key},\dots\}</script></p>
+</li>
+<li><script type="math/tex; mode=display">x^q$$经过encoder $$f_q$$，$$f_q(x^q)=q$$，得到所需查询的$$q</script></li>
+<li><p>经过momentum encoder <script type="math/tex">f_k</script>，<script type="math/tex">f_k(x^{k})=k</script>（这里两个编码器可以独立，也可以部分参数共享，也可以相同），得到一个动态队列<script type="math/tex">\{k_0,k_1,k_2,\dots\}</script>，队列的大小可以大于mini-batch的大小，两者是解耦的。</p>
+</li>
+<li><p>假设当前队首为<script type="math/tex">k_+</script>，然后将<script type="math/tex">q,k_+</script>进行相似度比较，用对比损失来衡量两者的相似度（这里使用InfoNCE），即如果两者来自同一图像，则为正样对，否则为负样对：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_q=-\log \frac{exp(q\cdot k_+/\tau)}{\sum_{i=0}^K exp(q\cdot k_i/\tau)}</script><p>其中，<script type="math/tex">\tau</script>为一个超参数。</p>
+<p>当然这里的对比损失还可以用别的表示方法，如margin-based losses，variants of NCE losses。</p>
+</li>
+<li><p>根据loss，计算梯度，以此来优化encoder<script type="math/tex">f_q</script>，使得视觉表示编码器更加优秀</p>
+</li>
+<li><p>同时根据动量来更新<script type="math/tex">f_k</script>（动量更新是为了解决反向更新后，前后编码器不一致的问题），删除最老的数据，因为它的编码密钥是最过时的，因此与最新密钥的一致性最小。</p>
+<p>定义<script type="math/tex">f_k,f_q</script>的参数为<script type="math/tex">\theta_k,\theta_q</script>，则<script type="math/tex">\theta_k</script>的更新如下：</p>
+<script type="math/tex; mode=display">
+\theta_k \leftarrow m\theta_k + (1 − m)\theta_q</script><p>其中，<script type="math/tex">m\in[0,1)</script>是动量系数，实验表明m值大些，结果更好，也表明了慢些更新编码器效果更好，作者使用的是0.999。因此，在实验中，后向传播只更新<script type="math/tex">f_q</script>，然后通过动量更新<script type="math/tex">f_k</script>，这样更加改变的比较平滑，尽可能保持前后编码一致性。</p>
+</li>
+</ol>
+<p>伪代码如下：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/MoCo-2.png" alt="Algorithm of MoCo" style="zoom:50%;"></p>
+<hr>
+<p><strong>超参数</strong>如下：</p>
+<ul>
+<li>Encoder<ul>
+<li>ResNet with Batch Normalization</li>
+<li>Fixed-dimensional output (128-D）</li>
+<li>Output normalized by L2-norm</li>
+<li>SGD weight decay is 0.0001 and the SGD momentum is 0.9</li>
+<li>Initial learning rate of 0.03</li>
+</ul>
+</li>
+<li>Contrastive loss<ul>
+<li>The temperature τ is 0.07</li>
+</ul>
+</li>
+<li>Input data<ul>
+<li>224×224-pixel</li>
+<li>random color jittering, random horizontal ﬂip, and random grayscale conversion</li>
+</ul>
+</li>
+<li>Mini-batch size 256</li>
+</ul>
+<hr>
 <blockquote id="fn_1">
 <sup>1</sup>. Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey <a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1902.06162.pdf</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_2">
 <sup>2</sup>. Learning Correspondence from the Cycle-consistency of Time <a href="https://arxiv.org/pdf/1903.07593.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1903.07593.pdf</a> project address <a href="http://ajabri.github.io/timecycle" target="_blank" rel="external">http://ajabri.github.io/timecycle</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. Momentum Contrast for Unsupervised Visual Representation Learning <a href="https://arxiv.org/pdf/1911.05722.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1911.05722.pdf</a><a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
 </blockquote>
 <hr>
 <p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
@@ -960,7 +1009,7 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey-20191"><span class="nav-number">1.</span> <span class="nav-text">Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey - 20191</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见DNN结构"><span class="nav-number">1.2.</span> <span class="nav-text">常见DNN结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pretext-tasks"><span class="nav-number">1.3.</span> <span class="nav-text">Pretext tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-feature-learning"><span class="nav-number">1.3.1.</span> <span class="nav-text">Image feature learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generation-based-Methods：重新生成数据"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Generation-based Methods：重新生成数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-generation-with-GANs：生成假images"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">Image generation with GANs：生成假images</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-super-resolution：生成更高分辨率的images"><span class="nav-number">1.3.1.1.2.</span> <span class="nav-text">Image super resolution：生成更高分辨率的images</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-inpainting：将images缺失部分补全"><span class="nav-number">1.3.1.1.3.</span> <span class="nav-text">Image inpainting：将images缺失部分补全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-colorization：将灰度images填色"><span class="nav-number">1.3.1.1.4.</span> <span class="nav-text">Image colorization：将灰度images填色</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-based-pretext-tasks：通过内容特征"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Context-based pretext tasks：通过内容特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Context-similarity：patches之间特征的相似性"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">Context similarity：patches之间特征的相似性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spatial-context-structure：patches之间空间的联系"><span class="nav-number">1.3.1.2.2.</span> <span class="nav-text">Spatial context structure：patches之间空间的联系</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Free-semantic-label-based-methods：自动生成语义标签"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Free semantic label-based methods：自动生成语义标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Video-feature-learning"><span class="nav-number">1.3.2.</span> <span class="nav-text">Video feature learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generation-based-Methods：重新生成数据-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Generation-based Methods：重新生成数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-generation-with-GANs"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">Video generation with GANs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-colorization"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">Video colorization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-future-prediction"><span class="nav-number">1.3.2.1.3.</span> <span class="nav-text">Video future prediction</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-based-pretext-tasks：通过内容特征-1"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Context-based pretext tasks：通过内容特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Temporal-context-structure"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text">Temporal context structure</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cross-modal-based-methods：对于输入的两个不同的通道判断是否之间存在联系"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">Cross modal-based methods：对于输入的两个不同的通道判断是否之间存在联系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Flow-RGB-correspondence-verification"><span class="nav-number">1.3.2.3.1.</span> <span class="nav-text">Flow-RGB correspondence verification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optical-flow-estimation"><span class="nav-number">1.3.2.3.2.</span> <span class="nav-text">Optical flow estimation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Audio-visual-correspondence"><span class="nav-number">1.3.2.3.3.</span> <span class="nav-text">Audio visual correspondence</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ego-motion"><span class="nav-number">1.3.2.3.4.</span> <span class="nav-text">Ego-motion</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Downstream-tasks"><span class="nav-number">1.4.</span> <span class="nav-text">Downstream tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含"><span class="nav-number">1.4.1.</span> <span class="nav-text">包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#质量评估"><span class="nav-number">1.4.2.</span> <span class="nav-text">质量评估</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">1.5.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估方法"><span class="nav-number">1.6.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当前质量表现"><span class="nav-number">1.7.</span> <span class="nav-text">当前质量表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未来研究方向"><span class="nav-number">1.8.</span> <span class="nav-text">未来研究方向</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Learning-Correspondence-from-the-Cycle-consistency-of-Time-20192"><span class="nav-number">2.</span> <span class="nav-text">Learning Correspondence from the Cycle-consistency of Time - 20192</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text"> </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Self-supervised-Visual-Feature-Learning-with-Deep-Neural-Networks-A-Survey1"><span class="nav-number">1.</span> <span class="nav-text">Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见DNN结构"><span class="nav-number">1.2.</span> <span class="nav-text">常见DNN结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pretext-tasks"><span class="nav-number">1.3.</span> <span class="nav-text">Pretext tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-feature-learning"><span class="nav-number">1.3.1.</span> <span class="nav-text">Image feature learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generation-based-Methods：重新生成数据"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Generation-based Methods：重新生成数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-generation-with-GANs：生成假images"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">Image generation with GANs：生成假images</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-super-resolution：生成更高分辨率的images"><span class="nav-number">1.3.1.1.2.</span> <span class="nav-text">Image super resolution：生成更高分辨率的images</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-inpainting：将images缺失部分补全"><span class="nav-number">1.3.1.1.3.</span> <span class="nav-text">Image inpainting：将images缺失部分补全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-colorization：将灰度images填色"><span class="nav-number">1.3.1.1.4.</span> <span class="nav-text">Image colorization：将灰度images填色</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-based-pretext-tasks：通过内容特征"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Context-based pretext tasks：通过内容特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Context-similarity：patches之间特征的相似性"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">Context similarity：patches之间特征的相似性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spatial-context-structure：patches之间空间的联系"><span class="nav-number">1.3.1.2.2.</span> <span class="nav-text">Spatial context structure：patches之间空间的联系</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Free-semantic-label-based-methods：自动生成语义标签"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Free semantic label-based methods：自动生成语义标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Video-feature-learning"><span class="nav-number">1.3.2.</span> <span class="nav-text">Video feature learning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generation-based-Methods：重新生成数据-1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Generation-based Methods：重新生成数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-generation-with-GANs"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">Video generation with GANs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-colorization"><span class="nav-number">1.3.2.1.2.</span> <span class="nav-text">Video colorization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Video-future-prediction"><span class="nav-number">1.3.2.1.3.</span> <span class="nav-text">Video future prediction</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-based-pretext-tasks：通过内容特征-1"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Context-based pretext tasks：通过内容特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Temporal-context-structure"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text">Temporal context structure</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cross-modal-based-methods：对于输入的两个不同的通道判断是否之间存在联系"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">Cross modal-based methods：对于输入的两个不同的通道判断是否之间存在联系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Flow-RGB-correspondence-verification"><span class="nav-number">1.3.2.3.1.</span> <span class="nav-text">Flow-RGB correspondence verification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optical-flow-estimation"><span class="nav-number">1.3.2.3.2.</span> <span class="nav-text">Optical flow estimation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Audio-visual-correspondence"><span class="nav-number">1.3.2.3.3.</span> <span class="nav-text">Audio visual correspondence</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ego-motion"><span class="nav-number">1.3.2.3.4.</span> <span class="nav-text">Ego-motion</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Downstream-tasks"><span class="nav-number">1.4.</span> <span class="nav-text">Downstream tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含"><span class="nav-number">1.4.1.</span> <span class="nav-text">包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#质量评估"><span class="nav-number">1.4.2.</span> <span class="nav-text">质量评估</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集"><span class="nav-number">1.5.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估方法"><span class="nav-number">1.6.</span> <span class="nav-text">评估方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当前质量表现"><span class="nav-number">1.7.</span> <span class="nav-text">当前质量表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未来研究方向"><span class="nav-number">1.8.</span> <span class="nav-text">未来研究方向</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Learning-Correspondence-from-the-Cycle-consistency-of-Time2"><span class="nav-number">2.</span> <span class="nav-text">Learning Correspondence from the Cycle-consistency of Time2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3"><span class="nav-number">3.</span> <span class="nav-text">Momentum Contrast for Unsupervised Visual Representation Learning3</span></a></li></ol></div>
             
 
           </div>
