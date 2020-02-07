@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPC-3.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPCV1.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPC-2.png">
-<meta property="og:updated_time" content="2020-02-06T09:21:01.935Z">
+<meta property="og:updated_time" content="2020-02-07T13:15:18.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning in 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -852,8 +852,51 @@ z_{i,j} = f_\theta (x_{i,j} )</script></li>
 <li>无监督性能最后训练的<strong>线性分类器非常依赖学习率</strong>，需要多次迭代才可收敛（作者尝试了多层感知机，但效果不好，所以并没有给出解决方法）。</li>
 </ol>
 <p><a href="https://github.com/google/revisiting-self-supervised" target="_blank" rel="external">实验链接</a>，是Tensorflow版本，代码很清晰。</p>
-<h1 id="S-4L-Self-Supervised-Semi-Supervised-Learning6"><a href="#S-4L-Self-Supervised-Semi-Supervised-Learning6" class="headerlink" title="S^4L: Self-Supervised Semi-Supervised Learning6"></a><script type="math/tex">S^4L</script>: Self-Supervised Semi-Supervised Learning<sup><a href="#fn_6" id="reffn_6">6</a></sup></h1><p>在标记数据上面加一个正常的分类损失，无标签数据上加一个self-supervised的损失</p>
-<p>作者提出了两个算法，一个是 <script type="math/tex">S^4L</script>-Rotation，即<strong>无监督损失是旋转预测任务</strong>；另一个是<script type="math/tex">S^4L</script>-Exemplar，即<strong>无监督损失是基于图像变换（裁切、镜像、颜色变换等）的triplet损失</strong>。</p>
+<h1 id="S-4L-Self-Supervised-Semi-Supervised-Learning6"><a href="#S-4L-Self-Supervised-Semi-Supervised-Learning6" class="headerlink" title="S^4L: Self-Supervised Semi-Supervised Learning6"></a><script type="math/tex">S^4L</script>: Self-Supervised Semi-Supervised Learning<sup><a href="#fn_6" id="reffn_6">6</a></sup></h1><p>这篇文章主要是提出了<script type="math/tex">S^4</script> learning的方法（<script type="math/tex">S^4L</script>是指<strong><em>self-supervised semi-supervised learning</em></strong>）：通过在<strong>标记数据</strong>上面计算<strong>分类损失</strong>，<strong>无标记</strong>数据上<strong>计算self-supervised的损失</strong>，即</p>
+<script type="math/tex; mode=display">
+min_\theta\ \mathcal{L}_l(D_l , \theta) + w\mathcal{L}_u (D_u , \theta),</script><p>其中，<script type="math/tex">\mathcal{L}_l</script>是标准交叉熵损失函数，<script type="math/tex">w</script>是非负权重值（实验中得出取1值，效果最好），<script type="math/tex">\theta</script>是<script type="math/tex">f_\theta(\cdot)</script>中的参数。</p>
+<hr>
+<p>具体<strong>流程</strong>（和平常一样）：</p>
+<ol>
+<li>由标准的<strong>标记数据先训练</strong>pretext任务的模型</li>
+<li>用<strong>无标记数据</strong>测试得到预测标记（可以将标记数据去除标记，一同加入训练）</li>
+<li>再用预测标记作为<strong>伪标签再次训练</strong>模型</li>
+<li>之后用标记数据<strong>fine-tune</strong>模型</li>
+</ol>
+<hr>
+<p><strong>自主学习</strong>部分损失：</p>
+<p>​    作者在两个pretext tasks上实验，两个损失函数都和各自的任务相关，并没有改变，可忽略。</p>
+<p>​    一个是 <script type="math/tex">S^4L</script>-Rotation，即无监督损失<strong><em>旋转</em></strong> 预测任务（比Self-sup. Rotation + Fine-tune在10% labels上提高5.29%，在1% labels上提高8.21%）；</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{\text{rot}}=\frac 1 {|\mathcal{R|}}\sum_{r\in \mathcal R}\sum_{x\in \mathcal D_u}\mathcal{L}(f_\theta(x^r),r)\\
+\mathcal R\in\{0^\circ, 90^\circ, 180^\circ, 270^\circ\}</script><p>​    其中，<script type="math/tex">x^r</script>表示图片经过r翻转后的新图像，<script type="math/tex">\mathcal{L}</script>表示交叉熵损失函数。</p>
+<p>​    另一个是<script type="math/tex">S^4L</script>-Exemplar，即无监督损失基于<strong><em>图像变换</em></strong>（裁切、镜像、颜色变换等）的triplet损失，即衡量相同图像有相似特征表示，不同图像有不同特征表示。（比Self-sup. Exemplar + Fine-tune在10% labels上提高2.71%，在1% labels上提高2.12%）。</p>
+<hr>
+<p><strong>半监督学习</strong>部分损失：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_u=w_{\text{vat}} \mathcal{L}_\text{vat} + w_\text{entmin} \mathcal{L}_\text{entmin}</script><ul>
+<li><p>Virtual Adversarial Training (VAT)</p>
+<ul>
+<li><p>主要是增强对于预测的<strong>鲁棒性</strong></p>
+</li>
+<li><p>因此损失函数的形式，即在<script type="math/tex">\Delta x</script>范围内的预测应该相同</p>
+<script type="math/tex; mode=display">
+\mathcal{L_\text{vat}}=\frac 1 {|\mathcal{D}_u|}\sum_{x\in \mathcal{D}_u}KL(f_\theta(x)\|f_\theta(x+\Delta x))\\
+\Delta x=\text{arg max}_{\delta\ s.t.|\delta|_2=\epsilon}\ KL(f_\theta(x)\|f_\theta(x+\delta))</script></li>
+</ul>
+</li>
+<li><p>Conditional Entropy Minimization (EntMin)</p>
+<ul>
+<li><p>增强对于<strong>预测的信心</strong></p>
+</li>
+<li><p>主要通过标签对于图像的条件概率来衡量</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{\text{entmin}}=\frac 1{|\mathcal{D}_u|}\sum_{x\in \mathcal{D}_u}\sum_{y\in Y}-f_\theta(y|x)\log f_\theta(y|x)</script></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>实验中，有对小的验证集是否有效这个问题进行实验，发现在小型验证集上调整的最佳模型也是在大型验证集上调整的最佳模型，因此得出结论，<strong>用小的验证集fine-tune即可</strong>。</p>
 <h1 id="Self-Supervised-Representation-Learning-by-Rotation-Feature-Decoupling7"><a href="#Self-Supervised-Representation-Learning-by-Rotation-Feature-Decoupling7" class="headerlink" title="Self-Supervised Representation Learning by Rotation Feature Decoupling7"></a>Self-Supervised Representation Learning by Rotation Feature Decoupling<sup><a href="#fn_7" id="reffn_7">7</a></sup></h1><hr>
 <blockquote id="fn_1">
 <sup>1</sup>. Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey <a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1902.06162.pdf</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
