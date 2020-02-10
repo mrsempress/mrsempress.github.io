@@ -118,7 +118,7 @@
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPCV1.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPC-2.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Rotation.png">
-<meta property="og:updated_time" content="2020-02-09T03:57:00.008Z">
+<meta property="og:updated_time" content="2020-02-10T02:23:10.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning in 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -636,7 +636,7 @@ x_{t-k:t}^I=\phi(I_{t−k}:t)</script></li>
 <script type="math/tex; mode=display">
 L_{long}^i=l_\theta(x_{t}^p, T^{(i)}(x_{t−i+1}^I, T^{(−i)}(x_{t−1}^I , x_t^p )))</script><p>Skip Cycle：</p>
 <script type="math/tex; mode=display">
-L_{skip}^{i}=l_{\theta}(x_t^p,\mathcal{T}(x_t^I,\mathcal{T}(x_{t-i}^I,x_t^p)))</script><p>其中，上两者中的$l_{\theta}$的定义为：</p>
+L_{skip}^{i}=l_{\theta}(x_t^p,\mathcal{T}(x_t^I,\mathcal{T}(x_{t-i}^I,x_t^p)))</script><p>其中，上两者中的<script type="math/tex">l_{\theta}</script>的定义为：</p>
 <script type="math/tex; mode=display">
    l_\theta=\text{euclidean distance}\\
    l_\theta(x_{t}^p, \hat x_{t}^p)=\frac{1}{n}\sum_{i=1}^n\|M(\theta_{x^p_*})_i−M(\theta_{\hat x^p_*})_i\|^2_2</script><p>其中，M表示n个坐标系下的变线性采样结果。</p>
@@ -818,11 +818,11 @@ z_{i,j} = f_\theta (x_{i,j} )</script></li>
 <li>extracted 80×80 patches with a stride of 32×32 from a 240×240 shaped input image</li>
 </ul>
 </li>
-<li><script type="math/tex; mode=display">f_\theta</script><ul>
+<li><script type="math/tex">f_\theta</script>:<ul>
 <li>a grid of 6×6 features</li>
 </ul>
 </li>
-<li><script type="math/tex; mode=display">h_\psi</script><ul>
+<li><script type="math/tex">h_\psi</script>:<ul>
 <li>an 11-block ResNet architecture with 4096-dimensional feature maps and 1024-dimensional bottleneck layers</li>
 </ul>
 </li>
@@ -946,13 +946,13 @@ d(x,y)=\|x-y\|_2</script></li>
 <li><p>完成实例区分任务，进行<strong>无参数分类</strong>；</p>
 <p>对于图像<script type="math/tex">X</script><strong>预测为</strong>实例<script type="math/tex">i</script>的可能性定义为：</p>
 <script type="math/tex; mode=display">
-P(i|\hat f)=\frac{\exp(\hat f_i^T\hat f/\tau)}{\sum_{j=1}^N\exp(\hat f_j^T\hat f/\tau)}</script><p>其中，<script type="math/tex">\hat f</script>是<script type="math/tex">\bar f</script>的L2-normalized 版本，<script type="math/tex">\tau</script>是一个温度参数。</p>
+P(i|{\hat f})=\frac{\exp({\hat f}_i^T{\hat f}/\tau)}{\sum_{j=1}^N\exp({\hat f}_j^T{\hat f}/\tau)}</script><p>其中，<script type="math/tex">{\hat f}</script>是<script type="math/tex">\bar f</script>的L2-normalized 版本，<script type="math/tex">\tau</script>是一个温度参数。</p>
 <p>这里目标为：</p>
 <script type="math/tex; mode=display">
-\mathcal{L}_n=-\sum_{i=1}^N\log P(i|\hat f_i)</script><p>由于上式计算会<strong>耗费大量空间和时间</strong>（因为包含了e的次方计算），因此在归一化之前将均值特征<script type="math/tex">\bar f</script>（超过128维，一个降维处理）<strong>线性映射</strong>到一个128维矢量，再归一化为<script type="math/tex">\hat f</script>，并采用<strong>噪声对比估计NCE</strong>（将真实的样本和一批“噪声样本”进行对比，从中发现真实样本的规律；具体来说就是将它转化为二分类问题，将真实样本判为1，从另一个分布采样的样本判为0）和<strong>近端（梯度）正则化</strong>（把一个优化问题转化为其中的一部分，然后用梯度下降法优化这一部分，从而实现总优化问题；大概就是公式中的<script type="math/tex">\lambda</script>部分）。 目的是最小化以下损失函数：</p>
+\mathcal{L}_n=-\sum_{i=1}^N\log P(i|{\hat f}_i)</script><p>由于上式计算会<strong>耗费大量空间和时间</strong>（因为包含了e的次方计算），因此在归一化之前将均值特征<script type="math/tex">\bar f</script>（超过128维，一个降维处理）<strong>线性映射</strong>到一个128维矢量，再归一化为<script type="math/tex">\hat f</script>，并采用<strong>噪声对比估计NCE</strong>（将真实的样本和一批“噪声样本”进行对比，从中发现真实样本的规律；具体来说就是将它转化为二分类问题，将真实样本判为1，从另一个分布采样的样本判为0）和<strong>近端（梯度）正则化</strong>（把一个优化问题转化为其中的一部分，然后用梯度下降法优化这一部分，从而实现总优化问题；大概就是公式中的<script type="math/tex">\lambda</script>部分）。 目的是最小化以下损失函数：</p>
 <script type="math/tex; mode=display">
-\mathcal{L}_n=-\mathbb{E}_{P_d}[\log h(i,\hat f_i^{(t-1)})-\lambda\|\hat f_i^{(t)}-\hat f_i^{(t-1)}\|^2_2]-m\cdot\mathbb{E}_{P_n}[\log (1-h(i,\hat {f'}^{(t-1)}))]\\
-h(i,\hat f):=P(i|\hat f)/[P(i|\hat f)+mP_n(i)]</script><p>其中，<script type="math/tex">P_d</script>表示真实的数据分布，<script type="math/tex">P_n</script>表示NCE中噪声的均匀分布，<script type="math/tex">\hat f'</script>表示其他图像归一化后的特征值。</p>
+\mathcal{L}_n=-\mathbb{E}_{P_d}[\log h(i,{\hat f}_i^{(t-1)})-\lambda\|{\hat f_i}^{(t)}-{\hat f}_i^{(t-1)}\|^2_2]-m\cdot\mathbb{E}_{P_n}[\log (1-h(i,{\hat {f'}}^{(t-1)}))]\\
+h(i,{\hat f}):=P(i|{\hat f})/[P(i|{\hat f})+mP_n(i)]</script><p>其中，<script type="math/tex">P_d</script>表示真实的数据分布，<script type="math/tex">P_n</script>表示NCE中噪声的均匀分布，<script type="math/tex">\hat f'</script>表示其他图像归一化后的特征值。</p>
 </li>
 </ol>
 </li>
