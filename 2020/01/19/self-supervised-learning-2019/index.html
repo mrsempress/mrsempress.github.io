@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Rotation.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/BiGAN.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/BigBiGAN.png">
-<meta property="og:updated_time" content="2020-02-11T09:53:52.014Z">
+<meta property="og:updated_time" content="2020-02-11T10:01:04.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning in 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -1021,11 +1021,11 @@ s_z(z) = \theta_z^T H_\Theta(z)\\
 s_xz(x,z) = \theta_{xz}^T J_\Theta(F_\Theta(x),H_\Theta(z))</script><p>用<script type="math/tex">l_*</script>表示对于<strong>一个样例来说的损失量</strong>（<script type="math/tex">y=+1</script>时，关注于<script type="math/tex">x</script>；<script type="math/tex">y=-1</script>时，关注于<script type="math/tex">z</script>）：</p>
 <script type="math/tex; mode=display">
 l_{\mathcal{E G}} (x, z, y) = y (s_x (x) + s_z (z) + s_{xz} (x, z)),\ y\in \{-1,+1\}\\
-l_{\mathcal{D}} (x, z, y) = h(y(s_x (x)) + h(y(s_z (z)) + h(y(s_{xz}(x, z)),\ y\in \{-1,+1\}</script><p>其中，<script type="math/tex">h(t) = max(0, 1 − t)</script>是判别器的正则化部分（实验说明这三个部分在合并同类项，即<script type="math/tex">h(y(s_x(x)+s_z(z)+s_{xz}(x,z)))</script>之后，准确率有下降）。</p>
-<script type="math/tex; mode=display">\mathcal{l_{EG}}$$最小化，得到$$\mathcal{E,G}$$的最优参数$$\Phi$$（之后有做解耦实验，提高$$\mathcal{E}$$10倍后，可以加快速度，并提高表示能力）；$$\mathcal{l_{D}}$$最小化，得到$$\mathcal{D}$$的最优参数$$\Theta$$。
-
-对于**所有数据来说**（$$x$$的分布为$$P_x$$，$$z$$的分布为$$P_z$$，这里的分布一般都是简单连续的，如高斯分布$$\mathcal{N}(0,I)$$)：</script><p>\mathcal{L_{EG}}(P_x, P_z) = \mathbb{E}_{x\sim P_x,\hat z\sim \mathcal{E}_\Phi(x)} [l_{\mathcal{EG}}(x, \hat z, +1)]+\mathbb{E}_{z\sim P_z,\hat x\sim \mathcal{G}_\Phi(z)} [l_{\mathcal{EG}}(\hat x, z, −1)]\\<br>\mathcal{L_{D}}(P_x, P_z) = \mathbb{E}_{x\sim P_x,\hat z\sim \mathcal{E}_\Phi(x)} [l_{\mathcal{D}}(x, \hat z, +1)]+\mathbb{E}_{z\sim P_z,\hat x\sim \mathcal{G}_\Phi(z)} [l_{\mathcal{D}}(\hat x, z, −1)]</p>
-<p>$$<br>和BiGAN还是一脉相承的。</p>
+l_{\mathcal{D}} (x, z, y) = h(y(s_x (x)) + h(y(s_z (z)) + h(y(s_{xz}(x, z)),\ y\in \{-1,+1\}</script><p>其中，<script type="math/tex">h(t) = max(0, 1 − t)</script>是判别器的正则化部分（实验说明这三个部分在合并同类项，即<script type="math/tex">h(y(s_x(x)+s_z(z)+s_{xz}(x,z)))</script>之后，准确率有下降）。<script type="math/tex">\mathcal{l_{EG}}</script>最小化，得到<script type="math/tex">\mathcal{E,G}</script>的最优参数<script type="math/tex">\Phi</script>（之后有做解耦实验，提高<script type="math/tex">\mathcal{E}</script>10倍后，可以加快速度，并提高表示能力）；<script type="math/tex">\mathcal{l_{D}}</script>最小化，得到<script type="math/tex">\mathcal{D}</script>的最优参数<script type="math/tex">\Theta</script>。</p>
+<p>对于<strong>所有数据来说</strong>（<script type="math/tex">x</script>的分布为<script type="math/tex">P_x</script>，<script type="math/tex">z</script>的分布为<script type="math/tex">P_z</script>，这里的分布一般都是简单连续的，如高斯分布<script type="math/tex">\mathcal{N}(0,I)</script>)：</p>
+<script type="math/tex; mode=display">
+\mathcal{L_{EG}}(P_x, P_z) = \mathbb{E}_{x\sim P_x,\hat z\sim \mathcal{E}_\Phi(x)} [l_{\mathcal{EG}}(x, \hat z, +1)]+\mathbb{E}_{z\sim P_z,\hat x\sim \mathcal{G}_\Phi(z)} [l_{\mathcal{EG}}(\hat x, z, −1)]\\
+\mathcal{L_{D}}(P_x, P_z) = \mathbb{E}_{x\sim P_x,\hat z\sim \mathcal{E}_\Phi(x)} [l_{\mathcal{D}}(x, \hat z, +1)]+\mathbb{E}_{z\sim P_z,\hat x\sim \mathcal{G}_\Phi(z)} [l_{\mathcal{D}}(\hat x, z, −1)]</script><p>和BiGAN还是一脉相承的。</p>
 <hr>
 <blockquote id="fn_1">
 <sup>1</sup>. Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey <a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1902.06162.pdf</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
