@@ -111,16 +111,23 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CategoriesOfPretextTasks.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Learning%20Correspondence%20from%20the%20Cycle-consistency%20of%20Time.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_cycle.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_cycle2.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/MoCo.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/MoCo-2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_MoCo.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPC.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPC-3.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPCV1.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/CPC-2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_DE_CPC.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_S4.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/Rotation.png">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_rotation.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/BiGAN.png">
 <meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/BigBiGAN.png">
-<meta property="og:updated_time" content="2020-02-11T10:01:04.394Z">
+<meta property="og:image" content="http://mrsempress.top/2020/01/19/self-supervised-learning-2019/result_BigBiGAN.png">
+<meta property="og:updated_time" content="2020-02-21T06:59:05.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning in 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -577,9 +584,9 @@
 <h1 id="Learning-Correspondence-from-the-Cycle-consistency-of-Time2"><a href="#Learning-Correspondence-from-the-Cycle-consistency-of-Time2" class="headerlink" title="Learning Correspondence from the Cycle-consistency of Time2"></a>Learning Correspondence from the Cycle-consistency of Time<sup><a href="#fn_2" id="reffn_2">2</a></sup></h1><p>这篇文章主要是用周期一致性cycle-consistency的思想，适用于不同规模的语义相关程度上。在训练时，通过周期一致性，向前向后tracking，将起点和终点的不一致部分通过损失函数，来学习<strong>特征图的特征表示</strong>；在测试时，通过学习到的特征表示来寻找空间和时间上的<strong>最近邻</strong>。</p>
 <p>概念上比较简单，但是需要考虑：</p>
 <ul>
-<li>当序列帧中目标并没有改变时，需要更换目标，否则学习不到</li>
+<li>当序列帧中目标并没有移动/变化时，需要更换目标，否则学习不到</li>
 <li>当物体姿态或者遮挡物发生变化时，可以通过跳过一些帧<strong>skip cycles</strong>来实现周期一致性</li>
-<li>当由于较短的周期使学习简化时，可以更换周期或者使用多种周期<strong>Multiple cycles</strong></li>
+<li>当由于较短的周期使学习简化时，可以通过更换周期或者使用多种周期<strong>Multiple cycles</strong></li>
 </ul>
 <hr>
 <p><strong>方法</strong>具体来说如下：</p>
@@ -683,7 +690,7 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 </li>
 </ul>
 <hr>
-<p>问题：</p>
+<p>遗留问题：</p>
 <ol>
 <li>训练到30 epochs就停滞不前</li>
 <li>对于更大规模和有噪声数据的训练并不友好</li>
@@ -691,7 +698,11 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 <li>对于在训练中跟踪目标的选择问题</li>
 <li>可以引入更多的上下文进行跟踪</li>
 </ol>
-<h1 id="Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3"><a href="#Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3" class="headerlink" title="Momentum Contrast for Unsupervised Visual Representation Learning3"></a>Momentum Contrast for Unsupervised Visual Representation Learning<sup><a href="#fn_3" id="reffn_3">3</a></sup></h1><p>这篇文章是利用<strong>查询字典</strong>来完成<strong>contrastive learning对比学习</strong>（通过正反例子来学习表征），即寻找一个关键字与查询点相近，但与其他不相似。基本思路就是建立一个<strong>动态字典</strong>（从某种意义上来说是一种随机采样），需要满足<strong><em>规模大</em></strong>和<strong><em>前后一致</em></strong>的特点。这个字典由<strong>队列</strong>来表示（实现规模大的特点），根据<strong>动量</strong>（保持一致性）来更新编码器。所要查询的<script type="math/tex">x^q</script>和当前字典的选择<script type="math/tex">x^k</script>，通过编码器得到各自的特征表示<script type="math/tex">q,k</script>，之后使用<strong>contrastive loss</strong>对比损失来衡量两者的相似性，这样不断来训练<strong>视觉表示编码器</strong>。</p>
+<hr>
+<p>结果：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_cycle.png" alt="Result"></p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_cycle2.png" alt="Result"></p>
+<h1 id="Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3"><a href="#Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning3" class="headerlink" title="Momentum Contrast for Unsupervised Visual Representation Learning3"></a>Momentum Contrast for Unsupervised Visual Representation Learning<sup><a href="#fn_3" id="reffn_3">3</a></sup></h1><p>这篇文章是利用<strong>查询字典</strong>来完成<strong>contrastive learning对比学习</strong>（通过正反例子来学习表征），即寻找一个关键字与查询点相近，但与其他不相似。为了满足<strong><em>规模大</em></strong>和<strong><em>前后一致</em></strong>的特点，基本思路就是建立一个<strong>动态字典</strong>（从某种意义上来说是一种随机采样）。这个字典由<strong>队列</strong>来表示（实现规模大的特点），根据<strong>动量</strong>（保持一致性）来更新编码器。所要查询的<script type="math/tex">x^q</script>和当前字典的选择<script type="math/tex">x^k</script>，通过编码器得到各自的特征表示<script type="math/tex">q,k</script>，之后使用<strong>contrastive loss</strong>对比损失来衡量两者的相似性，这样不断来训练<strong>视觉表示编码器</strong>。</p>
 <p>方法名简称为<strong>MoCo</strong>。在PASCAL VOC，COCO和其他数据集的7个检测/细分任务中，可以胜过监督预训练的方法，有时甚至可以大大超过它。</p>
 <p>当<strong>负样本数量较多</strong>时，对比方法能够更好的发挥作用。因为更多的负样本能够有效的覆盖潜在数据分布。在对比学习中，负样本<strong>受限于mini-batch的大小</strong>。而MoCo通过动态队列来<strong>解决</strong>这个问题。</p>
 <hr>
@@ -725,8 +736,6 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 </li>
 <li><p>将新编码器规则得到的<script type="math/tex">k_+</script>加入队列，<strong>更新队列</strong>；</p>
 </li>
-<li><p>继续训练</p>
-</li>
 </ol>
 <hr>
 <p>伪代码如下：</p>
@@ -753,11 +762,14 @@ y_i=\sum_jA_{t-1,t}(j,i)y_j</script></li>
 </li>
 <li>Mini-batch size 256</li>
 </ul>
+<hr>
+<p>结果：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_MoCo.png" alt="Result"></p>
 <h1 id="Data-Efficient-Image-Recognition-With-Contrastive-Predictive-Coding4"><a href="#Data-Efficient-Image-Recognition-With-Contrastive-Predictive-Coding4" class="headerlink" title="Data-Efficient Image Recognition With Contrastive Predictive Coding4"></a>Data-Efficient Image Recognition With Contrastive Predictive Coding<sup><a href="#fn_4" id="reffn_4">4</a></sup></h1><p>这一篇文章同样也是用<strong>contrastive learning对比学习</strong>的思想，其在未标记的ImageNet数据上并使用数据增强的方法进行对比训练，然后使用分类器进行无监督对比学习，效果超过了监督的AlexNet。</p>
 <p>Oord et al., 2018的CPC是其基础版本，通过对多个时间点<strong>共享的信息</strong>进行编码来学习特征表达，同时<strong>丢弃局部信息</strong>（“慢特征”：随时间不会快速变化的特征）。而此篇是在其基础上加上<strong>label-propagation</strong>操作，来提高<strong>data-efficient recognition数据有效识别</strong>。</p>
-<p>（可以看到同为对比学习时，结构都是由三个主要构件组成的。）</p>
+<p>（对比学习结构都是由三个主要构件组成的）</p>
 <p>因此后续的解析会围绕这前后两篇著作展开。</p>
-<p>CPC V2的提升部分，具体包括：</p>
+<p>CPC V2的<strong>提升部分</strong>，具体包括：</p>
 <ul>
 <li>MC: model capacity. 模型容量<ul>
 <li>Original: ResNet-101, 23 blocks, 1024-dimensional feature maps, and 256-dimensional bottleneck layers.</li>
@@ -843,9 +855,13 @@ z_{i,j} = f_\theta (x_{i,j} )</script></li>
 </li>
 <li>a batch size of 512 images</li>
 </ul>
-<p>下面两篇<strong>利用对比方法学习不变特征（Invariances）</strong></p>
-<p>2019年Bachman提出的 Augmented Multiscale DIM ，通过<strong>数据增强</strong>方法<strong>学习不变特征</strong>。Augmented Multiscale Deep InfoMax (AMDIM) is most similar to CPC in that it makes predictions <strong>across space</strong>, but differs in that it also predicts representations <strong>across layers</strong> in the model.</p>
-<p>2019年 Tian提出的 Contrastive multiview coding，通过图像不同的<strong>通道</strong>学习不变特征（深度、光照、语义标签等）。</p>
+<hr>
+<p>结果：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_DE_CPC.png" alt="Result"></p>
+<hr>
+<p>下面两篇则是<strong>利用对比方法学习不变特征（Invariances）</strong></p>
+<p>2019年Bachman提出的 Augmented Multiscale DIM ，通过<strong>数据增强</strong>方法<strong>学习不变特征</strong>。Augmented Multiscale Deep InfoMax (AMDIM) 和CPC很相似，都是通过<strong>空间</strong>来预测的，但是这篇在预测表征上还通过层之间的关系。</p>
+<p>2019年 Tian提出的 Contrastive multiview coding，通过图像不同的<strong>通道</strong>学习不变特征（深度、光照、语义标签等）【貌似还没中，代码部分开源，有些东西】。</p>
 <h1 id="Revisiting-Self-Supervised-Visual-Representation-Learning5"><a href="#Revisiting-Self-Supervised-Visual-Representation-Learning5" class="headerlink" title="Revisiting Self-Supervised Visual Representation Learning5"></a>Revisiting Self-Supervised Visual Representation Learning<sup><a href="#fn_5" id="reffn_5">5</a></sup></h1><p>这篇文章主要是研究了<strong>多种网络结构</strong>以及<strong>多种self-supervised的任务</strong>，得到了一些启发性的经验结论：</p>
 <ol>
 <li>监督学习的结果不可以直接用在自主学习上，两者是不同的</li>
@@ -857,7 +873,7 @@ z_{i,j} = f_\theta (x_{i,j} )</script></li>
 <p><a href="https://github.com/google/revisiting-self-supervised" target="_blank" rel="external">实验链接</a>，是Tensorflow版本，代码很清晰。</p>
 <h1 id="S-4L-Self-Supervised-Semi-Supervised-Learning6"><a href="#S-4L-Self-Supervised-Semi-Supervised-Learning6" class="headerlink" title="S^4L: Self-Supervised Semi-Supervised Learning6"></a><script type="math/tex">S^4L</script>: Self-Supervised Semi-Supervised Learning<sup><a href="#fn_6" id="reffn_6">6</a></sup></h1><p>这篇文章主要是提出了<script type="math/tex">S^4</script> learning的方法（<script type="math/tex">S^4L</script>是指<strong><em>self-supervised semi-supervised learning</em></strong>）：通过在<strong>标记数据</strong>上面计算<strong>分类损失</strong>，<strong>无标记</strong>数据上<strong>计算self-supervised的损失</strong>，即</p>
 <script type="math/tex; mode=display">
-min_\theta\ \mathcal{L}_l(D_l , \theta) + w\mathcal{L}_u (D_u , \theta),</script><p>其中，<script type="math/tex">\mathcal{L}_l</script>是标准交叉熵损失函数，<script type="math/tex">w</script>是非负权重值（实验中得出取1值，效果最好），<script type="math/tex">\theta</script>是<script type="math/tex">f_\theta(\cdot)</script>中的参数。</p>
+min_\theta\ \mathcal{L}_l(D_l , \theta) + w\mathcal{L}_u (D_u , \theta),</script><p>其中，<script type="math/tex">\mathcal{L}_l</script>是标准交叉熵损失函数，<script type="math/tex">w</script>是非负权重值（实验中得出取值为1，效果最好），<script type="math/tex">\theta</script>是<script type="math/tex">f_\theta(\cdot)</script>中的参数。</p>
 <hr>
 <p>具体<strong>流程</strong>（和平常一样）：</p>
 <ol>
@@ -900,6 +916,9 @@ min_\theta\ \mathcal{L}_l(D_l , \theta) + w\mathcal{L}_u (D_u , \theta),</script
 </ul>
 <hr>
 <p>实验中，有对小的验证集是否有效这个问题进行实验，发现在小型验证集上调整的最佳模型也是在大型验证集上调整的最佳模型，因此得出结论，<strong>用小的验证集fine-tune即可</strong>。</p>
+<hr>
+<p>结果：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_S4.png" alt="Result"></p>
 <h1 id="Self-Supervised-Representation-Learning-by-Rotation-Feature-Decoupling7"><a href="#Self-Supervised-Representation-Learning-by-Rotation-Feature-Decoupling7" class="headerlink" title="Self-Supervised Representation Learning by Rotation Feature Decoupling7"></a>Self-Supervised Representation Learning by Rotation Feature Decoupling<sup><a href="#fn_7" id="reffn_7">7</a></sup></h1><p>这篇文章主要是提出将<strong>旋转不变性</strong>纳入特征学习之中，并且将图像旋转pretext task和实例区分任务<strong>接耦</strong>，来提高预测的准确性。</p>
 <p>旋转面临的<strong>问题</strong>：</p>
 <ul>
@@ -911,7 +930,7 @@ min_\theta\ \mathcal{L}_l(D_l , \theta) + w\mathcal{L}_u (D_u , \theta),</script
 </ul>
 </li>
 </ul>
-<p>因此，所学习的实例特征可以分成<strong>旋转判别</strong>和<strong>旋转不相关</strong>两个元素。这也是和RotNet（只进行旋转学习）方法的不同之处。</p>
+<p>因此，所学习的实例特征可以分成<strong>旋转判别</strong>和<strong>旋转不相关</strong>两个元素。这也是<strong>和RotNet（只进行旋转学习）方法的不同之处。</strong></p>
 <p>在分类任务上，比RotNet高1.3%，比监督学习低6.6%；在检测任务上，比RotNet高3.1%，比监督学习低5.6%；在语义分割任务上，比RotNet高6.2%，比监督学习低2.7%。</p>
 <hr>
 <p>具体做法如下：</p>
@@ -989,8 +1008,12 @@ min_{\theta_f,\theta_c}\ \lambda_c\mathcal{L}_c+\lambda_r\mathcal{L}_r+\lambda_n
 </ul>
 </li>
 </ul>
+<hr>
+<p>结果：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_rotation.png" alt="Result"></p>
 <h1 id="Large-Scale-Adversarial-Representation-Learning8"><a href="#Large-Scale-Adversarial-Representation-Learning8" class="headerlink" title="Large Scale Adversarial Representation Learning8"></a>Large Scale Adversarial Representation Learning<sup><a href="#fn_8" id="reffn_8">8</a></sup></h1><p>这篇文章，出发点是GAN在监督学习、迁移学习等上效果都很好，但还没有在表示学习上运用过。于是说，将GAN的<strong>生成图像的质量高</strong>的特点转换为<strong>提高表示学习的性能</strong>上。因此在GAN的当前最优秀之一的<strong>BigGAN</strong>模型作为基础，添加<strong>编码器</strong>和修改<strong>鉴别器</strong>，将其扩展到表示学习——<strong><em>BigBiGAN</em></strong>（=BigGAN+Bidirectional=BigGAN+ALI [Adversarial Learned Inference]）。</p>
 <p><strong>相对于CPC</strong>（上文提到的一些对比学习来说），它不需要更改输入数据，是<strong>全分辨率</strong>进入算法的；因此在downstream tasks时，可以直接使用，而<strong>不需要域迁移</strong>。</p>
+<p>但是正是由于它的big，因此复现上对于<strong>硬件要求高</strong>。</p>
 <p>在说明BigBiGAN之前，先来说明它的两个基础模型：BiGAN和GigGAN。</p>
 <h2 id="BiGAN"><a href="#BiGAN" class="headerlink" title="BiGAN"></a>BiGAN</h2><p>BiGAN是一个<strong>双向GAN</strong>，这里的双向指的就是<strong>输入数据</strong><script type="math/tex">x</script>（一般是图像）和<strong>随机潜变量</strong><script type="math/tex">z</script>（简单来说就是一下载从数据中看不出的内容，我是把它当作特征来看的）两者之间的编码和解码过程。网络结构也很简单清晰（如下图），就是<script type="math/tex">x</script>和<script type="math/tex">z</script>之间的双向生成，加上生成的通过判别器判断。</p>
 <p>考虑随机潜变量<script type="math/tex">z</script>，有两个原因：</p>
@@ -1026,6 +1049,9 @@ l_{\mathcal{D}} (x, z, y) = h(y(s_x (x)) + h(y(s_z (z)) + h(y(s_{xz}(x, z)),\ y\
 <script type="math/tex; mode=display">
 \mathcal{L_{EG}}(P_x, P_z) = \mathbb{E}_{x\sim P_x,\hat z\sim \mathcal{E}_\Phi(x)} [l_{\mathcal{EG}}(x, \hat z, +1)]+\mathbb{E}_{z\sim P_z,\hat x\sim \mathcal{G}_\Phi(z)} [l_{\mathcal{EG}}(\hat x, z, −1)]\\
 \mathcal{L_{D}}(P_x, P_z) = \mathbb{E}_{x\sim P_x,\hat z\sim \mathcal{E}_\Phi(x)} [l_{\mathcal{D}}(x, \hat z, +1)]+\mathbb{E}_{z\sim P_z,\hat x\sim \mathcal{G}_\Phi(z)} [l_{\mathcal{D}}(\hat x, z, −1)]</script><p>和BiGAN还是一脉相承的。</p>
+<hr>
+<p>结果：</p>
+<p><img src="/2020/01/19/self-supervised-learning-2019/result_BigBiGAN.png" alt="Result"></p>
 <hr>
 <blockquote id="fn_1">
 <sup>1</sup>. Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey <a href="https://arxiv.org/pdf/1902.06162.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1902.06162.pdf</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
