@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="paper,Object detection," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 沉迷于为什么我的3D框这么混乱（就有很多个很多个），特别是有多余的框，但是学长的就那么正常，那么干净。">
+<meta name="keywords" content="paper,Object detection">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3DObjectDetection">
+<meta property="og:url" content="http://mrsempress.top/2020/08/29/3DObjectDetection/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 沉迷于为什么我的3D框这么混乱（就有很多个很多个），特别是有多余的框，但是学长的就那么正常，那么干净。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Qin2020_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Qin2020_4.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Qin2020_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Qin2020_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Arsalan_2017_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Arsalan_2017_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Chen_2016_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_4.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_5.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_6.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_7.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_8.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/li_2020_9.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Liu2020_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/GN.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Gaussian%20Kernel.png">
+<meta property="og:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/SMOKE_2020_1.png">
+<meta property="og:updated_time" content="2020-09-10T08:54:53.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3DObjectDetection">
+<meta name="twitter:description" content="This is my blog. 沉迷于为什么我的3D框这么混乱（就有很多个很多个），特别是有多余的框，但是学长的就那么正常，那么干净。">
+<meta name="twitter:image" content="http://mrsempress.top/2020/08/29/3DObjectDetection/Qin2020_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/08/29/3DObjectDetection/"/>
+
+
+
+
+
+  <title>3DObjectDetection | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/08/29/3DObjectDetection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3DObjectDetection</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-29T16:12:37+08:00">
+                2020-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/Object-detection/" itemprop="url" rel="index">
+                    <span itemprop="name">Object detection</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/29/3DObjectDetection/" class="leancloud_visitors" data-flag-title="3DObjectDetection">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>沉迷于为什么我的3D框这么混乱（就有很多个很多个），特别是有多余的框，但是学长的就那么正常，那么干净。</p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<a id="more"></a>
+<h1 id="paper"><a href="#paper" class="headerlink" title="paper"></a>paper</h1><h2 id="MonoGRNet-A-Geometric-Reasoning-Network-for-Monocular-3D-Object-Localization——2019"><a href="#MonoGRNet-A-Geometric-Reasoning-Network-for-Monocular-3D-Object-Localization——2019" class="headerlink" title="MonoGRNet: A Geometric Reasoning Network for Monocular 3D Object Localization——2019"></a>MonoGRNet: A Geometric Reasoning Network for Monocular 3D Object Localization——2019</h2><p>AAAI 2019 oral</p>
+<p><strong>意义：</strong>为什么要研究3D目标检测，为什么要研究深度呢？因为在图像中，传统的物体定位或检测估计二维边界框，可以框住属于图像平面上物体的可见部分。但是，这种检测结果<strong><em>无法在真实的 3D 世界中提供场景理解的几何感知</em></strong>，这对很多应用的意义并不大。换句话来说，我知道在某个方位有个目标存在，但是我不知道它离我的距离，不知道他的实际大小，甚至这个方位是不准确的。因此3D目标检测是必要的，带深度的3D目标检测对于自动驾驶来说，意义也是重大的。</p>
+<p><strong>概括：</strong>这篇文章通过将网络<strong>解耦</strong>为<strong>四个渐进式子任务</strong>，分别是<strong>2D目标检测、实例级深度估计IDE、3D位置检测、局部角落回归</strong>。在<strong><em>检测</em></strong> 到的 2D 边界框的引导下，网络首先<strong><em>估计</em></strong> 3D 框中心的深度和 2D 投影以<strong><em>获得全局 3D 位置</em></strong>，然后在本地环境中<strong><em>回归</em></strong>各个角坐标。最终的 3D 边界框基于估计的 3D 位置和局部角落在全局环境中以<strong><em>端到端</em></strong>的方式进行<strong><em>优化</em></strong>。</p>
+<p><img src="/2020/08/29/3DObjectDetection/Qin2020_1.png" alt=""></p>
+<p><strong>几个重点：</strong></p>
+<ul>
+<li><p>将 <strong>3D 定位问题解耦</strong>为几个<strong>渐进式</strong>子任务，分别为2D目标检测<script type="math/tex">B_{2d}</script>、实例级深度估计IDE<script type="math/tex">Z_c</script>、3D位置检测（2D中心点<script type="math/tex">c</script>包含<script type="math/tex">u,v</script>两个方向，3D中心点<script type="math/tex">C</script>包含<script type="math/tex">X,Y,Z</script>三个方向）、局部角落回归<script type="math/tex">\mathcal{O}</script>（公8个点）。每个子任务从单目 RGB 图像中学习，通过<strong>几何推断</strong>，在<strong><em>已观察到的二维投影平面</em></strong>和在<strong><em>未观察到的深度维度</em></strong>中定位物体<strong>非模态三维边界框（Amodal Bounding Box, ABBox-3D）</strong>，即实现了由二维视频确定物体的三维位置。</p>
+<script type="math/tex; mode=display">
+B_{3d} = (B_{2d}, Z_c, c, \mathcal{O})</script></li>
+<li><p>提出了<strong>instance depth estimation(IDE)</strong>，使用3D bounding box的中心点通过<strong><em>（稀疏地）监督</em></strong>来预测目标的深度，不需要考虑目标的规模以及2D的位置；之间的都是pixel-to-pixel，而在一张图片中，背景占大部分，因此我们用像素级别，并且通过平均误差来计算损失，实际上是不准确的；IDE模块探索深度特征映射的大型感知域以<strong><em>捕获粗略的实例深度</em></strong>，然后联合<strong><em>更高分辨率的早期特征</em></strong> 以<strong><em>优化 IDE</em></strong>。<del>(可以看到深层网络提取的是粗略的全局信息，然后通过浅层的有细节的高分辨率的局部信息来修正，使得信息更加精确)，有点像centernet，通过中心回归。</del></p>
+<p><img src="/2020/08/29/3DObjectDetection/Qin2020_4.png" alt=""></p>
+<script type="math/tex; mode=display">
+Z_c = Z_{cc}+\delta_{Z_c}</script></li>
+<li><p><strong>全局3D位置</strong>，用<strong><em>公式将2D和3D的中心点进行转换</em></strong>（2D投影的中心点和3D的中心点不同），为了<strong>同时检索水平和垂直位置</strong>，首先要<strong>预测 3D 中心的 2D 投影</strong>。结合 IDE，然后将<strong><em>投影中心拉伸到真实 3D空间</em></strong> 以获得最终的3D对象位置。</p>
+<p><img src="/2020/08/29/3DObjectDetection/Qin2020_2.png" style="zoom:35%;"><img src="/2020/08/29/3DObjectDetection/Qin2020_3.png" style="zoom:35%;"></p>
+<script type="math/tex; mode=display">
+u=f_x*X/Z+p_x,\ v=f_y*Y/Z+p_y</script><p>其中，<script type="math/tex">f_x, f_y</script>分别表示在X和Y轴上的焦距，<script type="math/tex">p_x,p_y</script>是坐标系的原点（coordinates of the principle point）</p>
+<p>这样在2D投影到3D的时候，就可以用：</p>
+<script type="math/tex; mode=display">
+X=(u-p_x)*Z/f_x,\ Y=(v-p_y)*Z/f_y</script><p>和IDE模块相似，我们使用early features来回归得到<script type="math/tex">\delta_C</script>，这样中心点的3D位置就可以用<script type="math/tex">C=C_s+\delta_C</script>。</p>
+</li>
+<li><p><strong>局部角落回归</strong>，用高分辨率的信息来回归局部3D框的角点，根据图二的C图，从局部坐标到相机坐标的转换涉及到旋转<script type="math/tex">R</script>和平移<script type="math/tex">C</script>，全局角落坐标为<script type="math/tex">O_k^{cam}=RO_k+C</script>。</p>
+</li>
+<li><p><strong>统一的网络结构，端到端训练</strong>，通过<strong>联合的几何损失函数</strong>进行优化，最大限度地减少 3D 边界在整体背景下的边界框的差异。</p>
+<ul>
+<li><p>2D检测（softmax[<script type="math/tex">s\cdot</script>] cross entropy[CE] loss + masked L1 distance[d] loss）：</p>
+<script type="math/tex; mode=display">
+\mathcal L_{conf}=CE_{g\in\mathcal G}(s\cdot(Pr^g_{obj}),\tilde{Pr}^g_{obj})\\
+\mathcal L_{bbox}=\sum_g\mathbb {1}_g^{obj}\cdot d(B_{2d}^g,\tilde B_{2d}^g)\\
+\mathcal L_{2d} = \mathcal L_{conf} + \omega\mathcal L_{bbox}</script><p>其中，Pr是置信度，<script type="math/tex">\mathbb 1_g^{obj}</script>是指示格子g中是否属于任何目标，如果格子g到最近的目标b的距离小于<script type="math/tex">\sigma_{scope}</script>，那么设置为1。</p>
+</li>
+<li><p>实例深度预测（L1 loss）：</p>
+<script type="math/tex; mode=display">
+\mathcal L_{zc}=\sum_g\mathbb {1}_g^{obj}\cdot d(Z_{cc}^g,\tilde Z_{c}^g)\\
+\mathcal L_{z\delta}=\sum_g\mathbb {1}_g^{obj}\cdot d(Z_{cc}^g+\delta^g_{Z_c},\tilde Z_{c}^g)\\
+\mathcal L_{depth} = \alpha\mathcal L_{zc} + \mathcal L_{z\delta}</script><p>其中，<script type="math/tex">\alpha>1</script>，鼓励模型在粗略估计的时候已经接近真实值了。</p>
+</li>
+<li><p>3D 定位损失（L1 loss）：</p>
+<script type="math/tex; mode=display">
+\mathcal L_c^{2d}=\sum_g\mathbb {1}_g^{obj}\cdot d(g+\delta^g_{c},\tilde c{^g})\\
+\mathcal L_{c}^{3d}=\sum_g\mathbb {1}_g^{obj}\cdot d(C_{s}^g+\delta^g_{C},\tilde C^g)\\
+\mathcal L_{location} = \beta\mathcal L_{c}^{2d} + \mathcal L_{c}^{3d}</script><p>其中，<script type="math/tex">\beta>1</script>，鼓励模型在学习投影中心点时已经接近真实值了。</p>
+</li>
+<li><p>局部角点损失（L1 loss）：</p>
+<script type="math/tex; mode=display">
+\mathcal L_{corners}=\sum_g\sum_k\mathbb 1^{obj}_g\cdot d(O_k,\tilde O_k)</script></li>
+<li><p>联合3D损失：</p>
+<script type="math/tex; mode=display">
+\mathcal L_{joint}=\sum_g\sum_k\mathbb 1^{obj}_g\cdot d(O_k^{cam},\tilde O_k^{cam})</script></li>
+</ul>
+</li>
+</ul>
+<p><strong>效果：</strong>在KITTI 数据集上，该网络在 3D 物体定位方面优于<strong>最先进</strong>的单目方法，且<strong>推理时间最短</strong>。</p>
+<h2 id="3d-Bounding-Box-Estimation-Using-Deep-Learning-and-Geometry——2017"><a href="#3d-Bounding-Box-Estimation-Using-Deep-Learning-and-Geometry——2017" class="headerlink" title="3d Bounding Box Estimation Using Deep Learning and Geometry——2017"></a>3d Bounding Box Estimation Using Deep Learning and Geometry——2017</h2><p>这篇文章的特点在于提出的几何限制关系，以及提出了预测dimension这一stable属性。</p>
+<p>In contrast to <strong>current techniques</strong> that <strong>only regress the 3D orientation</strong> of an object, <strong>our method</strong> ﬁrst regresses <strong>relatively stable 3D object properties</strong> using a deep convolutional neural network and then combines these estimates <strong>with geometric constraints</strong> provided by a <strong>2D object bounding box</strong> to produce a complete 3D bounding box. 之前的方法主要在意object的方向，但这篇文章增添了一些object的固定属性：choose to regress the <strong>box dimensions D</strong> rather than <strong><em>translation T</em></strong> because the variance of the dimension estimate is typically smaller (e.g. cars tend to be <strong><em>roughly the same size</em></strong>)。</p>
+<p>同时利用了2D bbox和3D bbox之间的几何限制关系来限制9个DOF(three for translation, three for rotation, and three for box dimensions)。</p>
+<p>总体结构使用了MultiBin的思想，proposed <strong>MultiBin</strong> architecture for orientation estimation. We ﬁrst <strong>discretize the orientation angle</strong> and <strong>divide it into n overlapping bins</strong>. For each bin, the CNN network estimates both <strong>a conﬁdence probability</strong> <script type="math/tex">c_i</script> that the output angle lies inside the <script type="math/tex">i^{th}</script> bin and the <strong>residual rotation</strong> correction that needs to be applied to the orientation of the center ray of that bin in order to obtain the output angle. The residual rotation is represented by two numbers, for the <strong>sine and the cosine</strong> of the angle. V<strong>alid cosine and sine</strong> values are obtained by applying an <strong>L2 normalization layer</strong> on top of a 2-dimensional input. This results in <strong>3 outputs for each bin</strong> <script type="math/tex">i:(c_i, \cos(\Delta \theta_i), sin(\Delta \theta_i))</script>. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_bins</span><span class="params">(bins)</span>:</span></div><div class="line">    angle_bins = np.zeros(bins)</div><div class="line">    interval = <span class="number">2</span> * np.pi / bins</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,bins):</div><div class="line">        angle_bins[i] = i * interval</div><div class="line">    angle_bins += interval / <span class="number">2</span> <span class="comment"># center of the bin</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> angle_bins</div></pre></td></tr></table></figure>
+<ul>
+<li>The ﬁrst network output estimates the <strong>3D object orientation</strong> using a novel <strong>hybrid discrete-continuous loss</strong>, which signiﬁcantly outperforms the <strong>L2 loss</strong>. </li>
+<li>The second output <strong>regresses the 3D object dimensions</strong>, which have <strong><em>relatively little variance</em></strong> compared to alternatives and can often be predicted for many object types. These estimates, <strong>combined with the geometric constraints</strong> (use the fact that the <strong><em>perspective projection of a 3D bounding box</em></strong> should <strong>ﬁt tightly</strong> within its <strong><em>2D detection window</em></strong>) on translation imposed by the 2D bounding box, enable us to recover a stable and accurate 3D object pose. </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span><span class="params">(nn.Module)</span>:</span></div><div class="line">      <span class="comment"># ...</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">        x = self.features(x)  <span class="comment"># 512 x 7 x 7</span></div><div class="line">        x = x.view(<span class="number">-1</span>, <span class="number">512</span> * <span class="number">7</span> * <span class="number">7</span>)</div><div class="line">        orientation = self.orientation(x)</div><div class="line">        orientation = orientation.view(<span class="number">-1</span>, self.bins, <span class="number">2</span>)  <span class="comment"># angle ssin + cos</span></div><div class="line">        orientation = F.normalize(orientation, dim=<span class="number">2</span>)</div><div class="line">        confidence = self.confidence(x)</div><div class="line">        dimension = self.dimension(x)</div><div class="line">        <span class="keyword">return</span> orientation, confidence, dimension</div></pre></td></tr></table></figure>
+<p><img src="/2020/08/29/3DObjectDetection/Arsalan_2017_1.png" style="zoom:50%;"><img src="/2020/08/29/3DObjectDetection/Arsalan_2017_2.png" style="zoom:50%;"></p>
+<p>Loss for the MultiBin <strong>orientation</strong> is thus:</p>
+<script type="math/tex; mode=display">
+L_\theta = L_{conf} + w \times L_{loc}\\
+L_{loc} = -\frac 1 {n_{\theta^*}}\sum cos(\theta^* − c_i − \Delta\theta_i )</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">OrientationLoss</span><span class="params">(orient, angleDiff, confGT)</span>:</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># orient = [sin(delta), cos(delta)] shape = [batch, bins, 2]</span></div><div class="line">    <span class="comment"># angleDiff = GT - center, shape = [batch, bins]</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    [batch, _, bins] = orient.size()</div><div class="line">    cos_diff = torch.cos(angleDiff)</div><div class="line">    sin_diff = torch.sin(angleDiff)</div><div class="line">    cos_ori = orient[:, :, <span class="number">0</span>]</div><div class="line">    sin_ori = orient[:, :, <span class="number">1</span>]</div><div class="line">    mask1 = (confGT != <span class="number">0</span>)</div><div class="line">    mask2 = (confGT == <span class="number">0</span>)</div><div class="line">    count = torch.sum(mask1, dim=<span class="number">1</span>)</div><div class="line">    tmp = cos_diff * cos_ori + sin_diff * sin_ori</div><div class="line">    tmp[mask2] = <span class="number">0</span></div><div class="line">    total = torch.sum(tmp, dim=<span class="number">1</span>)</div><div class="line">    count = count.type(torch.FloatTensor).cuda()</div><div class="line">    total = total / count</div><div class="line">    <span class="keyword">return</span> -torch.sum(total) / batch</div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">OrientationLoss</span><span class="params">(orient_batch, orientGT_batch, confGT_batch)</span>:</span></div><div class="line">    batch_size = orient_batch.size()[<span class="number">0</span>]</div><div class="line">    indexes = torch.max(confGT_batch, dim=<span class="number">1</span>)[<span class="number">1</span>]</div><div class="line"></div><div class="line">    <span class="comment"># extract just the important bin</span></div><div class="line">    orientGT_batch = orientGT_batch[torch.arange(batch_size), indexes]</div><div class="line">    orient_batch = orient_batch[torch.arange(batch_size), indexes]</div><div class="line"></div><div class="line">    theta_diff = torch.atan2(orientGT_batch[:, <span class="number">1</span>], orientGT_batch[:, <span class="number">0</span>])</div><div class="line">    estimated_theta_diff = torch.atan2(orient_batch[:, <span class="number">1</span>], orient_batch[:, <span class="number">0</span>])</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span> * torch.cos(theta_diff - estimated_theta_diff).mean()</div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">orientation_loss</span><span class="params">(y_true, y_pred)</span>:</span></div><div class="line">    <span class="comment"># Find number of anchors</span></div><div class="line">    anchors = tf.reduce_sum(tf.square(y_true), axis=<span class="number">2</span>)</div><div class="line">    anchors = tf.greater(anchors, tf.constant(<span class="number">0.5</span>))</div><div class="line">    anchors = tf.reduce_sum(tf.cast(anchors, tf.float32), <span class="number">1</span>)</div><div class="line"></div><div class="line">    <span class="comment"># Define the loss</span></div><div class="line">    loss = (y_true[:,:,<span class="number">0</span>]*y_pred[:,:,<span class="number">0</span>] + y_true[:,:,<span class="number">1</span>]*y_pred[:,:,<span class="number">1</span>])</div><div class="line">    loss = tf.reduce_sum((<span class="number">2</span> - <span class="number">2</span> * tf.reduce_mean(loss,axis=<span class="number">0</span>))) / anchors</div><div class="line"></div><div class="line">    <span class="keyword">return</span> tf.reduce_mean(loss)</div></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">L_{conf}$$ is equal to the **softmax loss** of the conﬁdences of each bin `nn.CrossEntropyLoss()`. $$L_{loc}$$ is the loss that tries to **minimize** the difference between the estimated **angle** and the ground truth angle in each of the bins that covers the ground truth angle, with adjacent bins having overlapping coverage.
+
+由于下述关系，$$L_{loc}$$就只关联为cos部分。~~首先(gt_theta-pred_theta) 是在一个bins中与中心角的差值，所以在bins=2时，它的范围在[-pi/2, pi/2]，那么希望loss接近-1，即这一项趋向于0，即括号中的项应该是相同的；这里的theta是一个结果，output，而不是中间的值，所以根据导数反向传播修改的是内部参数，而因为内部参数变了，导致这次预测的theta是更靠近结果的~~
+
+<img src="3DObjectDetection/Arsalan_2017_3.png" style="zoom:50%;" />
+
+The loss for **dimension** estimation $$L_{dims}$$ is computed as follows(L2 loss `nn.MSELoss()`):</script><p>L_{dims}=\sum (D^∗− \bar D − \delta)^2 ,</p>
+<script type="math/tex; mode=display">
+**几何限制关系**：例如：$$x_0=[d_x/2, -d_y/2, d_z/2]^T$$的投影应该和2D框的最左边tightly。【同样对$$x_{max},y_{min},y_{max}$$也有类似的限制】</script><p>x_{min} = (k\left[\begin{matrix}R&amp;T\end{matrix}\right]\left[\begin{matrix}d_x/2\-d_y/2\\d_z/2\\1\end{matrix}\right])_x</p>
+<script type="math/tex; mode=display">
+**Total loss** is the weighted combination of</script><p>L = \alpha × L_{dims} + L_{\theta}</p>
+<script type="math/tex; mode=display">
+
+------
+
+Introduce three additional **performance metrics** measuring the 3D box accuracy: **distance** to ***center*** of box, **distance** to the center of the ***closest*** bounding box face, and the over-all bounding box **overlap** with the ground truth box, measured using 3D Intersection over Union (3D IoU) score.
+
+
+
+## Monocular 3D Object Detection for Autonomous Driving——2016
+
+主要思路就是利用**3D包围框与2D包围框之间存在的映射联系**，用2D空间中的特征来描述3D包围框。First aims to generate a set of **candidate class-speciﬁc object proposals**提出一种生成类相关的物体推荐候选框算法, which are then run through *a standard CNN* pipeline to obtain **high-quality object detections.**然后利用标准CNN来获得高质量的目标检测。The focus of this paper is on ***proposal generation***. Propose **an energy minimization approach** that places object candidates in 3D using the fact that objects should be on the ground-plane利用***物体和地平面接触***的约束条件. We then **score each candidate box** projected to the image plane **via several intuitive potentials** encoding semantic segmentation, contextual information, size and location priors and typical object shape. 用SSVM对物体框打分，选取得分高的框进行分类和精细化的调整。
+
+两个假设：
+
+（三维空间**离散化**为立体像素边长为0.2m的三维模型）
+
+1. 由于KITTI数据集的单目图像拍摄时相机在汽车上**固定位置**，因此地平面相对于相机的映射关系是固定的，同时作者假设所有图像的相机Y轴（也就是三维空间中的垂直方向）与地面是**垂直**的。
+2. 所有的物体**底部**都**与地平面相接**。
+
+<img src="3DObjectDetection/Chen_2016_1.png" style="zoom:70%;" />
+
+* **sample candidate bounding boxes** with typical physical sizes in the 3D space by assuming a prior on the ground-plane. Represent each object with **a 3D bounding box, y = (x, y, z, θ, c, t)**(θ: azimuth angle, c: class, t: representative 3D templates)采样的时候认为不同类别的物体拥有不同的高度范围，这个范围误差在高斯函数的范围内。密集采样之后将内部像素完全是地面的物体框去除，同时去除具有非常低的3D位置先验概率的框。由于密集的采样（穷举），候选框使用**积分图**进行特征提取。
+
+* **project the boxes** to the image plane, thus avoiding multi-scale search in the image
+
+* **score candidate boxes** by exploiting multiple features: ***class semantic, instance semantic, contour, object shape, context, and location prior***. 
+
+  scoring function:</script><p>  E(x, y) =w^T_{c,sem}\phi_{c,sem}(x, y) + w^T_{c,inst}\phi_{c,inst}(x, y)+ w^T_{c,cont}\phi_{c,cont}(x, y) + w^T_{c,loc}\phi_{c,loc}(x, y)+w^T_{c,shape}\phi_{c,shape}(x, y)</p>
+<script type="math/tex; mode=display">
+
+  * class semantic
+
+    语义分割主要有两个衡量，一个是框内属于c的像素比例，另一个是框内不属于c的像素比例。
+
+    Incorporate two types of features encoding semantic segmentation. The ﬁrst feature encourages the presence of an object inside the bounding box by **counting the percentage of pixels** labeled as the **relevant class**:</script><pre><code>\phi_{c,seg}(x, y)=\frac{\sum_{i\in\Omega(y)}S_c(i)}{|\Omega(y)|}
+$$
+The second feature computes the **fraction of pixels** that belong to **classes** other than the object class:
+$$
+\phi_{c,non−seg,c&#39;}(x, y)=\frac{\sum_{i\in\Omega(y)}S_c&#39;(i)}{|\Omega(y)|}
+$$
+</code></pre><ul>
+<li><p>instance semantic</p>
+<p>只对汽车进行实例分割</p>
+</li>
+<li><p>shape</p>
+<p>在2D的候选物体包围框中划分了两种栅格，其中，一种栅格图含有一个栅格，另一种栅格图含有K×K个栅格，统计这些<strong>栅格中每个栅格内的轮廓像素数量</strong>。</p>
+</li>
+<li><p>context</p>
+<p>用2D物体包围框的下方的1/3高度的区域作为上下文区域，用汽车下必然是地面这一上下文关系作为约束</p>
+</li>
+<li><p>location</p>
+<p>使用<strong>核密度估计(KDE)</strong>学习物体的位置先验信息，其中固定位置偏差为4m，2D图像位置偏差为两个像素</p>
+<p><strong>Weight</strong> each loss <strong>equally</strong>, and deﬁne the <strong>category loss</strong> as <strong>cross entropy</strong>, the <strong>orientation loss</strong> as a smooth l1 and the <strong>bounding box offset loss</strong> as a <strong>smooth l1</strong> loss over the 4 coordinates that parameterized the 2D bounding box.</p>
+</li>
+</ul>
+<ul>
+<li><p>利用CNN对高分框<strong>重新打分和分类</strong>，得到候选框的类别、精确位置以及方向信息</p>
+<p><img src="/2020/08/29/3DObjectDetection/Chen_2016_2.png" style="zoom:50%;"></p>
+</li>
+<li><p>A ﬁnal set of object proposals is obtained after <strong>non-maximum suppression</strong></p>
+</li>
+</ul>
+<h2 id="RTM3D-Real-time-Monocular-3D-Detection-from-Object-Keypoints-for-Autonomous-Driving——2020"><a href="#RTM3D-Real-time-Monocular-3D-Detection-from-Object-Keypoints-for-Autonomous-Driving——2020" class="headerlink" title="RTM3D: Real-time Monocular 3D Detection from Object Keypoints for Autonomous Driving——2020"></a>RTM3D: Real-time Monocular 3D Detection from Object Keypoints for Autonomous Driving——2020</h2><p>这一篇文章主要是将3D Detection问题转换为<strong>预测关键点问题</strong>；首先通过预测object的9个关键点（8个角点+1个中心点），然后通过<strong>几何关系</strong>（9个关键点，18个限制）得到dimension, location, and orientation。</p>
+<p>整个网络由3个部分组成：backbone, keypoint feature pyramid, and detection head. 总体是one-stage的。</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_1.png" style="zoom:50%;"></p>
+<ul>
+<li><p><strong><em>backbone</em></strong>: ResNet-18 and DLA-34</p>
+</li>
+<li><p><strong><em>keypoint feature pyramid</em></strong>: Keypoint in the image have <strong>no difference in size</strong>. Therefore, the keypoint detection is not suitable for using the Feature Pyramid Network(FPN). Instead, propose <strong>Keypoint Feature Pyramid Network (KFPN)</strong> to detect scale-invariant key-points in the <em>point-wise space</em>. </p>
+<ul>
+<li>F scale feature maps, ﬁrst resize <strong>each scale</strong> f, <strong>back</strong> to the size of <strong>maximal scale</strong>, then yields the <strong>feature maps</strong> <script type="math/tex">f_{1<f<F}</script> </li>
+<li>generate soft weight by a <strong>softmax</strong> operation to denote the <strong>importance of each scale</strong></li>
+<li><strong>scale-space score map S</strong> score is obtained by <strong>linear weighing sum</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+S_{score} = \sum_f \hat f\odot softmax(\hat f), \odot\text{:element-wise product}</script></li>
+<li><p><strong><em>detection head</em></strong></p>
+<ul>
+<li><strong>three</strong> fundamental components<ul>
+<li>Inspired by CenterNet, we take <strong><em>a keypoint</em></strong> as the <strong>main-center</strong> for connecting all features. The heatmap can be deﬁne as <script type="math/tex">M \in [0, 1]^{\frac H S \times \frac W S \times C}</script> , where C is the number of object categories</li>
+<li><strong>heatmap of nine perspective points</strong> <script type="math/tex">V \in [0, 1]^{\frac H S \times \frac W S \times 9 }</script> projected by <strong>vertexes</strong> and <strong>center</strong> of 3D bounding box</li>
+<li>For keypoints association of one object,  <strong>regress an local offset</strong> <script type="math/tex">V_c \in R^{\frac H S \times \frac W S \times 18}</script> from the maincenter as an indication</li>
+</ul>
+</li>
+<li><strong>six</strong> optional components<ul>
+<li>The <strong>center offset</strong> <script type="math/tex">M_{os} \in R^{\frac H S \times \frac W S \times 2}</script> and <strong>vertexes offset</strong> <script type="math/tex">V_{os} \in R^{\frac H S \times \frac W S \times 2}</script>  are discretization error for each keypoint in heatmaps<del>(这个和local offser有什么区别，一个是离main center点的offset，这个是从heatmap来看？)</del></li>
+<li>The <strong>dimension</strong> <script type="math/tex">D \in R^{\frac H S \times \frac W S \times 3}</script> of 3D object have <strong>a smaller variance</strong>, which makes it easy to predict.</li>
+<li>The <strong>rotation</strong> <script type="math/tex">R(\theta)</script> of an object only by parametrized by <strong>orientation</strong> <script type="math/tex">\theta (yaw)</script>. <strong>Multi-Bin</strong> based method to regress the <strong>local orientation.</strong> generates feature map of <script type="math/tex">O \in R ^{\frac H S \times \frac W S \times 8}</script> orientation with two bins.<del>2个bins4个值；加上confidence也是4个，总共8个</del>。</li>
+<li>regress <script type="math/tex">Z\in R^{\frac H S \times\frac W S \times1}</script> the <strong>depth</strong> of 3D box center.</li>
+</ul>
+</li>
+</ul>
+<p>获取bbox的：</p>
+<ul>
+<li>main-center, center offset, wh</li>
+</ul>
+<p>获取3d corners：</p>
+<ul>
+<li>Vertexes,  vertexes offset, vertexes coordinate</li>
+</ul>
+<p>画图的时候未用到<del>所以这些是在哪里起到限制作用的呢</del>：</p>
+<ul>
+<li>orientation, dimension, depth</li>
+</ul>
+</li>
+</ul>
+<p>Loss:</p>
+<ul>
+<li><p>The all <strong>heatmaps of keypoint</strong> training strategy(focal loss)</p>
+<p>The loss solves the <strong>imbalance</strong> of positive and negative samples with <strong>focal loss</strong>.</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_2.png" style="zoom:43%;"></p>
+<p>K is the <strong>channels</strong> of different keypoints, K = C in maincenter and K = 9 in vertexes. N is the <strong>number</strong> of maincenter or vertexes in an image, and <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script> are the hyper-parameters to reduce the loss weight of negative and easy positive samples. We set is <script type="math/tex">\alpha = 2</script> and <script type="math/tex">\beta = 4</script>. <script type="math/tex">p_{kxy}</script> can be deﬁned by <strong>Gaussian kernel</strong> <script type="math/tex">p_{xy} = exp(-\frac{x^2+y^2}{2\sigma})</script> centered by ground truth keypoint <script type="math/tex">\tilde p_{xy}</script>. For <script type="math/tex">\sigma</script>, we ﬁnd the <strong>max area</strong> <script type="math/tex">A_{max}</script> and <strong>min area</strong> <script type="math/tex">A_{min}</script> of 2D box in training data and set two hyperparameters <script type="math/tex">\sigma_{max}</script> and <script type="math/tex">\sigma_{min}</script>. We then deﬁne the <script type="math/tex">\sigma = A( \frac{\sigma_{max} - \sigma_{min}}{A_{max} - A_{min}})</script> for a object with size A.</p>
+</li>
+<li><p><strong>Regression</strong> of <strong>dimension and distance</strong>(residual term)</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_3.png" style="zoom:43%;"></p>
+<script type="math/tex; mode=display">
+\Delta \tilde D_{xy}=\log \frac{\tilde D_{xy}-\bar D}{D_{\sigma}}</script><script type="math/tex; mode=display">
+1^{obj}_{xy}\text{ if maincenter appears in position x, y.}</script></li>
+<li><p>offset of maincenter, vertexes(L1)</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_4.png" style="zoom:43%;"></p>
+</li>
+<li><p>coordinate of vertexes(L1)</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_5.png" style="zoom:43%;"></p>
+</li>
+<li><p>All(multi-task)</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_6.png" style="zoom:43%;"></p>
+</li>
+</ul>
+<p>Our goal is to estimate the <strong>3D bounding box</strong>, whose projections of center and 3D vertexes on the image space best <strong>ﬁt</strong> the corresponding <strong>2D keypoint</strong>. We formulate it and other prior errors as a <strong>nonlinear least squares optimization</strong> problem:</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_7.png" style="zoom:43%;"></p>
+<p>the <strong>covariance matrix</strong> of keypoints <strong>projection error</strong>.</p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_8.png" style="zoom:43%;"></p>
+<p><img src="/2020/08/29/3DObjectDetection/li_2020_9.png" style="zoom:43%;"></p>
+<p>一些error的计算，SE3 space: special euclidian 3-space.</p>
+<p>Evaluation:</p>
+<ul>
+<li>Average precision for 3D <strong>intersection-over-union</strong> (AP 3D)</li>
+<li>Average precision for <strong>Birds Eye View</strong> (AP BEV )</li>
+<li>Average <strong>Orientation Similarity</strong> (AOS) if 2D bounding box available.</li>
+</ul>
+<p><del>非官方复现上，对于depth使用了sigmoid，应该是为了平滑吧</del></p>
+<p><del>一个问题就是得到这么多信息后，但是复原image并没有都用上，那为什么需要预测呢？</del></p>
+<h2 id="IDA-3D-Instance-Depth-Aware-3D-Object-Detection-from-Stereo-Vision-for-Autonomous-Driving"><a href="#IDA-3D-Instance-Depth-Aware-3D-Object-Detection-from-Stereo-Vision-for-Autonomous-Driving" class="headerlink" title="IDA-3D: Instance-Depth-Aware 3D Object Detection from Stereo Vision for Autonomous Driving"></a>IDA-3D: Instance-Depth-Aware 3D Object Detection from Stereo Vision for Autonomous Driving</h2><h2 id="SMOKE-Single-Stage-Monocular-3D-Object-Detection-via-Keypoint-Estimation——2020"><a href="#SMOKE-Single-Stage-Monocular-3D-Object-Detection-via-Keypoint-Estimation——2020" class="headerlink" title="SMOKE: Single-Stage Monocular 3D Object Detection via Keypoint Estimation——2020"></a>SMOKE: Single-Stage Monocular 3D Object Detection via Keypoint Estimation——2020</h2><p>old: In case of <strong>monocular vision</strong>, successful methods have been mainly based on <strong>two ingredients</strong>: (i) a network <strong>generating 2D region proposals</strong>, (ii) a R-CNN structure <strong>predicting 3D object pose</strong> by utilizing the acquired regions of interest.</p>
+<p>This: predicts a 3D bounding box for each detected object by <strong>combining a single keypoint estimate with regressed 3D variables</strong>. As a second contribution, we propose a <strong>multi-step disentangling approach</strong> for constructing the 3D bounding box, which signiﬁcantly <strong><em>improves</em></strong> both <strong><em>training convergence</em></strong> and <strong><em>detection accuracy</em></strong>. In contrast to previous 3D detection techniques, our method does <strong><em>not require</em></strong> complicated <strong><em>pre/post-processing, extra data, and a reﬁnement stage</em></strong>. 总结来说就是包含关键点预测和3D变量回归两个模块的一阶段单目3D检测方法。</p>
+<p><img src="/2020/08/29/3DObjectDetection/Liu2020_1.png" style="zoom:57%;"></p>
+<hr>
+<ul>
+<li><p>Problem: A single RGB image <script type="math/tex">I \in R^{W\times H\times3}</script> , ﬁnd for each present object its category label C and its 3D bounding box B, where the latter is parameterized by 7 variables <script type="math/tex">(h, w, l, x, y, z, θ)</script>. (<script type="math/tex">(x, y, z)</script> is the coordinates (in meters) of the object center in the <strong>camera coordinate</strong> frame.)</p>
+</li>
+<li><p>Backbone: <strong><em>DLA-34</em></strong> since it can <strong>aggregate</strong> information across <strong>different layers</strong>.</p>
+<ul>
+<li><p>all the <strong><em>hierarchical aggregation connections</em></strong> are replaced by a <strong>Deformable Convolution Network (DCN</strong>). </p>
+</li>
+<li><p>The output feature map is <strong>downsampled 4 times</strong> with respect to the original image.</p>
+</li>
+<li><p>Replace all <strong><em>BatchNorm (BN)</em></strong> operation with <strong>GroupNorm (GN)</strong>, since less sensitive to <em>batch size</em> and more robust to <em>training noise</em></p>
+<ul>
+<li><p>BN以batch的维度做归一化，依赖batch，<strong>过小</strong>的batch size会导致其<strong>性能下降</strong>，如果<strong>太大</strong>，<strong>显存</strong>又可能不够用，一般来说每GPU上batch设为32最合适。但这个维度并不是固定不变的，比如训练和测试时一般不一样，一般都是训练的时候在训练集上通过滑动平均预先计算好平均-mean，和方差-variance参数。而在测试的时候，不再计算这些值，而是直接调用这些预计算好的来用，但当训练数据和测试<strong>数据分布有差别时</strong>，训练时上预计算好的数据并不能代表测试数据，这就导致在训练，验证，测试这三个阶段存在不一致。</p>
+</li>
+<li><p>GN：同样可以解决<strong>Internal Covariate Shift</strong>的问题，channel方向每个group的均值和方差</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">GroupNorm</span><span class="params">(x, gamma, beta, G, eps=<span class="number">1e-5</span>)</span>:</span></div><div class="line">    <span class="comment"># x: input features with shape [N,C,H,W]</span></div><div class="line">    <span class="comment"># gamma, beta: scale and offset, with shape [1,C,1,1]</span></div><div class="line">    <span class="comment"># G: number of groups for GN</span></div><div class="line">    N, C, H, W = x.shape</div><div class="line">    x = tf.reshape(x, [N, G, C // G, H, W])</div><div class="line">    mean, var = tf.nn.moments(x, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], keep dims=<span class="keyword">True</span>)</div><div class="line">    x = (x - mean) / tf.sqrt(var + eps)</div><div class="line">    x = tf.reshape(x, [N, C, H, W])</div><div class="line">    <span class="keyword">return</span> x * gamma + beta</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>BatchNorm：batch方向做归一化，算<script type="math/tex">N*H*W</script>的均值<br>LayerNorm：channel方向做归一化，算<script type="math/tex">C*H*W</script>的均值<br>InstanceNorm：一个channel内做归一化，算<script type="math/tex">H*W</script>的均值<br>GroupNorm：将channel方向分group，然后每个group内做归一化，算<script type="math/tex">(C//G)*H*W</script>的均值</p>
+<p>GN比LN效果好的原因是GN比LN的限制更少，因为LN假设了一个层的所有通道的数据共享一个均值和方差。而IN则丢失了探索通道之间依赖性的能力。</p>
+</blockquote>
+<p><img src="/2020/08/29/3DObjectDetection/GN.png" style="zoom:50%;"></p>
+</li>
+</ul>
+</li>
+<li><p>3D Detection Network</p>
+<ul>
+<li><p><strong>Keypoint Branch</strong>: the key point is deﬁned as the <strong>projected 3D center</strong> of the object on the image plane.</p>
+<script type="math/tex; mode=display">\left[\begin{matrix}x&y&z\end{matrix}\right]^T$$ represent the 3D center of each object in the camera frame. The projection of 3D points to points  $$\left[\begin{matrix}x_c&y_c\end{matrix}\right]^T$$on the image plane can be obtained with the camera intrinsic matrix K in a homogeneous form:</script><p>\left[\begin{matrix}z\cdot x\\z\cdot y\\z\end{matrix}\right]=K_{3\times 3}\left[\begin{matrix}x\\y\\z\end{matrix}\right]<br>$$<br><strong>Downsampled location</strong> on the feature map is computed and distributed using a <strong>Gaussian Kernel</strong>.</p>
+<p><img src="/2020/08/29/3DObjectDetection/Gaussian Kernel.png" style="zoom:50%;"></p>
+</li>
+<li><p><strong>Regression Branch</strong>: the 3D information is encoded  as an 8-tuple <script type="math/tex">\tau =\left[\begin{matrix}\delta_z&\delta_{x_c}&\delta_{y_c}&\delta_h&\delta_w&\delta_l&\sin\alpha&\cos \alpha\end{matrix}\right]^T</script> . <script type="math/tex">\delta_{x_c} , \delta_{y_c}</script> is the <strong>discretization offset</strong> due to <strong><em>downsampling</em></strong>, <script type="math/tex">\delta_h,\delta_w,\delta_l</script> denotes the <strong>residual dimensions</strong>. We encode all variables to be learnt in <strong>residual representation</strong> to reduce the learning interval and ease the training task. A similar operation F that converts <strong>projected 3D points to a 3D bounding box</strong> <script type="math/tex">B = F(\tau) \in \R^{3\times 8}</script> . </p>
+<ul>
+<li><p>For each object, its <strong>depth z</strong> can be recovered by predeﬁned <strong>scale and shift</strong> parameters <script type="math/tex">\sigma_z, \mu_z</script> as</p>
+<script type="math/tex; mode=display">
+z=\mu_z+\delta_z\sigma_z</script><p>这样上述的the location for each object in the camera frame可以表示为：</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}x\\y\\z\end{matrix}\right]=K_{3\times 3}^{-1}\left[\begin{matrix}z\cdot (x_c+\delta_{x_c})\\z\cdot (y_c+\delta_{y_c})\\z\end{matrix}\right]</script><p>对于dimensions的部分，使用每一个类别预先设定好的平均值（从整个数据集中先计算平均值）<strong>pre-calculated category-wise average dimension</strong>作为一个base，然后用residual representation来计算出真实的维度。</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}h\\w\\l\end{matrix}\right]=\left[\begin{matrix}\bar h\cdot e^{\delta_h}\\\bar w\cdot e^{\delta_w}\\\bar l\cdot e^{\delta_l}\end{matrix}\right]</script><p>对于角度部分，Regress the <strong>observation angle</strong> <script type="math/tex">\alpha</script> instead of the yaw rotation <script type="math/tex">\theta</script> for each object. [from. “3D bounding box estimation using deep learning and geometry”]. We further change the observation angle <strong>with respect to the object head</strong> <script type="math/tex">\alpha_x</script> , instead of the commonly used observation angle value <script type="math/tex">\alpha_z</script> , by simply <strong>adding <script type="math/tex">\frac \pi 2</script> .</strong></p>
+<p><img src="/2020/08/29/3DObjectDetection/SMOKE_2020_1.png" style="zoom:35%;"></p>
+<p>因此最终预测的yaw：</p>
+<script type="math/tex; mode=display">
+\theta = \alpha_z + arctan(\frac{x}{z})</script><p>Bounding box：</p>
+<script type="math/tex; mode=display">
+B=R_{\theta}\left[\begin{matrix}\pm h/2\\\pm w/2\\\pm l/2\end{matrix}\right]+\left[\begin{matrix}x\\y\\z\end{matrix}\right]</script></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Loss</p>
+<ul>
+<li><p>Keypoint Classiﬁcation Loss</p>
+<p><strong>Penalty-reduced focal loss</strong> in a <strong>point-wise</strong>. <script type="math/tex">s_{i,j}</script> be the <strong><em>predicted</em></strong> score at the heatmap location <script type="math/tex">(i, j)</script> and <script type="math/tex">y_{i,j}</script> be the <strong><em>ground-truth</em></strong> value of each point assigned by <strong>Gaussian Kernel</strong>.</p>
+<p>定义<script type="math/tex">\breve y_{i,j},\breve s_{i,j}</script>：</p>
+<script type="math/tex; mode=display">
+\breve y_{i,j}=\begin{cases}0,\ if\ y_{i,j}=1\\y_{i,j},\ otherwise \end{cases}\\
+\breve s_{i,j}=\begin{cases}s_{i,j},\ if\ y_{i,j}=1\\1-s_{i,j},\ otherwise \end{cases}</script><p>简化为同一个类别，则分类损失函数：</p>
+<script type="math/tex; mode=display">
+L_{cls}=-\frac 1 N\sum_{i,j=1}^{h,w}(1-\breve y_{i,j})^{\beta}(1-\breve s_{i,j})^{\alpha}\log(\breve s_{i,j})</script><p>N是图片中object的数量，即<script type="math/tex">y_{i,j}=1</script>的个数；The term <script type="math/tex">(1 − y_{i,j} )</script> corresponds to penalty reduction for points around the groundtruth location. <del>从整个损失函数来看，中心点希望score尽可能的大，远离部分的点，希望score尽可能的小</del></p>
+</li>
+<li><p>Regression Loss（observe that l1 loss performs better than Smooth l1 loss）</p>
+<p>add <strong>channel-wise activation</strong> to the regressed parameters of dimension and orientation <strong><em>at each feature map location</em></strong> to <strong>preserve consistency</strong>. The activation functions for the <strong><em>dimension</em></strong> and the <strong><em>orientation</em></strong> are chosen to be the <strong><em>sigmoid function <script type="math/tex">\sigma</script> and the <script type="math/tex">l2</script> norm</em></strong>, respectively:</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}\delta_h\\\delta_w\\\delta_l\end{matrix}\right]=\sigma\left(\begin{matrix}o_h\\o_w\\o_l\end{matrix}\right)-\frac 1 2\\
+\left[\begin{matrix}\sin \alpha\\\cos \alpha\end{matrix}\right]=\left[\begin{matrix}o_{\sin}/\sqrt{o_{sin}^2+o^2_{cos}}\\o_{\cos} /\sqrt{o_{sin}^2+o^2_{cos}}\end{matrix}\right]</script><p>o stands for the speciﬁc <strong>output of network</strong>. The 3D bounding box regression loss as the <strong>l1 distance</strong> between pred and gt. λ is a scaling factor.</p>
+<script type="math/tex; mode=display">
+L_{reg}=\frac \lambda N\|\hat B-B\|_1</script></li>
+<li><p><strong>The ﬁnal loss function</strong>(three different groups: orientation, dimension and location.)</p>
+<script type="math/tex; mode=display">
+L = L_{cls} + \sum_{i=1}^3 L_{reg}(\hat B_i)</script></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>细节处理：</p>
+<ul>
+<li><p>数据处理：去除3D中心点在图像外侧的框</p>
+</li>
+<li><p>数据增强：random horizontal ﬂip, random scale(9 steps from 0.6 to 1.4) and shift(5 steps from -0.2 to 0.2). Note that the <strong>scale and shift</strong> augmentation methods are only used for <strong>heatmap classiﬁcation</strong> since the 3D information becomes <strong>inconsistent</strong> with data augmentation. <del>应该是指数据增强部分只是为了hm分类，并不作用到3D检测上；从代码来看，增加了一个flag，相当于最后预测完之后，再逆方向返回，得到未增强后的3D信息</del></p>
+</li>
+<li><p>超参数：In the backbone, the group number for <strong>GroupNorm is set to 32</strong>. For channels less than 32, it is set to be 16. Set <script type="math/tex">\alpha = 2, \beta = 4, \left[\begin{matrix}\bar h& \bar w&\bar l\end{matrix}\right]^T =\left[\begin{matrix}1.63&1.53&3.88\end{matrix}\right]^T, \left[\begin{matrix}\mu_z&\sigma_z\end{matrix}\right]^T=\left[\begin{matrix}28.01&16.32\end{matrix}\right]^T</script>. </p>
+</li>
+<li><p>训练：use the original image resolution and pad it to <strong>1280 × 384</strong>. The <strong>learning rate</strong> is set at <script type="math/tex">2.5 × 10^{−4}</script> and <strong>drops</strong> at 25 and 40 epochs by a factor of 10. </p>
+</li>
+<li><p>测试：Use the top 100 detected 3D projected points and ﬁlter it with <strong>a threshold of</strong></p>
+<p><strong>0.25</strong>. <strong>No data augmentation</strong> method and NMS are used in the test procedure.</p>
+</li>
+</ul>
+<h1 id="something"><a href="#something" class="headerlink" title="something"></a>something</h1><p>3D corners的预测是为了更好地感知信息，从无人车来说就是知道在自己车的什么方向多少距离有什么的信息。（<del>所以实际上2D检测并没有什么过多的用处？</del>）</p>
+<p>现在看到的方法：</p>
+<ol>
+<li>用深度图加上预测，得到物体的位置</li>
+<li>直接回归各个参数，可能再加上2D proposal、depth方法、multibin、offset等</li>
+<li>使用左右两个相机，利用几何约束关系</li>
+<li>使用雷达图：（未看，还未去接触关于lidar部分的内容）<ul>
+<li>Use 2D Bird’s eye view，然后用2D检测的网络</li>
+<li>represent point clouds in voxel grid and then leverage 2D/3D CNNs to generate proposals</li>
+</ul>
+</li>
+<li>预测雷达图</li>
+</ol>
+<p>预测的信息（不限于）：</p>
+<ol>
+<li>yaw</li>
+<li>dimension</li>
+<li>center</li>
+<li>depth</li>
+</ol>
+<p><strong>双目 VS lidar VS 单目：</strong></p>
+<ul>
+<li>单目和双目应该都是从生物角度产生的，认为人可以做到的，机器应该在一顿乱搞之后，也可以完成这个任务</li>
+<li>单目、双目用的都是相机，总体来说售价便宜，更换零件等方面会更加适合推广</li>
+<li>双目相机需要标定，相机在车上是不稳定的，需要适时调整</li>
+<li>相机的视野范围是有限的，而lidar基本是360全范围的</li>
+<li>lidar的计算和单双目计算出深度图或者说直接3D检测图的难度相差很大</li>
+<li>雨天等环境下，检测性能都不好</li>
+</ul>
+<p>反正最后如果优缺点都不能避免的时候，就搞混合（现在应该大部分都是这样的吧</p>
+<p>现在疑问：</p>
+<ol>
+<li>预测的信息针对的输入大小必须唯一，K矩阵相同；直观来说，对于同样一张图，不同比例，会认为它的大小；也就是说对于一个公司来说，需要确保的是相机同一型号（感觉还可行）</li>
+<li>并且需要监督信息包含的范围要大，否则未涉及到的检测不到或者检测错误</li>
+</ol>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/paper/" rel="tag"><i class="fa fa-tag"></i> paper</a>
+          
+            <a href="/tags/Object-detection/" rel="tag"><i class="fa fa-tag"></i> Object detection</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/08/CVPR-2020/" rel="next" title="CVPR-2020">
+                <i class="fa fa-chevron-left"></i> CVPR-2020
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/10/随想小记-2020-09-10/" rel="prev" title="随想小记-2020-09-10">
+                随想小记-2020-09-10 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">113</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#paper"><span class="nav-number">1.</span> <span class="nav-text">paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MonoGRNet-A-Geometric-Reasoning-Network-for-Monocular-3D-Object-Localization——2019"><span class="nav-number">1.1.</span> <span class="nav-text">MonoGRNet: A Geometric Reasoning Network for Monocular 3D Object Localization——2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3d-Bounding-Box-Estimation-Using-Deep-Learning-and-Geometry——2017"><span class="nav-number">1.2.</span> <span class="nav-text">3d Bounding Box Estimation Using Deep Learning and Geometry——2017</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RTM3D-Real-time-Monocular-3D-Detection-from-Object-Keypoints-for-Autonomous-Driving——2020"><span class="nav-number">1.3.</span> <span class="nav-text">RTM3D: Real-time Monocular 3D Detection from Object Keypoints for Autonomous Driving——2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA-3D-Instance-Depth-Aware-3D-Object-Detection-from-Stereo-Vision-for-Autonomous-Driving"><span class="nav-number">1.4.</span> <span class="nav-text">IDA-3D: Instance-Depth-Aware 3D Object Detection from Stereo Vision for Autonomous Driving</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMOKE-Single-Stage-Monocular-3D-Object-Detection-via-Keypoint-Estimation——2020"><span class="nav-number">1.5.</span> <span class="nav-text">SMOKE: Single-Stage Monocular 3D Object Detection via Keypoint Estimation——2020</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#something"><span class="nav-number">2.</span> <span class="nav-text">something</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="计算机视觉,CVPR," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="CVPR 2020论文出炉，阅读中，小小记录。分类来自amusi。">
+<meta name="keywords" content="计算机视觉,CVPR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CVPR-2020">
+<meta property="og:url" content="http://mrsempress.top/2020/07/08/CVPR-2020/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="CVPR 2020论文出炉，阅读中，小小记录。分类来自amusi。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Cao_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Cao_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Chen_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Chen_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Ding_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Qian_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Qian_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Wang_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Wang_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Wang_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Wang_4.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_4.png">
+<meta property="og:updated_time" content="2020-09-10T11:46:47.475Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CVPR-2020">
+<meta name="twitter:description" content="CVPR 2020论文出炉，阅读中，小小记录。分类来自amusi。">
+<meta name="twitter:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Cao_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/07/08/CVPR-2020/"/>
+
+
+
+
+
+  <title>CVPR-2020 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/07/08/CVPR-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CVPR-2020</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-08T14:32:03+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/CVPR/" itemprop="url" rel="index">
+                    <span itemprop="name">CVPR</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/08/CVPR-2020/" class="leancloud_visitors" data-flag-title="CVPR-2020">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CVPR 2020论文出炉，阅读中，小小记录。分类来自<a href="https://github.com/amusi/CVPR2020-Code" target="_blank" rel="external">amusi</a>。</p>
+<a id="more"></a>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h2 id="图像分类"><a href="#图像分类" class="headerlink" title="图像分类"></a>图像分类</h2><h2 id="视频分类"><a href="#视频分类" class="headerlink" title="视频分类"></a>视频分类</h2><h1 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h1><h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><h3 id="D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation"><a href="#D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation" class="headerlink" title="D2Det: Towards High Quality Object Detection and Instance Segmentation"></a>D2Det: Towards High Quality Object Detection and Instance Segmentation</h3><p>这篇文章提出了一个两阶段的检测方法<strong><em>D2Det</em></strong>，高质量体现在两个方面：更精确地<strong>定位localization</strong>和更准确地<strong>分类classification</strong>。</p>
+<p><img src="/2020/07/08/CVPR-2020/Cao_1.png" alt=""></p>
+<ul>
+<li><p>定位：对于一个目标提议，用更<strong>密集地局部回归</strong>方法通过<strong>全卷积网络</strong>来预测多个密集的box offsets</p>
+<ul>
+<li><p>和传统的方法相比：由于能够回归正敏感的<strong>实数offset</strong>，所以对于固定的区域，不限制关键点的数量（Faster RCNN通过几个<strong>全连接层</strong>回归<strong>一个gloabl offset</strong>；Grid R-CNN通过在固定区域中搜索关键点——即目标的<strong>边界点</strong>）</p>
+<p><img src="/2020/07/08/CVPR-2020/Cao_2.png" style="zoom:50%;"></p>
+<p>传统方法，<script type="math/tex">P(x_P, y_P, w_P, h_P)</script> <strong>candidate</strong> object proposal, and <script type="math/tex">G(x_G, y_G, w_G, h_G)</script> <strong>target</strong> ground-truth box，offset是：</p>
+<script type="math/tex; mode=display">
+\Delta_x = (x_G − x_P)/w_P,\ \Delta_y= (y_G − y_P)/h_P \\
+\Delta_w = \log(w_G /w_P ),\ \Delta_h= \log(h_G /h_P )</script><p>这篇论文：<script type="math/tex">(x_l, y_t)</script> and <script type="math/tex">(x_r, y_b)</script> 代表gt bbox的左上角和右下角点，<script type="math/tex">\hat l_i, \hat t_i, \hat r_i, \hat b_i</script> represent the dense box offsets predicted by the <strong><em>local feature <script type="math/tex">p_i</script></em></strong> in left, top, right, and bottom directions, respectively. Offset:</p>
+<script type="math/tex; mode=display">
+l_i = (x_i − x_l)/w_P, r_i = (x_r − x_i)/w_P\\
+t_i = (y_i − y_t)/h_P, b_i = (y_b − y_i)/h_P</script><p>但是这样密集的回归，准确率还是有些欠缺，对于一些部分需要ignore</p>
+</li>
+<li><p>使用<strong>binary overlap prediction</strong>方法（即图中的<script type="math/tex">m,\hat m</script>），减少<strong>背景的影响</strong>；binary指的就是是背景还是目标区域；用<strong>binary cross-entropy loss</strong>衡量</p>
+</li>
+<li><p>目标：ﬁnd a <strong>tight</strong> bounding-box surrounding an object</p>
+</li>
+</ul>
+</li>
+<li><p>分类：获取<strong>可区分的特征</strong></p>
+<ul>
+<li>使用<strong>discriminative RoI pooling scheme</strong>，<strong><em>采样</em></strong>一个proposal的不同子区域，<strong><em>performs an adaptive weighted pooling</em></strong>获得可区分的特征；首先<strong>light-weight(equal) offset</strong> predictor，然后通过Adaptive weighting <script type="math/tex">W(F)</script>对<strong>区分点增加权重</strong></li>
+<li>RoIAlign：obtain features from <strong>k × k</strong> sub-regions and passes these features through <strong>three fully connected layers.</strong></li>
+<li>only requires a <strong><script type="math/tex">\frac k 2 \times \frac k 2</script></strong> sized RoIAlign followed by <strong>the fully connected layers</strong> (light-weight due to smaller input vector).</li>
+<li>首先对于原始的采样点<script type="math/tex">F\in R^{2k\times 2k}</script>，用卷积运算W去预测权重值<script type="math/tex">W(F)\in R^{2k\times 2k}</script>，这样带有权重的ROI特征向量就为<script type="math/tex">\tilde F = W(F)\odot F</script>；运算代表Hadamard product</li>
+</ul>
+</li>
+</ul>
+<p><strong>效果：</strong></p>
+<p>在MS COCO test-dev数据集上，45.4 AP（ResNet101）；multi-sacle 50.1 AP；在实例分割任务上，获得 mask AP of 40.2。</p>
+<h3 id="Harmonizing-Transferability-and-Discriminability-for-Adapting-Object-Detectors"><a href="#Harmonizing-Transferability-and-Discriminability-for-Adapting-Object-Detectors" class="headerlink" title="Harmonizing Transferability and Discriminability for Adapting Object Detectors"></a>Harmonizing Transferability and Discriminability for Adapting Object Detectors</h3><p>协调与平衡传统无监督域对抗方法中存在的特征<strong>可迁移性和判别性的矛盾</strong>，通过在<strong><em>不同层次</em></strong> 上<strong>校准特征的可迁移性</strong> 和<strong>判别性</strong>来规范对抗域学习，从而实现 <strong><em>细粒度的跨域特征对齐</em></strong>，提出了Hierarchical Transferability Calibration Network (HTCN)。</p>
+<p>UDA无监督域适应主要有两种方法：一个是减少<strong>统计分布</strong>的区别，另一个是<strong>对抗学习</strong>域不变特征。<del>感觉作者所要解决的问题就是学习两个域的不变性的时候，可能会因为图片中的实例之间的判别性而有影响，成为负迁移了</del></p>
+<hr>
+<p><strong>网络主要由三大模块组成：</strong></p>
+<p><img src="/2020/07/08/CVPR-2020/Chen_1.png" alt=""></p>
+<ul>
+<li><p><strong>local feature masks</strong>： that <strong>calibrate the local transferability</strong> to provide semantic guidance for the following discriminative pattern alignment（在观察到整个图像的某些局部区域比其他局部区域更具描述性和优势后，）基于<strong>浅层</strong>特征计算两个域中的局部特征掩码以近似地指导<strong>语义一致性</strong>，从而进一步增强局部可辨性。 对齐之后，可以看作是一个类似<strong>注意的模块</strong>，以无监督的方式捕获可转移区域。</p>
+<p>利用pixel-wise的局部域判别器<script type="math/tex">D_1</script>来生成feature masks。其中特征图<script type="math/tex">G</script>的长、宽分别为<script type="math/tex">H,W</script>。由此the <strong>pixel-wise adversarial training loss <script type="math/tex">L_{la}</script></strong>定义为：</p>
+<script type="math/tex; mode=display">
+L_{la}=\frac{1}{N_s\cdot HW}\sum_{i=1}^{N_s}\sum_{k=1}^{HW}\log(D_1(G_1(x_i^s)_k))^2+\frac{1}{N_t\cdot HW}\sum_{i=1}^{N_t}\sum_{k=1}^{HW}\log(1-D_1(G_1(x_i^t)_k))^2\\
+G_1(x_i)_k\to r_i^k</script><p>通过<script type="math/tex">D_1</script>的输出表示为<script type="math/tex">d_i^k=D_1(r_i^k)</script>，其不确定性表示为<script type="math/tex">v(r_i^k)=H(d_i^k)</script>；由此mask定义为：<script type="math/tex">m_f^k=2-v(r_i^k)</script>。这样通过插值重新分配权重后，局部特征变为<script type="math/tex">\tilde r_i^k\leftarrow r_i^k\cdot m_f^k</script>。</p>
+<p>由此我们可以知道这一部分<strong>送入<script type="math/tex">D_2</script>后产生的loss</strong>为：</p>
+<script type="math/tex; mode=display">
+L_{ma}= \mathbb E[\log(D_2(G_2(\hat f_i^s))] + \mathbb E[1 − \log(D_2(G_2(\hat f_i^t))]</script></li>
+<li><p><strong>Importance Weighted Adversarial Training with input Interpolation (IWAT-I)</strong>：which <strong>strengthens</strong> the <strong>global discriminability</strong>(<strong>calibrate</strong> the global transferability) by <strong>reweighting</strong> the interpolated <strong><em>image-level</em></strong> features（motivation：<strong>不是</strong>所有的样本都有<strong>相同的迁移性能</strong>，尤其在插值操作之后。没有插值的话会有souce-biased的现象）</p>
+<p><img src="/2020/07/08/CVPR-2020/Chen_2.png" style="zoom:50%;"></p>
+<p>根据交叉域的相似性来重新设置weight，相似性越高，对学习的重要性也就越高。</p>
+<script type="math/tex; mode=display">
+d_i =D_2 (G_1 \circ G_2 (x_i ))\\
+v_i = H(d_i) = −d_i\cdot \log(d_i) − (1−d_i)\cdot \log(1 − d_i)</script><p>和前一模块一样<script type="math/tex">d_i</script>是<script type="math/tex">D_2</script>的输出，<script type="math/tex">v_i</script>是每一个<script type="math/tex">x_i</script>的不确定性。</p>
+<p>这样每一个图片<script type="math/tex">x_i</script>的权重被定义为<script type="math/tex">1+v_i</script><del>(也就是说如果不确定性很高，<script type="math/tex">D_2</script>难以区分的话，那么就要好好学习了)</del>，由此<script type="math/tex">G_3</script>的输入为：<script type="math/tex">g_i = f_i × (1 + v_i )</script>，然后将其通过<script type="math/tex">G_3</script>的运算送入<script type="math/tex">D_3</script>中，对抗损失则为：</p>
+<script type="math/tex; mode=display">
+L_{ga}= \mathbb E[\log(D_3(G_3(g_i^s))] + \mathbb E[1 − \log(D_3(G_3(g_i^t))]</script></li>
+<li><p><strong>Context-aware Instance-Level Alignment (CILA) module</strong>：which enhances the <strong>local discriminability</strong>(<strong>calibrate</strong> the local transferability) by capturing the underlying complementary effect between the <strong><em>instance-level</em></strong> feature and the global context information for the instance-level feature alignment.(<strong>the context vector</strong> is aggregated from the <strong>lower layer</strong>, which is relatively <strong>invariant (transferability)</strong> across domains.)</p>
+<p>由于直接<strong>concatenation</strong> context features and the instance-level features，它们相互之间就是独立的，忽略它们是可以作为对方的<strong>互补</strong>这一影响，由此提出了a non-linear fusion strategy：</p>
+<script type="math/tex; mode=display">
+f_{fus} = [f_c^1, f_c^2, f_c^3] \otimes f_{ins}</script><script type="math/tex; mode=display">\otimes$$ denotes the tensor product operation
+
+但是这样做，会使得**维度爆炸**$$d_c\times d_{ins}$$，由此提出了新的**随机**方法。</script><p>f_{fus}=\frac 1 {\sqrt{d}}(R_1f_c)\odot(R_2f_{ins})\\<br>f_c=[f_c^1, f_c^2, f_c^3]</p>
+<script type="math/tex; mode=display">
+$$\odot$$ stands for the Hadamard product. $$R_1$$ and $$R_2$$ are random matrices, sampled from **uniform distribution** **only once** and **not updated** during training.
+
+由此这一部分的损失函数定义为：</script><p>L_{ins}= -\frac{1}{N_s}\sum^{N_s}_{i=1}\sum_{i,j}\log(D_{ins}(f_{fus}^{i,j})_s)\\<br>= -\frac{1}{N_t}\sum^{N_t}_{i=1}\sum_{i,j}\log(1-D_{ins}(f_{fus}^{i,j})_t)<br>$$</p>
+</li>
+</ul>
+<p><strong>总的训练损失为</strong>：</p>
+<script type="math/tex; mode=display">
+max_{D_1,D_2,D_3}min_{G_1,G_2,G_3}\ \mathcal{L_{cls}+L_{reg}-\lambda(L_{la}+L_{ma}+L_{ga}+L_{ins})}</script><p>对于目标域误差的上限定义式，通过<strong><em>三个模块来减小源域和目标域之间的距离</em></strong>，通过<strong><em>多次层次的特征迁移学习来减小常数项</em></strong>。</p>
+<h2 id="3D目标检测"><a href="#3D目标检测" class="headerlink" title="3D目标检测"></a>3D目标检测</h2><h3 id="Learning-Depth-Guided-Convolutions-for-Monocular-3D-Object-Detection"><a href="#Learning-Depth-Guided-Convolutions-for-Monocular-3D-Object-Detection" class="headerlink" title="Learning Depth-Guided Convolutions for Monocular 3D Object Detection"></a>Learning Depth-Guided Convolutions for Monocular 3D Object Detection</h3><p>Depth-guided Dynamic-Depthwise-Dilated local convolutional network (<script type="math/tex">D^4</script>LCN)</p>
+<p>这篇文章大概的思路就是首先用单目的RGB图像得到<strong>深度表示</strong>，然后将深度表示<strong>转换为伪雷达表示</strong>，最后使用<strong>3D点云的目标检测方法</strong>。</p>
+<p><del>对于伪雷达的部分有些想不通，既然是用图片的信息得到雷达的信息，那为什么用这个伪雷达信息得到的更好呢？而不是直接使用深度估计呢？是因为雷达转换的方法更好吗？还是因为从深度信息变换雷达信息的过程获取了更多信息呢？感觉是自己对于神经网络的认识还不到位，不是说给一堆数据，一个网络结构，就能大致学会。这里面有两个函数转换关系，分别来求会更容易更快速学习到。就好像最近纠结很久的学习，需要转换坐标系后再将数据送入网络。实际上转换坐标系只是一个矩阵的乘法，但是网络却学不好。也可能是因为对应的轴还有一个变换。文章中说即使depth map的准确率不是很高，也可以有好的表现。感觉是depth map是作为一个guidance，是2D到3D的一个衔接，而不是只从depth map直接转换，然后通过一个生成网络获得了更加高层的信息。</del></p>
+<p><del>总体的感觉来说就是RGB-based的话会丢失空间信息，因此从Depth map中去获取，模仿得到lidar信息（应该是lidar信息是depth信息的一个融合，更加高层的信息）；但是仅仅有空间信息的话会丢失语义信息，因此将RGB信息通过特征提取保留，并且将上述两者结合，这样得到的3D信息比较完整。</del></p>
+<script type="math/tex; mode=display">D^4$$LCN考虑了四个方面，通过linear operators of shift and element-wise product就可以实现：
+
+* **exemplar kernel** 对于每一张图片学习具体场景的几何关系
+* **local convolution** 区分每一个像素为背景还是目标
+* **depth-wise convolution** 对于不同的purpose用不同的channel filters，减少计算复杂度
+* **exemplar dilation rate** 学习适用不同规模目标的感受野
+
+![](CVPR-2020/Ding_1.png)
+
+首先RGB图像用**特征提取网络** ***获取特征*** $$I_n \in \mathbb R^{h_n\times w_n\times c_n}$$（n代表第n个block），同时用**深度估计**（作者这里是用了DORN，是先生成depth map，然后将两个都作为输入传入D4LCN网络中的）的方法得到***Depth Map***；然后深度图通过**Filter generation network**得到feature extraction network的***卷积核*** $$D_n \in \mathbb R^{h_n\times w_n\times c_n}$$；之后将两个网络的输出通过**depth-guided ﬁltering module** 融合，得到矫正后的***3D feature map***；再者就是通过**3D 目标检测**方法得到output；最后经过**NMS和transform**整理，得到***3D检测结果***。
+
+**结构：**
+
+* Backbone
+
+  * 特征提取网络：ResNet-50 without its ﬁnal FC and pooling layer
+  * filter生成网络：use first three blocks of ResNet-50，学习得到的kernel是***sample-wise, position-wise, and depth-wise***
+
+  上述两者 have the same number of channels of each block
+
+* depth-guided ﬁltering module
+
+  * 生成网络出来之后通过了一个定义为**shifting grid**，其包含kxk个元素，$$\{(g_i,g_j\},g\in (int)[1-k/2,k/2-1]$$; For example, $$g\in\{−1, 0, 1\}$$ when k = 3, and the feature map is moved towards nine directions with a horizontal or vertical step size of 0 or 1
+
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dynamic_local_filtering(x, depth, dilated=1)</div><div class="line">dynamic_local_filtering(x, depth, dilated=2)</div><div class="line">dynamic_local_filtering(x, depth, dilated=3)</div></pre></td></tr></table></figure>
+
+    <img src="CVPR-2020/Ding_4.png" style="zoom:50%;" />
+
+    使用shift grid的一个好处就是可以动态设置**不同的感受野大小**，对于目标规模不同的情况更加友好。
+
+    这样两个分支的输出合并后通过shift得到新的特征图为$$I'=\frac{1}{k\cdot k}\sum_{g_i,g_j}(I\odot D)^{(g_i,g_j)}</script><ul>
+<li><p>为了实现depth-wise，特征网络之后通过一个<strong>shift pooling</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_p</span><span class="params">(self, offset, dtype)</span>:</span></div><div class="line">    N, h, w = offset.size(<span class="number">1</span>)//<span class="number">2</span>, offset.size(<span class="number">2</span>), offset.size(<span class="number">3</span>)</div><div class="line"></div><div class="line">    <span class="comment"># (1, 2N, 1, 1)</span></div><div class="line">    p_n = self._get_p_n(N, dtype)</div><div class="line">    <span class="comment"># (1, 2N, h, w)</span></div><div class="line">    p_0 = self._get_p_0(h, w, N, dtype)</div><div class="line">    p = p_0 + p_n + offset</div><div class="line">    <span class="keyword">return</span> p</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>&lt;img src=&quot;CVPR-2020/Ding_2.png&quot; style=&quot;zoom:50%;&quot; /&gt;
+</code></pre><ul>
+<li><p>为了实现depth-wise，使得不同的kernel可以使用不同的functions，用<script type="math/tex">I</script>对每一个filter学习an adaptive dilation rate，即学习an adaptive function <script type="math/tex">\mathcal A</script>，使得可以获取不同尺寸的感受野，其中<script type="math/tex">\mathcal A</script>由三层组成（d denote our maximum dilation rate）：</p>
+<p><code>weight = self.adaptive_layers(x).reshape(-1, 512, 1, 3)</code></p>
+<p><code>weight = self.adaptive_softmax(weight)</code></p>
+<ul>
+<li>an <strong><em>AdaptiveMaxPool2d layer</em></strong> with the output size of d × d and channel number c;</li>
+<li>a <strong><em>convolutional layer</em></strong> with a kernel size of d × d and channel number d × c</li>
+<li>a <strong><em>reshape and softmax layer</em></strong> to generate d weights <script type="math/tex">A^w (I), w\in(int)[1, d]</script> with a sum of 1 for each ﬁlter.</li>
+</ul>
+<p>这样，新的特征图可以表示为：</p>
+<script type="math/tex; mode=display">
+I'=\frac{1}{d\cdot k\cdot k}\cdot \sum_w A^w (I)\sum_{g_i,g_j}(I\odot D)^{(g_i*w,g_j*w)}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = dynamic_local_filtering(x, depth, dilated=<span class="number">1</span>) * weight[:, :, :, <span class="number">0</span>:<span class="number">1</span>] \</div><div class="line">              + dynamic_local_filtering(x, depth, dilated=<span class="number">2</span>) * weight[:, :, :, <span class="number">1</span>:<span class="number">2</span>] \</div><div class="line">              + dynamic_local_filtering(x, depth, dilated=<span class="number">3</span>) * weight[:, :, :, <span class="number">2</span>:<span class="number">3</span>]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>可以解决2D卷积中**尺度不敏感和无意义的局部结构**信息，同时也**利用好了RGB的信息**。
+</code></pre><ul>
+<li><p>2D-3D detection head</p>
+<ul>
+<li>overall loss contains a <strong>classiﬁcation</strong> loss (standard cross-entropy (CE) loss), a <strong>2D regression</strong> loss, a <strong>3D regression</strong> loss and a <strong>2D-3D corner loss </strong>(SmoothL1 regression losses). (<script type="math/tex">s_t</script> and <script type="math/tex">\gamma</script> denote the <strong>classiﬁcation score of target class</strong> and the <strong>focusing</strong> parameter, respectively)<script type="math/tex; mode=display">
+L = (1 − s_t)^{\gamma} (L_{class} + L_{2d} + L_{3d} + L_{corner})\\
+L_{class}= − \log(s_t)</script><img src="/2020/07/08/CVPR-2020/Ding_3.png" style="zoom:50%;"></li>
+</ul>
+</li>
+</ul>
+<h3 id="End-to-End-Pseudo-LiDAR-for-Image-Based-3D-Object-Detection"><a href="#End-to-End-Pseudo-LiDAR-for-Image-Based-3D-Object-Detection" class="headerlink" title="End-to-End Pseudo-LiDAR for Image-Based 3D Object Detection"></a>End-to-End Pseudo-LiDAR for Image-Based 3D Object Detection</h3><p><del>这篇论文看github应该是有前序文章的，之后可以看一下</del></p>
+<p>这篇论文的主要贡献就是设计了一个<strong>Change of Representation (CoR) modules</strong>，让PL(pseudo-lidar)和3D 深度估计可以在同一个框架下，训练的时候达到end-to-end的效果（想到end-to-end的一个是因为lidar-based的3D检测方法<strong>严重依赖于点的准确性</strong>，对于远处稀疏的点的预测并不好；二是因为在KITTI数据集中的图片里有<strong>90%的点是背景</strong>，对于检测器来说直接固定的效果，会增加影响）。Perfomance就是在PL方法中甚至image-based中STA<del>也就是说这比直接用深度估计进行3D检测还要好</del>。</p>
+<hr>
+<p>Two streams in terms of <strong>point cloud processing</strong>:</p>
+<ul>
+<li><strong>directly</strong> operating on the <strong>unordered</strong> point clouds in 3D , mostly by applying <strong>PointNet</strong> or/and applying <strong>3D convolution</strong> over neighbors;</li>
+<li>operating on <strong>quantized 3D/4D tensor data</strong>, which are generated from discretizing the locations of point clouds into some <strong>ﬁxed</strong> grids.</li>
+</ul>
+<hr>
+<p>CoR关注于两个方面，一个是<strong>subsampling</strong>，另一个是<strong>quantization</strong>(在这里使用了<strong>soft quantization</strong>来克服内在固有的非不一致性)。</p>
+<ul>
+<li><p>quantization：3D信息被离散化到固定的格子中，only the occupation or densities are recorded in the resulting tensor(?).</p>
+<ul>
+<li>2D and 3D convolutions can be <strong>directly applied to extract features</strong> from the tensor</li>
+<li>makes the <strong>back-propagation difﬁcult</strong></li>
+</ul>
+<p>格子的固定中间点的位置记作：<script type="math/tex">\hat p_m</script>，results tensor <script type="math/tex">T</script>定义为：</p>
+<script type="math/tex; mode=display">
+T(m)=\begin{cases}1, if\ \exists p\in P\ s.t.\ m=argmin_{m'}\|p-\hat p_{m'}\|_2\\0,otherwise\end{cases}</script><p>直观上理解就是，如果点p落在m区域之内，那么就记作1；否则记作0. 但是对于后向传播是困难的，让损失函数求关于T的偏导，如果大于0，就说明T应该减少，即希望落在m的点更少；反之，则希望落在m的点更多。但是如何改变，是一个问题。</p>
+<p>因此，提出<strong>改变forward</strong>，在论文中使用了soft quantization，通过<strong>RBF(radial basis function)</strong>作为权重的参考。</p>
+<script type="math/tex; mode=display">
+T (m) = T (m, m) + \frac 1{\mathcal N_m}\sum_{m'\in \mathcal N_m}T(m,m')\\
+T(m,m')=\begin{cases}0,if\ |P_{m'}|=0\\\frac{1}{|P_{m'}|}\sum_{p\in P_{m'}}e^{-\frac{\|p-\hat p_m\|^2}{\sigma^2}}\end{cases}\\
+P_m=\{p\in P,s.t.\ m=argmin_{m'}\|p-\hat p_{m'}\|_2\}</script><p><script type="math/tex">P_m</script>是落在m区域中的点，<script type="math/tex">m'</script>是点<script type="math/tex">m</script>的<strong>邻居区域</strong>，这样在反向传播中，可以直接影响到<script type="math/tex">P_m</script>点，并且如果有些误差也可能会被<script type="math/tex">m'</script>周围部分所承担，因此更加有效。</p>
+<p><del>从下图可以更直观地理解，真实的点云在图一中，然后我们先离散化到固定的格子之中，即Hard quantization；而soft quantization要做的事情就是将当前预测错误的点在拉、推中接近真实值。如果这一格子中没有这一个点，就会想要把它推给周边的点；而如果这个格子中缺少一个点，就会从边上的格子中拉一个回来。当计算的梯度为正的时候，说明需要push；梯度为负的时候，说明需要pull。</del></p>
+<p><img src="/2020/07/08/CVPR-2020/Qian_2.png" style="zoom:50%;"></p>
+</li>
+<li><p>subsampling</p>
+</li>
+</ul>
+<p>网络结构：</p>
+<p><img src="/2020/07/08/CVPR-2020/Qian_1.png" style="zoom:50%;"></p>
+<ul>
+<li>先训练深度评估网络，SDN模型</li>
+<li>固定深度评估网络，训练3D 目标检测器，用了两个lidar-based的方法：<strong><em>PIXOR (voxel-based, with quantization) and PointR-CNN (P-RCNN)(point-cloud-based)</em></strong></li>
+<li>最后带有balanced loss weights联合训练两者</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_one_epoch</span><span class="params">(depth_model, ODmodel, ODmodel_fn)</span>:</span></div><div class="line">  <span class="comment"># 设置为训练状态</span></div><div class="line">  self.model.train()</div><div class="line">  self.depth_model.net.train()</div><div class="line">  self.optimizer.zero_grad()</div><div class="line">  self.depth_model.optimizer.zero_grad()</div><div class="line">  </div><div class="line">  <span class="comment"># 开始训练</span></div><div class="line">  depth_loss, point_cloud = self.depth_model.train(batch)</div><div class="line">  loss, tb_dict, disp_dict = self.model_fn(self.model, point_cloud)</div><div class="line"></div><div class="line">  disp_dict[<span class="string">'depth_loss'</span>] = depth_loss.item()</div><div class="line">  loss = loss*<span class="number">0.01</span> + depth_loss</div><div class="line">  </div><div class="line">  <span class="comment"># 更新参数</span></div><div class="line">  loss.backward()</div><div class="line">  self.optimizer.step()</div><div class="line">  self.depth_model.optimizer.step()</div></pre></td></tr></table></figure>
+<p>loss：</p>
+<script type="math/tex; mode=display">
+L = \lambda_{det} L_{det} + \lambda_{depth} L_{depth}\\
+L_{det}= \lambda_{cls} L_{cls} + \lambda_{reg} L_{reg}\\
+L_{depth}=\frac{1}{|A|}\sum_{(u,v)\in A}l(Z(u, v) − Z^∗(u, v))\\
+l(x)=\begin{cases}0.5x^2,if\ |x|<1\\|x|-0.5,otherwise\end{cases}</script><p>前身：</p>
+<ol>
+<li><p><strong>Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving——cvpr2019</strong></p>
+<p>这一篇文章讲述的是说，之前伪雷达的方法主要是通过前置摄像头的方法来模拟，但是这样子的效果并不好。发现使用<strong>立体摄像头采集的鸟瞰图</strong>，可以显著提高范围检测和准确性。指出不是数据的质量而是<strong>数据的表示</strong>是准确率差异的大部分原因。其将30m范围内的目标检测准确率从22%提升到了74%。</p>
+<hr>
+<p>The error of <strong>stereo-based</strong> 3D depth estimation grows <strong>quadratically</strong> with <strong><em>the depth of an object,</em></strong> whereas for Time-of-Flight (ToF) approaches, such as <strong>LiDAR</strong>, this relationship is approximately <strong>linear</strong>.</p>
+<p>To this end, we propose a <strong>two-step approach</strong> by ﬁrst <strong>estimating the dense pixel depth from stereo (or even monocular) imagery</strong> and then <strong>back-projecting pixels into a 3D point cloud</strong>. By viewing this representation as pseudo-LiDAR signal, we can then <strong>apply any existing LiDAR-based 3D object detection algorithm</strong>. 其实就是上面文章的方法将depth model和3D Object detection model给分开了，这里是2步。</p>
+<hr>
+<p><img src="/2020/07/08/CVPR-2020/Wang_1.png" alt=""></p>
+<p>【注意这里箭头是单向的，两个网络之间是不影响的】</p>
+<ul>
+<li><p><strong>Depth estimation</strong>(论文使用了pyramid stereo matching network (PSMNet))</p>
+<p>A pair of cameras with a horizontal offset (i.e., <strong>baseline) b</strong>, a <strong>disparity map Y</strong>. Treats the left image, <script type="math/tex">I_l</script> , as reference and records in Y the horizontal disparity to <script type="math/tex">I_r</script> for each pixel就是左右相机有个水平线的offset b，然后在这里以左边的图片为参考，加上水平线，预测右图每一个像素的差异图Y（<strong>视差图</strong>）, 且已知左边相机的horizontal focal length <script type="math/tex">f_U</script>。那么深度图为：</p>
+<script type="math/tex; mode=display">
+D(u,v)=\frac{f_U\times b}{Y(u,v)}</script></li>
+<li><p><strong>Pseudo-LiDAR generation</strong></p>
+<p>Derive the 3D location (x, y, z) of each pixel (u, v)参考深度d：</p>
+<script type="math/tex; mode=display">
+(depth)\ z = D(u, v)\\
+(width)\ x= \frac{(u − c_U )\times z}{f_U}\\
+(height)\ y= \frac{(v − c_V )\times z }{f_V}\\</script><p><script type="math/tex">(c_U, c_V)</script> is the <strong>pixel location</strong> corresponding to the <strong>camera center</strong> and <script type="math/tex">f_V</script> is the <strong>vertical focal length</strong>.</p>
+<p>Since <strong>real LiDAR</strong> signals only reside in <strong>a certain range of heights</strong>, we <strong>disregard</strong> pseudo-LiDAR points beyond that range. As <strong>most</strong> objects of interest (e.g., cars and pedestrians) <strong>do not exceed</strong> this height range there is <strong>little information loss.</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""</span></div><div class="line"><span class="string">code from https://zhuanlan.zhihu.com/p/91479831</span></div><div class="line"><span class="string">"""</span></div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pptk</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">fu = <span class="number">2301.3147</span>    </div><div class="line">fv = <span class="number">2301.3147</span> </div><div class="line">cu = <span class="number">1489.8536</span> </div><div class="line">cv = <span class="number">479.1750</span>  </div><div class="line"></div><div class="line">disparity_map = Image.open(<span class="string">'171206_034625454_Camera_5.png'</span>)</div><div class="line">disparity_map = np.array(disparity_map)</div><div class="line"></div><div class="line">disparity_map = disparity_map/<span class="number">200</span>      <span class="comment"># 除以200恢复原来的值</span></div><div class="line">disparity_map[disparity_map == <span class="number">0</span>] = <span class="number">1e-3</span>    <span class="comment"># 避免除0</span></div><div class="line"></div><div class="line">depth_map = fu/disparity_map    <span class="comment"># fu是水平焦距, b==1</span></div><div class="line">cv2.imwrite(<span class="string">'depth_map.jpg'</span>, depth_map)</div><div class="line"></div><div class="line"><span class="comment"># slow version</span></div><div class="line">point_cloud = np.empty(shape=(*depth_map.shape, <span class="number">3</span>))</div><div class="line"><span class="keyword">for</span> u <span class="keyword">in</span> range(point_cloud.shape[<span class="number">0</span>]):</div><div class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> range(point_cloud.shape[<span class="number">1</span>]):</div><div class="line">        point_cloud[u, v, <span class="number">2</span>] = depth_map[u, v]              <span class="comment"># z</span></div><div class="line">        point_cloud[u, v, <span class="number">0</span>] = (u-cu)*depth_map[u, v]/fu    <span class="comment"># x</span></div><div class="line">        point_cloud[u, v, <span class="number">1</span>] = (v-cv)*depth_map[u, v]/fv    <span class="comment"># y</span></div><div class="line">        </div><div class="line"><span class="comment"># fast version</span></div><div class="line">rows, cols = depth_map.shape</div><div class="line">c, r = np.meshgrid(np.arange(cols), np.arange(rows))</div><div class="line">point_cloud = np.stack([c, r, depth_map])</div><div class="line">point_cloud = point_cloud.reshape((<span class="number">3</span>, <span class="number">-1</span>))</div><div class="line">x = ((point_cloud[:, <span class="number">0</span>]-cu)*point_cloud[:, <span class="number">2</span>])/fu</div><div class="line">y = ((point_cloud[:, <span class="number">1</span>]-cv)*point_cloud[:, <span class="number">2</span>])/fv</div><div class="line">point_cloud[:, <span class="number">0</span>] = x</div><div class="line">point_cloud[:, <span class="number">1</span>] = y</div><div class="line"></div><div class="line"><span class="comment"># save</span></div><div class="line">cv2.imwrite(<span class="string">'point_cloud.jpg'</span>, point_cloud)</div><div class="line">point_cloud = point_cloud.reshape((<span class="number">-1</span>, <span class="number">3</span>))</div><div class="line">v = pptk.viewer(point_cloud) <span class="comment">#pptk库可以用来可视化点云</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>3D object detection</strong>(论文使用了AVOD and frustum PointNet)</p>
+<p><img src="/2020/07/08/CVPR-2020/Wang_2.png" style="zoom:67%;"></p>
+<p>This example goes to show how some operations the <strong>convolutional</strong> network might perform <strong>could border on the absurd.</strong></p>
+</li>
+</ul>
+<hr>
+<p>Future work:</p>
+<ul>
+<li><strong>higher resolution</strong> stereo images</li>
+<li>in this paper we did not focus on <strong>real-time image processing</strong> and the classiﬁcation of all objects in one image takes on the order of 1s.</li>
+<li>it is likely that future work could improve the state-of-the-art in <strong>3D object detection</strong> through sensor fusion of LiDAR and pseudo-LiDAR.</li>
+</ul>
+</li>
+<li><p><strong>PSEUDO -L I DAR++: ACCURATE D EPTH FOR 3D O BJECT D ETECTION IN AUTONOMOUS D RIVING——ICLR 2020</strong>上面文章的改进，修改了<strong>深度估计网络</strong>，使用了4线雷达（价格较低）进行<strong>校正</strong></p>
+<p>more <strong>aligned</strong> with accurate depth estimation of <strong>faraway</strong> objects.</p>
+<p><img src="/2020/07/08/CVPR-2020/Wang_3.png" style="zoom:67%;"></p>
+<p>两大贡献：</p>
+<ol>
+<li>Identify the <strong>disparity estimation</strong> as a <strong>main source of error</strong> for <strong>stereo-based systems</strong> and propose a novel approach to <strong>learn depth directly end-to-end</strong> instead of through disparity estimates. </li>
+<li>Advocate that one should not use expensive LiDAR sensors to learn the local structure and depth of objects. Instead one can <strong>use commodity stereo cameras</strong> for the <strong><em>former</em></strong> and <strong>a cheap sparse LiDAR</strong> to <strong><em>correct the systematic bias</em></strong> in the resulting depth estimates.</li>
+</ol>
+<p>其实就两个方向，一个就是对<strong>深度估计网络修改</strong>，因为实验表明<strong><em>深度图的误差是视差图的二次方级别的</em></strong>。从公式<script type="math/tex">Z(u,v)=\frac{f_U\times b}{D(u,v)}</script>上也可以看出来:</p>
+<script type="math/tex; mode=display">
+Z ∝\frac 1 D\to \delta Z ∝ \delta \frac 1 {D^2}D \to \delta Z ∝ Z^2 \delta D.</script><p>所以直接用深度的误差作为损失函数（而不是使用视差）；并且3D卷积，也是在深度图之上。</p>
+<p>the depth cost volume <script type="math/tex">C_{depth}</script> , in which <script type="math/tex">C_{depth}(u, v, z, :)</script>will encode features describing how likely the depth <script type="math/tex">Z(u, v)</script> of pixel<script type="math/tex">(u, v)</script> is <script type="math/tex">z</script>.</p>
+<script type="math/tex; mode=display">
+Z(u, v) = softmax(−S_{depth}(u, v, z)) × z</script><script type="math/tex; mode=display">S_{depth}$$used to predict the pixel depth similar.
+
+在道理上，$$C_{disp}(u, v, \frac{f_U\times b}{z}, :)$$应该和$$C_{depth}(u, v, z, :)$$有同步的耗费，这里用了双线性插值。
+
+第二个方向就是用价格较低的lidar（~~应该是发出的激光线比较小，获取的信息比较稀疏的那种~~）来矫正伪雷达点云。
+
+* First, we characterize the local shapes by the directed **K-nearest-neighbor (KNN)** graph in the PL point cloud
+
+* solve for these weights with the following constrained **quadratic** optimization problem:</script><p>  W = arg\ min_W |Z − WZ|^2_2 ,s.t. W1 = 1\ and\ W_{ij} = 0\ if\ j \notin N_i<br>  $$</p>
+<p><strong>The two steps</strong> described in the main paper can be easily turned into <strong>two (sparse) linear systems</strong> and then solved by using <strong>Lagrange multipliers.</strong> For the ﬁrst step, we solve a problem that is slightly modiﬁed from that described in the main paper (for more accurate reconstruction). For the second step, we use the <strong>Conjugate Gradient (CG)</strong> to iteratively solve the sparse linear system.</p>
+<p><img src="/2020/07/08/CVPR-2020/Wang_4.png" style="zoom:67%;"></p>
+</li>
+</ol>
+<h3 id="MonoPair-Monocular-3D-Object-Detection-Using-Pairwise-Spatial-Relationships"><a href="#MonoPair-Monocular-3D-Object-Detection-Using-Pairwise-Spatial-Relationships" class="headerlink" title="MonoPair: Monocular 3D Object Detection Using Pairwise Spatial Relationships"></a>MonoPair: Monocular 3D Object Detection Using Pairwise Spatial Relationships</h3><p>通过部分<strong>遮挡</strong>object与周围objects的<strong>空间限制</strong>关系，受CenterNet的启发，将object当作点，用提出的检测器感知预测计算出object和<strong>相邻</strong>object的<strong>3D距离不确定性</strong>，随后通过<strong>非线性最小二乘联合nonlinear least squares</strong>优化。为了保证运行时的效率，将<strong>one-stage uncertainty-aware prediction structure</strong>(in an <strong>unsupervised</strong> manner) 和 <strong>post-optimization module</strong> 集成化。</p>
+<p><img src="/2020/07/08/CVPR-2020/Yong_1.png" alt=""></p>
+<p><strong>3个模块</strong>：2D框检测、带有不确定度的3D框检测、带有不确定度的3D pair距离；<strong>11个分支</strong>（蓝色部分）其中：aleatoric uncertainty不确定性 <script type="math/tex">\tilde\sigma(x)</script> makes the loss more <strong>robust</strong> to <strong>noisy input</strong> in a regression task.</p>
+<p><img src="/2020/07/08/CVPR-2020/Yong_2.png" style="zoom:50%;"></p>
+<ul>
+<li><p>2D检测</p>
+<ul>
+<li>heatmap<code>W x H x C</code>: predict the object location <script type="math/tex">c^g = (u^g , v^g )</script></li>
+<li>offset<code>W x H x 2</code>: predict offset vector <script type="math/tex">(\delta^u, \delta^v)</script> from the located keypoint <script type="math/tex">c^g</script> to the bounding box center <script type="math/tex">c^b = (u^b , v^b)</script> respectively.（<script type="math/tex">c^g</script>是heatmap的一个极大值点，经过偏移后得到bbox的中心点<script type="math/tex">c^b</script>，或者说是2D中心点与<script type="math/tex">c^g</script>的偏移值）L1 loss</li>
+<li>dimension<code>W x H x 2</code>: the size of the bounding box <script type="math/tex">(w^b , h^b)</script> L1 loss</li>
+</ul>
+<p><strong>Object Location Error:</strong></p>
+<script type="math/tex; mode=display">
+e_{i}^u=|\tilde u_i^g+\Delta_i^u - u_i|\\
+e_{i}^v=|\tilde v_i^g+\Delta_i^v - v_i|\\
+e_{i}^z=|\tilde z_i − z_i |</script></li>
+<li><p>3D检测</p>
+<ul>
+<li><p>depth<code>W x H x 1</code>: 图(c)的z，车到相机的深度 由于直接回归深度比较困难，用<strong>inverse depth</strong> <script type="math/tex">\hat z</script>，by inverse sigmoid transformation <script type="math/tex">z = 1/\sigma(\hat z ) − 1</script>. L1 loss</p>
+</li>
+<li><p>offset<code>W x H x 2</code>: 图(b)的<script type="math/tex">\Delta^u, \Delta^v</script>，3D中心点与<script type="math/tex">c^g</script>的偏移值（计算得到的<script type="math/tex">c^o</script>可以通过相机内参矩阵K计算得到世界坐标系中的object中心点坐标<script type="math/tex">c^w</script> L1 loss</p>
+<script type="math/tex; mode=display">
+c^w=(\frac{u^g+\Delta^u-a_x}{f_x},\frac{v^g+\Delta^v-a_y}{f_y},z)\\
+K=\left[\begin{matrix}f_x&0&a_x\\0&f_y&a_y\\0&0&1\end{matrix}\right]</script></li>
+<li><p>dimension<code>W x H x 3</code>: 回归w, h, l L1 loss</p>
+</li>
+<li><p>depth<script type="math/tex">\sigma</script><code>W x H x 1</code>: </p>
+</li>
+<li><p>offset<script type="math/tex">\sigma</script><code>W x H x 1</code>:</p>
+</li>
+<li><p>roation<code>W x H x 8</code>: object’s <strong>local</strong> orientation <script type="math/tex">\alpha</script> (yaw), <strong>global</strong> orientation <script type="math/tex">\beta</script>  in the <strong>camera</strong> coordinate system. <strong>relative rotation</strong>of the object to the camera viewing angle <script type="math/tex">\gamma = arctan(x/z)</script>（arctan(positions[1]/position[0])）. Represent the <strong>orientation</strong> using <strong>eight scalars</strong>, where the orientation branch is trained by <strong>MultiBin loss.</strong>(<del>8个？8个角点的角度吗？还是<script type="math/tex">\alpha,\beta</script>各3个表示，然后<script type="math/tex">\gamma</script>用x，z表示</del>)</p>
+</li>
+</ul>
+</li>
+<li><p>Pair constraint</p>
+<p><img src="/2020/07/08/CVPR-2020/Yong_3.png" style="zoom:50%;"></p>
+<p>对于一个pair <script type="math/tex">(c_i^w,c_j^w)</script>他们的连线中点为<script type="math/tex">p_{ij}^w</script>，对应的在featmap上<script type="math/tex">(c_i^b,c_j^b)</script>的连线中点为<script type="math/tex">p_{ij}^b</script>。（这里<script type="math/tex">p_{ij}^b</script>不是<script type="math/tex">p_{ij}^w</script>的投影）</p>
+<p>N effective objects, M pair constraints, The proposed spatial constraint <strong>optimization</strong> is formulated as a <strong>nonlinear least square problem</strong> as</p>
+<script type="math/tex; mode=display">
+arg\ min_{(u_i,v_i,z_i)_{i=1}^N}\ e^TWe</script><p>e is the <strong>Pairwise Constraint Error</strong> vector, <script type="math/tex">(e_{ij}^x, e_{ij}^y,e_{ij}^z)^T=\vec{\|\tilde k_{ij}^v-k_{ij}^v\|}</script>. </p>
+<p>W is the weight matrix for different errors. W is a diagonal matrix with dimension <script type="math/tex">3N^G + 3M</script>. The <strong>weight</strong> of the error is <strong>higher</strong> when the <strong>uncertainty is lower</strong>, which means we have more conﬁdence in the predicted output.</p>
+<p>For each vertex <script type="math/tex">\zeta_i</script> , there are three variables <script type="math/tex">(u_i, v_i, z_i)</script>, which are the projected center <script type="math/tex">(u_i, v_i)</script> of the 3D bounding box on the feature map and the depth <script type="math/tex">z_i</script>. </p>
+<ul>
+<li><p>distance<code>W x H x 3</code>: The <strong>3D absolute distance</strong> <script type="math/tex">k_{ij}^v = (k_x^v , k_y^v , k_z^v)_{ij}</script> along the <strong><em>view point direction</em></strong> are taken as the regression target which is the distance branch of the pair constraint output.</p>
+<p>For <strong>training</strong>, <script type="math/tex">k_{ij}^v</script> can be easily collected through the <strong>groundtruth 3D object centers</strong> from the training data as:</p>
+<script type="math/tex; mode=display">
+k_{ij}^v=\vec{|R(\gamma_{ij})k_{ij}^w)|}</script><script type="math/tex; mode=display">|\vec ·|$$ means extract absolute value of **each entry** in the vector. $$k_{ij}^w = c_i^w − c_j^w$$ is the **3D distance in camera coordinate**, $$\gamma_{ij} = arctan(p_x^w / p_z^w)$$ is the **view direction of their middle point** $$p_{ij}^w$$ , and $$R(\gamma_{ij})$$ is its **rotation matrix** along the **Y axis** as</script><p>R(\gamma_{ij})=\left[\begin{matrix}cos(\gamma_{ij})&amp;0&amp;-sin(\gamma_{ij})\\0&amp;1&amp;0\\sin(\gamma_{ij})&amp;0&amp;cos(\gamma_{ij})\end{matrix}\right]<br><script type="math/tex">这里不使用</script>k_{ij}^w$$的原因是，（相机坐标系下）从不同角度看pair的距离是变换的，如图：</p>
+<p><img src="/2020/07/08/CVPR-2020/Yong_4.png" alt=""></p>
+</li>
+<li><p>distance<script type="math/tex">\sigma</script><code>W x H x 1</code>:</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>不确定度：</p>
+<p>Following the heteroscedastic aleatoric uncertainty setup异方差的不确定性设置, we represent a regression task with L1 loss as</p>
+<script type="math/tex; mode=display">
+[\tilde y, \tilde \sigma] = f^\theta(x)\\
+L(\theta) =\frac{\sqrt 2}{\tilde \sigma}\|y − \tilde y\| + \log \tilde \sigma</script><script type="math/tex; mode=display">\tilde\sigma$$ is another output of the model and can represent the observation **noise of the data x**. $$\theta$$ is the **weight** of the regression model.
+
+~~最后结果里面baseline就比其他方法高了，感觉怪怪的，这里的baseline是指指只用3D和3D这两个分支么~~
+
+
+
+## 视频目标检测
+
+
+
+## 车道线检测
+
+
+
+## "人-物"交互(HOI)检测
+
+
+
+# 目标跟踪
+
+
+
+# 分割
+
+## 语义分割
+
+
+
+## 实例分割
+
+### D2Det: Towards High Quality Object Detection and Instance Segmentation
+
+见`检测-目标检测`
+
+
+
+## 全景分割
+
+
+
+## 视频目标分割
+
+
+
+## 超像素分割
+
+
+
+## 交互式图像分割
+
+
+
+# CNN
+
+
+
+# NAS
+
+
+
+# GAN
+
+
+
+# Re-ID
+
+
+
+# 3D点云（分类/分割/配准/跟踪等）
+
+
+
+# 人脸（识别/检测/重建等）
+
+
+
+# 人体姿态估计(2D/3D)
+
+
+
+# 人体解析
+
+
+
+# 文本
+
+## 场景文本检测
+
+## 场景文本识别
+
+
+
+# 特征(点)检测和描述
+
+
+
+# 超分辨率
+
+
+
+# 模型压缩/剪枝
+
+
+
+# 视频理解/行为识别
+
+
+
+# 人群计数
+
+
+
+# 深度估计
+
+## On the uncertainty of self-supervised monocular depth estimation
+
+自监督是一件不确定的事情，本篇论文**提出了与深度估计有关的不确定度的评价方法**，并评估了**自监督方法下的深度估计的不确定性**为多少，以及**对深度估计的影响**；同时还提出了一种**boost+self-teaching**的不确定评估方法，可以提高深度估计的准确性。
+
+**不确定性估计的方法：**
+
+* 图像反转(post)：利用**图像翻转**来进行不确定度的估计的，对原始的网络不用经过任何的修改，只需要在进行inference的时候进行两次forward就行了，这种方法得到的就是**小样本**上的方差。即计算***当前图片的深度图*** 与***反转图片的深度图的反转*** 的相似性。</script><p>  u_{post}=|d-d^{\rightleftharpoons}|</p>
+<script type="math/tex; mode=display">
+
+* 经验评估：**多次**</script><p>  \mu (d)=\frac 1 N \sum_{i=1}^N d_i\\<br>  u_{drop/boot/snap}=\sigma^2(d)=\frac 1 N \sum_{i=1}^N (d_i-\mu(d))^2</p>
+<script type="math/tex; mode=display">
+
+  * Dropout Sampling(drop)：之前的dropout是发生在训练的时候，通过随机丢掉一些信息，使得数据不过拟合。现在**在测试中多次随机丢失**，抽样出不同的模型。多次深度估计得到均值和方差。
+
+  * Bootstrapped Ensemble(Boot)：**不同参数初始化**
+
+  * Snapshot Ensemble(snap)：用余弦退火方法**周期性地改变学习速率**：C实验中设置为20</script><pre><code>\lambda_t=\frac{\lambda_0}{2}\cdot(\cos (\frac{\pi\cdot mod(t-1, \lceil\frac T C\rceil)}{\lceil\frac T C\rceil})+1)
+$$
+</code></pre><ul>
+<li><p>学习一个预测<strong>不确定度的模型</strong></p>
+<ul>
+<li><p>Learned Reprojection(Repr)：投影的关系在没有标签的数据中难以使用，但可以（模仿知道的情况）重构。</p>
+<script type="math/tex; mode=display">
+F(\tilde I, I) = F(\pi(I^†, K^† , R|t, K, d), I)=\alpha\frac {1-SSIM(\tilde I,\hat I)}{2}+(1-\alpha)\|\tilde I-\hat I\|\\
+L_{Repr} = \beta \cdot |u_{Repr} − F(\tilde I, I)|\\
+L_{Repr}(q) = \beta \cdot|u_{Repr}(q) − min_{i\in[0..K]}\ F(\tilde I_i(q), I(q))|</script></li>
+<li><p>Log-Likelihood Maximization(Log)：衡量<script type="math/tex">p(d^∗|I,D)</script>分布的均值和方差；如果是L1 loss就建模成Laplician分布，如果是L2 loss就建模成Gaussian分布；同时解释了关于深度以及姿态的不确定度</p>
+<script type="math/tex; mode=display">
+\log p(d^∗|w) =\log p(d^∗(q)|\Theta(I, w))\\
+L_{Log}=\frac{|\mu(d)-d^*|}{\sigma(d)}+\log \sigma(d)</script><p>w: network weight; log项用来避免分子为0的情况，拒绝对每一个像素的无限预测。</p>
+<p>另一篇提到的loss定义为：</p>
+<script type="math/tex; mode=display">
+L_{Log}=\frac{min_{i\in[0..K]}F(\tilde I_i(q),I(q))}{u_{log}}+\log u_{log}</script></li>
+<li><p>Self-Teaching (Self)：解耦深度和姿态这两个不确定度；利用自监督的办法学习一个T网络，这个网络的loss就是传统的重投影误差，然后再训练一个S网络，这个网络的loss使用的是深度值的对数似然</p>
+<script type="math/tex; mode=display">
+L_{Self}=\frac{|\mu(d_S)-d_T|}{\sigma(d_S)}+\log \sigma(d_S)</script></li>
+</ul>
+</li>
+<li><p><strong>Bayesian</strong> estimation（结合了经验估计和预测不确定模型的方法）：边缘化所有可能的w而不是进行单点估计</p>
+<script type="math/tex; mode=display">
+p(d^∗|I,D) \approx \sum_{i=1}^N p(d^∗|\Theta(I, w_i))\\
+\mu (d)=\frac 1 N \sum_{i=1}^N \mu _i(d_i)\\
+\sigma^2(d)=\frac 1 N \sum_{i=1}^N (\mu_i(d_i)-\mu(d))^2+\sigma_i^2(d_i)</script></li>
+<li><p>结合：如预测+经验两者均取最好的组合(Boot+Self)</p>
+</li>
+</ul>
+<p><strong>实验：</strong></p>
+<ul>
+<li>Baseline model：Monodepth2</li>
+<li>Depth metrics<ul>
+<li>absolute relative error (Abs Rel)</li>
+<li>root mean square error (RMSE)</li>
+<li>the amount of inliers (δ &lt; 1.25)</li>
+</ul>
+</li>
+<li>Uncertainty metrics: 所有点按照不确定性降序排列，比较抽取掉<strong>不确定度高</strong>的点和抽取掉<strong>误差高</strong>的点的曲线差距；<ul>
+<li>AUSE是Area Under the Sparsification Error，越低越好，计算方法就是用不确定度的曲线减去oracal(ideal)曲线，主要评价<strong>不确定度和实际误差</strong>的关系</li>
+<li>AURG是Area Under the Random Gain，越高越好，如果相差越大证明不确定度估计是有效果的</li>
+</ul>
+</li>
+<li>单目结果：<ul>
+<li>Depth精度上：各种方法基本降低或者不变，但是Self方法对Depth有所提高</li>
+<li>不确定性上：经验方法比post更好，预测模型的方法结果更好，Boot+self的结合效果最好</li>
+</ul>
+</li>
+</ul>
+<p><del>感觉惊叹的是作者做了很多实验，包括很多结合的方法，梳理了整个不确定性估计的方法，然后就评估这个不确定估计对深度估计的影响，最后得出不确定估计对深度估计是有提升的。感觉捕捉到了一个发表论文的新点。</del></p>
+<h1 id="6D目标姿态估计"><a href="#6D目标姿态估计" class="headerlink" title="6D目标姿态估计"></a>6D目标姿态估计</h1><h1 id="手势估计"><a href="#手势估计" class="headerlink" title="手势估计"></a>手势估计</h1><h1 id="显著性检测"><a href="#显著性检测" class="headerlink" title="显著性检测"></a>显著性检测</h1><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h2 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h2><h2 id="去模糊"><a href="#去模糊" class="headerlink" title="去模糊"></a>去模糊</h2><h2 id="去雾"><a href="#去雾" class="headerlink" title="去雾"></a>去雾</h2><h1 id="特征点检测与描述"><a href="#特征点检测与描述" class="headerlink" title="特征点检测与描述"></a>特征点检测与描述</h1><h1 id="视觉问答-VQA"><a href="#视觉问答-VQA" class="headerlink" title="视觉问答(VQA)"></a>视觉问答(VQA)</h1><h1 id="视频问答-VideoQA"><a href="#视频问答-VideoQA" class="headerlink" title="视频问答(VideoQA)"></a>视频问答(VideoQA)</h1><h1 id="视觉语言导航"><a href="#视觉语言导航" class="headerlink" title="视觉语言导航"></a>视觉语言导航</h1><h1 id="视频压缩"><a href="#视频压缩" class="headerlink" title="视频压缩"></a>视频压缩</h1><h1 id="视频插帧"><a href="#视频插帧" class="headerlink" title="视频插帧"></a>视频插帧</h1><h1 id="风格迁移"><a href="#风格迁移" class="headerlink" title="风格迁移"></a>风格迁移</h1><h1 id="轨迹预测"><a href="#轨迹预测" class="headerlink" title="轨迹预测"></a>轨迹预测</h1><h1 id="运动预测"><a href="#运动预测" class="headerlink" title="运动预测"></a>运动预测</h1><h1 id="光流估计"><a href="#光流估计" class="headerlink" title="光流估计"></a>光流估计</h1><h1 id="图像检索"><a href="#图像检索" class="headerlink" title="图像检索"></a>图像检索</h1><h1 id="虚拟试衣"><a href="#虚拟试衣" class="headerlink" title="虚拟试衣"></a>虚拟试衣</h1><h1 id="HDR"><a href="#HDR" class="headerlink" title="HDR"></a>HDR</h1><h1 id="对抗样本"><a href="#对抗样本" class="headerlink" title="对抗样本"></a>对抗样本</h1><h1 id="三维重建"><a href="#三维重建" class="headerlink" title="三维重建"></a>三维重建</h1><h1 id="深度补全"><a href="#深度补全" class="headerlink" title="深度补全"></a>深度补全</h1><h1 id="语义场景补全"><a href="#语义场景补全" class="headerlink" title="语义场景补全"></a>语义场景补全</h1><h1 id="图像-视频描述"><a href="#图像-视频描述" class="headerlink" title="图像/视频描述"></a>图像/视频描述</h1><h1 id="线框解析"><a href="#线框解析" class="headerlink" title="线框解析"></a>线框解析</h1><h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机视觉/" rel="tag"><i class="fa fa-tag"></i> 计算机视觉</a>
+          
+            <a href="/tags/CVPR/" rel="tag"><i class="fa fa-tag"></i> CVPR</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/04/深度估计/" rel="next" title="深度估计">
+                <i class="fa fa-chevron-left"></i> 深度估计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/29/3DObjectDetection/" rel="prev" title="3DObjectDetection">
+                3DObjectDetection <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">113</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像分类"><span class="nav-number">1.1.</span> <span class="nav-text">图像分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频分类"><span class="nav-number">1.2.</span> <span class="nav-text">视频分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检测"><span class="nav-number">2.</span> <span class="nav-text">检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标检测"><span class="nav-number">2.1.</span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation"><span class="nav-number">2.1.1.</span> <span class="nav-text">D2Det: Towards High Quality Object Detection and Instance Segmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Harmonizing-Transferability-and-Discriminability-for-Adapting-Object-Detectors"><span class="nav-number">2.1.2.</span> <span class="nav-text">Harmonizing Transferability and Discriminability for Adapting Object Detectors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D目标检测"><span class="nav-number">2.2.</span> <span class="nav-text">3D目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Depth-Guided-Convolutions-for-Monocular-3D-Object-Detection"><span class="nav-number">2.2.1.</span> <span class="nav-text">Learning Depth-Guided Convolutions for Monocular 3D Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#End-to-End-Pseudo-LiDAR-for-Image-Based-3D-Object-Detection"><span class="nav-number">2.2.2.</span> <span class="nav-text">End-to-End Pseudo-LiDAR for Image-Based 3D Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MonoPair-Monocular-3D-Object-Detection-Using-Pairwise-Spatial-Relationships"><span class="nav-number">2.2.3.</span> <span class="nav-text">MonoPair: Monocular 3D Object Detection Using Pairwise Spatial Relationships</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6D目标姿态估计"><span class="nav-number">3.</span> <span class="nav-text">6D目标姿态估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手势估计"><span class="nav-number">4.</span> <span class="nav-text">手势估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显著性检测"><span class="nav-number">5.</span> <span class="nav-text">显著性检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">6.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去噪"><span class="nav-number">6.1.</span> <span class="nav-text">去噪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去模糊"><span class="nav-number">6.2.</span> <span class="nav-text">去模糊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去雾"><span class="nav-number">6.3.</span> <span class="nav-text">去雾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征点检测与描述"><span class="nav-number">7.</span> <span class="nav-text">特征点检测与描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉问答-VQA"><span class="nav-number">8.</span> <span class="nav-text">视觉问答(VQA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频问答-VideoQA"><span class="nav-number">9.</span> <span class="nav-text">视频问答(VideoQA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉语言导航"><span class="nav-number">10.</span> <span class="nav-text">视觉语言导航</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频压缩"><span class="nav-number">11.</span> <span class="nav-text">视频压缩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频插帧"><span class="nav-number">12.</span> <span class="nav-text">视频插帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#风格迁移"><span class="nav-number">13.</span> <span class="nav-text">风格迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#轨迹预测"><span class="nav-number">14.</span> <span class="nav-text">轨迹预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运动预测"><span class="nav-number">15.</span> <span class="nav-text">运动预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#光流估计"><span class="nav-number">16.</span> <span class="nav-text">光流估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像检索"><span class="nav-number">17.</span> <span class="nav-text">图像检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟试衣"><span class="nav-number">18.</span> <span class="nav-text">虚拟试衣</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDR"><span class="nav-number">19.</span> <span class="nav-text">HDR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对抗样本"><span class="nav-number">20.</span> <span class="nav-text">对抗样本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三维重建"><span class="nav-number">21.</span> <span class="nav-text">三维重建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度补全"><span class="nav-number">22.</span> <span class="nav-text">深度补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语义场景补全"><span class="nav-number">23.</span> <span class="nav-text">语义场景补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像-视频描述"><span class="nav-number">24.</span> <span class="nav-text">图像/视频描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线框解析"><span class="nav-number">25.</span> <span class="nav-text">线框解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">26.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">27.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

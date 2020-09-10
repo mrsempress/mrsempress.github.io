@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Mrs_empress">
 <meta property="og:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-02T03:41:23.934Z">
+<meta property="og:updated_time" content="2020-04-03T11:17:31.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="self-supervised learning before 2019">
 <meta name="twitter:description" content="This is my blog. Self-Supervised Learning has become an exciting direction in AI community.  Jitendra Malik: “Supervision is the opium of the AI researcher” Alyosha Efros: “The AI revolution will not">
@@ -431,6 +431,14 @@
 
 <p>(Not finished)</p>
 <a id="more"></a>
+<p>常常在论文的相关工作里面可以看到这些讨论，还是需要去了解一下的。<del>基本思路还是在变换图片的简单信息然后恢复原样，或者变换与未变换之间关联起来。</del></p>
+<h1 id="Unsupervised-learning-of-visual-representations-by-solving-jigsaw-puzzles-2016"><a href="#Unsupervised-learning-of-visual-representations-by-solving-jigsaw-puzzles-2016" class="headerlink" title="Unsupervised learning of visual representations by solving jigsaw puzzles(2016)"></a>Unsupervised learning of visual representations by solving jigsaw puzzles(2016)</h1><p>将图片<script type="math/tex">I</script>首先分成9个<strong>不重叠</strong>的<strong>正方形</strong>小块，然后用<strong>N-way Siamese卷积网络</strong>（N-way之间共享网络参数）得到特征表示，然后将这些特征表示连结合并起来，判断它们之间的顺序关系。由于顺序的选择有<script type="math/tex">N!</script>个，为了简化将选择的范围缩小到它的子集<script type="math/tex">P</script>个，这样就变成了<strong>P分类</strong>问题了。</p>
+<blockquote>
+<p>N-way shot：从元数据集中随机抽取n类（way）样本</p>
+<p>Siamese network：就是Siamese给出输入的两张图片的相似性，Siamese不同于传统的分类网络给出类别，而是一个特征表示向量。具体来说就是，对于人脸识别中同一个人的向量距离很小，不同人的向量距离很大。（这个距离可以用欧式距离来评价）</p>
+</blockquote>
+<h1 id="Colorful-image-colorization-2016"><a href="#Colorful-image-colorization-2016" class="headerlink" title="Colorful image colorization(2016)"></a>Colorful image colorization(2016)</h1><p>图片的光照版本<strong>lightness作为输入</strong>，<strong>预测ab channel</strong>。在构建训练数据时，将<strong>每个像素的a，b量化到Z个（论文中313）区间</strong>，每一个区间有一个中心<code>(a, b)</code>。量化方法是：将待量化的a，b与每个区间的中心<code>(a, b)</code>计算距离，选取K（论文中10）个距离最近的区间（<strong>k近邻问题</strong>），对这10个区间的<strong>距离</strong>的平方做类似softmax的处理<strong>变成概率</strong>。对于每个位置输出Z个概率，实验发现如果直接用模型输出的概率计算颜色，颜色饱和度会比较低；如果只选取最大的概率的区间所表示的颜色，整个图片会不连续。于是通过<strong>公式来调整模型输出的概率</strong>，然后用改变后的概率<strong>对区间中心加权求和得到最终的颜色</strong>。</p>
+<p>评价标准是让志愿者（人）来指出哪个是真实的图片，哪个是生成的图片。</p>
 <h1 id="Deep-InfoMax-Hjelm-et-al-2018"><a href="#Deep-InfoMax-Hjelm-et-al-2018" class="headerlink" title="Deep InfoMax(Hjelm et al.2018)"></a>Deep InfoMax(Hjelm et al.2018)</h1><p>Deep InfoMax 通过利用图像中的局部结构来学习图像表示， 这个方法中的对比任务是对一对图像中的<strong>全局特征</strong>和<strong>局部特征</strong>进行分类。全局特征是CNN的<strong>最终输出</strong>（平面向量，Y），局部特征是编码器中的<strong>中间层的输出</strong>（M x M特征图）</p>
 <h1 id="Contrastive-Predictive-Coding-Oord-et-al-2018"><a href="#Contrastive-Predictive-Coding-Oord-et-al-2018" class="headerlink" title="Contrastive Predictive Coding (Oord et al., 2018)"></a>Contrastive Predictive Coding (Oord et al., 2018)</h1><p>Contrastive Predictive Coding (CPC) 是一个可以适用于文本、语音、视频、图像等<strong>任何形式数据的对比方法</strong>（图像可以看作为由像素或者图像块组成的序列）。</p>
 <p>CPC通过对<strong>多个时间点共享的信息</strong>进行编码来学习特征表达，同时<strong>丢弃局部信息</strong>。这些特征被称为<strong>“慢特征”</strong>：随时间不会快速变化的特征。比如说：视频中讲话者的身份，视频中的活动，图像中的对象等。</p>
@@ -508,6 +516,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/29/随想小记-2020-02-29/" rel="prev" title="随想小记-2020-02-29">
+                随想小记-2020-02-29 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -587,7 +599,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-count">113</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -598,7 +610,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -609,7 +621,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -705,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-InfoMax-Hjelm-et-al-2018"><span class="nav-number">1.</span> <span class="nav-text">Deep InfoMax(Hjelm et al.2018)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contrastive-Predictive-Coding-Oord-et-al-2018"><span class="nav-number">2.</span> <span class="nav-text">Contrastive Predictive Coding (Oord et al., 2018)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsupervised-learning-of-visual-representations-by-solving-jigsaw-puzzles-2016"><span class="nav-number">1.</span> <span class="nav-text">Unsupervised learning of visual representations by solving jigsaw puzzles(2016)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Colorful-image-colorization-2016"><span class="nav-number">2.</span> <span class="nav-text">Colorful image colorization(2016)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-InfoMax-Hjelm-et-al-2018"><span class="nav-number">3.</span> <span class="nav-text">Deep InfoMax(Hjelm et al.2018)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contrastive-Predictive-Coding-Oord-et-al-2018"><span class="nav-number">4.</span> <span class="nav-text">Contrastive Predictive Coding (Oord et al., 2018)</span></a></li></ol></div>
             
 
           </div>

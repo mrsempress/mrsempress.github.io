@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="计算机视觉,深度估计," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="深度估计字面意思而已。 同样从人来讲的话，是一件很简单的事情。对于眼睛捕捉的一张图像，大脑自然而然解析出的是一个三维关系，而对于网络呢，他可能需要根据整个图像的信息、物体周围信息、透视法、物体本身的大小形状位置等信息，或者在图像序列中会加上时序关系，亦或者相机的变动根据焦距的关系等等判断出这个物体在整张图中的相对深度（其实很多时候一直在做的就是探索大脑是怎么做的，也不完全是）。 现在我看到的更多的">
+<meta name="keywords" content="计算机视觉,深度估计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度估计">
+<meta property="og:url" content="http://mrsempress.top/2020/06/04/深度估计/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="深度估计字面意思而已。 同样从人来讲的话，是一件很简单的事情。对于眼睛捕捉的一张图像，大脑自然而然解析出的是一个三维关系，而对于网络呢，他可能需要根据整个图像的信息、物体周围信息、透视法、物体本身的大小形状位置等信息，或者在图像序列中会加上时序关系，亦或者相机的变动根据焦距的关系等等判断出这个物体在整张图中的相对深度（其实很多时候一直在做的就是探索大脑是怎么做的，也不完全是）。 现在我看到的更多的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Eigen2014_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Godard2017_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Godard2017_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Iro2016_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Iro2016_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Iro2016_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Ambrus2019_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Ambrus2019_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Guizilini_2020_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Guizilini_2020_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Fu2018_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Fu2018_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Fu2018_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Chang_2018_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/Godard_2019_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/3DObjectDetection/Qin2020_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/06/04/深度估计/me_1.png">
+<meta property="og:updated_time" content="2020-09-10T11:46:51.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度估计">
+<meta name="twitter:description" content="深度估计字面意思而已。 同样从人来讲的话，是一件很简单的事情。对于眼睛捕捉的一张图像，大脑自然而然解析出的是一个三维关系，而对于网络呢，他可能需要根据整个图像的信息、物体周围信息、透视法、物体本身的大小形状位置等信息，或者在图像序列中会加上时序关系，亦或者相机的变动根据焦距的关系等等判断出这个物体在整张图中的相对深度（其实很多时候一直在做的就是探索大脑是怎么做的，也不完全是）。 现在我看到的更多的">
+<meta name="twitter:image" content="http://mrsempress.top/2020/06/04/深度估计/Eigen2014_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/06/04/深度估计/"/>
+
+
+
+
+
+  <title>深度估计 | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/06/04/深度估计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深度估计</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-04T11:48:25+08:00">
+                2020-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/深度估计/" itemprop="url" rel="index">
+                    <span itemprop="name">深度估计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/06/04/深度估计/" class="leancloud_visitors" data-flag-title="深度估计">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>深度估计字面意思而已。</p>
+<p>同样从人来讲的话，是一件很简单的事情。对于眼睛捕捉的一张图像，大脑自然而然解析出的是一个三维关系，而对于网络呢，他可能需要根据整个图像的信息、物体周围信息、透视法、物体本身的大小形状位置等信息，或者在图像序列中会加上时序关系，亦或者相机的变动根据焦距的关系等等判断出这个物体在整张图中的相对深度（<del>其实很多时候一直在做的就是探索大脑是怎么做的，也不完全是</del>）。</p>
+<p>现在我看到的更多的是单目深度估计，<del>可能是我检索有些问题，也可能是钱不够用，所以在技术上探索？</del>单目深度估计的问题即MDE，Monocular Depth Estimation。单目问题在Godard e t c., 2017中指出，所谓单目是指在测试的时候只用了一张图片。一般来说，<strong>单目</strong>数据会是一个<strong>序列</strong>，因此也有很多方法是利用了时间的关系。<del>所以在训练的时候可以用两个摄像机的图像来训练咯？人来说的话都是双目深度估计吧，双眼之间是有距离的，然后根据几何关系感觉就可以；但是人闭上一只眼睛，却也可以较准确地给出深度关系，这么一看刚出生的我就很机智哎</del></p>
+<a id="more"></a>
+<h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><p>从论文来学习，慢慢体会为什么这个是一个难的问题，以及在3D目标检测上他的作用点。</p>
+<h2 id="Depth-Map-Prediction-from-a-Single-Image-using-a-Multi-Scale-Deep-Network——2014"><a href="#Depth-Map-Prediction-from-a-Single-Image-using-a-Multi-Scale-Deep-Network——2014" class="headerlink" title="Depth Map Prediction from a Single Image using a Multi-Scale Deep Network——2014"></a>Depth Map Prediction from a Single Image using a Multi-Scale Deep Network——2014</h2><p>pdf：<a href="https://arxiv.org/pdf/1406.2283" target="_blank" rel="external">https://arxiv.org/pdf/1406.2283</a></p>
+<p>Eigen的一篇经典之作，单目(from a single image)深度估计。看之后的文章知道了这一篇的一个巨大的贡献就是不用手动设置特征或者有初始的语义信息，<del>估计这又是第一篇运用卷积网络的文章</del></p>
+<p>首先他指出从单张图片上要得到深度预测图，需要整合全局和局部的信息。因此他用了两个网络：<strong>Coarse和fine</strong>，分别来获取全局和局部的预测。</p>
+<p>显然，先用Coarse获得<strong>全局</strong>的一个预测，这个预测比较粗糙；然后将这个预测和原图再次通过fine网络精细化，<strong>reshape</strong>得到一个相对精细的深度预测图。这个思路很好理解它工作的原理。具体网络信息如下图。</p>
+<p><img src="/2020/06/04/深度估计/Eigen2014_1.png" alt=""></p>
+<p>Coarse网络<strong>前五层</strong>是在做<strong>特征提取</strong>，<strong>后面两层</strong>其实就是在<strong>整合整个图片的信息</strong>。然后将输出与Fine的第一层输出整合后作为第二层的输入。所有的低-中层，隐藏层是用了线性整流单元以及第6层的全连接部分采用了dropout来减少过拟合的现象。</p>
+<p>第二个点就是设计的<strong>Scale-Invariant error</strong>。设计这个点的由来也很直观，场景的全局规模是不可预测，而现在许多的error是由于在elementwise方法上累积下来的。然后它在Make3D方法上做了两个实验，发现oracle代替场景的平均尺寸可以提高20%，说明场景的平均规模在总error中占据了一大部分的比例。<del>这个设计的理由我看了好多遍，网上的也没有讲的很清楚，英语so poor；反正从名字上来看就是更加关注于深度预测而不是尺寸，忽略尺寸的影响。</del></p>
+<blockquote>
+<script type="math/tex; mode=display">
+d_i=\log y_i-\log y_i^*</script><p>RMSE: root mean squared error</p>
+<p>场景的平均尺寸：</p>
+<script type="math/tex; mode=display">
+RMSE_{log}=\sqrt{\frac{\sum_{y\in T}\|\log y_i-\log y_i^*\|^2}{T}}</script><p>用orale代替：</p>
+<script type="math/tex; mode=display">
+RMSE_{\log,scale\ inv.}=\frac 1 {2n}\sum_{i=1}^n(\log y_i-\log y_i^*+\alpha(y,y^*))^2\\\alpha(y,y^*)=\frac 1 {n}\sum_{i=1}^n(\log y_i^*-\log y_i)</script></blockquote>
+<p>由此启发设计了Scale-Invariant error来表示场景中点之间的关系。用的是在log级别上的平均平方差。</p>
+<script type="math/tex; mode=display">y$$是预测的深度图，每一个里面还有n个pixels。</script><p>D(y,y^<em>)=\frac 1 {2n}\sum_{i=1}^n(\log y_i-\log y_i^</em>+\alpha(y,y^<em>))^2\\<br>\alpha(y,y^</em>)=\frac 1 {n}\sum_{i=1}^n(\log y_i^*-\log y_i)</p>
+<script type="math/tex; mode=display">
+$$\alpha$$就是用来衡量$$(y,y^*)$$之间差距的表示；对于任何预测y，$$e^\alpha$$是最好的尺寸来校准ground truth（？）。所有的量乘以y可以得到相同的error，因此是尺寸不变的。
+
+可以化简为：</script><p>D(y,y^<em>)=\frac 1 n\sum_id_i^2-\frac 1 {n^2}(\sum_id_i)^2\\<br>d_i=\log y_i-\log y_i^</em></p>
+<script type="math/tex; mode=display">
+~~从化简之后的式子来看，第一项是一个L2损失，用来衡量每个pixel对于预测深度和真实深度的平均梯度值。由于每个图像的颜色范围都是**按比例缩放的**（如下图），从而导致L2损失过大。增加第二项还减少了损失函数的误差，很好地保留像素之间的相对深度关系。~~
+
+<img src="深度估计/Eigen2014_2.png" style="zoom:50%;" />
+
+而最后设计的训练损失函数是在Scale-Invariant error做了一个变动。即：</script><p>L(y,y^<em>)=\frac 1 n\sum_id_i^2-\frac \lambda {n^2}(\sum_id_i)^2\\<br>d_i=\log y_i-\log y_i^</em></p>
+<script type="math/tex; mode=display">
+如果$$\lambda=0$$，其实就是一个**$$l_2$$损失**；如果$$\lambda=1$$，那么就是**Scale-Invariant error**了。实验中取了**中间的值0.5。**
+
+------
+
+实验部分，用了NYU Depth 和KITTI两个数据集，然后在输入之前做了**数据增强**（尺寸、旋转、随机裁剪、颜色、翻转）。学习速率设置为：Coarse的卷积层0.001，Coarse的全连接层0.1；Fine卷积层0.001，Fine的全连接层0.01（其实从学习率也可以感受到卷积和全连接、粗糙到精细想要学习的东西）。
+
+**实验评价的方式**一个是$$threshold\ \delta<x$$的概率（越高越好）和损失误差（越低越好）。
+
+
+
+## Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-Scale Convolutional Architecture——2015
+
+同样是Eigen的，这篇文章是上一篇的改进，可以在`Predicting Depth, Surface Normals and Semantic Labels`这三个任务上均达到SOTA，并且它可以扩展到别的任务上。
+
+首先这次的**网络更加深**；然后没有使用superpixels or low-level segmentation来获取图片的细节；最后重点就是网络结构，这次用了**三个网络（三种规模）**。
+
+<img src="深度估计/Eigen2015_1.png" style="zoom:40%;" /><img src="深度估计/Eigen2015_2.png" style="zoom:40%;" />
+
+* Scale 1：**全局**，整个图片的角度来看。~~感觉和2014的Coarse网络的功能是一样的，作为全局的信息，提取特征~~
+* Scale 2：**预测**。就是在中等分辨率下预测。~~感觉这就是2014的Fine网络，但是模块增加了一个，因为这里首先仍然经过conv/pool得到一个map和**上采样**concat~~
+* Scale 3：**高分辨率**。将预测在高分辨率上细化。~~感觉这一部分就是为了进一步增加细节，增加了**通道**，提高分辨率~~
+
+但是对于depth、normals这两项任务来说其实只用到了前面两个scale的网络，~~这说明前两个任务之间是可以共享某些信息的，因此算是节省了。对于depth来说，和2014的相比，主要就是增加了网络的深度以及loss增加了水平和垂直的关系？~~整个网络的输出尺寸是输入尺寸的一半
+
+------
+
+完成的三个任务：深度、表面法向量、语义标签
+
+这里的大写字母均代表对应的map
+
+* 深度</script><p>  L_{depth}(D,D^*)=\frac 1 n\sum_id_i^2-\frac 1 {2n^2}(\sum_id_i)^2\+\frac 1 n \sum_i[(\nabla_xd_i)^2+(\nabla_yd_i)^2]</p>
+<script type="math/tex; mode=display">
+  相对于2014的来说，$\lambda$仍然取0.5，但是增加了第二行，**表示在行和列的图片梯度的差异部分**。这样做可以使得局部结构部分更加相似。这里的梯度在code中可以用Sobel算子，其是一种滤波算子的形式，用于提取边缘，可以利用快速卷积函数。
+
+  > 更改损失函数的一个原因是，**如果原式是负的，则会判断错误**；
+  >
+  > 举个例子来说，假设pixel i, j的深度分别为15, 20；第一种预测的深度分别为30, 40；第二种预测的深度分别为15, 20；很明显第二种预测更好；但是按照原式来计算的话：
+  >
+  > 第一种: $$[(30-15)^2+(40-20)^2]-[(30-15)+(40-20)]^2=-600</script><p>  &gt;</p>
+<blockquote>
+<p>第二种：<script type="math/tex">[(15-15)^2+(40-20)^2]-[(15-15)+(40-20)]^2=0</script></p>
+<p>就变成第一种更好了。</p>
+<p>增加行和列的差异部分之后，使得我们的损失函数不仅使得两者的值更加接近，而且在局部结构上也更加相似。</p>
+</blockquote>
+<ul>
+<li><p>表面法向量：</p>
+<p>把输出通道由1通道变成3通道，分别预测在图中每个像素点法向量的x,y,z。用L2norm来归一化法向量，方向传播也通过这个归一化。至于损失函数则是很简单的逐像素的点乘。</p>
+<script type="math/tex; mode=display">
+L_{normals}(N,N^*)=-\frac 1 n\sum_{i}N_i\cdot N_i^*=-\frac 1 n N\cdot N^*</script></li>
+<li><p>语义标签</p>
+<script type="math/tex; mode=display">
+L_{semantic}(C,C^*)=-\frac 1 n\sum_i C_i^*\log(C_i)\\
+C_i=e^{z_i}/\sum_c e^{z_i,c}</script><p>用了pixelwise softmax classifier来预测每个点的类标签，pixelwise cross-entropy loss；最后的输出channels是和类别一样多的。</p>
+</li>
+</ul>
+<hr>
+<p>训练的话同样有数据增强，learning rate也是确定的，但是不同任务略有区别。</p>
+<hr>
+<p><del>作者提供的代码是theano的，不太好看，还有就是这个好像只有test，没有train</del></p>
+<h2 id="Unsupervised-Monocular-Depth-Estimation-with-Left-Right-Consistency——2017"><a href="#Unsupervised-Monocular-Depth-Estimation-with-Left-Right-Consistency——2017" class="headerlink" title="Unsupervised Monocular Depth Estimation with Left-Right Consistency——2017"></a>Unsupervised Monocular Depth Estimation with Left-Right Consistency——2017</h2><p>这篇文章首先它是<strong>unsupervised</strong>，没有用到ground truth depth<del>（自认为这个标注应该比目标检测的还要难）</del>，之前大部分都是通过<strong>监督回归</strong>来做的；然后用到了<strong>Left-Right Consistency</strong>，首先需要得到视差图，对于同一时刻两个摄像机的视差图应该是对应的，用极线几何约束，可以根据公式$\hat d=bf/d$得到深度；而对于第二个图像，在这里它用了<strong>图像重建</strong>，重建出的图片用真实的图片监督，这样子在测试的时候才可以适用于单目的情况；最后提出了<strong>新的loss</strong>，首先是不同规模s的output，然后每一个规模的Cs由三个部分组成，<strong>重建的匹配误差、左右视差图一致误差、原始视差图应该是光滑的惩罚</strong>。</p>
+<hr>
+<p><img src="/2020/06/04/深度估计/Godard2017_1.png" style="zoom:40%;"><img src="/2020/06/04/深度估计/Godard2017_2.png" style="zoom:40%;"></p>
+<p>网络整体是对称的，整体来说还是清晰的。思路来源于DispNet。<del>整体训练的是一个视差预测网络。</del></p>
+<hr>
+<p>loss部分比较复杂，每一个output scale s有一个损失<script type="math/tex">C_s</script>，这个损失又由三个部分组成，每个部分又有左右两边。</p>
+<script type="math/tex; mode=display">
+C_s=\alpha_{ap}(C_{ap}^l+C_{ap}^r)+\alpha_{ds}(C_{ds}^l+C_{ds}^r)+\alpha_{lr}(C_{lr}^l+C_{lr}^r)</script><ul>
+<li><p>图像重建损失：结合L1和SSIM（结构相似性）</p>
+<script type="math/tex; mode=display">
+C_{ap}^l=\frac 1 N\sum_{i,j}\alpha\frac {1-SSIM(I_{ij}^l,\tilde I_{ij}^l)}{2}+(1-\alpha)\|I_{ij}^l-\tilde I_{ij}^l\|</script><p>其中，SSIM（Structural Similarity）的定义如下：</p>
+<script type="math/tex; mode=display">
+SSIM(x,y)=\frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}</script></li>
+<li><p>视差光滑：L1惩罚，exponential linear units<del>（在code部分，左右视差也是个监督的）</del></p>
+<script type="math/tex; mode=display">
+C_{ds}^l=\frac 1 N\sum_{ij}|\partial_x d_{ij}^l|e^{-\|\partial_xI_{ij}^l\|}|\partial_y d_{ij}^l|e^{-\|\partial_yI_{ij}^l\|}</script></li>
+<li><p>左右视差一致：L1惩罚</p>
+<script type="math/tex; mode=display">
+C_{lr}^l=\frac 1 N\sum_{ij}|d_{ij}^l-d_{ij+d_{ij}^l}^r|</script></li>
+</ul>
+<hr>
+<p>同样使用了数据增强：随机翻转、颜色变换。</p>
+<p>使用了ResNet作为编码器；解码器部分以每个分辨率附加预测，以便以下一个更高的分辨率进行预测。</p>
+<p>为了减少立体遮挡的影响，在测试的时候做了一个<strong>后处理</strong>，即原来视差图$d^l$，<strong>翻转原图</strong>后得到视差图$d^{‘l}$，<strong>将$d^{‘l}$翻转</strong>得到$d^{‘’l}$——即翻转图片的翻转视差图。这样$d^l$和$d^{‘’l}$应该是对齐的，but where the disparity ramps are located on the right of occluders as well as on the right side of the image<del>大概就是减少遮挡视差的影响吧，感觉是因为测试的时候没有右图的监督了，所以弄了个翻转再翻转？</del>。最后的视差图用$d=d^lW^l+d^{‘’l}W^{‘l}$。但是会增加两倍测试的时间。</p>
+<hr>
+<p>缺点：遮挡部分的像素在两个图像中都不可见；训练数据集必须有两个view；由于依赖图像重构，对于反射透视的深度判别是不一致的。</p>
+<h2 id="Deeper-Depth-Prediction-with-Fully-Convolutional-Residual-Networks——2016"><a href="#Deeper-Depth-Prediction-with-Fully-Convolutional-Residual-Networks——2016" class="headerlink" title="Deeper Depth Prediction with Fully Convolutional Residual Networks——2016"></a>Deeper Depth Prediction with Fully Convolutional Residual Networks——2016</h2><p>主要贡献：</p>
+<ol>
+<li><p>受到<strong>Encoder-decoder</strong>结构的影响，发现它使用了<strong>高层和低层的特征</strong>来优化预测，而深度预测正好需要<strong>全局和局部</strong>的特征，因此作者使用Encoder-decoder结构。</p>
+<p><img src="/2020/06/04/深度估计/Iro2016_1.png" alt=""></p>
+</li>
+<li><p>使用了<strong>ResNet</strong>的卷积神经网络架构作为<strong>编码器</strong>的部分，一是因为最后一层的卷积层的<strong>感受野越大</strong>的话我们可以从模型中得到更好的基础特征，而是因为他们输入图片的尺寸大小为<code>304*228</code>，而ResNet最后尺寸大小为<code>483*483</code>，这样就可以获取足够多的图片信息了<del>那也就是说原图如果是大分辨需要先压缩</del>。</p>
+</li>
+<li><p>使用了<strong>向上卷积代替了全连接层</strong>，全连接层相互之间是有些独立的，不适用于回归问题上，而且全连接层需要很多参数，因此会消耗过多的内存。</p>
+</li>
+<li><p><strong>解码部分</strong>使用了向上投影，同时比较了不同的向上投影up-projection模块的效果</p>
+<p><img src="/2020/06/04/深度估计/Iro2016_2.png" style="zoom:40%;"></p>
+<ul>
+<li><p>Vanilla UP-Convolution，使用解池层un-pooling layer，之后跟上一个卷积层。但是解池层是通过将每一个cell变为<code>2*2</code>的输出，简单来说左上的cell为输入的值，其他三个均为零。这样子的话整个output map会变得稀疏，从而这个feature map就比较weak了，存在较大的棋盘效应<del>（就是生成的图像是由深深浅浅的方块组成，像棋盘，当卷积核大小不能被步长整除时，反卷积就会出现重叠问题，插零的时候，输出结果会出现一些数值效应，就像棋盘一样）</del>，边缘模糊，噪声较大，学起来也比较难了。</p>
+</li>
+<li><p>Vanilla UP-Projection，和上一个很像，受ResNet的影响，增加了投影，使得模型更易学习。通过合并两个独立的分支来获取密集的feature map；但是结果仍然是不理想的。</p>
+</li>
+<li><p>Fast UP-Convolution，作者提出的一个可以提高训练速度15%的向上卷积模块。具体来说就是<strong>把原来<code>5*5</code>的卷积分解为四个部分<code>A:3*3,B:2*3, C:3*2, D:2*2</code>，然后每一个部分各自卷积完成后，将结果插值后得到新的feature map</strong>。<del>就是和分布式的意思差不多吧，分别计算output中每一个格子，然后最后组成成output；小卷积代替大卷积，实现上采样。而且这样得到的结果可以大量减少0的出现；作者说叠加到第五个卷积块之后，没什么效果提升了，我还以为是因为刚好可以凑出来呢，不过有<code>1*1</code>在应该没什么问题，但是这样子的话不就对0部分还是有影响的吧</del></p>
+<p><img src="/2020/06/04/深度估计/Iro2016_3.png" style="zoom:50%;"></p>
+</li>
+<li><p>Fast UP-Projection，就是将Vanilla UP-Projection中的卷积部分计算用<strong>插值的技术</strong>来算</p>
+</li>
+</ul>
+</li>
+<li><p>使用了<strong>reverse Huber loss function</strong>，这是因为作者不想要数据集中不符合常理的数据影响梯度流的传递，因此当深度差没有超过一定阈值的时候，使用l1 loss，对于小误差更加敏感一些。</p>
+<script type="math/tex; mode=display">
+\mathcal{B}(x)=\begin{cases}|x|,|x|\leq c\\\frac{x^2+c^2}{2c}, |x|>c\end{cases}\\
+x=\tilde y-y\\
+c = \frac 1 5max_i(|\tilde y_i-y_i|)</script></li>
+<li><p><strong>没有后处理</strong>的步骤，如CRF</p>
+</li>
+</ol>
+<h2 id="Two-Stream-Networks-for-Self-Supervised-Ego-Motion-Estimation——2019"><a href="#Two-Stream-Networks-for-Self-Supervised-Ego-Motion-Estimation——2019" class="headerlink" title="Two Stream Networks for Self-Supervised Ego-Motion Estimation——2019"></a>Two Stream Networks for Self-Supervised Ego-Motion Estimation——2019</h2><p><strong>概述</strong>：论文的点从标题就可以知道，用了<strong>自监督</strong>的思想、<strong>Two stream network</strong>完成自我运动估计任务。首先通过<strong>深度预测网络</strong>获取深度作为<strong>几何流</strong>的部分，同时图片本身作为<strong>appearance流</strong>的部分进入<strong>PoseNet</strong>，预测两帧内<strong>自我运动估计</strong>。然后利用<strong><em>第一帧和第二帧的深度以及预测出的自我运动估计的信息</em></strong> <strong>重新生成第二帧</strong>，与真实值进行<strong>photometric loss</strong>的运算。</p>
+<p><strong>几个重点</strong>：</p>
+<ul>
+<li><p><strong>self-supervised pre-training</strong>：实验发现，大量未标记的驾驶数据可以替代同一domain中精选的数据集的效果。使用了80K images of CityScapes (CS) or the 1M urban driving dataset (D1M)分别训练后作为pretraining。数据集大的结果更好。</p>
+</li>
+<li><p><strong>Two stream network</strong> combing <strong>images</strong> and <strong>inferred depth</strong>：之前的自我运动估计一般处理的是3个帧，而此方法只用了两个帧。</p>
+<p><img src="/2020/06/04/深度估计/Ambrus2019_1.png" alt=""></p>
+<p>Input首先经过<strong>DepthNet</strong>得到深度估计图，然后这两个作为两个流的输入进入<strong>Two-stream PoseNet</strong>，分别来预测structure(geometry)、appearance。之后预测的pose<script type="math/tex">X_{t\to s}=\left(\begin{matrix}R&t\\0&1\end{matrix}\right)\in SE(3)</script>（就是<script type="math/tex">I_s</script>到<script type="math/tex">I_t</script>过程中的自我运动变换，<strong>6-DOF</strong>：<script type="math/tex">(x,y,z）</script>for translation, <script type="math/tex">(\alpha,\beta,\gamma)</script> for rotation using the <strong>Euler parameterization</strong>）、<script type="math/tex">\hat D_t</script>以及<script type="math/tex">I_s</script>进行<strong>view synthesis</strong>。合成后的预测view<script type="math/tex">\hat I_t</script>与<script type="math/tex">I_t</script>做<strong>photometric loss</strong>。</p>
+<p>每一个stream包括8个卷积层和最后的一个平均池化层。</p>
+<ul>
+<li><p><strong>Robust appearance-based loss</strong>(per-pixel loss)</p>
+<p>like many works use <strong>linear combination</strong> between an <strong>L1 loss</strong> and the <strong>SSIM loss</strong>)</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_p(I_t,\hat I_t)=\alpha\frac {1-SSIM(I_{t},\hat I_{t})}{2}+(1-\alpha)\|I_{t}^l-\hat I_{t}\|</script><p>SSIM方法对于<strong><em>遮挡或者动态</em></strong>目标susceptible；这里采用了<strong>auto-masking appraoch</strong>的方法。定义masking term<script type="math/tex">\mathcal M_r</script>：<del>关注静态像素和有细微photometric变化的部分</del></p>
+<script type="math/tex; mode=display">
+\mathcal M_r(I_t,I_s,\hat I_t)=\mathcal L_p(I_t,I_s)<\mathcal L_p(I_t,\hat I_t)</script><p>So <strong>Robust appearance-based loss</strong> is:</p>
+<script type="math/tex; mode=display">
+\mathcal L_r(I_t,I_S)=min_{s\in S}\ \mathcal M_r(I_t,I_s,\hat I_t)\cdot\mathcal{L}_p(I_t,\hat I_t)</script></li>
+<li><p><strong>final loss:</strong></p>
+<script type="math/tex; mode=display">
+\mathcal L(I_t,I_S)=\mathcal L_r(I_t,I_S)\odot M_r+\lambda\mathcal L_s(\hat D_t)</script></li>
+</ul>
+</li>
+<li><p><strong>DepthNet</strong> is based on the <strong>DispNet</strong>.（<strong><em>4 scales</em></strong>, depth at each scale is <strong><em>upsampled</em></strong> by <strong><em>a factor of 2</em></strong> and <strong><em>concatenated with the decoder features</em></strong> to help resolve the depth and the next scale.)</p>
+<p><img src="/2020/06/04/深度估计/Ambrus2019_2.png" alt=""></p>
+<ul>
+<li><strong>Depth smoothness loss</strong>：引入<strong>多尺度边缘感知</strong>项，以规范无纹理区域的深度预测<script type="math/tex; mode=display">
+\mathcal L_s(\hat D_t)=|\delta_x \hat D_t|e^{-|\delta_x I_t|}+|\delta_y \hat D_t|e^{-|\delta_y I_t|}</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>sparsity-inducing data augmentation policy</strong>：大概就是在原图上按<strong>设定的比例</strong>随机增加噪声块（<strong>块的大小</strong>也是超参数），作为一个<strong>正则化</strong>，avoid overfitting。（实验发现，在深度估计上也有所提升）</p>
+<p>为什么要丢失一部分信息呢？</p>
+<ul>
+<li>pixel-level计算量很大</li>
+<li>密集的信息容易overfit</li>
+<li>只有一部分的输入pixels是可信赖的<del>可能因为mask是缓解不是解决？</del></li>
+</ul>
+<p>两个超参数：</p>
+<ul>
+<li>图片被随机噪声覆盖的比例</li>
+<li>噪声块的尺寸</li>
+</ul>
+</li>
+</ul>
+<p>评估指标：<strong>Absolute Trajectory Error (ATE)</strong>（轨迹图看起来很不错呢）</p>
+<h2 id="3D-Packing-for-Self-Supervised-Monocular-Depth-Estimation——2020"><a href="#3D-Packing-for-Self-Supervised-Monocular-Depth-Estimation——2020" class="headerlink" title="3D Packing for Self-Supervised Monocular Depth Estimation——2020"></a>3D Packing for Self-Supervised Monocular Depth Estimation——2020</h2><p>这篇论文的总体思想就是，<del>很可能灵感是因为3D其实是有速度的，而目前标注框有一个速度偏差，不太准确；正好利用了这一个思考。不过新出的cityscapes 3D数据集已经解决了这一问题，用stereo代替lidar作为生成的来源，同时加上了pitch、roll、yaw这三个信息使得这个标注框更加贴合实际。</del>当前时间段的图片<script type="math/tex">I_s</script>来<strong>预估自我运动的速度</strong>，下一时间段的图片<script type="math/tex">I_t</script>来<strong>预估深度</strong>，然后用预估的速度和深度可以<strong>复原</strong>出下一时间段的图片<script type="math/tex">\hat I_t</script>；约束一个就是下一时间段图片的复原情况，另一个是速度评估情况。</p>
+<p><img src="/2020/06/04/深度估计/Guizilini_2020_2.png" style="zoom:50%;"></p>
+<p>这篇文章三个贡献：</p>
+<ol>
+<li><p>提出了一个<strong>新的自监督网络结构PackNet</strong>，<strong><em>对称的</em></strong> (3D Packing and unpacking)blocks，适用于高分辨率的单目深度估计<script type="math/tex">\hat D = f_D(I(p)), p\to pixel</script>，使用了一个Pose ConvNet，自我的运动估计<script type="math/tex">f_x: (I_t , I_S) \to x_{t→S},\ x_{t\to s} = \left(\begin{matrix}R&t\\0&1\end{matrix}\right)\in SE</script>；最终生成密集的<strong>appearance and geometric information</strong>；</p>
+<ul>
+<li><p>PackNet：标准卷积结构通过<strong>渐进式的步长和池化</strong>来<strong>增加感受野的大小</strong>而这里是通过Packing and unpacking blocks：大概是一个数据重构的过程，比最大池化+双线性插值的效果更加好，用l1 loss来横量</p>
+<ul>
+<li>Packing: Space2Depth（折叠空间维度，减少分辨率，且是可逆的）, 3D Conv., Reshape, 2D Conv（压缩特征空间）.</li>
+<li>Unpacking: 2D Conv.（变换为所需特征channel个数）, 3D Conv.（扩展被压缩的空间）, Reshape, Depth2Space（via <strong>nearest-neighbor</strong> or with learnable transposed convolutional weights.代替上采样的过程）</li>
+</ul>
+<p><img src="/2020/06/04/深度估计/Guizilini_2020_1.png" style="zoom:50%;"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PackNet01</span><span class="params">(nn.Module)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,...)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">    x = self.pre_calc(x)  <span class="comment"># Conv2D(in_channels, 64, 5, 1)</span></div><div class="line">    <span class="comment"># Encoder</span></div><div class="line">    x1 = self.conv1(x)</div><div class="line">    x1p = self.pack1(x1)</div><div class="line">    <span class="comment"># ...</span></div><div class="line">    x5 = self.conv5(x4p)</div><div class="line">    x5p = self.pack5(x5)</div><div class="line">    </div><div class="line">    <span class="comment"># Skips</span></div><div class="line">    skip1 = x</div><div class="line">    <span class="comment"># ...</span></div><div class="line">    skip5 = x4p</div><div class="line">    </div><div class="line">    <span class="comment"># Decoder</span></div><div class="line">    unpack5 = self.unpack5(x5p)</div><div class="line">    <span class="comment"># A for concatenation and B for addition</span></div><div class="line">    <span class="keyword">if</span> self.version == <span class="string">'A'</span>:  </div><div class="line">        concat5 = torch.cat((unpack5, skip5), <span class="number">1</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        concat5 = unpack5 + skip5</div><div class="line">    iconv5 = self.iconv5(concat5)</div><div class="line"></div><div class="line">    unpack4 = self.unpack4(iconv5)</div><div class="line">    <span class="keyword">if</span> self.version == <span class="string">'A'</span>:</div><div class="line">        concat4 = torch.cat((unpack4, skip4), <span class="number">1</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        concat4 = unpack4 + skip4</div><div class="line">    iconv4 = self.iconv4(concat4)</div><div class="line">    disp4 = self.disp4_layer(iconv4)</div><div class="line">    udisp4 = self.unpack_disp4(disp4)</div><div class="line"></div><div class="line">    unpack3 = self.unpack3(iconv4)</div><div class="line">    <span class="keyword">if</span> self.version == <span class="string">'A'</span>:</div><div class="line">        concat3 = torch.cat((unpack3, skip3, udisp4), <span class="number">1</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        concat3 = torch.cat((unpack3 + skip3, udisp4), <span class="number">1</span>)</div><div class="line">    iconv3 = self.iconv3(concat3)</div><div class="line">    disp3 = self.disp3_layer(iconv3)</div><div class="line">    udisp3 = self.unpack_disp3(disp3)</div><div class="line"></div><div class="line">    unpack2 = self.unpack2(iconv3)</div><div class="line">    <span class="keyword">if</span> self.version == <span class="string">'A'</span>:</div><div class="line">        concat2 = torch.cat((unpack2, skip2, udisp3), <span class="number">1</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        concat2 = torch.cat((unpack2 + skip2, udisp3), <span class="number">1</span>)</div><div class="line">    iconv2 = self.iconv2(concat2)</div><div class="line">    disp2 = self.disp2_layer(iconv2)</div><div class="line">    udisp2 = self.unpack_disp2(disp2)</div><div class="line"></div><div class="line">    unpack1 = self.unpack1(iconv2)</div><div class="line">    <span class="keyword">if</span> self.version == <span class="string">'A'</span>:</div><div class="line">        concat1 = torch.cat((unpack1, skip1, udisp2), <span class="number">1</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        concat1 = torch.cat((unpack1 +  skip1, udisp2), <span class="number">1</span>)</div><div class="line">    iconv1 = self.iconv1(concat1)</div><div class="line">    disp1 = self.disp1_layer(iconv1)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> self.training:</div><div class="line">        <span class="keyword">return</span> [disp1, disp2, disp3, disp4]</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> disp1</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>提出了一个<strong>新的loss photometricLoss</strong>，可以附加上相机自身的速度等内在信息；目标是：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}(I_t,\hat I_t)=\mathcal{L}_p(I_t,\hat I_S)\odot \mathcal{M_p}\odot \mathcal{M_t}+\lambda_1\mathcal{L}_s(\hat D_t)</script><p>其中，<script type="math/tex">\mathcal M</script>表示mask，使得计算loss的时候关注有效部分的关系</p>
+<p>包括：</p>
+<ul>
+<li>Appearance Matching Loss（SSIM）<script type="math/tex">\mathcal{L_P}(I_t,I_S)</script><script type="math/tex; mode=display">
+\mathcal L_p(I_t , I_S ) = min_{I_s} \mathcal L_p (I_t , \hat I_t )\\\mathcal{L}_p(I_t,\hat I_t)=\alpha\frac {1-SSIM(I_{t},\hat I_{t})}{2}+(1-\alpha)\|I_{t}^l-\hat I_{t}\|</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">photometric_loss = [self.ssim_loss_weight * ssim_loss[i].mean(<span class="number">1</span>, <span class="keyword">True</span>) +</div><div class="line">                                (<span class="number">1</span> - self.ssim_loss_weight) * l1_loss[i].mean(<span class="number">1</span>, <span class="keyword">True</span>)</div><div class="line">                                <span class="keyword">for</span> i <span class="keyword">in</span> range(self.n)]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code> $$\mathcal M_p$$去除了静态场景和目标没有移动的部分~~感觉是为了避免最后学成所有均没有移动，然后这一部分的loss永远为0~~
+ $$
+ \mathcal M_p = min \mathcal L_p (I_t, I_s ) &gt; min \mathcal L_p (I_t, \hat I_t )
+ $$
+ SSIM:
+ $$
+ SSIM(x,y)=\frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}
+ $$
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">SSIM</span><span class="params">(x, y, C1=<span class="number">1e-4</span>, C2=<span class="number">9e-4</span>, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>)</span>:</span></div><div class="line">     <span class="string">"""</span></div><div class="line"><span class="string">     x,y : torch.Tensor [B,3,H,W]Input images</span></div><div class="line"><span class="string">     C1,C2 : float SSIM parameters</span></div><div class="line"><span class="string">     """</span></div><div class="line">     pool2d = nn.AvgPool2d(kernel_size, stride=stride)</div><div class="line">     refl = nn.ReflectionPad2d(<span class="number">1</span>)</div><div class="line"> </div><div class="line">     x, y = refl(x), refl(y)</div><div class="line">     mu_x = pool2d(x)</div><div class="line">     mu_y = pool2d(y)</div><div class="line"> </div><div class="line">     mu_x_mu_y = mu_x * mu_y</div><div class="line">     mu_x_sq = mu_x.pow(<span class="number">2</span>)</div><div class="line">     mu_y_sq = mu_y.pow(<span class="number">2</span>)</div><div class="line"> </div><div class="line">     sigma_x = pool2d(x.pow(<span class="number">2</span>)) - mu_x_sq</div><div class="line">     sigma_y = pool2d(y.pow(<span class="number">2</span>)) - mu_y_sq</div><div class="line">     sigma_xy = pool2d(x * y) - mu_x_mu_y</div><div class="line">     v1 = <span class="number">2</span> * sigma_xy + C2</div><div class="line">     v2 = sigma_x + sigma_y + C2</div><div class="line"> </div><div class="line">     ssim_n = (<span class="number">2</span> * mu_x_mu_y + C1) * v1</div><div class="line">     ssim_d = (mu_x_sq + mu_y_sq + C1) * v2</div><div class="line">     ssim = ssim_n / ssim_d</div><div class="line"> </div><div class="line">     <span class="keyword">return</span> ssim</div></pre></td></tr></table></figure>
+<ul>
+<li><p>Depth Smoothness Loss <script type="math/tex">\mathcal{L_S}(\hat D_t)</script>, decayed by a factor of <strong>2 on down-sampling</strong>, starting with <strong>a weight of 1 for the 0 th</strong> pyramid level.</p>
+<script type="math/tex; mode=display">
+\mathcal L_s (\hat D_t) = |\delta_x\hat D_t|e^{−|\delta_x I_t |}+ |\delta_y\hat D_t |e^{−|\delta_y I_t |}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_smoothness_loss</span><span class="params">(...)</span>:</span></div><div class="line">    inv_depths_norm = inv_depths_normalize(inv_depths)</div><div class="line">    inv_depth_gradients_x = [gradient_x(d) <span class="keyword">for</span> d <span class="keyword">in</span> inv_depths_norm]</div><div class="line">    inv_depth_gradients_y = [gradient_y(d) <span class="keyword">for</span> d <span class="keyword">in</span> inv_depths_norm]</div><div class="line"></div><div class="line">    image_gradients_x = [gradient_x(image) <span class="keyword">for</span> image <span class="keyword">in</span> images]</div><div class="line">    image_gradients_y = [gradient_y(image) <span class="keyword">for</span> image <span class="keyword">in</span> images]</div><div class="line"></div><div class="line">    weights_x = [torch.exp(-torch.mean(torch.abs(g), <span class="number">1</span>, keepdim=<span class="keyword">True</span>)) <span class="keyword">for</span> g <span class="keyword">in</span> image_gradients_x]</div><div class="line">    weights_y = [torch.exp(-torch.mean(torch.abs(g), <span class="number">1</span>, keepdim=<span class="keyword">True</span>)) <span class="keyword">for</span> g <span class="keyword">in</span> image_gradients_y]</div><div class="line"></div><div class="line">    <span class="comment"># Note: Fix gradient addition</span></div><div class="line">    smoothness_x = [inv_depth_gradients_x[i] * weights_x[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(num_scales)]</div><div class="line">    smoothness_y = [inv_depth_gradients_y[i] * weights_y[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(num_scales)]</div><div class="line">smoothness_loss = sum([(smoothness_x[i].abs().mean() +</div><div class="line">                                smoothness_y[i].abs().mean()) / <span class="number">2</span> ** i</div><div class="line">                               <span class="keyword">for</span> i <span class="keyword">in</span> range(self.n)]) / self.n</div><div class="line"> smoothness_loss = self.smooth_loss_weight * smoothness_loss</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>Velocity Supervision Loss</strong> <script type="math/tex">\mathcal{L_v}(\hat t_{t\to s},v)=|\|\hat t_{t\to s}\|-|v|\Delta T_{t\to s}|</script></p>
+</li>
+<li><p>scale-aware self-supervised objective loss <script type="math/tex">\mathcal{L_{scale}}(I_t,\hat I_t,v)=\mathcal L(I_t,\hat I_t) + \lambda_2 L_v(t_{t\to s}, v)</script></p>
+</li>
+</ul>
+<ol>
+<li>提出了一个<strong>新的数据集</strong>：range从之前的80m提升到了200m</li>
+</ol>
+<p>效果：<strong>STA</strong>，尤其在远距离；可以和<strong>监督学习方法</strong>媲美；在<strong>unseen data</strong>（遮挡？）上也通用；可以很好地<strong>扩展</strong>：参数数量、输入分辨率、未标记的训练数据；在<strong>高分辨率</strong>上可以达到<strong>实时</strong>；不需要大型的监督学习作为<strong>pretrained</strong>。</p>
+<h2 id="Deep-Ordinal-Regression-Network-for-Monocular-Depth-Estimation——2018"><a href="#Deep-Ordinal-Regression-Network-for-Monocular-Depth-Estimation——2018" class="headerlink" title="Deep Ordinal Regression Network for Monocular Depth Estimation——2018"></a>Deep Ordinal Regression Network for Monocular Depth Estimation——2018</h2><p><del>看到CVPR2020Learning Depth-Guided Convolutions for Monocular 3D Object Detection获取深度图的时候使用了DORN方法，于是过来看看，使用它的优点。</del></p>
+<p>首先之前的方法从image-level information, hierarchical features来探索，主要是用<strong>回归</strong>的方法以及最小平方差来约束得到depth map，由于使用大量的空间池化的操作，得到的深度图的<strong>分辨率较低</strong>。这样得到的结果：<strong>收敛较慢</strong>且在局部<strong>local上结果并不好</strong>。如果要<strong><em>提高分辨率</em></strong>，势必要加入一些skip-connections以及多层反卷积的操作（还有比如Eigen那篇利用了多规模的网络），但会<strong><em>增加大量的计算和存储空间</em></strong>。</p>
+<hr>
+<p>这篇文章主要的贡献在于提出了<strong><em>spacing-increasing discretization</em></strong>[离散化] (SID)的策略（instead of the <strong><em>uniform discretization (UD)</em></strong> strategy），to discretize <strong>depth</strong> and <strong>recast depth network</strong> learning as an <strong>ordinal</strong>有序 regression loss<del>（因为之前对于深度估计是经过回归数值然后变成多分类问题，丢失了深度之间是有序的关系；也就是说有序指的是相对深浅的关系，在此篇论文中深度的结果是用相对顺序来表达的）</del>。另外使用了<strong>多尺度网络结构</strong>，避免了不必要的空间池化以及获取多尺度的信息的操作。主要是通过<strong><em>去除局部采样</em></strong>，使用<strong>dilated convolutions</strong>（增大感受野但同时不会减小分辨率）；并将fully-connected <strong>full-image encoders</strong>重新设计。</p>
+<hr>
+<p><img src="/2020/06/04/深度估计/Fu2018_1.png" style="zoom:40%;"><img src="/2020/06/04/深度估计/Fu2018_2.png" style="zoom:25%;"></p>
+<p>整个网络由两个部分组成，Dense feature extractor和Scene understanding modular. </p>
+<ul>
+<li><strong><em>Dense feature extractor</em></strong>（use <strong>dilated convolution</strong>）</li>
+<li><strong><em>Scene understanding modular</em></strong><ul>
+<li><strong>ASPP</strong>（atrous spatial pyramid pooling）：ASPP is employed to <strong>extract features</strong> from <strong>multiple large receptive ﬁelds</strong> via <strong>dilated convolutional</strong> operations. The dilation rates are 6, 12 and 18, respectively.</li>
+<li><strong>a cross-channel leaner</strong>：pure <strong>1 × 1 convolutional</strong> branch</li>
+<li><strong>a full-image encoder</strong>：The full-image encoder captures <strong>global contextual information</strong> and can greatly clarify local confusions in depth estimation. 和之前的方法相比，<strong>参数更加少</strong>。首先利用一个<strong>平均池化层</strong>来减少空间维度，然后通过<strong>fc层</strong>获得C维度的特征向量，之后使用<strong>1x1的卷积</strong>作为cross-channel parametric pooling structure，最后将F <strong>copy</strong>为原空间维度。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DORN</span><span class="params">(nn.Module)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,...)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, image, target=None)</span>:</span></div><div class="line">      N, C, H, W = image.shape</div><div class="line">      feat = self.backbone(image)  <span class="comment"># ResNet and so on...</span></div><div class="line">      feat = self.SceneUnderstandingModule(feat)</div><div class="line"></div><div class="line">      <span class="keyword">if</span> self.training:</div><div class="line">          prob = self.regression_layer(feat)</div><div class="line">          loss = self.criterion(prob, target)</div><div class="line">          <span class="keyword">return</span> loss</div><div class="line"></div><div class="line">      prob, label = self.regression_layer(feat)</div><div class="line">      <span class="keyword">if</span> self.discretization == <span class="string">"SID"</span>:</div><div class="line">          t0 = torch.exp(np.log(self.beta) * label.float() / self.ord_num)  <span class="comment"># alpha=1; i=label</span></div><div class="line">          t1 = torch.exp(np.log(self.beta) * (label.float() + <span class="number">1</span>) / self.ord_num)</div><div class="line">      <span class="keyword">else</span>:</div><div class="line">          t0 = <span class="number">1.0</span> + (self.beta - <span class="number">1.0</span>) * label.float() / self.ord_num</div><div class="line">          t1 = <span class="number">1.0</span> + (self.beta - <span class="number">1.0</span>) * (label.float() + <span class="number">1</span>) / self.ord_num</div><div class="line">      depth = (t0 + t1) / <span class="number">2</span> - self.gamma</div><div class="line">      <span class="keyword">return</span> &#123;<span class="string">"target"</span>: [depth], <span class="string">"prob"</span>: [prob], <span class="string">"label"</span>: [label]&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SceneUnderstandingModule</span><span class="params">(nn.Module)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, pyramid=[<span class="number">6</span>, <span class="number">12</span>, <span class="number">18</span>],...)</span>:</span></div><div class="line">    <span class="comment"># ...</span></div><div class="line">    self.encoder = FullImageEncoder(h // <span class="number">8</span>, w // <span class="number">8</span>, kernel_size)</div><div class="line">        self.aspp1 = nn.Sequential(</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">2048</span>, <span class="number">512</span>, kernel_size=<span class="number">1</span>, padding=<span class="number">0</span>),</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">512</span>, <span class="number">512</span>, kernel_size=<span class="number">1</span>, padding=<span class="number">0</span>)</div><div class="line">        )</div><div class="line">        self.aspp2 = nn.Sequential(</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">2048</span>, <span class="number">512</span>, kernel_size=<span class="number">3</span>, padding=pyramid[<span class="number">0</span>], dilation=pyramid[<span class="number">0</span>]),</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">512</span>, <span class="number">512</span>, kernel_size=<span class="number">1</span>, padding=<span class="number">0</span>)</div><div class="line">        )</div><div class="line">        self.aspp3 = nn.Sequential(</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">2048</span>, <span class="number">512</span>, kernel_size=<span class="number">3</span>, padding=pyramid[<span class="number">1</span>], dilation=pyramid[<span class="number">1</span>]),</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">512</span>, <span class="number">512</span>, kernel_size=<span class="number">1</span>, padding=<span class="number">0</span>)</div><div class="line">        )</div><div class="line">        self.aspp4 = nn.Sequential(</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">2048</span>, <span class="number">512</span>, kernel_size=<span class="number">3</span>, padding=pyramid[<span class="number">2</span>], dilation=pyramid[<span class="number">2</span>]),</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">512</span>, <span class="number">512</span>, kernel_size=<span class="number">1</span>, padding=<span class="number">0</span>)</div><div class="line">        )</div><div class="line">        self.concat_process = nn.Sequential(</div><div class="line">            nn.Dropout2d(p=<span class="number">0.5</span>),</div><div class="line">            conv_bn_relu(batch_norm, <span class="number">512</span>*<span class="number">5</span>, <span class="number">2048</span>, kernel_size=<span class="number">1</span>, padding=<span class="number">0</span>),</div><div class="line">            nn.Dropout2d(p=<span class="number">0.5</span>),</div><div class="line">            nn.Conv2d(<span class="number">2048</span>, ord_num * <span class="number">2</span>, <span class="number">1</span>)</div><div class="line">        )</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">    N, C, H, W = x.shape</div><div class="line">    x1 = self.encoder(x)</div><div class="line">    x1 = F.interpolate(x1, size=(H, W), mode=<span class="string">"bilinear"</span>, align_corners=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">    x2 = self.aspp1(x)</div><div class="line">    x3 = self.aspp2(x)</div><div class="line">    x4 = self.aspp3(x)</div><div class="line">    x5 = self.aspp4(x)</div><div class="line"></div><div class="line">    x6 = torch.cat((x1, x2, x3, x4, x5), dim=<span class="number">1</span>)</div><div class="line">    out = self.concat_process(x6)</div><div class="line">    out = F.interpolate(out, size=self.size, mode=<span class="string">"bilinear"</span>, align_corners=<span class="keyword">True</span>)</div><div class="line">    <span class="keyword">return</span> out</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FullImageEncoder</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, h, w, kernel_size)</span>:</span></div><div class="line">        <span class="comment"># ...</span></div><div class="line">        self.global_pooling = nn.AvgPool2d(kernel_size, stride=kernel_size, padding=kernel_size // <span class="number">2</span>)  </div><div class="line">        self.global_fc = nn.Linear(<span class="number">2048</span> * self.h * self.w, <span class="number">512</span>)</div><div class="line">        self.conv1 = nn.Conv2d(<span class="number">512</span>, <span class="number">512</span>, <span class="number">1</span>)</div><div class="line">        <span class="comment"># ...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">        x1 = self.global_pooling(x)</div><div class="line">        x2 = self.dropout(x1)</div><div class="line">        x3 = x2.view(<span class="number">-1</span>, <span class="number">2048</span> * self.h * self.w)  <span class="comment"># kitti 4x5</span></div><div class="line">        </div><div class="line">        x4 = self.relu(self.global_fc(x3))</div><div class="line">        </div><div class="line">        x4 = x4.view(<span class="number">-1</span>, <span class="number">512</span>, <span class="number">1</span>, <span class="number">1</span>)</div><div class="line">        x5 = self.conv1(x4)</div><div class="line">        <span class="keyword">return</span> x5</div></pre></td></tr></table></figure>
+<hr>
+<p><img src="/2020/06/04/深度估计/Fu2018_3.png" style="zoom:50%;"></p>
+<p>主要是因为<em>拥有很多depth的时候</em>，平均分配会导致每一个depth之间的距离就很小，这样总的depth loss就会很大（over-strengthened loss）；这里用SID，在log空间上，相对来说区分度会更高一些，更加准确一些(<del>感觉就是depth相差近的会比较接近，但是远的话会远的更加明显一些</del>)</p>
+<script type="math/tex; mode=display">
+UD:\ t_i = \alpha + (\beta − \alpha) ∗ i/K\\
+SID:\ t_i = e^{\log(\alpha)+ \frac{\log (\beta/\alpha)*i}{K}}\\
+t_i \in \{t_0 , t_1 , ..., t_K \}</script><p>实现的时候，在<script type="math/tex">\alpha,\beta</script>上增加了一个shift <script type="math/tex">\xi</script></p>
+<hr>
+<p>训练阶段：</p>
+<p>图片<script type="math/tex">I</script>，经过参数为<script type="math/tex">\Phi</script>的dense feature extractor<script type="math/tex">\varphi</script>，得到特征图<script type="math/tex">\mathcal X=\varphi(I,\Phi),\ size:\ W\times H\times C</script>。然后将特征图<script type="math/tex">\mathcal X</script>的每一个空间区域计算深度排序，并加上对应的权重<script type="math/tex">\Theta=(\theta_0,\theta_1,\dots,\theta_{2K-1})</script>，得到序列输出<script type="math/tex">Y=\psi(\mathcal X,\Theta),\ size:\ W\times H\times 2K</script>。对于每一个空间区域<script type="math/tex">(w,h)</script>，通过SID策略得到的离散深度标签为<script type="math/tex">l_{(w,h)}\in\{0,1,\dots,K-1\}</script>。有此整个图像域有序的损失<script type="math/tex">\mathcal{L(X,\Theta)}</script>定义为pixelwise ordinal loss <script type="math/tex">\Psi(h,w,\mathcal X,\Theta)</script>的平均值<script type="math/tex">\mathcal{L(X,\Theta)}</script>。</p>
+<script type="math/tex; mode=display">
+\mathcal{L(X,\Theta)}=-\frac 1 {\mathcal N}\sum_{w=0}^{W-1}\sum_{h=0}^{H-1}\Psi(w,h,\mathcal X,\Theta),\ \mathcal N=W\times H\\
+\Psi(w,h,\mathcal X,\Theta)=\sum_{k=0}^{l_{(w,h)-1}}\log (\mathcal{P}^k_{(w,h)})+\sum_{k=l_{(w,h)}}^{K-1}\log (1-\mathcal{P}^k_{(w,h)})\\
+\mathcal{P}^k_{(w,h)}=P(\hat l_{(w,h)}>k|\mathcal{X,\Theta})=\frac{e^{y_{(w,h,2k+1)}}}{e^{y_{(w,h,2k)}}+e^{y_{(w,h,2k+1)}}}\\
+y(w,h,i)=\theta^T_ix(w,h)</script><p>其中，$\hat l_{(w,h)}$是<script type="math/tex">y_{(w,h)}</script>估计的离散值。目标就是最小化损失<script type="math/tex">\mathcal{L(X,\Theta)}</script>，它对<script type="math/tex">\theta_i</script>的偏导为：</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathcal{L(X,\Theta)}}{\partial \theta_i}=-\frac 1 {\mathcal N}\sum_{w=0}^{W-1}\sum_{h=0}^{H-1}\frac{\Psi(w,h,\mathcal X,\Theta)}{\partial \theta_i}\\
+\frac{\Psi(w,h,\mathcal X,\Theta)}{\partial \theta_{2k+1}}=-\frac{\Psi(w,h,\mathcal X,\Theta)}{\partial \theta_{2k}}\\
+\frac{\Psi(w,h,\mathcal X,\Theta)}{\partial \theta_{2k}}=x_{(w,h)}\eta(l_{(w,h)}>k)(\mathcal P^k_{(w,h)}-1)+x_{(w,h)}\eta(l_{(w,h)}\leq k)\mathcal P^k_{(w,h)}\\
+\eta(true)=1,\ \eta(false)=0</script><p>测试阶段：预测的深度值<script type="math/tex">\hat d_{(w,h)}</script>为：</p>
+<script type="math/tex; mode=display">
+\hat d_{(w,h)}=\frac{t_{\hat l_{(w,h)}}+t_{\hat l_{(w,h)}+1}}{2}-\xi\\
+\hat l_{(w,h)}=\sum_{k=0}^{K-1}\eta(\mathcal P^k_{(w,h)}\geq 0.5)</script><h2 id="pyramid-stereo-matching-network-PSMNet-——2018"><a href="#pyramid-stereo-matching-network-PSMNet-——2018" class="headerlink" title="pyramid stereo matching network (PSMNet)——2018"></a>pyramid stereo matching network (PSMNet)——2018</h2><p><del>论文《Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving》中使用的深度估计模型，所以来看看。</del></p>
+<p>Current architectures <strong>rely on patch-based Siamese networks</strong>, <strong>lacking the means</strong> to <strong>exploit context information</strong> for ﬁnding correspondence in <strong>ill-posed regions</strong>基于图块匹配intensity-consistency，缺少利用上下文信息去寻找<strong><em>不适定区域（遮挡区域、弱纹理区域等）</em></strong>. To tackle this problem, we propose PSMNet, a pyramid stereo matching network consisting of two main modules: spatial pyramid pooling and 3D CNN. <strong>The spatial pyramid pooling module</strong> takes advantage of the capacity of <strong>global context information</strong> by aggregating context in different scales and locations to form a cost volume单独从一个像素的强度（灰度或RGB值）很难判断环境关系。因此借助物体的环境信息来丰富图像特征能够有助于一致性估计，尤其对于不适定区域。物体（例如汽车）和<strong><em>次级区域（车窗，轮胎等）</em></strong>的关系由SPP模块学习来结合<strong>多层级</strong>的环境信息. <strong>The 3D CNN</strong> learns to <strong>regularize cost volume</strong> using stacked multiple <strong>hourglass networks</strong> in conjunction with <strong>intermediate supervision</strong>.</p>
+<p><img src="/2020/06/04/深度估计/Chang_2018_1.png" style="zoom:50%;"></p>
+<p>The left and right <strong>input stereo images</strong> are fed to <strong>two weight-sharing pipelines</strong> consisting of a CNN for feature maps calculation, <strong>an SPP module</strong> for <strong>feature harvesting</strong> by concatenating representations from subregions with different sizes, and a convolution layer for feature fusionSPP模块使用自适应平均池化把特征压缩到<strong>四个尺度</strong>上，并紧跟一个1<em>1的卷积层来减少特征维度，之后<strong>低维度的特征图</strong>通过<strong>双线性插值</strong>的方法进行上采样以恢复到原始图片的尺寸。不同级别的特征图都结合成最终的SPP特征图。SPP模块通过结合不同级别的特征有助于<strong>立体匹配</strong>。. The left and right image features are then used to form a <strong>4D cost volume</strong>, which is fed into a 3D CNN for <strong>cost volume regularization and disparity regression</strong>.为了在<strong>视差维度和空间维度</strong>上<strong>聚合</strong>特征信息，我们提出两种类型的3D CNN结构来调整匹配代价卷：基础结构和堆叠的沙漏结构。使用一个沙漏（编码解码）结构，由多个重复的带有中间层监督的由精到粗再由粗到精的过程构成。这个堆叠的沙漏结构有<em>*三个主要的沙漏网络</em></em>，每个都会生成一个视差图。这样三个沙漏结构就会由三个输出和三个损失。</p>
+<p>使用<strong>视差回归</strong>的方式来估算连续的视差图。根据由<strong>softmax</strong>操作得到预测代价Cd来计算每一个视差值d的可能性。预测视差值d’由每一个视差值<code>*</code>其对应的可能性求和得到。</p>
+<p>Use <strong>Smooth L 1 loss</strong> which is widely used in bounding box regression for object detection because of its <strong>robustness and low sensitivity to outliers</strong>.</p>
+<h2 id="Digging-Into-Self-Supervised-Monocular-Depth-Estimation——2019"><a href="#Digging-Into-Self-Supervised-Monocular-Depth-Estimation——2019" class="headerlink" title="Digging Into Self-Supervised Monocular Depth Estimation——2019"></a>Digging Into Self-Supervised Monocular Depth Estimation——2019</h2><p>Research on <strong>self-supervised</strong> monocular training <strong>usually</strong> explores increasingly <strong>complex architectures, loss functions, and image formation models</strong>. <strong>We</strong> show that a surprisingly <strong>simple model, and associated design choices</strong>, lead to superior predictions. In particular, we propose </p>
+<ul>
+<li>a minimum reprojection loss, designed to robustly handle <strong>occlusions</strong></li>
+<li>a full-resolution <strong>multi-scale</strong> sampling method that reduces visual artifacts</li>
+<li>an <strong>auto-masking loss</strong> to <strong>ignore</strong> training pixels that violate <strong>camera motion</strong> assumptions. (training a <strong>pose estimation network</strong>) 判断出pose再得到下一步的运动。</li>
+</ul>
+<hr>
+<p>Takes <strong>a single color input</strong> <script type="math/tex">I_t</script> and produces <strong>a depth map</strong> <script type="math/tex">D_t</script> . </p>
+<p><img src="/2020/06/04/深度估计/Godard_2019_1.png" style="zoom:50%;"></p>
+<p>where <script type="math/tex">d_t^∗ = d_t /\bar d_t</script></p>
+<p>通过深度图、相对pose关系、内参K来复原出target的图像；然后minimization of <strong>a photometric reprojection error</strong>(pe) at training time，加上边缘光滑化。</p>
+<p>In mixed training (MS), <script type="math/tex">I_{t'}</script> includes the temporally <strong>adjacent frames</strong> and the <strong>opposite stereo view</strong>.</p>
+<ul>
+<li><p><strong>Per-Pixel</strong> Minimum Reprojection Loss: reduces artifacts at image <strong><em>borders</em></strong>, improves the sharpness of <strong><em>occlusion boundaries</em></strong>, and leads to better accuracy</p>
+</li>
+<li><p><strong>Auto-Masking</strong> <strong>Stationary</strong> Pixels: This has the effect of letting the network ignore objects which move at the same velocity as the camera, and even to ignore whole frames in monocular videos when the camera stops moving.</p>
+<script type="math/tex; mode=display">
+\mu = [min_{t'}\ pe(I_t, I_{t'\to t}) < min_{t'}\ pe(I_t , I_{t'})]</script><p>where <script type="math/tex">[ ]</script> is the Iverson bracket.(如果方括号内的条件满足则为1，不满足则为0)</p>
+</li>
+<li><p><strong>Multi-scale</strong> Estimation</p>
+</li>
+<li><p>Final Training Loss:</p>
+<script type="math/tex; mode=display">
+L = \mu L_p + \lambda L_s</script></li>
+</ul>
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><p>论文《Depth Map Prediction from a Single Image using a Multi-Scale Deep Network》（4.3中提到）</p>
+<script type="math/tex; mode=display">
+Abs\ Rel = \frac {1}{\|I\|}\sum_{p\in I}\frac{|d(p)-d^*(p)|}{d^*(p)}\\
+Sq\ Rel = \frac {1}{\|I\|}\sum_{p\in I}\frac{(d(p)-d^*(p))^2}{d^*(p)}\\
+RMSE = \sqrt{\frac {1}{\|I\|}\sum_{p\in I}(d(p)-d^*(p))^2}\\
+RMSE\ log = \sqrt{\frac {1}{\|I\|}\sum_{p\in I}(\log d(p)-\log d^*(p))^2}\\
+\delta < 1.25^k=\frac {1}{\|I\|}\sum_{p\in I}max(\frac d {d^*},\frac {d^*}d)<1.25^k</script><h1 id="3D-object-detection-with-depth"><a href="#3D-object-detection-with-depth" class="headerlink" title="3D object detection with depth"></a>3D object detection with depth</h1><p><del>只是个人总结，不确保准确性</del></p>
+<p>在MonoGRNet部分的说明文字中简要说明了2D目标检测的局限性以及深度对于目标检测来说增加了许多几何感知信息，也由此展开了3D object detection的研究。3D检测同样可以分为一阶段和两阶段的方法，从简单角度来讲，只是boxes外包围框，变成了<strong>3D corners框</strong>，这也就是说从原来的四点变成了八点。有一种方法就是通过学习的深度来完成3D映射。对于人眼来说简单的3D关系，但是对于计算机视觉来说却是一个挑战，主要是因为<strong>遮挡</strong>、以及由于距离所带来的<strong>尺寸变化</strong>。</p>
+<p>在3D目标检测中，我们主要关注的是用什么方法来获取3D信息，而对于检测部分的研究则仍然采用2D已有的方法。<del>看到一个<a href="https://towardsdatascience.com/@patrickllgc?source=post_page-----2476a3c7f57e----------------------" target="_blank" rel="external">博主</a>整理的<a href="https://docs.google.com/spreadsheets/d/1X_ViM-W4QbHPbJ2dHouRgkRAyzEnBS6J_9VxPEXvDM4/edit#gid=0" target="_blank" rel="external">table</a>，感觉自己还是很乱。</del></p>
+<p>2D目标检测4个自由度degrees of freedom (DoF) ，center point<script type="math/tex">(x, y)</script> 和尺寸<script type="math/tex">(w, h)</script>；3D目标检测7个自由度，3D physical size <script type="math/tex">(w, h, l)</script>, 3D center location<script type="math/tex">(x, y, z)</script> and yaw。</p>
+<h2 id="2D-3D"><a href="#2D-3D" class="headerlink" title="2D-3D"></a>2D-3D</h2><p>3D到2D基本就是3D框的外围框作为2D框，如a图。</p>
+<p><img src="/2020/06/04/深度估计/3DObjectDetection/Qin2020_2.png" style="zoom:35%;"></p>
+<p>这样，就有等式：</p>
+<script type="math/tex; mode=display">
+x_{min}=(K_{3\times 3}[R_{3\times 3}|T_{3\times 1}]\left[\begin{matrix}X_{3\times1}^{(1)}\end{matrix}\right])_x\\
+x_{max}=(K_{3\times 3}[R_{3\times 3}|T_{3\times 1}]\left[\begin{matrix}X_{3\times1}^{(2)}\end{matrix}\right])_x\\
+y_{min}=(K_{3\times 3}[R_{3\times 3}|T_{3\times 1}]\left[\begin{matrix}X_{3\times1}^{(3)}\end{matrix}\right])_y\\
+y_{max}=(K_{3\times 3}[R_{3\times 3}|T_{3\times 1}]\left[\begin{matrix}X_{3\times1}^{(4)}\end{matrix}\right])_y</script><p>因此3D-2D只需要选择4个点，就可以知道2D框了，也就是说4个等式，求3个未知量（？是指三个维度如何投影的吗），是一个over-determined problem。</p>
+<p>而2D到3D是一个不可确定的问题，如下图。</p>
+<p><img src="/2020/06/04/深度估计/me_1.png" style="zoom:35%;"></p>
+<p>可以看到2D是需要yaw（车子的角度）以及obervation angle两者所确定pose的。</p>
+<h2 id="method"><a href="#method" class="headerlink" title="method"></a>method</h2><h3 id="use-lidar"><a href="#use-lidar" class="headerlink" title="use lidar"></a>use lidar</h3><p><strong>lidar</strong>：使用雷达的信息，lidar-based的结果明显高于image-based（尤其在深度信息上），but expensive，并且在不利的天气条件下，效果不好<del>（是因为像雨、雾环境下，空气中有别的分子所干扰么？）</del>。</p>
+<p>雷达的信息<del>（不是很清楚这一部分的研究，但感觉也是一个不是100%确定的信息提取，应该是包括point cloud部分的研究）</del>转换出来可以变为yaw（绕y轴的旋转角度），position，dimension，以及固定的投影矩阵project matrix信息的组合。yaw基本就可以确定车头的方向（也就是说我希望得到的立体框是可以包含左右前后的信息的）；假设一个单位正方体目标在xy平面上关于z轴对称，通过旋转（yaw）、拉伸变化（dimension）、偏移（position）可以得到三维的corners。</p>
+<p>雷达的方法基本可以概括为直接用雷达和生成伪雷达两种。</p>
+<p><strong><em>伪雷达</em></strong>方法主要有<strong><em>两个缺点</em></strong>，一个是它对于深度图的准确率有很强的依赖，如果深度图有所偏差，对于雷达信息的构建有很大的影响；另一个是雷达提取的是空间信息，对于语义信息方面有所丢失，因此对于同一形状的物体，雷达无法辨别，需要结合RGB图像。</p>
+<p><strong>伪雷达</strong>方法的<strong>优点</strong>也很明显，虽然直接用lidar的方法准确性更高，但是比较稀疏（而且贵）；但是伪雷达是根据图像来的，相对<strong>比较密集</strong>，而且还<strong>含有RGB信息</strong>。</p>
+<p>最终是要在2D平面上完成3D检测<del>（那对于无人驾驶来说，如果一直用lidar的话，以及可以重建出3D世界了，那摄像机有什么用处呢？因为lidar只是告诉你这个3D位置上有东西，对于语义信息是缺失的，同时当前雷达仍然会被环境有所干扰）</del>，于是通过摄像机、投影平面、3D坐标系之间的关系，用投影矩阵完成3D<code>-&gt;</code>2D的一个变换，就可以得到2D画面中真实的3D标注了<del>（如果单目深度估计做的好的话，它生成伪雷达的方法本质上还是image-base吧！感觉这个有些可行）</del>。</p>
+<p>In <strong><em>LiDAR coordinate system</em></strong> (<strong>x: front, y: left, z: up</strong>, and (0, 0, 0) is the location of the LiDAR sensor). The <strong>elevation angle <script type="math/tex">θ_i</script></strong>（仰角） to the LiDAR sensor as </p>
+<script type="math/tex; mode=display">
+\theta_i=arg\ \cos(\frac{\sqrt{x^2_i+y^2_i}}{\sqrt{x^2_i+y^2_i+z^2_i}})</script><p>首先深度图可以通过视差图<script type="math/tex">depth\ map = f_u\times b/disparity\ map</script>得到，也可以直接通过网络预测得到；然后深度图转伪雷达时用公式：</p>
+<script type="math/tex; mode=display">
+(depth)\ z = D(u, v)\\
+(width)\ x= \frac{(u − c_U )\times z}{f_U}\\
+(height)\ y= \frac{(v − c_V )\times z }{f_V}\\</script><p>代码大致如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">rows, cols = depth_map.shape</div><div class="line">c, r = np.meshgrid(np.arange(cols), np.arange(rows))</div><div class="line">point_cloud = np.stack([c, r, depth_map])</div><div class="line">point_cloud = point_cloud.reshape((<span class="number">3</span>, <span class="number">-1</span>))</div><div class="line">x = ((point_cloud[:, <span class="number">0</span>]-cu)*point_cloud[:, <span class="number">2</span>])/fu</div><div class="line">y = ((point_cloud[:, <span class="number">1</span>]-cv)*point_cloud[:, <span class="number">2</span>])/fv</div><div class="line">point_cloud[:, <span class="number">0</span>] = x</div><div class="line">point_cloud[:, <span class="number">1</span>] = y</div></pre></td></tr></table></figure>
+<p>方法分类：</p>
+<ul>
+<li>3D volume-based</li>
+<li>projection-based：使用3D-2D投影之间的关系<ul>
+<li>Bird’s Eye View (BEV)：在这个视野当中即使距离不同但是规模都是相同的，并且没有重叠。3D信息转换到从上往下看到的2D图像中：<strong>宽度和深度</strong>变成了<strong><em>空间维度</em></strong>，<strong>高度</strong>用<strong><em>通道</em></strong>信息记录。首先需要根据原图生成BEV，常用的是通过Inverse perspective mapping (IPM)方法（但是它假设所有像素都在地面上，并且相机online时时准确地知道外部（和内部）信息，外在的信息还需要标定）<del>这……我可能需要了解一下，一下子没有变换的想法</del>；另外用来生成BEV的方法有Orthographic Feature Transform (OFT)、BirdGAN（这个方法对于距离有所限制，只能在10-15m。<ul>
+<li>YOLO3D</li>
+<li>HDNet</li>
+<li>BirdNet</li>
+</ul>
+</li>
+<li>frontal view<ul>
+<li>frontal view FCN</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="RGB-picture-add-depth"><a href="#RGB-picture-add-depth" class="headerlink" title="RGB picture add depth"></a>RGB picture add depth</h3><p><strong>RGB-D</strong>：即RGB图片加上depth的信息</p>
+<p>常在loss上增加<strong><em>object shape, ground plane, and key points</em></strong>等部分的限制。一般来说Image-based方法效果<strong>很难</strong>去获取<strong>目标的尺寸和结构信息</strong>，主要是因为两个原因：</p>
+<ol>
+<li>在某点<strong>周围</strong>的像素与这一点的<strong>深度并不一定是相同的</strong>，因此难以区分背景与目标。在Image-based的方法中在卷积核的某一感受野之内，不同物体实际上是physically incoherent， 但<strong>相邻的像素点之间</strong>并没有显式表示这种关系（Focal Loss的提出也是为了解决类似的前景、背景不平衡的问题）。</li>
+<li>由于相机图片上遵循<strong>近大远小的规则</strong>，我们并不知道实际目标的大小；在front view后简单叠加depth map, 虽然能够提供重要的深度信息，但是仍然没有直观地展示真实三维空间的分布属性。除此之外，越远的物体在front view中是越小的，而<strong><em>检测小物体本身就是一个比较难的任务</em></strong>。因此，深度图中<strong>不同尺度</strong>的物体也增加了Image-based 3D Perception的难度。</li>
+</ol>
+<ul>
+<li>2D-3D geometry-based 这种方法就是在平面和立体两个维度上增加关联限制<ul>
+<li>MonoGRNet</li>
+<li>MonoDIS</li>
+</ul>
+</li>
+<li><p>3D shape-based：用3D框的shape或者keypoints完成绘制</p>
+<ul>
+<li>MonoGRNet：首先找中心点（2d），然后通过深度变为3d中心点，最后找corners（中间有一些delta回归的部分）</li>
+<li>Mono3D++</li>
+<li>MonoDIS</li>
+<li>Deep MANTA：最终获得<script type="math/tex">(B,S,V,T)</script>，包括bbox(cls and regression), S(parts coordinates), V(parts visibility), T(Template similarity)。<del>感觉就是先找目标，然后找它的方向，然后找是否可见什么的，最后就变成完整的3D框了</del></li>
+<li>3D RCNN：四个部分（amodal-bbox，center-proj，pose angles，shape parameters）<del>这个感觉先确定框和中心点，然后看它的旋转角度，从而知道pose，回归它的shape，知道整体标注部分</del></li>
+<li>RTM-3D：<del>大概就是找目标的边界转折点，然后再变到立体框上，从复杂变减</del></li>
+</ul>
+</li>
+<li><p>depth map-based：增加depth map，也就是原本是3 channel的，现在变更到4 channels了，通过深度来复原。</p>
+<ul>
+<li><p>Pseudo-lidar(CVPR 2019)：提到了一个观点——卷积在深度图中用处不大，因为2D距离很近，在3D上可能相距甚远<del>（这样子一看IDA的思想其实就避免了这个问题，一个物体的depth应该是相同的）其实感觉伪lidar就是先让模型学习一个中间产物，然后再由这个中间产物去学习一个更高层的信息。提出这个想法的契机，应该是因为lidar的信息捕捉更加准确或者说更多；并切lidar信息进行3D检测的方法应该是比较成熟了；而且lidar的价格贵以及缺少语义信息其实是可以从image上获取的；大部分的方法是通过2D image -&gt; depth -&gt; lidar -&gt; 3D detection这样的一个过程；PL：是用来减小lidar与相机之间的gap而产生的一个新方向。</del>。</p>
+<p>pseudo-LiDAR ﬁrst utilizes an <strong>image-based depth estimation model</strong> to obtain <strong>predicted depth <script type="math/tex">Z(u, v)</script></strong> of each image pixel <script type="math/tex">(u, v)</script>. The resulting depth <script type="math/tex">Z(u, v)</script> is then <strong>projected</strong> to a <strong>“pseudo-LiDAR” point <script type="math/tex">(x, y, z)</script></strong> in 3D by</p>
+<script type="math/tex; mode=display">
+z = Z(u, v),\ x=\frac{(u-c_U)\cdot z}{f_U},\ y=\frac{(u-c_V)\cdot z}{f_V}</script><p><script type="math/tex">(c_U , c_V )</script> is the camera center and <script type="math/tex">f_U</script> and <script type="math/tex">f_V</script> are the horizontal and vertical focal lengths.</p>
+<p>First, <strong>a depth estimator</strong> is learned to estimate generic depths for <strong>all pixels</strong> in <strong>a stereo image</strong>; then <strong>a LiDAR-based</strong> detector is trained to predict object bounding boxes from depth estimates, generated by the <strong>frozen depth network</strong>.<del>比较好奇的一点是单目深度估计可以做好这个吗？感觉可能结果不太好，一个是因为单目深度估计本来不确定性更大，双目会有几何关系的限制；二是钱贵的应该有他自己的道理</del></p>
+</li>
+<li><p>MLF(Multi-Level Fusion)(CVPR 2018)</p>
+</li>
+<li><p>MonoDepth(Unsupervised Monocular Depth Estimation with Left-Right)</p>
+</li>
+</ul>
+</li>
+<li>proposal-based<ul>
+<li>Mono3D</li>
+<li>MonoPSR</li>
+</ul>
+</li>
+<li>transform-based</li>
+<li>stereo-based：使用双目，然后通过几何关系</li>
+</ul>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机视觉/" rel="tag"><i class="fa fa-tag"></i> 计算机视觉</a>
+          
+            <a href="/tags/深度估计/" rel="tag"><i class="fa fa-tag"></i> 深度估计</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/29/随想小记-2020-02-29/" rel="next" title="随想小记-2020-02-29">
+                <i class="fa fa-chevron-left"></i> 随想小记-2020-02-29
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/08/CVPR-2020/" rel="prev" title="CVPR-2020">
+                CVPR-2020 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">113</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paper"><span class="nav-number">1.</span> <span class="nav-text">Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Depth-Map-Prediction-from-a-Single-Image-using-a-Multi-Scale-Deep-Network——2014"><span class="nav-number">1.1.</span> <span class="nav-text">Depth Map Prediction from a Single Image using a Multi-Scale Deep Network——2014</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unsupervised-Monocular-Depth-Estimation-with-Left-Right-Consistency——2017"><span class="nav-number">1.2.</span> <span class="nav-text">Unsupervised Monocular Depth Estimation with Left-Right Consistency——2017</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeper-Depth-Prediction-with-Fully-Convolutional-Residual-Networks——2016"><span class="nav-number">1.3.</span> <span class="nav-text">Deeper Depth Prediction with Fully Convolutional Residual Networks——2016</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Stream-Networks-for-Self-Supervised-Ego-Motion-Estimation——2019"><span class="nav-number">1.4.</span> <span class="nav-text">Two Stream Networks for Self-Supervised Ego-Motion Estimation——2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-Packing-for-Self-Supervised-Monocular-Depth-Estimation——2020"><span class="nav-number">1.5.</span> <span class="nav-text">3D Packing for Self-Supervised Monocular Depth Estimation——2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Ordinal-Regression-Network-for-Monocular-Depth-Estimation——2018"><span class="nav-number">1.6.</span> <span class="nav-text">Deep Ordinal Regression Network for Monocular Depth Estimation——2018</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyramid-stereo-matching-network-PSMNet-——2018"><span class="nav-number">1.7.</span> <span class="nav-text">pyramid stereo matching network (PSMNet)——2018</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Digging-Into-Self-Supervised-Monocular-Depth-Estimation——2019"><span class="nav-number">1.8.</span> <span class="nav-text">Digging Into Self-Supervised Monocular Depth Estimation——2019</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3D-object-detection-with-depth"><span class="nav-number">3.</span> <span class="nav-text">3D object detection with depth</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-3D"><span class="nav-number">3.1.</span> <span class="nav-text">2D-3D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#method"><span class="nav-number">3.2.</span> <span class="nav-text">method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#use-lidar"><span class="nav-number">3.2.1.</span> <span class="nav-text">use lidar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RGB-picture-add-depth"><span class="nav-number">3.2.2.</span> <span class="nav-text">RGB picture add depth</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
