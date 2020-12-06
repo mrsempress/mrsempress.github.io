@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Collaborative Filtering,Recommender Systems,Data Structures," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is  my blog. 在数据挖掘课程的大作业中，学习一个推荐系统。说来本科本来接触过个皮毛，后来被鸽的项目。很羡慕在外面实习过的，就可以在原来工作基础上添加，作为大作业。因为是大作业，所以我尽量只找最近而且往协同过滤这一分支靠近，比较好归类。原本想在每一个类别的换不同的歌，但过段时间再整理吧">
+<meta name="keywords" content="Collaborative Filtering,Recommender Systems,Data Structures">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Recommender Systems">
+<meta property="og:url" content="http://mrsempress.top/2020/10/31/Recommender-Systems/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is  my blog. 在数据挖掘课程的大作业中，学习一个推荐系统。说来本科本来接触过个皮毛，后来被鸽的项目。很羡慕在外面实习过的，就可以在原来工作基础上添加，作为大作业。因为是大作业，所以我尽量只找最近而且往协同过滤这一分支靠近，比较好归类。原本想在每一个类别的换不同的歌，但过段时间再整理吧">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/工业级推荐系统架构.jpg">
+<meta property="og:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/在线推荐系统.png">
+<meta property="og:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/TDM.png">
+<meta property="og:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/YoutubeDNN.png">
+<meta property="og:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/YoutubeDNN_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/FM.png">
+<meta property="og:updated_time" content="2020-12-06T08:42:07.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Recommender Systems">
+<meta name="twitter:description" content="This is  my blog. 在数据挖掘课程的大作业中，学习一个推荐系统。说来本科本来接触过个皮毛，后来被鸽的项目。很羡慕在外面实习过的，就可以在原来工作基础上添加，作为大作业。因为是大作业，所以我尽量只找最近而且往协同过滤这一分支靠近，比较好归类。原本想在每一个类别的换不同的歌，但过段时间再整理吧">
+<meta name="twitter:image" content="http://mrsempress.top/2020/10/31/Recommender-Systems/工业级推荐系统架构.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/10/31/Recommender-Systems/"/>
+
+
+
+
+
+  <title>Recommender Systems | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/10/31/Recommender-Systems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Recommender Systems</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-31T15:03:10+08:00">
+                2020-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-Systems/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender Systems</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/10/31/Recommender-Systems/" class="leancloud_visitors" data-flag-title="Recommender Systems">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is  <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>在数据挖掘课程的大作业中，学习一个推荐系统。说来本科本来接触过个皮毛，后来被鸽的项目。<del>很羡慕在外面实习过的，就可以在原来工作基础上添加，作为大作业</del>。因为是大作业，所以我尽量只找最近而且往协同过滤这一分支靠近，比较好归类。<del>原本想在每一个类别的换不同的歌，但过段时间再整理吧</del></p>
+<a id="more"></a>
+<h1 id="Toward-the-Next-Generation-of-Recommender-Systems-A-Survey-of-the-State-of-the-Art-and-Possible-Extensions——2005"><a href="#Toward-the-Next-Generation-of-Recommender-Systems-A-Survey-of-the-State-of-the-Art-and-Possible-Extensions——2005" class="headerlink" title="Toward the Next Generation of Recommender Systems- A Survey of the State-of-the-Art and Possible Extensions——2005"></a>Toward the Next Generation of Recommender Systems- A Survey of the State-of-the-Art and Possible Extensions——2005</h1><p>整体目标：</p>
+<script type="math/tex; mode=display">
+\forall c \in C, \quad s_{c}^{\prime}=\arg \max _{s \in S} u(c, s)</script><p>分类：</p>
+<ul>
+<li><p>Content-based：寻找和之前喜欢项目相似的项目</p>
+<ul>
+<li><p>每个项目s提取几个关键词，可以用TF-IDF衡量（本文档高频率，其他文档中低频率），i表示特征序号，j表示项目序号。</p>
+<script type="math/tex; mode=display">
+T F_{i, j}=\frac{f_{i, j}}{\max _{z} f_{z, j}}\\
+I D F_{i}=\log \frac{N}{n_{i}}\\
+n_i=\sum_{j=1}^Df_{i,j}\\
+w_{i, j}=T F_{i, j} \times I D F_{i}</script></li>
+<li><p>项目s降维到k维后，用（特征向量）来表示</p>
+<script type="math/tex; mode=display">
+\text { Content }\left(s_j\right)=\left(w_{1 j}, \ldots w_{k j}\right)</script></li>
+<li><p>用户对各个特征的偏爱度权重</p>
+<script type="math/tex; mode=display">
+\text { ContentBasedProfile }\left(c\right)=\left(w_{c 1}, \ldots w_{c k}\right)</script></li>
+<li><p>就可以得到用户c对某一个项目的utility function</p>
+<script type="math/tex; mode=display">
+u(c, s)=\text { score }(\text { Content Based Profile }(c), \text { Content }(s))</script><p>这里可以用cosines similarity：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+u(c, s) &=\cos \left(\vec{w}_{c}, \vec{w}_{s}\right)=\frac{\vec{w}_{c} \cdot \vec{w}_{s}}{\left\|\vec{w}_{c}\right\|_{2} \times\left\|\vec{w}_{s}\right\|_{2}} \\
+&=\frac{\sum_{i=1}^{K} w_{i, c} w_{i, s}}{\sqrt{\sum_{i=1}^{K} w_{i, c}^{2}} \sqrt{\sum_{i=1}^{K} w_{i, s}^{2}}}
+\end{aligned}</script></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>项目s如何提取有限的特征（如何能够表示，如何能够区分不同的项目）</li>
+<li>Overspecialization：过度寻找相似性，导致用户得到的永远是这一类别，需要随机去接触其他新事物；同时太过相似可能是同一事物的不同表达</li>
+<li>新用户的冷启动问题90</li>
+</ul>
+</li>
+<li><p>Collaborative：寻找和自己品味相似的人（不仅依靠rating，还根据人的信息参数比如年龄等），推荐他喜欢的项目</p>
+<ul>
+<li><p>Memory based: 收集相似user对项目s的评估</p>
+<script type="math/tex; mode=display">
+r_{c, s}=\underset{c^{\prime} \in \hat{C}}{\operatorname{aggr}} r_{c^{\prime}, s}</script><p>收集的方法：</p>
+<p>(a) $r_{c, s}=\frac{1}{N} \sum_{c^{\prime} \in \hat{C}} r_{c^{\prime}, s}$<br>(b) $r_{c, s}=k \sum_{c^{\prime} \in \hat{C}} \operatorname{sim}\left(c, c^{\prime}\right) \times r_{c^{\prime}, s}$<br>(c) $r_{c, s}=\bar{r}_{c}+k \sum_{c^{\prime} \in C} \operatorname{sim}\left(c, c^{\prime}\right) \times\left(r_{c^{\prime}, s}-\bar{r}_{c^{\prime}}\right)$</p>
+<p>其中，K是一个正则化因子</p>
+<script type="math/tex; mode=display">
+k=1 / \sum_{c^{\prime} \in \hat{C}}\left|\operatorname{sim}\left(c, c^{\prime}\right)\right|</script><script type="math/tex; mode=display">
+\bar{r}_{c}=\left(1 /\left|S_{c}\right|\right) \sum_{s \in S_{c}} r_{c, s}, \text { where } S_{c}=\left\{s \in S \mid r_{c, s} \neq \oslash\right\}</script><p>a是一个简单的平均；b是一个带权重的平均（以两个用户的相似性比重），但是由于每个人的评分标准不一致（而基于内容的，每一个人平分标准一致，方便量化）；c是解决了这一问题</p>
+<p>sim有两个常用的衡量方式：</p>
+<ul>
+<li><p>correlation</p>
+<script type="math/tex; mode=display">
+\operatorname{sim}(x, y)=\frac{\sum_{s \in S_{x y}}\left(r_{x, s}-\bar{r}_{x}\right)\left(r_{y, s}-\bar{r}_{y}\right)}{\sqrt{\sum_{s \in S_{x y}}\left(r_{x, s}-\bar{r}_{x}\right)^{2} \sum_{s \in S_{x y}}\left(r_{y, s}-\bar{r}_{y}\right)^{2}}}</script></li>
+<li><p>cosine-based</p>
+<script type="math/tex; mode=display">
+\operatorname{sim}(x, y)=\cos (\vec{x}, \vec{y})=\frac{\vec{x} \cdot \vec{y}}{\|\vec{x}\|_{2} \times\|\vec{y}\|_{2}}=\frac{\sum_{s \in S_{x y}} r_{x, s} r_{y, s}}{\sqrt{\sum_{s \in S_{x y}} r_{x, s}^{2}} \sqrt{\sum_{s \in S_{x y}} r_{y, s}^{2}}}</script></li>
+</ul>
+<p>对于用户对一些项目没有打分的情况，会给出默认的值。</p>
+</li>
+<li><p>model-based：通过将排序rating values通过网络来学习，然后来预测rating</p>
+<p>rating values可以通过下述等式来表示：</p>
+<script type="math/tex; mode=display">
+r_{c, s}=E\left(r_{c, s}\right)=\sum_{i=0}^{n} i \times \operatorname{Pr}\left(r_{c, s}=i \mid r_{c, s^{\prime}}, s^{\prime} \in S_{c}\right)</script><ul>
+<li>cluster models</li>
+<li>Bayesian models</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>每一个用户只能归类到一个类别中，但是一个用户可能属于多个类（比如推荐书籍，可能编程专业但业余喜欢做饭）；</li>
+<li>对于新用户没有rating数据，一种是使用hybrid杂交 recommendation approach；或者是基于item popularity, item entropy, user personalization等信息来得到一个默认值。</li>
+<li>对于新项目，用户均没有对此评价，一个项目只有足够的评价后推荐系统才可以起作用；这也可以通过hybrid recommendation approach来解决</li>
+<li>评价的项目占所有项目的比例是稀疏的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Hybrid：上两者的混合</p>
+<ul>
+<li><p>两个基于内容和协同过滤实现是独立的，但是它们两者的特征是共享的；结合两个的预测，是一个整体通用的模型；两者的结合可以是线性或者投票的方式</p>
+</li>
+<li><p>在协同过滤模型上增加基于内容的特征：解决用户稀疏rate的问题；考虑相似用户口味但是两者在某些方面不同导致的不同</p>
+</li>
+<li><p>在基于内容模型上增加协同过滤特征：在一组内容特征上使用维度reducction</p>
+</li>
+<li><p>使用Markov chain Monte Carlo methods，<script type="math/tex">r_{ij}</script>, user: i, item: j</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+r_{i j}=x_{i j} \mu+z_{i} \gamma_{j}+w_{j} \lambda_{i}+e_{i j} \\
+e_{i j} \sim N\left(0, \sigma^{2}\right) \\
+\lambda_{i} \sim N(0, \Lambda) \\
+\gamma_{j} \sim N(0, \Gamma)
+\end{array}</script><p>其中：<script type="math/tex">e_{ij}, \lambda_i</script> , and <script type="math/tex">\gamma_j</script> are random variables taking into effect noise, unobserved sources of user heterogeneity, and item heterogeneity, respectively噪声，未观察到的用户异质性源和项目异质性考虑在内的随机变量。. Also, <script type="math/tex">x_{ij}</script> is a matrix containing user and item characteristics, z i is a vector of user characteristics, and w j is a vector of item characteristics. The unknown parameters of this model are <script type="math/tex">\mu,\sigma^2,\Lambda,\Gamma</script> and they are estimated from the data of already known ratings using Markov chain Monte Carlo methods马尔可夫链蒙特卡罗方法.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Recommendation technique:</p>
+<ul>
+<li>Heurisitic<ul>
+<li>TF-IDF</li>
+<li>Clustering</li>
+<li>Nearest neighbor</li>
+<li>Graph theory</li>
+<li>Various voting schemes</li>
+<li>Incorporating one component as a part of the heuristic for the other</li>
+</ul>
+</li>
+<li>Model<ul>
+<li>Bayesian classifiers</li>
+<li>Clustering</li>
+<li>Decision trees</li>
+<li>Artificial neural networks</li>
+<li>Linear regression</li>
+<li>Probablistic models</li>
+</ul>
+</li>
+</ul>
+<p>扩展：包括改进的用户和项目建模，将上下文信息合并到推荐过程中，对多重标准评级的支持，提供更灵活，更具侵入性的推荐过程。</p>
+<ul>
+<li><p>不灵活，没有关注用户自身的信息，只用了rating</p>
+<ul>
+<li><p>数据挖掘用户和项目的内在understanding</p>
+</li>
+<li><p>定义更加general的rating</p>
+<script type="math/tex; mode=display">
+r_{i j}^{\prime}=\left\{\begin{array}{ll}
+r_{i j}, & \text { if } r_{i j} \neq \oslash \\
+u_{i j}(R, \vec{c}, \vec{s}), & \text { if } r_{i j}=\varnothing
+\end{array}\right.</script></li>
+<li><p>u函数including various heuristics, nearest-neighbor classifiers, decision trees, spline methods, radial basis functions, regressions, neural networks, and relational learning methods</p>
+</li>
+</ul>
+</li>
+<li><p>扩展基于模型的推荐技术</p>
+<ul>
+<li><p>通过数学估计的方法</p>
+<script type="math/tex; mode=display">
+r_{f, X}(x)=\sum_{i=1}^{m} \alpha_{i} \phi\left(\left\|x-x_{i}\right\|\right)</script><p>满足限制：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{m} \sum_{j=1}^{m} \alpha_{i} \alpha_{j} \phi\left(\left\|x_{i}-x_{j}\right\|\right)>0</script><p>正定义函数可以：</p>
+<ol>
+<li>$\quad \phi(r)=r^{\beta},$ where $\beta&gt;0$ is a positive odd number,</li>
+<li>$\quad \phi(r)=r^{k} \log (r),$ where $k \in \mathbb{N}$ (thin-plate splines), and</li>
+<li>$\quad \phi(r)=e^{-\alpha r^{2}},$ where $\alpha&gt;0$ (Gaussian).</li>
+</ol>
+<p>用半径r可以更易扩展到数学估计方法上。</p>
+</li>
+<li><p>多个维度的推荐：包含环境信息（比如天气、时间下的一个决策）</p>
+</li>
+</ul>
+</li>
+<li><p>多规则的评分：比如对于餐厅的评价，应该从食品、服务等多个角度评价</p>
+<ul>
+<li>finding <strong>Pareto optimal solutions</strong></li>
+<li>taking <strong>a linear combination</strong> of multiple criteria and <strong>reducing</strong> the problem to <strong>a single-criterion optimization</strong> problem,</li>
+<li><strong>optimizing</strong> the <strong>most important</strong> criterion and <strong>converting</strong> other <strong>criteria to constraints</strong>, and</li>
+<li><strong>consecutively optimizing one criterion</strong> at a time, converting an optimal solution to constraint(s), and repeating the process for other criteria.</li>
+</ul>
+</li>
+<li><p>非侵入性：类似于隐私性，需要大量用户参与</p>
+<ul>
+<li>比如需要之前用户对同类型的多个评价，得到评价的一个规模</li>
+</ul>
+</li>
+<li><p>灵活性</p>
+<ul>
+<li>Recommendation Query Language (RQL)</li>
+<li>support aggregation hierarchies</li>
+</ul>
+</li>
+<li><p>有效性</p>
+<ul>
+<li>coverage and accuracy metrics</li>
+<li>用户对所评分的项目很可能是<strong>偏斜</strong>的，比如只对自己喜欢的项目评分，常用的东西评价更多</li>
+</ul>
+</li>
+<li><p>其他：解释性、可信赖度、可伸缩性、隐私性</p>
+</li>
+</ul>
+<p><del>读完TDM时，打算细化到推荐系统下的召回问题</del></p>
+<p><img src="/2020/10/31/Recommender-Systems/工业级推荐系统架构.jpg" alt=""></p>
+<p>对于在线部分来说，一般要经历几个阶段。首先通过召回环节，将给用户推荐的物品降到千以下规模；如果召回阶段返回的物品还是太多，可以加入粗排阶段，这个阶段是可选的，粗排可以通过一些简单排序模型进一步减少往后续环节传递的物品；再往后是精排阶段，这里可以使用复杂的模型来对少量物品精准排序。对某个用户来说，即使精排推荐结果出来了，一般并不会直接展示给用户，可能还要上一些业务策略，比如去已读，推荐多样化，加入广告等各种业务策略。之后形成最终推荐结果，将结果展示给用户。</p>
+<p><img src="/2020/10/31/Recommender-Systems/在线推荐系统.png" alt=""></p>
+<p>对于线上部分来说，主要目的是<strong>实时收集用户行为反馈</strong>，并选择训练实例，<strong>实时抽取拼接特征</strong>，并<strong>近乎实时地更新在线推荐模型</strong>。这样做的好处是用户的最新兴趣能够近乎实时地体现到推荐结果里。</p>
+<p>对于离线部分而言，通过对线上用户<strong>点击日志的存储和清理</strong>，整理离线训练数据，并<strong>周期性地更新推荐模型</strong>。对于超大规模数据和机器学习模型来说，往往需要高效地分布式机器学习平台来对离线训练进行支持。</p>
+<p>召回阶段因为需要计算的候选集合太大，所以要想速度快，就只能<strong>上简单模型</strong>，使用<strong>少量特征</strong>，<strong>保证泛化能力</strong>，尽量让用户感兴趣的物品在这个阶段能够找回来；</p>
+<h1 id="KDD2018-Learning-Tree-based-Deep-Model-for-Recommender-Systems——2018"><a href="#KDD2018-Learning-Tree-based-Deep-Model-for-Recommender-Systems——2018" class="headerlink" title="KDD2018: Learning Tree-based Deep Model for Recommender Systems——2018"></a>KDD2018: Learning Tree-based Deep Model for Recommender Systems——2018</h1><p>TDM结合<strong>树结构搜索</strong>与<strong>深度学习模型</strong>来解决推荐系统中召回阶段的高性能需求（效率）与使用复杂模型进行全局搜索（效果）的平衡。它将召回问题【根据用户的兴趣从海量的商品中去检索出用户感兴趣的候选商品，满足推荐相关性和多样性需求】转化为<strong>层级化分类问题</strong>，借助树的<strong>层级检索</strong>可以将时间复杂度<strong>降到对数级</strong>。即<strong>认为用户对某节点的兴趣是大于等于其叶子节点的</strong>，所以只需在每层选出topk，且在下一层仅计算上一层选出来的节点相应子节点的兴趣。对于规模为M的语料库，只需要遍历 <script type="math/tex">2 \times k \times \log M</script>个分支就可以在完全二叉树中找到topk的推荐结果。</p>
+<ul>
+<li>以往的召回模型中：<ul>
+<li>协同过滤：仅基于用户历史行为的推荐，无法发掘用户的<strong>潜在兴趣</strong><ul>
+<li><strong>类似矩阵分解的方式</strong>，分别计算user-vector和item-vector，然后把两个向量<strong>点积的结果</strong>或者<strong>向量间的距离</strong>作为该user-item pair的打分。如此，相当于把user和item映射到了同一空间中，<strong>提前生成</strong>好user-vector和item-vector；在<strong>inference阶段</strong>，可以利用<strong>KNN</strong>等方式很快地寻求最优解；</li>
+</ul>
+</li>
+<li>粗粒度的推荐：推荐种类，然后再从种类中排序；但是当种类很多的时候，问题仍然存在</li>
+<li>CTR（Click-Through-Rate）点击通过率，指该广告的实际点击次数除以广告的展现量；在CTR任务中，<strong>特征的交互信息</strong>起到了重要的作用，而这种点积的方式大大地限制了模型的能力。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>当前在线<strong>推荐系统的整体架构</strong>：</p>
+<ul>
+<li>页面在收到一个用户的请求后，在<strong>matching server</strong>上系统会使用<strong>用户的特征、情境context特征</strong>（比如：我需要一条运动裤这样子的请求）和<strong>物品特征</strong>从百万级别的语料库中生成一个相对较小的（通常为几百个）<strong>候选物品集</strong>。TDM就是解决这一阶段的问题。<ul>
+<li><strong>目标</strong>：是找到k个具有最大偏好概率的叶子节点</li>
+</ul>
+</li>
+<li>依据这几百个候选物品集，<strong>real time prediction server</strong>会使用更具有表达能力但同时也会更费时的模型去预测比如点击率（click through rate）或者转化率（conversion rate），排序阶段。</li>
+</ul>
+<hr>
+<p><strong>树结构比较</strong>：</p>
+<ul>
+<li><p>之前的：hierarchical softmax</p>
+<p>基于context，下一个单词为节点n的概率为：</p>
+<script type="math/tex; mode=display">
+P(n \mid \text { context })=\prod_{j=1}^{w} P\left(b=b_{j}(n) \mid l_{j}(n), \text { context }\right)</script><p>b为节点的编码，l为祖先，j为层数。</p>
+<p>hierarchical softmax只关注<strong>最终目标结点</strong>的概率<strong>最大化</strong>，并把这个概率拆分成在每个分支做一次<strong>二分类</strong>训练。这种训练方式使得模型一旦在某一层选择了不是很好的结点，在下一层的选择中，就很难从它们的子结点中挑选出更好的结点。</p>
+</li>
+<li><p>基于树的模型TDM：</p>
+<p>和hierarchical softmax是类似的，但在召回场景中，需要<strong>选择出多个商品</strong>（也即一开始几层需要选择所有的结点），hierarchical softmax就很不适用。它并没有保证贪婪搜索能够得到全局最优解，所以在inference的时候，<strong>仍然需要遍历所有分类的概率</strong>。TDM旨在区分<strong>最优和次优</strong>的结果（相对顺序），该模型使得每层的discriminator为一个intra-level(层内) global one，每层的global discriminator能够<strong>不依赖于上一层独立地</strong>进行精确预测</p>
+<script type="math/tex; mode=display">
+P^{(j)}(n \mid u)=\frac{\max _{n_{c} \in \mathrm{n}} \text { 's children nodes in level } \mathrm{j}+1 P^{(j+1)}\left(n_{c} \mid u\right)}{\alpha^{(j)}}</script><p>当前状态的用户u对item n感兴趣的真实概率；<script type="math/tex">\alpha</script>是一个与层相关的正则系数，保证一层的概率和为1；该式保证孩子节点在top k中，他们的父亲节点也一定在top k中；如果u的一个状态更新，会变为u‘；</p>
+<p>在这一个问题中，并不需要知道P的确切值，只需要知道每层的偏好排序，便可以找到K个节点；</p>
+<p>如果<script type="math/tex">n_d</script>是一个正样本，那么他应该比该层未被选上的<script type="math/tex">n_t</script>概率大：</p>
+<script type="math/tex; mode=display">
+P^{(m)}\left(n_{d} \mid u\right)>P^{(m)}\left(n_{t} \mid u\right)</script><p>可以推出：<script type="math/tex">n_d</script>的祖先节点的概率，应该比这个祖先所在的层的概率更大</p>
+<script type="math/tex; mode=display">
+P^{(j)}\left(l_{j}\left(n_{d}\right) \mid u\right)>P^{(j)}\left(n_{q} \mid u\right), \forall j</script><hr>
+<p>与u<strong>有交互的叶子节点</strong>以及他的<strong>祖先节点</strong>集构成u的<strong>正样本</strong>，除了正样本外的<strong>随机</strong>挑选的其他节点构成<strong>负样本</strong>（负采样negative sampling，降低了每次参数更新的复杂度。因为softmax层存在的缘故，如果不负采样的话每次更新都会对所有的item向量进行更新；采用负采样之后，直接利用极大似然法，最大化正样本出现的概率最小化负样本出现的概率，而不必进行softmax计算），训练每层的order discriminator。</p>
+<p>似然函数：</p>
+<script type="math/tex; mode=display">
+\prod_{u}\left(\prod_{n \in \mathcal{Y}_{u}^{+}} P\left(\hat{y}_{u}(n)=1 \mid n, u\right) \prod_{n \in \mathcal{Y}_{u}^{-}} P\left(\hat{y}_{u}(n)=0 \mid n, u\right)\right)</script><p>加减号表示正负样本，hat表示模型估计的；</p>
+<p><strong>损失函数</strong>：</p>
+<script type="math/tex; mode=display">
+-\sum_{u} \sum_{n \in \mathcal{Y}_{u}^{+} \cup \mathcal{Y}_{u}^{-}} y_{u}(n) \log P\left(\hat{y}_{u}(n)=1 \mid n, u\right)+\left(1-y_{u}(n)\right) \log P\left(\hat{y}_{u}(n)=0 \mid n, u\right)</script><hr>
+<p>初始化：所有的嵌入式表达<strong>随机初始化</strong>，利用物品<strong>种类信息</strong>来初始化推荐树，<strong><em>相似的商品应具有相近的位置</em></strong></p>
+<p>以二叉树为例：用商品的类别信息，先对商品类别进行随机排序然后做二分割，直达每个结点代表一个商品类别；之后对每个类别中的商品进行随机排序然后做二分割，直达每个结点代表一个商品。属于多个类的商品会唯一的归为其中某一类，最终得到一个二叉树。</p>
+<ul>
+<li>首先对于<strong>categories</strong>随机排序，然后做二分割，直到每个结点代表一个商品类别【结点均变为类别信息】</li>
+<li>然后对于属于<strong>同一类的物品</strong>在同一类下随机排序 （an intra-category random order），然后做二分割，直到每个结点代表一个商品【结点均变为商品信息】</li>
+<li>如果一个物品属于多个类，为了唯一性，随机挑选一个类将其放入</li>
+<li>最终成为了一颗二叉树</li>
+</ul>
+<hr>
+<p>树的学习：构建出来的树是满足<strong>贪婪搜索</strong>的</p>
+</li>
+</ul>
+<hr>
+<p>整体<strong>网络结构</strong>：</p>
+<p><img src="/2020/10/31/Recommender-Systems/TDM.png" alt=""></p>
+<p>借助多层神经网络，每个结点都会学习到一个<strong>隐层表示</strong>，同时利用这个结点表示作为query<strong>对用户的历史行为作attention操作</strong>。</p>
+<ul>
+<li>依据时间戳将用户行为分为<strong>不同的时间窗口</strong>。</li>
+<li>在每个时间戳内，<strong>对用户行为嵌入式向量进行加权平均</strong>，权重由一个激活单元得到。</li>
+<li>每个时间窗口的输出和节点item嵌入式向量（这一个向量由TDM得到，每个物品和它对应的叶子节点使用相同的嵌入式表达）<strong>连接</strong>后作为神经网络的输入。</li>
+<li>经过三个带有PReLU激活函数以及batch normalization的全连接层</li>
+<li>由一个二元的softmax输出用户对于该候选节点感兴趣的概率</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_categories</span><span class="params">(node, category, unused_items, level)</span>:</span></div><div class="line">  <span class="keyword">for</span> unused_item <span class="keyword">in</span> unused_items:</div><div class="line">    <span class="keyword">if</span> unused_item.category[level] == category:</div><div class="line">      unused_items.remove(unused_item)</div><div class="line">			node.add_brother(unused_item)</div><div class="line">      </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_categories</span><span class="params">(item, root, unused_items, used_categories, level)</span>:</span></div><div class="line">  used_categories.add(item.category[level])  <span class="comment"># One item has categories from coarse to fine.</span></div><div class="line">  son = root.add_son(item)</div><div class="line">  find_categories(son, item.category[level], unused_items, level)</div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_tree</span><span class="params">(items)</span>:</span></div><div class="line">  root = Tree()</div><div class="line">  not_leaf_items = items</div><div class="line">  level = <span class="number">1</span></div><div class="line">  </div><div class="line">  <span class="keyword">while</span> !not_leaf_items.empty():</div><div class="line">    unused_items = not_leaf_items</div><div class="line"> 		level += <span class="number">1</span></div><div class="line">  	<span class="keyword">while</span> !unused_items.empty():</div><div class="line">    	item = unused_items.top()</div><div class="line">    	unused_items.pop()</div><div class="line">  		build_categories(item, root, unused_items, used_categories, level)</div><div class="line">    <span class="comment"># change the node order which have the same ancestor, at level's level</span></div><div class="line">  	random_categories(root, level)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_positive_negative_samples</span><span class="params">(u, root)</span>:</span></div><div class="line">  positive = []</div><div class="line">  now = u</div><div class="line">  <span class="keyword">while</span> now != root:</div><div class="line">    positive.append(now)</div><div class="line">    now = now.ancestor()</div><div class="line">  positive.append(root)</div><div class="line">  </div><div class="line">  negative = random_nodes(root, positive)  <span class="comment"># get the random nodes, which doesn't appear in postive set.</span></div><div class="line">  <span class="keyword">return</span> positive, negative</div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActivationUnit</span><span class="params">(nn.Module)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    super(AcctivationUnit, self).__init__()</div><div class="line">    self.PRelu = nn.PReLu(<span class="number">36</span>)</div><div class="line">    self.fc = nn.Linear(<span class="number">36</span>, <span class="number">1</span>)</div><div class="line">	</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(user, item)</span>:</span></div><div class="line">    user_item_vec = torch.dot(user, item)  <span class="comment"># point wise product</span></div><div class="line">    user_item_vec = torch.cat((user, user_item_vec, item), <span class="number">-1</span>)  <span class="comment"># concat</span></div><div class="line">    out = self.PRelu(user_item_vec)</div><div class="line">    out = self.fc(out)</div><div class="line">    </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimeWindow</span><span class="params">(nn.Module)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    super(TimeWindow, self).__init__()</div><div class="line">    self.ActivationUnit = ActivationUnit()</div><div class="line">	</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(user_behaviors, item)</span>:</span></div><div class="line">    weighted_users = []</div><div class="line">    <span class="keyword">for</span> user_behaviors <span class="keyword">in</span> user_behaviors:</div><div class="line">      activation_weight = self.ActivationUnit(user_behavior, item)</div><div class="line">      weighted_user = activation_weight * user_behavior</div><div class="line">      weighted_users.append(weighted_user)</div><div class="line">    out = WeightedAverage(weighted_users)</div><div class="line">    <span class="keyword">return</span> out</div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TDM</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">      super(TDM, self).__init__()</div><div class="line">      self.TimeWindow = TimeWindow()</div><div class="line">      self.PRelu1 = nn.PReLu1(<span class="number">128</span>)</div><div class="line">      self.BN1 = nn.BatchNorm2d(<span class="number">128</span>)</div><div class="line">      self.PRelu2 = nn.PReLu1(<span class="number">64</span>)</div><div class="line">   	  self.BN2 = nn.BatchNorm2d(<span class="number">64</span>)</div><div class="line">   	  self.PRelu3 = nn.PReLu1(<span class="number">24</span>)</div><div class="line">      self.BN3 = nn.BatchNorm2d(<span class="number">24</span>)</div><div class="line">      self.softmax = nn.Softmax(<span class="number">24</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, user_behaviors, item)</span>:</span></div><div class="line">      time_vecs = []</div><div class="line">      <span class="keyword">for</span> time_user_behaviors <span class="keyword">in</span> user_behaviors:</div><div class="line">        time_vecs.append(self.TimeWindow(time_user_behaviors))</div><div class="line">      features = Concat(time_vecs)</div><div class="line">      out1 = self.BN1(self.PRelu1(features))</div><div class="line">      out2 = self.BN2(self.PRelu2(features))</div><div class="line">      out3 = self.BN3(self.PRelu3(features))</div><div class="line">      out = self.softmax(out3)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaxHeap</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="string">"""</span></div><div class="line"><span class="string">  Regard the clik-through rate, conversion rate and etc. as the value.</span></div><div class="line"><span class="string">  """</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.heaplist = [item(<span class="number">0</span>)]</div><div class="line">        self.size = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">BuildHeap</span><span class="params">(self, nodes)</span>:</span></div><div class="line">        index = len(nodes) // <span class="number">2</span></div><div class="line">        self.size = len(nodes)</div><div class="line">        self.heaplist += nodes[:]</div><div class="line">        <span class="keyword">while</span> index &gt; <span class="number">0</span>:</div><div class="line">            self.DOWN(index)</div><div class="line">            index -= <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">UP</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">while</span> index // <span class="number">2</span> &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">if</span> self.heaplist[index].value &gt; self.heaplist[index // <span class="number">2</span>].value:</div><div class="line">                self.heaplist[index], self.heaplist[index // <span class="number">2</span>] = self.heaplist[index // <span class="number">2</span>], self.heaplist[index]</div><div class="line">            index //= <span class="number">2</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Insert</span><span class="params">(self, k)</span>:</span></div><div class="line">        self.heaplist.append(k)</div><div class="line">        self.size += <span class="number">1</span></div><div class="line">        self.UP(self.size)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">MaxChild</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">if</span> index * <span class="number">2</span> + <span class="number">1</span> &gt; self.size:</div><div class="line">            <span class="keyword">return</span> index * <span class="number">2</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> self.heaplist[index * <span class="number">2</span>].value &gt; self.heaplist[index * <span class="number">2</span> + <span class="number">1</span>].value:</div><div class="line">                <span class="keyword">return</span> index * <span class="number">2</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> index * <span class="number">2</span> + <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">DOWN</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">while</span> index * <span class="number">2</span> &lt;= self.size:</div><div class="line">            mc = self.MaxChild(index)</div><div class="line">            <span class="keyword">if</span> self.heaplist[index].value &lt; self.heaplist[mc].value:</div><div class="line">                self.heaplist[index], self.heaplist[mc] = self.heaplist[mc], self.heaplist[index]</div><div class="line">            index = mc</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteMax</span><span class="params">(self)</span>:</span></div><div class="line">        retval = self.heaplist[<span class="number">1</span>]</div><div class="line">        self.heaplist[<span class="number">1</span>] = self.heaplist[self.size]</div><div class="line">        self.size -= <span class="number">1</span></div><div class="line">        self.heaplist.pop()</div><div class="line">        self.DOWN(<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> retval</div></pre></td></tr></table></figure>
+<hr>
+<p><strong>训练：</strong></p>
+<ul>
+<li>深度模型和树模型是<strong>同时训练</strong>的<ul>
+<li>初始化一个树结构，然后训练模型直至收敛【TDM训练】</li>
+<li>基于训练得到的叶子节点的嵌入式向量，又通过聚类得到一个新的树【树重构】<ul>
+<li>考虑到聚类算法的可延展性，使用k-means。<br>每一步，利用k-means递归地将物品集分为两个子集（adjusted to equal for a more balanced tree ）直至当前集合只包含一个物品</li>
+</ul>
+</li>
+<li>利用新的树结构再次训练深度模型</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>衡量标准</strong></p>
+<ul>
+<li>Precision </li>
+<li>Recall</li>
+<li>F</li>
+<li>novelty新颖度：比如在一个视频网站中，不应该给用户推荐那些他们已经看过、打过分或者浏览过的视频。但是有些视频可能是用户在别的网站看过，或者是在电视上看过，因此仅仅过滤掉本网站中用户有过行为的物品还不能完全实现新颖性。</li>
+</ul>
+<h1 id="RecSys-Deep-Neural-Networks-for-YouTube-Recommendations——2016"><a href="#RecSys-Deep-Neural-Networks-for-YouTube-Recommendations——2016" class="headerlink" title="* RecSys: Deep Neural Networks for YouTube Recommendations——2016"></a>* RecSys: Deep Neural Networks for YouTube Recommendations——2016</h1><p>面临三个挑战：</p>
+<ul>
+<li><strong>规模大</strong>：用户和视频的数量都很大，只能适应小规模数据集的算法就不考虑了。</li>
+<li><strong>更新快</strong>：youtube视频更新频率很高，需要在<strong>新发布</strong>视频和<strong>已有</strong>存量视频间进行balance。更新快（实时性）的另一方面的体现是用户实时行为切换很快，模型需要很好的追踪用户的实时行为。</li>
+<li><strong>噪音</strong>：噪音主要体现在用户的<strong>历史行为</strong>往往是<strong>稀疏的并且是不完整的</strong>，并且没有一个<strong>明确的ground truth</strong>——满意度signal，我们面对的都是noisy implicit feedback signals。噪音另一个方面就是视频本身<strong>很多数据都是非结构化的</strong>。这两点对算法的鲁棒性提出了很高的挑战。</li>
+</ul>
+<p>YouTube的DNN matching召回，将<strong>用户和context特征</strong>输入DNN，用隐含层最后一层作为向量表示，用<strong>Softmax每个item</strong>对应的参数作为item的向量表示，通过<strong>内积最大索引</strong>得到top k。将推荐问题作为一个大规模的<strong>多分类问题</strong>(有多少video就有多少个类别)，在t时刻，根据用户U和上下文环境C，在视频库V中(包含数百万个视频i)，准确预测出用户的将要观看视频<script type="math/tex">w_t</script>的类别。</p>
+<p>相较于传统模型，DNN具有可靠的三大优势：（1）同时处理稀疏和连续特征（2）泛化特征（3）自定义优化目标。</p>
+<ul>
+<li><p>Matching：推荐问题建模成一个“超大规模<strong>多分类”问题</strong>。</p>
+<p><img src="/2020/10/31/Recommender-Systems/YoutubeDNN.png" style="zoom:50%;"></p>
+<p>整个模型架构是包含三个隐层的DNN结构。采用的经典的<strong>“tower”模式</strong>搭建网络，所有的视频和search token都embedded到256维的向量中，input层直接全连接到256维的softmax层，依次增加网络深度。</p>
+<p>输入是用户浏览历史、搜索历史、人口统计学信息和其余上下文信息concat成的输入向量；输出分线上和离线训练两个部分。</p>
+<p>输入：每个视频都会被embedding到固定维度的向量中。用户的<strong>观看视频历史</strong>则是通过<strong>变长</strong>的视频序列表达，最终通过<strong>加权平均（可根据重要性和时间进行加权）</strong>得到<strong>固定维度</strong>的watch vector作为DNN的输入。</p>
+<p><strong>DNN</strong>的目标就是在用户信息U和上下文信息C为输入条件下<strong>学习用户u的embedding向量</strong>；引入DNN的好处则是<strong>任意的连续特征和离散特征可以很容易添加到模型当中</strong></p>
+<p>离线阶段：在时刻t，为用户U（上下文信息C)在视频库V中精准的预测出视频i的类别（每个具体的视频视为一个类别，i即为一个类别)，用数学公式表达如下：(softmax多分类器的形式)</p>
+<script type="math/tex; mode=display">
+P\left(w_{t}=i \mid U, C\right)=\frac{e^{v_{i} u}}{\sum_{j \in V} e^{v_{j} u}}</script><p>实际训练采用的是Negative Sample；</p>
+<p>线上则直接利用user向量查询相关商品：关注的是性能，利用类似局部敏感哈希（Locality Sensitive Hashing）最近邻的方法；</p>
+<p>用户还是更倾向于更新的视频。</p>
+<p>在训练阶段都是利用过去的行为预估未来，因此通常<strong>对过去的行为</strong>有个<strong>隐式的bias</strong>。加上行为的“age”更加鲁棒。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CandidateGeneration</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, embed_item_size, hidden_size)</span>:</span></div><div class="line">        super(CandidateGeneration, self).__init__()</div><div class="line">        self.user_fc = nn.Linear(<span class="number">1</span>, embed_item_size)</div><div class="line">        self.fc1 = nn.Linear(embed_item_size, hidden_size)</div><div class="line">        self.fc2 = nn.Linear(hidden_size, hidden_size)</div><div class="line">        self.fc3 = nn.Linear(hidden_size, embed_item_size)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, context_src, user_src, item_src)</span>:</span></div><div class="line">      <span class="string">"""</span></div><div class="line"><span class="string">      context_src: (batch_size, 1, embed_item_size)</span></div><div class="line"><span class="string">      user_src: (batch_size, n_user, 1)</span></div><div class="line"><span class="string">      item_src: (embed_item_size, n_item, 1)</span></div><div class="line"><span class="string">      """</span></div><div class="line">        user_vec = self.user_fc(user_src)  <span class="comment"># (batch_size, n_user, embed_item_size)</span></div><div class="line">        dense_vec = torch.cat((context_src, user_vec), <span class="number">1</span>)  <span class="comment"># (batch_size, 1+n_user, embed_item_size)</span></div><div class="line">        out1 = F.relu(self.fc1(dense_vec))</div><div class="line">        out2 = F.relu(self.fc2(out1))</div><div class="line">        user_vector = F.relu(self.fc3(out2))  <span class="comment"># (batch_size, 1+n_user, embed_item_size)</span></div><div class="line">        <span class="comment"># user_vector 与 item 取内积</span></div><div class="line">        out = torch.matmul(user_vector.mean(axis=<span class="number">1</span>), item_src.t())  <span class="comment"># (batch_size, n_item) = (batch_size, embed_item_size) * (embed_item_size, n_item)</span></div><div class="line">        <span class="keyword">return</span> out</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_candidate_generation</span><span class="params">(model, get_batch_iter, item, batch_size)</span>:</span></div><div class="line">    optimizer = torch.optim.Adam(model.parameters(), lr=<span class="number">0.01</span>, betas=(<span class="number">0.9</span>, <span class="number">0.98</span>), eps=<span class="number">1e-9</span>)</div><div class="line">    epochs = <span class="number">10</span></div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</div><div class="line">        total_loss = <span class="number">0</span></div><div class="line">        batch_iter = get_batch_iter()</div><div class="line">        <span class="keyword">for</span> iter_, (mini_personal, mini_watches, mini_label) <span class="keyword">in</span> enumerate(batch_iter):</div><div class="line">            out = model(mini_watches, mini_personal, item)</div><div class="line">            optimizer.zero_grad()</div><div class="line">            loss = nn.MSELoss(reduction=<span class="string">'sum'</span>)(out, mini_label)  <span class="comment"># todo: use sigmoid cross entropy loss</span></div><div class="line">            total_loss += loss.item()</div><div class="line">            <span class="keyword">if</span> iter_ != <span class="number">0</span> <span class="keyword">and</span> (iter_ + <span class="number">1</span>) % <span class="number">10</span> == <span class="number">0</span>:</div><div class="line">                print(<span class="string">f'epoch: <span class="subst">&#123;epoch + <span class="number">1</span>&#125;</span>, iter: <span class="subst">&#123;iter_ + <span class="number">1</span>&#125;</span>, loss: <span class="subst">&#123;total_loss/<span class="number">10</span>&#125;</span>'</span>)</div><div class="line">                total_loss = <span class="number">0</span></div><div class="line">            loss.backward()</div><div class="line">            optimizer.step()</div><div class="line">            </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Poduce_data</span><span class="params">(ages, gender, geographic, video_watches, search_tokens, rating, batch_size)</span>:</span></div><div class="line">  person_profile = cat(ages, gender, geographic) <span class="comment"># (n_user, 1)</span></div><div class="line">  <span class="comment"># Use word2Vec and etc. to embedding the informations.</span></div><div class="line">  embed_video_watches = embedding(video_watches)  </div><div class="line">  embed_seach_tokens = embedding(seach_tokens)</div><div class="line">  avg_video_watches = avg(embed_video_watches)</div><div class="line">  avg_seach_tokens = avg(embed_search_tokens)</div><div class="line">  person_behavior = cat(avg_video_watches, avg_search_tokens)  <span class="comment"># (1, embed_item_size)</span></div><div class="line">  label = rating</div><div class="line">  <span class="keyword">return</span> CandidateBatchIterator(person_profile, person_bahavior, label, batch_size)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>Ranking阶段：最重要任务就是<strong>精准的</strong>预估用户对视频的喜好程度；使用<strong><em>更多更精细的feature</em></strong>来刻画视频（item）以及用户与视频（user-item）的关系。另一个关键的作用是能够<strong>把不同来源</strong>的数据进行有效的<strong>ensemble</strong>；靠关键词吸引用户高点击的视频未必能够被完全播放，因此设定与期望的观看时长相关。</p>
+<p><img src="/2020/10/31/Recommender-Systems/YoutubeDNN_2.png" style="zoom:50%;"></p>
+<p>Ranking阶段的模型和Matching基本相似，不同的是最后一层: training是一个<strong>weighted LR层</strong>（Matching：softmax），而serving阶段激励函数用的是<script type="math/tex">e^x</script>（Matching：KNN）。</p>
+<p>难以直接输入，需要特征；最难的是如何建模用户时序行为（<strong><em>temporal sequence of user actions</em></strong>），并且关联这些行为和要rank的item。<strong>最重要的Signal是描述用户与 商品本身或相似商品 之间交互的Signal</strong>；<strong>负反馈Signal同样非常重要</strong>（比如不看、不点击的）；把Matching阶段的信息传播到Ranking阶段同样能很好的提升效果，比如推荐来源和所在来源的分数。</p>
+<p>NN更适合处理<strong>连续特征</strong>，因此稀疏的特别是高基数空间的离散特征需要embedding到<strong>稠密的向量</strong>中。</p>
+<p>由于NN对输入特征的尺度和分布都是非常敏感的，实际上基本上除了Tree-Based的模型（比如GBDT/RF），机器学习的大多算法都如此。<strong>归一化</strong>方法对<strong>收敛</strong>很关键，推荐一种排序分位归一到[0,1)区间的方法，即累计分位点</p>
+<script type="math/tex; mode=display">
+\tilde{x}=\int_{-\infty}^{x} \mathrm{d} f</script><p>还把归一化后的<script type="math/tex">\tilde{x}</script>得到$\tilde{x}^{2}$ and $\sqrt{\tilde{x}}$作为输入，使网络能够更容易得到特征的次线性（sub-linear）和（super-linear）超线性函数。</p>
+<p>weighted是指根据观看时长建立的加权，投注可能性？odds：</p>
+<script type="math/tex; mode=display">
+\frac{\sum T_{i}}{N-k}</script><p>N：总样本数；k：正样本数；<script type="math/tex">T_i</script>正样本的观看时长；一般k较小，所以可以转换为<script type="math/tex">E[T](1 + P)</script>，P点击率也很小，所以odds接近于<script type="math/tex">E[T]</script>。</p>
+<p>对于预估高分但是没有观看，则认为预测错误的观看时长。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ranking</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, watch_time_feature_size, hidden_size, candidate_size)</span>:</span></div><div class="line">        super(Ranking, self).__init__()</div><div class="line">        self.fc1 = nn.Linear(watch_time_feature_size, hidden_size)</div><div class="line">        self.fc2 = nn.Linear(hidden_size, hidden_size)</div><div class="line">        self.fc3 = nn.Linear(hidden_size, <span class="number">1</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, src)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        src: (batch_size, n_item, watch_time_feature_size)</span></div><div class="line"><span class="string">        out: (batch_size, n_item)</span></div><div class="line"><span class="string">        """</span></div><div class="line">        h = F.relu(self.fc1(src))  <span class="comment"># (batch_size, n_item, hidden_size)</span></div><div class="line">        h = F.relu(self.fc2(h))  <span class="comment"># (batch_size, n_item, hidden_size)</span></div><div class="line">        out = F.relu(self.fc3(h))  <span class="comment"># (batch_size, n_item, 1)</span></div><div class="line">        <span class="keyword">return</span> out.squeeze(<span class="number">-1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_ranking</span><span class="params">(model, get_batch_iter, batch_size)</span>:</span></div><div class="line">    optimizer = torch.optim.Adam(model.parameters(), lr=<span class="number">0.01</span>, betas=(<span class="number">0.9</span>, <span class="number">0.98</span>), eps=<span class="number">1e-9</span>)</div><div class="line">    epochs = <span class="number">3</span></div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</div><div class="line">        total_loss = <span class="number">0</span></div><div class="line">        batch_iter = get_batch_iter()</div><div class="line">        <span class="keyword">for</span> iter_, (mini_x, mini_label) <span class="keyword">in</span> enumerate(batch_iter):  <span class="comment"># In ranking, the dataset is smaller</span></div><div class="line">            out = model(mini_x)  <span class="comment"># (batch_size, n_item)</span></div><div class="line">            optimizer.zero_grad()</div><div class="line">            loss = nn.MSELoss(reduction=<span class="string">'sum'</span>)(out, mini_label)  <span class="comment"># todo: use sigmoid cross entropy loss</span></div><div class="line">            total_loss += loss.item()</div><div class="line">            <span class="keyword">if</span> iter_ != <span class="number">0</span> <span class="keyword">and</span> (iter_ + <span class="number">1</span>) % <span class="number">10</span> == <span class="number">0</span>:</div><div class="line">                print(<span class="string">f'epoch: <span class="subst">&#123;epoch + <span class="number">1</span>&#125;</span>, iter: <span class="subst">&#123;iter_ + <span class="number">1</span>&#125;</span>, loss: <span class="subst">&#123;total_loss/<span class="number">10</span>&#125;</span>'</span>)</div><div class="line">                total_loss = <span class="number">0</span></div><div class="line">            loss.backward()</div><div class="line">            optimizer.step()</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Poduce_data</span><span class="params">(impression_video_IDs, watching_video_IDs, user_language, video_language, last_time_watching, previous_impressions, rating, batch_size)</span>:</span></div><div class="line">embed_impression_video_IDs = embedding(impression_video_IDs) </div><div class="line">  embed_watching_video_IDs = embedding(watching_video_IDs)</div><div class="line">  avg_impression_video_IDs = avg(embed_impression_video_IDs) </div><div class="line">  avg_watching_video_IDs = avg(embed_watching_video_IDs)</div><div class="line">  person_behavior = cat(avg_impression_video_IDs, avg_watching_video_IDs)</div><div class="line">  </div><div class="line">  embed_user_language = embedding(user_language)</div><div class="line">  embed_video_language = embedding(video_language)</div><div class="line">  language = cat(embed_user_language, embed_video_language)</div><div class="line">  	</div><div class="line">  norm_last_time_watching = normalize(last_time_watching)</div><div class="line">  sqrt_norm_last_time_watching = sqrt(norm_last_time_watching)</div><div class="line">  pow_norm_last_time_watching = pow(norm_last_time_watching, <span class="number">2</span>)</div><div class="line">  last_time_watching_vec = cat(sqrt_norm_last_time_watching, norm_last_time_watching, pow_norm_last_time_watching)</div><div class="line">  </div><div class="line">  norm_previous_impressions = normalize(previous_impressions)</div><div class="line">  sqrt_previous_impressions = sqrt(previous_impressions)</div><div class="line">  pow_previous_impressions = pow(previous_impressions, <span class="number">2</span>)</div><div class="line">  previous_impressions_vec = cat(sqrt_previous_impressions, previous_impressions, pow_previous_impressions)</div><div class="line">  </div><div class="line">  feature_vec = cat(person_behavior, language, last_time_watching_vec, previous_impressions_vec)</div><div class="line">  label = rating</div><div class="line">  <span class="keyword">return</span> RankingeBatchIterator(feature_vec, label, batch_size)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>label：label决定了你的模型的上限</p>
+<ul>
+<li><strong>使用更广的数据源</strong>：不仅仅使用推荐场景的数据进行训练，其他场景比如搜索等的数据也要用到，这样也能为推荐场景提供一些explore。</li>
+<li><strong>为每个用户生成固定数量训练样本</strong>：我们在实际中发现的一个practical lessons，如果为每个用户固定样本数量上限，<strong>平等的对待每个用户</strong>，避免loss被少数active用户domanate，能明显提升线上效果。</li>
+<li><strong>抛弃序列信息</strong>：我们在实现时尝试的是去掉序列信息，对过去观看视频/历史搜索query的embedding向量进行加权平均。这点其实违反直觉，可能原因是模型对负反馈没有很好的建模。（比如把上一次浏览的作为主推荐这一种是不值得推荐的）</li>
+<li><strong>不对称的共同浏览（asymmetric co-watch）问题</strong>：所谓asymmetric co-watch值的是用户在浏览视频时候，往往都是序列式的，开始看一些比较流行的，逐渐找到细分的视频。<ul>
+<li>hled-out方式，利用<strong>上下文信息</strong>预估中间的一个视频；图(b)是predicting next watch的方式，则是利用<strong>上文信息</strong>，预估下一次浏览的视频。</li>
+<li>(b)的方式在线上A/B test中表现更佳。<em>而实际上，传统的协同过滤类的算法，都是隐含的采用图(a)的held-out方式，忽略了不对称的浏览模式。</em></li>
+</ul>
+</li>
+</ul>
+<h1 id="LR-logistic-Regression"><a href="#LR-logistic-Regression" class="headerlink" title="LR(logistic Regression)"></a>LR(logistic Regression)</h1><p>对数据进行特征工程，构造出大量<strong>单特征</strong>，编码之后送入模型。这种线性模型的优势在于，<strong>运算速度快可解释性强</strong>，在特征挖掘完备且训练数据充分的前提下能够达到一定精度。但这种模型的缺点也是较为明显的：</p>
+<ol>
+<li>模型并未考虑到<strong>特征之间的关系</strong> <script type="math/tex">y=w_o+\sum_{i=1}^n w_ix_i</script>。在实践经验中，对特征进行<strong>交叉组合</strong>往往能够更好地提升模型效果。</li>
+<li>对于<strong>多取值的categorical特征</strong>进行<strong>one-hot编码</strong>，具有<strong>高度稀疏性</strong>，带来<strong>维度灾难</strong>问题。</li>
+</ol>
+<h1 id="Factorization-machines——2010"><a href="#Factorization-machines——2010" class="headerlink" title="Factorization machines——2010"></a>Factorization machines——2010</h1><p>FM以特征组合进行切入点，在公式定义中引入<strong>特征交叉项</strong>，弥补了一般线性模型未考虑特征间关系的缺憾。</p>
+<script type="math/tex; mode=display">
+y=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} w_{i j} x_{i} x_{j}</script><p><img src="/2020/10/31/Recommender-Systems/FM.png" alt=""></p>
+<p>显式交叉的方式能够刻画特征间关系，但是对公式<strong>求解带来困难</strong>。同样大量特征进行one-hot表示之后具有<strong>高度稀疏性</strong>的问题</p>
+<p>受 <strong>矩阵分解</strong> 的启发，对于每一个特征 <script type="math/tex">x_i</script>引入辅助向量（隐向量）$$<br>V_{i}=\left(v_{i 1}, v_{i 2}, \cdots, v_{i k}\right)</p>
+<script type="math/tex; mode=display">，然后利用$$V_iV_j^T$$对$$w_{ij}$$进行求解，即，做如下假设$$w_{ij}\approx V_iV_j^T$$。</script><p>y=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n}\left\langle V_{i}, V_{j}\right\rangle x_{i} x_{j}</p>
+<script type="math/tex; mode=display">
+引入隐向量的好处：
+
+1. 二阶项的参数量由$$\frac{n(n-1)}{2}$$降为kn
+2. 参数之间可以通过隐向量建立关系，$$w_{ij}=<V_i,V_j>,w_{ik}=<V_i,V_k>$$，这样两者就可以建立关系。
+
+> 对阵矩阵M的上三角元素和记为A，那么M所有元素之和为2A+tr(M)
+>
+> 所以有：
+></script><blockquote>
+<p>A=\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} m_{i j}=\frac{1}{2} *\left\{\sum_{i=1}^{n} \sum_{j=1}^{n} m_{i j}-\sum_{i=1}^{n} m_{i i}\right\}</p>
+<p>$$</p>
+</blockquote>
+<p>对公式最后一项进行推导</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \sum_{i=1}^{n-1} \sum_{j=i+1}^{n}\left\langle V_{i}, V_{j}\right\rangle x_{i} x_{j} \\
+=& \frac{1}{2} *\left\{\sum_{i=1}^{n} \sum_{j=1}^{n}\left\langle V_{i}, V_{j}\right\rangle x_{i} x_{j}-\sum_{i=1}^{n}\left\langle V_{i}, V_{i}\right\rangle x_{i} x_{i}\right\} \\
+=& \frac{1}{2} *\left\{\sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{f=1}^{k} v_{i f} v_{j f} x_{i} x_{j}-\sum_{i=1}^{n} \sum_{f=1}^{k} v_{i f} v_{i f} x_{i} x_{i}\right\} \\
+=& \frac{1}{2} * \sum_{f=1}^{k}\left\{\sum_{i=1}^{n} \sum_{j=1}^{n} v_{i f} x_{i} v_{j f} x_{j}-\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\} \\
+=& \frac{1}{2} * \sum_{f=1}^{k}\left\{\left(\sum_{i=1}^{n} v_{i f} x_{i}\right)\left(\sum_{j=1}^{n} v_{j f} x_{j}\right)-\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\} \\
+=& \frac{1}{2} * \sum_{f=1}^{k}\left\{\left(\sum_{i=1}^{n} v_{i f} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\}
+\end{aligned}</script><p>所以</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+y &=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n}\left\langle V_{i}, V_{j}\right\rangle x_{i} x_{j} \\
+&=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\frac{1}{2} * \sum_{f=1}^{k}\left\{\left(\sum_{i=1}^{n} v_{i f} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\}
+\end{aligned}</script><p>这样改写后，计算只需要一个for循环，复杂度降到一次方。</p>
+<hr>
+<p>计算梯度表达式（完成梯度更新）</p>
+<script type="math/tex; mode=display">
+\frac{\part y}{\part w_0}=1\\
+\frac{\part y}{\part w_i}=x_i\\
+\begin{aligned}
+\frac{\partial y}{\partial v_{i f}} &=\partial \frac{1}{2}\left\{\left(\sum_{i=1}^{n} v_{i f} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\} / \partial v_{i f} \\
+&=\frac{1}{2} *\left\{\frac{\partial\left\{\sum_{i=1}^{n} v_{i f} x_{i}\right\}^{2}}{\partial v_{i f}}-\frac{\partial\left\{\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\}}{\partial v_{i f}}\right\}\\
+&=\frac{1}{2}*\left\{2x_i^2v_{if}-\frac{\partial\left\{\sum_{i=1}^{n} v_{i f}^{2} x_{i}^{2}\right\}}{\partial v_{i f}}\right\}
+\end{aligned}</script><p>令</p>
+<script type="math/tex; mode=display">
+\lambda=\sum_{i=1}^{n} v_{i f} x_{i}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial\left\{\sum_{i=1}^{n} v_{i f} x_{i}\right\}^{2}}{\partial v_{i f}} &=\frac{\partial \lambda^{2}}{\partial v_{i f}} \\
+&=\frac{\partial \lambda^{2}}{\partial \lambda} \frac{\partial \lambda}{\partial v_{i f}} \\
+&=2 \lambda * \frac{\partial \sum_{i=1}^{n} v_{i f} x_{i}}{\partial v_{i f}} \\
+&=2 \lambda * x_{i} \\
+&=2 * x_{i} * \sum_{j=1}^{n} v_{j f} x_{j}
+\end{aligned}</script><p>所以：</p>
+<script type="math/tex; mode=display">
+\frac{\partial y}{\partial v_{i f}}=x_{i} \sum_{j=1}^{n} v_{j f} x_{j}-x_{i}^{2} v_{i f}</script><p>综上所述</p>
+<script type="math/tex; mode=display">
+\frac{\partial y}{\partial \theta}=\left\{\begin{array}{ll}
+1, & \text { if } \theta \text { is } w_{0} \\
+x_{i}, & \text { if } \theta \text { is } w_{i} \\
+x_{i} \sum_{j=1}^{n} v_{j f} x_{j}-x_{i}^{2} v_{i f}, & \text { if } \theta \text { is } v_{i f}
+\end{array}\right.</script><p>梯度更新时，可以将<script type="math/tex">\sum_{j=1}^{n} v_{j f} x_{j}</script>先算出来，<script type="math/tex">O(kn)</script>；更新参数复杂度就是<script type="math/tex">O(1)</script>；所以最终训练时间为<script type="math/tex">O(kn)</script>。</p>
+<hr>
+<p>优点：</p>
+<ol>
+<li>FMs allow parameter estimation under <strong>very sparse data</strong> where SVMs fail.</li>
+<li>FMs have <strong>linear complexity</strong>, can be optimized in the primal and do not rely on support vectors like SVMs. We show that FMs scale to large datasets like Netflix with 100 millions of training instances.</li>
+<li>FMs are a general predictor that can work with <strong>any real valued feature vector</strong>. In contrast to this, other state-of- the-art factorization models work only on very restricted input data. We will show that just by defining the feature vectors of the input data, FMs can mimic state-of-the-art models like biased MF, SVD++, PITF or FPMC.</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>每个特征只引入了一个隐向量，<strong>不同类型特征之间交叉没有区分性</strong>。FFM模型正是以这一点作为切入进行改进。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> csr</div><div class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">vectorize_dic</span><span class="params">(dic, label2index=None, hold_num=None)</span>:</span></div><div class="line">  </div><div class="line">    <span class="keyword">if</span> label2index == <span class="keyword">None</span>:</div><div class="line">        d = count(<span class="number">0</span>)</div><div class="line">        label2index = defaultdict(<span class="keyword">lambda</span>: next(d))  <span class="comment"># 数值映射表</span></div><div class="line"></div><div class="line">    sample_num = len(list(dic.values())[<span class="number">0</span>])  <span class="comment"># 样本数</span></div><div class="line">    feat_num = len(list(dic.keys()))  <span class="comment"># 特征数</span></div><div class="line">    total_value_num = sample_num * feat_num</div><div class="line"></div><div class="line">    col_ix = np.empty(total_value_num, dtype=int)</div><div class="line"></div><div class="line">    i = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> k, lis <span class="keyword">in</span> dic.items():</div><div class="line">        col_ix[i::feat_num] = [label2index[str(k) + str(el)] <span class="keyword">for</span> el <span class="keyword">in</span> lis]</div><div class="line">        i += <span class="number">1</span></div><div class="line"></div><div class="line">    row_ix = np.repeat(np.arange(sample_num), feat_num)</div><div class="line">    data = np.ones(total_value_num)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> hold_num <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        hold_num = len(label2index)</div><div class="line"></div><div class="line">    left_data_index = np.where(col_ix &lt; hold_num)  <span class="comment"># 为了剔除不在train set中出现的test set数据</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> csr.csr_matrix(</div><div class="line">        (data[left_data_index], (row_ix[left_data_index], col_ix[left_data_index])),</div><div class="line">        shape=(sample_num, hold_num)), label2index</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">batcher</span><span class="params">(X_, y_, batch_size=<span class="number">-1</span>)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> X_.shape[<span class="number">0</span>] == len(y_)</div><div class="line"></div><div class="line">    n_samples = X_.shape[<span class="number">0</span>]</div><div class="line">    <span class="keyword">if</span> batch_size == <span class="number">-1</span>:</div><div class="line">        batch_size = n_samples</div><div class="line">    <span class="keyword">if</span> batch_size &lt; <span class="number">1</span>:</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'Parameter batch_size=&#123;&#125; is unsupported'</span>.format(batch_size))</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n_samples, batch_size):</div><div class="line">        upper_bound = min(i + batch_size, n_samples)</div><div class="line">        ret_x = X_[i:upper_bound]</div><div class="line">        ret_y = y_[i:upper_bound]</div><div class="line">        <span class="keyword">yield</span>(ret_x, ret_y)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">()</span>:</span></div><div class="line">  <span class="string">"""</span></div><div class="line"><span class="string">  对输入特征数值进行预处理。优先进行特征归一化，其次再进行样本归一化。</span></div><div class="line"><span class="string">  """</span></div><div class="line">    cols = [<span class="string">'user'</span>, <span class="string">'item'</span>, <span class="string">'rating'</span>, <span class="string">'timestamp'</span>]</div><div class="line">    train = pd.read_csv(<span class="string">'data/ua.base'</span>, delimiter=<span class="string">'\t'</span>, names=cols)</div><div class="line">    test = pd.read_csv(<span class="string">'data/ua.test'</span>, delimiter=<span class="string">'\t'</span>, names=cols)</div><div class="line"></div><div class="line">    x_train, label2index = vectorize_dic(&#123;<span class="string">'users'</span>: train.user.values, <span class="string">'items'</span>: train.item.values&#125;)</div><div class="line">    x_test, label2index = vectorize_dic(&#123;<span class="string">'users'</span>: test.user.values, <span class="string">'items'</span>: test.item.values&#125;, label2index, x_train.shape[<span class="number">1</span>])</div><div class="line"></div><div class="line">    y_train = train.rating.values</div><div class="line">    y_test = test.rating.values</div><div class="line"></div><div class="line">    x_train = x_train.todense()</div><div class="line">    x_test = x_test.todense()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> x_train, x_test, y_train, y_test</div><div class="line"></div><div class="line">x_train, x_test, y_train, y_test = load_dataset()</div><div class="line"></div><div class="line">print(<span class="string">"x_train shape: "</span>, x_train.shape)</div><div class="line">print(<span class="string">"x_test shape: "</span>, x_test.shape)</div><div class="line">print(<span class="string">"y_train shape: "</span>, y_train.shape)</div><div class="line">print(<span class="string">"y_test shape: "</span>, y_test.shape)</div><div class="line"></div><div class="line">vec_dim = <span class="number">10</span></div><div class="line">batch_size = <span class="number">1000</span></div><div class="line">epochs = <span class="number">10</span></div><div class="line">learning_rate = <span class="number">0.001</span></div><div class="line">sample_num, feat_num = x_train.shape</div><div class="line"></div><div class="line">x = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, feat_num], name=<span class="string">"input_x"</span>)</div><div class="line">y = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>,<span class="number">1</span>], name=<span class="string">"ground_truth"</span>)</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line"><span class="string">From Here！</span></div><div class="line"><span class="string">"""</span></div><div class="line">w0 = tf.get_variable(name=<span class="string">"bias"</span>, shape=(<span class="number">1</span>), dtype=tf.float32)</div><div class="line">W = tf.get_variable(name=<span class="string">"linear_w"</span>, shape=(feat_num), dtype=tf.float32)</div><div class="line">V = tf.get_variable(name=<span class="string">"interaction_w"</span>, shape=(feat_num, vec_dim), dtype=tf.float32)</div><div class="line"></div><div class="line">linear_part = w0 + tf.reduce_sum(tf.multiply(x, W), axis=<span class="number">1</span>, keep_dims=<span class="keyword">True</span>)  <span class="comment"># w0 + \sum_i w_ix_i</span></div><div class="line"><span class="comment"># 0.5 * \sum_k[(\sum_i v_&#123;if&#125; x_i)^2 - \sum_i v_&#123;if&#125;^2x_i^2]</span></div><div class="line">interaction_part = <span class="number">0.5</span> * tf.reduce_sum(tf.square(tf.matmul(x, V)) - tf.matmul(tf.square(x), tf.square(V)), axis=<span class="number">1</span>, keep_dims=<span class="keyword">True</span>)</div><div class="line">y_hat = linear_part + interaction_part</div><div class="line"></div><div class="line">loss = tf.reduce_mean(tf.square(y - y_hat))</div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate).minimize(loss)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(tf.global_variables_initializer())</div><div class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> range(epochs):</div><div class="line">        step = <span class="number">0</span></div><div class="line">        print(<span class="string">"epoch:&#123;&#125;"</span>.format(e))</div><div class="line">        <span class="keyword">for</span> batch_x, batch_y <span class="keyword">in</span> batcher(x_train, y_train, batch_size):</div><div class="line">            sess.run(train_op, feed_dict=&#123;x:batch_x, y:batch_y.reshape(<span class="number">-1</span>, <span class="number">1</span>)&#125;)</div><div class="line">            step += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> step % <span class="number">10</span> == <span class="number">0</span>:</div><div class="line">                <span class="keyword">for</span> val_x, val_y <span class="keyword">in</span> batcher(x_test, y_test):</div><div class="line">                    train_loss = sess.run(loss, feed_dict=&#123;x:batch_x, y:batch_y.reshape(<span class="number">-1</span>, <span class="number">1</span>)&#125;)</div><div class="line">                    val_loss = sess.run(loss, feed_dict=&#123;x:val_x, y:val_y.reshape(<span class="number">-1</span>, <span class="number">1</span>)&#125;)</div><div class="line">                    print(<span class="string">"batch train_mse=&#123;&#125;, val_mse=&#123;&#125;"</span>.format(train_loss, val_loss))</div><div class="line"></div><div class="line">    <span class="keyword">for</span> val_x, val_y <span class="keyword">in</span> batcher(x_test, y_test):</div><div class="line">        val_loss = sess.run(loss, feed_dict=&#123;x: val_x, y: val_y.reshape(<span class="number">-1</span>, <span class="number">1</span>)&#125;)</div><div class="line">        print(<span class="string">"test set rmse = &#123;&#125;"</span>.format(np.sqrt(val_loss)))</div><div class="line">        </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FM</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vec_dim, feat_num, lr, lamda)</span>:</span></div><div class="line">        self.vec_dim = vec_dim</div><div class="line">        self.feat_num = feat_num</div><div class="line">        self.lr = lr</div><div class="line">        self.lamda = lamda</div><div class="line"></div><div class="line">        self._build_graph()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_build_graph</span><span class="params">(self)</span>:</span></div><div class="line">        self.add_input()</div><div class="line">        self.inference()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_input</span><span class="params">(self)</span>:</span></div><div class="line">        self.x = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, self.feat_num], name=<span class="string">'input_x'</span>)</div><div class="line">        self.y = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>], name=<span class="string">'input_y'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inference</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'linear_part'</span>):</div><div class="line">            w0 = tf.get_variable(name=<span class="string">'bias'</span>, shape=[<span class="number">1</span>], dtype=tf.float32)</div><div class="line">            self.W = tf.get_variable(name=<span class="string">'linear_w'</span>, shape=[self.feat_num], dtype=tf.float32)</div><div class="line">            self.linear_part = w0 + tf.reduce_sum(tf.multiply(self.x, self.W), axis=<span class="number">1</span>)</div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'interaction_part'</span>):</div><div class="line">            self.V = tf.get_variable(name=<span class="string">'interaction_w'</span>, shape=[self.feat_num, self.vec_dim], dtype=tf.float32)</div><div class="line">            self.interaction_part = <span class="number">0.5</span> * tf.reduce_sum(</div><div class="line">                tf.square(tf.matmul(self.x, self.V)) - tf.matmul(tf.square(self.x), tf.square(self.V)),</div><div class="line">                axis=<span class="number">1</span></div><div class="line">            )</div><div class="line">        self.y_logits = self.linear_part + self.interaction_part</div><div class="line">        self.y_hat = tf.nn.sigmoid(self.y_logits)</div><div class="line">        self.pred_label = tf.cast(self.y_hat &gt; <span class="number">0.5</span>, tf.int32)</div><div class="line">        self.loss = -tf.reduce_mean(self.y*tf.log(self.y_hat+<span class="number">1e-8</span>) + (<span class="number">1</span>-self.y)*tf.log(<span class="number">1</span>-self.y_hat+<span class="number">1e-8</span>))</div><div class="line">        self.reg_loss = self.lamda*(tf.reduce_mean(tf.nn.l2_loss(self.W)) + tf.reduce_mean(tf.nn.l2_loss(self.V)))</div><div class="line">        self.total_loss = self.loss + self.reg_loss</div><div class="line"></div><div class="line">        self.train_op = tf.train.AdamOptimizer(self.lr).minimize(self.total_loss)</div></pre></td></tr></table></figure>
+<h1 id="FFM-Field-aware-Factorization-Machine-——2016"><a href="#FFM-Field-aware-Factorization-Machine-——2016" class="headerlink" title="FFM(Field-aware Factorization Machine)——2016"></a>FFM(Field-aware Factorization Machine)——2016</h1><p>引入了域（Field）的概念=，可看做是<strong>对特征进行分组</strong>。</p>
+<p>有相同的Field编号。不同域的特征之间，往往具有明显的差异性。对比FM中的做法，每个特征有且仅有一个隐向量，在对特征<script type="math/tex">x_i</script>与其他特征进行交叉时，<strong>始终使用同一个隐向量</strong><script type="math/tex">V_i</script>。 这种无差别式交叉方式，并没有考虑到不同特征之间的共性（同域）与差异性（异域）。</p>
+<script type="math/tex; mode=display">
+y=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n}\left\langle V_{i, f_{j}}, V_{j, f_{i}}\right\rangle x_{i} x_{j}</script><p>增加了一个下标，是由f（域映射函数），每个特征<script type="math/tex">x_i</script>有F（Field的数目）个对应的隐向量，分别对于不同的Field的特征进行交叉时计算。</p>
+<p>由于引入了Field，公式无法改写，<strong>推断时间复杂度</strong>为<script type="math/tex">O(kn^2)</script>。</p>
+<p>同样用隐向量$$<br>V_{i, f_{j}}=\left(v_{i, f_{j}}^{1}, v_{i, f_{j}}^{2}, \cdots, v_{i, f_{j}}^{k}\right)</p>
+<script type="math/tex; mode=display">将公式展开为：</script><p>y=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \sum_{q=1}^{k} v_{i, f_{j}}^{q} v_{j, f_{i}}^{q} x_{i} x_{j}</p>
+<script type="math/tex; mode=display">
+前两项的导数不变。后一项的导数复杂，不考虑（代码中不需要计算，关注的只是时间复杂度），用夹逼定理可以得到（全为1个域O(kn^2)，每个一个域O(kn^2)）。
+
+所以**训练时间复杂度**$$O(kn^2)$$。
+
+------
+
+优点：
+
+- 在**高维稀疏性**数据集中表现很好。（密集型数据集less benefit）
+- 相对FM模型**精度更高**，**特征**刻画更精细。
+
+缺点：
+
+- **时间**开销大。
+- 参数多容**易过拟合**，必须设置正则化方法，以及早停的训练策略。
+
+
+
+# DeepFM: a factorization-machine based neural network for CTR prediction——2017
+
+整体结构是将**FM**与**DNN**以**并行**结构组合在一起，FM侧与DNN侧**共享特征嵌入层**（Embedding Layer，无需进行特征工程，而Wide&Deep模型两侧保持输入独立），通过联合训练的方式使模型达到最优。</script><p>\hat{y}=\operatorname{sigmoid}\left(y_{F M}+y_{D N N}\right)</p>
+<script type="math/tex; mode=display">
+![](Recommender-Systems/DeepFM.png)
+
+其中**绿色**的箭头表示为**特征的Embedding过程**，即得到特征对应的Embedding vector，通常使用$$v_ix_i$$来表示，而其中的**隐向量$$v_i$$**则是通过模型**学习**得到的参数。红色箭头表示权重为1的连接，也就是说**红色箭头并不是需要学习的参数**。而**黑色**连线则表示为正常的，需要模型**学习的参数$$w_i$$。**
+
+DeepFM为了简单起见，去除了FM原始定义中的偏置项b，仅保留了一阶项与二阶交叉项。</script><p>y_{F M}=\sum_{i=1}^{m} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle v_{i}, v_{j}\right\rangle x_{i} x_{j}</p>
+<script type="math/tex; mode=display">
+DNN部分是简单的全连接网络。
+
+在FM部分中，**Dense Embedding**是为了**计算二阶交叉特征信息**，但在DNN部分，Dense Embedding是**为更高阶的特征交叉信息提供输入**。</script><p>a^{(0)}=\left[e_{1}, e_{2}, \ldots, e_{m}\right]\\<br>a^{(l+1)}=\sigma\left(W^{(l)} a^{(l)}+b^{(l)}\right)\\<br>y_{D N N}=\sigma\left(W^{(H)} a^{(H)}+b^{(H)}\right)</p>
+<script type="math/tex; mode=display">
+最终是将FM模块与DNN模块进行简单concat，通过投影层进行融合。
+
+本质上DeepFM是显式的**针对特征各种组合建模**：一阶特征与二阶交叉特征（FM部分）、高阶特征（DNN部分），最终将低阶到高阶的所有特征以并行的方式连接到一起。之前的模型或多或少都没有这么完备，三者至少缺其一。
+
+![](Recommender-Systems/DeepFM_c.png)
+
+超参数研究了：
+
+* 激活函数：对于大多数深度模型而言relu激活函数更合适。
+* dropout：0.6-0.9都ok
+* 隐藏层数：200 or 400都ok
+* 隐藏层节点数：上升后下降（overfitting）
+* DNN结构：constant结构表现最好【其他是逐层增加、逐层下降、先上升后下降的结构】
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeepFM</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vec_dim=None, field_lens=None, dnn_layers=None, lr=None, dropout_rate=None)</span>:</span></div><div class="line">        self.vec_dim = vec_dim</div><div class="line">        self.field_lens = field_lens</div><div class="line">        self.field_num = len(field_lens)</div><div class="line">        self.feat_num = np.sum(field_lens)</div><div class="line">        self.dnn_layers = dnn_layers</div><div class="line">        self.lr = lr</div><div class="line">        self.dropout_rate = dropout_rate</div><div class="line"></div><div class="line">        self._build_graph()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_build_graph</span><span class="params">(self)</span>:</span></div><div class="line">        self.add_input()</div><div class="line">        self.inference()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_input</span><span class="params">(self)</span>:</span></div><div class="line">        self.index = tf.placeholder(tf.int32, shape=[<span class="keyword">None</span>, self.field_num], name=<span class="string">'feat_index'</span>) <span class="comment"># (batch, F)</span></div><div class="line">        self.x = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, self.field_num], name=<span class="string">'feat_value'</span>) <span class="comment"># (batch, F)</span></div><div class="line">        self.y = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>], name=<span class="string">'input_y'</span>)</div><div class="line">        self.is_train = tf.placeholder(tf.bool)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inference</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'first_order_part'</span>):</div><div class="line">            first_ord_w = tf.get_variable(name=<span class="string">'first_ord_w'</span>, shape=[self.feat_num, <span class="number">1</span>], dtype=tf.float32)</div><div class="line">            first_order = tf.nn.embedding_lookup(first_ord_w, self.index) <span class="comment"># (batch, F, 1)</span></div><div class="line">            first_order = tf.reduce_sum(tf.multiply(first_order, tf.expand_dims(self.x, axis=<span class="number">2</span>)), axis=<span class="number">2</span>) <span class="comment"># (batch, F)</span></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'emb_part'</span>):</div><div class="line">            embed_matrix = tf.get_variable(name=<span class="string">'second_ord_v'</span>, shape=[self.feat_num, self.vec_dim], dtype=tf.float32)</div><div class="line">            embed_v = tf.nn.embedding_lookup(embed_matrix, self.index) <span class="comment"># (batch, F, K)</span></div><div class="line">            embed_x = tf.multiply(tf.expand_dims(self.x, axis=<span class="number">2</span>), embed_v)  <span class="comment"># (batch, F, K)</span></div><div class="line">            </div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'second_order_part'</span>):</div><div class="line">            sum_emb_square = tf.square(tf.reduce_sum(embed_x, axis=<span class="number">1</span>)) <span class="comment"># (batch, K)</span></div><div class="line">            square_emb_sum = tf.reduce_sum(tf.square(embed_x), axis=<span class="number">1</span>) <span class="comment"># (batch, K)</span></div><div class="line">            second_order = <span class="number">0.5</span> * (sum_emb_square - square_emb_sum)</div><div class="line">            fm = tf.concat([first_order, second_order], axis=<span class="number">1</span>) <span class="comment"># (batch, F+K)</span></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'dnn_part'</span>):</div><div class="line">            embed_x = tf.layers.dropout(embed_x, rate=self.dropout_rate, training=self.is_train) <span class="comment"># (batch, F, K)</span></div><div class="line">            in_num = self.field_num * self.vec_dim</div><div class="line">            dnn = tf.reshape(embed_x, shape=(<span class="number">-1</span>, in_num)) <span class="comment"># (batch, in_num)</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.dnn_layers)):</div><div class="line">                out_num = self.dnn_layers[i]</div><div class="line">                w = tf.get_variable(name=<span class="string">'w_%d'</span>%i, shape=[in_num, out_num], dtype=tf.float32)</div><div class="line">                b = tf.get_variable(name=<span class="string">'b_%d'</span>%i, shape=[out_num], dtype=tf.float32)</div><div class="line">                dnn = tf.matmul(dnn, w) + b</div><div class="line">                dnn = tf.layers.dropout(tf.nn.relu(dnn), rate=self.dropout_rate, training=self.is_train)</div><div class="line">                in_num = out_num</div><div class="line">                </div><div class="line">                </div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'output_part'</span>):</div><div class="line">            in_num += self.field_num + self.vec_dim</div><div class="line">            output = tf.concat([fm, dnn], axis=<span class="number">1</span>)</div><div class="line">            proj_w = tf.get_variable(name=<span class="string">'proj_w'</span>, shape=[in_num, <span class="number">1</span>], dtype=tf.float32)</div><div class="line">            proj_b = tf.get_variable(name=<span class="string">'proj_b'</span>, shape=[<span class="number">1</span>], dtype=tf.float32)</div><div class="line">            self.y_logits = tf.matmul(output, proj_w) + proj_b</div><div class="line"></div><div class="line">            </div><div class="line">        self.y_hat = tf.nn.sigmoid(self.y_logits)</div><div class="line">        self.pred_label = tf.cast(self.y_hat &gt; <span class="number">0.5</span>, tf.int32)</div><div class="line">        self.loss = -tf.reduce_mean(self.y*tf.log(self.y_hat+<span class="number">1e-8</span>) + (<span class="number">1</span>-self.y)*tf.log(<span class="number">1</span>-self.y_hat+<span class="number">1e-8</span>))</div><div class="line">        self.train_op = tf.train.AdamOptimizer(self.lr).minimize(self.loss)</div></pre></td></tr></table></figure>
+
+# DCN——2017
+
+提出**Cross network**，用于特征的**自动化交叉编码**。Cross Network通过**调整结构层数**能够构造出**有限阶（bounded-degree）交叉特征**，对特征进行显式交叉编码，在精简模型参数的同时有效的**提高了模型的表征能力**。
+
+DCN是将Wide&Deep中的Wide侧替换为Cross Network，利用该部分**自动交叉**特征的能力，模型无需进行额外的特征工程工作。同时，DCN参考了Deep Crossing模型引入了**残差结构**的思想，使得模型能够更深。与DeepFM是同时期的工作，都采用了底层特征共享的模式。
+
+------
+
+![](Recommender-Systems/DCN.jpg)分为4个部分，分别为 **Embedding and Stacking Layer（特征预处理输入）、Cross network（自动化特征显式交叉）、Deep network（特征隐式交叉）和Combination output Layer（输出）。**
+
+* Embedding and Stacking Layer
+
+  类别特征（Sparse feature）可以通过**二值化**处理，然后进行**特征Embedding**，将高维稀疏特征转化为**低维稠密的实值向量**（Embedding vec），再拼接其他**连续特征（Dense feature）**作为模型的输入。</script><p>  \mathbf{x}_{0}=\left[\mathbf{x}_{\text {embed }, 1}^{T}, \ldots, \mathbf{x}_{\text {embed }, k}^{T}, \mathbf{x}_{\text {dense }}^{T}\right]</p>
+<script type="math/tex; mode=display">
+
+* Cross network</script><p>  \mathbf{x}_{l+1}=\mathbf{x}_{0} \mathbf{x}_{l}^{T} \mathbf{w}_{l}+\mathbf{b}_{l}+\mathbf{x}_{l}=f\left(\mathbf{x}_{l}, \mathbf{w}_{l}, \mathbf{b}_{l}\right)+\mathbf{x}_{l}</p>
+<script type="math/tex; mode=display">
+  函数f是拟合$$X_{l+1}$$与$$X_l$$的残差。
+
+  层层叠加之后便可得到任意有界阶组合特征，当cross layer叠加 ![[公式]](https://www.zhihu.com/equation?tex=l) 层时，交叉最高阶可以达到l+1阶。
+
+  > 令
+  ></script><blockquote>
+<p>X_{0}=\left[\begin{array}{l}<br>x_{0,1} \\<br>x_{0,2}<br>\end{array}\right]</p>
+<script type="math/tex; mode=display">
+则</script><p>\begin{aligned}<br>X_{1} &amp;=X_{0} X_{0}^{\prime} W_{0}+X_{0} \\<br>&amp;=\left[\begin{array}{l}<br>x_{0,1} \\<br>x_{0,2}<br>\end{array}\right]<br>\left[x_{0,1} x_{0,2}\right]<br>\left[\begin{array}{c}<br>w_{0,1} \\<br>w_{0,2}<br>\end{array}\right]<br>+\left[\begin{array}{l}<br>x_{0,1} \\<br>x_{0,2}<br>\end{array}\right] \\<br>&amp;=\left[\begin{array}{l}<br>x_{0,1}^{2}, x_{0,1} x_{0,2} \\<br>x_{0,2} x_{0,1}, x_{0,2}^{2}<br>\end{array}\right]\left[\begin{array}{l}<br>w_{0,1} \\<br>w_{0,2}<br>\end{array}\right]+\left[\begin{array}{l}<br>x_{0,1} \\<br>x_{0,2}<br>\end{array}\right] \\<br>&amp; =\left[\begin{array}{l}<br>w_{0,1} x_{0,1}^{2}+w_{0,2} x_{0,1} x_{0,2} \\<br>w_{0,1} x_{0,2} x_{0,1}+w_{0,2} x_{0,2}^{2}<br>\end{array}\right]+<br>\left[\begin{array}{l}<br>x_{0,1} \\<br>x_{0,2}<br>\end{array}\right] \\<br>&amp; =\left[\begin{array}{l}<br>w_{0,1} x_{0,1}^{2}+w_{0,2} x_{0,1} x_{0,2}+x_{0,1} \\<br>w_{0,1} x_{0,2} x_{0,1}+w_{0,2} x_{0,2}^{2}+x_{0,2}<br>\end{array}\right]<br>\end{aligned}</p>
+<p><script type="math/tex">这样</script>x_{0,1},x_{0,2}<script type="math/tex">都有2次项了；同样在X2就有</script>x_{0,1},x_{0,2}$$的3次项了。并且包含了<strong>所有的交叉组合</strong>。</p>
+</blockquote>
+<p>  输入是d维，有<script type="math/tex">L_c</script>层，每层有W, b两个参数，所以模型参数量会额外增加<script type="math/tex">d\times L_c\times2</script>个。对于转换公式，可以直接先计算<script type="math/tex">X_l^TW_l</script>，这样就是一个标量，然后再与<script type="math/tex">X_0</script>相乘，最终cross layer的时空复杂度均为<script type="math/tex">O(dL_c)</script>，即随着输入和层数线性增长。</p>
+<blockquote>
+<p>这一个设计的优点在于，参数量进行过精简，提高了模型的泛化能力与鲁棒性（否则易过拟合。</p>
+<p>原本是两个向量张量积之后（维度会增加，比如这里可能就是<script type="math/tex">d_1\times d_2</script>，那么要压缩成<script type="math/tex">d_2</script>维，势必需要<script type="math/tex">d_2\times d_1</script>的压缩矩阵【左乘，得到一个矩阵，然后flatten成向量，再全连接到输出】，矩阵的复杂度会高达3次方）。</p>
+<p>DCN用的是右乘。</p>
+</blockquote>
+<ul>
+<li><p>Deep network</p>
+<p>就是简单的DNN</p>
+<script type="math/tex; mode=display">
+h_{l+1}=f\left(W_{l} h_{l}+b_{l}\right)</script></li>
+<li><p>Combination output Layer</p>
+<p>将输出进行简单拼接，通过激活函数作为最后的输出。</p>
+<script type="math/tex; mode=display">
+p=\sigma\left(\left[X_{L_{1}}^{T}, h_{L_{2}}^{T}\right] W_{\text {logits}}\right)</script><p>然后用logloss衡量，并加入了正则项</p>
+<script type="math/tex; mode=display">
+\text { loss }=-\frac{1}{N} \sum_{i=1}^{N} y_{i} \log \left(p_{i}\right)+\left(1-y_{i}\right) \log \left(1-p_{i}\right)+\lambda \sum\|W\|^{2}</script></li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DCN</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, vec_dim=None, field_lens=None, cross_layer_num=None, dnn_layers=None, lr=None, dropout_rate=None)</span>:</span></div><div class="line">        self.vec_dim = vec_dim</div><div class="line">        self.field_lens = field_lens</div><div class="line">        self.field_num = len(field_lens)</div><div class="line">        self.feat_num = np.sum(field_lens)</div><div class="line">        self.cross_layer_num = cross_layer_num</div><div class="line">        self.dnn_layers = dnn_layers</div><div class="line">        self.lr = lr</div><div class="line">        self.dropout_rate = dropout_rate</div><div class="line"></div><div class="line">        self._build_graph()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_build_graph</span><span class="params">(self)</span>:</span></div><div class="line">        self.add_input()</div><div class="line">        self.inference()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_input</span><span class="params">(self)</span>:</span></div><div class="line">        self.index = tf.placeholder(tf.int32, shape=[<span class="keyword">None</span>, self.field_num], name=<span class="string">'feat_index'</span>) <span class="comment"># (batch, F)</span></div><div class="line">        self.x = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, self.field_num], name=<span class="string">'feat_value'</span>) <span class="comment"># (batch, F)</span></div><div class="line">        self.y = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>], name=<span class="string">'input_y'</span>)</div><div class="line">        self.is_train = tf.placeholder(tf.bool)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cross_layer</span><span class="params">(self, x0, xl, name)</span>:</span></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(name):</div><div class="line">            node_num = self.field_num * self.vec_dim</div><div class="line">            w = tf.get_variable(name=<span class="string">'w'</span>, shape=[node_num], dtype=tf.float32)</div><div class="line">            b = tf.get_variable(name=<span class="string">'b'</span>, shape=[node_num], dtype=tf.float32)</div><div class="line">            xl_w = tf.tensordot(xl, w, axes=[<span class="number">1</span>,<span class="number">0</span>]) <span class="comment"># (batch, )</span></div><div class="line">            x0_xl_w = tf.multiply(x0, tf.expand_dims(xl_w, <span class="number">-1</span>)) <span class="comment"># (batch, node_num)</span></div><div class="line">            x = tf.add(x0_xl_w, b) <span class="comment"># (batch, node_num)</span></div><div class="line">            x = x+xl <span class="comment"># (batch, node_num)</span></div><div class="line">        <span class="keyword">return</span> x</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inference</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'emb_part'</span>):</div><div class="line">            embed_matrix = tf.get_variable(name=<span class="string">'second_ord_v'</span>, shape=[self.feat_num, self.vec_dim], dtype=tf.float32)</div><div class="line">            embed_v = tf.nn.embedding_lookup(embed_matrix, self.index) <span class="comment"># (batch, F, K)</span></div><div class="line">            embed_x = tf.multiply(tf.expand_dims(self.x, axis=<span class="number">2</span>), embed_v)  <span class="comment"># (batch, F, K)</span></div><div class="line">            embed_x = tf.layers.dropout(embed_x, rate=self.dropout_rate, training=self.is_train)  <span class="comment"># (batch, F, K)</span></div><div class="line">            node_num = self.field_num * self.vec_dim</div><div class="line">            embed_x = tf.reshape(embed_x, shape=(<span class="number">-1</span>, node_num)) <span class="comment"># (batch, node_num)</span></div><div class="line"></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'cross_part'</span>):</div><div class="line">            cross_vec = embed_x</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(self.cross_layer_num):</div><div class="line">                cross_vec = self.cross_layer(embed_x, cross_vec, <span class="string">'cross_layer_%d'</span>%i) <span class="comment"># (batch, node_num)</span></div><div class="line"></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'dnn_part'</span>):</div><div class="line">            dnn = embed_x</div><div class="line">            in_num = node_num</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.dnn_layers)):</div><div class="line">                out_num = self.dnn_layers[i]</div><div class="line">                w = tf.get_variable(name=<span class="string">'w_%d'</span>%i, shape=[in_num, out_num], dtype=tf.float32)</div><div class="line">                b = tf.get_variable(name=<span class="string">'b_%d'</span>%i, shape=[out_num], dtype=tf.float32)</div><div class="line">                dnn = tf.matmul(dnn, w) + b</div><div class="line">                dnn = tf.layers.dropout(tf.nn.relu(dnn), rate=self.dropout_rate, training=self.is_train)</div><div class="line">                in_num = out_num</div><div class="line"></div><div class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'output_part'</span>):</div><div class="line">            in_num += node_num</div><div class="line">            output = tf.concat([cross_vec, dnn], axis=<span class="number">1</span>)</div><div class="line">            proj_w = tf.get_variable(name=<span class="string">'proj_w'</span>, shape=[in_num, <span class="number">1</span>], dtype=tf.float32)</div><div class="line">            self.y_logits = tf.matmul(output, proj_w)</div><div class="line"></div><div class="line">        self.y_hat = tf.nn.sigmoid(self.y_logits)</div><div class="line">        self.pred_label = tf.cast(self.y_hat &gt; <span class="number">0.5</span>, tf.int32)</div><div class="line">        self.loss = -tf.reduce_mean(self.y*tf.log(self.y_hat+<span class="number">1e-8</span>) + (<span class="number">1</span>-self.y)*tf.log(<span class="number">1</span>-self.y_hat+<span class="number">1e-8</span>))</div><div class="line">        self.train_op = tf.train.AdamOptimizer(self.lr).minimize(self.loss)</div></pre></td></tr></table></figure>
+<h1 id="DCN-M——2020"><a href="#DCN-M——2020" class="headerlink" title="DCN-M——2020"></a>DCN-M——2020</h1><p>通过<strong>低秩矩阵分解</strong>对参数矩阵进行降维，降低计算成本；在多个子空间中建模特征交叉。</p>
+<p>贡献：</p>
+<ul>
+<li>提出了一种新的DCN-M模型来有效地学习显式和隐式特征交叉，模型<strong>高效、简单</strong>的同时，<strong>表达能力</strong>更强。</li>
+<li>基于DCN-M中学习出的<strong>低秩矩阵</strong>，利用低秩方法来在子空间中进行<strong>近似</strong>特征交叉，在模型效果和时延上达到了更好的权衡。受MOE结构启发，将矩阵<strong>分解至多个子空间</strong>，随后通过<strong>门控机制</strong>来对这些子空间进行融合。<ul>
+<li>Mixture-of-Experts (MoE)的思想，在<strong>多个子空间</strong>中学习，然后再进行<strong>融合</strong>。MOE方法包含两部分：专家网络（即上个公式中使用低秩矩阵分解的cross网络）和门控单元（一个关于输入的函数），通过门控单元来聚合个专家网络的输出结果：</li>
+</ul>
+</li>
+<li>使用人造数据集进行了研究，结果表明<strong>传统的基于ReLU</strong>的神经网络在学习高阶特征交叉时效率较低。</li>
+</ul>
+<hr>
+<p><strong>cross网络改进</strong>：</p>
+<script type="math/tex; mode=display">
+\mathrm{x}_{l+1}=\mathrm{x}_{0} \odot\left(W_{l} \mathrm{x}_{l}+\mathrm{b}_{l}\right)+\mathrm{x}_{l}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> self.parameterization == <span class="string">'vector'</span>:</div><div class="line">    xl_w = torch.tensordot(x_l, self.kernels[i], dims=([<span class="number">1</span>], [<span class="number">0</span>]))</div><div class="line">    dot_ = torch.matmul(x_0, xl_w)</div><div class="line">    x_l = dot_ + self.bias[i]</div><div class="line"><span class="keyword">elif</span> self.parameterization == <span class="string">'matrix'</span>:</div><div class="line">    dot_ = torch.matmul(self.kernels[i], x_l)  <span class="comment"># W * xi  (bs, in_features, 1)</span></div><div class="line">    dot_ = dot_ + self.bias[i]  <span class="comment"># W * xi + b</span></div><div class="line">    dot_ = x_0 * dot_  <span class="comment"># x0 · (W * xi + b)  Hadamard-product</span></div><div class="line">x_l = dot_ + x_l</div></pre></td></tr></table></figure>
+<p>权重矩阵能够反映不同交叉特征的重要程度。</p>
+<p><strong>低秩方法</strong></p>
+<p>将一个稠密矩阵近似分解为两个”高瘦“的低秩矩阵。而且，当原矩阵的奇异值差异较大或快速衰减时，低秩分解的方法会更加有效。作者发现，<strong>DCN-M中学到的参数矩阵是低秩的（所以比较适合做矩阵分解）</strong>。</p>
+<p>这个公式有两种解释：</p>
+<p>（1）在<strong>子空间</strong>中学习特征交叉</p>
+<p>（2）将输入特征x<strong>映射到低维</strong>空间中，然后<strong>再映射回</strong></p>
+<script type="math/tex; mode=display">
+\mathrm{x}_{l+1}=\mathrm{x}_{0} \odot\left(U_{l}\left(V_{l}^{\top} \mathrm{x}_{i}\right)+\mathrm{b}_{l}\right)+\mathrm{x}_{i}</script><script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{x}_{l+1} &=\sum_{i=1}^{K} G_{i}\left(\mathrm{x}_{l}\right) E_{i}\left(\mathrm{x}_{l}\right)+\mathrm{x}_{l} \\
+E_{i}\left(\mathrm{x}_{l}\right) &=\mathrm{x}_{0} \odot\left(U_{l}^{i}\left(V_{l}^{i \top} \mathrm{x}_{l}\right)+\mathrm{b}_{l}\right)
+\end{aligned}</script><script type="math/tex; mode=display">
+E_{i}\left(\mathrm{x}_{l}\right)=\mathrm{x}_{0} \odot\left(U_{l}^{i} \cdot g\left(C_{l}^{i} \cdot g\left(V_{l}^{i \top} \mathrm{x}_{l}\right)\right)+\mathrm{b}_{l}\right)\\
+g_i\text{ is an activation function, like tanh.}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># E(x_l)</span></div><div class="line"> <span class="comment"># project the input x_l to $\mathbb&#123;R&#125;^&#123;r&#125;$</span></div><div class="line"> v_x = torch.matmul(self.V_list[i][expert_id].T, x_l)  <span class="comment"># (bs, low_rank, 1)</span></div><div class="line"></div><div class="line"> <span class="comment"># nonlinear activation in low rank space</span></div><div class="line"> v_x = torch.tanh(v_x)</div><div class="line"> v_x = torch.matmul(self.C_list[i][expert_id], v_x)</div><div class="line"> v_x = torch.tanh(v_x)</div><div class="line"> <span class="comment"># project back to $\mathbb&#123;R&#125;^&#123;d&#125;$</span></div><div class="line"> uv_x = torch.matmul(self.U_list[i][expert_id], v_x)  <span class="comment"># (bs, in_features, 1)</span></div><div class="line"> dot_ = uv_x + self.bias[i]</div></pre></td></tr></table></figure>
+<p>分解后，当时，会更加高效。矩阵的秩小于64时，极速下降。说明最重要的特征能够被最大的64个奇异值所捕捉。</p>
+<p><strong>Deep和cross的结合方式改进</strong></p>
+<p>两种方法都比之前结合方法更好，在不同数据集上不同方法各有优势</p>
+<ul>
+<li>堆叠（串行）</li>
+<li>并行</li>
+</ul>
+<hr>
+<p>公开数据集上特征交叉模式未知，且包含许多噪声数据，因此作者通过特定的特征交叉模式来生成数据集，验证各模型的效果。</p>
+<p>同时作者去除DNN，看cross network改进是否有效。</p>
+<p>其他文章：</p>
+<ul>
+<li><p>SESSION-BASED RECOMMENDATIONS WITH RECURRENT NEURAL NETWORKS——2016</p>
+<p>使用用户session中的点击序列作为模型输入，输出则为用户下次点击的item相应的得分。</p>
+</li>
+<li><p>通用模式：Sampling-Bias-Corrected Neural Modeling for Large Corpus Item Recommendations</p>
+</li>
+<li><p>序列：</p>
+<ul>
+<li>Recurrent Neural Networks with Top-k Gains for Session-based Recommendations</li>
+<li>Personalized Top-N Sequential Recommendation via Convolutional Sequence Embedding</li>
+</ul>
+</li>
+<li><p>Transformer: Self-Attentive Sequential Recommendation——2018</p>
+</li>
+<li><p>用户多兴趣：Multi-Interest Network with Dynamic Routing for Recommendation at Tmall</p>
+</li>
+<li><p>知识蒸馏在推荐系统中：<a href="https://zhuanlan.zhihu.com/p/143155437" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/143155437</a></p>
+</li>
+</ul>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=448917180&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Collaborative-Filtering/" rel="tag"><i class="fa fa-tag"></i> Collaborative Filtering</a>
+          
+            <a href="/tags/Recommender-Systems/" rel="tag"><i class="fa fa-tag"></i> Recommender Systems</a>
+          
+            <a href="/tags/Data-Structures/" rel="tag"><i class="fa fa-tag"></i> Data Structures</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/19/GNN/" rel="next" title="GNN">
+                <i class="fa fa-chevron-left"></i> GNN
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/18/Object-Detection/" rel="prev" title="Object Detection">
+                Object Detection <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Toward-the-Next-Generation-of-Recommender-Systems-A-Survey-of-the-State-of-the-Art-and-Possible-Extensions——2005"><span class="nav-number">1.</span> <span class="nav-text">Toward the Next Generation of Recommender Systems- A Survey of the State-of-the-Art and Possible Extensions——2005</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KDD2018-Learning-Tree-based-Deep-Model-for-Recommender-Systems——2018"><span class="nav-number">2.</span> <span class="nav-text">KDD2018: Learning Tree-based Deep Model for Recommender Systems——2018</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RecSys-Deep-Neural-Networks-for-YouTube-Recommendations——2016"><span class="nav-number">3.</span> <span class="nav-text">* RecSys: Deep Neural Networks for YouTube Recommendations——2016</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LR-logistic-Regression"><span class="nav-number">4.</span> <span class="nav-text">LR(logistic Regression)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Factorization-machines——2010"><span class="nav-number">5.</span> <span class="nav-text">Factorization machines——2010</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FFM-Field-aware-Factorization-Machine-——2016"><span class="nav-number">6.</span> <span class="nav-text">FFM(Field-aware Factorization Machine)——2016</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DCN-M——2020"><span class="nav-number">7.</span> <span class="nav-text">DCN-M——2020</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

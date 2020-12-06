@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Object detection,计算机视觉,lidar," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="大家都在搞lidar，搞image的我偷偷溜过来看看论文。还是对方法没有什么感觉，好像现在image的喜欢keypoint">
+<meta name="keywords" content="Object detection,计算机视觉,lidar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3DObjection_lidar">
+<meta property="og:url" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="大家都在搞lidar，搞image的我偷偷溜过来看看论文。还是对方法没有什么感觉，好像现在image的喜欢keypoint">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/multiview_2017_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/multiview_2017_3.png">
+<meta property="og:image" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/multiview_2017_2.png">
+<meta property="og:image" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/PointGNN_2020_1.png">
+<meta property="og:image" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/PointGNN_2020_2.png">
+<meta property="og:updated_time" content="2020-12-06T08:34:28.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3DObjection_lidar">
+<meta name="twitter:description" content="大家都在搞lidar，搞image的我偷偷溜过来看看论文。还是对方法没有什么感觉，好像现在image的喜欢keypoint">
+<meta name="twitter:image" content="http://mrsempress.top/2020/09/25/3DObjection-lidar/multiview_2017_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/09/25/3DObjection-lidar/"/>
+
+
+
+
+
+  <title>3DObjection_lidar | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/09/25/3DObjection-lidar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3DObjection_lidar</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-25T19:16:49+08:00">
+                2020-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/Object-detection/" itemprop="url" rel="index">
+                    <span itemprop="name">Object detection</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/09/25/3DObjection-lidar/" class="leancloud_visitors" data-flag-title="3DObjection_lidar">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>大家都在搞lidar，搞image的我偷偷溜过来看看论文。<del>还是对方法没有什么感觉，好像现在image的喜欢keypoint</del></p>
+<a id="more"></a>
+<h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><h2 id="MV3D-Multi-View-3D-Object-Detection-Network-for-Autonomous-Driving——2017"><a href="#MV3D-Multi-View-3D-Object-Detection-Network-for-Autonomous-Driving——2017" class="headerlink" title="MV3D: Multi-View 3D Object Detection Network for Autonomous Driving——2017"></a>MV3D: Multi-View 3D Object Detection Network for Autonomous Driving——2017</h2><p>A sensory-fusion framework that takes both <strong>LIDAR point cloud and RGB image</strong>s as input and predicts oriented 3D bounding boxes.</p>
+<p><strong>Two-stage detector</strong>, <strong>region proposal-based method</strong>, inspired by <strong>Faster RCNN</strong>.</p>
+<p>体素化（Voxelization）不仅包含模型的表面信息，而且能描述模型的内部属性，从二维的点扩展到了三维的立方体单元。</p>
+<hr>
+<p><img src="/2020/09/25/3DObjection-lidar/multiview_2017_1.png" alt=""></p>
+<ul>
+<li><p>提取特征： three views</p>
+<ul>
+<li><p>a提取点云俯视图特征——<strong><em>BV(bird view)</em></strong></p>
+<p>鸟瞰表达被编码成高度，强度和密度信息。我们离散投影的点云到<strong>分辨率为0.1米的二维网格中</strong>（<strong><em>采样</em></strong>）。</p>
+<ul>
+<li><p>对每一个单元格，<strong>高度特征</strong>被计算为该单元格的最大高度点。要编码更详细的高度信息，点云<strong>平分（均匀）成M片</strong>（这里的切片应该是将整个二维网格进行高度划分）。每个切片都进行高度图计算，因此，我们得到M个高度图。</p>
+</li>
+<li><p><strong>强度特征</strong>是每个单元格中<strong><em>最大高度点的映射值</em></strong>。</p>
+</li>
+<li><p><strong>密度特征</strong>表示每个单元格中的<strong><em>点的数目</em></strong>。为了归一化特征，它被计算为MIN（1，log（N+ 1）/log（64））；其中N是在单元格中的点的数目。</p>
+</li>
+</ul>
+<p>强度和密度特征计算的是整个点云，而高度特征计算的是M切片，所以，总的鸟瞰图被编码为<strong>（M + 2）</strong>个通道的特征（M height feature map, 1 intensity feature map, 1 density feature map)。</p>
+<p>优点：</p>
+<ul>
+<li>物体投影到俯视图时，保留了物体的物理尺寸，从而具有<strong>较小的尺寸方差</strong>，这在前视图/图像平面的情况下不具备的</li>
+<li>在俯视图中，物体占据不同的空间，从而<strong>避免遮挡的问题</strong></li>
+<li>由于目标通常位于地面平面上，并在<strong>垂直位置的方差较小</strong>，俯视图定位在获得准确的3D bounding box是很重要的。因此，使用俯视图作为输入，可以确保3D位置预测更可行</li>
+</ul>
+</li>
+<li><p>b提取点云前视图特征——<strong><em>FV(front view)</em></strong>：前视图是一个圆柱面，会比BV更加稠密。</p>
+<p>前视图表示对鸟瞰图表示提供了<strong>互补</strong>的信息。</p>
+<p><img src="/2020/09/25/3DObjection-lidar/multiview_2017_3.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>c提取图像特征——<strong><em>Image(RGB)</em></strong></p>
+<p>VGG-16</p>
+</li>
+</ul>
+<ul>
+<li><p>从点云俯视图特征中计算候选区域<strong>3D object proposal generation</strong></p>
+</li>
+<li><p>把候选区域分别与a、b、c得到的特征进行整合</p>
+<ul>
+<li>把俯视图候选区域投影到前视图和图像中</li>
+<li>经过ROI pooling整合成同一维度</li>
+</ul>
+</li>
+<li><p>把整合后的数据经过网络进行融合<strong>multi-view feature fusion</strong></p>
+</li>
+</ul>
+<hr>
+<p>Two subnetworks: </p>
+<ul>
+<li><p><strong><em>3D object proposal generation</em></strong></p>
+<p>3D区域提名网络利用鸟瞰视角的点云表示去产生<strong>高度精确的3D候选框</strong>。3D物体区域推荐的好处是可以在3D空间中被<strong>投影到任何视图</strong>中。</p>
+</li>
+<li><p><strong><em>multi-view feature fusion</em></strong>多角度特征融合: 多角度映射后变为2D图像，可以<strong>用2D CNN处理</strong>。</p>
+<p>深度融合的方法，使得中间层之间可以相互交互。使用deep fusion</p>
+<p><img src="/2020/09/25/3DObjection-lidar/multiview_2017_2.png" alt=""></p>
+<p>对于每一栏使用了相同的基础网络，为了<strong>正则化</strong>（规范基于区域的融合网络）增加了辅助的路径和损失：<strong>drop-path和auxiliary losses</strong></p>
+<p>对于每次迭代，我们随机选择做<strong>全局下降路径</strong>或<strong>局部下降路径</strong>的概率为50%。如果选择全局下降路径，我们从三视图中相同概率中选择一个视图。如果选择局部下降路径，每个连接节点的路径输入随机丢弃的概率为50%。我们确保每个连接节点至少保留一个输入路径。为了进一步加强每个视图的表示能力，我们在网络中添加辅助路径和损失。</p>
+</li>
+</ul>
+<hr>
+<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><p>Q:在Fast RCNN阶段为什么选择回归3D框顶点的<strong>8个坐标点</strong>，<strong>而不是车辆的位置、尺寸与角度？</strong></p>
+<p>A:作者认为，直接回归3D框坐标，可以更好地<strong>对应</strong>俯视图以及前视图feature map的<strong>空间关系。</strong>实际上作者也进行了实验，<strong>回归3D框顶点的8个点</strong>与回归3D参数相比，在2D检测上的<strong>精度（AP）更高</strong>。在应用算法时，<strong>不需要</strong>对8个点实际是一个3D立方体<strong>做额外的后处理</strong>，算法的直接输出已经是一个合理的3D立方体坐标。</p>
+<p>Q:对于使用3路不同input与只使用其中2路或1路input的实验，训练/测试方案是怎样的？</p>
+<p>A:对于缺少输入的情形（如只用激光雷达俯视加视觉，或只用视觉），作者都是使用这种输入方案重新训练模型并测试的。作者没有尝试过用3路input训练的模型但是用2路input来测试的效果。但是由于训练中加入了drop path，即随机只使用一路input，或在某层进行element-wise mean时不加入某路input的输出，故输出可能也是有效的。</p>
+<p>Q:这种激光雷达+视觉的方案是不是与硬件（如相机与激光雷达的外参等）绑定的？</p>
+<p>A:作者认为，网络中从<strong>3D proposal生成</strong>各个view的proposal过程中<strong>依赖硬件外参</strong>。如果外参有了微小改动，可能可以进行重新标定后调整生成proposal的参数，并没有进行相关的实验。但是如果硬件<strong>外参改变过大</strong>，以至于影响了输入数据的分布情况，那么<strong>肯定就不能复用模型了。</strong></p>
+<h2 id="Point-GNN-Graph-Neural-Network-for-3D-Object-Detection-in-a-Point-Cloud——2020"><a href="#Point-GNN-Graph-Neural-Network-for-3D-Object-Detection-in-a-Point-Cloud——2020" class="headerlink" title="Point-GNN: Graph Neural Network for 3D Object Detection in a Point Cloud——2020"></a>Point-GNN: Graph Neural Network for 3D Object Detection in a Point Cloud——2020</h2><p>由于lidar点云稀疏的特点，并且CNN需要输入是规则的grid，为了减少无效计算（sample、group），提出了将点云先进行<strong>图重建</strong>，将在固定半径r内的点连作边，然后用<strong>GNN</strong>迭代T回合来提取特征，预测得到<strong><em>类别和object的shape</em></strong>。在GNN中采用了<strong>auto-registration mechanism</strong> to <strong><em>reduce translation variance</em></strong>，设计了<strong>a box merging and scoring operation</strong> to <strong><em>combine</em></strong> detections from <strong><em>multiple vertices</em></strong> accurately。</p>
+<p>Point-GNN：<strong>one-stage</strong></p>
+<hr>
+<p><img src="/2020/09/25/3DObjection-lidar/PointGNN_2020_1.png" alt=""></p>
+<ul>
+<li><p>Graph construction</p>
+<p>对于一个点用元组<script type="math/tex">p_i=(x_i,s_i)</script>表示，其中<script type="math/tex">x_i\in \mathbb R^3</script>表示坐标，用<script type="math/tex">s_i\in \mathbb R^k</script>表示状态值（反映laser intensity或者features）。但是由于点太多，因此用了体素下采样来减少点云的密度。</p>
+<p>使用MLP，然后用MAX函数堆叠效应。</p>
+<p>限制了每个点的边至多256个；数据增强choose a simple scheme of <strong>global rotation, global ﬂipping, box translation and vertex jitter</strong>.</p>
+</li>
+<li><p>Graph Neural Network with Auto-Registration</p>
+<p>Reﬁnes the vertex features by aggregating features along the edges. 在<script type="math/tex">(t+1)^{th}</script>迭代中，更新每一个点的特征：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v_{i}^{t+1} &=g^{t}\left(\rho\left(\left\{e_{i j}^{t} \mid(i, j) \in E\right\}\right), v_{i}^{t}\right) \\
+e_{i j}^{t} &=f^{t}\left(v_{i}^{t}, v_{j}^{t}\right)
+\end{aligned}</script><p>e: edge; v: vertex; f: computes the edge feature between two vertice; <script type="math/tex">\rho</script>: aggregates the edge features for each vertex; g: takes the aggregated edge features to update the vertex features. 更新点时同时更新状态。</p>
+<script type="math/tex; mode=display">
+s_{i}^{t+1}=g^{t}\left(\rho\left(\left\{f^{t}\left(x_{j}-x_{i}, s_{j}^{t}\right) \mid(i, j) \in E\right\}\right), s_{i}^{t}\right)</script><p>The relative coordinates <strong>induce translation invariance</strong> against the global shift of the point cloud.</p>
+<p>Because the <strong>center vertex</strong> already contains some <strong>structural features</strong> from the previous iteration, we can use it to <strong>predict an alignment offset</strong>, and propose an <strong>auto-registration mechanism</strong>:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Delta x_{i}^{t} &=h^{t}\left(s_{i}^{t}\right) \\
+s_{i}^{t+1} &=g^{t}\left(\rho\left(\left\{f\left(x_{j}-x_{i}+\Delta x_{i}^{t}, s_{j}^{t}\right)\right\}, s_{i}^{t}\right)\right.
+\end{aligned}</script><p>其中，<script type="math/tex">\Delta x_{i}^{t}</script>is the coordination offset. g, h, f都是MLP实现，g会增加一个residual connection。<script type="math/tex">\rho</script>是MAX 过滤。</p>
+<p>上述可以写为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Delta x_{i}^{t} &=M L P_{h}^{t}\left(s_{i}^{t}\right) \\
+e_{i j}^{t} &=M L P_{f}^{t}\left(\left[x_{j}-x_{i}+\Delta x_{i}^{t}, s_{j}^{t}\right]\right) \\
+s_{i}^{t+1} &=M L P_{g}^{t}\left(\operatorname{Max}\left(\left\{e_{i j} \mid(i, j) \in E\right\}\right)\right)+s_{i}^{t}
+\end{aligned}</script><p>其中[,]表示连接操作。每一次迭代使用不同的MLP，不共享参数。</p>
+</li>
+<li><p>Loss</p>
+<p><strong>分类分支</strong>给出每一个类别的可能性，包括background class。use the average <strong>cross-entropy loss</strong> as the <strong>classiﬁcation loss.</strong></p>
+<script type="math/tex; mode=display">
+l_{c l s}=-\frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{M} y_{c_{j}}^{i} \log \left(p_{c_{j}}^{i}\right)</script><p>j是类别，i是点，c表示点</p>
+<p><strong>shape分支</strong>，预测7个自由度<script type="math/tex">b=(x,y,z,l,h,w,\theta)</script>. 通过中心点<script type="math/tex">(x_v,y_v,z_v)</script>来扩展，下表带m和0的是固定的值</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\delta_{x}=\frac{x-x_{v}}{l_{m}}, \delta_{y}=\frac{y-y_{v}}{h_{m}}, \delta_{z}=\frac{z-z_{v}}{w_{m}} \\
+\delta_{l}=\log \left(\frac{l}{l_{m}}\right), \delta_{h}=\log \left(\frac{h}{h_{m}}\right), \delta_{w}=\log \left(\frac{w}{w_{m}}\right) \\
+\delta_{\theta}=\frac{\theta-\theta_{0}}{\theta_{m}}
+\end{array}</script><p>Use <strong>Huber loss</strong> to compute；如果中心点在所有bbox外面，那么localization loss设置为0；整个localization loss 求的是所有点的平均值。</p>
+<script type="math/tex; mode=display">
+l_{l o c}=\frac{1}{N} \sum_{i=1}^{N} \mathbb{1}\left(v_{i} \in {b_{i n t e r e s t}}\right) \sum_{\delta \in \delta_{b_{i}}} l_{h u b e r}\left(\delta-\delta^{g t}\right)</script><p>整体的loss（为了避免overfitting，对于每一个MLP增加了L1正则项：</p>
+<script type="math/tex; mode=display">
+l_{\text {total}}=\alpha l_{c l s}+\beta l_{l o c}+\gamma l_{r e g}</script></li>
+<li><p>Box Merging and Scoring</p>
+<p>As <strong>multiple vertices</strong> can be on the same object, the neural network can output multiple bounding boxes of the same object. Use <strong>NMS.</strong>【一般是留下分类分数最高的框，但是分类分数不一定反映出localization的质量】propose to calculate the merged box by considering the <strong>entire overlapped</strong> box cluster.</p>
+<p><img src="/2020/09/25/3DObjection-lidar/PointGNN_2020_2.png" style="zoom:53%;"></p>
+<script type="math/tex; mode=display">
+o_{i}=\frac{1}{l_{i} w_{i} h_{i}} \prod_{v \in\left\{v_{i}^{l}, v_{i}^{w}, v_{i}^{h}\right\}} \max _{p_{j} \in b_{i}}\left(v^{T} x_{j}\right)-\min _{p_{j} \in b_{i}}\left(v^{T} x_{j}\right)</script><p>o：遮挡因子的计算方法。</p>
+</li>
+</ul>
+<h1 id="lidar相关"><a href="#lidar相关" class="headerlink" title="lidar相关"></a>lidar相关</h1><p>由于暂时不接触lidar，但是相关的一些基础知识可能还需要涉及一下；特此这一部分来说明。</p>
+<h2 id="lidar-gt-Info"><a href="#lidar-gt-Info" class="headerlink" title="lidar -&gt; Info."></a>lidar -&gt; Info.</h2><ol>
+<li><p>激光雷达获取到三维点去数据</p>
+</li>
+<li><p>点云分离</p>
+</li>
+<li><p>聚类，一般都是通过计算相邻两个激光点间的距离来决定是否属于同一类。</p>
+</li>
+<li><p>障碍物识别</p>
+<p>将3D点云体素化，提取结构特征之后送入到SVM或者神经网络中进行分类，还有的使用了点云的前视图，包含2D点云图，使用了一个全连接的卷积网络作用在2D点云图上从而预测出3D的boxes。计算量太大</p>
+</li>
+<li><p>前后两频对比，可以识别是静态障碍物还是动态障碍物。</p>
+</li>
+<li><p>动态障碍物可以计算出运动速度等。</p>
+</li>
+<li><p>结合无人驾驶汽车当前的位置信息，计算出避障所需的最小安全距离，达到避障功能。</p>
+</li>
+</ol>
+<h2 id="Lidar激光雷达-VS-Radar雷达"><a href="#Lidar激光雷达-VS-Radar雷达" class="headerlink" title="Lidar激光雷达 VS Radar雷达"></a>Lidar激光雷达 VS Radar雷达</h2><ul>
+<li>Radar属于毫米波，通常是4-12mm; lidar用的是激光波长通常在900-1500nm之间</li>
+<li>Radar主要使用的是<strong>无线电波</strong>，与光波相比，遇到障碍物时无线电波不容易被吸收，所以其<strong>有效工作距离更远</strong>；在雨雪尘环境下效果可以保持</li>
+<li>Lidar看得<strong>更“细”，更精确</strong>（过近的不可）；LiDAR传感器快速发射<strong>激光</strong>脉冲（通常最高可达每秒150000次脉冲），激光信号到达障碍物后反射回LiDAR传感器。传感器通过测量激光信号从发射到返回的时间，精确计算确定传感器到障碍物之间的距离，它还能探测目标物体的准确尺寸。LiDAR通常用于高分辨率地图的绘制。</li>
+</ul>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>最近在做一个改变的时候，总是会思考一件事情，这个东西人会这么做吗？这个任务人可以做到吗？人会怎么做？然后就会发现，现在做的似乎只是一个相对快速得到简略结果的方法，有些失望。似乎，我认为机器就是我自己，我会去做到吗？（但我在学驾照的时候，师傅总是说我目测估计能力很差，大概我这个模型就是不成功的吧……</p>
+<p>就好像回归三个信息位置、尺寸与角度，但是对于人来说会去评估这些东西吗？还是会直接去衡量角点的位置以及方向呢？又比如对于马路上运行的一辆车，在远处时开了5米，这前后帧的图片不是类似，又怎么去学习呢？好像很难说服自己，可能网络会关注更细节的东西吧～</p>
+<p>最近看到的很有意思的想法：大概是一个注意力机制的东西，减少无谓的区域的计算；通常图片和特殊情况图片分别建模；关注物体内在的信息</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Object-detection/" rel="tag"><i class="fa fa-tag"></i> Object detection</a>
+          
+            <a href="/tags/计算机视觉/" rel="tag"><i class="fa fa-tag"></i> 计算机视觉</a>
+          
+            <a href="/tags/lidar/" rel="tag"><i class="fa fa-tag"></i> lidar</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/10/随想小记-2020-09-10/" rel="next" title="随想小记-2020-09-10">
+                <i class="fa fa-chevron-left"></i> 随想小记-2020-09-10
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/08/随想小记-2020-10-08/" rel="prev" title="随想小记-2020-10.08">
+                随想小记-2020-10.08 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paper"><span class="nav-number">1.</span> <span class="nav-text">Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MV3D-Multi-View-3D-Object-Detection-Network-for-Autonomous-Driving——2017"><span class="nav-number">1.1.</span> <span class="nav-text">MV3D: Multi-View 3D Object Detection Network for Autonomous Driving——2017</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">1.1.1.</span> <span class="nav-text">Q&A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Point-GNN-Graph-Neural-Network-for-3D-Object-Detection-in-a-Point-Cloud——2020"><span class="nav-number">1.2.</span> <span class="nav-text">Point-GNN: Graph Neural Network for 3D Object Detection in a Point Cloud——2020</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lidar相关"><span class="nav-number">2.</span> <span class="nav-text">lidar相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lidar-gt-Info"><span class="nav-number">2.1.</span> <span class="nav-text">lidar -> Info.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lidar激光雷达-VS-Radar雷达"><span class="nav-number">2.2.</span> <span class="nav-text">Lidar激光雷达 VS Radar雷达</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_2.png">
 <meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_3.png">
 <meta property="og:image" content="http://mrsempress.top/2020/07/08/CVPR-2020/Yong_4.png">
-<meta property="og:updated_time" content="2020-09-10T11:46:47.475Z">
+<meta property="og:updated_time" content="2020-09-15T04:41:45.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CVPR-2020">
 <meta name="twitter:description" content="CVPR 2020论文出炉，阅读中，小小记录。分类来自amusi。">
@@ -495,14 +495,15 @@ L_{ga}= \mathbb E[\log(D_3(G_3(g_i^s))] + \mathbb E[1 − \log(D_3(G_3(g_i^t))]<
 <li><p><strong>Context-aware Instance-Level Alignment (CILA) module</strong>：which enhances the <strong>local discriminability</strong>(<strong>calibrate</strong> the local transferability) by capturing the underlying complementary effect between the <strong><em>instance-level</em></strong> feature and the global context information for the instance-level feature alignment.(<strong>the context vector</strong> is aggregated from the <strong>lower layer</strong>, which is relatively <strong>invariant (transferability)</strong> across domains.)</p>
 <p>由于直接<strong>concatenation</strong> context features and the instance-level features，它们相互之间就是独立的，忽略它们是可以作为对方的<strong>互补</strong>这一影响，由此提出了a non-linear fusion strategy：</p>
 <script type="math/tex; mode=display">
-f_{fus} = [f_c^1, f_c^2, f_c^3] \otimes f_{ins}</script><script type="math/tex; mode=display">\otimes$$ denotes the tensor product operation
-
-但是这样做，会使得**维度爆炸**$$d_c\times d_{ins}$$，由此提出了新的**随机**方法。</script><p>f_{fus}=\frac 1 {\sqrt{d}}(R_1f_c)\odot(R_2f_{ins})\\<br>f_c=[f_c^1, f_c^2, f_c^3]</p>
+f_{fus} = [f_c^1, f_c^2, f_c^3] \otimes f_{ins}</script><p>其中，<script type="math/tex">\otimes</script> denotes the tensor product operation</p>
+<p>但是这样做，会使得<strong>维度爆炸</strong><script type="math/tex">d_c\times d_{ins}</script>，由此提出了新的<strong>随机</strong>方法。</p>
 <script type="math/tex; mode=display">
-$$\odot$$ stands for the Hadamard product. $$R_1$$ and $$R_2$$ are random matrices, sampled from **uniform distribution** **only once** and **not updated** during training.
-
-由此这一部分的损失函数定义为：</script><p>L_{ins}= -\frac{1}{N_s}\sum^{N_s}_{i=1}\sum_{i,j}\log(D_{ins}(f_{fus}^{i,j})_s)\\<br>= -\frac{1}{N_t}\sum^{N_t}_{i=1}\sum_{i,j}\log(1-D_{ins}(f_{fus}^{i,j})_t)<br>$$</p>
-</li>
+f_{fus}=\frac 1 {\sqrt{d}}(R_1f_c)\odot(R_2f_{ins})\\
+f_c=[f_c^1, f_c^2, f_c^3]</script><p>其中，<script type="math/tex">\odot</script> stands for the Hadamard product. <script type="math/tex">R_1</script> and <script type="math/tex">R_2</script> are random matrices, sampled from <strong>uniform distribution</strong> <strong>only once</strong> and <strong>not updated</strong> during training.</p>
+<p>由此这一部分的损失函数定义为：</p>
+<script type="math/tex; mode=display">
+L_{ins}= -\frac{1}{N_s}\sum^{N_s}_{i=1}\sum_{i,j}\log(D_{ins}(f_{fus}^{i,j})_s)\\
+= -\frac{1}{N_t}\sum^{N_t}_{i=1}\sum_{i,j}\log(1-D_{ins}(f_{fus}^{i,j})_t)</script></li>
 </ul>
 <p><strong>总的训练损失为</strong>：</p>
 <script type="math/tex; mode=display">
@@ -561,7 +562,7 @@ max_{D_1,D_2,D_3}min_{G_1,G_2,G_3}\ \mathcal{L_{cls}+L_{reg}-\lambda(L_{la}+L_{m
 I'=\frac{1}{d\cdot k\cdot k}\cdot \sum_w A^w (I)\sum_{g_i,g_j}(I\odot D)^{(g_i*w,g_j*w)}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = dynamic_local_filtering(x, depth, dilated=<span class="number">1</span>) * weight[:, :, :, <span class="number">0</span>:<span class="number">1</span>] \</div><div class="line">              + dynamic_local_filtering(x, depth, dilated=<span class="number">2</span>) * weight[:, :, :, <span class="number">1</span>:<span class="number">2</span>] \</div><div class="line">              + dynamic_local_filtering(x, depth, dilated=<span class="number">3</span>) * weight[:, :, :, <span class="number">2</span>:<span class="number">3</span>]</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>可以解决2D卷积中**尺度不敏感和无意义的局部结构**信息，同时也**利用好了RGB的信息**。
+<pre><code> 可以解决2D卷积中**尺度不敏感和无意义的局部结构**信息，同时也**利用好了RGB的信息**。
 </code></pre><ul>
 <li><p>2D-3D detection head</p>
 <ul>
@@ -664,15 +665,16 @@ D(u,v)=\frac{f_U\times b}{Y(u,v)}</script></li>
 Z ∝\frac 1 D\to \delta Z ∝ \delta \frac 1 {D^2}D \to \delta Z ∝ Z^2 \delta D.</script><p>所以直接用深度的误差作为损失函数（而不是使用视差）；并且3D卷积，也是在深度图之上。</p>
 <p>the depth cost volume <script type="math/tex">C_{depth}</script> , in which <script type="math/tex">C_{depth}(u, v, z, :)</script>will encode features describing how likely the depth <script type="math/tex">Z(u, v)</script> of pixel<script type="math/tex">(u, v)</script> is <script type="math/tex">z</script>.</p>
 <script type="math/tex; mode=display">
-Z(u, v) = softmax(−S_{depth}(u, v, z)) × z</script><script type="math/tex; mode=display">S_{depth}$$used to predict the pixel depth similar.
-
-在道理上，$$C_{disp}(u, v, \frac{f_U\times b}{z}, :)$$应该和$$C_{depth}(u, v, z, :)$$有同步的耗费，这里用了双线性插值。
-
-第二个方向就是用价格较低的lidar（~~应该是发出的激光线比较小，获取的信息比较稀疏的那种~~）来矫正伪雷达点云。
-
-* First, we characterize the local shapes by the directed **K-nearest-neighbor (KNN)** graph in the PL point cloud
-
-* solve for these weights with the following constrained **quadratic** optimization problem:</script><p>  W = arg\ min_W |Z − WZ|^2_2 ,s.t. W1 = 1\ and\ W_{ij} = 0\ if\ j \notin N_i<br>  $$</p>
+Z(u, v) = softmax(−S_{depth}(u, v, z)) × z</script><p>其中，<script type="math/tex">S_{depth}</script>used to predict the pixel depth similar.</p>
+<p>在道理上，<script type="math/tex">C_{disp}(u, v, \frac{f_U\times b}{z}, :)</script>应该和<script type="math/tex">C_{depth}(u, v, z, :)</script>有同步的耗费，这里用了双线性插值。</p>
+<p>第二个方向就是用价格较低的lidar（<del>应该是发出的激光线比较小，获取的信息比较稀疏的那种</del>）来矫正伪雷达点云。</p>
+<ul>
+<li><p>First, we characterize the local shapes by the directed <strong>K-nearest-neighbor (KNN)</strong> graph in the PL point cloud</p>
+</li>
+<li><p>solve for these weights with the following constrained <strong>quadratic</strong> optimization problem:</p>
+<script type="math/tex; mode=display">
+W = arg\ min_W \|Z − WZ\|^2_2 ,s.t. W1 = 1\ and\ W_{ij} = 0\ if\ j \notin N_i</script></li>
+</ul>
 <p><strong>The two steps</strong> described in the main paper can be easily turned into <strong>two (sparse) linear systems</strong> and then solved by using <strong>Lagrange multipliers.</strong> For the ﬁrst step, we solve a problem that is slightly modiﬁed from that described in the main paper (for more accurate reconstruction). For the second step, we use the <strong>Conjugate Gradient (CG)</strong> to iteratively solve the sparse linear system.</p>
 <p><img src="/2020/07/08/CVPR-2020/Wang_4.png" style="zoom:67%;"></p>
 </li>
@@ -723,7 +725,9 @@ arg\ min_{(u_i,v_i,z_i)_{i=1}^N}\ e^TWe</script><p>e is the <strong>Pairwise Con
 <li><p>distance<code>W x H x 3</code>: The <strong>3D absolute distance</strong> <script type="math/tex">k_{ij}^v = (k_x^v , k_y^v , k_z^v)_{ij}</script> along the <strong><em>view point direction</em></strong> are taken as the regression target which is the distance branch of the pair constraint output.</p>
 <p>For <strong>training</strong>, <script type="math/tex">k_{ij}^v</script> can be easily collected through the <strong>groundtruth 3D object centers</strong> from the training data as:</p>
 <script type="math/tex; mode=display">
-k_{ij}^v=\vec{|R(\gamma_{ij})k_{ij}^w)|}</script><script type="math/tex; mode=display">|\vec ·|$$ means extract absolute value of **each entry** in the vector. $$k_{ij}^w = c_i^w − c_j^w$$ is the **3D distance in camera coordinate**, $$\gamma_{ij} = arctan(p_x^w / p_z^w)$$ is the **view direction of their middle point** $$p_{ij}^w$$ , and $$R(\gamma_{ij})$$ is its **rotation matrix** along the **Y axis** as</script><p>R(\gamma_{ij})=\left[\begin{matrix}cos(\gamma_{ij})&amp;0&amp;-sin(\gamma_{ij})\\0&amp;1&amp;0\\sin(\gamma_{ij})&amp;0&amp;cos(\gamma_{ij})\end{matrix}\right]<br><script type="math/tex">这里不使用</script>k_{ij}^w$$的原因是，（相机坐标系下）从不同角度看pair的距离是变换的，如图：</p>
+k_{ij}^v=\vec{|R(\gamma_{ij})k_{ij}^w)|}</script><p>其中，<script type="math/tex">|\vec ·|</script> means extract absolute value of <strong>each entry</strong> in the vector. <script type="math/tex">k_{ij}^w = c_i^w − c_j^w</script> is the <strong>3D distance in camera coordinate</strong>, <script type="math/tex">\gamma_{ij} = arctan(p_x^w / p_z^w)</script> is the <strong>view direction of their middle point</strong> <script type="math/tex">p_{ij}^w</script> , and <script type="math/tex">R(\gamma_{ij})</script> is its <strong>rotation matrix</strong> along the <strong>Y axis</strong> as</p>
+<script type="math/tex; mode=display">
+R(\gamma_{ij})=\left[\begin{matrix}cos(\gamma_{ij})&0&-sin(\gamma_{ij})\\0&1&0\\sin(\gamma_{ij})&0&cos(\gamma_{ij})\end{matrix}\right]</script><p>这里不使用<script type="math/tex">k_{ij}^w</script>的原因是，（相机坐标系下）从不同角度看pair的距离是变换的，如图：</p>
 <p><img src="/2020/07/08/CVPR-2020/Yong_4.png" alt=""></p>
 </li>
 <li><p>distance<script type="math/tex">\sigma</script><code>W x H x 1</code>:</p>
@@ -735,139 +739,28 @@ k_{ij}^v=\vec{|R(\gamma_{ij})k_{ij}^w)|}</script><script type="math/tex; mode=di
 <p>Following the heteroscedastic aleatoric uncertainty setup异方差的不确定性设置, we represent a regression task with L1 loss as</p>
 <script type="math/tex; mode=display">
 [\tilde y, \tilde \sigma] = f^\theta(x)\\
-L(\theta) =\frac{\sqrt 2}{\tilde \sigma}\|y − \tilde y\| + \log \tilde \sigma</script><script type="math/tex; mode=display">\tilde\sigma$$ is another output of the model and can represent the observation **noise of the data x**. $$\theta$$ is the **weight** of the regression model.
-
-~~最后结果里面baseline就比其他方法高了，感觉怪怪的，这里的baseline是指指只用3D和3D这两个分支么~~
-
-
-
-## 视频目标检测
-
-
-
-## 车道线检测
-
-
-
-## "人-物"交互(HOI)检测
-
-
-
-# 目标跟踪
-
-
-
-# 分割
-
-## 语义分割
-
-
-
-## 实例分割
-
-### D2Det: Towards High Quality Object Detection and Instance Segmentation
-
-见`检测-目标检测`
-
-
-
-## 全景分割
-
-
-
-## 视频目标分割
-
-
-
-## 超像素分割
-
-
-
-## 交互式图像分割
-
-
-
-# CNN
-
-
-
-# NAS
-
-
-
-# GAN
-
-
-
-# Re-ID
-
-
-
-# 3D点云（分类/分割/配准/跟踪等）
-
-
-
-# 人脸（识别/检测/重建等）
-
-
-
-# 人体姿态估计(2D/3D)
-
-
-
-# 人体解析
-
-
-
-# 文本
-
-## 场景文本检测
-
-## 场景文本识别
-
-
-
-# 特征(点)检测和描述
-
-
-
-# 超分辨率
-
-
-
-# 模型压缩/剪枝
-
-
-
-# 视频理解/行为识别
-
-
-
-# 人群计数
-
-
-
-# 深度估计
-
-## On the uncertainty of self-supervised monocular depth estimation
-
-自监督是一件不确定的事情，本篇论文**提出了与深度估计有关的不确定度的评价方法**，并评估了**自监督方法下的深度估计的不确定性**为多少，以及**对深度估计的影响**；同时还提出了一种**boost+self-teaching**的不确定评估方法，可以提高深度估计的准确性。
-
-**不确定性估计的方法：**
-
-* 图像反转(post)：利用**图像翻转**来进行不确定度的估计的，对原始的网络不用经过任何的修改，只需要在进行inference的时候进行两次forward就行了，这种方法得到的就是**小样本**上的方差。即计算***当前图片的深度图*** 与***反转图片的深度图的反转*** 的相似性。</script><p>  u_{post}=|d-d^{\rightleftharpoons}|</p>
+L(\theta) =\frac{\sqrt 2}{\tilde \sigma}\|y − \tilde y\| + \log \tilde \sigma</script><p>其中，<script type="math/tex">\tilde\sigma</script> is another output of the model and can represent the observation <strong>noise of the data x</strong>. <script type="math/tex">\theta</script> is the <strong>weight</strong> of the regression model.</p>
+<p><del>最后结果里面baseline就比其他方法高了，感觉怪怪的，这里的baseline是指指只用3D和3D这两个分支么</del></p>
+<h2 id="视频目标检测"><a href="#视频目标检测" class="headerlink" title="视频目标检测"></a>视频目标检测</h2><h2 id="车道线检测"><a href="#车道线检测" class="headerlink" title="车道线检测"></a>车道线检测</h2><h2 id="“人-物”交互-HOI-检测"><a href="#“人-物”交互-HOI-检测" class="headerlink" title="“人-物”交互(HOI)检测"></a>“人-物”交互(HOI)检测</h2><h1 id="目标跟踪"><a href="#目标跟踪" class="headerlink" title="目标跟踪"></a>目标跟踪</h1><h1 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h1><h2 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h2><h2 id="实例分割"><a href="#实例分割" class="headerlink" title="实例分割"></a>实例分割</h2><h3 id="D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation-1"><a href="#D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation-1" class="headerlink" title="D2Det: Towards High Quality Object Detection and Instance Segmentation"></a>D2Det: Towards High Quality Object Detection and Instance Segmentation</h3><p>见<code>检测-目标检测</code></p>
+<h2 id="全景分割"><a href="#全景分割" class="headerlink" title="全景分割"></a>全景分割</h2><h2 id="视频目标分割"><a href="#视频目标分割" class="headerlink" title="视频目标分割"></a>视频目标分割</h2><h2 id="超像素分割"><a href="#超像素分割" class="headerlink" title="超像素分割"></a>超像素分割</h2><h2 id="交互式图像分割"><a href="#交互式图像分割" class="headerlink" title="交互式图像分割"></a>交互式图像分割</h2><h1 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h1><h1 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h1><h1 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h1><h1 id="Re-ID"><a href="#Re-ID" class="headerlink" title="Re-ID"></a>Re-ID</h1><h1 id="3D点云（分类-分割-配准-跟踪等）"><a href="#3D点云（分类-分割-配准-跟踪等）" class="headerlink" title="3D点云（分类/分割/配准/跟踪等）"></a>3D点云（分类/分割/配准/跟踪等）</h1><h1 id="人脸（识别-检测-重建等）"><a href="#人脸（识别-检测-重建等）" class="headerlink" title="人脸（识别/检测/重建等）"></a>人脸（识别/检测/重建等）</h1><h1 id="人体姿态估计-2D-3D"><a href="#人体姿态估计-2D-3D" class="headerlink" title="人体姿态估计(2D/3D)"></a>人体姿态估计(2D/3D)</h1><h1 id="人体解析"><a href="#人体解析" class="headerlink" title="人体解析"></a>人体解析</h1><h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><h2 id="场景文本检测"><a href="#场景文本检测" class="headerlink" title="场景文本检测"></a>场景文本检测</h2><h2 id="场景文本识别"><a href="#场景文本识别" class="headerlink" title="场景文本识别"></a>场景文本识别</h2><h1 id="特征-点-检测和描述"><a href="#特征-点-检测和描述" class="headerlink" title="特征(点)检测和描述"></a>特征(点)检测和描述</h1><h1 id="超分辨率"><a href="#超分辨率" class="headerlink" title="超分辨率"></a>超分辨率</h1><h1 id="模型压缩-剪枝"><a href="#模型压缩-剪枝" class="headerlink" title="模型压缩/剪枝"></a>模型压缩/剪枝</h1><h1 id="视频理解-行为识别"><a href="#视频理解-行为识别" class="headerlink" title="视频理解/行为识别"></a>视频理解/行为识别</h1><h1 id="人群计数"><a href="#人群计数" class="headerlink" title="人群计数"></a>人群计数</h1><h1 id="深度估计"><a href="#深度估计" class="headerlink" title="深度估计"></a>深度估计</h1><h2 id="On-the-uncertainty-of-self-supervised-monocular-depth-estimation"><a href="#On-the-uncertainty-of-self-supervised-monocular-depth-estimation" class="headerlink" title="On the uncertainty of self-supervised monocular depth estimation"></a>On the uncertainty of self-supervised monocular depth estimation</h2><p>自监督是一件不确定的事情，本篇论文<strong>提出了与深度估计有关的不确定度的评价方法</strong>，并评估了<strong>自监督方法下的深度估计的不确定性</strong>为多少，以及<strong>对深度估计的影响</strong>；同时还提出了一种<strong>boost+self-teaching</strong>的不确定评估方法，可以提高深度估计的准确性。</p>
+<p><strong>不确定性估计的方法：</strong></p>
+<ul>
+<li><p>图像反转(post)：利用<strong>图像翻转</strong>来进行不确定度的估计的，对原始的网络不用经过任何的修改，只需要在进行inference的时候进行两次forward就行了，这种方法得到的就是<strong>小样本</strong>上的方差。即计算<strong><em>当前图片的深度图</em></strong> 与<strong><em>反转图片的深度图的反转</em></strong> 的相似性。</p>
 <script type="math/tex; mode=display">
-
-* 经验评估：**多次**</script><p>  \mu (d)=\frac 1 N \sum_{i=1}^N d_i\\<br>  u_{drop/boot/snap}=\sigma^2(d)=\frac 1 N \sum_{i=1}^N (d_i-\mu(d))^2</p>
+u_{post}=|d-d^{\rightleftharpoons}|</script></li>
+<li><p>经验评估：<strong>多次</strong></p>
 <script type="math/tex; mode=display">
-
-  * Dropout Sampling(drop)：之前的dropout是发生在训练的时候，通过随机丢掉一些信息，使得数据不过拟合。现在**在测试中多次随机丢失**，抽样出不同的模型。多次深度估计得到均值和方差。
-
-  * Bootstrapped Ensemble(Boot)：**不同参数初始化**
-
-  * Snapshot Ensemble(snap)：用余弦退火方法**周期性地改变学习速率**：C实验中设置为20</script><pre><code>\lambda_t=\frac{\lambda_0}{2}\cdot(\cos (\frac{\pi\cdot mod(t-1, \lceil\frac T C\rceil)}{\lceil\frac T C\rceil})+1)
-$$
-</code></pre><ul>
+\mu (d)=\frac 1 N \sum_{i=1}^N d_i\\
+u_{drop/boot/snap}=\sigma^2(d)=\frac 1 N \sum_{i=1}^N (d_i-\mu(d))^2</script><ul>
+<li><p>Dropout Sampling(drop)：之前的dropout是发生在训练的时候，通过随机丢掉一些信息，使得数据不过拟合。现在<strong>在测试中多次随机丢失</strong>，抽样出不同的模型。多次深度估计得到均值和方差。</p>
+</li>
+<li><p>Bootstrapped Ensemble(Boot)：<strong>不同参数初始化</strong></p>
+</li>
+<li><p>Snapshot Ensemble(snap)：用余弦退火方法<strong>周期性地改变学习速率</strong>：C实验中设置为20</p>
+<script type="math/tex; mode=display">
+\lambda_t=\frac{\lambda_0}{2}\cdot(\cos (\frac{\pi\cdot mod(t-1, \lceil\frac T C\rceil)}{\lceil\frac T C\rceil})+1)</script></li>
+</ul>
+</li>
 <li><p>学习一个预测<strong>不确定度的模型</strong></p>
 <ul>
 <li><p>Learned Reprojection(Repr)：投影的关系在没有标签的数据中难以使用，但可以（模仿知道的情况）重构。</p>
@@ -1073,7 +966,7 @@ p(d^∗|I,D) \approx \sum_{i=1}^N p(d^∗|\Theta(I, w_i))\\
             
               <a href="/archives">
             
-                <span class="site-state-item-count">113</span>
+                <span class="site-state-item-count">126</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1084,7 +977,7 @@ p(d^∗|I,D) \approx \sum_{i=1}^N p(d^∗|\Theta(I, w_i))\\
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1095,7 +988,7 @@ p(d^∗|I,D) \approx \sum_{i=1}^N p(d^∗|\Theta(I, w_i))\\
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1191,7 +1084,7 @@ p(d^∗|I,D) \approx \sum_{i=1}^N p(d^∗|\Theta(I, w_i))\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像分类"><span class="nav-number">1.1.</span> <span class="nav-text">图像分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频分类"><span class="nav-number">1.2.</span> <span class="nav-text">视频分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检测"><span class="nav-number">2.</span> <span class="nav-text">检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标检测"><span class="nav-number">2.1.</span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation"><span class="nav-number">2.1.1.</span> <span class="nav-text">D2Det: Towards High Quality Object Detection and Instance Segmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Harmonizing-Transferability-and-Discriminability-for-Adapting-Object-Detectors"><span class="nav-number">2.1.2.</span> <span class="nav-text">Harmonizing Transferability and Discriminability for Adapting Object Detectors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D目标检测"><span class="nav-number">2.2.</span> <span class="nav-text">3D目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Depth-Guided-Convolutions-for-Monocular-3D-Object-Detection"><span class="nav-number">2.2.1.</span> <span class="nav-text">Learning Depth-Guided Convolutions for Monocular 3D Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#End-to-End-Pseudo-LiDAR-for-Image-Based-3D-Object-Detection"><span class="nav-number">2.2.2.</span> <span class="nav-text">End-to-End Pseudo-LiDAR for Image-Based 3D Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MonoPair-Monocular-3D-Object-Detection-Using-Pairwise-Spatial-Relationships"><span class="nav-number">2.2.3.</span> <span class="nav-text">MonoPair: Monocular 3D Object Detection Using Pairwise Spatial Relationships</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6D目标姿态估计"><span class="nav-number">3.</span> <span class="nav-text">6D目标姿态估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手势估计"><span class="nav-number">4.</span> <span class="nav-text">手势估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显著性检测"><span class="nav-number">5.</span> <span class="nav-text">显著性检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">6.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去噪"><span class="nav-number">6.1.</span> <span class="nav-text">去噪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去模糊"><span class="nav-number">6.2.</span> <span class="nav-text">去模糊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去雾"><span class="nav-number">6.3.</span> <span class="nav-text">去雾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征点检测与描述"><span class="nav-number">7.</span> <span class="nav-text">特征点检测与描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉问答-VQA"><span class="nav-number">8.</span> <span class="nav-text">视觉问答(VQA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频问答-VideoQA"><span class="nav-number">9.</span> <span class="nav-text">视频问答(VideoQA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉语言导航"><span class="nav-number">10.</span> <span class="nav-text">视觉语言导航</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频压缩"><span class="nav-number">11.</span> <span class="nav-text">视频压缩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频插帧"><span class="nav-number">12.</span> <span class="nav-text">视频插帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#风格迁移"><span class="nav-number">13.</span> <span class="nav-text">风格迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#轨迹预测"><span class="nav-number">14.</span> <span class="nav-text">轨迹预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运动预测"><span class="nav-number">15.</span> <span class="nav-text">运动预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#光流估计"><span class="nav-number">16.</span> <span class="nav-text">光流估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像检索"><span class="nav-number">17.</span> <span class="nav-text">图像检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟试衣"><span class="nav-number">18.</span> <span class="nav-text">虚拟试衣</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDR"><span class="nav-number">19.</span> <span class="nav-text">HDR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对抗样本"><span class="nav-number">20.</span> <span class="nav-text">对抗样本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三维重建"><span class="nav-number">21.</span> <span class="nav-text">三维重建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度补全"><span class="nav-number">22.</span> <span class="nav-text">深度补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语义场景补全"><span class="nav-number">23.</span> <span class="nav-text">语义场景补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像-视频描述"><span class="nav-number">24.</span> <span class="nav-text">图像/视频描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线框解析"><span class="nav-number">25.</span> <span class="nav-text">线框解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">26.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">27.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像分类"><span class="nav-number">1.1.</span> <span class="nav-text">图像分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频分类"><span class="nav-number">1.2.</span> <span class="nav-text">视频分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检测"><span class="nav-number">2.</span> <span class="nav-text">检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标检测"><span class="nav-number">2.1.</span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation"><span class="nav-number">2.1.1.</span> <span class="nav-text">D2Det: Towards High Quality Object Detection and Instance Segmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Harmonizing-Transferability-and-Discriminability-for-Adapting-Object-Detectors"><span class="nav-number">2.1.2.</span> <span class="nav-text">Harmonizing Transferability and Discriminability for Adapting Object Detectors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D目标检测"><span class="nav-number">2.2.</span> <span class="nav-text">3D目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Depth-Guided-Convolutions-for-Monocular-3D-Object-Detection"><span class="nav-number">2.2.1.</span> <span class="nav-text">Learning Depth-Guided Convolutions for Monocular 3D Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#End-to-End-Pseudo-LiDAR-for-Image-Based-3D-Object-Detection"><span class="nav-number">2.2.2.</span> <span class="nav-text">End-to-End Pseudo-LiDAR for Image-Based 3D Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MonoPair-Monocular-3D-Object-Detection-Using-Pairwise-Spatial-Relationships"><span class="nav-number">2.2.3.</span> <span class="nav-text">MonoPair: Monocular 3D Object Detection Using Pairwise Spatial Relationships</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频目标检测"><span class="nav-number">2.3.</span> <span class="nav-text">视频目标检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#车道线检测"><span class="nav-number">2.4.</span> <span class="nav-text">车道线检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“人-物”交互-HOI-检测"><span class="nav-number">2.5.</span> <span class="nav-text">“人-物”交互(HOI)检测</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标跟踪"><span class="nav-number">3.</span> <span class="nav-text">目标跟踪</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分割"><span class="nav-number">4.</span> <span class="nav-text">分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分割"><span class="nav-number">4.1.</span> <span class="nav-text">语义分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例分割"><span class="nav-number">4.2.</span> <span class="nav-text">实例分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D2Det-Towards-High-Quality-Object-Detection-and-Instance-Segmentation-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">D2Det: Towards High Quality Object Detection and Instance Segmentation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全景分割"><span class="nav-number">4.3.</span> <span class="nav-text">全景分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频目标分割"><span class="nav-number">4.4.</span> <span class="nav-text">视频目标分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超像素分割"><span class="nav-number">4.5.</span> <span class="nav-text">超像素分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互式图像分割"><span class="nav-number">4.6.</span> <span class="nav-text">交互式图像分割</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNN"><span class="nav-number">5.</span> <span class="nav-text">CNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAS"><span class="nav-number">6.</span> <span class="nav-text">NAS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GAN"><span class="nav-number">7.</span> <span class="nav-text">GAN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Re-ID"><span class="nav-number">8.</span> <span class="nav-text">Re-ID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3D点云（分类-分割-配准-跟踪等）"><span class="nav-number">9.</span> <span class="nav-text">3D点云（分类/分割/配准/跟踪等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#人脸（识别-检测-重建等）"><span class="nav-number">10.</span> <span class="nav-text">人脸（识别/检测/重建等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#人体姿态估计-2D-3D"><span class="nav-number">11.</span> <span class="nav-text">人体姿态估计(2D/3D)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#人体解析"><span class="nav-number">12.</span> <span class="nav-text">人体解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本"><span class="nav-number">13.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景文本检测"><span class="nav-number">13.1.</span> <span class="nav-text">场景文本检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#场景文本识别"><span class="nav-number">13.2.</span> <span class="nav-text">场景文本识别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征-点-检测和描述"><span class="nav-number">14.</span> <span class="nav-text">特征(点)检测和描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#超分辨率"><span class="nav-number">15.</span> <span class="nav-text">超分辨率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型压缩-剪枝"><span class="nav-number">16.</span> <span class="nav-text">模型压缩/剪枝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频理解-行为识别"><span class="nav-number">17.</span> <span class="nav-text">视频理解/行为识别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#人群计数"><span class="nav-number">18.</span> <span class="nav-text">人群计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度估计"><span class="nav-number">19.</span> <span class="nav-text">深度估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#On-the-uncertainty-of-self-supervised-monocular-depth-estimation"><span class="nav-number">19.1.</span> <span class="nav-text">On the uncertainty of self-supervised monocular depth estimation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6D目标姿态估计"><span class="nav-number">20.</span> <span class="nav-text">6D目标姿态估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手势估计"><span class="nav-number">21.</span> <span class="nav-text">手势估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显著性检测"><span class="nav-number">22.</span> <span class="nav-text">显著性检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">23.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去噪"><span class="nav-number">23.1.</span> <span class="nav-text">去噪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去模糊"><span class="nav-number">23.2.</span> <span class="nav-text">去模糊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去雾"><span class="nav-number">23.3.</span> <span class="nav-text">去雾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征点检测与描述"><span class="nav-number">24.</span> <span class="nav-text">特征点检测与描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉问答-VQA"><span class="nav-number">25.</span> <span class="nav-text">视觉问答(VQA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频问答-VideoQA"><span class="nav-number">26.</span> <span class="nav-text">视频问答(VideoQA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉语言导航"><span class="nav-number">27.</span> <span class="nav-text">视觉语言导航</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频压缩"><span class="nav-number">28.</span> <span class="nav-text">视频压缩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频插帧"><span class="nav-number">29.</span> <span class="nav-text">视频插帧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#风格迁移"><span class="nav-number">30.</span> <span class="nav-text">风格迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#轨迹预测"><span class="nav-number">31.</span> <span class="nav-text">轨迹预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运动预测"><span class="nav-number">32.</span> <span class="nav-text">运动预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#光流估计"><span class="nav-number">33.</span> <span class="nav-text">光流估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像检索"><span class="nav-number">34.</span> <span class="nav-text">图像检索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟试衣"><span class="nav-number">35.</span> <span class="nav-text">虚拟试衣</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDR"><span class="nav-number">36.</span> <span class="nav-text">HDR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对抗样本"><span class="nav-number">37.</span> <span class="nav-text">对抗样本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三维重建"><span class="nav-number">38.</span> <span class="nav-text">三维重建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度补全"><span class="nav-number">39.</span> <span class="nav-text">深度补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语义场景补全"><span class="nav-number">40.</span> <span class="nav-text">语义场景补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像-视频描述"><span class="nav-number">41.</span> <span class="nav-text">图像/视频描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线框解析"><span class="nav-number">42.</span> <span class="nav-text">线框解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">43.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">44.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>

@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Transformer," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="不会NLP的人记录的Transformer笔记。">
+<meta name="keywords" content="Transformer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transformer">
+<meta property="og:url" content="http://mrsempress.top/2020/11/25/Transformer/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="不会NLP的人记录的Transformer笔记。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-12-06T09:11:51.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Transformer">
+<meta name="twitter:description" content="不会NLP的人记录的Transformer笔记。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/11/25/Transformer/"/>
+
+
+
+
+
+  <title>Transformer | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/11/25/Transformer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Transformer</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-25T21:21:42+08:00">
+                2020-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/11/25/Transformer/" class="leancloud_visitors" data-flag-title="Transformer">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不会NLP的人记录的Transformer笔记。</p>
+<a id="more"></a>
+<h1 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h1><h2 id="普通Seq2Seq"><a href="#普通Seq2Seq" class="headerlink" title="普通Seq2Seq"></a>普通Seq2Seq</h2><p>以翻译来说，就是中文通过<strong>编码器</strong>得到了一个<strong>上下文编码向量</strong>，然后通过<strong>解码器</strong>就可以翻译为英文</p>
+<p>编码器和解码器在早期是可以获取时序信息的RNN模块，后来引入了LSTM【输入/遗忘/输出门】、GRU【LSTM的变种，更新/重置门】模块【通过门来控制选择保留的特征】</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>上下文编码向量是固定长度的，如果长度过长，会导致不合理</li>
+<li>当时间过长，仍可能会出现信息丢失的问题</li>
+</ul>
+<h2 id="基于Attention的Seq2Seq"><a href="#基于Attention的Seq2Seq" class="headerlink" title="基于Attention的Seq2Seq"></a>基于Attention的Seq2Seq</h2><p>增加<strong>注意力机制</strong>，通过对输入的<strong>自适应加权</strong>，聚焦到关键信息。</p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>大概流程就是将<strong>Query</strong>（向量）和<strong>Key</strong>（和Q长度相同的向量）<strong><em>计算相似性</em></strong>，再通过<strong><em>softmax</em></strong>得到相似性的<strong><em>概率权重分布</em></strong>。对应权重<strong><em>乘</em></strong>以<strong>value</strong>（和Q长度相同的向量），最后<strong><em>相加</em></strong>，就可以得到<strong>包含注意力的attention值</strong>输出。</p>
+<blockquote>
+<p>看到的一个例子：</p>
+<ul>
+<li>假设世界上所有小吃都可以被标签化，例如微辣、特辣、变态辣、微甜、有嚼劲….，总共有1000个标签，现在我想要吃的小吃是[微辣、微甜、有嚼劲]，这就是我的Query，有没有一个微辣的、微甜的且有嚼劲的食物呀？</li>
+<li>每个店铺卖的东西不一样，但是肯定可以被标签化，例如第一家小吃被标签化后是[微辣、微咸],第二家小吃被标签化后是[特辣、微臭、特咸]，第二家小吃被标签化后是[特辣、微甜、特咸、有嚼劲]，其余店铺都可以被标签化，每个店铺的标签就是Keys,但是每家店铺由于卖的东西不一样，单品种类也不一样，所以被标签化后每一家的标签List不一样长【但是描述这个特征的维度必须相同】</li>
+<li>Values就是每家店铺对应的单品，例如第一家小吃的Values是[烤羊肉串、炒花生]</li>
+<li>将Query和所有的Keys进行一一比对，相当于计算相似性，此时就可以知道我想买的小吃和每一家店铺的匹配情况，最后有了匹配列表，就可以去店铺里面买东西了(Values和相似性加权求和)。最终的情况可能是，我在第一家店铺买了烤羊肉串，然后在第10家店铺买了个玉米，最后在第15家店铺买了个烤面筋。最终去不同店铺买不同东西的过程就是权重和Values加权求和过程。</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 假设q是(1,N,512),N就是最大标签化后的list长度，k是(1,M,512),M可以等于N，也可以不相等</span></div><div class="line"><span class="comment"># (1,N,512) x (1,512,M)--&gt;(1,N,M)</span></div><div class="line">attn = torch.matmul(q, k.transpose(<span class="number">2</span>, <span class="number">3</span>))</div><div class="line"><span class="comment"># softmax转化为概率，输出(1,N,M)，表示q中每个n和每个m的相关性</span></div><div class="line">attn=F.softmax(attn, dim=<span class="number">-1</span>)</div><div class="line"><span class="comment"># (1,N,M) x (1,M,512)--&gt;(1,N,512)，V和k的shape相同</span></div><div class="line">output = torch.matmul(attn, v)</div></pre></td></tr></table></figure>
+<h4 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h4><ul>
+<li>将第一个开启<strong>解码标志</strong><code>&lt;START&gt;</code>(也就是Q)与编码器的每一个时间步的<strong>隐含状态</strong>(一系列Key和Value)进行<strong><em>点乘</em></strong>计算相似性得到每一时间步的相似性分数</li>
+<li>通过<strong>softmax</strong>转化为<strong>概率分布</strong></li>
+<li>将概率分布和<strong>对应位置向量</strong>进行<strong><em>加权求和</em></strong>得到新的上下文向量</li>
+<li>将上下文向量输入解码器中进行<strong>解码输出</strong></li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>不管是采用RNN、LSTM还是GRU都<strong>不利于并行训练和推理</strong>，因为相关算法只能从左向右依次计算或者从右向左依次计算</li>
+<li>长依赖<strong>信息丢失</strong>问题，顺序计算过程中信息会丢失，虽然LSTM号称有缓解，但是无法彻底解决</li>
+</ul>
+<h2 id="基于transformer的Seq2Seq"><a href="#基于transformer的Seq2Seq" class="headerlink" title="基于transformer的Seq2Seq"></a>基于transformer的Seq2Seq</h2><h1 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h1><h2 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h2><ul>
+<li>前馈网络和循环网络虽然具有很强的能力，但是因为<ul>
+<li>需要记住很多“信息”，使得模型变得更复杂，同时计算能力限制了它的继续发展</li>
+<li>虽然局部连接、权重共享以及Pooling，让神经网络更加简单，但是信息的“记忆”能力并不高</li>
+<li>两者都是局部编码：CNN基于N-gram，RNN由于梯度消失问题只能建立短距离依赖</li>
+</ul>
+</li>
+<li>全连接网络虽然可以获取远距离的信息交互，但是无法处理<strong>变长</strong>的输入序列；</li>
+</ul>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ul>
+<li>允许解码器以<strong>不同程度的权重利用编码器</strong>的所有信息，可以<strong><em>绕过瓶颈</em></strong></li>
+<li>注意力分布可以<strong>反映解码器关注什么</strong>，只<strong>选择</strong>一些关键信息，减少模型的复杂度，<strong><em>可解释性强</em></strong></li>
+<li>【自注意力】可以<strong>动态</strong>地生成不同连接的权重，处理<strong>变长</strong>的信息序列</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="聚焦式Focus"><a href="#聚焦式Focus" class="headerlink" title="聚焦式Focus"></a>聚焦式Focus</h3><p>是一种<strong>自上而下</strong>的有意识的注意力，<strong>主动</strong>注意【依赖于任务】</p>
+<h3 id="显著性saliency-based"><a href="#显著性saliency-based" class="headerlink" title="显著性saliency-based"></a>显著性saliency-based</h3><p>是一种<strong>自下而上</strong>的有意识的注意力，<strong>被动</strong>注意【由外界刺激驱动的注意，可以和任务无关】</p>
+<h4 id="Max-Pooling"><a href="#Max-Pooling" class="headerlink" title="Max-Pooling"></a>Max-Pooling</h4><h4 id="门控Gating机制"><a href="#门控Gating机制" class="headerlink" title="门控Gating机制"></a>门控Gating机制</h4><h2 id="几个类别"><a href="#几个类别" class="headerlink" title="几个类别"></a>几个类别</h2><h3 id="Soft-attention"><a href="#Soft-attention" class="headerlink" title="Soft attention"></a>Soft attention</h3><p><strong>所有</strong>输入信息在注意力分布下的期望</p>
+<ul>
+<li><p>Q和所有K分别计算 【注意力打分机制】</p>
+<ul>
+<li><p>加性模型</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+s\left(\mathbf{x}_{i}, \mathbf{q}\right)=\mathbf{v}^{\mathrm{T}} \tanh \left(W \mathbf{x}_{i}+U \mathbf{q}\right)
+\end{array}</script></li>
+<li><p>点积模型</p>
+<script type="math/tex; mode=display">
+s\left(\mathbf{x}_{i}, \mathbf{q}\right)=\mathbf{x}_{i}^{\mathrm{T}} \mathbf{q}</script></li>
+<li><p>缩放点积模型</p>
+<script type="math/tex; mode=display">
+s\left(\mathbf{x}_{i}, \mathbf{q}\right)=\frac{\mathbf{x}_{i}^{\mathrm{T}} \mathbf{q}}{\sqrt{d}}</script></li>
+<li><p>双线性模型</p>
+<script type="math/tex; mode=display">
+s\left(\mathbf{x}_{i}, \mathbf{q}\right)=\mathbf{x}_{i}^{\mathrm{T}} W \mathbf{q}</script></li>
+</ul>
+</li>
+<li><p>对相似性采用softmax转换为<strong>概率分布</strong>【注意力概率分布】，<script type="math/tex">\alpha_i</script>表示第i个信息受关注的程度</p>
+<script type="math/tex; mode=display">
+\alpha_i=softmax(s(key_i, q))=softmax(s(X_i, q))</script></li>
+<li><p>将概率分布和V进行一一对应相乘【加权平均】</p>
+<ul>
+<li><p>普通模式：Key=Value</p>
+<script type="math/tex; mode=display">
+\operatorname{att}(q, X)=\sum_{i=1}^{N} \alpha_{i} X_{i}</script></li>
+<li><p>键值对模式：Key!= Value</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\operatorname{att}((K, V), \mathbf{q}) &=\sum_{i=1}^{N} \alpha_{i} \mathbf{v}_{i} \\
+&=\sum_{i=1}^{N} \frac{\exp \left(s\left(\mathbf{k}_{i}, \mathbf{q}\right)\right)}{\sum_{j} \exp \left(s\left(\mathbf{k}_{j}, \mathbf{q}\right)\right)} \mathbf{v}_{i}
+\end{aligned}</script></li>
+</ul>
+</li>
+<li><p>最后相加得到新的和Q<strong>一样长</strong>的输出向量</p>
+</li>
+</ul>
+<h3 id="Hard-attention"><a href="#Hard-attention" class="headerlink" title="Hard attention"></a>Hard attention</h3><p>只关注到<strong>某一个位置</strong>上的信息；一般用<strong>强化学习</strong>来训练</p>
+<ul>
+<li>选取最高概率的输入信息</li>
+<li>在注意力分布式上随机采样</li>
+</ul>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>最大采样或随机采样</strong>导致最终的损失函数与注意力分布之间的函数关系<strong>不可导</strong>，无法使用反向传播。</li>
+</ul>
+<h3 id="Self-attention"><a href="#Self-attention" class="headerlink" title="Self-attention"></a>Self-attention</h3><p>主要是输入的不同，QKV都是同一个输入序列的不同线性表示；整体可以表示为：【都是矩阵的乘法操作，可以用GPU加速】</p>
+<script type="math/tex; mode=display">
+H=Vsoftmax(\frac{K^TQ}{\sqrt d})</script><p>因此时间复杂度为<script type="math/tex">O(n^2\cdot d)</script>，因为<code>(n, d)*(d, n) -&gt; n^2d, softmax(n, n) -&gt; n^2, (n, n)*(n,d) -&gt; n^2d</code></p>
+<ul>
+<li><p>自注意力机制的QKV是通过<strong>线性变换</strong>得到的，X是输入序列；self体现在<strong>Q是对自身</strong>的一个输入变换【传统的attention中，Q来自于外部】。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Q &=W_{Q} X \\
+K &=W_{K} X \\
+V &=W_{V} X
+\end{aligned}</script></li>
+<li><p>通常使用缩放点积作为注意力打分函数（d是输入X的维度）</p>
+<script type="math/tex; mode=display">
+s\left(\mathbf{k}_{j}, \mathbf{q}\right)=\frac{\mathbf{k}_{j}^{\mathrm{T}} \mathbf{q}}{\sqrt{d}}</script></li>
+<li><p>用softmax得到概率分布</p>
+</li>
+<li><p>加权平均得到注意力值：</p>
+<script type="math/tex; mode=display">
+h_i=\operatorname{att}((K, V), q_i)=\sum_{j=1}^{N} \alpha_{ij} v_{j}=\sum_{j=1}^{N} softmax(s(k_j, q_i)) v_{j}</script></li>
+</ul>
+<h4 id="One-head-attention"><a href="#One-head-attention" class="headerlink" title="One-head attention"></a>One-head attention</h4><h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneHeadAttention</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="string">''' Scaled Dot-Product Attention '''</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, temperature, attn_dropout=<span class="number">0.1</span>)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        self.temperature = temperature</div><div class="line">        self.dropout = nn.Dropout(attn_dropout)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, q, k, v, mask=None)</span>:</span></div><div class="line">        <span class="comment"># self.temperature是论文中的d_k ** 0.5，防止梯度过大</span></div><div class="line">        <span class="comment"># QxK/sqrt(dk)</span></div><div class="line">        attn = torch.matmul(q / self.temperature, k.transpose(<span class="number">2</span>, <span class="number">3</span>))</div><div class="line"></div><div class="line">        <span class="keyword">if</span> mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">            <span class="comment"># 屏蔽不想要的输出</span></div><div class="line">            attn = attn.masked_fill(mask == <span class="number">0</span>, <span class="number">-1e9</span>)</div><div class="line">        <span class="comment"># softmax+dropout</span></div><div class="line">        attn = self.dropout(F.softmax(attn, dim=<span class="number">-1</span>))</div><div class="line">        <span class="comment"># 概率分布xV</span></div><div class="line">        output = torch.matmul(attn, v)</div><div class="line"></div><div class="line">        <span class="keyword">return</span> output, attn</div></pre></td></tr></table></figure>
+<h4 id="Multi-headed-attention"><a href="#Multi-headed-attention" class="headerlink" title="Multi-headed attention"></a>Multi-headed attention</h4><p>利用<strong>多个查询</strong><script type="math/tex">q_i</script>来平行地计算从输入信息中选取多个信息。每个注意力关注输入信息的不同部分，然后<strong>再拼接</strong>。</p>
+<script type="math/tex; mode=display">
+\operatorname{att}((K, V), Q)=\operatorname{att}\left((K, V), \mathbf{q}_{1}\right) \oplus \cdots \oplus \operatorname{att}\left((K, V), \mathbf{q}_{M}\right)</script><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>类似于<strong>分组</strong>操作，分别得到输出后，将结果concat</li>
+<li>加入了残差设计和层归一化，<strong>防止梯度消失，加快收敛</strong></li>
+</ul>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>扩展了模型专注于不同位置的能力</li>
+<li>给出了注意力层多个“表示子空间”，对于“多头”注意力机制，有多个Query/Key/Value权重矩阵集</li>
+</ul>
+<h5 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultiHeadAttention</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="string">''' Multi-Head Attention module '''</span></div><div class="line"></div><div class="line">    <span class="comment"># n_head头的个数，默认是8</span></div><div class="line">    <span class="comment"># d_model编码向量长度，例如上文的512</span></div><div class="line">    <span class="comment"># d_k, d_v的值一般会设置为 n_head * d_k=d_model，</span></div><div class="line">    <span class="comment"># 此时concat后正好和原始输入一样，当然不相同也可以，因为后面有fc层</span></div><div class="line">    <span class="comment"># 相当于将可学习矩阵分成独立的n_head份</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_head, d_model, d_k, d_v, dropout=<span class="number">0.1</span>)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        <span class="comment"># 假设n_head=8，d_k=64</span></div><div class="line">        self.n_head = n_head</div><div class="line">        self.d_k = d_k</div><div class="line">        self.d_v = d_v</div><div class="line">        <span class="comment"># d_model输入向量，n_head * d_k输出向量</span></div><div class="line">        <span class="comment"># 可学习W^Q，W^K,W^V矩阵参数初始化</span></div><div class="line">        self.w_qs = nn.Linear(d_model, n_head * d_k, bias=<span class="keyword">False</span>)</div><div class="line">        self.w_ks = nn.Linear(d_model, n_head * d_k, bias=<span class="keyword">False</span>)</div><div class="line">        self.w_vs = nn.Linear(d_model, n_head * d_v, bias=<span class="keyword">False</span>)</div><div class="line">        <span class="comment"># 最后的输出维度变换操作</span></div><div class="line">        self.fc = nn.Linear(n_head * d_v, d_model, bias=<span class="keyword">False</span>)</div><div class="line">        <span class="comment"># 单头自注意力</span></div><div class="line">        self.attention = OneHeadAttention(temperature=d_k ** <span class="number">0.5</span>)</div><div class="line">        self.dropout = nn.Dropout(dropout)</div><div class="line">        <span class="comment"># 层归一化</span></div><div class="line">        self.layer_norm = nn.LayerNorm(d_model, eps=<span class="number">1e-6</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, q, k, v, mask=None)</span>:</span></div><div class="line">        <span class="comment"># 假设qkv输入是(b,100,512),100是训练每个样本最大单词个数</span></div><div class="line">        <span class="comment"># 一般qkv相等，即自注意力</span></div><div class="line">        residual = q</div><div class="line">        <span class="comment"># 将输入x和可学习矩阵相乘，得到(b,100,512)输出</span></div><div class="line">        <span class="comment"># 其中512的含义其实是8x64，8个head，每个head的可学习矩阵为64维度</span></div><div class="line">        <span class="comment"># q的输出是(b,100,8,64),kv也是一样</span></div><div class="line">        q = self.w_qs(q).view(sz_b, len_q, n_head, d_k)</div><div class="line">        k = self.w_ks(k).view(sz_b, len_k, n_head, d_k)</div><div class="line">        v = self.w_vs(v).view(sz_b, len_v, n_head, d_v)</div><div class="line"></div><div class="line">        <span class="comment"># 变成(b,8,100,64)，方便后面计算，也就是8个头单独计算</span></div><div class="line">        q, k, v = q.transpose(<span class="number">1</span>, <span class="number">2</span>), k.transpose(<span class="number">1</span>, <span class="number">2</span>), v.transpose(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line">        <span class="keyword">if</span> mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">            mask = mask.unsqueeze(<span class="number">1</span>)   <span class="comment"># For head axis broadcasting.</span></div><div class="line">        <span class="comment"># 输出q是(b,8,100,64),维持不变,内部计算流程是：</span></div><div class="line">        <span class="comment"># q*k转置，除以d_k ** 0.5，输出维度是b,8,100,100即单词和单词直接的相似性</span></div><div class="line">        <span class="comment"># 对最后一个维度进行softmax操作得到b,8,100,100</span></div><div class="line">        <span class="comment"># 最后乘上V，得到b,8,100,64输出</span></div><div class="line">        q, attn = self.attention(q, k, v, mask=mask)</div><div class="line"></div><div class="line">        <span class="comment"># b,100,8,64--&gt;b,100,512</span></div><div class="line">        q = q.transpose(<span class="number">1</span>, <span class="number">2</span>).contiguous().view(sz_b, len_q, <span class="number">-1</span>)</div><div class="line">        q = self.dropout(self.fc(q))</div><div class="line">        <span class="comment"># 残差计算</span></div><div class="line">        q += residual</div><div class="line">        <span class="comment"># 层归一化，在512维度计算均值和方差，进行层归一化</span></div><div class="line">        q = self.layer_norm(q)</div><div class="line"></div><div class="line">        <span class="keyword">return</span> q, attn</div></pre></td></tr></table></figure>
+<h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>可解释性强</li>
+<li>并行处理，速度快</li>
+</ul>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">                     Decoder:</div><div class="line">Encoder:             ^</div><div class="line">^                    Feed Forward</div><div class="line">| 									 |</div><div class="line">Feed Forward  ----&gt;  Encoder-Decoder Attention</div><div class="line">|							       |</div><div class="line">Self-Attention       Self-Attention</div><div class="line">|                    |</div></pre></td></tr></table></figure>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>单词嵌入向量和位置编码向量相加就是编码器的输入了<code>(batch, M, 512)</code></p>
+<h4 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h4><p>Word2Vec</p>
+<h4 id="Positional-encoding"><a href="#Positional-encoding" class="headerlink" title="Positional encoding"></a>Positional encoding</h4><p>transformer内部没有类似RNN的循环结构，<strong>没有捕捉顺序序列</strong>的能力，positional encoding补充了这个缺陷。</p>
+<ul>
+<li><p>网络自动学习</p>
+<p><code>self.pos_embedding = nn.Parameter(torch.randn(batch, N, 512))</code>; 其中N是N个位置，512是用来表示坐标特征的维度</p>
+</li>
+<li><p>自定义</p>
+<ul>
+<li>直接将绝对坐标编码为向量</li>
+<li>sin-cos规则：将向量的512维度切分为奇数行和偶数行；奇数行采用cos函数编码、偶数行采用sin函数编码；按照原始行号拼接<ul>
+<li>由于<script type="math/tex">\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta</script>以及<script type="math/tex">\cos(\alpha+\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta</script>，因此编码后的<script type="math/tex">PE(pos+k, 2i)/PE(pos+k, 2i+1)</script>可以用<script type="math/tex">PE(pos),PE(k)</script>来表示；这样网络可以较好地学习<strong>相对位置信息</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EncoderLayer</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d_model, d_inner, n_head, d_k, d_v, dropout=<span class="number">0.1</span>)</span>:</span></div><div class="line">        super(EncoderLayer, self).__init__()</div><div class="line">        self.self_attention = MultiHeadAttention(n_head, d_model, d_k, d_v, dropout=dropout)</div><div class="line">        self.pos_ffn = PositionwiseFeedForward(d_model, d_inner, dropout=dropout)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, enc_input, slf_attn_mask=None)</span>:</span></div><div class="line">        <span class="comment"># Q K V是同一个，自注意力</span></div><div class="line">        <span class="comment"># enc_input来自源单词嵌入向量或者前一个编码器输出</span></div><div class="line">        enc_output, enc_slf_attn = self.self_attention(</div><div class="line">            enc_input, enc_input, enc_input, mask=slf_attn_mask)</div><div class="line">        enc_output = self.pos_ffn(enc_output)</div><div class="line">        <span class="keyword">return</span> enc_output, enc_slf_attn</div><div class="line">      </div><div class="line">      </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Encoder</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">            self, n_src_vocab, d_word_vec, n_layers, n_head, d_k, d_v,</span></span></div><div class="line"><span class="function"><span class="params">            d_model, d_inner, pad_idx, dropout=<span class="number">0.1</span>, n_position=<span class="number">200</span>)</span>:</span></div><div class="line">        <span class="comment"># 词嵌入向量生成(用单词表的信息)</span></div><div class="line">        self.src_word_emb = nn.Embedding(n_src_vocab, d_word_vec, padding_idx=pad_idx)</div><div class="line">        <span class="comment"># 位置编码</span></div><div class="line">        self.position_enc = PositionalEncoding(d_word_vec, n_position=n_position)</div><div class="line">        self.dropout = nn.Dropout(p=dropout)</div><div class="line">        <span class="comment"># n个编码器层</span></div><div class="line">        self.layer_stack = nn.ModuleList([</div><div class="line">            EncoderLayer(d_model, d_inner, n_head, d_k, d_v, dropout=dropout)</div><div class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(n_layers)])</div><div class="line">        <span class="comment"># 层归一化</span></div><div class="line">        self.layer_norm = nn.LayerNorm(d_model, eps=<span class="number">1e-6</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, src_seq, src_mask, return_attns=False)</span>:</span></div><div class="line">        <span class="comment"># 对输入序列进行词嵌入，加上位置编码</span></div><div class="line">        enc_output = self.dropout(self.position_enc(self.src_word_emb(src_seq)))</div><div class="line">        enc_output = self.layer_norm(enc_output)</div><div class="line">        <span class="comment"># 作为编码器层输入</span></div><div class="line">        <span class="keyword">for</span> enc_layer <span class="keyword">in</span> self.layer_stack:</div><div class="line">            enc_output, _ = enc_layer(enc_output, slf_attn_mask=src_mask)</div><div class="line">        <span class="keyword">return</span> enc_output</div></pre></td></tr></table></figure>
+<h4 id="Self-attention-1"><a href="#Self-attention-1" class="headerlink" title="Self-attention"></a>Self-attention</h4><p>QKV来自同一个输入的attention操作就是自注意力。<code>softmax(Q*K^T/\sqrt(d_k))*v=z</code>；</p>
+<h4 id="Feed-Foward"><a href="#Feed-Foward" class="headerlink" title="Feed Foward"></a>Feed Foward</h4><p>进行空间变换，引入了非线性激活函数，增加了模型的表现能力。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PositionwiseFeedForward</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="string">''' A two-feed-forward-layer module '''</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d_in, d_hid, dropout=<span class="number">0.1</span>)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        <span class="comment"># 两个fc层，对最后的512维度进行变换</span></div><div class="line">        self.w_1 = nn.Linear(d_in, d_hid) <span class="comment"># position-wise</span></div><div class="line">        self.w_2 = nn.Linear(d_hid, d_in) <span class="comment"># position-wise</span></div><div class="line">        self.layer_norm = nn.LayerNorm(d_in, eps=<span class="number">1e-6</span>)</div><div class="line">        self.dropout = nn.Dropout(dropout)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">        residual = x</div><div class="line"></div><div class="line">        x = self.w_2(F.relu(self.w_1(x)))</div><div class="line">        x = self.dropout(x)</div><div class="line">        x += residual</div><div class="line"></div><div class="line">        x = self.layer_norm(x)</div><div class="line"></div><div class="line">        <span class="keyword">return</span> xs</div></pre></td></tr></table></figure>
+<h3 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h3><p>解码器的输入不仅包括最后一个后一个编码器的输出，还有前面所有解码器的输入【对于第一个解码器，则还需要额外的输出嵌入向量——目标单词的嵌入向量】</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DecoderLayer</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="string">''' Compose with three layers '''</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d_model, d_inner, n_head, d_k, d_v, dropout=<span class="number">0.1</span>)</span>:</span></div><div class="line">        super(DecoderLayer, self).__init__()</div><div class="line">        self.slf_attn = MultiHeadAttention(n_head, d_model, d_k, d_v, dropout=dropout)</div><div class="line">        self.enc_attn = MultiHeadAttention(n_head, d_model, d_k, d_v, dropout=dropout)</div><div class="line">        self.pos_ffn = PositionwiseFeedForward(d_model, d_inner, dropout=dropout)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">            self, dec_input, enc_output,</span></span></div><div class="line"><span class="function"><span class="params">            slf_attn_mask=None, dec_enc_attn_mask=None)</span>:</span></div><div class="line">        <span class="comment"># 标准的自注意力，QKV=dec_input来自目标单词嵌入或者前一个解码器输出</span></div><div class="line">        dec_output, dec_slf_attn = self.slf_attn(</div><div class="line">            dec_input, dec_input, dec_input, mask=slf_attn_mask)</div><div class="line">        <span class="comment"># KV来自最后一个编码层输出enc_output，Q来自带有mask的self.slf_attn输出</span></div><div class="line">        dec_output, dec_enc_attn = self.enc_attn(</div><div class="line">            dec_output, enc_output, enc_output, mask=dec_enc_attn_mask)</div><div class="line">        dec_output = self.pos_ffn(dec_output)</div><div class="line">        <span class="keyword">return</span> dec_output, dec_slf_attn, dec_enc_attn</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Decoder</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">            self, n_trg_vocab, d_word_vec, n_layers, n_head, d_k, d_v,</span></span></div><div class="line"><span class="function"><span class="params">            d_model, d_inner, pad_idx, n_position=<span class="number">200</span>, dropout=<span class="number">0.1</span>)</span>:</span></div><div class="line">        <span class="comment"># 目标单词嵌入</span></div><div class="line">        self.trg_word_emb = nn.Embedding(n_trg_vocab, d_word_vec, padding_idx=pad_idx)</div><div class="line">        <span class="comment"># 位置嵌入向量</span></div><div class="line">        self.position_enc = PositionalEncoding(d_word_vec, n_position=n_position)</div><div class="line">        self.dropout = nn.Dropout(p=dropout)</div><div class="line">        <span class="comment"># n个解码器</span></div><div class="line">        self.layer_stack = nn.ModuleList([</div><div class="line">            DecoderLayer(d_model, d_inner, n_head, d_k, d_v, dropout=dropout)</div><div class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(n_layers)])</div><div class="line">        <span class="comment"># 层归一化</span></div><div class="line">        self.layer_norm = nn.LayerNorm(d_model, eps=<span class="number">1e-6</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, trg_seq, trg_mask, enc_output, src_mask, return_attns=False)</span>:</span></div><div class="line">        <span class="comment"># 目标单词嵌入+位置编码</span></div><div class="line">        dec_output = self.dropout(self.position_enc(self.trg_word_emb(trg_seq)))</div><div class="line">        dec_output = self.layer_norm(dec_output)</div><div class="line">        <span class="comment"># 遍历每个解码器</span></div><div class="line">        <span class="keyword">for</span> dec_layer <span class="keyword">in</span> self.layer_stack:  </div><div class="line">            <span class="comment"># 需要输入3个信息：目标单词嵌入+位置编码、最后一个编码器输出enc_output</span></div><div class="line">            <span class="comment"># 和dec_enc_attn_mask，解码时候不能看到未来单词信息</span></div><div class="line">            dec_output, dec_slf_attn, dec_enc_attn = dec_layer(</div><div class="line">                dec_output, enc_output, slf_attn_mask=trg_mask, dec_enc_attn_mask=src_mask)</div><div class="line">        <span class="keyword">return</span> dec_output</div></pre></td></tr></table></figure>
+<h4 id="Postion-Embedding"><a href="#Postion-Embedding" class="headerlink" title="Postion Embedding"></a>Postion Embedding</h4><p>与编码器的不同：</p>
+<ul>
+<li>解码器的位置嵌入是在进行<strong>目标单词嵌入之前</strong>；而编码器是在输入单词嵌入之后</li>
+<li>解码器需要<strong>右移</strong>一位，新增加的一个位置采用定义好的<strong>标志位BOS_WORD</strong>代替【开始解码标志】</li>
+</ul>
+<h4 id="Feed-Forward"><a href="#Feed-Forward" class="headerlink" title="Feed Forward"></a>Feed Forward</h4><p>由于想要并行运算，但是我们在第3个编码器的时候，只可以用前两个编码器的输出，而不可以使用后面编码器的结果，否则就是一种作弊的现象。因此用mask遮住了。</p>
+<p>屏蔽部分在编码器中已经实现了。</p>
+<p>循环解码过程：</p>
+<ul>
+<li>第一次解码：输入BOS_WORD单词嵌入向量，假设是(1,256)，而编码器输出始终不变是(100,256)，那么第一次解码过程是(1,256)+位置编码作为解码器输入，解码输出是(1,256)，经过fc层(参数shape是(256,10000))变成(1,10000)，10000是单词总数，此时就可以解码得到第一个单词i；</li>
+<li>接着将BOS_WORD和i都进行嵌入，得到(2,256)输入，同样运行，输出是(2,256)，经过fc是(2,10000)，此时不需要第一个维度输出只需要[-1,10000]既可以解码第二个单词，后面就一直迭代直到输出结束解码标注。</li>
+</ul>
+<h4 id="Classification-Layer"><a href="#Classification-Layer" class="headerlink" title="Classification Layer"></a>Classification Layer</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">self.trg_word_prj = nn.Linear(d_model, n_trg_vocab, bias=<span class="keyword">False</span>)  <span class="comment"># 目标单词编码</span></div><div class="line">dec_output, *_ = self.model.decoder(trg_seq, trg_mask, enc_output, src_mask)  <span class="comment"># 解码</span></div><div class="line"><span class="keyword">return</span> F.softmax(self.model.trg_word_prj(dec_output), dim=<span class="number">-1</span>)  <span class="comment"># 选择出对应的特征</span></div></pre></td></tr></table></figure>
+<h2 id="与CV的结合"><a href="#与CV的结合" class="headerlink" title="与CV的结合"></a>与CV的结合</h2><h3 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h3><h4 id="An-Image-is-Worth-16x16-Words-Transformers-for-Image-Recognition-at-Scale"><a href="#An-Image-is-Worth-16x16-Words-Transformers-for-Image-Recognition-at-Scale" class="headerlink" title="An Image is Worth 16x16 Words:Transformers for Image Recognition at Scale"></a>An Image is Worth 16x16 Words:Transformers for Image Recognition at Scale</h4><h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>彻底抛弃CNN，RNN</li>
+<li>需要大量的数据进行训练，才会超过CNN，但是对应的训练时间也会增长很多</li>
+<li>应用transformer的可解释性强</li>
+</ul>
+<h5 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h5><ul>
+<li><p>将图片分块，切分为固定的patch个数</p>
+</li>
+<li><p>将patches拉成序列（flatten），采用了爱因斯坦表达式（用einops库的rearrange实现）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x = rearrange(img, <span class="string">'b c (h p1) (w p2) -&gt; b (h w) (p1 p2 c)'</span>, p1=p, p2=p)</div></pre></td></tr></table></figure>
+<ul>
+<li>输入为<code>(batch, 3, h, w)</code></li>
+<li>分为n个patch，那么每个patch就是<code>h/sqrt(n), w/sqrt(n))</code>像素</li>
+<li>rearrange操作即先变成<code>(batch, 3, sqrt(n)*h/sqrt(n), sqrt(n)*w/sqrt(n))</code>，最后变成<code>(batch, n, h*w/n*3)</code></li>
+<li>可以看作有n个单词向量，每个向量由<code>h*w/n*3</code>个元素编码表示</li>
+</ul>
+</li>
+<li><p>对每一个单词向量的表示进行降维</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.patch_to_embedding = nn.Linear(patch_dim, dim)</div><div class="line">x = self.patch_to_embedding(x)</div></pre></td></tr></table></figure>
+</li>
+<li><p>在flatten前增加一个开启解码的标志，这个标志是可学习的【在NLP中是固定的】</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">self.cls_token = nn.Parameter(torch.randn(<span class="number">1</span>, <span class="number">1</span>, dim))</div><div class="line">cls_tokens = repeat(self.cls_token, <span class="string">'() n d -&gt; b n d'</span>, b=b)</div><div class="line"><span class="comment"># 额外追加token，变成(batch, n+1, dim)</span></div><div class="line">x = torch.cat((cls_tokens, x), dim=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>因为这篇论文在编码之后就进行分类，没有解码器，因此在这一部分增加了解码的一部分操作</li>
+</ul>
+</li>
+<li><p>上述是一个图像内容的编码，接下来还需要对位置信息进行编码；在论文中设置为了可学习的；相邻位置具有相近的位置编码变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 加一同样是因为增加了解码标志</span></div><div class="line">self.pos_embedding = nn.Parameter(torch.randn(<span class="number">1</span>, num_patches + <span class="number">1</span>, dim))</div></pre></td></tr></table></figure>
+</li>
+<li><p>将patch嵌入向量和位置编码向量相加后作为编码器的输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x += self.pos_embedding[:, :(n + <span class="number">1</span>)]</div><div class="line">x = self.dropout(x)</div><div class="line">self.transformer = Transformer(dim, depth, heads, mlp_dim, dropout)</div></pre></td></tr></table></figure>
+</li>
+<li><p>编码器的输出结果，传入FC分类器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">self.mlp_head = nn.Sequential(</div><div class="line">            nn.LayerNorm(dim),</div><div class="line">            nn.Linear(dim, mlp_dim),</div><div class="line">            nn.GELU(),</div><div class="line">            nn.Dropout(dropout),</div><div class="line">            nn.Linear(mlp_dim, num_classes)</div><div class="line">        )</div><div class="line"></div><div class="line"><span class="comment"># 65个输出里面只需要第0个输出进行后续分类即可</span></div><div class="line">self.mlp_head(x[:, <span class="number">0</span>])</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="OD"><a href="#OD" class="headerlink" title="OD"></a>OD</h3><h4 id="DETR"><a href="#DETR" class="headerlink" title="DETR"></a>DETR</h4><p>见博文<code>OD with new tech</code>.</p>
+<p>CS224N</p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Transformer/" rel="tag"><i class="fa fa-tag"></i> Transformer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/25/OD-NLP-GNN/" rel="next" title="OD with new tech">
+                <i class="fa fa-chevron-left"></i> OD with new tech
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/27/Conv相关/" rel="prev" title="Conv相关">
+                Conv相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Seq2Seq"><span class="nav-number">1.</span> <span class="nav-text">Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通Seq2Seq"><span class="nav-number">1.1.</span> <span class="nav-text">普通Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.1.1.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于Attention的Seq2Seq"><span class="nav-number">1.2.</span> <span class="nav-text">基于Attention的Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">1.2.1.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编码"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解码"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">解码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于transformer的Seq2Seq"><span class="nav-number">1.3.</span> <span class="nav-text">基于transformer的Seq2Seq</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention"><span class="nav-number">2.</span> <span class="nav-text">Attention</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决的问题"><span class="nav-number">2.1.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">2.2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">2.3.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚焦式Focus"><span class="nav-number">2.3.1.</span> <span class="nav-text">聚焦式Focus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显著性saliency-based"><span class="nav-number">2.3.2.</span> <span class="nav-text">显著性saliency-based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Max-Pooling"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">Max-Pooling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#门控Gating机制"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">门控Gating机制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个类别"><span class="nav-number">2.4.</span> <span class="nav-text">几个类别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Soft-attention"><span class="nav-number">2.4.1.</span> <span class="nav-text">Soft attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hard-attention"><span class="nav-number">2.4.2.</span> <span class="nav-text">Hard attention</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-2"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-attention"><span class="nav-number">2.4.3.</span> <span class="nav-text">Self-attention</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#One-head-attention"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">One-head attention</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算法"><span class="nav-number">2.4.3.1.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-headed-attention"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">Multi-headed attention</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">2.4.3.2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优点"><span class="nav-number">2.4.3.2.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法-1"><span class="nav-number">2.4.3.2.3.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer"><span class="nav-number">3.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点-1"><span class="nav-number">3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">3.2.</span> <span class="nav-text">结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">3.2.1.</span> <span class="nav-text">Input</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Embedding"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Embedding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Positional-encoding"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Positional encoding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoder"><span class="nav-number">3.2.2.</span> <span class="nav-text">Encoder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Self-attention-1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">Self-attention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feed-Foward"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">Feed Foward</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Decoder"><span class="nav-number">3.2.3.</span> <span class="nav-text">Decoder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Postion-Embedding"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">Postion Embedding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feed-Forward"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">Feed Forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Classification-Layer"><span class="nav-number">3.2.3.3.</span> <span class="nav-text">Classification Layer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与CV的结合"><span class="nav-number">3.3.</span> <span class="nav-text">与CV的结合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#An-Image-is-Worth-16x16-Words-Transformers-for-Image-Recognition-at-Scale"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">An Image is Worth 16x16 Words:Transformers for Image Recognition at Scale</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点-1"><span class="nav-number">3.3.1.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构-1"><span class="nav-number">3.3.1.1.2.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OD"><span class="nav-number">3.3.2.</span> <span class="nav-text">OD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DETR"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">DETR</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

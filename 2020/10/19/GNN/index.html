@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="GNN," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my blog. 在舍友 都想不到整理这篇的时候，我到新宿舍已经快两个月了 的熏陶下，开始看看GNN。">
+<meta name="keywords" content="GNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GNN">
+<meta property="og:url" content="http://mrsempress.top/2020/10/19/GNN/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="This is my blog. 在舍友 都想不到整理这篇的时候，我到新宿舍已经快两个月了 的熏陶下，开始看看GNN。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-12-06T09:03:31.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GNN">
+<meta name="twitter:description" content="This is my blog. 在舍友 都想不到整理这篇的时候，我到新宿舍已经快两个月了 的熏陶下，开始看看GNN。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/10/19/GNN/"/>
+
+
+
+
+
+  <title>GNN | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/10/19/GNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GNN</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-19T16:25:10+08:00">
+                2020-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GNN/" itemprop="url" rel="index">
+                    <span itemprop="name">GNN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/10/19/GNN/" class="leancloud_visitors" data-flag-title="GNN">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is <a href="https://mrsempress.github.io" target="_blank" rel="external">my blog</a>.</p>
+<p>在舍友 <del>都想不到整理这篇的时候，我到新宿舍已经快两个月了</del> 的熏陶下，开始看看GNN。</p>
+<a id="more"></a>
+<h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><h2 id="A-Comprehensive-Survey-on-Graph-Neural-Networks——2019"><a href="#A-Comprehensive-Survey-on-Graph-Neural-Networks——2019" class="headerlink" title="A Comprehensive Survey on Graph Neural Networks——2019"></a>A Comprehensive Survey on Graph Neural Networks——2019</h2><p>处理的数据<strong>不是从欧几里得空间</strong>中生成的，需要用图来表示数据之间的复杂关系。</p>
+<p>we can represent an image as a <strong>regular grid</strong> in the <strong>Euclidean space</strong>. A <strong>convolutional neural network (CNN)</strong> is able to exploit the <strong>shift-invariance, local connectivity, and compositionality of image data</strong></p>
+<p>图卷积：周围点是无序的，并且点的个数是可变的。</p>
+<ul>
+<li><p><strong>Network embedding</strong> aims at representing network nodes as <strong>low-dimensional vector representations</strong>, preserving both network <strong>topology structure拓扑结构 and node content information,</strong> so that any subsequent graph analytics task can be easily performed using <strong>simple off-the-shelf</strong> machine learning algorithms</p>
+</li>
+<li><p><strong>GNNs</strong> are deep learning models aiming at addressing <strong>graph-related</strong> tasks in an end-to-end manner. Many GNNs explicitly extract <strong>high-level representations</strong>.</p>
+</li>
+</ul>
+<hr>
+<p>图内核和GNN可以通过映射函数将图或节点嵌入向量空间。 不同之处在于<strong>图内核映射函数是确定性的</strong>，而不是可学习的。 由于成对相似性计算，图核方法明显受到计算瓶颈的困扰。 GNN则直接根据提取的图形表示进行图形分类，因此比图形核方法更有效。 </p>
+<p>分成四类：</p>
+<ul>
+<li>recurrent graph neural networks</li>
+<li>convolutional graph neural networks</li>
+<li>graph autoencoders</li>
+<li>spatial-temporal graph neural networks</li>
+</ul>
+<p>看不下去了，waiting……<del>我看了个啥ᶘ ᵒᴥᵒᶅ</del></p>
+<h2 id="Graph-Neural-Networks-A-Review-of-Methods-and-Application"><a href="#Graph-Neural-Networks-A-Review-of-Methods-and-Application" class="headerlink" title="Graph Neural Networks: A Review of Methods and Application"></a>Graph Neural Networks: A Review of Methods and Application</h2><p><a href="https://arxiv.org/pdf/1812.08434.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1812.08434.pdf</a></p>
+<h2 id="Deep-Learning-on-Graphs-A-Survey"><a href="#Deep-Learning-on-Graphs-A-Survey" class="headerlink" title="Deep Learning on Graphs: A Survey"></a>Deep Learning on Graphs: A Survey</h2><p><a href="https://arxiv.org/pdf/1812.04202.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1812.04202.pdf</a></p>
+<h2 id="CVPR-2020"><a href="#CVPR-2020" class="headerlink" title="CVPR 2020"></a>CVPR 2020</h2><ul>
+<li><p>Point-GNN- Graph Neural Network for 3D Object Detection in a Point Cloud</p>
+<p>PointGNN是一种单阶段检测方法，可以在一个场景中检测多个目标。由于点云通常是<strong>稀疏的且不均匀</strong>。把点云放在<strong>规则</strong>网格【CNN使用的条件】会导致每个cell中点的数目不均匀。对这些网格进行相同的卷积操作，可能会导致<strong>拥挤</strong>网格中的信息丢失或者<strong>空</strong>网格浪费计算。并且图神经网络在每一层都<strong>重复使用</strong>图的边，避免了对点的重复分组和采样。</p>
+<p>整体做法：首先用降采样的方法来从原始点云场景中提取一部分点，降低复杂度；然后将点云有效地<strong>编码</strong>到一个固定半径的近邻图中【规定一个顶点最多和256个点有关联】，使用图作为一个点云的紧凑表示，用自动配准的机制来保证<strong>平移不变性</strong>，并设计一个<strong>框合并</strong>和<strong>打分</strong>操作，以精确结合多个顶点的检测结果。</p>
+<p>每个迭代t使用一组不同的MLPt，这些MLPt在迭代之间不共享。 在图神经网络的T迭代之后，使用顶点状态值来预测每个顶点所属的对象的类别和边界框。</p>
+</li>
+<li><p>Grid-GCN for Fast and Scalable Point Cloud Learning</p>
+<p>图卷积网络（GCN）通过完全保留数据粒度和利用点间的<strong>相互关系</strong>表现出显著的性能。基于点的网络在数据结构化(例如，最远点采样(FPS)和邻接点查询)上花费了大量的时间，限制了其速度和可扩展性。Grid-GCN采用了一种新颖的数据结构策略—Coverage-Aware Grid Query(CAGQ)。通过利用网格空间的效率，CAGQ在降低理论时间复杂度的同时提高了空间覆盖率。与最远的点采样（FPS）和Ball Query等流行的采样方法相比，CAGQ的速度提高了50倍。</p>
+<p>模型包含有很多个GridConv层，每一层有2个阶段，第一个阶段是数据结构的构建，对数据选择其中心点，然后对中心的点邻居进行采样。第二个阶段是在第一步的基础之上聚合选出来的邻居节点的信息到一个中心点之上</p>
+<p>虑了节点的特征信息，同时考虑边的相关信息的时候还加入了权重参数而且在考虑节点之间的语义信息的时候，将所有环境节点的语意特征融合形成了fcxt，在考虑fcxt和中心节点的语义关系。<br>关于其中边的权重，是指上一层该中心节点聚集到的节点的个数，上一层聚集到的节点个数越多，那么权重越大。</p>
+<p>自PointNet++ 和DGCNN问世以后，基本所有的点云处理模型都要使用采样或近邻查询。</p>
+<p>通过利用网格空间的效率，CAGQ提高了空间覆盖率，同时降低了理论时间复杂度。</p>
+</li>
+<li><p>Social-STGCNN: A Social Spatio-Temporal Graph Convolutional Neural Network for Human Trajectory Prediction</p>
+<p>提出了一个核函数来将行人之间的社会交互嵌入到邻接矩阵中。通过定性分析，我们的模型继承了行人轨迹之间可以预期的社会行为。</p>
+</li>
+<li><p>Object Relational Graph with Teacher-Recommended Learning for Video Captioning</p>
+<p>目标之间的交互</p>
+</li>
+<li><p>Graph Neural Based End-to-end Data Association Framework for Online Multiple-Object Tracking</p>
+<p>通过一个孪生网络求得了观测目标j与当前目标轨迹i的表观<strong>相似度</strong>，然后取目标轨迹的历史位置为输入，通过LSTM得到预测的位置，计算该位置与观测目标位置的运动相似度，两个相似度结合构建<strong>相似度矩阵</strong>。至此，所有目标轨迹与观测目标的相似度构成了一个<strong>二部图</strong>，以目标和观测信息作为节点，相似度作为边权，表观特征和位置信息拼接作为节点属性特征。</p>
+</li>
+<li><p>Learning a Neural Solver for Multiple Object Tracking</p>
+<p>图节点由所有帧的所有目标构成，直接将观测信息作为节点，没有跟踪，只有关联。节点属性特征由训练得到的表观特征和几何特征构成，其中几何特征为位置和形状。并且定义表观特征距离用欧氏距离度量</p>
+</li>
+</ul>
+<p>ICMR2019</p>
+<ul>
+<li><p>Deep association: End-to-end graph-based learning for multiple object tracking with conv-graph neural network</p>
+<p>提取表观和运动特征，由此构建网络图，通过GNN得到最终的关联矩阵。首先相似度矩阵这里用的是IOU信息：</p>
+</li>
+</ul>
+<h1 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h1><p>图卷积层的每个节点的特征学习可以概括为：</p>
+<ul>
+<li>（对该节点的邻域节点特征）<strong>变换</strong></li>
+<li>（邻域节点）<strong>聚合</strong><ul>
+<li>增加<strong>自连接</strong>，考虑自己的特征</li>
+<li>度大节点特征越来越大；度小的节点相反，造成梯度爆炸或者梯度消失的问题<ul>
+<li>通过邻接矩阵<strong>归一化</strong>: <script type="math/tex">A\to D^{-1}A</script>；就是对邻域节点求平均</li>
+<li><strong>对称归一化</strong>：<script type="math/tex">A\to D^{-\frac 1 2}AD^{-\frac 1 2}</script>；考虑了自身和邻居节点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>（激活函数来增加）<strong>非线性</strong>。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GraphConvolution</span><span class="params">(nn.Module)</span>:</span></div><div class="line">     <span class="string">"""GCN layer"""</span></div><div class="line">    </div><div class="line">     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_features, out_features, bias=True)</span>:</span></div><div class="line">         super(GraphConvolution, self).__init__()</div><div class="line">         self.in_features = in_features</div><div class="line">         self.out_features = out_features</div><div class="line">         self.weight = nn.Parameter(torch.Tensor(in_features, out_features))</div><div class="line">         <span class="keyword">if</span> bias:</div><div class="line">             self.bias = nn.Parameter(torch.Tensor(out_features))</div><div class="line">         <span class="keyword">else</span>:</div><div class="line">             self.register_parameter(<span class="string">'bias'</span>, <span class="keyword">None</span>)</div><div class="line">    </div><div class="line">         self.reset_parameters()</div><div class="line">    </div><div class="line">     <span class="function"><span class="keyword">def</span> <span class="title">reset_parameters</span><span class="params">(self)</span>:</span></div><div class="line">         nn.init.kaiming_uniform_(self.weight)</div><div class="line">         <span class="keyword">if</span> self.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">             nn.init.zeros_(self.bias)</div><div class="line">    </div><div class="line">     <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, adj)</span>:</span></div><div class="line">         support = torch.mm(input, self.weight)</div><div class="line">         output = torch.spmm(adj, support)</div><div class="line">         <span class="keyword">if</span> self.bias <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">             <span class="keyword">return</span> output + self.bias</div><div class="line">         <span class="keyword">else</span>:</div><div class="line">             <span class="keyword">return</span> output</div><div class="line"></div><div class="line">          </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GCN</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="string">"""a simple two layer GCN"""</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nfeat, nhid, nclass)</span>:</span></div><div class="line">        super(GCN, self).__init__()</div><div class="line">        self.gc1 = GraphConvolution(nfeat, nhid)</div><div class="line">        self.gc2 = GraphConvolution(nhid, nclass)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, adj)</span>:</span></div><div class="line">        h1 = F.relu(self.gc1(input, adj))</div><div class="line">        logits = self.gc2(h1, adj)</div><div class="line">        <span class="keyword">return</span> logits</div></pre></td></tr></table></figure>
+<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><h2 id="CORA"><a href="#CORA" class="headerlink" title="CORA"></a>CORA</h2><p>数据提取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># https://github.com/tkipf/pygcn/blob/master/pygcn/utils.py</span></div><div class="line">adj, features, labels, idx_train, idx_val, idx_test = load_data(path=<span class="string">"./data/cora/"</span>)</div></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>《深入浅出图神经网络》</p>
+<p>CS224W: <a href="https://www.bilibili.com/video/BV1jE41177A4?p=1&amp;share_medium=android&amp;share_plat=android&amp;share_source=COPY&amp;share_tag=s_i&amp;timestamp=1601193236&amp;unique_k=aqPZDE" target="_blank" rel="external">https://www.bilibili.com/video/BV1jE41177A4?p=1&amp;share_medium=android&amp;share_plat=android&amp;share_source=COPY&amp;share_tag=s_i&amp;timestamp=1601193236&amp;unique_k=aqPZDE</a></p>
+<p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=448917180&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GNN/" rel="tag"><i class="fa fa-tag"></i> GNN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/19/训练相关/" rel="next" title="训练相关">
+                <i class="fa fa-chevron-left"></i> 训练相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/31/Recommender-Systems/" rel="prev" title="Recommender Systems">
+                Recommender Systems <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paper"><span class="nav-number">1.</span> <span class="nav-text">Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Comprehensive-Survey-on-Graph-Neural-Networks——2019"><span class="nav-number">1.1.</span> <span class="nav-text">A Comprehensive Survey on Graph Neural Networks——2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Neural-Networks-A-Review-of-Methods-and-Application"><span class="nav-number">1.2.</span> <span class="nav-text">Graph Neural Networks: A Review of Methods and Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Learning-on-Graphs-A-Survey"><span class="nav-number">1.3.</span> <span class="nav-text">Deep Learning on Graphs: A Survey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CVPR-2020"><span class="nav-number">1.4.</span> <span class="nav-text">CVPR 2020</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCN"><span class="nav-number">2.</span> <span class="nav-text">GCN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">3.</span> <span class="nav-text">数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CORA"><span class="nav-number">3.1.</span> <span class="nav-text">CORA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

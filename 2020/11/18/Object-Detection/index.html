@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Object detection," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="重新开始细致学习Object Detection的问题，包括之前遗漏的方法(只大概懂皮毛）。回归到初始，不要着急呀。">
+<meta name="keywords" content="Object detection">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object Detection">
+<meta property="og:url" content="http://mrsempress.top/2020/11/18/Object-Detection/index.html">
+<meta property="og:site_name" content="Mrs_empress">
+<meta property="og:description" content="重新开始细致学习Object Detection的问题，包括之前遗漏的方法(只大概懂皮毛）。回归到初始，不要着急呀。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://mrsempress.top/2020/11/18/Object-Detection/Fusion.jpg">
+<meta property="og:image" content="http://mrsempress.top/2020/11/18/Object-Detection/FCOS.png">
+<meta property="og:image" content="http://mrsempress.top/2020/11/18/Object-Detection/DefineTrainingSample.png">
+<meta property="og:image" content="http://mrsempress.top/2020/11/18/Object-Detection/RetinaNet.png">
+<meta property="og:updated_time" content="2020-12-06T10:03:00.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Object Detection">
+<meta name="twitter:description" content="重新开始细致学习Object Detection的问题，包括之前遗漏的方法(只大概懂皮毛）。回归到初始，不要着急呀。">
+<meta name="twitter:image" content="http://mrsempress.top/2020/11/18/Object-Detection/Fusion.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mrsempress.top/2020/11/18/Object-Detection/"/>
+
+
+
+
+
+  <title>Object Detection | Mrs_empress</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0b0957531a34243a173c768258ed03c4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://mrsempress.github.io/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mrs_empress</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Your bright sun</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            poem
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="http://mrsempress-certificate.oss-cn-beijing.aliyuncs.com/%E9%BB%84%E6%99%A8%E6%99%B0.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mrsempress.top/2020/11/18/Object-Detection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mrs_empress">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mrs_empress">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Object Detection</h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-18T16:07:42+08:00">
+                2020-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机视觉</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/Object-detection/" itemprop="url" rel="index">
+                    <span itemprop="name">Object detection</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/11/18/Object-Detection/" class="leancloud_visitors" data-flag-title="Object Detection">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>重新开始细致学习Object Detection的问题，包括之前遗漏的方法(只大概懂皮毛）。回归到初始，不要着急呀。</p>
+<a id="more"></a>
+<p>建议参考知乎专栏，机器学习算法工程师，比一些机翻的好很多。</p>
+<h1 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h1><p>核心组件：Backbone（提取特征）+neck+多尺度head+正负样本定义+正负样本平衡采样+loss</p>
+<h2 id="Backbone"><a href="#Backbone" class="headerlink" title="Backbone"></a>Backbone</h2><p>在mmdetection中通常都会采用<strong>frozen_stages参数固定前n个stage</strong>的权重。因为研究表明前几层特征都是基础通用特征，可以不用重头训练，不仅可以省点内存也可以加速收敛。</p>
+<h3 id="AleNet"><a href="#AleNet" class="headerlink" title="AleNet"></a>AleNet</h3><ul>
+<li>采样用Relu【训练速度更快，sigmoid有梯度消失问题】</li>
+<li>5个卷积层+3个全连接层</li>
+<li>每个全连接层后加入了dropout，减少了过拟合</li>
+</ul>
+<h3 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h3><p>采用连续的几个3x3的卷积核代替AlexNet中的较大卷积核；因为多层非线性层可以增加网络深度来保证学习更复杂的模式，而且代价还比较小（参数更少）。</p>
+<h3 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h3><p>使用密集结构来近似一个稀疏的CNN，激活值之间是稀疏连接的；使用了一中瓶颈层（实际上就是1x1卷积）来降低计算量；使用全局均值池化层替换了全连接层，大大减少了模型的总参数量。</p>
+<h3 id="DarkNet"><a href="#DarkNet" class="headerlink" title="DarkNet"></a>DarkNet</h3><p>darknet是一个类似于TensorFlow、PyTorch的框架；也是一个类似于AlexNet、VGG的模型（只不过两个名字相同而已）</p>
+<h3 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h3><p>Densenet密集跨层跳层连接思想</p>
+<h3 id="CSPNet"><a href="#CSPNet" class="headerlink" title="CSPNet"></a>CSPNet</h3><p>部分局部跨层融合</p>
+<h3 id="ResNext"><a href="#ResNext" class="headerlink" title="ResNext"></a>ResNext</h3><p>group convolution</p>
+<h3 id="ResNeSTt"><a href="#ResNeSTt" class="headerlink" title="ResNeSTt"></a>ResNeSTt</h3><p>融合了attention的思想</p>
+<h3 id="HRNet"><a href="#HRNet" class="headerlink" title="HRNet"></a>HRNet</h3><h3 id="EfficientNet"><a href="#EfficientNet" class="headerlink" title="EfficientNet"></a>EfficientNet</h3><h3 id="Deformable-Convolutional-Networks"><a href="#Deformable-Convolutional-Networks" class="headerlink" title="Deformable Convolutional Networks"></a>Deformable Convolutional Networks</h3><p>不是一个Backbone，但是是一个卷积的改进版本，可以更改在各种Backbone网络之上。可以看作是空洞卷积的进一步扩展。在此基础上还提出了新的ROI Pooling方法——Deformable ROI pooling。</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>一般用在提取到一定语义特征之后使用。即<strong>网络靠后的几层中</strong></li>
+<li>对物体的形变和尺度建模的能力较强</li>
+<li>感受野比一般卷积大很多（因为有偏移）</li>
+</ul>
+<h4 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h4><ul>
+<li>常规的卷积得到的都是矩形框。对于不规则的目标建模有非常大的局限性。而CNN不具有旋转不变性和尺度不变性，因此对于CNN来说一般都是通过大量的训练样本来让训练器强行记忆的</li>
+</ul>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>通常卷积是</p>
+<script type="math/tex; mode=display">
+\mathbf{y}\left(\mathbf{p}_{0}\right)=\sum_{\mathbf{p}_{n} \in \mathcal{R}} \mathbf{w}\left(\mathbf{p}_{n}\right) \cdot \mathbf{x}\left(\mathbf{p}_{0}+\mathbf{p}_{n}\right)</script><p>就是说用卷积中的一点<script type="math/tex">p_n</script>和输入中在中心点<script type="math/tex">p_0</script>同样增加方位<script type="math/tex">p_n</script>点的乘积之和。</p>
+<p>而可变形卷积就是增加了一个<strong>偏移量</strong></p>
+<script type="math/tex; mode=display">
+\mathbf{y}\left(\mathbf{p}_{0}\right)=\sum_{\mathbf{p}_{n} \in \mathcal{R}} \mathbf{w}\left(\mathbf{p}_{n}\right) \cdot \mathbf{x}\left(\mathbf{p}_{0}+\mathbf{p}_{n}+\Delta \mathbf{p}_{n}\right)</script><p>由于偏移量往往是小数，所以采用了<strong>双线性差值</strong>（接近的点才对线性差值有贡献）。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\mathbf{x}(\mathbf{p})=\sum_{\mathbf{q}} G(\mathbf{q}, \mathbf{p}) \cdot \mathbf{x}(\mathbf{q}) \\
+G(\mathbf{q}, \mathbf{p})=g\left(q_{x}, p_{x}\right) \cdot g\left(q_{y}, p_{y}\right) \\
+g(a, b)=\max (0,1-|a-b|)
+\end{array}</script><script type="math/tex; mode=display">
+\Delta \mathbf{p}_{i j}=\gamma \cdot \Delta \widehat{\mathbf{p}}_{i j} \circ(w, h)</script><p>网络学习的是<script type="math/tex">\hat p</script>变量，<script type="math/tex">\gamma</script>来控制偏移量的大小</p>
+<h2 id="Neck"><a href="#Neck" class="headerlink" title="Neck"></a>Neck</h2><p>这里介绍的都是网络，针对于多尺度的融合问题；其中的一个部分作为Neck，为了连贯性，因此将一些多尺度的融合方法也放入其中。</p>
+<p><img src="/2020/11/18/Object-Detection/Fusion.jpg" alt=""></p>
+<h3 id="FPN——2016"><a href="#FPN——2016" class="headerlink" title="FPN——2016"></a>FPN——2016</h3><h4 id="解决的问题-1"><a href="#解决的问题-1" class="headerlink" title="解决的问题"></a>解决的问题</h4><ul>
+<li>目标的尺寸不同，因此对于小目标的结果并不好；由此提出同时利用<strong>低层特征高分辨率</strong>和<strong>高层特征的高语义信息</strong>，通过融合这些不同层的特征达到预测的效果，并且预测是在每个融合后的特征层上单独进行的。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li><p><strong>不同尺度</strong>之间存在<strong>语义gap</strong>，即某个gt bbox只会分配到某一个特定层，而其余层级对应区域会认为是背景(但是其余层学习出来的语义特征其实也是连续相似的，并不是完全不能用的)；如果图像中包含大小对象，则不同级别的特征之间的冲突往往会占据要素金字塔的主要部分，这种不一致会干扰训练期间的梯度计算，并降低特征金字塔的有效性。</p>
+</li>
+<li><p>梯度计算如下</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial \mathcal{L}}{\partial \mathbf{x}_{i j}^{1}}=& \frac{\partial \mathbf{y}_{i j}^{1}}{\partial \mathbf{x}_{i j}^{1}} \cdot \frac{\partial \mathcal{L}}{\partial \mathbf{y}_{i j}^{1}}+\frac{\partial \mathbf{x}_{i j}^{1 \rightarrow 2}}{\partial \mathbf{x}_{i j}^{1}} \cdot \frac{\partial \mathbf{y}_{i j}^{2}}{\partial \mathbf{x}_{i j}^{1 \rightarrow 2}} \cdot \frac{\partial \mathcal{L}}{\partial \mathbf{y}_{i j}^{2}} \\
+&+\frac{\partial \mathbf{x}_{i j}^{1 \rightarrow 3}}{\partial \mathbf{x}_{i j}^{1}} \cdot \frac{\partial \mathbf{y}_{i j}^{3}}{\partial \mathbf{x}_{i j}^{1 \rightarrow 3}} \cdot \frac{\partial \mathcal{L}}{\partial \mathbf{y}_{i j}^{3}}
+\end{aligned}</script><p>由于不同层之间是一个尺度变换关系，因此可以认为$\frac{\partial \mathbf{x}_{i j}^{1 \rightarrow l}}{\partial \mathbf{x}_{i j}^{1}}$是一个常数；简单我们用1表示；而$\frac{\partial \mathbf{y}_{i j}^{l}}{\partial \mathbf{x}_{i j}^{1 \rightarrow l}}$是一个activation的操作的梯度值，也是一个常数，因此可以简化为</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathcal{L}}{\partial \mathbf{x}_{i j}^{1}}=\frac{\partial \mathcal{L}}{\partial \mathbf{y}_{i j}^{1}}+\frac{\partial \mathcal{L}}{\partial \mathbf{y}_{i j}^{2}}+\frac{\partial \mathcal{L}}{\partial \mathbf{y}_{i j}^{3}}</script><p>在不同层特征图<code>(i,j)</code>位置上的目标很可能同时包含正负样本，这样这个不连续性会对梯度结果产生影响，降低训练的效率</p>
+</li>
+</ol>
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>自下而上：低层次特征通过<strong>下采样</strong>，得到高层特征的高语义信息。【C1~C5】</li>
+<li>自上而下：高层次特征通过<code>2x</code>的<strong>上采样</strong>，通过<strong>最近邻插值</strong>【将高层次小特征图放大】，改变h, w【P5~P3】</li>
+<li>横向连接：【由于C1的特征图尺寸较大，且语义信息不足，因此C1没有用横向连接】<ul>
+<li>将低层次特征用<code>1x1</code>卷积层降维，改变channel个数【C2~C5】</li>
+<li>这样低层次和高层次特征维度一致，直接逐元素相加</li>
+<li>将融合特征通过<code>3x3</code>卷积以消除上采样带来的不利影响【P2~P4】</li>
+</ul>
+</li>
+</ul>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</div><div class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</div><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bottleneck</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    expansion = <span class="number">4</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_planes, planes, stride=<span class="number">1</span>, downsample=None)</span>:</span></div><div class="line">        super(Bottleneck, self).__init__()</div><div class="line">        self.bottleneck = nn.Sequential(</div><div class="line">                nn.Conv2d(in_planes, planes, <span class="number">1</span>, bias=<span class="keyword">False</span>),</div><div class="line">                nn.BatchNorm2d(planes),</div><div class="line">                nn.ReLU(inplace=<span class="keyword">True</span>),</div><div class="line">                nn.Conv2d(planes, planes, <span class="number">3</span>, stride, <span class="number">1</span>, bias=<span class="keyword">False</span>),</div><div class="line">                nn.BatchNorm2d(planes),</div><div class="line">                nn.ReLU(inplace=<span class="keyword">True</span>),</div><div class="line">                nn.Conv2d(planes, self.expansion * planes, <span class="number">1</span>, bias=<span class="keyword">False</span>),</div><div class="line">                nn.BatchNorm2d(self.expansion * planes),</div><div class="line">            )</div><div class="line">        self.relu = nn.ReLU(inplace=<span class="keyword">True</span>)</div><div class="line">        self.downsample = downsample</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">        identity = x</div><div class="line">        out = self.bottleneck(x)</div><div class="line">        <span class="keyword">if</span> self.downsample <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">            identity = self.downsample(x)</div><div class="line">        out += identity</div><div class="line">        out = self.relu(out)</div><div class="line">        <span class="keyword">return</span> out</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FPN</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, layers)</span>:</span></div><div class="line">        super(FPN, self).__init__()</div><div class="line">        self.inplanes = <span class="number">64</span></div><div class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">64</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, bias=<span class="keyword">False</span>)</div><div class="line">        self.bn1 = nn.BatchNorm2d(<span class="number">64</span>)</div><div class="line">        self.relu = nn.ReLU(inplace=<span class="keyword">True</span>)</div><div class="line">        self.maxpool = nn.MaxPool2d(<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>)</div><div class="line"></div><div class="line">        self.layer1 = self._make_layer(<span class="number">64</span>, layers[<span class="number">0</span>])</div><div class="line">        self.layer2 = self._make_layer(<span class="number">128</span>, layers[<span class="number">1</span>], <span class="number">2</span>)</div><div class="line">        self.layer3 = self._make_layer(<span class="number">256</span>, layers[<span class="number">2</span>], <span class="number">2</span>)</div><div class="line">        self.layer4 = self._make_layer(<span class="number">512</span>, layers[<span class="number">3</span>], <span class="number">2</span>)</div><div class="line">        self.toplayer = nn.Conv2d(<span class="number">2048</span>, <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line">        self.smooth1 = nn.Conv2d(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>)</div><div class="line">        self.smooth2 = nn.Conv2d(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>)</div><div class="line">        self.smooth3 = nn.Conv2d(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>)</div><div class="line"></div><div class="line">        self.latlayer1 = nn.Conv2d(<span class="number">1024</span>, <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>)</div><div class="line">        self.latlayer2 = nn.Conv2d( <span class="number">512</span>, <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>)</div><div class="line">        self.latlayer3 = nn.Conv2d( <span class="number">256</span>, <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_make_layer</span><span class="params">(self, planes, blocks, stride=<span class="number">1</span>)</span>:</span></div><div class="line">        downsample  = <span class="keyword">None</span></div><div class="line">        <span class="keyword">if</span> stride != <span class="number">1</span> <span class="keyword">or</span> self.inplanes != Bottleneck.expansion * planes:</div><div class="line">            downsample  = nn.Sequential(</div><div class="line">                nn.Conv2d(self.inplanes, Bottleneck.expansion * planes, <span class="number">1</span>, stride, bias=<span class="keyword">False</span>),</div><div class="line">                nn.BatchNorm2d(Bottleneck.expansion * planes)</div><div class="line">            )</div><div class="line">        layers = []</div><div class="line">        layers.append(Bottleneck(self.inplanes, planes, stride, downsample))</div><div class="line">        self.inplanes = planes * Bottleneck.expansion</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, blocks):</div><div class="line">            layers.append(Bottleneck(self.inplanes, planes))</div><div class="line">        <span class="keyword">return</span> nn.Sequential(*layers)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_upsample_add</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        _,_,H,W = y.shape</div><div class="line">        <span class="keyword">return</span> F.upsample(x, size=(H,W), mode=<span class="string">'bilinear'</span>) + y</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line"></div><div class="line">        c1 = self.maxpool(self.relu(self.bn1(self.conv1(x))))</div><div class="line">        c2 = self.layer1(c1)</div><div class="line">        c3 = self.layer2(c2)</div><div class="line">        c4 = self.layer3(c3)</div><div class="line">        c5 = self.layer4(c4)</div><div class="line"></div><div class="line">        p5 = self.toplayer(c5)</div><div class="line">        p4 = self._upsample_add(p5, self.latlayer1(c4))</div><div class="line">        p3 = self._upsample_add(p4, self.latlayer2(c3))</div><div class="line">        p2 = self._upsample_add(p3, self.latlayer3(c2))</div><div class="line"></div><div class="line">        p4 = self.smooth1(p4)</div><div class="line">        p3 = self.smooth2(p3)</div><div class="line">        p2 = self.smooth3(p2)</div><div class="line">        <span class="keyword">return</span> p2, p3, p4, p5</div></pre></td></tr></table></figure>
+<h3 id="PANet——2018"><a href="#PANet——2018" class="headerlink" title="PANet——2018"></a>PANet——2018</h3><h4 id="解决的问题-2"><a href="#解决的问题-2" class="headerlink" title="解决的问题"></a>解决的问题</h4><ul>
+<li>FPN自底向上的过程，使得特征信息在上传时丢失的较为严重；而低层次的信息包含大量边缘形状等特征，这对于像素级别的分类任务（如实例分割）是起到至关重要的作用的。</li>
+<li>ROI经过ROI Pooling或者ROI Align提取ROI特征，每个ROI所基于的特征都是<strong>单层特征</strong>。</li>
+</ul>
+<h4 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>缩短信息路径和用<strong>低层级的准确定位信息</strong>来增强特征金字塔，创建了<strong>自下而上的路径增强</strong><ul>
+<li>相当于FPN是在向下采样的卷积后增加了<strong>自上而下的P模块</strong>以及<strong>横向连接</strong></li>
+<li>而PAN是在FPN之后增加了<strong>自下而上的N模块</strong>以及<strong>横向连接</strong></li>
+<li>这里的P2到N2没有经过变换</li>
+<li>N3～N5是和P3～P5的融合结果</li>
+</ul>
+</li>
+<li>为了恢复每个建议区域和所有特征层级之间被破坏的信息，作者开发了<strong>适应性特征池化（adaptive feature pooling）技术</strong>，可以将所有特征层级中的<strong>特征整合到每个</strong>建议区域中，避免了任意分配的结果。<ul>
+<li>每个ROI和多层特征做ROI Align操作，将不同层的ROI特征融合在一起。这样得到的ROI特征是多层的。</li>
+</ul>
+</li>
+<li>全连接融合层：使用一个小型fc层用于补充<strong>mask预测</strong><ul>
+<li>增加了一个前景二分类全连接支路</li>
+</ul>
+</li>
+</ul>
+<h3 id="M2Det——2019"><a href="#M2Det——2019" class="headerlink" title="M2Det——2019"></a>M2Det——2019</h3><h4 id="解决的问题-3"><a href="#解决的问题-3" class="headerlink" title="解决的问题"></a>解决的问题</h4><ul>
+<li>原本 backbone 是用于<strong>目标分类</strong>的网络，导致用于<strong>目标检测的语义特征不足；</strong><ul>
+<li>对<strong>分类</strong>子网络来说<strong>更深更高</strong>的层更容易区分，对<strong>定位的回归</strong>任务来说使用<strong>更低更浅</strong>的层比较好</li>
+<li><strong>底层</strong>特征更适合描述具有<strong>简单外观</strong>的目标，而<strong>高层</strong>特征更适合描述具有<strong>复杂外观</strong>的目标</li>
+</ul>
+</li>
+<li>每个用于目标检测的特征层主要或者仅仅是由单级特征层（single-level layers）构成，也就是<strong>仅仅包含了单级信息</strong>；</li>
+</ul>
+<h4 id="结构-2"><a href="#结构-2" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>主干网络提取特征</li>
+<li>MLFPN<ul>
+<li><strong>特征融合</strong>模块FFM将浅层和深层特征进行融合【使用两种<strong>不同scale</strong>的feature map作为输入，所以在拼接操作之前加入了<strong>上采样</strong>操作来调整大小】，得到<strong><em>base feature</em></strong>；</li>
+<li>堆叠多个细化U型模块TUM和FFM（和上一条的FFM是两个独立但是相同的模块）<strong>提取更有代表性</strong>的Multi-level&amp;Mutli-scale特征<ul>
+<li>每个TUM可以产生多个<strong>不同scale</strong>的feature map，在上采样和元素相加操作之后加上<strong>1x1卷积</strong>来<strong>加强学习能力和保持特征平滑度</strong></li>
+<li>每个FFMv2<strong>融合base feature</strong>和<strong>上一个TUM的输出</strong>，并给到<strong>下一个TUM作为输入</strong>（更高level）。</li>
+</ul>
+</li>
+<li><strong>尺度特征聚合</strong>模块SFAM融合多级特征，通过<strong>scale-wise拼接和channel-wise attention</strong>来聚合<strong><em>multi-level&amp;multi-scale</em></strong>的特征，得到多级特征金字塔用于最终阶段的预测<ul>
+<li>沿着channel维度将拥有<strong>相同scale</strong>的feature map进行拼接，这样得到的每个scale的特征都<strong>包含了多个level的信息</strong>。</li>
+<li>借鉴SENet的思想，加入<strong>channel-wise attention</strong>，以更好地捕捉有用的特征。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>采用类似<strong>SSD</strong>的方式预测<strong>密集</strong>的包围框和类别得分</li>
+<li>soft-NMS得到最后的检测结果</li>
+</ul>
+<h3 id="ASFF：Adaptively-Spatial-Feature-Fusion——2019"><a href="#ASFF：Adaptively-Spatial-Feature-Fusion——2019" class="headerlink" title="ASFF：Adaptively Spatial Feature Fusion——2019"></a>ASFF：Adaptively Spatial Feature Fusion——2019</h3><h4 id="解决的问题-4"><a href="#解决的问题-4" class="headerlink" title="解决的问题"></a>解决的问题</h4><ol>
+<li>不同尺寸特征用concat或者add的融合方式并不够科学；于是本文提出<strong>自适应融合</strong>，自动找出最合适的融合特征。</li>
+<li>FPN的梯度是可能会同时包含正负样本的，所以会对训练有影响；而ASFF的梯度是由权重来控制的，因此对于正负样本同时在梯度计算的时候，可以设置对应的权重为0，这样负梯度就不会对结果产生干扰。</li>
+</ol>
+<h4 id="结构-3"><a href="#结构-3" class="headerlink" title="结构"></a>结构</h4><ul>
+<li><p><strong>add基础上增加了一个自动学习的参数</strong>，实现自适应融合效果，类似于全连接参数</p>
+</li>
+<li><p>identically rescaling：为了融合不同层级之间的特征，首先要进行上采样或者下采样，得到同等空间大小的特征图。</p>
+<ul>
+<li>上采样：<code>1x1</code>卷积进行通道压缩，然后双线性插值</li>
+<li>下采样：用1/2特征图进行<code>3x3 conv with stride of 2</code>；用1/4特征图进行<code>max pooling with stride of 2</code>；</li>
+</ul>
+</li>
+<li><p>adaptively fusing：</p>
+<script type="math/tex; mode=display">
+\mathbf{y}_{i j}^{l}=\alpha_{i j}^{l} \cdot \mathbf{x}_{i j}^{1 \rightarrow l}+\beta_{i j}^{l} \cdot \mathbf{x}_{i j}^{2 \rightarrow l}+\gamma_{i j}^{l} \cdot \mathbf{x}_{i j}^{3 \rightarrow l}</script><p>用level为1，2，3的特征图转换到level l，前面超参数表示一个重要度权重，他们的加和为1.并且满足：</p>
+<script type="math/tex; mode=display">
+\alpha_{i j}^{l}=\frac{e^{\lambda_{\alpha_{i j}}^{l}}}{e^{\lambda_{\alpha_{i j}}^{l}+e^{\lambda_{\beta_{i j}}^{l}}+e^{\lambda_{\gamma_{i j}}^{l}}}}</script></li>
+</ul>
+<h4 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h4><ol>
+<li>首先对于第<code>l</code>级特征图输出<code>c*h*w</code>，对其余特征图进行<strong>上下采样</strong>操作，得到<strong>同样大小和channel的特征图</strong>，方便后续融合 </li>
+<li>对处理后的3个层级特征图输出，输入到<code>1*1*n</code>的卷积中(n是预先设定的)，得到3个空间<strong>权重向量</strong>，每个大小是<code>n*h*w</code></li>
+<li>然后<strong>通道方向拼接</strong>得到<code>3n*h*w</code>的<strong>权重融合图</strong> (只是权重连接)</li>
+<li>在<strong>通道方向softmax</strong>操作，进行<strong>归一化</strong>，将3个向量乘加到3个特征图上面，得到<strong>融合后的<code>c*h*w</code>特征图</strong> （特征图带权连接）</li>
+<li>采用<code>3*3</code>卷积得到输出通道为256的预测输出层</li>
+</ol>
+<h3 id="EfficientDet"><a href="#EfficientDet" class="headerlink" title="EfficientDet"></a>EfficientDet</h3><h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>可学习参数的自适应加权融合</li>
+</ul>
+<h4 id="结构-4"><a href="#结构-4" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>双向FPN<ul>
+<li>Top-down</li>
+<li>down-top</li>
+</ul>
+</li>
+</ul>
+<h3 id="NAS-FPN"><a href="#NAS-FPN" class="headerlink" title="NAS-FPN"></a>NAS-FPN</h3><h2 id="Head"><a href="#Head" class="headerlink" title="Head"></a>Head</h2><h3 id="Anchor"><a href="#Anchor" class="headerlink" title="Anchor"></a>Anchor</h3><h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>octave_base_scale: 每层特征图的base anchor scale；增大，则整体anchor都会放大</li>
+<li>scales_per_octave: 每层anchor尺度的个数，为<code>2**0, 2**(1/n), ..., 2**(n-1/n)</code></li>
+<li>ratios：每层anchor的长宽比</li>
+<li>Strides：每个特征图层输出stride，故anchor范围为<code>[octave_base_scale* 2**0 * strides[0], octave_base_scale* 2**(n-1/n) * strides[-1]</code></li>
+</ul>
+<h4 id="生成方式"><a href="#生成方式" class="headerlink" title="生成方式"></a>生成方式</h4><h5 id="sliding-window"><a href="#sliding-window" class="headerlink" title="sliding window"></a>sliding window</h5><ul>
+<li>定义K个特定尺度和长宽比</li>
+<li>在图上以一定的步长滑动</li>
+</ul>
+<h3 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h3><ul>
+<li>分类：二分类，区分前景和背景</li>
+<li>回归：对前景样本进行基于anchor的变换回归</li>
+</ul>
+<h4 id="ROI"><a href="#ROI" class="headerlink" title="ROI"></a>ROI</h4><p>两次量化</p>
+<ul>
+<li>映射：在框【就是ROI框对应到网格化的框中】进行量化的时候，会丢失一部分信息和增加一部分噪声。（考虑不同位置的四舍五入情况）</li>
+<li>Pooling的Kernel大小可能不能被featmap整除。在量化的过程中可能会丢失（右/下）信息。</li>
+</ul>
+<h5 id="Deformable-ROI-Pooling"><a href="#Deformable-ROI-Pooling" class="headerlink" title="Deformable ROI Pooling"></a>Deformable ROI Pooling</h5><script type="math/tex; mode=display">
+\mathbf{y}(i, j)=\sum_{\mathbf{p} \in \operatorname{bin}(i, j)} \mathbf{x}\left(\mathbf{p}_{0}+\mathbf{p}+\Delta \mathbf{p}_{ij}\right) / n_{i j}</script><p>n表示在这个bin中pixels的个数。</p>
+<script type="math/tex; mode=display">
+\Delta \mathbf{p}_{i j}=\gamma \cdot \Delta \widehat{\mathbf{p}}_{i j} \circ(w, h)</script><p>学习的是<script type="math/tex">\hat p</script>变量，<script type="math/tex">\gamma</script>来控制偏移量的大小，防止超出ROI</p>
+<h4 id="ROI-Wraping"><a href="#ROI-Wraping" class="headerlink" title="ROI Wraping"></a>ROI Wraping</h4><h3 id="RCNN"><a href="#RCNN" class="headerlink" title="RCNN"></a>RCNN</h3><ul>
+<li>分类：类别数+1（背景）</li>
+<li>回归：对前景样本不考虑分类类别进行ROI Refine</li>
+</ul>
+<h2 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h2><p>不同场景下我们会使用合适的loss，比如：</p>
+<ul>
+<li><p>线性回归，MSE Loss【可以处理分类「但是01标签难收敛」/回归问题】</p>
+<script type="math/tex; mode=display">
+MSE(y, \hat y)=\frac 1 {2N}\sum_i^N(y-\hat y)^2</script><p><strong>实际中</strong>分布是不均衡，不是正态分布，应该是满足二元交叉熵分布的。但是在<strong>回归问题基本不会考虑不均衡的问题</strong>，因为标签是连续的。但是会存在标签分布诡异的现象（比如奢侈品消费）。在处理回归问题时，会发现用<strong>对数变换</strong>效果变好。如果<strong>标签存在负数</strong>，则标签加上min_data+1，再log变换即可。</p>
+</li>
+<li><p>逻辑回归二分类，二元交叉熵</p>
+<script type="math/tex; mode=display">
+BCE(p, \hat y)=-p\log\hat y-(1-p)(1-\log \hat y)</script></li>
+</ul>
+<p>使用特定损失函数的前提是<strong>对标签的分布进行了某种假设</strong>，在这种假设的前提下通过<strong>极大似然法</strong>推出所有样本构成的极大似然公式，再使用<strong>凸优化</strong>的方法，比如梯度下降法求解。</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="BCE-Loss"><a href="#BCE-Loss" class="headerlink" title="BCE Loss"></a>BCE Loss</h4><p>二分类交叉熵损失函数（一般在此之前会经过sigmoid层，得到0或者1的标签）</p>
+<script type="math/tex; mode=display">
+\operatorname{BCE} \left(p_{i}, y_{i}\right)=-w_{i}\left[y_{i} \log p_{i}+\left(1-y_{i}\right) \log \left(1-p_{i}\right)\right]</script><p>可以简写为</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+p_{\mathrm{t}}=\left\{\begin{array}{ll}
+p & \text { if } y=1 \\
+1-p & \text { otherwise },
+\end{array}\right. \\
+\qquad \begin{array}{l}
+BC E(p, y)=BC E\left(p_{t}\right)=-w\log p_{t}
+\end{array}
+\end{array}</script><p>但是<strong>由于负样本过多</strong>，刚开始的loss会很大，而且不稳定，容易出现梯度爆炸的现象；即使降低分类的权重来避免梯度爆炸，但是模型会倾向于预测负样本。</p>
+<p>但是论文“Is Sampling Heuristics Necessary in Training Deep Object Detectors?”指出，适当<strong>调整模型的初始化和loss权重比例</strong>，是可以达到FL 类似的效果的。</p>
+<h5 id="二分类问题与伯努利分布"><a href="#二分类问题与伯努利分布" class="headerlink" title="二分类问题与伯努利分布"></a>二分类问题与伯努利分布</h5><p>二分类问题，常见的假设就是<strong>标签服从伯努利分布</strong>。</p>
+<p><strong>伯努利分布/两点分布</strong>是一个<strong>离散</strong>型分布。其表示，如果成功，随机变量取值为1；如果失败，随机变量取值为0。</p>
+<p>成功几率为p，那么相应失败的几率为1-p。可以表示为：</p>
+<script type="math/tex; mode=display">
+P(X=1)=p\qquad P(X=0)=1-p</script><p>可以统一表示为</p>
+<script type="math/tex; mode=display">
+P(X)=p^X(1-p)^{1-X}</script><p>N次试验之后，<strong>成功期望为<code>N*p</code>，方差为<code>N*p*(1-p)</code>。</strong></p>
+<p>假设观察到的数据是<script type="math/tex">D_i</script>，那么极大似然的目标：</p>
+<script type="math/tex; mode=display">
+max\ P(D_1,D_2, \dots,D_N)</script><p>同时在这里，引入一个假设——<strong>独立同分布(i.i.d.)</strong>，目标公式即变为：</p>
+<script type="math/tex; mode=display">
+max\ \prod_i^NP(D_i)</script><p>由于乘法，我们可以用log，不改变取值点的同时，又可以将运算变为加法。</p>
+<script type="math/tex; mode=display">
+max_p\ \log P(D)=max_p\ \log \prod_i^N P(D_i)\\=max_p\ \sum_i^N\log P(D_i)\\=max_p \sum_i^N[D_i\log p+(1-D_i)\log(1-p)]</script><p>这样就是<strong>二元交叉熵</strong>公式了。</p>
+<h4 id="Focal-Loss——2018"><a href="#Focal-Loss——2018" class="headerlink" title="Focal Loss——2018"></a>Focal Loss——2018</h4><p>将大量易学习样本的loss权重降低，但是不丢弃样本，突出难学习样本的loss权重，但是因为大部分易学习样本都是负样本，所以顺便解决了正负样本不平衡问题。</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+p_{\mathrm{t}}=\left\{\begin{array}{ll}
+p & \text { if } y=1 \\
+1-p & \text { otherwise },
+\end{array}\right.
+\end{array}\\
+\mathbf{F L}(p)=-\left(1-p_{t}\right)^{\gamma} \log \left(p_{t}\right)</script><p>实验说明gamma取2的时候，结果最好。</p>
+<p>当y=0，即为负样本时，</p>
+<ul>
+<li>它的置信度很低p【表示确定为正例的概率很低，即确定为负样例的概率很高】(<script type="math/tex">p_t</script>接近1），那么调节因子就是接近0，损失函数权重很低；即易学习的不太关注；</li>
+<li>它的置信度很高，即p接近0.5时，那么调节因子很高是要关注的</li>
+</ul>
+<p>当y=1，即为正样本时，</p>
+<ul>
+<li>它的置信度很低p，表示难学习的正样本，这时调节因子很高</li>
+<li>它的置信度很高，表示易学习的正样本，调节因子很低</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">p = torch.sigmoid(inputs)</div><div class="line">ce_loss = F.binary_cross_entropy_with_logits(inputs, targets, reduction=<span class="string">"none"</span>)</div><div class="line">p_t = p * targets + (<span class="number">1</span> - p) * (<span class="number">1</span> - targets)</div><div class="line">loss = ce_loss * ((<span class="number">1</span> - p_t) ** gamma)</div></pre></td></tr></table></figure>
+<h3 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h3><h4 id="Smooth-L1"><a href="#Smooth-L1" class="headerlink" title="Smooth L1"></a>Smooth L1</h4><script type="math/tex; mode=display">
+\begin{aligned}
+&L 1_{\text {smooth}}=\left\{\begin{array}{ll}
+0.5 x^{2} & |\mathrm{x}|<1(\text {inliers}) \\
+|x|-0.5 & \text { otherwise }(\text { outliers })
+\end{array}\right.\\
+&\frac{\partial L 1_{s m o o t h}}{\partial x}=\left\{\begin{array}{ll}
+x & |\mathrm{x}|<1 \\
+-1 & \mathrm{x}<-1 \\
+1 & \mathrm{x}>1
+\end{array}\right.
+\end{aligned}</script><h4 id="Balanced-L1-Loss"><a href="#Balanced-L1-Loss" class="headerlink" title="Balanced L1 Loss"></a>Balanced L1 Loss</h4><p>平衡回归loss的目的是既不希望放大外点对梯度的影响，又要突出内点中难负样本的梯度，从而实现对外点容忍，对内点区分难负样本的作用。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\frac{\partial L_{b}}{\partial x}=\left\{\begin{array}{ll}
+\alpha \ln (b|x|+1) & \text { if }|x|<1 \\
+\gamma & \text { otherwise }
+\end{array}\right. \\
+L_{b}(x)=\left\{\begin{array}{ll}
+\frac{\alpha}{b}(b|x|+1) \ln (b|x|+1)-\alpha|x| & \text { if }|x|<1 \\
+\gamma|x|+C & \text { otherwise }
+\end{array}\right.
+\end{array}</script><p>in which the parameters $\gamma, \alpha,$ and $b$ are constrained by</p>
+<script type="math/tex; mode=display">
+\alpha \ln (b+1)=\gamma</script><h4 id="MSE-Loss"><a href="#MSE-Loss" class="headerlink" title="MSE Loss"></a>MSE Loss</h4><h5 id="线性回归问题与正态分布"><a href="#线性回归问题与正态分布" class="headerlink" title="线性回归问题与正态分布"></a>线性回归问题与正态分布</h5><p>在使用线性回归<script type="math/tex">y=ax+b</script>的时候，基本假设是噪声服从正态分布<script type="math/tex">N(0, \delta^2)</script>，根据<strong>正态分布的概率密度函数</strong>可以得出，因变量y则服从正态分布<script type="math/tex">N(ax+b, \delta^2)</script>。</p>
+<p><strong>正态分布</strong>：</p>
+<script type="math/tex; mode=display">
+f\left(\varepsilon_{i} ; u, \sigma^{2}\right)=\frac{1}{\sigma \sqrt{2 \pi}} \cdot \exp \left[-\frac{\left(\varepsilon_{i}-u\right)^{2}}{2\sigma^2}\right]</script><p>同样的我们的目标是使得这个正态分布在数据集D下（在假设独立同分布下，即连乘的极大似然估计）最大。</p>
+<script type="math/tex; mode=display">
+L(u,\sigma^2)=\prod_{i=1}^n\frac{1}{\sigma \sqrt{2 \pi}} \cdot \exp \left[-\frac{\left(\varepsilon_{i}-u\right)^{2}}{2\sigma^2}\right]</script><p>同样取对数来简化为加法</p>
+<script type="math/tex; mode=display">
+\log L\left(u, \sigma^{2}\right)=-\frac{n}{2} \log \sigma^{2}-\frac{n}{2} \log 2 \pi--\frac{\sum_{i=1}^n\left(\varepsilon_{i}-u\right)^{2}}{2\sigma^2}</script><p>两个变量，用求偏导的等于0来求得参数的取值：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+u=\frac{1}{n} \sum_{i=1}^{n} \varepsilon_{i}=\frac{1}{n} \sum_{i=1}^{n} (y_i-\hat y_i)\\
+\sigma^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(\varepsilon_{i}-u\right)^{2}\\=\frac{1}{n} \sum_{i=1}^{n}(y_i-\hat y_i-u)^2\\\approx\frac{1}{n} \sum_{i=1}^{n}(y_i-\hat y_i)^2
+\end{array}</script><p>由于<script type="math/tex">\epsilon</script>服从正态分布，那么希望均值u和方差<script type="math/tex">\sigma</script>趋近于0。看表达式也可以知道，当两者趋向于0时，对数似然函数越大。于是就等价于均方误差了。</p>
+<h4 id="IOU-Loss"><a href="#IOU-Loss" class="headerlink" title="IOU Loss"></a>IOU Loss</h4><ul>
+<li>具有尺度不变性，对尺度不敏感</li>
+<li>如果<strong>两个框没有相交</strong>，根据定义，IoU=0，不能反映两者的距离大小（重合度）。同时因为loss=0，没有梯度回传，无法进行学习训练。</li>
+<li>IoU无法精确的反映两者的重合度大小。比如对于A和B有同样的IOU，那么只能说明两者的重叠面积一样，这就有无数多种，只需要让框旋转一下，但是这个回归的效果是不同的。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Iou</span><span class="params">(box1, box2, wh=False)</span>:</span></div><div class="line">		xmin1, ymin1, xmax1, ymax1 = box1</div><div class="line">		xmin2, ymin2, xmax2, ymax2 = box2</div><div class="line">    <span class="comment"># 获取矩形框交集对应的左上角和右下角的坐标（intersection）</span></div><div class="line">    xx1 = np.max([xmin1, xmin2])</div><div class="line">    yy1 = np.max([ymin1, ymin2])</div><div class="line">    xx2 = np.min([xmax1, xmax2])</div><div class="line">    yy2 = np.min([ymax1, ymax2])	</div><div class="line">    <span class="comment"># 计算两个矩形框面积</span></div><div class="line">    area1 = (xmax1-xmin1) * (ymax1-ymin1) </div><div class="line">    area2 = (xmax2-xmin2) * (ymax2-ymin2)</div><div class="line">    inter_area = (np.max([<span class="number">0</span>, xx2-xx1])) * (np.max([<span class="number">0</span>, yy2-yy1]))　<span class="comment">#计算交集面积</span></div><div class="line">    iou = inter_area / (area1+area2-inter_area+<span class="number">1e-6</span>) 　<span class="comment">#计算交并比</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> iou</div></pre></td></tr></table></figure>
+<h4 id="GIOU-Loss——2019"><a href="#GIOU-Loss——2019" class="headerlink" title="GIOU Loss——2019"></a>GIOU Loss——2019</h4><script type="math/tex; mode=display">
+GIOU=IOU-\frac{|A_c-U|}{A_c}</script><p>先计算两个框的最小闭包区域面积<script type="math/tex">A_c</script>(通俗理解：同时包含了预测框和真实框的最小框的面积)，再计算出IoU，再计算闭包区域中<strong>不属于</strong>两个框的区域占闭包区域的比重，最后用IoU减去这个比重得到GIoU。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Giou</span><span class="params">(box1, box2)</span>:</span></div><div class="line">    xmin1, ymin1, xmax1, ymax1 = box1</div><div class="line">		xmin2, ymin2, xmax2, ymax2 = box2</div><div class="line">    iou = Iou(box1,box2)</div><div class="line">    area_C = (max(xmin1,xmin2,xmax1,xmax2)-min(xmin1,xmin2,xmax1,xmax2))*(max(ymin1,ymin2,ymax1,ymax2)-min(ymin1,ymin2,ymax1,ymax2))</div><div class="line">    area_1 = (xmax1-xmin1)*(ymax1-ymin1)</div><div class="line">    area_2 = (xmax2-xmin2)*(ymax2-ymin2)</div><div class="line">    sum_area = area_1 + area_2</div><div class="line"></div><div class="line">    w1 = x2 - x1   <span class="comment">#第一个矩形的宽</span></div><div class="line">    w2 = x4 - x3   <span class="comment">#第二个矩形的宽</span></div><div class="line">    h1 = y1 - y2</div><div class="line">    h2 = y3 - y4</div><div class="line">    W = min(xmin1,xmin2,xmax1,xmax2)+w1+w2-max(xmin1,xmin2,xmax1,xmax2)    <span class="comment">#交叉部分的宽</span></div><div class="line">    H = min(ymin1,ymin2,ymax1,ymax2)+h1+h2-max(ymin1,ymin2,ymax1,ymax2)    <span class="comment">#交叉部分的高</span></div><div class="line">    Area = W*H    <span class="comment">#交叉的面积 就是IOU的inter_area</span></div><div class="line">    </div><div class="line">    add_area = sum_area - Area    <span class="comment">#两矩形并集的面积</span></div><div class="line"></div><div class="line">    end_area = (area_C - add_area)/area_C    <span class="comment">#闭包区域中不属于两个框的区域占闭包区域的比重</span></div><div class="line">    giou = iou - end_area</div><div class="line">    <span class="keyword">return</span> giou</div></pre></td></tr></table></figure>
+<h4 id="DIOU-Loss"><a href="#DIOU-Loss" class="headerlink" title="DIOU Loss"></a>DIOU Loss</h4><p>将目标与anchor之间的<strong>距离，重叠率以及尺度</strong>都考虑进去，不会像IoU和GIoU一样出现训练过程中<strong>发散</strong>等问题。</p>
+<script type="math/tex; mode=display">
+D I o U=I o U-\frac{\rho^{2}\left(b, b^{g t}\right)}{c^{2}}</script><p>第二项是：中心点坐标的欧式距离平方与闭包的对角线长度平方的比值</p>
+<p>收敛更快、回归快。</p>
+<h4 id="CIOU-Loss"><a href="#CIOU-Loss" class="headerlink" title="CIOU Loss"></a>CIOU Loss</h4><p>考虑了<strong>长宽比</strong></p>
+<script type="math/tex; mode=display">
+C I o U=I o U-\frac{\rho^{2}\left(b, b^{g t}\right)}{c^{2}}-\alpha v\\
+v=\frac{4}{\pi^{2}}\left(\arctan \frac{w^{g t}}{h^{g t}}-\arctan \frac{w}{h}\right)^{2}</script><p>长宽在[0, 1]下，会造成梯度爆炸，实现时暂时当作1</p>
+<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><h4 id="GHM-loss——2018"><a href="#GHM-loss——2018" class="headerlink" title="GHM loss——2018"></a>GHM loss——2018</h4><p>本质上和FL一样，是通过对易学习样本降低权重；但是它是从<strong>梯度范数</strong>角度出发的；不仅实现了FL效果，还具备<strong>克服外点样本影响</strong>。</p>
+<ul>
+<li><p>外点数据【标注错误的数据】，norm loss接近1，这时候对于CE、FL它的梯度非常大，但是实际上应该要忽略；所以GHM<strong>对loss两端的梯度降低了权重</strong>。</p>
+</li>
+<li><p>但是由于其内部<strong>需要定义梯度范数函数</strong>，<strong>不通用</strong>，不同的loss函数可能需要重新定义；</p>
+<p><strong>梯度密度函数</strong>：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+G D(g)=\frac{1}{l_{\epsilon}(g)} \sum_{k=1}^{N} \delta_{\epsilon}\left(g_{k}, g\right) \\
+\delta_{\epsilon}(x, y)=\left\{\begin{array}{lr}
+1 \quad \text { if } y-\frac{\epsilon}{2}<=x<y+\frac{\epsilon}{2} \\
+0 & \text { otherwise }
+\end{array}\right. \\
+l_{\epsilon}(g)=\min \left(g+\frac{\epsilon}{2}, 1\right)-\max \left(g-\frac{\epsilon}{2}, 0\right)
+\end{array}</script><p>意义：设定<strong>梯度值分布间隔</strong><script type="math/tex">\epsilon</script>（论文中bin=30个，30个区间），对g的纵坐标进行均匀切割；然后统计每个区间内的样本个数，除以单位取值区域内分布的样本个数。【一定范围置信度p的样本数量，这个范围就可以把离群点给除外了】</p>
+<p>把梯度的倒数作为<strong>样本权重</strong>：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\beta_{i}=& \frac{N}{G D\left(g_{i}\right)} \\
+L_{G H M-C} &=\frac{1}{N} \sum_{i=1}^{N} \beta_{i} L_{C E}\left(p_{i}, p_{i}^{*}\right) \\
+&=\sum_{i=1}^{N} \frac{L_{C E}\left(p_{i}, p_{i}^{*}\right)}{G D\left(g_{i}\right)}
+\end{aligned}</script><ul>
+<li><p>分类：BCE Loss</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p&=sigmoid(x)=\frac{1}{1+e^{-x}}\\
+\frac{\partial L_{C E}}{\partial x} &=\frac{\partial L_{C E}}{\partial p} \frac{\partial p}{\partial x} \\&=\frac{\partial L_{C E}}{\partial p} (1-p)p\\&=\left\{\begin{array}{ll}
+p-1 & \text { if } y=1 \\
+p & \text { if } y=0
+\end{array}\right.\\
+&=p-y
+\end{aligned}</script><p>定义梯度范数</p>
+<script type="math/tex; mode=display">
+g=\left|p-p^{*}\right|=\left\{\begin{array}{ll}
+1-p & \text { if } p^{*}=1 \\
+p & \text { if } p^{*}=0
+\end{array}\right.</script></li>
+<li><p>回归：Smooth L1</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&L 1_{\text {smooth}}=\left\{\begin{array}{ll}
+\frac {x^{2}}{2\delta} & |\mathrm{x}|<\delta(\text {inliers}) \\
+|x|-\frac{\delta}{2} & \text { otherwise }(\text { outliers })
+\end{array}\right.\\
+&\frac{\partial L 1_{s m o o t h}}{\partial x}=\left\{\begin{array}{ll}
+\frac{x}{\delta} & |\mathrm{x}|<\delta \\
+-1 & \mathrm{x}<-1 \\
+1 & \mathrm{x}>1
+\end{array}\right.
+\end{aligned}</script><p>由于当差值大于delta后是一个固定值，无法反映难易程度。因此采用了等效公式ASL：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+A S L_{1}(x)=\sqrt{x^{2}+\mu^{2}}-\mu \\
+\\
+\qquad \frac{\partial A S L_{1}}{\partial x}=\frac{x}{\sqrt{x^{2}+\mu^{2}}}
+\end{array}</script><p>mu设置为0.02；因为回归分支的输入全部是正样本，因此易学习的样本也不能把权重降的很低。</p>
+</li>
+</ul>
+</li>
+<li><p>由于某些样本对梯度的波动，引入了Exponential Moving average（EMA）操作</p>
+</li>
+</ul>
+<h4 id="OHEM"><a href="#OHEM" class="headerlink" title="OHEM"></a>OHEM</h4><p>通过对loss排序，选出loss最大的example来进行训练，这样就能保证训练的区域都是hard example。</p>
+<p>这个方法的缺陷，是把所有的easy example(包括easy positive和easy negitive)都去除掉了，造成easy positive example无法进一步提升训练的精度(表现的可能现象是预测出来了，但是bbox不是特别准确)，而且复杂度高影响检测效率。</p>
+<h4 id="GFL——2020"><a href="#GFL——2020" class="headerlink" title="GFL——2020"></a>GFL——2020</h4><p>QFL：将分类分支与bbox的质量评估分支联合训练</p>
+<script type="math/tex; mode=display">
+\mathbf{Q F L}(\sigma)=-|y-\sigma|^{\beta}((1-y) \log (1-\sigma)+y \log (\sigma))</script><p>y是[0,1]范围的质量标签，来自预测和真实的bbox的IOU值。如果是负样本，则y=0。<script type="math/tex">\sigma</script>是分类分支经过sigmoid后的预测值。</p>
+<p>QFL的全局最小解是<script type="math/tex">\sigma=y</script>，这样后面部分就是交叉熵。前面是调节因子（用距离绝对值的幂次函数），当<script type="math/tex">\beta=2</script>最优。</p>
+<hr>
+<p><strong>DFL</strong>，希望网络能够快速地<strong>聚焦到标注位置</strong>附近的数值，使得这个位置的概率仅可能的大。</p>
+<script type="math/tex; mode=display">
+\mathbf{D F L}\left(\mathcal{S}_{i}, \mathcal{S}_{i+1}\right)=-\left(\left(y_{i+1}-y\right) \log \left(\mathcal{S}_{i}\right)+\left(y-y_{i}\right) \log \left(\mathcal{S}_{i+1}\right)\right)</script><p>其中，<script type="math/tex">y_i,y_{i+1}</script>是浮点值y的左右整数值，S是分布。</p>
+<p>通过计算可以得到全局最优解为：</p>
+<script type="math/tex; mode=display">
+\mathcal{S}_{i}=\frac{y_{i+1}-y}{y_{i+1}-y_{i}}, \mathcal{S}_{i+1}=\frac{y-y_{i}}{y_{i+1}-y_{i}}</script><script type="math/tex; mode=display">
+\hat{y}=\sum_{j=0}^{n} P\left(y_{j}\right) y_{j}=\mathcal{S}_{i} y_{i}+\mathcal{S}_{i+1} y_{i+1}=\frac{y_{i+1}-y}{y_{i+1}-y_{i}} y_{i}+\frac{y-y_{i}}{y_{i+1}-y_{i}} y_{i+1}=y</script><p>也就是说我希望学出来的分布（全局最优解）应该是以线性插值的模式得到距离左右整数坐标的权重。</p>
+<p>代码实现里是</p>
+<script type="math/tex; mode=display">
+DFL(pred, y)=(y_{i+1}-y)*BCE(pred, y_{i}) + (y-y_{i})*BCE(pred, y_{i+1})\\
+=-((y_{i+1}-y)(y_i*\log(pred)+(1-y_i)*log(1-pred)) + (y-y_i)(y_{i+1}*\log(pred)+(1-y_{i+1})*log(1-pred)))</script><p>即</p>
+<script type="math/tex; mode=display">
+\log(S_i) = y_i*\log(pred)+(1-y_i)*log(1-pred)\\
+\log(S_{i+1})=y_{i+1}*\log(pred)+(1-y_{i+1})*log(1-pred))</script><h2 id="Optimizer"><a href="#Optimizer" class="headerlink" title="Optimizer"></a>Optimizer</h2><h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><h2 id="正负样本"><a href="#正负样本" class="headerlink" title="正负样本"></a>正负样本</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="Intersection-over-Union"><a href="#Intersection-over-Union" class="headerlink" title="Intersection over Union"></a>Intersection over Union</h4><p>将pred与gt计算IOU值，如果超过统一的阈值，则为正样本；否则为负样本。</p>
+<h5 id="MaxIoUAssigner"><a href="#MaxIoUAssigner" class="headerlink" title="MaxIoUAssigner"></a>MaxIoUAssigner</h5><ol>
+<li>首先初始化时候假设每个anchor的mask都是-1，表示都是忽略anchor</li>
+<li>计算每个anchor和所有gt的iou值；对于每一个anchor将最大IoU进行比较：小于neg_iou_thr的anchor的mask设置为0，表示是负样本；大于等于pos_iou_thr，则设置该anchor的mask设置为1</li>
+<li>对于每个gt找出和它最大iou的anchor，如果iou大于min_pos_iou，将该anchor的mask设置为1，表示该anchor负责预测对应的gt。最大程度保证每个gt都有anchor负责预测。【引入低质量anchor，可能会带来噪声】</li>
+</ol>
+<blockquote>
+<p>假如有两个gt，一个anchor，anchor与gt1的iou为0.75，与gt2为0.5，按照第2条，anchor会匹配给gt1，但在第3条anchor与gt2的iou大于min_pos_iou会将其分配给gt2；这种情况下，会重新分配anchor，gt1对应的anchor就不是原来那个了，而是分配给了gt2。这也就是mmdet v2版本里面新增的一个控制参数，通过该参数可以防止出现这种问题</p>
+</blockquote>
+<p>每个gt可能和多个anchor进行匹配，每个anchor不可能存在和多个gt匹配的场景。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">overlaps = bbox_overlaps(gt_bboxes, bboxes)</div></pre></td></tr></table></figure>
+<h5 id="ApproxMaxIoUAssigner"><a href="#ApproxMaxIoUAssigner" class="headerlink" title="ApproxMaxIoUAssigner"></a>ApproxMaxIoUAssigner</h5><ol>
+<li>利用每个位置的x个anchor设定，计算这x个anchor和gt的IOU值</li>
+<li>在这<strong>x个anchor中max</strong>，选出IOU最大的那个</li>
+<li>然后用这个max IOU值计算MaxIOUAssigner。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">approxs = torch.transpose(approxs.view(num_squares, approxs_per_octave, <span class="number">4</span>), <span class="number">0</span>, <span class="number">1</span>).contiguous().view(<span class="number">-1</span>, <span class="number">4</span>)</div><div class="line">all_overlaps = bbox_overlaps(approxs, gt_bboxes)</div><div class="line">overlaps, _ = all_overlaps.view(approxs_per_octave, num_squares, num_gts).max(dim=<span class="number">0</span>)</div><div class="line"></div><div class="line">overlaps = torch.transpose(overlaps, <span class="number">0</span>, <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h5 id="PointAssigner"><a href="#PointAssigner" class="headerlink" title="PointAssigner"></a>PointAssigner</h5><ol>
+<li>计算gt bbox宽高落在哪个尺度</li>
+<li>遍历每个gt bbox，找到其所属的特征图层；</li>
+<li>先计算特征图上任何一点距离gt bbox中心点坐标的距离；</li>
+<li>用topk算法选择出前pos_num个距离gt bbox最近的特征图点，这pos_num个都算正样本</li>
+<li>如果有两个gt bbox的中心点重合且映射到同一个输出层，那么会出现后遍历的gt bbox覆盖前面gt bbox；【不用额外处理】</li>
+<li>如果topk取得比较大，可能会出现fcos里面描述的模糊样本，处理办法就是距离哪个gt bbox中心最近就负责预测谁</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">gt_bboxes_lvl = ((torch.log2(gt_bboxes_wh[:, <span class="number">0</span>] / scale) + torch.log2(gt_bboxes_wh[:, <span class="number">1</span>] / scale)) / <span class="number">2</span>).int()</div><div class="line">points_lvl = torch.log2(points_stride).int() </div><div class="line">lvl_min, lvl_max = points_lvl.min(), points_lvl.max() </div><div class="line">gt_bboxes_lvl = torch.clamp(gt_bboxes_lvl, min=lvl_min, max=lvl_max)</div><div class="line"></div><div class="line">points_gt_dist = ((lvl_points - gt_point) / gt_wh).norm(dim=<span class="number">1</span>)</div><div class="line">min_dist, min_dist_index = torch.topk(</div><div class="line">      points_gt_dist, self.pos_num, largest=<span class="keyword">False</span>)</div><div class="line">min_dist_points_index = points_index[min_dist_index]</div><div class="line"></div><div class="line">less_than_recorded_index = min_dist &lt; assigned_gt_dist[min_dist_points_index]</div><div class="line">min_dist_points_index = min_dist_points_index[less_than_recorded_index]</div><div class="line">assigned_gt_inds[min_dist_points_index] = idx + <span class="number">1</span></div><div class="line">assigned_gt_dist[min_dist_points_index] = min_dist[less_than_recorded_index]</div></pre></td></tr></table></figure>
+<h4 id="Spatial-and-Scale-Constraint"><a href="#Spatial-and-Scale-Constraint" class="headerlink" title="Spatial and Scale Constraint"></a>Spatial and Scale Constraint</h4><p>先利用scale ratio来确定gt分配到哪一层，然后利用center sampling策略来确定哪些位置是正样本。由于其会产生更多的正样本区域，所以性能比IoU更好</p>
+<h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pos_iou_thr: 0.5~0.7</div><div class="line">neg_iou_thr: </div><div class="line">min_pos_iou:</div></pre></td></tr></table></figure>
+<h4 id="Hard-sampling，选择难负例样本"><a href="#Hard-sampling，选择难负例样本" class="headerlink" title="Hard sampling，选择难负例样本"></a>Hard sampling，选择难负例样本</h4><h5 id="OHEM：Online-Hard-exampling-mining"><a href="#OHEM：Online-Hard-exampling-mining" class="headerlink" title="OHEM：Online Hard exampling mining"></a>OHEM：Online Hard exampling mining</h5><h5 id="RandomSampler"><a href="#RandomSampler" class="headerlink" title="RandomSampler"></a>RandomSampler</h5><p>由于正负样本不一致，因此需要采样；正负样本用不同阈值进行采样</p>
+<h5 id="IOUBalancedNegSampler"><a href="#IOUBalancedNegSampler" class="headerlink" title="IOUBalancedNegSampler"></a>IOUBalancedNegSampler</h5><p>由于负样本本身IoU就不平衡，因此随机采样得到的大部分样本都是易学习的负样本。</p>
+<p>而用loss排序来采样的方法——OHEM，会对噪声数据敏感，而且参数比较难调。</p>
+<p>核心操作是对负样本按照iou划分k个区间，每个区间再进行随机采样，保证易学习负样本和难负样本比例尽量平衡。</p>
+<h4 id="Soft-sampling，赋予样本不同权重值"><a href="#Soft-sampling，赋予样本不同权重值" class="headerlink" title="Soft sampling，赋予样本不同权重值"></a>Soft sampling，赋予样本不同权重值</h4><h5 id="Focal-Loss"><a href="#Focal-Loss" class="headerlink" title="Focal Loss"></a>Focal Loss</h5><h3 id="平衡loss"><a href="#平衡loss" class="headerlink" title="平衡loss"></a>平衡loss</h3><p>见loss部分</p>
+<h2 id="Train"><a href="#Train" class="headerlink" title="Train"></a>Train</h2><h3 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h3><h3 id="EMA"><a href="#EMA" class="headerlink" title="EMA"></a>EMA</h3><h3 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h3><h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h3 id="NMS"><a href="#NMS" class="headerlink" title="NMS"></a>NMS</h3><h4 id="Soft-NMS"><a href="#Soft-NMS" class="headerlink" title="Soft NMS"></a>Soft NMS</h4><h4 id="Adaptive-NMS"><a href="#Adaptive-NMS" class="headerlink" title="Adaptive NMS"></a>Adaptive NMS</h4><h1 id="Head-1"><a href="#Head-1" class="headerlink" title="Head"></a>Head</h1><h2 id="Anchor-free"><a href="#Anchor-free" class="headerlink" title="Anchor free"></a>Anchor free</h2><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>去掉了anchor，免去了设置anchor超参数的问题；实际上可以看作是anchor个数为1且为正方形的anchor-based类算法</li>
+</ol>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>理论上anchor设置越密集，召回率会越高；因此anchor free方法会专注于recall的值【即它的recall很低】</li>
+</ol>
+<h2 id="Anchor-based"><a href="#Anchor-based" class="headerlink" title="Anchor based"></a>Anchor based</h2><h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li><strong>超参太多</strong>，其中anchor的设置对结果影响很大；不同任务的超参都需要根据经验来确定，比如：不同尺度、不同长宽比</li>
+<li><strong>正负样本</strong>不平衡问题（但有Focal Loss的方法），需要计算anchor和gt的IOU值来判断正负样本</li>
+<li>框与对应feature的<strong>misalignment</strong>（但有FSAF、Guided Anchoring），提供的是粗略的定位吗，并不完全拟合目标的形状和姿态，框会<strong>包含无关或噪声</strong>的信息</li>
+<li><strong>scale invariance</strong>（但有分组选择、空洞卷积）</li>
+<li><strong>优化目标与inference不一致</strong>（但有Consistent Optimization for Single-shot object detection)</li>
+<li>两次roi pooling<strong>量化</strong>取整（但有ROI Align）</li>
+<li>预训练模型数据集与实际数据集分布不一致，<strong>domain-shift</strong>（但有SNIP）</li>
+<li><strong>IOU mismatch</strong>（但有Cascade RCNN）</li>
+<li><strong>nMS</strong>暴力删除候选框问题（但有soft-nms）</li>
+</ol>
+<h1 id="One-Stage"><a href="#One-Stage" class="headerlink" title="One-Stage"></a>One-Stage</h1><p>使用固定网格, <code>anchor -&gt; detection bbox</code></p>
+<h2 id="Anchor-free-1"><a href="#Anchor-free-1" class="headerlink" title="Anchor free"></a>Anchor free</h2><h3 id="Yolo-v1"><a href="#Yolo-v1" class="headerlink" title="Yolo v1"></a>Yolo v1</h3><h3 id="DenseBox——2015"><a href="#DenseBox——2015" class="headerlink" title="DenseBox——2015"></a>DenseBox——2015</h3><h4 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>直接在图像位置上预测出目标的边界框（不需要anchor、proposal）</li>
+<li>利用FCN，结合关键点【heatmaps】检测（增加分支），提高了目标检测的精度</li>
+<li>整张图片是没必要的，裁剪包含一个人脸【人脸bbox的中心半径0.3倍的圆形确定】和部分背景，然后缩放为统一的尺寸，更加关注尺寸小和严重遮挡的目标</li>
+<li>为避免负样本过多导致模型倾斜于负样本，用二值mask图来决定<strong>像素</strong>是否为训练样本【没有脸的图像在上一点就保证了不会送入】</li>
+<li>忽略灰度区域（正负模糊）</li>
+</ul>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>要求让training image patches to be <strong>resized to a fixed scale</strong>；即image pyramids（图片压缩为不同尺寸送入网络）影响效率</li>
+</ul>
+<h4 id="结构-5"><a href="#结构-5" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>生成特征金字塔</li>
+<li>送入多层conv、pooling、upsampling【上采样使得计算的大小降低了许多】后得到输出</li>
+<li>NMS得到结果</li>
+</ul>
+<h3 id="UnitBox——2016"><a href="#UnitBox——2016" class="headerlink" title="UnitBox——2016"></a>UnitBox——2016</h3><h4 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>运用于人脸检测</li>
+<li>提出了IOU loss<ul>
+<li>有尺度不变性</li>
+<li>l2的缺点：<ul>
+<li>四个预测变量l,r,f,b是独立的</li>
+<li>距离接近，但是可能是不可接受的</li>
+<li>大bbox有更大的影响（惩罚）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="CornerNet"><a href="#CornerNet" class="headerlink" title="CornerNet"></a>CornerNet</h3><h3 id="CenterNet"><a href="#CenterNet" class="headerlink" title="CenterNet"></a>CenterNet</h3><p>使用更大分辨率的输出特征图(缩放了4倍)，本质上是因为其采用关键点检测思路做法，而关键点检测精度要高，通常是需要输出高分辨率特征图，同时不需要多尺度预测。其输出预测头包含3个分支。</p>
+<ul>
+<li>分类</li>
+<li>offset：由于输入和输出相差x倍，而在特征图上的坐标会量化为整数，相当于在输出在实际图上会有差距。如果下采样x越大，那么量化误差越大。因此用offset分支来学习量化误差，提高预测精度。</li>
+<li>wh</li>
+</ul>
+<p>对正样本附近增加惩罚，基于2d高斯分布来降低这部分权重，相当于起到了类似于忽略区域的作用。</p>
+<p>$L_{k}=\frac{-1}{N} \sum_{x y c}\left\{\begin{array}{cc}\left(1-\hat{Y}_{x y c}\right)^{\alpha} \log \left(\hat{Y}_{x y c}\right) &amp; \text { if } Y_{x y c}=1 \\ \left(1-Y_{x y c}\right)^{\beta}\left(\hat{Y}_{x y c}\right)^{\alpha} &amp; \\ \log \left(1-\hat{Y}_{x y c}\right) &amp; \text { otherwise }\end{array}\right.$<br>其中</p>
+<script type="math/tex; mode=display">
+Y_{x y c}=\exp \left(-\frac{\left(x-\tilde{p}_{x}\right)^{2}+\left(y-\tilde{p}_{y}\right)^{2}}{2 \sigma_{p}^{2}}\right)</script><ul>
+<li>当Y=1时候，也就是正样本位置，就是标准的focal loss设定；</li>
+<li>附近区域【在2d高斯分布内部】采用了自适应宽高标准差的做法；附近区域中越靠近中心点的惩罚Y越大，Loss权重越小，表示该位置对于正还是负的区分越模糊</li>
+<li>外围区域，标准的focal loss定义</li>
+</ul>
+<h3 id="ExtremeNet"><a href="#ExtremeNet" class="headerlink" title="ExtremeNet"></a>ExtremeNet</h3><h3 id="Point-based"><a href="#Point-based" class="headerlink" title="Point-based"></a>Point-based</h3><p>特征图上<strong>每一个点</strong>都进行分类和回归预测.</p>
+<h4 id="FCOS：A-simple-and-strong-anchor-free-object-detector——2019"><a href="#FCOS：A-simple-and-strong-anchor-free-object-detector——2019" class="headerlink" title="FCOS：A simple and strong anchor-free object detector——2019"></a>FCOS：A simple and strong anchor-free object detector——2019</h4><p><img src="/2020/11/18/Object-Detection/FCOS.png" alt=""></p>
+<h5 id="特点-5"><a href="#特点-5" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>增加了centerness分支，对框回归的结果进行了质量评估，对于后续NMS排序作用很大；对正样本区域按照距离gt bbox中心来设置权重</li>
+</ul>
+<h5 id="结构-6"><a href="#结构-6" class="headerlink" title="结构"></a>结构</h5><ul>
+<li>ResNet输出四个特征图</li>
+<li>对这三层进行1x1改变通道，输出256个通道</li>
+<li>最近邻上采样add操作进行特征融合</li>
+<li>3x3卷积得到p3p4p5特征图</li>
+<li>C5 3x3卷积，stride=2下采样得到p6</li>
+<li>P6 3x3卷积，stride=2下采样得到p7</li>
+</ul>
+<h5 id="算法-3"><a href="#算法-3" class="headerlink" title="算法"></a>算法</h5><ol>
+<li><p>多尺度预测输出，需要首先考虑gt由哪一个输出层负责</p>
+</li>
+<li><p>对于特征图上任何一点都回归其距离bbox的4条边距离。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+l^{*} &=\left(x-x_{0}^{(i)}\right) / s, \quad t^{*}=\left(y-y_{0}^{(i)}\right) / s \\
+r^{*} &=\left(x_{1}^{(i)}-x\right) / s, \quad b^{*}=\left(y_{1}^{(i)}-y\right) / s
+\end{aligned}</script></li>
+<li><p>定义正负样本</p>
+<ul>
+<li><p><strong>设置center_sampling_ratio</strong>=1.5,确定对于任意一个输出层距离bbox中心多远的区域属于正样本，（即中心点向外多少是属于正样本的，扩展后的区域当作正样本，若扩展大于原区域，则截断）【那么对于不同输出层，由于缩放s不同，因此可以处理多尺度的问题】</p>
+<ul>
+<li>减少模糊样本数目</li>
+<li>减少标注噪声干扰</li>
+</ul>
+<p><img src="/2020/11/18/Object-Detection/DefineTrainingSample.png" alt=""></p>
+<p>b: FCos, c: centernet d: Training-Time-Friendly Network for Real-Time Object Detection</p>
+</li>
+<li><p><strong>设置regress_ranges</strong>=((-1, 64), (64, 128), (128, 256), (256, 512),(512, INF)；对于每个输出层的正样本，变量每个point位置，计算其到四个边距离的最大值是否在该层的指定范围内，若不在，则认为是背景</p>
+<ul>
+<li>用于<strong>将不同大小的bbox分配到不同的FPN层进行预测</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>loss：Focal loss（GIoU loss）</p>
+</li>
+<li><p>centernetness分支<code>(1,h,w)</code>，和bbox回归分支共享权重，仅仅在bbox head最后并行一个centerness分支，其target的设置是离gt bbox中心点越近，该值越大，范围是0-1，仅对正样本。【这样子可以使得正样本区域的权重不同，对loss有帮助】</p>
+<script type="math/tex; mode=display">
+\text { centerness* }=\sqrt{\frac{\min \left(l^{*}, r^{*}\right)}{\max \left(l^{*}, r^{*}\right)} \times \frac{\min \left(t^{*}, b^{*}\right)}{\max \left(t^{*}, b^{*}\right)}}</script></li>
+</ol>
+<h5 id="与RetinaNet区别"><a href="#与RetinaNet区别" class="headerlink" title="与RetinaNet区别"></a>与RetinaNet区别</h5><ul>
+<li><p>数据归一化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># pytorch</div><div class="line">mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True</div><div class="line"># caffe</div><div class="line">mean=[103.530, 116.280, 123.675], std=[1.0, 1.0, 1.0], to_rgb=False</div></pre></td></tr></table></figure>
+</li>
+<li><p>Backbone：style=’caffe’（FCOS）和style=’pytorch’（retinanet）</p>
+<ul>
+<li><p>对于caffe模式来说，stride参数放置在第一个1x1卷积上，对于pytorch模式来说，stride放在第二个3x3卷积上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">256-d--------</div><div class="line">|            |</div><div class="line">1x1, 64      |</div><div class="line">|relu        |</div><div class="line">3x3, 64      |</div><div class="line">|relu        |</div><div class="line">1x1, 256     |</div><div class="line">|            |</div><div class="line">+  &lt;----------</div><div class="line">|relu</div><div class="line">output</div></pre></td></tr></table></figure>
+</li>
+<li><p>早期mmdetection采用了detectron权重(不想重新训练imagenet)，采用了caffe2来构建模型，后续detectron2才切换到pytorch中，属于历史遗留问题。</p>
+</li>
+<li><p><strong>在caffe模式下，requires_grad=False</strong>，也就是说resnet的所有BN层参数都不更新并且全局均值和方差也不再改变，而<strong>在pytorch模式下，除了frozen_stages的BN参数不更新外，其余层BN参数还是会更新的</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>Neck: FPN</p>
+<ul>
+<li>retinanet在得到p6,p7的时候是采用c5层特征进行maxpool得到的(对应参数是<code>add_extra_convs=&#39;on_input&#39;</code>,)，而fcos是从p5层抽取得到的(对应参数是<code>extra_convs_on_inputs=False</code>)，而且其还有<code>relu_before_extra_convs=True</code>参数，也就是p6和p7进行卷积前，还会经过relu操作，retinanet的FPN没有这个算子(<strong>C5不需要是因为resnet输出最后就是relu</strong>)。从实验结果来看，从p5抽取的效果是好于c5的</li>
+</ul>
+</li>
+<li><p>Head</p>
+<ul>
+<li>fcos的head结构多了一个centerness分支</li>
+</ul>
+</li>
+</ul>
+<h4 id="Soft-Anchor-Point-Object-Detection——2019"><a href="#Soft-Anchor-Point-Object-Detection——2019" class="headerlink" title="Soft Anchor-Point Object Detection——2019"></a>Soft Anchor-Point Object Detection——2019</h4><h5 id="针对的问题"><a href="#针对的问题" class="headerlink" title="针对的问题"></a>针对的问题</h5><ol>
+<li><p>Attention bias</p>
+<p>靠近物体中心的四周会依然会产生大量confidence很高的输出，即没有清晰的边界，在训练过程中可能会抑制掉周围小的物体，导致小物体检测不出来或者检测效果很差。</p>
+</li>
+<li><p>Feature selection</p>
+<p>对于任何一个gt bbox，到底采用何种策略分配到不同的层级进行预测？</p>
+<p>目前目标检测的做法是基于启发式人工准则将实例分配到金字塔层次(retinanet)，或将每个实例严格限制为单个层次(fcos)，从而可能会导致特征能力的不充分利用。</p>
+<p>通过训练发现：虽然每个GT只在特定层进行回归，但是其学出来的特征图是相似的，如上图所示，也就是说：一个以上金字塔等级的特征可以共同为特定实例的检测做出贡献，但是<strong>来自不同等级的贡献程度应该有所不同</strong>。这就是本文的出发点，不再强行判断哪一层进行回归了，而是每一层都进行回归，但是让网络自行学习到金字塔层级的权重。 </p>
+</li>
+</ol>
+<h4 id="Generalized-Focal-Loss——2020"><a href="#Generalized-Focal-Loss——2020" class="headerlink" title="Generalized Focal Loss——2020"></a>Generalized Focal Loss——2020</h4><h5 id="针对的问题-1"><a href="#针对的问题-1" class="headerlink" title="针对的问题"></a>针对的问题</h5><ol>
+<li><p>分类预测分值和框的质量评估分值（如iou和centerness）的<strong>训练阶段和测试阶段</strong>不一致；</p>
+<ul>
+<li>训练时，分类和质量估计分支各自<strong>独立训练</strong>；测试时，相乘作为NMS score的排序依据。</li>
+<li>训练时，质量估计分支和bbox回归分支<strong>只针对正样本训练</strong>，而分类分支会对所有样本训练（包括大量的负样本）；这样就导致分类分数较低的“负样本”的质量预测是没有监督信号的；测试时，有可能会出现分类score低但是有一个极高的质量score，导致NMS时排在真的正样本之前。</li>
+</ul>
+</li>
+<li><p><strong>bbox</strong>回归采用的表示不够灵活，没有办法建模复杂场景下<strong>不确定性</strong>的</p>
+<ul>
+<li>之前的<strong>边界框</strong>具有很强的<strong>不确定性</strong>；框回归建模用了非常单一的<strong>狄拉克分布</strong>（即脉冲函数）；对于有遮挡、模糊的边界非常不好</li>
+<li>作者则直接<strong>回归一个任意分布</strong>来建模框的表示。由于连续域上不可能回归，因此用离散化的方式，通过softmax来实现</li>
+</ul>
+</li>
+</ol>
+<h5 id="结构-7"><a href="#结构-7" class="headerlink" title="结构"></a>结构</h5><p>针对上述两个问题，分别设计了GFL和DFL两个分支来解决：</p>
+<ol>
+<li><p>将bbox预测质量和分类分支loss<strong>联合表示</strong>，解决两分支独立训练，联合测试不一致问题 </p>
+</li>
+<li><p>采用自发学习的灵活<strong>分布建模</strong>形式来表示bbox不确定性，具体是采用<strong>softmax+积分形式</strong>，相当于把回归问题转换为<strong>分类问题</strong></p>
+</li>
+</ol>
+<h5 id="算法-4"><a href="#算法-4" class="headerlink" title="算法"></a>算法</h5><p>分类分支的改进：（<strong>分类分支加入了质量标签y</strong>；将bbox分支联合到此）</p>
+<script type="math/tex; mode=display">
+\mathbf{Q F L}(\sigma)=-|y-\sigma|^{\beta}((1-y) \log (1-\sigma)+y \log (\sigma))</script><p>y是[0,1]范围的质量标签，来自预测和真实的bbox的IOU值。如果是负样本，则y=0。<script type="math/tex">\sigma</script>是分类分支经过sigmoid后的预测值。</p>
+<p>QFL的全局最小解是<script type="math/tex">\sigma=y</script>，这样后面部分就是交叉熵。前面是调节因子（用距离绝对值的幂次函数），当<script type="math/tex">\beta=2</script>最优。</p>
+<hr>
+<p>将回归问题<strong>转化为分类问题</strong>，每个分布长度的概率。</p>
+<p>回归的值是，点相对于bbox四条边的offset的值。【需要数据集的先验知识】</p>
+<blockquote>
+<p>待回归值为x；假设分布长度为n，要使得分类<script type="math/tex">label=(a_0,\cdots,a_n-1)</script>满足<script type="math/tex">0*a_0+1*a_1+\cdots+(n-1)*a_{n-1}=x</script>。作用时要先用预测的label求的预测的回归值，再计算loss。</p>
+</blockquote>
+<p>作者统计了所有coco数据集中正样本的回归范围，发现最大值大概可以设置为16，即分布长度为16+1.</p>
+<hr>
+<p>由于这个label是无穷的，优化方向太多，但是考虑到真实分布通常不会距离标注太远，所以额外增加了一个loss——<strong>DFL</strong>，希望网络能够快速地<strong>聚焦到标注位置</strong>附近的数值，使得这个位置的概率仅可能的大。</p>
+<script type="math/tex; mode=display">
+\mathbf{D F L}\left(\mathcal{S}_{i}, \mathcal{S}_{i+1}\right)=-\left(\left(y_{i+1}-y\right) \log \left(\mathcal{S}_{i}\right)+\left(y-y_{i}\right) \log \left(\mathcal{S}_{i+1}\right)\right)</script><p>其中，<script type="math/tex">y_i,y_{i+1}</script>是浮点值y的左右整数值，S是分布。</p>
+<p>通过计算可以得到全局最优解为：</p>
+<script type="math/tex; mode=display">
+\mathcal{S}_{i}=\frac{y_{i+1}-y}{y_{i+1}-y_{i}}, \mathcal{S}_{i+1}=\frac{y-y_{i}}{y_{i+1}-y_{i}}</script><p>也就是说我希望学出来的分布（全局最优解）应该是以线性插值的模式得到距离左右整数坐标的权重。</p>
+<blockquote>
+<p>例如假设浮点数4.6，那么左右label=4,5，并且对应分布索引处的预测值理论上是0.4,0.6，此时就可以4x0.4+5x0.6=4.6</p>
+</blockquote>
+<p>【也就是说，我希望学出来的分布应该是个在label两边整数的双峰分布】</p>
+<p>同时，这里也为了联合分布，计算loss_bbox的时候，将<strong>分类分值作为这个loss的权重</strong>，进一步加强一致性。</p>
+<h5 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h5><p>QFL：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quality_focal_loss</span><span class="params">(pred, target, beta=<span class="number">2.0</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Args:</span></div><div class="line"><span class="string">        pred (torch.Tensor): 预测的分类和质量评估联合结果(N, C)</span></div><div class="line"><span class="string">        target (tuple([torch.Tensor])): 真实的的分类(N, )和质量评估(N, )</span></div><div class="line"><span class="string">        beta (float): 调节因子参数，默认为最优值2.0.</span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">        损失值：torch.Tensor(N,).</span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="keyword">assert</span> len(target) == <span class="number">2</span>, <span class="string">"""分类标签和质量分数"""</span></div><div class="line">    label, score = target  <span class="comment"># 类别label(N), 预测bbox和gt bbox的iou score(N)</span></div><div class="line"></div><div class="line">    pred_sigmoid = pred.sigmoid()  <span class="comment"># (N, class_num)</span></div><div class="line">    scale_factor = pred_sigmoid</div><div class="line">    <span class="comment"># 负样本的质量分数设置为0</span></div><div class="line">    zerolabel = scale_factor.new_zeros(pred.shape)</div><div class="line">    <span class="comment"># 先假设所有label都是负样本，计算bce loss，乘上sigmoid^beta次方，达到focal效应，返回每一个样本的loss, with_logit会加上sigmoid，就和公式一样了</span></div><div class="line">    loss = F.binary_cross_entropy_with_logits(</div><div class="line">        pred, zerolabel, reduction=<span class="string">'none'</span>) * scale_factor.pow(beta)</div><div class="line"></div><div class="line">    <span class="comment"># 前景类标签id: [0, num_classes -1], 背景类标签id: num_classes</span></div><div class="line">    bg_class_ind = pred.size(<span class="number">1</span>)</div><div class="line">    <span class="comment"># 找出正样本索引, nonzero找出非零元素的位置</span></div><div class="line">    pos = ((label &gt;= <span class="number">0</span>) &amp; (label &lt; bg_class_ind)).nonzero().squeeze(<span class="number">1</span>)</div><div class="line">    pos_label = label[pos].long()</div><div class="line">    <span class="comment"># 正样本应该被框质量IoU分数所监督</span></div><div class="line">    scale_factor = score[pos] - pred_sigmoid[pos, pos_label]  <span class="comment"># 正样本focal值，调节因子</span></div><div class="line">    <span class="comment"># 计算正样本处的bce loss，将正样本部分的值更改为正确的loss；注意label=score，而不是1</span></div><div class="line">    loss[pos, pos_label] = F.binary_cross_entropy_with_logits(</div><div class="line">        pred[pos, pos_label], score[pos],</div><div class="line">        reduction=<span class="string">'none'</span>) * scale_factor.abs().pow(beta)</div><div class="line"></div><div class="line">    loss = loss.sum(dim=<span class="number">1</span>, keepdim=<span class="keyword">False</span>)  <span class="comment"># (N,class_num)在1维度直接求和，变成(N,)</span></div><div class="line">    <span class="keyword">return</span> loss</div></pre></td></tr></table></figure>
+<p>分布映射到浮点值：pred预测的是分布的label，然后计算出回归值后再计算loss</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Integral</span><span class="params">(nn.Module)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    `sum&#123;P(y_i) * y_i&#125;`,</span></div><div class="line"><span class="string">    P(y_i) denotes the softmax vector that represents the discrete distribution</span></div><div class="line"><span class="string">    y_i denotes the discrete set, usually &#123;0, 1, 2, ..., reg_max&#125;</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Args:</span></div><div class="line"><span class="string">        reg_max (int): The maximal value of the discrete set. Default: 16. You may want to reset it according to your new dataset or related settings.</span></div><div class="line"><span class="string">    """</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, reg_max=<span class="number">16</span>)</span>:</span></div><div class="line">        super(Integral, self).__init__()</div><div class="line">        self.reg_max = reg_max</div><div class="line">        self.register_buffer(<span class="string">'project'</span>,</div><div class="line">                             torch.linspace(<span class="number">0</span>, self.reg_max, self.reg_max + <span class="number">1</span>))  <span class="comment"># 从(0, self.reg_max)线性分成self.reg_max+1份</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="string">"""Forward feature from the regression head to get integral result of</span></div><div class="line"><span class="string">        bounding box location.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        Args:</span></div><div class="line"><span class="string">            x (Tensor): Features of the regression head, shape (N, 4*(n+1)),</span></div><div class="line"><span class="string">                n is self.reg_max.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">        Returns:</span></div><div class="line"><span class="string">            x (Tensor): Integral result of box locations, i.e., distance</span></div><div class="line"><span class="string">                offsets from the box center in four directions, shape (N, 4).</span></div><div class="line"><span class="string">        """</span></div><div class="line">        x = F.softmax(x.reshape(<span class="number">-1</span>, self.reg_max + <span class="number">1</span>), dim=<span class="number">1</span>)  <span class="comment"># 每一行的和为1，就是一张图片的概率label值 (N*4, reg_max+1) -&gt; (N*4, reg_max+1)</span></div><div class="line">        x = F.linear(x, self.project.type_as(x)).reshape(<span class="number">-1</span>, <span class="number">4</span>)  <span class="comment"># type_as(tesnor)将张量转换为给定类型的张量, 将两者对应相乘求和，（project又个broadcast），将(N*4, reg_max+1) -&gt; (N*4, 1) -&gt; (N, 4)，积分操作得到最终回归值，到四个边的数值</span></div><div class="line">        <span class="keyword">return</span> x</div></pre></td></tr></table></figure>
+<p>DFL：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">distribution_focal_loss</span><span class="params">(pred, label)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Args:</span></div><div class="line"><span class="string">        pred (torch.Tensor): Predicted general distribution of bounding boxes</span></div><div class="line"><span class="string">            (before softmax) with shape (N, n+1), n is the max value of the</span></div><div class="line"><span class="string">            integral set `&#123;0, ..., n&#125;` in paper.</span></div><div class="line"><span class="string">        label (torch.Tensor): Target distance label for bounding boxes with</span></div><div class="line"><span class="string">            shape (N,).</span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">        torch.Tensor: Loss tensor with shape (N,).</span></div><div class="line"><span class="string">    """</span></div><div class="line">    dis_left = label.long()  <span class="comment"># 坐标整数值</span></div><div class="line">    dis_right = dis_left + <span class="number">1</span>  <span class="comment"># 右边整数值</span></div><div class="line">    <span class="comment"># 线性权重</span></div><div class="line">    weight_left = dis_right.float() - label</div><div class="line">    weight_right = label - dis_left.float()</div><div class="line">    <span class="comment"># 两个bce loss，并且加权，促使学到的分布是双峰分布，提高优化效率</span></div><div class="line">    loss = F.cross_entropy(pred, dis_left, reduction=<span class="string">'none'</span>) * weight_left \</div><div class="line">           + F.cross_entropy(pred, dis_right, reduction=<span class="string">'none'</span>) * weight_right</div><div class="line">    <span class="keyword">return</span> loss</div></pre></td></tr></table></figure>
+<p>一致性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">    weight_targets = cls_score.detach().sigmoid()</div><div class="line">    <span class="comment"># 预测类别所对应的输出分值</span></div><div class="line">    weight_targets = weight_targets.max(dim=<span class="number">1</span>)[<span class="number">0</span>][pos_inds] </div><div class="line">      </div><div class="line">    <span class="comment"># regression loss</span></div><div class="line">    loss_bbox = self.loss_bbox(</div><div class="line">        pos_decode_bbox_pred,</div><div class="line">        pos_decode_bbox_targets,</div><div class="line">        weight=weight_targets,  <span class="comment"># 将分类分值作为权重，进一步加强一致性</span></div><div class="line">        avg_factor=<span class="number">1.0</span>)</div><div class="line"></div><div class="line">    <span class="comment"># dfl loss </span></div><div class="line">    loss_dfl = self.loss_dfl(</div><div class="line">        pred_corners,</div><div class="line">        target_corners,</div><div class="line">        weight=weight_targets[:, <span class="keyword">None</span>].expand(<span class="number">-1</span>, <span class="number">4</span>).reshape(<span class="number">-1</span>), <span class="comment"># 将分类分值作为权重，进一步加强一致性</span></div><div class="line">        avg_factor=<span class="number">4.0</span>)</div><div class="line">    </div><div class="line"><span class="comment"># cls (qfl) loss</span></div><div class="line">loss_cls = self.loss_cls(</div><div class="line">    cls_score, (labels, score),  <span class="comment"># 将bbox回归的score加入分类分支</span></div><div class="line">    weight=label_weights,</div><div class="line">    avg_factor=num_total_samples)</div></pre></td></tr></table></figure>
+<p>所有loss在特征图上计算的，因此在test的时候，需要乘以stride，得到原图尺寸。</p>
+<h3 id="Sparse-R-CNN-End-to-End-Object-Detection-with-Learnable-Proposals"><a href="#Sparse-R-CNN-End-to-End-Object-Detection-with-Learnable-Proposals" class="headerlink" title="Sparse R-CNN: End-to-End Object Detection with Learnable Proposals"></a>Sparse R-CNN: End-to-End Object Detection with Learnable Proposals</h3><h4 id="特点-6"><a href="#特点-6" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><p>目前目标检测的主流方法</p>
+<ul>
+<li>dense detector一阶段：直接由密集的anchor得到</li>
+<li>dense-to-sparse两阶段：由密集的anchor得到稀疏的proposal</li>
+</ul>
+<p>本文是为了解决<strong>dense属性</strong>造成的问题</p>
+<ul>
+<li>NMS</li>
+<li>many-to-one正负样本分配</li>
+<li>Prior candidates的设计（anchor size、aspect ratio）</li>
+</ul>
+<p>设计的一种彻底<strong>sparse</strong>的设计方案。</p>
+<ul>
+<li>sparse candidates——类似于提出ROI</li>
+<li>sparse feature interaction——proposal的强连接</li>
+</ul>
+</li>
+<li><p>Sparse、没有NMS、网络简洁</p>
+</li>
+</ul>
+<h4 id="结构-8"><a href="#结构-8" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>Backbone: ResNet+FPN</li>
+<li><p>Head: iterative【上一层的output_feature, output_boxes作为下一层的proposal features, proposal boxes；不可靠的proposal通过多轮refine‘；之前使用过饱和的proposal来保证预测的质量】<strong>Dynamic</strong> Instance Interactive Head</p>
+<ul>
+<li><p>图像层面的候选——<strong>Proposal boxes</strong>: <code>N*4</code>代表候选目标的个数【100～300，可学习，不用枚举】和四个边界。【代替RPN】</p>
+<ul>
+<li>RPN输出的roi<strong>主要目的是提供丰富的候选框</strong>，保证召回率即可，roi不需要很准确</li>
+<li>采用一个合理的<strong>和数据集相关的统计信息</strong>就可以提供足够的候选框了，从而采用可学习的proposal boxes代替RPN是完全合理的</li>
+<li>实验说明，这个可学习的proposal boxes初始化为什么，对结果的影响很小</li>
+</ul>
+</li>
+<li><p>特征层面的候选——<strong>Proposal Features</strong>: <code>N*d</code>将稀疏的ROI features精确化，d一般为256。并进行<strong>self-attention</strong>。</p>
+<ul>
+<li>proposal boxes太过粗糙，无法表征物体姿态和形状。<strong>为了提高精度</strong>，引入了额外的<strong>高维度</strong>的proposal feature</li>
+</ul>
+</li>
+<li><p>将proposal features和proposal boxes得到的ROI feature做<strong>一对一交互</strong>，使得ROI特征更有利于定位和分类。</p>
+<blockquote>
+<p>(300,7x7,256)的roi特征和(300,256,1)的proposal feature进行矩阵乘法，输出是(300,7x7,1)</p>
+<p>其表示将256维度的proposal feature向量和空间7x7的每个roi特征256维度向量计算相似性，得到相似性权重，该权重可以表征<strong>空间7x7个位置中哪些位置才是应该关心的</strong>。</p>
+<p>如果将该权重作用到原始的(300,7x7,256)上，那不就是CV领域常说的空间注意力机制吗？</p>
+<p>并且由于roi特征和proposal feature是一对一计算，从而论文中称为<strong>实例级可交互模块</strong>，即N个实例roi特征和N个实例proposal feature一一对应计算，而没有交叉计算。</p>
+</blockquote>
+</li>
+<li><p><strong>统一大小</strong>的特征框经过<strong>全连接层</strong>得到固定大小的特征向量，输出N个无序集合，每个集合元素包括分类和bbox坐标信息</p>
+</li>
+<li><p>采用casecase rcnn<strong>极联思想</strong>，迭代运行n个stage，<strong>每个stage都是一个rcnn模块</strong>，<strong>参数是不共享的</strong>，<strong>下一个stage接受的是上一个stage输出的</strong>refine后的roi，对输出的bbox进行<strong>refine</strong>，得到refine后的bbox坐标</p>
+</li>
+</ul>
+</li>
+<li>Loss：匈牙利双边匹配后再计算loss</li>
+</ul>
+<h2 id="Anchor-based-1"><a href="#Anchor-based-1" class="headerlink" title="Anchor based"></a>Anchor based</h2><h3 id="Yolo-v2"><a href="#Yolo-v2" class="headerlink" title="Yolo v2"></a>Yolo v2</h3><p>通过在所有训练图像的所有边界框上进行k-means聚类来选择先验框。【在准确度和模型复杂性折衷下，取k=5】</p>
+<h3 id="Yolo-V3"><a href="#Yolo-V3" class="headerlink" title="Yolo V3"></a>Yolo V3</h3><p>类别预测是不考虑背景的，所以才多引入了一个confidence的概念，该分支用于区分前景和背景</p>
+<p>保证每个bbox一定有一个唯一的anchor进行对应</p>
+<p>对gt bbox没有限制只能在某个层预测</p>
+<p>对anchor没有限制，可以多个anchor预测同一个物体</p>
+<h3 id="YOLOv3-ASFF-Learning-Spatial-Fusion-for-Single-Shot-Object-Detection——2019"><a href="#YOLOv3-ASFF-Learning-Spatial-Fusion-for-Single-Shot-Object-Detection——2019" class="headerlink" title="YOLOv3+ASFF: Learning Spatial Fusion for Single-Shot Object Detection——2019"></a>YOLOv3+ASFF: Learning Spatial Fusion for Single-Shot Object Detection——2019</h3><h4 id="特点-7"><a href="#特点-7" class="headerlink" title="特点"></a>特点</h4><ol>
+<li>训练技巧改进，只影响训练过程，对于推理没有增加复杂程度</li>
+</ol>
+<h4 id="结构-9"><a href="#结构-9" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>ASFF(Adaptively Spatial Feature Fusion)：多个特征图带权的融合，融合的权重参数是通过学习得到的</li>
+<li>强baseline——YOLOv3</li>
+<li>训练策略<ul>
+<li>Mixup</li>
+<li>Cosine learning rate schedule</li>
+<li>Syncchronized batch normalization</li>
+<li>IOU loss：优化bbox</li>
+<li>Guided anchoring：由于在YOLO中有confidence分支来进行前后景提取，因此只需要shape预测的分支</li>
+</ul>
+</li>
+</ul>
+<h3 id="Yolo-V5"><a href="#Yolo-V5" class="headerlink" title="Yolo V5"></a>Yolo V5</h3><p>应用类似EfficientNet的channel和layer控制因子来灵活配置不同复杂度的模型，并且在正负样本定义阶段采用了跨邻域网格的匹配策略，从而得到更多的正样本anchor，加速收敛。</p>
+<h3 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h3><h4 id="SSD-vs-YOLO-v2-v3"><a href="#SSD-vs-YOLO-v2-v3" class="headerlink" title="SSD vs YOLO v2/v3"></a>SSD vs YOLO v2/v3</h4><ul>
+<li>SSD：使用数学公式来计算先验框尺寸，与数据集无关；YOLO通过K-means得到先验框</li>
+<li>SSD先验框专注于长宽比；YOLO专注于先验框的大小</li>
+<li>SSD先验框还包括x，y位置信息；而YOLO默认先验框位置位于网格的中心</li>
+<li>SSD使用降序采样（网格从细到粗，从更general的尺度上获得更精确的预测）；YOLO使用升序采样</li>
+<li>SSD没有置信度，通过增加一个背景类来区分前后景</li>
+<li>SSD的一个gt选择最大IOU的检测器；YOLO的一个gt随机选择检测器</li>
+<li>SSD对于回归采用MSE；YOLO采用SSE平方和误差（因为图片中包含的物体数量不同）</li>
+<li>SSD用难例挖掘来弱化正负样本不平衡的问题；YOLO通过超参数<code>no_object_scale</code>来调节loss的大小</li>
+</ul>
+<h3 id="FPN"><a href="#FPN" class="headerlink" title="FPN"></a>FPN</h3><h3 id="RetinaNet：Focal-Loss-for-Dense-Object-Detection——2018"><a href="#RetinaNet：Focal-Loss-for-Dense-Object-Detection——2018" class="headerlink" title="RetinaNet：Focal Loss for Dense Object Detection——2018"></a>RetinaNet：Focal Loss for Dense Object Detection——2018</h3><p><img src="/2020/11/18/Object-Detection/RetinaNet.png" alt=""></p>
+<h5 id="特点-8"><a href="#特点-8" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>提出了Focal Loss</li>
+</ul>
+<h5 id="结构-10"><a href="#结构-10" class="headerlink" title="结构"></a>结构</h5><ul>
+<li><p>ResNet输出4个特征图c2 c3 c4 c5，stride=4,8,16,32</p>
+</li>
+<li><p>FPN：对这三层进行1x1改变通道，全部输出256个通道；然后经过从高层到底层的最近邻上采样add操作进行特征融合，最后对每个层进行3x3的卷积，得到p3,p4,p5特征图。对c5进行3x3卷积且stride=2进行下采样得到P6，然后对P6进行同样的3x3卷积且stride=2，得到P7</p>
+</li>
+<li><p>输出head：</p>
+<ul>
+<li><p>分类：初始化bias设置为</p>
+<script type="math/tex; mode=display">
+b=-\log(\frac{1-\pi}{\pi})</script><p>默认$\pi$为0.01【取值为<script type="math/tex">(\frac{N}{N_f}\cdot C-1)</script>最优, N: samples, <script type="math/tex">N_f</script>: positive samples; C: classes】；anchor太多了，且没有faster rcnn里面的sample操作，故负样本远远大于正样本，也就是说分类分支，假设负样本：正样本数=100:1；简单来说就是对于一个分类任务，一个batch内部几乎全部是负样本，如果预测的时候没有偏向，那么Loss肯定会非常大，因为大部分输出都是错误的，现在<strong>强制设置预测为负类</strong>，这样开始训练时候loss会比较小。这个操作会影响初始训练过程。</p>
+<p>分类是sigmod输出，其输出的负数表示负样本label；</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="算法-5"><a href="#算法-5" class="headerlink" title="算法"></a>算法</h5><ul>
+<li><p>Focal Loss</p>
+<p>FL本质上解决的是将大量<strong>易学习样本的loss权重降低</strong>，但是不丢弃样本，突出难学习样本的loss权重，但是因为<strong>大部分易学习样本都是负样本</strong>，所以还有一个附加功能即解决了正负样本不平衡问题。</p>
+<p>根据交叉熵改进而来，本质是<strong>dynamically scaled cross entropy loss</strong>，直接按照loss decay掉那些easy example的权重。</p>
+<p>但是label<strong>必须是one-hot</strong>形式。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{CE}\left(p_{\mathrm{t}}\right) &=-\log \left(p_{\mathrm{t}}\right) \\
+\mathrm{FL}\left(p_{\mathrm{t}}\right) &=-\alpha_t\left(1-p_{\mathrm{t}}\right)^{\gamma} \log \left(p_{\mathrm{t}}\right)
+\end{aligned}</script><p>p代表gt类别的概率，负样本p很大，给予的权重就很小</p>
+<p><strong>alpha</strong>属于<strong>正负样本</strong>的加权参数，值越大，正样本的权重越大。再看<strong>beta</strong>，其有focal效应，可以控制难易样本权重，值越大，对<strong>分类错误样本梯度</strong>越大(难样本权重大)，focal效应越大，这个参数非常关键。</p>
+</li>
+<li></li>
+</ul>
+<h3 id="Region-Proposal-by-Guided-Anchoring——2019"><a href="#Region-Proposal-by-Guided-Anchoring——2019" class="headerlink" title="Region Proposal by Guided Anchoring——2019"></a>Region Proposal by Guided Anchoring——2019</h3><h4 id="特点-9"><a href="#特点-9" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><p><strong>anchor的设置对于结果的影响是很大的</strong>，尤其对于one-stage（两阶段的可以通过RCNN进行回归）；因此提出通过<strong>图像特征</strong>来指导anchor的生成。通过预测anchor的位置和形状，来生成<strong>稀疏而且形状任意</strong>的anchor。</p>
+<ul>
+<li><p>anchor应该是alignment，以feature map上的点作为中心点；否则提取的特征和anchor的对应不是很好</p>
+</li>
+<li><p>anchor应该是consistency的；由于形状不同，通过feature adaption来修正。</p>
+<p>feature adaption：将anchor和特征融合后，通过<code>3*3 deformable convolution</code>修正原始的特征图。实际是对anchor随意性可能会造成网络难以学习的问题，给网络了一些anhcor的信息。</p>
+</li>
+</ul>
+</li>
+<li><p>可以<strong>直接插入anchor-base网络</strong>中进行anchor动态调整的做法，而不是替换掉原始网络结构。</p>
+</li>
+<li><p>由于proposal质量很高了，所以可以减少proposal数量，增大训练时正样本的IOU阈值</p>
+</li>
+</ul>
+<h4 id="结构-11"><a href="#结构-11" class="headerlink" title="结构"></a>结构</h4><ul>
+<li><p>预测cls_scores</p>
+</li>
+<li><p>预测bbox_preds: xywh</p>
+</li>
+<li><p>预测loc<code>(batch, anchor_num, h, w)</code>，目标是预测<strong>哪些区域应该作为中心点</strong>来生成anchor，是一个二分类问题。</p>
+<ol>
+<li>对每个gt，利用FPN中的ROI重投影规则，将gt映射到不同的特征图层上</li>
+<li>定义中心区域和忽略区域比例（中心区域占据比例<code>center_ratio</code>和忽略区域占比<code>ignore_ratio=0.5</code>两个超参数），将gt落在中心区域的位置认为是正样本，忽略区域是模糊样本，其余区域是背景负样本。</li>
+</ol>
+</li>
+<li><p>预测shape<code>(batch, anchor_num*2, h, w)</code>，用于预测(正样本）anchor的<strong>形状</strong>【最佳的长和宽】，是一个回归问题。</p>
+<p>对于某个 anchor，应该优化和哪个 ground truth 的 IoU，也就是说应该把这个 anchor 分配给哪个 gt。对于以前常规的 anchor，我们可以直接计算它和所有 ground truth 的 IoU，然后将它分配给 IoU 最大的那个 gt。但是现在的anchor 的 w 和 h 是不确定的，作者回归的shape预测值实际上是在某个缩放系数下的值，sample了常见的9组w和h</p>
+<script type="math/tex; mode=display">
+w=\sigma \cdot s \cdot e^{d w}, \quad h=\sigma \cdot s \cdot e^{d h}</script><script type="math/tex; mode=display">
+\mathcal{L}_{\text {shape}}=\mathcal{L}_{1}\left(1-\min \left(\frac{w}{w_{g}}, \frac{w_{g}}{w}\right)\right)+\mathcal{L}_{1}\left(1-\min \left(\frac{h}{h_{g}}, \frac{h_{g}}{h}\right)\right)</script></li>
+</ul>
+<h4 id="算法-6"><a href="#算法-6" class="headerlink" title="算法"></a>算法</h4><ol>
+<li>使用阈值将loc预测值划分出前景区域</li>
+<li>提取前景区域的shape_preds</li>
+<li>结合特征图位置，conccat得到4维的guided_anchors(x, y, w, h)</li>
+<li>然后根据guided_anchors和cls_scores, bbox_preds分支得到最终的bbox预测值</li>
+</ol>
+<h3 id="ATSS：Bridging-the-Gap-Between-Anchor-based-and-Anchor-free-Detection-via-Adaptive-Training-Sample-Selection——2020"><a href="#ATSS：Bridging-the-Gap-Between-Anchor-based-and-Anchor-free-Detection-via-Adaptive-Training-Sample-Selection——2020" class="headerlink" title="ATSS：Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection——2020"></a>ATSS：Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection——2020</h3><h4 id="特点-10"><a href="#特点-10" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><p>分析了anchor-based和anchor-free的差异，发现<strong>正负样本定义规则的不同</strong>是导致两者<strong>性能差异的原因</strong></p>
+<p>以RetinaNet和FCOS进行分析。</p>
+<p>首先将RetinaNet的anchor个数设置为1，且比例设置为正方形，然后采用和FCOS相同的trick包括：GroupNorm、GIoU Loss、In GT Box、Centerness、Scalar后，mAP仍然相差了一个点。</p>
+<p>现在两个算法的区别：</p>
+<ul>
+<li>正负样本定义<ul>
+<li>Intersection over Union</li>
+<li>Spatial and Scale Constraint【更好，因为其会产生更多的正样本区域】</li>
+</ul>
+</li>
+<li>回归分支是从point【每个点预测距离4条边的距离】还是anchor【anchor框到gt框的<script type="math/tex">\Delta_x,\Delta_y,\Delta_w,\Delta_h</script>】</li>
+</ul>
+<p>然后实验得出用基于空间Scale约束之后，两者算法的mAP相近且比IOU高。</p>
+</li>
+<li><p>使得anchor-based和ancchor-free<strong>都不需要调核心参数</strong></p>
+<ul>
+<li><strong>消除anchor-free的超参数</strong>，变为真正的自适应算法：如FCOS，希望消除回归范围regress_ranges和中心扩展比例参数center_sample_radius这两个核心超参</li>
+<li>对于<strong>anchor-base</strong>希望借鉴anchor-free的正负样本分配策略，弥补性能差异，同时也能<strong>自适应</strong>，使得不必设置<strong>正负样本</strong>阈值</li>
+</ul>
+</li>
+</ul>
+<h4 id="算法-7"><a href="#算法-7" class="headerlink" title="算法"></a>算法</h4><ol>
+<li>compute <strong>iou</strong> between all bbox (bbox of all pyramid levels) and gt</li>
+<li>compute <strong>center distance</strong> between all bbox and gt</li>
+<li>on each pyramid level, for each gt, <strong>select k bbox</strong> whose <strong>center</strong><br>are closest to the gt center, so we total select k*l bbox as<br>candidates for each gt</li>
+<li>get corresponding <strong>iou</strong> for the these candidates, and <strong>compute the</strong><br><strong>mean and std</strong>, set <strong>mean + std</strong> as the iou threshold</li>
+<li>select these candidates whose <strong>iou</strong> are <strong>greater</strong> than or equal to<br>the threshold as postive</li>
+<li><strong>limit</strong> the positive sample’s center in gt</li>
+</ol>
+<h3 id="VarifocalNet-An-IoU-aware-Dense-Object-Detector——2020"><a href="#VarifocalNet-An-IoU-aware-Dense-Object-Detector——2020" class="headerlink" title="VarifocalNet: An IoU-aware Dense Object Detector——2020"></a>VarifocalNet: An IoU-aware Dense Object Detector——2020</h3><h4 id="针对的问题-2"><a href="#针对的问题-2" class="headerlink" title="针对的问题"></a>针对的问题</h4><ul>
+<li>分类和回归分支不一致性问题<ul>
+<li>作者通过将真实的centerness、IoU、bbox带入，发现并没有过大的提升；由此得出：影响mAP的主要因素不是bbox预测不准确。</li>
+<li>因此作者将cls设置为真实值（即排序仅依靠centerness），发现提升了10%，说明在类别预测完全正确的情况下，centerness可以在一定程度上区分边界框的准确性。</li>
+<li><strong>目前的目标检测bbox分支输出的密集bbox中其实存在非常精确的预测框，关键是没有好的预测分值来选择出来</strong>，也就是Generalized Focal Loss中提到的如何加强分类分支和bbox分支一致性的问题。采用centerness分类分值的做法提升非常有限，<strong>最合适的做法就是将分类分支对应类别预测值中能够同时反映出物体类别和物体预测准确度，此时理论上限最高</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="特点-11"><a href="#特点-11" class="headerlink" title="特点"></a>特点</h4><ol>
+<li><p>提出了正负样本<strong>不对称</strong>加权的 Varifocal Loss，突出正样本的主样本</p>
+<script type="math/tex; mode=display">
+\mathrm{VFL}(\mathrm{p}, \mathrm{q})=\left\{\begin{array}{ll}
+-\mathrm{q}(\mathrm{qlog}(\mathrm{p})+(1-\mathrm{q}) \log (1-\mathrm{p})) & \mathrm{q}>0 \\
+-\alpha \mathrm{p}^{\gamma} \log (1-\mathrm{p}) & \mathrm{q}=0
+\end{array}\right.</script><p>q是label</p>
+<ul>
+<li>正样本时候q为预测bbox和gt bbox的iou；普通的bce loss，多了一个自适应iou加权</li>
+<li>负样本时候q=0；标准的focal loss</li>
+</ul>
+</li>
+<li><p>借助dcn思想，提出<strong>星型bbox特征提取refine网络</strong>，对atss的输出初始bbox进行refine</p>
+<p>每个点的特征感受野就可以和初始时刻预测值重合，即特征对齐操作，方便refine,此时就得到了refine后的bbox预测输出值，需要特别注意的是<strong>refine分支输出值是代表scale值</strong>，将该refine输出值和初始预测值相乘即可得到refine后的真实bbox值</p>
+</li>
+</ol>
+<h1 id="Two-Stage"><a href="#Two-Stage" class="headerlink" title="Two-Stage"></a>Two-Stage</h1><p>基于候选框，<code>anchor -&gt; proposal -&gt; detection bbox</code></p>
+<h2 id="Anchor-based-2"><a href="#Anchor-based-2" class="headerlink" title="Anchor based"></a>Anchor based</h2><h3 id="Faster-RCNN"><a href="#Faster-RCNN" class="headerlink" title="Faster RCNN"></a>Faster RCNN</h3><h3 id="Dynamic-R-CNN-Towards-High-Quality-Object-Detection-via-Dynamic-Training——2020"><a href="#Dynamic-R-CNN-Towards-High-Quality-Object-Detection-via-Dynamic-Training——2020" class="headerlink" title="Dynamic R-CNN: Towards High Quality Object Detection via Dynamic Training——2020"></a>Dynamic R-CNN: Towards High Quality Object Detection via Dynamic Training——2020</h3><h4 id="特点-12"><a href="#特点-12" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><p>对faster rcnn的rcnn部分的训练过程进行动态分析，提出了<strong>the fixed label assignment strategy</strong> 和 <strong>动态regression loss function</strong></p>
+<ul>
+<li><p>随着训练进行，不断自适应<strong>增加rcnn正样本阈值</strong>【一般都是0.5】，并且针对回归分支预测bbox的<strong>方差减少特点自适应修改</strong>SmoothL1 Loss参数，达到类似focal效果。</p>
+<p>随着训练过程中，预测的bbox<strong>质量</strong>是会变的，正样本数也是不断增加的，此时采用固定的iou阈值肯定是不完美的，同时随着训练进行，<strong>回归误差的方差是不断变小</strong>的，采用smooth l1的固定beta也是不完美的，这两个核心参数应该动态变化。</p>
+</li>
+<li><p>非常像cascade rcnn训练过程，只不过cascade rcnn是通过多个head，而本文<strong>压缩为一个head</strong>。 </p>
+</li>
+<li><p>仅仅影响训练过程，对测试过程没有任何影响</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="结构-12"><a href="#结构-12" class="headerlink" title="结构"></a>结构</h4><ul>
+<li><p>Dynamic Label Assignment</p>
+<p>在训练前期，高质量正样本很少，所以应该采用相对低的iou阈值来补偿，随着训练进行，高质量正样本不断增加，故可以<strong>慢慢增加iou阈值</strong>。</p>
+<p>计算每个ROI和所有gt的最大iou值，在每张图片上选取第K个最大值，遍历所有图片，然后求均值作为T_now,并且每隔C个迭代更新一次该参数。</p>
+</li>
+<li><p>Dynamic Smooth L1 Loss</p>
+<p>先计算预测值和Gt的回归误差，然后选择第M个最小值组成list，在达到迭代次数之后，用中位数设置【平均值有外点的影响】。</p>
+<p>随着训练进行，高质量样本增多，loss的梯度非常小，导致无法进一步提高。因此通过动态减少beta，来增加高质量部分样本的梯度。</p>
+</li>
+</ul>
+<h2 id="Anchor-free-2"><a href="#Anchor-free-2" class="headerlink" title="Anchor free"></a>Anchor free</h2><h3 id="RepPoints"><a href="#RepPoints" class="headerlink" title="RepPoints"></a>RepPoints</h3><h4 id="DCN-v1-and-DCN-v2"><a href="#DCN-v1-and-DCN-v2" class="headerlink" title="DCN v1 and DCN v2"></a>DCN v1 and DCN v2</h4><p>DCN v1：学习偏移量【x，y两个方向】来改变标准卷积的采样位置。</p>
+<p>DCN v2：增加了调制因子【范围在[0, 1]之间】</p>
+<p>RepPoint相当于DCN v3，相比于前两者用分类和定位来<strong>监督偏移量</strong>，使得偏移量有解释性。</p>
+<h4 id="解决的问题-5"><a href="#解决的问题-5" class="headerlink" title="解决的问题"></a>解决的问题</h4><ul>
+<li>边界框<ul>
+<li>虽然易于计算，但是仅提供目标的粗略定位，并<strong>不完全拟合目标的形状和姿态</strong>。因此，从边界框的规则单元格中提取的特征可能会受到背景内容<strong>【无关】</strong>或前景区域的无效信息<strong>【噪声】</strong>的严重影响。可能导致特征质量降低，从而降低了目标检测的分类性能。</li>
+<li>anchor需要设计不同尺度、不同长宽比</li>
+<li>anchor的正负样本对比需要计算和gt的IOU值</li>
+</ul>
+</li>
+<li>cornernet这种点集表示法，需要将左上角点和右下角点进行分组的操作，尤其在密集或者重叠的场景中，分组的表现并不好</li>
+</ul>
+<h4 id="特点-13"><a href="#特点-13" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>提供了更细粒度的定位和更方便的分类</li>
+<li>用n个<strong>自适应样本点</strong>进行建模，n默认为9；无anchor<ul>
+<li>9个点是因为学习到的bbox更精准、更稳定</li>
+</ul>
+</li>
+<li>仍然使用bbox标注，无需额外的样本点标注</li>
+<li>DCN v3，有更好的语义对齐和可解释性</li>
+</ul>
+<h4 id="结构-13"><a href="#结构-13" class="headerlink" title="结构"></a>结构</h4><ul>
+<li>head分支<ul>
+<li>分类分支<ul>
+<li>中心点回归热力图</li>
+</ul>
+</li>
+<li>初始表征点回归<ul>
+<li>18个通道，学习特征图上任意一点的9个自适应样本点的offset</li>
+<li>用可微转换函数将点转换为伪框</li>
+<li>计算转换后伪框与ground truth边界框之间的差异</li>
+</ul>
+</li>
+<li>refine表征点回归分支<ul>
+<li><strong>将预测输出的offset作为DCN offset的输入</strong>，进行<strong>特征重采样捕获几何位置</strong>，得到新的特征图</li>
+<li>对特征图进行分类和offset精细refine（相对第一阶段的偏移值）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="算法-8"><a href="#算法-8" class="headerlink" title="算法"></a>算法</h4><h5 id="Head-2"><a href="#Head-2" class="headerlink" title="Head"></a>Head</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将FPN输出的某个特征图，分成分类和回归特征图两条分支</span></div><div class="line">cls_feat = x</div><div class="line">pts_feat = x</div><div class="line"><span class="keyword">for</span> cls_conv <span class="keyword">in</span> self.cls_convs:</div><div class="line">    cls_feat = cls_conv(cls_feat)</div><div class="line"><span class="keyword">for</span> reg_conv <span class="keyword">in</span> self.reg_convs:</div><div class="line">    pts_feat = reg_conv(pts_feat)</div><div class="line"></div><div class="line"><span class="comment"># 通过3x3+1x1卷积，输出18个offset</span></div><div class="line">pts_out_init = self.reppoints_pts_init_out(</div><div class="line">     self.relu(self.reppoints_pts_init_conv(pts_feat)))</div><div class="line"><span class="comment"># 乘上系数，降低该分支的梯度权重</span></div><div class="line">pts_out_init_grad_mul = (<span class="number">1</span> - self.gradient_mul) * pts_out_init.detach() + self.gradient_mul * pts_out_init</div><div class="line"></div><div class="line"><span class="comment"># 减去kernel所对应的9个base点坐标([-1,-1], [0,-1], [1, -1], [-1, 0]....,[1,1])，作为DCN的offset输入值</span></div><div class="line">dcn_offset = pts_out_init_grad_mul - dcn_base_offset</div><div class="line"><span class="comment"># 用DCN对分类分支和refine回归分支进行特征自适应，得到新的特征图，然后经过两个1x1卷积得到最终输出</span></div><div class="line"><span class="comment"># 分类输出</span></div><div class="line">cls_out = self.reppoints_cls_out(</div><div class="line">          self.relu(self.reppoints_cls_conv(cls_feat, dcn_offset)))</div><div class="line"></div><div class="line"><span class="comment"># refine点offset输出</span></div><div class="line">pts_out_refine = self.reppoints_pts_refine_out(</div><div class="line">    self.relu(self.reppoints_pts_refine_conv(pts_feat, dcn_offset)))</div><div class="line"><span class="comment">#  refine加上初始预测就可以得到refine后的输出9个点坐标</span></div><div class="line">pts_out_refine = pts_out_refine + pts_out_init.detach()</div></pre></td></tr></table></figure>
+<h5 id="正负样本-1"><a href="#正负样本-1" class="headerlink" title="正负样本"></a>正负样本</h5><p>对于offset回归问题，仅对正样本训练</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 第一阶段</span></div><div class="line">init=dict(</div><div class="line">        assigner=dict(type=<span class="string">'PointAssigner'</span>, scale=<span class="number">4</span>, pos_num=<span class="number">1</span>),</div><div class="line">        allowed_border=<span class="number">-1</span>,</div><div class="line">        pos_weight=<span class="number">-1</span>,</div><div class="line">        debug=<span class="keyword">False</span>) </div><div class="line"><span class="comment"># 第二阶段，用第一个阶段预测的offset解码还原后的初始bbox作为输入</span></div><div class="line">refine=dict(</div><div class="line">        assigner=dict(</div><div class="line">            type=<span class="string">'MaxIoUAssigner'</span>,</div><div class="line">            pos_iou_thr=<span class="number">0.5</span>,</div><div class="line">            neg_iou_thr=<span class="number">0.4</span>,</div><div class="line">            min_pos_iou=<span class="number">0</span>,</div><div class="line">            ignore_iof_thr=<span class="number">-1</span>))</div></pre></td></tr></table></figure>
+<p>对于分类分支采用MaxIoUAssigner</p>
+<h5 id="RepPoints转换为bbox"><a href="#RepPoints转换为bbox" class="headerlink" title="RepPoints转换为bbox"></a>RepPoints转换为bbox</h5><p>作者提出了三种做法【性能相似，相对来说3&gt;1&gt;2】：</p>
+<ul>
+<li>minmax：取9个点的最大最小值，就可以构成bbox</li>
+<li>Partical_minmax：选择前四个点进行minmax操作？</li>
+<li>moment中心矩：先求9个点在xy方向的均值得到中心点坐标；再求标准差；通过可学习的transfer进行指数还原</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 均值和方差就是gt bbox的中心点</span></div><div class="line">pts_y_mean = pts_y.mean(dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>)</div><div class="line">pts_x_mean = pts_x.mean(dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>)</div><div class="line">pts_y_std = torch.std(pts_y - pts_y_mean, dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>)</div><div class="line">pts_x_std = torch.std(pts_x - pts_x_mean, dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># self.moment_transfer也进行梯度增强操作</span></div><div class="line">moment_transfer = (self.moment_transfer * self.moment_mul) + (self.moment_transfer.detach() * (<span class="number">1</span> - self.moment_mul))</div><div class="line">moment_width_transfer = moment_transfer[<span class="number">0</span>]</div><div class="line">moment_height_transfer = moment_transfer[<span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="comment"># 解码</span></div><div class="line">half_width = pts_x_std * torch.exp(moment_width_transfer)</div><div class="line">half_height = pts_y_std * torch.exp(moment_height_transfer)</div><div class="line">bbox = torch.cat([pts_x_mean - half_width, pts_y_mean - half_height, pts_x_mean + half_width, pts_y_mean + half_height],dim=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h5 id="Loss-1"><a href="#Loss-1" class="headerlink" title="Loss"></a>Loss</h5><ul>
+<li>分类：focal loss</li>
+<li>回归：smooth L1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">labels = labels.reshape(<span class="number">-1</span>)</div><div class="line">label_weights = label_weights.reshape(<span class="number">-1</span>)</div><div class="line">cls_score = cls_score.permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>,<span class="number">1</span>).reshape(<span class="number">-1</span>, self.cls_out_channels)</div><div class="line">cls_score = cls_score.contiguous()</div><div class="line">loss_cls = self.loss_cls(</div><div class="line">    cls_score,</div><div class="line">    labels,</div><div class="line">    label_weights,</div><div class="line">    avg_factor=num_total_samples_refine)</div><div class="line"></div><div class="line">bbox_pred_init = self.points2bbox(pts_pred_init.reshape(<span class="number">-1</span>, <span class="number">2</span> * self.num_points), y_first=<span class="keyword">False</span>)</div><div class="line"><span class="comment"># 为了稳定训练过程</span></div><div class="line">normalize_term = self.point_base_scale * stride</div><div class="line">loss_pts_init = self.loss_bbox_init(</div><div class="line">        bbox_pred_init / normalize_term,</div><div class="line">        bbox_gt_init / normalize_term,</div><div class="line">        bbox_weights_init,</div><div class="line">        avg_factor=num_total_samples_init)</div><div class="line"></div><div class="line">loss_pts_refine = self.loss_bbox_refine(</div><div class="line">        bbox_pred_refine / normalize_term,</div><div class="line">        bbox_gt_refine / normalize_term,</div><div class="line">        bbox_weights_refine,</div><div class="line">        avg_factor=num_total_samples_refine)</div><div class="line"></div><div class="line"><span class="comment"># 前向输出的offset值是特征图尺度的，但是计算loss时候的bbox_pred_init、bbox_pred_refine是原图尺度</span></div><div class="line">pts = xy_pts_shift * self.point_strides[i_lvl] + pts_center</div></pre></td></tr></table></figure>
+<h1 id="通用方法（技巧）"><a href="#通用方法（技巧）" class="headerlink" title="通用方法（技巧）"></a>通用方法（技巧）</h1><h2 id="Is-Sampling-Heuristics-Necessary-in-Training-Deep-Object-Detectors"><a href="#Is-Sampling-Heuristics-Necessary-in-Training-Deep-Object-Detectors" class="headerlink" title="Is Sampling Heuristics Necessary in Training Deep Object Detectors?"></a>Is Sampling Heuristics Necessary in Training Deep Object Detectors?</h2><h3 id="特点-14"><a href="#特点-14" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>通过初始化与损失放缩达到和采样方法近似或更好的效果：实验发现CE在经过初始化和loss分类与回归权重调整之后是可以和FL比拟的</li>
+</ol>
+<h3 id="结构-14"><a href="#结构-14" class="headerlink" title="结构"></a>结构</h3><p>【正样本占整体样本比例，是事先计算的】</p>
+<ul>
+<li><p>最优bias初始化</p>
+<script type="math/tex; mode=display">
+L^{C E}=\underbrace{-\log (\pi)}_{\text {foreground }}-\underbrace{\left(\frac{N}{N_{f}} \cdot C-1\right) \log (1-\pi)}_{\text {background }},</script><p>最优的设置通过求导来确定：</p>
+<script type="math/tex; mode=display">
+\frac{\partial L^{C E}}{\partial \pi}=-\frac{1}{\pi}+\left(\frac{N}{N_{f}} \cdot C-1\right) \frac{1}{1-\pi}</script></li>
+<li><p>Guided Loss：通过在训练中实时确定r，来降低分类比例，希望分类和回归loss维持相同的水平，使得分类损失是回归损失的<script type="math/tex">w_{cls}</script>倍；r是不经过BP的(<code>torch.no_grad</code>)；这里貌似<script type="math/tex">L_{cls}</script>被抵消了，但是loss一个是用来算delta，另一个是用来进行梯度回传，更改网络参数操作的。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+r=\frac{w^{r e g} L^{r e g}}{L^{c l s}} \\
+L=w^{r e g} L^{r e g}+w^{c l s} L^{c l s} \cdot r
+\end{array}</script></li>
+<li><p>类别自适应阈值：每个类别采用不同的过滤阈值</p>
+<script type="math/tex; mode=display">
+\theta_{j}=\frac{N_{f}}{N} \cdot \frac{N_{j}}{\sum_{j=1}^{C} N_{j}}</script></li>
+</ul>
+<h1 id="fusion"><a href="#fusion" class="headerlink" title="fusion"></a>fusion</h1><h2 id="RelationNet-Bridging-Visual-Representations-for-Object-Detection-via-Transformer-Decoder——2020"><a href="#RelationNet-Bridging-Visual-Representations-for-Object-Detection-via-Transformer-Decoder——2020" class="headerlink" title="RelationNet++: Bridging Visual Representations for Object Detection via Transformer Decoder——2020"></a>RelationNet++: Bridging Visual Representations for Object Detection via Transformer Decoder——2020</h2><p>一种基于注意力的方法，用多种表示方式（anchor、center、corner）学习的信息特征融合起来。详见<code>OD with new tech</code>.</p>
+<h1 id="旋转目标检测"><a href="#旋转目标检测" class="headerlink" title="旋转目标检测"></a>旋转目标检测</h1><p>主要应用于遥感和文本检测。这里的IOU被SkewIOU替换。</p>
+<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><h2 id="VOC"><a href="#VOC" class="headerlink" title="VOC"></a>VOC</h2><ul>
+<li>图片大小：<code>333*500</code></li>
+<li>一半的图像只有一个物体，最多一张图包含39个物体</li>
+</ul>
+<h2 id="旋转目标检测-1"><a href="#旋转目标检测-1" class="headerlink" title="旋转目标检测"></a>旋转目标检测</h2><h3 id="DOTA"><a href="#DOTA" class="headerlink" title="DOTA"></a>DOTA</h3><h3 id="HRSC2016"><a href="#HRSC2016" class="headerlink" title="HRSC2016"></a>HRSC2016</h3><h3 id="ICDRA2015"><a href="#ICDRA2015" class="headerlink" title="ICDRA2015"></a>ICDRA2015</h3><p>转载请注明出处，谢谢。<br><blockquote class="blockquote-center"><p>愿 我是你的小太阳</p>
+</blockquote></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30987373&auto=0&height=66"></iframe>
+
+<!-- UY BEGIN -->
+<p><div id="uyan_frame"></div></p>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142537"></script>
+
+<!-- UY END -->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>买糖果去喽</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="Mrs_empress WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Object-detection/" rel="tag"><i class="fa fa-tag"></i> Object detection</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/31/Recommender-Systems/" rel="next" title="Recommender Systems">
+                <i class="fa fa-chevron-left"></i> Recommender Systems
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/18/随想小记-2020-11-18/" rel="prev" title="随想小记-2020-11-18">
+                随想小记-2020-11-18 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="Mrs_empress" />
+          
+            <p class="site-author-name" itemprop="name">Mrs_empress</p>
+            <p class="site-description motion-element" itemprop="description">Hope be better and better, wish be happy and happy!</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mrsempress" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chenxi.huang.56211" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      FB Page
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3309079767?refer_flag=1001030001_&nick=Mrs_empress_阡沫昕&is_hot=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tobiaslee.top" title="TobiasLee" target="_blank">TobiasLee</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://abcml.xin/" title="ZeZe" target="_blank">ZeZe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://notes-hongbo.top" title="Bob" target="_blank">Bob</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://undefinedf.github.io/" title="Fjh" target="_blank">Fjh</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#整体架构"><span class="nav-number">1.</span> <span class="nav-text">整体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Backbone"><span class="nav-number">1.1.</span> <span class="nav-text">Backbone</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AleNet"><span class="nav-number">1.1.1.</span> <span class="nav-text">AleNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VGG"><span class="nav-number">1.1.2.</span> <span class="nav-text">VGG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GoogLeNet"><span class="nav-number">1.1.3.</span> <span class="nav-text">GoogLeNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DarkNet"><span class="nav-number">1.1.4.</span> <span class="nav-text">DarkNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DenseNet"><span class="nav-number">1.1.5.</span> <span class="nav-text">DenseNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSPNet"><span class="nav-number">1.1.6.</span> <span class="nav-text">CSPNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ResNext"><span class="nav-number">1.1.7.</span> <span class="nav-text">ResNext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ResNeSTt"><span class="nav-number">1.1.8.</span> <span class="nav-text">ResNeSTt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HRNet"><span class="nav-number">1.1.9.</span> <span class="nav-text">HRNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EfficientNet"><span class="nav-number">1.1.10.</span> <span class="nav-text">EfficientNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deformable-Convolutional-Networks"><span class="nav-number">1.1.11.</span> <span class="nav-text">Deformable Convolutional Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.1.11.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决的问题"><span class="nav-number">1.1.11.2.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.1.11.3.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neck"><span class="nav-number">1.2.</span> <span class="nav-text">Neck</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FPN——2016"><span class="nav-number">1.2.1.</span> <span class="nav-text">FPN——2016</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决的问题-1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PANet——2018"><span class="nav-number">1.2.2.</span> <span class="nav-text">PANet——2018</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决的问题-2"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-1"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#M2Det——2019"><span class="nav-number">1.2.3.</span> <span class="nav-text">M2Det——2019</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决的问题-3"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-2"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASFF：Adaptively-Spatial-Feature-Fusion——2019"><span class="nav-number">1.2.4.</span> <span class="nav-text">ASFF：Adaptively Spatial Feature Fusion——2019</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决的问题-4"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-3"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-2"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EfficientDet"><span class="nav-number">1.2.5.</span> <span class="nav-text">EfficientDet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-1"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-4"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAS-FPN"><span class="nav-number">1.2.6.</span> <span class="nav-text">NAS-FPN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Head"><span class="nav-number">1.3.</span> <span class="nav-text">Head</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Anchor"><span class="nav-number">1.3.1.</span> <span class="nav-text">Anchor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成方式"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">生成方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sliding-window"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">sliding window</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPN"><span class="nav-number">1.3.2.</span> <span class="nav-text">RPN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ROI"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">ROI</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Deformable-ROI-Pooling"><span class="nav-number">1.3.2.1.1.</span> <span class="nav-text">Deformable ROI Pooling</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ROI-Wraping"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">ROI Wraping</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCNN"><span class="nav-number">1.3.3.</span> <span class="nav-text">RCNN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loss"><span class="nav-number">1.4.</span> <span class="nav-text">Loss</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">1.4.1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BCE-Loss"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">BCE Loss</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分类问题与伯努利分布"><span class="nav-number">1.4.1.1.1.</span> <span class="nav-text">二分类问题与伯努利分布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Focal-Loss——2018"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Focal Loss——2018</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回归"><span class="nav-number">1.4.2.</span> <span class="nav-text">回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Smooth-L1"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">Smooth L1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Balanced-L1-Loss"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">Balanced L1 Loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MSE-Loss"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">MSE Loss</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性回归问题与正态分布"><span class="nav-number">1.4.2.3.1.</span> <span class="nav-text">线性回归问题与正态分布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IOU-Loss"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">IOU Loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GIOU-Loss——2019"><span class="nav-number">1.4.2.5.</span> <span class="nav-text">GIOU Loss——2019</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DIOU-Loss"><span class="nav-number">1.4.2.6.</span> <span class="nav-text">DIOU Loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CIOU-Loss"><span class="nav-number">1.4.2.7.</span> <span class="nav-text">CIOU Loss</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#综合"><span class="nav-number">1.4.3.</span> <span class="nav-text">综合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GHM-loss——2018"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">GHM loss——2018</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OHEM"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">OHEM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GFL——2020"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">GFL——2020</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimizer"><span class="nav-number">1.5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam"><span class="nav-number">1.5.1.</span> <span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGD"><span class="nav-number">1.5.2.</span> <span class="nav-text">SGD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正负样本"><span class="nav-number">1.6.</span> <span class="nav-text">正负样本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.6.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Intersection-over-Union"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">Intersection over Union</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MaxIoUAssigner"><span class="nav-number">1.6.1.1.1.</span> <span class="nav-text">MaxIoUAssigner</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ApproxMaxIoUAssigner"><span class="nav-number">1.6.1.1.2.</span> <span class="nav-text">ApproxMaxIoUAssigner</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PointAssigner"><span class="nav-number">1.6.1.1.3.</span> <span class="nav-text">PointAssigner</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spatial-and-Scale-Constraint"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">Spatial and Scale Constraint</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采样"><span class="nav-number">1.6.2.</span> <span class="nav-text">采样</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hard-sampling，选择难负例样本"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">Hard sampling，选择难负例样本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OHEM：Online-Hard-exampling-mining"><span class="nav-number">1.6.2.1.1.</span> <span class="nav-text">OHEM：Online Hard exampling mining</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RandomSampler"><span class="nav-number">1.6.2.1.2.</span> <span class="nav-text">RandomSampler</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IOUBalancedNegSampler"><span class="nav-number">1.6.2.1.3.</span> <span class="nav-text">IOUBalancedNegSampler</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Soft-sampling，赋予样本不同权重值"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">Soft sampling，赋予样本不同权重值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Focal-Loss"><span class="nav-number">1.6.2.2.1.</span> <span class="nav-text">Focal Loss</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡loss"><span class="nav-number">1.6.3.</span> <span class="nav-text">平衡loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Train"><span class="nav-number">1.7.</span> <span class="nav-text">Train</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识蒸馏"><span class="nav-number">1.7.1.</span> <span class="nav-text">知识蒸馏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EMA"><span class="nav-number">1.7.2.</span> <span class="nav-text">EMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强"><span class="nav-number">1.7.3.</span> <span class="nav-text">数据增强</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">1.8.</span> <span class="nav-text">Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NMS"><span class="nav-number">1.8.1.</span> <span class="nav-text">NMS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Soft-NMS"><span class="nav-number">1.8.1.1.</span> <span class="nav-text">Soft NMS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adaptive-NMS"><span class="nav-number">1.8.1.2.</span> <span class="nav-text">Adaptive NMS</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Head-1"><span class="nav-number">2.</span> <span class="nav-text">Head</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anchor-free"><span class="nav-number">2.1.</span> <span class="nav-text">Anchor free</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-2"><span class="nav-number">2.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anchor-based"><span class="nav-number">2.2.</span> <span class="nav-text">Anchor based</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-2"><span class="nav-number">2.2.1.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#One-Stage"><span class="nav-number">3.</span> <span class="nav-text">One-Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anchor-free-1"><span class="nav-number">3.1.</span> <span class="nav-text">Anchor free</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Yolo-v1"><span class="nav-number">3.1.1.</span> <span class="nav-text">Yolo v1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DenseBox——2015"><span class="nav-number">3.1.2.</span> <span class="nav-text">DenseBox——2015</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-3"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-3"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-5"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UnitBox——2016"><span class="nav-number">3.1.3.</span> <span class="nav-text">UnitBox——2016</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-4"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CornerNet"><span class="nav-number">3.1.4.</span> <span class="nav-text">CornerNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CenterNet"><span class="nav-number">3.1.5.</span> <span class="nav-text">CenterNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExtremeNet"><span class="nav-number">3.1.6.</span> <span class="nav-text">ExtremeNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Point-based"><span class="nav-number">3.1.7.</span> <span class="nav-text">Point-based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FCOS：A-simple-and-strong-anchor-free-object-detector——2019"><span class="nav-number">3.1.7.1.</span> <span class="nav-text">FCOS：A simple and strong anchor-free object detector——2019</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点-5"><span class="nav-number">3.1.7.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构-6"><span class="nav-number">3.1.7.1.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法-3"><span class="nav-number">3.1.7.1.3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与RetinaNet区别"><span class="nav-number">3.1.7.1.4.</span> <span class="nav-text">与RetinaNet区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Soft-Anchor-Point-Object-Detection——2019"><span class="nav-number">3.1.7.2.</span> <span class="nav-text">Soft Anchor-Point Object Detection——2019</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#针对的问题"><span class="nav-number">3.1.7.2.1.</span> <span class="nav-text">针对的问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Generalized-Focal-Loss——2020"><span class="nav-number">3.1.7.3.</span> <span class="nav-text">Generalized Focal Loss——2020</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#针对的问题-1"><span class="nav-number">3.1.7.3.1.</span> <span class="nav-text">针对的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构-7"><span class="nav-number">3.1.7.3.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法-4"><span class="nav-number">3.1.7.3.3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Code"><span class="nav-number">3.1.7.3.4.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sparse-R-CNN-End-to-End-Object-Detection-with-Learnable-Proposals"><span class="nav-number">3.1.8.</span> <span class="nav-text">Sparse R-CNN: End-to-End Object Detection with Learnable Proposals</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-6"><span class="nav-number">3.1.8.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-8"><span class="nav-number">3.1.8.2.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anchor-based-1"><span class="nav-number">3.2.</span> <span class="nav-text">Anchor based</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Yolo-v2"><span class="nav-number">3.2.1.</span> <span class="nav-text">Yolo v2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yolo-V3"><span class="nav-number">3.2.2.</span> <span class="nav-text">Yolo V3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YOLOv3-ASFF-Learning-Spatial-Fusion-for-Single-Shot-Object-Detection——2019"><span class="nav-number">3.2.3.</span> <span class="nav-text">YOLOv3+ASFF: Learning Spatial Fusion for Single-Shot Object Detection——2019</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-7"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-9"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yolo-V5"><span class="nav-number">3.2.4.</span> <span class="nav-text">Yolo V5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSD"><span class="nav-number">3.2.5.</span> <span class="nav-text">SSD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSD-vs-YOLO-v2-v3"><span class="nav-number">3.2.5.1.</span> <span class="nav-text">SSD vs YOLO v2/v3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FPN"><span class="nav-number">3.2.6.</span> <span class="nav-text">FPN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RetinaNet：Focal-Loss-for-Dense-Object-Detection——2018"><span class="nav-number">3.2.7.</span> <span class="nav-text">RetinaNet：Focal Loss for Dense Object Detection——2018</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点-8"><span class="nav-number">3.2.7.0.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构-10"><span class="nav-number">3.2.7.0.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法-5"><span class="nav-number">3.2.7.0.3.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Region-Proposal-by-Guided-Anchoring——2019"><span class="nav-number">3.2.8.</span> <span class="nav-text">Region Proposal by Guided Anchoring——2019</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-9"><span class="nav-number">3.2.8.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-11"><span class="nav-number">3.2.8.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-6"><span class="nav-number">3.2.8.3.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ATSS：Bridging-the-Gap-Between-Anchor-based-and-Anchor-free-Detection-via-Adaptive-Training-Sample-Selection——2020"><span class="nav-number">3.2.9.</span> <span class="nav-text">ATSS：Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection——2020</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-10"><span class="nav-number">3.2.9.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-7"><span class="nav-number">3.2.9.2.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VarifocalNet-An-IoU-aware-Dense-Object-Detector——2020"><span class="nav-number">3.2.10.</span> <span class="nav-text">VarifocalNet: An IoU-aware Dense Object Detector——2020</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#针对的问题-2"><span class="nav-number">3.2.10.1.</span> <span class="nav-text">针对的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-11"><span class="nav-number">3.2.10.2.</span> <span class="nav-text">特点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-Stage"><span class="nav-number">4.</span> <span class="nav-text">Two-Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anchor-based-2"><span class="nav-number">4.1.</span> <span class="nav-text">Anchor based</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Faster-RCNN"><span class="nav-number">4.1.1.</span> <span class="nav-text">Faster RCNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-R-CNN-Towards-High-Quality-Object-Detection-via-Dynamic-Training——2020"><span class="nav-number">4.1.2.</span> <span class="nav-text">Dynamic R-CNN: Towards High Quality Object Detection via Dynamic Training——2020</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-12"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-12"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anchor-free-2"><span class="nav-number">4.2.</span> <span class="nav-text">Anchor free</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RepPoints"><span class="nav-number">4.2.1.</span> <span class="nav-text">RepPoints</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DCN-v1-and-DCN-v2"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">DCN v1 and DCN v2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决的问题-5"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-13"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-13"><span class="nav-number">4.2.1.4.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-8"><span class="nav-number">4.2.1.5.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Head-2"><span class="nav-number">4.2.1.5.1.</span> <span class="nav-text">Head</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正负样本-1"><span class="nav-number">4.2.1.5.2.</span> <span class="nav-text">正负样本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RepPoints转换为bbox"><span class="nav-number">4.2.1.5.3.</span> <span class="nav-text">RepPoints转换为bbox</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Loss-1"><span class="nav-number">4.2.1.5.4.</span> <span class="nav-text">Loss</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用方法（技巧）"><span class="nav-number">5.</span> <span class="nav-text">通用方法（技巧）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Is-Sampling-Heuristics-Necessary-in-Training-Deep-Object-Detectors"><span class="nav-number">5.1.</span> <span class="nav-text">Is Sampling Heuristics Necessary in Training Deep Object Detectors?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-14"><span class="nav-number">5.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构-14"><span class="nav-number">5.1.2.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fusion"><span class="nav-number">6.</span> <span class="nav-text">fusion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RelationNet-Bridging-Visual-Representations-for-Object-Detection-via-Transformer-Decoder——2020"><span class="nav-number">6.1.</span> <span class="nav-text">RelationNet++: Bridging Visual Representations for Object Detection via Transformer Decoder——2020</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#旋转目标检测"><span class="nav-number">7.</span> <span class="nav-text">旋转目标检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">8.</span> <span class="nav-text">数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VOC"><span class="nav-number">8.1.</span> <span class="nav-text">VOC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转目标检测-1"><span class="nav-number">8.2.</span> <span class="nav-text">旋转目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOTA"><span class="nav-number">8.2.1.</span> <span class="nav-text">DOTA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HRSC2016"><span class="nav-number">8.2.2.</span> <span class="nav-text">HRSC2016</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ICDRA2015"><span class="nav-number">8.2.3.</span> <span class="nav-text">ICDRA2015</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrs_empress</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("73XX9zwrQOBeD6S0LGJO26Ac-gzGzoHsz", "92PFBxqwUfTSuVqrflFGaf5G");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
